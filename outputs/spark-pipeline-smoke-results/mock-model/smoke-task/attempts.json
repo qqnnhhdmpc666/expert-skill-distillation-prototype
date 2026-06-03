@@ -1,0 +1,25 @@
+{
+  "task_name": "smoke-task",
+  "max_retries": 1,
+  "exploration_memo": "",
+  "memo_history": [],
+  "attempts": [
+    {
+      "attempt": 0,
+      "status": "PASS",
+      "reward": 1.0,
+      "agent_commands": "",
+      "test_summary": "",
+      "n_passed": 0,
+      "n_tests": 0
+    }
+  ],
+  "pdi": {
+    "enabled": true,
+    "observe_only": true,
+    "warmup": 2,
+    "threshold": -0.5,
+    "method": "token_overlap",
+    "history": []
+  }
+}

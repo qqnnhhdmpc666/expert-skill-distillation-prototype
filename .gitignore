@@ -1,0 +1,48 @@
+# External source snapshots and dependency caches
+external_repos/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Heavy/generated runtime outputs
+outputs/**/job.log
+outputs/**/trial.log
+outputs/**/agent/
+outputs/**/verifier/
+outputs/**/config.json
+outputs/**/result.json
+
+# Keep lightweight smoke-test evidence committed
+!outputs/harbor-smoke/**
+!outputs/spark-pipeline-smoke-results/**
+!outputs/spark-pipeline-smoke-results/**/pipeline_summary.json
+!outputs/spark-pipeline-smoke-results/**/SKILL.md
+!outputs/spark-pipeline-smoke-results/**/attempts.json
+!outputs/spark-pipeline-smoke-results/**/trajectory.jsonl
+
+# Large local artifacts
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.vhd
+*.vhdx
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
