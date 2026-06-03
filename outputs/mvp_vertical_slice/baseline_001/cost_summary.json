@@ -1,0 +1,20 @@
+{
+  "token_estimator": "round(characters / 4)",
+  "full_skill_tokens": 1294,
+  "compact_skill_v1_tokens": 222,
+  "compact_skill_v2_tokens": 285,
+  "compression_ratio_v1": 0.172,
+  "compression_ratio_v2": 0.22,
+  "execution_v1": {
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "checklist_pass": 4,
+    "checklist_total": 6
+  },
+  "execution_v2": {
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "checklist_pass": 6,
+    "checklist_total": 6
+  }
+}
