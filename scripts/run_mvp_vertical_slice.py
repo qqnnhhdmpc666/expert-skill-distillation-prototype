@@ -492,7 +492,7 @@ def render_repair_log(execution_report: dict[str, object], ledger: list[dict[str
 def build_manifest(run_id: str, args: argparse.Namespace, artifact_names: list[str]) -> dict[str, object]:
     return {
         "run_id": run_id,
-        "created_at": datetime.now(timezone.utc).isoformat(),
+        "created_at": args.created_at or datetime.now(timezone.utc).isoformat(),
         "materials_dir": str(args.materials_dir),
         "case_path": str(args.case_path),
         "artifacts": artifact_names,
@@ -506,6 +506,7 @@ def main() -> int:
     parser.add_argument("--case-path", type=Path, default=Path("data/api_review_cases/case_001_openapi.md"))
     parser.add_argument("--output-root", type=Path, default=Path("outputs/mvp_vertical_slice"))
     parser.add_argument("--run-id", default=datetime.now().strftime("%Y%m%d_%H%M%S"))
+    parser.add_argument("--created-at", default=None, help="Optional fixed ISO timestamp for reproducible tracked baselines.")
     args = parser.parse_args()
 
     materials = load_materials(args.materials_dir)
