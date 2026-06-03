@@ -255,3 +255,61 @@ execution_v2: detected 6 / expected 6
 f25d662 Initialize expert skill distillation MVP workspace
 e18c966 Add deterministic MVP vertical slice runner
 ```
+
+## 10. 最新更新：rule-level evidence ledger 已进入 MVP 主链路
+
+更新时间：2026-06-04（Asia/Shanghai）
+
+根据 related work 风险判断，当前系统定位已从“文件级 skill lifecycle”调整为：
+
+```text
+rule-level evidence ledger guided skill evolution
+```
+
+也就是把 skill 拆成规则单元，并为每条规则记录：
+
+- 材料证据：这条规则是否来自专家材料；
+- 执行证据：这条规则是否在任务执行中触发、漏检或变成 failure-critical；
+- 成本证据：这条规则是否应进入 compact skill；
+- 决策结果：keep / drop / patch。
+
+新增完成：
+
+- 新增 schema 文档：`D:\solution\docs\SKILL_PACKAGE_SCHEMA.md`。
+- MVP runner 已生成 `rule_ledger.json`。
+- `compact_skill_v1.md` 已改为由 `decision_v1` 驱动。
+- `compact_skill_v2.md` 已改为由执行反馈更新后的 `decision_v2` 驱动。
+- `repair_log.md` 现在按 rule-level patch 解释 R005/R006 为什么进入 v2。
+
+baseline 更新后结果：
+
+```text
+full_skill_tokens: 1294
+compact_skill_v1_tokens: 265
+compact_skill_v2_tokens: 339
+compression_ratio_v1: 0.205
+compression_ratio_v2: 0.262
+execution_v1: detected 4 / expected 6
+execution_v2: detected 6 / expected 6
+```
+
+关键变化：
+
+- `R005` 和 `R006` 在 v1 中因成本约束被 drop。
+- 执行反馈发现 v1 漏检它们。
+- `rule_ledger.json` 将二者标为 `failure_critical` 和 `compact_patch`。
+- v2 不是人工随意补规则，而是根据 ledger 的 `decision_v2 = patch` 生成。
+
+这使当前 MVP 的表达从：
+
+```text
+生成 skill + 执行反馈 + token 统计
+```
+
+升级为：
+
+```text
+材料证据 / 执行证据 / 成本证据
+-> rule-level evidence ledger
+-> compact skill evolution
+```

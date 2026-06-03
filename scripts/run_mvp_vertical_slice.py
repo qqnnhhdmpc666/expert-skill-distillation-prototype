@@ -71,7 +71,7 @@ RULES: tuple[Rule, ...] = (
         "Responses should use a consistent envelope with code, message, request_id, and data.",
         "A stable response envelope makes downstream parsing and troubleshooting predictable.",
         "Check consistent envelope fields: code, message, request_id, and data.",
-        ("response envelope", "code", "message", "request_id", "data"),
+        ("response envelope", "consistent envelope", "request_id", "paginated endpoints"),
     ),
     Rule(
         "R006",
@@ -80,7 +80,7 @@ RULES: tuple[Rule, ...] = (
         "POST, PUT, and PATCH endpoints should explain idempotency or duplicate submission behavior.",
         "Mutation endpoints often fail in retry paths unless duplicate handling is explicit.",
         "Check whether mutation endpoints document idempotency or duplicate submission handling.",
-        ("idempotency", "duplicate submission", "POST", "PUT", "PATCH"),
+        ("idempotency", "duplicate submission", "duplicate request"),
     ),
     Rule(
         "R007",
@@ -112,9 +112,16 @@ def load_materials(materials_dir: Path) -> dict[str, str]:
     return {path.name: read_text(path) for path in sorted(materials_dir.glob("*.md"))}
 
 
+def contains_term(text: str, term: str) -> bool:
+    lowered = text.lower()
+    needle = term.lower()
+    if re.fullmatch(r"[a-z0-9_]+", needle):
+        return re.search(rf"\b{re.escape(needle)}\b", lowered) is not None
+    return needle in lowered
+
+
 def find_evidence(rule: Rule, materials: dict[str, str]) -> list[Evidence]:
     hits: list[Evidence] = []
-    lowered_terms = tuple(term.lower() for term in rule.evidence_terms)
     for source_id, text in materials.items():
         lines = text.splitlines()
         current_heading = "document"
@@ -122,8 +129,7 @@ def find_evidence(rule: Rule, materials: dict[str, str]) -> list[Evidence]:
             stripped = line.strip()
             if stripped.startswith("#"):
                 current_heading = stripped.lstrip("#").strip() or current_heading
-            searchable = stripped.lower()
-            if any(term in searchable for term in lowered_terms):
+            if any(contains_term(stripped, term) for term in rule.evidence_terms):
                 quote = stripped
                 if quote:
                     hits.append(Evidence(source_id, f"{current_heading}, line {idx}", quote))
@@ -228,30 +234,115 @@ def render_evidence_report(evidence_map: list[dict[str, object]]) -> str:
     return "\n".join(lines)
 
 
-def compact_rows(evidence_map: list[dict[str, object]], include_execution_critical: Iterable[str] = ()) -> list[dict[str, object]]:
-    critical = set(include_execution_critical)
-    return [
-        row
-        for row in evidence_map
-        if (row["status"] == "supported" and row["priority"] == "high") or row["rule_id"] in critical
-    ]
+def evidence_refs(row: dict[str, object]) -> list[str]:
+    refs: list[str] = []
+    for ev in row["evidence"]:  # type: ignore[assignment]
+        refs.append(f"{ev['source_id']}:{ev['location']}")
+    return refs
 
 
-def render_compact_skill(evidence_map: list[dict[str, object]], version: str, execution_critical: Iterable[str] = ()) -> str:
+def build_initial_rule_ledger(evidence_map: list[dict[str, object]]) -> list[dict[str, object]]:
+    ledger: list[dict[str, object]] = []
+    for row in evidence_map:
+        keep_v1 = row["status"] == "supported" and row["priority"] == "high"
+        decision_v1 = "keep" if keep_v1 else "drop"
+        cost_status = "compact_keep" if keep_v1 else "compact_drop"
+        reason = (
+            "High-priority supported rule retained in compact v1."
+            if keep_v1
+            else "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence."
+        )
+        ledger.append(
+            {
+                "rule_id": row["rule_id"],
+                "rule_text": row["rule_text"],
+                "category": row["category"],
+                "priority": row["priority"],
+                "source": "material_seed",
+                "material_evidence": evidence_refs(row),
+                "material_status": row["status"],
+                "execution_status": "not_observed",
+                "cost_status": cost_status,
+                "decision_v1": decision_v1,
+                "decision_v2": decision_v1,
+                "decision_reason_v1": reason,
+                "decision_reason_v2": "No execution feedback has been applied yet.",
+                "patches": [],
+            }
+        )
+    return ledger
+
+
+def update_rule_ledger_with_execution(ledger: list[dict[str, object]], execution_report: dict[str, object]) -> list[dict[str, object]]:
+    detected = set(execution_report["detected_rules"])  # type: ignore[arg-type]
+    missed = set(execution_report["missed_rules"])  # type: ignore[arg-type]
+    expected = set(execution_report["expected_rules"])  # type: ignore[arg-type]
+    updated: list[dict[str, object]] = []
+    for row in ledger:
+        next_row = dict(row)
+        rule_id = str(row["rule_id"])
+        patches = list(row["patches"])  # type: ignore[arg-type]
+        if rule_id in missed:
+            next_row["execution_status"] = "failure_critical"
+            next_row["cost_status"] = "compact_patch"
+            next_row["decision_v2"] = "patch"
+            next_row["decision_reason_v2"] = "Compact v1 missed this expected task rule; execution feedback promotes it into compact v2."
+            patches.append(
+                {
+                    "patch_id": f"P-{rule_id}-v2",
+                    "source": "execution_report_v1.json",
+                    "failure_type": "missing_rule",
+                    "action": "patch_into_compact_v2",
+                    "reason": "The rule was needed by the task but absent from compact v1.",
+                }
+            )
+        elif rule_id in detected:
+            next_row["execution_status"] = "detected"
+            next_row["decision_v2"] = "keep"
+            next_row["decision_reason_v2"] = "Compact v1 detected this rule; keep it in compact v2."
+        elif rule_id in expected:
+            next_row["execution_status"] = "unused"
+            next_row["decision_reason_v2"] = "Expected by the task but not active; no patch was selected."
+        else:
+            next_row["execution_status"] = "unused"
+            next_row["decision_reason_v2"] = "Not triggered by this execution case; keep the initial compact decision."
+        next_row["patches"] = patches
+        updated.append(next_row)
+    return updated
+
+
+def compact_rows_from_ledger(evidence_map: list[dict[str, object]], ledger: list[dict[str, object]], version: str) -> list[dict[str, object]]:
+    rows_by_id = {str(row["rule_id"]): row for row in evidence_map}
+    decision_key = f"decision_{version}"
+    compact_rows: list[dict[str, object]] = []
+    for entry in ledger:
+        decision = str(entry[decision_key])
+        if decision in {"keep", "compress", "patch"}:
+            row = dict(rows_by_id[str(entry["rule_id"])])
+            row["ledger_decision"] = decision
+            row["ledger_reason"] = entry[f"decision_reason_{version}"]
+            row["execution_status"] = entry["execution_status"]
+            compact_rows.append(row)
+    return compact_rows
+
+
+def render_compact_skill(evidence_map: list[dict[str, object]], ledger: list[dict[str, object]], version: str) -> str:
     by_id = {rule.rule_id: rule for rule in RULES}
-    rows = compact_rows(evidence_map, execution_critical)
+    rows = compact_rows_from_ledger(evidence_map, ledger, version)
     lines = [
         f"# API Review Compact Skill {version}",
         "",
-        "Use this skill to review an API specification. Focus on actionable findings, not long explanations.",
+        "Use this skill to review an API specification. The checklist is selected from rule_ledger decisions.",
         "",
         "## Checklist",
         "",
     ]
     for row in rows:
         rule = by_id[str(row["rule_id"])]
-        marker = " execution-critical" if row["rule_id"] in set(execution_critical) else ""
-        lines.append(f"- [{rule.rule_id}] {rule.compact_check} Status: {row['status']}.{marker}")
+        lines.append(
+            f"- [{rule.rule_id}] {rule.compact_check} "
+            f"Decision: {row['ledger_decision']}; material: {row['status']}; execution: {row['execution_status']}."
+        )
     lines.extend(
         [
             "",
@@ -362,8 +453,9 @@ def estimate_tokens(text: str) -> int:
     return max(1, round(len(text) / 4))
 
 
-def render_repair_log(execution_report: dict[str, object]) -> tuple[str, set[str]]:
+def render_repair_log(execution_report: dict[str, object], ledger: list[dict[str, object]]) -> str:
     missed = set(execution_report["missed_rules"])  # type: ignore[arg-type]
+    ledger_by_id = {str(row["rule_id"]): row for row in ledger}
     lines = [
         "# Repair Log",
         "",
@@ -377,15 +469,24 @@ def render_repair_log(execution_report: dict[str, object]) -> tuple[str, set[str
         "## Skill Patch",
         "",
     ]
-    if "R006" in missed:
-        lines.append("- Mark R006 as execution-critical because the demo mutation endpoint failed idempotency review.")
-    if "R005" in missed:
-        lines.append("- Keep R005 in compact skill because missing request_id was observed during execution.")
+    for rule_id in sorted(missed):
+        entry = ledger_by_id[rule_id]
+        lines.extend(
+            [
+                f"### Patch {rule_id}",
+                "",
+                f"- Failure type: missing_rule",
+                f"- Affected rule: {rule_id}",
+                f"- Material status: {entry['material_status']}",
+                f"- Decision: {entry['decision_v2']}",
+                f"- Reason: {entry['decision_reason_v2']}",
+                "",
+            ]
+        )
     if not missed:
         lines.append("- No patch required.")
     lines.append("")
-    critical = {rule_id for rule_id in missed if rule_id in {"R005", "R006", "R007"}}
-    return "\n".join(lines), critical
+    return "\n".join(lines)
 
 
 def build_manifest(run_id: str, args: argparse.Namespace, artifact_names: list[str]) -> dict[str, object]:
@@ -413,11 +514,13 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     evidence_map = build_evidence_map(materials)
+    initial_ledger = build_initial_rule_ledger(evidence_map)
     full_skill = render_full_skill(evidence_map)
-    compact_v1 = render_compact_skill(evidence_map, "v1")
+    compact_v1 = render_compact_skill(evidence_map, initial_ledger, "v1")
     execution_v1 = simulate_execution(case_text, compact_v1, "v1")
-    repair_log, execution_critical = render_repair_log(execution_v1)
-    compact_v2 = render_compact_skill(evidence_map, "v2", execution_critical)
+    rule_ledger = update_rule_ledger_with_execution(initial_ledger, execution_v1)
+    repair_log = render_repair_log(execution_v1, rule_ledger)
+    compact_v2 = render_compact_skill(evidence_map, rule_ledger, "v2")
     execution_v2 = simulate_execution(case_text, compact_v2, "v2")
 
     artifacts = {
@@ -431,6 +534,7 @@ def main() -> int:
         write_text(out_dir / name, content)
 
     write_json(out_dir / "evidence_map.json", evidence_map)
+    write_json(out_dir / "rule_ledger.json", rule_ledger)
     write_json(out_dir / "execution_report_v1.json", execution_v1)
     write_json(out_dir / "execution_report_v2.json", execution_v2)
 
@@ -456,7 +560,9 @@ def main() -> int:
     }
     write_json(out_dir / "cost_summary.json", cost_summary)
 
-    artifact_names = sorted([*artifacts.keys(), "evidence_map.json", "execution_report_v1.json", "execution_report_v2.json", "cost_summary.json"])
+    artifact_names = sorted(
+        [*artifacts.keys(), "evidence_map.json", "rule_ledger.json", "execution_report_v1.json", "execution_report_v2.json", "cost_summary.json"]
+    )
     write_json(out_dir / "manifest.json", build_manifest(args.run_id, args, artifact_names))
 
     print(json.dumps({"run_id": args.run_id, "output_dir": str(out_dir), "artifacts": artifact_names}, ensure_ascii=False, indent=2))

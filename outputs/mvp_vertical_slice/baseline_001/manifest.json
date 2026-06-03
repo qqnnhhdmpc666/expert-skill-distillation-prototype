@@ -1,6 +1,6 @@
 {
   "run_id": "baseline_001",
-  "created_at": "2026-06-03T16:59:37.816547+00:00",
+  "created_at": "2026-06-03T18:06:09.686982+00:00",
   "materials_dir": "data\\api_review_expert_materials",
   "case_path": "data\\api_review_cases\\case_001_openapi.md",
   "artifacts": [
@@ -12,7 +12,8 @@
     "execution_report_v1.json",
     "execution_report_v2.json",
     "full_skill.md",
-    "repair_log.md"
+    "repair_log.md",
+    "rule_ledger.json"
   ],
   "note": "Deterministic MVP runner for artifact-flow validation; replace distiller/judge with LLM or Harbor later."
 }

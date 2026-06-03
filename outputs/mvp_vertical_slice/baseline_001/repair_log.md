@@ -9,5 +9,19 @@
 
 ## Skill Patch
 
-- Mark R006 as execution-critical because the demo mutation endpoint failed idempotency review.
-- Keep R005 in compact skill because missing request_id was observed during execution.
+### Patch R005
+
+- Failure type: missing_rule
+- Affected rule: R005
+- Material status: supported
+- Decision: patch
+- Reason: Compact v1 missed this expected task rule; execution feedback promotes it into compact v2.
+
+### Patch R006
+
+- Failure type: missing_rule
+- Affected rule: R006
+- Material status: supported
+- Decision: patch
+- Reason: Compact v1 missed this expected task rule; execution feedback promotes it into compact v2.
+

@@ -114,18 +114,13 @@
     "evidence": [
       {
         "source_id": "api_design_guidelines.md",
-        "location": "Error Codes, line 11",
-        "quote": "## Error Codes"
+        "location": "Response Envelope, line 19",
+        "quote": "## Response Envelope"
       },
       {
         "source_id": "historical_review_comments.md",
-        "location": "Example 2: Error Codes Too Vague, line 7",
-        "quote": "## Example 2: Error Codes Too Vague"
-      },
-      {
-        "source_id": "review_checklist.md",
-        "location": "API Review Checklist, line 7",
-        "quote": "- Confirm error code coverage includes validation, auth, permission, not found, duplicate, and server errors."
+        "location": "Example 4: Good Pattern, line 17",
+        "quote": "The better design includes authentication scheme, required OAuth scope, request validation table, stable error code table, masked user fields, request_id, and pagination behavior."
       }
     ]
   },
@@ -140,8 +135,8 @@
     "evidence": [
       {
         "source_id": "api_design_guidelines.md",
-        "location": "Input Validation, line 7",
-        "quote": "## Input Validation"
+        "location": "Error Codes, line 13",
+        "quote": "APIs should return stable error codes for success, invalid input, unauthorized access, forbidden access, resource not found, duplicate request, and server failure."
       },
       {
         "source_id": "historical_review_comments.md",
@@ -150,8 +145,8 @@
       },
       {
         "source_id": "review_checklist.md",
-        "location": "API Review Checklist, line 6",
-        "quote": "- Confirm input type, range, length, and enum constraints are present."
+        "location": "API Review Checklist, line 10",
+        "quote": "- Confirm POST, PUT, and PATCH endpoints explain idempotency or duplicate submission behavior."
       }
     ]
   },

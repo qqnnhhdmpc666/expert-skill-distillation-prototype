@@ -10,6 +10,7 @@
 API / 代码评审专家材料
 -> full_skill.md
 -> evidence_map.json
+-> rule_ledger.json
 -> evidence_report.md
 -> compact_skill_v1.md
 -> execution_report_v1.json
@@ -70,6 +71,7 @@ outputs/mvp_vertical_slice/<run_id>/
 
 - `full_skill.md`
 - `evidence_map.json`
+- `rule_ledger.json`
 - `evidence_report.md`
 - `compact_skill_v1.md`
 - `execution_report_v1.json`
@@ -142,6 +144,44 @@ evidence_report.md
 - `conflict`：与材料或其他规则冲突。
 - `execution_critical`：执行反馈证明该规则影响任务通过。
 
+## 6.1 Rule Ledger
+
+输出：
+
+```text
+rule_ledger.json
+```
+
+`rule_ledger.json` 是本系统的方法核。它不是简单记录版本，而是记录每条 rule atom 的证据和决策：
+
+```json
+{
+  "rule_id": "R005",
+  "material_status": "supported",
+  "execution_status": "failure_critical",
+  "cost_status": "compact_patch",
+  "decision_v1": "drop",
+  "decision_v2": "patch",
+  "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight.",
+  "decision_reason_v2": "Compact v1 missed this expected task rule; execution feedback promotes it into compact v2."
+}
+```
+
+最小决策策略：
+
+```text
+v1:
+keep supported + high priority rules
+drop medium priority rules to reduce initial context cost
+
+v2:
+keep rules detected by execution
+patch rules missed by compact v1 but required by the task
+drop rules unused in the current execution case
+```
+
+这样 compact skill 不是普通摘要，而是由 rule-level evidence ledger 生成的部署版本。
+
 ## 7. Compact Skill v1
 
 输出：
@@ -152,16 +192,14 @@ compact_skill_v1.md
 
 保留规则：
 
-- `supported` 的高优先级规则。
-- 对 verifier / checklist 输出格式关键的规则。
-- demo 场景中一定会触发的规则。
+- `rule_ledger.json` 中 `decision_v1 = keep` 的规则。
+- MVP 初始策略下，这通常是 `supported + high priority` 规则。
 
 删除或降级：
 
-- `unsupported` 规则。
-- 仅用于背景解释的长段落。
-- 重复例子。
-- 与执行任务无关的规则。
+- `rule_ledger.json` 中 `decision_v1 = drop` 的规则。
+- 仅用于背景解释的长段落和重复例子。
+- 与当前执行任务暂不相关、且未被执行反馈证明关键的规则。
 
 最小 compact skill 格式：
 
@@ -304,6 +342,13 @@ Expected effect:
 ```
 
 `compact_skill_v2.md` 必须只做最小必要修改，方便对比 v1/v2。
+
+v2 的生成依据是 `rule_ledger.json`：
+
+```text
+decision_v2 in {keep, compress, patch}
+-> include in compact_skill_v2.md
+```
 
 ## 12. 成本优化机制
 

@@ -57,9 +57,8 @@ Distill API/code review expert knowledge into auditable rules with material evid
 - Rule: Responses should use a consistent envelope with code, message, request_id, and data.
 - Rationale: A stable response envelope makes downstream parsing and troubleshooting predictable.
 - Evidence:
-  - api_design_guidelines.md (Error Codes, line 11): ## Error Codes
-  - historical_review_comments.md (Example 2: Error Codes Too Vague, line 7): ## Example 2: Error Codes Too Vague
-  - review_checklist.md (API Review Checklist, line 7): - Confirm error code coverage includes validation, auth, permission, not found, duplicate, and server errors.
+  - api_design_guidelines.md (Response Envelope, line 19): ## Response Envelope
+  - historical_review_comments.md (Example 4: Good Pattern, line 17): The better design includes authentication scheme, required OAuth scope, request validation table, stable error code table, masked user fields, request_id, and pagination behavior.
 
 ### R006: idempotency
 
@@ -68,9 +67,9 @@ Distill API/code review expert knowledge into auditable rules with material evid
 - Rule: POST, PUT, and PATCH endpoints should explain idempotency or duplicate submission behavior.
 - Rationale: Mutation endpoints often fail in retry paths unless duplicate handling is explicit.
 - Evidence:
-  - api_design_guidelines.md (Input Validation, line 7): ## Input Validation
+  - api_design_guidelines.md (Error Codes, line 13): APIs should return stable error codes for success, invalid input, unauthorized access, forbidden access, resource not found, duplicate request, and server failure.
   - historical_review_comments.md (Example 2: Error Codes Too Vague, line 9): The design only lists `500 system error`. It should distinguish invalid input, unauthorized, forbidden, not found, and duplicate request. Otherwise client behavior and monitoring will be unstable.
-  - review_checklist.md (API Review Checklist, line 6): - Confirm input type, range, length, and enum constraints are present.
+  - review_checklist.md (API Review Checklist, line 10): - Confirm POST, PUT, and PATCH endpoints explain idempotency or duplicate submission behavior.
 
 ### R007: observability
 
