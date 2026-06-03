@@ -197,3 +197,61 @@ Pass rate: 100.0%
 更新后可对外汇报的一句话：
 
 我们已在 D 盘隔离的 WSL2 环境中完成 Docker、uv、Harbor 与 SPARK 依赖部署，并跑通了一个不依赖真实 API key 的最小 SPARK pipeline smoke test：Harbor 真实执行 task、verifier 返回 reward=1.0、SPARK 记录 trajectory 并通过 mock OpenAI-compatible endpoint 生成 `SKILL.md`。这说明工程链路可用，下一步可以把 mock endpoint 替换为真实模型，或直接把 SPARK 的 trajectory/PDI 机制接入我们的专家 Skill 蒸馏 MVP。
+
+## 9. 最新更新：MVP vertical slice 主链路已跑通
+
+更新时间：2026-06-04（Asia/Shanghai）
+
+当前已不再停留在系统设想阶段，已经完成一个确定性 baseline：
+
+```text
+API / 代码评审专家材料
+-> full_skill.md
+-> evidence_map.json
+-> evidence_report.md
+-> compact_skill_v1.md
+-> execution_report_v1.json
+-> repair_log.md
+-> compact_skill_v2.md
+-> execution_report_v2.json
+-> cost_summary.json
+```
+
+新增完成：
+
+- 已将 `D:\solution` 初始化为 Git 仓库，并完成两个基线提交。
+- 已新增 `D:\solution\docs\MVP_VERTICAL_SLICE_PLAN.md`，固定两周 demo 的最小闭环。
+- 已新增 API / 代码评审专家材料和合成 API case。
+- 已新增 deterministic MVP runner：`D:\solution\scripts\run_mvp_vertical_slice.py`。
+- 已生成 baseline artifact：`D:\solution\outputs\mvp_vertical_slice\baseline_001`。
+
+baseline 结果：
+
+```text
+full_skill_tokens: 1294
+compact_skill_v1_tokens: 222
+compact_skill_v2_tokens: 285
+compression_ratio_v1: 0.172
+compression_ratio_v2: 0.220
+execution_v1: detected 4 / expected 6
+execution_v2: detected 6 / expected 6
+```
+
+这个结果表达的是：
+
+- `compact_skill_v1` 先只保留高优先级、证据充分的规则，因此成本最低，但漏掉了执行中重要的 R005/R006。
+- 执行反馈发现漏检规则后，`repair_log.md` 将 R005/R006 标记为 execution-critical。
+- `compact_skill_v2` 在仍明显小于 full skill 的情况下补回关键规则，完成 6/6 检出。
+
+当前判断：
+
+- 成本已经进入系统机制，而不是最后附加统计。
+- MVP 已经具备可演示 artifact 流：生成、证据映射、compact、执行反馈、修正、成本/效果对比。
+- 下一步应把 deterministic execution 替换或并联为 Harbor/SPARK execution artifact，让 `trajectory.jsonl / attempts.json` 自动转成 `execution_report` 和 `repair_log`。
+
+当前 Git 提交：
+
+```text
+f25d662 Initialize expert skill distillation MVP workspace
+e18c966 Add deterministic MVP vertical slice runner
+```
