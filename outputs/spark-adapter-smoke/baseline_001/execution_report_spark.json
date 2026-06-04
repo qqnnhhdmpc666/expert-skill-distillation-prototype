@@ -1,0 +1,40 @@
+{
+  "adapter": "spark_artifact_adapter_v1",
+  "source_task_dir": "outputs\\spark-pipeline-smoke-results\\mock-model\\smoke-task",
+  "task_name": "smoke-task",
+  "passed": true,
+  "final_status": "PASS",
+  "final_reward": 1.0,
+  "attempt_count": 1,
+  "status_trajectory": [
+    "PASS"
+  ],
+  "reward_trajectory": [
+    1.0
+  ],
+  "failure_type": "none",
+  "pdi": {
+    "enabled": true,
+    "observe_only": true,
+    "method": "token_overlap",
+    "history_count": 0,
+    "history": []
+  },
+  "cost": {
+    "input_tokens": 100,
+    "output_tokens": 80,
+    "skill_gen_calls": 1,
+    "skill_gen_latency_s": 0.47,
+    "total_time_s": 39.12
+  },
+  "events": {
+    "event_count": 3,
+    "execution_event_count": 1,
+    "skill_gen_call_count": 1,
+    "task_summary_count": 1
+  },
+  "raw_files": {
+    "attempts_json": "outputs\\spark-pipeline-smoke-results\\mock-model\\smoke-task\\attempts.json",
+    "trajectory_jsonl": "outputs\\spark-pipeline-smoke-results\\mock-model\\smoke-task\\trajectory.jsonl"
+  }
+}

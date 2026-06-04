@@ -329,3 +329,56 @@ execution_v2: detected 6 / expected 6
 - `D:\solution\reports\DEMO_REPORT.md`
 - `D:\solution\outputs\mvp_vertical_slice\baseline_001\demo_report.md`
 - `D:\solution\outputs\mvp_vertical_slice\baseline_001\comparison_summary.json`
+
+## 11. 最新更新：SPARK artifact adapter 第一版已跑通
+
+更新时间：2026-06-04（Asia/Shanghai）
+
+已新增 SPARK adapter，用于把 SPARK / Harbor 的执行 artifact 转成项目统一的 execution evidence。
+
+新增脚本：
+
+```text
+D:\solution\integrations\spark\convert_spark_artifacts.py
+```
+
+验证输入：
+
+```text
+D:\solution\outputs\spark-pipeline-smoke-results\mock-model\smoke-task
+```
+
+验证输出：
+
+```text
+D:\solution\outputs\spark-adapter-smoke\baseline_001\execution_report_spark.json
+D:\solution\outputs\spark-adapter-smoke\baseline_001\spark_adapter_report.md
+```
+
+转换结果：
+
+```text
+task_name: smoke-task
+passed: true
+final_status: PASS
+final_reward: 1.0
+attempt_count: 1
+skill_gen_calls: 1
+input_tokens: 100
+output_tokens: 80
+pdi_enabled: true
+pdi_history_count: 0
+failure_type: none
+```
+
+当前意义：
+
+- SPARK 最小执行链路不再只是外部结果，已经可以转成我们自己的 `execution_report` 格式。
+- smoke task 是 PASS，因此只提供正向执行证据，不产生 repair patch。
+- 下一步需要构造一个 API review Harbor task 或失败样例，让 `failure_type -> affected_rule -> rule_ledger.patch` 真正发生。
+
+新增说明文档：
+
+```text
+D:\solution\docs\SPARK_ADAPTER.md
+```
