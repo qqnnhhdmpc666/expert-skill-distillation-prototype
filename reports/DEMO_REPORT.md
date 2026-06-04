@@ -154,6 +154,32 @@ SPARK-compatible failure report
 - validation gate 会检查 affected rules 是否进入 v2，以及 token 增量是否低于阈值。
 - 下一步需要把 fixture 替换为真实 Harbor API review task。
 
+## 6.1 Feedback Source Maturity
+
+当前已经完成前三层反馈来源：
+
+| 阶段 | 反馈来源 | 可信度 | 当前状态 |
+|---|---|---|---|
+| Simulated baseline | 本地 deterministic evaluator | 低到中 | 已完成 |
+| SPARK fixture | SPARK-compatible attempts / trajectory fixture | 中 | 已完成 |
+| Harbor task | Docker / Harbor verifier 实际执行 | 高 | 已完成 |
+| Real LLM + Harbor | 真实模型执行 + Harbor verifier | 最高 | 后续增强 |
+
+真实 Harbor verifier 结果：
+
+```text
+compact_v1: reward = 0.0, missing R005 R006
+compact_v2: reward = 1.0, covers R001-R006
+```
+
+对应闭环输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\harbor_api_review_001
+```
+
+这说明当前失败反馈已经不只来自手写 fixture，而是由 Harbor verifier 在 Docker 执行环境中实际产生。
+
 ## 7. 下一步
 
 优先级 1：

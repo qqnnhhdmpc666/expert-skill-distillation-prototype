@@ -508,3 +508,71 @@ compression_ratio_v2_from_spark: 0.237
 - Maintainability：rule-level repair log and patched ledger。
 - Cost-awareness：input tokens / compact ratio / patch token increase。
 - Auditability：evidence map / rule ledger / source execution report。
+
+## 14. 最新更新：真实 Harbor API-review verifier 已跑通
+
+更新时间：2026-06-04（Asia/Shanghai）
+
+已新增真实 Harbor API-review task：
+
+```text
+D:\solution\data\harbor_api_review_tasks\api-review-001-compact-v1
+D:\solution\data\harbor_api_review_tasks\api-review-001-compact-v2
+```
+
+任务要求 agent / oracle solution 输出：
+
+```text
+/app/review.json
+```
+
+Harbor verifier 检查 `review.json` 是否覆盖：
+
+```text
+R001, R002, R003, R004, R005, R006
+```
+
+真实 Harbor 运行结果：
+
+```text
+compact_v1: reward = 0.0
+compact_v1 verifier: FAIL: missing expected findings for R005 R006
+
+compact_v2: reward = 1.0
+compact_v2 verifier: PASS: review.json covers required rule ids R001-R006
+```
+
+已新增 Harbor 原生结果转换脚本：
+
+```text
+D:\solution\integrations\spark\convert_harbor_result.py
+```
+
+转换输出：
+
+```text
+D:\solution\outputs\harbor-api-review-real\compact_v1_converted\execution_report_spark.json
+D:\solution\outputs\harbor-api-review-real\compact_v2_converted\execution_report_spark.json
+```
+
+已生成真实 Harbor feedback 闭环：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\harbor_api_review_001
+```
+
+该闭环证明：
+
+```text
+real Harbor verifier failure
+-> failure_type = missing_rule
+-> affected_rule_ids = R005, R006
+-> rule_ledger_patched.json
+-> validation_gate accepted
+-> compact_skill_v2.md
+```
+
+边界：
+
+- 当前使用 Harbor oracle solution，不是真实 LLM agent。
+- 但失败/通过已经由 Docker/Harbor verifier 实际产生，不再是手写 fixture。

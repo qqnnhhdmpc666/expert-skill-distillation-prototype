@@ -1,0 +1,21 @@
+{
+  "run_id": "harbor_api_review_001",
+  "created_at": "2026-06-04T00:30:00+00:00",
+  "source_run_dir": "outputs\\mvp_vertical_slice\\baseline_001",
+  "spark_report": "outputs\\harbor-api-review-real\\compact_v1_converted\\execution_report_spark.json",
+  "artifacts": [
+    "full_skill.md",
+    "compact_skill_v1.md",
+    "evidence_map.json",
+    "rule_ledger.json",
+    "execution_report_spark.json",
+    "rule_ledger_patched.json",
+    "repair_log_spark.md",
+    "compact_skill_v2.md",
+    "cost_summary.json",
+    "spark_feedback_report.md",
+    "validation_gate.json",
+    "execution_report_comparison.json"
+  ],
+  "note": "SPARK-compatible feedback applied to rule_ledger; report may come from fixture, SPARK pipeline, or Harbor verifier adapter."
+}

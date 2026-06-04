@@ -26,6 +26,12 @@ spark_adapter_report.md
 D:\solution\integrations\spark\convert_spark_artifacts.py
 ```
 
+Harbor 原生结果转换脚本：
+
+```text
+D:\solution\integrations\spark\convert_harbor_result.py
+```
+
 ## 2. 当前已验证输入
 
 已在 smoke baseline 上验证：
@@ -243,3 +249,56 @@ token_increase_ratio: 0.189
 ```
 
 这个 gate 只是 MVP 级别的约束，不等价于完整 held-out validation 或 Pareto frontier selection。
+
+## 8. Real Harbor API Review Task
+
+已新增真实 Harbor verifier 任务：
+
+```text
+D:\solution\data\harbor_api_review_tasks\api-review-001-compact-v1
+D:\solution\data\harbor_api_review_tasks\api-review-001-compact-v2
+```
+
+任务要求输出：
+
+```text
+/app/review.json
+```
+
+verifier 检查：
+
+```text
+review.json 是否覆盖 required rule ids: R001-R006
+```
+
+真实 Harbor 结果：
+
+```text
+compact_v1: reward = 0.0, missing R005 R006
+compact_v2: reward = 1.0, covers R001-R006
+```
+
+转换输出：
+
+```text
+D:\solution\outputs\harbor-api-review-real\compact_v1_converted
+D:\solution\outputs\harbor-api-review-real\compact_v2_converted
+```
+
+闭环输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\harbor_api_review_001
+```
+
+当前 `harbor_api_review_001` 意义：
+
+```text
+real Harbor verifier failure
+-> missing_rule: R005, R006
+-> rule_ledger patch
+-> validation gate accepted
+-> compact_skill_v2 generated
+```
+
+这一步证明了 execution feedback 不再只是 simulated 或 fixture，而是可以来自真实 Docker/Harbor verifier。

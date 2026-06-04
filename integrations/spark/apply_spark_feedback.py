@@ -225,12 +225,23 @@ def build_cost_summary(full_skill: str, compact_v1: str, compact_v2: str, spark_
 def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dict[str, Any], validation_gate: dict[str, Any]) -> str:
     spark_execution = cost_summary["spark_execution"]
     affected = spark_execution.get("affected_rule_ids") or []
+    is_harbor = str(spark_report.get("adapter", "")).startswith("harbor_result_adapter")
+    positioning = (
+        "This run demonstrates the closed loop from a real Harbor verifier result to rule-level compact skill repair."
+        if is_harbor
+        else "This run demonstrates the structural bridge from SPARK-compatible execution feedback to rule-level compact skill repair. The failure input is currently a fixture, so this proves interface behavior rather than real-task effectiveness."
+    )
+    interpretation = (
+        "A real Harbor verifier failure now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing the oracle solution with a real LLM agent."
+        if is_harbor
+        else "SPARK-compatible feedback now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing the fixture with a real Harbor API-review task."
+    )
     lines = [
         "# SPARK Feedback Closed-loop Report",
         "",
         "## Positioning",
         "",
-        "This run demonstrates the structural bridge from SPARK-compatible execution feedback to rule-level compact skill repair. The failure input is currently a fixture, so this proves interface behavior rather than real-task effectiveness.",
+        positioning,
         "",
         "## Feedback Signal",
         "",
@@ -261,7 +272,7 @@ def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dic
         "",
         "## Interpretation",
         "",
-        "SPARK-compatible feedback now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing the fixture with a real Harbor API-review task.",
+        interpretation,
         "",
     ]
     return "\n".join(lines)
@@ -274,6 +285,7 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--created-at", default=None)
     parser.add_argument("--max-token-increase-ratio", type=float, default=0.30)
+    parser.add_argument("--comparison-report", type=Path, default=None, help="Optional positive/contrast execution report to include in the output package.")
     args = parser.parse_args()
 
     source_run_dir = args.source_run_dir
@@ -318,6 +330,10 @@ def main() -> int:
         "spark_feedback_report.md",
         "validation_gate.json",
     ]
+    if args.comparison_report:
+        comparison_name = "execution_report_comparison.json"
+        shutil.copy2(args.comparison_report, output_dir / comparison_name)
+        artifacts.append(comparison_name)
     write_json(
         output_dir / "manifest.json",
         {
@@ -326,7 +342,7 @@ def main() -> int:
             "source_run_dir": str(source_run_dir),
             "spark_report": str(args.spark_report),
             "artifacts": artifacts,
-            "note": "SPARK-compatible feedback applied to rule_ledger; fixture-backed unless spark_report comes from a real Harbor task.",
+            "note": "SPARK-compatible feedback applied to rule_ledger; report may come from fixture, SPARK pipeline, or Harbor verifier adapter.",
         },
     )
     print(json.dumps({"output_dir": str(output_dir), "artifacts": artifacts}, ensure_ascii=False, indent=2))

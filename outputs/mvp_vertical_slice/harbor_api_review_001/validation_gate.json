@@ -1,0 +1,17 @@
+{
+  "gate": "spark_feedback_validation_gate_v0",
+  "accepted": true,
+  "max_token_increase_ratio": 0.3,
+  "compact_skill_v1_tokens": 265,
+  "candidate_compact_skill_v2_tokens": 315,
+  "token_increase_ratio": 0.189,
+  "affected_rule_ids": [
+    "R005",
+    "R006"
+  ],
+  "affected_rules_present": true,
+  "within_budget": true,
+  "reasons": [
+    "Patch accepted: affected rules are present and token increase is within budget."
+  ]
+}
