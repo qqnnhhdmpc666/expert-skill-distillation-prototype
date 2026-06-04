@@ -4,7 +4,7 @@
 
 ## 1. 设计定位
 
-本项目的最小方法核不是文件级 skill lifecycle，而是 rule-level evidence ledger。
+本阶段不把 `rule_ledger.json` 声称为完整的新方法。它是 MVP 的内部统一表示和决策骨架，用来把材料证据、执行反馈和成本约束放到同一个 rule-level 结构中。
 
 区别在于：
 
@@ -18,7 +18,7 @@ rule atom -> material evidence / execution evidence / cost evidence
 -> compact skill evolution
 ```
 
-因此，`rule_ledger.json` 是 MVP 中最重要的结构化 artifact。它解释每条专家规则为什么被生成、保留、压缩、删除、补丁修正或回滚。
+因此，`rule_ledger.json` 的作用是让 compact、repair、patch、drop 等动作可解释、可复现。真正可能形成方法价值的部分，不是 ledger 文件本身，而是后续在 ledger 上发展的 keep / compress / drop / patch 决策策略。
 
 ## 2. Artifact 列表
 
@@ -132,3 +132,11 @@ rule ledger 解释每次 skill 改动。
 ```
 
 这使系统区别于简单的“生成 skill + 执行验证 + token 统计”，因为每次变更都有 rule-level 证据理由。
+
+当前阶段的保守定位：
+
+```text
+短期目标：完成可演示、可解释、可扩展的最小系统。
+中期目标：验证 ledger 是否能稳定驱动 compact 和 repair。
+长期探索：设计更强的 risk-cost decision policy 或 budgeted compact skill compiler。
+```

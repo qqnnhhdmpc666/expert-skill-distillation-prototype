@@ -1,10 +1,23 @@
 {
   "token_estimator": "round(characters / 4)",
+  "no_skill_tokens": 0,
   "full_skill_tokens": 1330,
   "compact_skill_v1_tokens": 265,
   "compact_skill_v2_tokens": 339,
   "compression_ratio_v1": 0.199,
   "compression_ratio_v2": 0.255,
+  "execution_no_skill": {
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "checklist_pass": 0,
+    "checklist_total": 6
+  },
+  "execution_full_skill": {
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "checklist_pass": 6,
+    "checklist_total": 6
+  },
   "execution_v1": {
     "retry_count": 0,
     "verifier_calls": 1,

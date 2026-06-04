@@ -1,0 +1,56 @@
+[
+  {
+    "variant": "no_skill",
+    "input_tokens": 0,
+    "passed": false,
+    "checklist_pass": 0,
+    "checklist_total": 6,
+    "missed_rules": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "latency_ms": 0
+  },
+  {
+    "variant": "full_skill",
+    "input_tokens": 1330,
+    "passed": true,
+    "checklist_pass": 6,
+    "checklist_total": 6,
+    "missed_rules": [],
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "latency_ms": 0
+  },
+  {
+    "variant": "compact_skill_v1",
+    "input_tokens": 265,
+    "passed": false,
+    "checklist_pass": 4,
+    "checklist_total": 6,
+    "missed_rules": [
+      "R005",
+      "R006"
+    ],
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "latency_ms": 0
+  },
+  {
+    "variant": "compact_skill_v2",
+    "input_tokens": 339,
+    "passed": true,
+    "checklist_pass": 6,
+    "checklist_total": 6,
+    "missed_rules": [],
+    "retry_count": 0,
+    "verifier_calls": 1,
+    "latency_ms": 0
+  }
+]

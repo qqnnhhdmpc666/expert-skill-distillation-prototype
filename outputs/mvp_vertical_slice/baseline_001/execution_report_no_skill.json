@@ -1,0 +1,27 @@
+{
+  "version": "no_skill",
+  "passed": false,
+  "expected_rules": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "detected_rules": [],
+  "missed_rules": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "findings": [],
+  "checklist_pass": 0,
+  "checklist_total": 6,
+  "retry_count": 0,
+  "verifier_calls": 1,
+  "latency_ms": 0
+}

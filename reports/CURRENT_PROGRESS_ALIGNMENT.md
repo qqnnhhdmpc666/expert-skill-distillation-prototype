@@ -256,14 +256,14 @@ f25d662 Initialize expert skill distillation MVP workspace
 e18c966 Add deterministic MVP vertical slice runner
 ```
 
-## 10. 最新更新：rule-level evidence ledger 已进入 MVP 主链路
+## 10. 最新更新：rule-level ledger 已进入 MVP 主链路
 
 更新时间：2026-06-04（Asia/Shanghai）
 
-根据 related work 风险判断，当前系统定位已从“文件级 skill lifecycle”调整为：
+根据 related work 风险判断，当前不把 `rule_ledger.json` 过度包装为强创新方法，而是把它定位为 MVP 的内部统一表示：
 
 ```text
-rule-level evidence ledger guided skill evolution
+rule-level evidence ledger as a decision backbone
 ```
 
 也就是把 skill 拆成规则单元，并为每条规则记录：
@@ -272,6 +272,13 @@ rule-level evidence ledger guided skill evolution
 - 执行证据：这条规则是否在任务执行中触发、漏检或变成 failure-critical；
 - 成本证据：这条规则是否应进入 compact skill；
 - 决策结果：keep / drop / patch。
+
+更稳的判断是：
+
+```text
+短期内，ledger 负责让最小系统可解释、可复现；
+中期以后，真正可能产生方法价值的是 ledger 上的 decision policy。
+```
 
 新增完成：
 
@@ -284,11 +291,14 @@ rule-level evidence ledger guided skill evolution
 baseline 更新后结果：
 
 ```text
-full_skill_tokens: 1294
+no_skill_tokens: 0
+full_skill_tokens: 1330
 compact_skill_v1_tokens: 265
 compact_skill_v2_tokens: 339
-compression_ratio_v1: 0.205
-compression_ratio_v2: 0.262
+compression_ratio_v1: 0.199
+compression_ratio_v2: 0.255
+execution_no_skill: detected 0 / expected 6
+execution_full_skill: detected 6 / expected 6
 execution_v1: detected 4 / expected 6
 execution_v2: detected 6 / expected 6
 ```
@@ -310,6 +320,12 @@ execution_v2: detected 6 / expected 6
 
 ```text
 材料证据 / 执行证据 / 成本证据
--> rule-level evidence ledger
+-> rule-level decision backbone
 -> compact skill evolution
 ```
+
+当前不声称 `rule_ledger` 本身已经构成强方法创新。四组对比 baseline 已生成，详见：
+
+- `D:\solution\reports\DEMO_REPORT.md`
+- `D:\solution\outputs\mvp_vertical_slice\baseline_001\demo_report.md`
+- `D:\solution\outputs\mvp_vertical_slice\baseline_001\comparison_summary.json`

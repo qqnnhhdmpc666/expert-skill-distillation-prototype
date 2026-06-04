@@ -152,7 +152,7 @@ evidence_report.md
 rule_ledger.json
 ```
 
-`rule_ledger.json` 是本系统的方法核。它不是简单记录版本，而是记录每条 rule atom 的证据和决策：
+`rule_ledger.json` 是本阶段 MVP 的内部统一表示和决策骨架。它不是最终创新声明，而是记录每条 rule atom 的证据和决策：
 
 ```json
 {
@@ -180,7 +180,7 @@ patch rules missed by compact v1 but required by the task
 drop rules unused in the current execution case
 ```
 
-这样 compact skill 不是普通摘要，而是由 rule-level evidence ledger 生成的部署版本。
+这样 compact skill 不只是普通摘要，而是由 rule-level 决策记录生成的部署版本。真正值得后续探索的是 ledger 上的 decision policy，而不是 ledger 文件本身。
 
 ## 7. Compact Skill v1
 

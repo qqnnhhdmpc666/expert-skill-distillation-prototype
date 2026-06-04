@@ -6,9 +6,13 @@
   "artifacts": [
     "compact_skill_v1.md",
     "compact_skill_v2.md",
+    "comparison_summary.json",
     "cost_summary.json",
+    "demo_report.md",
     "evidence_map.json",
     "evidence_report.md",
+    "execution_report_full_skill.json",
+    "execution_report_no_skill.json",
     "execution_report_v1.json",
     "execution_report_v2.json",
     "full_skill.md",

@@ -489,6 +489,68 @@ def render_repair_log(execution_report: dict[str, object], ledger: list[dict[str
     return "\n".join(lines)
 
 
+def execution_summary_row(name: str, skill_text: str, execution_report: dict[str, object]) -> dict[str, object]:
+    return {
+        "variant": name,
+        "input_tokens": estimate_tokens(skill_text) if skill_text else 0,
+        "passed": execution_report["passed"],
+        "checklist_pass": execution_report["checklist_pass"],
+        "checklist_total": execution_report["checklist_total"],
+        "missed_rules": execution_report["missed_rules"],
+        "retry_count": execution_report["retry_count"],
+        "verifier_calls": execution_report["verifier_calls"],
+        "latency_ms": execution_report["latency_ms"],
+    }
+
+
+def render_demo_report(comparison_rows: list[dict[str, object]], cost_summary: dict[str, object]) -> str:
+    lines = [
+        "# MVP Demo Report",
+        "",
+        "## Positioning",
+        "",
+        "This report is a deterministic MVP baseline. It does not claim a strong new method yet; it validates a minimal expert-skill artifact flow where a rule-level ledger acts as the internal decision backbone.",
+        "",
+        "## Flow",
+        "",
+        "```text",
+        "expert materials -> full_skill -> evidence_map -> rule_ledger",
+        "-> compact_skill_v1 -> execution_report_v1 -> repair_log",
+        "-> compact_skill_v2 -> cost/effect comparison",
+        "```",
+        "",
+        "## Four-way Comparison",
+        "",
+        "| Variant | Input Tokens | Passed | Checklist Pass | Missed Rules | Verifier Calls | Retry Count |",
+        "|---|---:|---|---:|---|---:|---:|",
+    ]
+    for row in comparison_rows:
+        missed = ", ".join(row["missed_rules"]) if row["missed_rules"] else "none"  # type: ignore[arg-type]
+        lines.append(
+            f"| {row['variant']} | {row['input_tokens']} | {row['passed']} | "
+            f"{row['checklist_pass']} / {row['checklist_total']} | {missed} | "
+            f"{row['verifier_calls']} | {row['retry_count']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Key Observation",
+            "",
+            f"- Compact v1 uses {cost_summary['compact_skill_v1_tokens']} estimated input tokens, "
+            f"about {cost_summary['compression_ratio_v1']} of the full skill, but misses R005/R006.",
+            f"- Execution feedback marks R005/R006 as failure-critical in `rule_ledger.json` and patches them into compact v2.",
+            f"- Compact v2 uses {cost_summary['compact_skill_v2_tokens']} estimated input tokens, "
+            f"about {cost_summary['compression_ratio_v2']} of the full skill, and reaches full checklist coverage on this case.",
+            "",
+            "## Conservative Interpretation",
+            "",
+            "The current result supports the demo goal: compact and repair decisions are traceable through artifacts. It does not yet prove a general optimization method. The next research step is to replace the simple v1/v2 decision policy with a stronger risk-cost or budgeted compact-skill policy.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
 def build_manifest(run_id: str, args: argparse.Namespace, artifact_names: list[str]) -> dict[str, object]:
     return {
         "run_id": run_id,
@@ -517,6 +579,9 @@ def main() -> int:
     evidence_map = build_evidence_map(materials)
     initial_ledger = build_initial_rule_ledger(evidence_map)
     full_skill = render_full_skill(evidence_map)
+    no_skill = ""
+    execution_no_skill = simulate_execution(case_text, no_skill, "no_skill")
+    execution_full_skill = simulate_execution(case_text, full_skill, "full_skill")
     compact_v1 = render_compact_skill(evidence_map, initial_ledger, "v1")
     execution_v1 = simulate_execution(case_text, compact_v1, "v1")
     rule_ledger = update_rule_ledger_with_execution(initial_ledger, execution_v1)
@@ -524,28 +589,26 @@ def main() -> int:
     compact_v2 = render_compact_skill(evidence_map, rule_ledger, "v2")
     execution_v2 = simulate_execution(case_text, compact_v2, "v2")
 
-    artifacts = {
-        "full_skill.md": full_skill,
-        "evidence_report.md": render_evidence_report(evidence_map),
-        "compact_skill_v1.md": compact_v1,
-        "repair_log.md": repair_log,
-        "compact_skill_v2.md": compact_v2,
-    }
-    for name, content in artifacts.items():
-        write_text(out_dir / name, content)
-
-    write_json(out_dir / "evidence_map.json", evidence_map)
-    write_json(out_dir / "rule_ledger.json", rule_ledger)
-    write_json(out_dir / "execution_report_v1.json", execution_v1)
-    write_json(out_dir / "execution_report_v2.json", execution_v2)
-
     cost_summary = {
         "token_estimator": "round(characters / 4)",
+        "no_skill_tokens": 0,
         "full_skill_tokens": estimate_tokens(full_skill),
         "compact_skill_v1_tokens": estimate_tokens(compact_v1),
         "compact_skill_v2_tokens": estimate_tokens(compact_v2),
         "compression_ratio_v1": round(estimate_tokens(compact_v1) / estimate_tokens(full_skill), 3),
         "compression_ratio_v2": round(estimate_tokens(compact_v2) / estimate_tokens(full_skill), 3),
+        "execution_no_skill": {
+            "retry_count": execution_no_skill["retry_count"],
+            "verifier_calls": execution_no_skill["verifier_calls"],
+            "checklist_pass": execution_no_skill["checklist_pass"],
+            "checklist_total": execution_no_skill["checklist_total"],
+        },
+        "execution_full_skill": {
+            "retry_count": execution_full_skill["retry_count"],
+            "verifier_calls": execution_full_skill["verifier_calls"],
+            "checklist_pass": execution_full_skill["checklist_pass"],
+            "checklist_total": execution_full_skill["checklist_total"],
+        },
         "execution_v1": {
             "retry_count": execution_v1["retry_count"],
             "verifier_calls": execution_v1["verifier_calls"],
@@ -559,10 +622,47 @@ def main() -> int:
             "checklist_total": execution_v2["checklist_total"],
         },
     }
+    comparison_rows = [
+        execution_summary_row("no_skill", no_skill, execution_no_skill),
+        execution_summary_row("full_skill", full_skill, execution_full_skill),
+        execution_summary_row("compact_skill_v1", compact_v1, execution_v1),
+        execution_summary_row("compact_skill_v2", compact_v2, execution_v2),
+    ]
+    demo_report = render_demo_report(comparison_rows, cost_summary)
+
+    artifacts = {
+        "full_skill.md": full_skill,
+        "evidence_report.md": render_evidence_report(evidence_map),
+        "compact_skill_v1.md": compact_v1,
+        "repair_log.md": repair_log,
+        "compact_skill_v2.md": compact_v2,
+        "demo_report.md": demo_report,
+    }
+    for name, content in artifacts.items():
+        write_text(out_dir / name, content)
+
+    write_json(out_dir / "evidence_map.json", evidence_map)
+    write_json(out_dir / "rule_ledger.json", rule_ledger)
+    write_json(out_dir / "comparison_summary.json", comparison_rows)
+    write_json(out_dir / "execution_report_no_skill.json", execution_no_skill)
+    write_json(out_dir / "execution_report_full_skill.json", execution_full_skill)
+    write_json(out_dir / "execution_report_v1.json", execution_v1)
+    write_json(out_dir / "execution_report_v2.json", execution_v2)
+
     write_json(out_dir / "cost_summary.json", cost_summary)
 
     artifact_names = sorted(
-        [*artifacts.keys(), "evidence_map.json", "rule_ledger.json", "execution_report_v1.json", "execution_report_v2.json", "cost_summary.json"]
+        [
+            *artifacts.keys(),
+            "evidence_map.json",
+            "rule_ledger.json",
+            "comparison_summary.json",
+            "execution_report_no_skill.json",
+            "execution_report_full_skill.json",
+            "execution_report_v1.json",
+            "execution_report_v2.json",
+            "cost_summary.json",
+        ]
     )
     write_json(out_dir / "manifest.json", build_manifest(args.run_id, args, artifact_names))
 
