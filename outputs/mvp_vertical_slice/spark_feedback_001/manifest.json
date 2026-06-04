@@ -13,7 +13,8 @@
     "repair_log_spark.md",
     "compact_skill_v2.md",
     "cost_summary.json",
-    "spark_feedback_report.md"
+    "spark_feedback_report.md",
+    "validation_gate.json"
   ],
   "note": "SPARK-compatible feedback applied to rule_ledger; fixture-backed unless spark_report comes from a real Harbor task."
 }

@@ -120,6 +120,44 @@ def render_compact_skill(evidence_map: list[dict[str, Any]], ledger: list[dict[s
     return "\n".join(lines)
 
 
+def validate_patch(compact_v1: str, compact_v2: str, spark_report: dict[str, Any], max_token_increase_ratio: float) -> dict[str, Any]:
+    diagnosis = spark_report.get("diagnosis") or {}
+    affected_rule_ids = diagnosis.get("affected_rule_ids") or []
+    compact_v1_tokens = estimate_tokens(compact_v1)
+    compact_v2_tokens = estimate_tokens(compact_v2)
+    token_increase_ratio = (
+        round((compact_v2_tokens - compact_v1_tokens) / compact_v1_tokens, 3)
+        if compact_v1_tokens
+        else None
+    )
+    affected_rules_present = all(rule_id in compact_v2 for rule_id in affected_rule_ids)
+    within_budget = token_increase_ratio is not None and token_increase_ratio <= max_token_increase_ratio
+    accepted = bool(diagnosis.get("patch_ready") and affected_rule_ids and affected_rules_present and within_budget)
+    reasons: list[str] = []
+    if not diagnosis.get("patch_ready"):
+        reasons.append("SPARK report was not patch-ready.")
+    if not affected_rule_ids:
+        reasons.append("No affected rule IDs were reported.")
+    if not affected_rules_present:
+        reasons.append("Compact v2 does not contain all affected rule IDs.")
+    if not within_budget:
+        reasons.append(f"Token increase ratio {token_increase_ratio} exceeds threshold {max_token_increase_ratio}.")
+    if accepted:
+        reasons.append("Patch accepted: affected rules are present and token increase is within budget.")
+    return {
+        "gate": "spark_feedback_validation_gate_v0",
+        "accepted": accepted,
+        "max_token_increase_ratio": max_token_increase_ratio,
+        "compact_skill_v1_tokens": compact_v1_tokens,
+        "candidate_compact_skill_v2_tokens": compact_v2_tokens,
+        "token_increase_ratio": token_increase_ratio,
+        "affected_rule_ids": affected_rule_ids,
+        "affected_rules_present": affected_rules_present,
+        "within_budget": within_budget,
+        "reasons": reasons,
+    }
+
+
 def render_repair_log(spark_report: dict[str, Any], patched_ledger: list[dict[str, Any]]) -> str:
     diagnosis = spark_report.get("diagnosis") or {}
     affected_rule_ids = set(diagnosis.get("affected_rule_ids") or [])
@@ -160,7 +198,7 @@ def render_repair_log(spark_report: dict[str, Any], patched_ledger: list[dict[st
     return "\n".join(lines)
 
 
-def build_cost_summary(full_skill: str, compact_v1: str, compact_v2: str, spark_report: dict[str, Any]) -> dict[str, Any]:
+def build_cost_summary(full_skill: str, compact_v1: str, compact_v2: str, spark_report: dict[str, Any], validation_gate: dict[str, Any]) -> dict[str, Any]:
     full_tokens = estimate_tokens(full_skill)
     compact_v1_tokens = estimate_tokens(compact_v1)
     compact_v2_tokens = estimate_tokens(compact_v2)
@@ -180,10 +218,11 @@ def build_cost_summary(full_skill: str, compact_v1: str, compact_v2: str, spark_
             "output_tokens": (spark_report.get("cost") or {}).get("output_tokens"),
             "total_time_s": (spark_report.get("cost") or {}).get("total_time_s"),
         },
+        "validation_gate": validation_gate,
     }
 
 
-def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dict[str, Any]) -> str:
+def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dict[str, Any], validation_gate: dict[str, Any]) -> str:
     spark_execution = cost_summary["spark_execution"]
     affected = spark_execution.get("affected_rule_ids") or []
     lines = [
@@ -200,6 +239,7 @@ def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dic
         f"- Failure type: {spark_execution.get('failure_type')}",
         f"- Patch ready: {spark_execution.get('patch_ready')}",
         f"- Affected rules: {', '.join(affected) if affected else 'none'}",
+        f"- Validation gate accepted: {validation_gate['accepted']}",
         "",
         "## Cost Summary",
         "",
@@ -208,6 +248,16 @@ def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dic
         f"- Compact v2 from SPARK tokens: {cost_summary['compact_skill_v2_from_spark_tokens']}",
         f"- Compact v1 ratio: {cost_summary['compression_ratio_v1']}",
         f"- Compact v2 from SPARK ratio: {cost_summary['compression_ratio_v2_from_spark']}",
+        f"- Token increase ratio over compact v1: {validation_gate['token_increase_ratio']}",
+        f"- Max accepted increase ratio: {validation_gate['max_token_increase_ratio']}",
+        "",
+        "## Validation Gate",
+        "",
+        f"- Gate: {validation_gate['gate']}",
+        f"- Accepted: {validation_gate['accepted']}",
+        f"- Affected rules present: {validation_gate['affected_rules_present']}",
+        f"- Within budget: {validation_gate['within_budget']}",
+        f"- Reasons: {'; '.join(validation_gate['reasons'])}",
         "",
         "## Interpretation",
         "",
@@ -223,6 +273,7 @@ def main() -> int:
     parser.add_argument("--spark-report", type=Path, required=True, help="execution_report_spark.json from convert_spark_artifacts.py.")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--created-at", default=None)
+    parser.add_argument("--max-token-increase-ratio", type=float, default=0.30)
     args = parser.parse_args()
 
     source_run_dir = args.source_run_dir
@@ -235,17 +286,21 @@ def main() -> int:
     rule_ledger = reset_ledger_to_v1(read_json(source_run_dir / "rule_ledger.json"))
     spark_report = read_json(args.spark_report)
     patched_ledger = apply_spark_feedback(rule_ledger, spark_report)
-    compact_v2 = render_compact_skill(evidence_map, patched_ledger)
-    repair_log = render_repair_log(spark_report, patched_ledger)
-    cost_summary = build_cost_summary(full_skill, compact_v1, compact_v2, spark_report)
-    spark_feedback_report = render_spark_feedback_report(cost_summary, spark_report)
+    candidate_compact_v2 = render_compact_skill(evidence_map, patched_ledger)
+    validation_gate = validate_patch(compact_v1, candidate_compact_v2, spark_report, args.max_token_increase_ratio)
+    final_ledger = patched_ledger if validation_gate["accepted"] else rule_ledger
+    compact_v2 = candidate_compact_v2 if validation_gate["accepted"] else compact_v1
+    repair_log = render_repair_log(spark_report, final_ledger)
+    cost_summary = build_cost_summary(full_skill, compact_v1, compact_v2, spark_report, validation_gate)
+    spark_feedback_report = render_spark_feedback_report(cost_summary, spark_report, validation_gate)
 
     shutil.copy2(source_run_dir / "full_skill.md", output_dir / "full_skill.md")
     shutil.copy2(source_run_dir / "compact_skill_v1.md", output_dir / "compact_skill_v1.md")
     shutil.copy2(source_run_dir / "evidence_map.json", output_dir / "evidence_map.json")
     write_json(output_dir / "rule_ledger.json", rule_ledger)
     write_json(output_dir / "execution_report_spark.json", spark_report)
-    write_json(output_dir / "rule_ledger_patched.json", patched_ledger)
+    write_json(output_dir / "rule_ledger_patched.json", final_ledger)
+    write_json(output_dir / "validation_gate.json", validation_gate)
     write_text(output_dir / "repair_log_spark.md", repair_log)
     write_text(output_dir / "compact_skill_v2.md", compact_v2)
     write_json(output_dir / "cost_summary.json", cost_summary)
@@ -261,6 +316,7 @@ def main() -> int:
         "compact_skill_v2.md",
         "cost_summary.json",
         "spark_feedback_report.md",
+        "validation_gate.json",
     ]
     write_json(
         output_dir / "manifest.json",

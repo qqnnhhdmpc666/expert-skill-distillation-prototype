@@ -11,6 +11,7 @@ This run demonstrates the structural bridge from SPARK-compatible execution feed
 - Failure type: verifier_failure
 - Patch ready: True
 - Affected rules: R005, R006
+- Validation gate accepted: True
 
 ## Cost Summary
 
@@ -19,9 +20,17 @@ This run demonstrates the structural bridge from SPARK-compatible execution feed
 - Compact v2 from SPARK tokens: 315
 - Compact v1 ratio: 0.199
 - Compact v2 from SPARK ratio: 0.237
+- Token increase ratio over compact v1: 0.189
+- Max accepted increase ratio: 0.3
+
+## Validation Gate
+
+- Gate: spark_feedback_validation_gate_v0
+- Accepted: True
+- Affected rules present: True
+- Within budget: True
+- Reasons: Patch accepted: affected rules are present and token increase is within budget.
 
 ## Interpretation
 
 SPARK-compatible feedback now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing the fixture with a real Harbor API-review task.
-
-This run resets the source ledger to its v1 decision state before applying SPARK-compatible feedback, so R005/R006 are patched by the SPARK report rather than inherited from the deterministic simulated baseline.

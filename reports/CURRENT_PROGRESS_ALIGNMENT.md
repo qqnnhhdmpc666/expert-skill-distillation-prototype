@@ -429,8 +429,8 @@ affected_rule_ids: R005, R006
 patch_ready: true
 full_skill_tokens: 1330
 compact_skill_v1_tokens: 265
-compact_skill_v2_from_spark_tokens: 311
-compression_ratio_v2_from_spark: 0.234
+compact_skill_v2_from_spark_tokens: 315
+compression_ratio_v2_from_spark: 0.237
 ```
 
 当前意义：
@@ -453,3 +453,58 @@ compression_ratio_v2_from_spark: 0.234
 -> adapter 转 execution_report_spark
 -> 回写 rule_ledger
 ```
+
+## 13. 最新更新：related work 定位与 validation gate
+
+更新时间：2026-06-04（Asia/Shanghai）
+
+已新增 related work 定位文档：
+
+```text
+D:\solution\docs\RELATED_WORK_POSITIONING.md
+```
+
+当前定位进一步收缩为：
+
+```text
+不 claim 通用 skill lifecycle / self-evolution / rollback / cost-aware framework；
+只 claim expert-material-first vertical slice；
+重点展示 SPARK-compatible feedback 如何回写 rule-level deployment decision。
+```
+
+同时已给 SPARK feedback patch 增加 MVP 级 validation gate：
+
+```text
+patch_ready == true
+affected_rule_ids is not empty
+affected rules appear in compact_skill_v2
+token increase ratio <= threshold
+```
+
+当前 `spark_feedback_001` gate 结果：
+
+```text
+accepted: true
+max_token_increase_ratio: 0.30
+token_increase_ratio: 0.189
+affected_rule_ids: R005, R006
+affected_rules_present: true
+within_budget: true
+```
+
+更新后的成本结果：
+
+```text
+full_skill_tokens: 1330
+compact_skill_v1_tokens: 265
+compact_skill_v2_from_spark_tokens: 315
+compression_ratio_v2_from_spark: 0.237
+```
+
+报告中新增五个轻量评估维度：
+
+- Completeness：checklist coverage / missed rules。
+- Executability：pass / reward / verifier result。
+- Maintainability：rule-level repair log and patched ledger。
+- Cost-awareness：input tokens / compact ratio / patch token increase。
+- Auditability：evidence map / rule ledger / source execution report。

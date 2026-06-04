@@ -186,6 +186,7 @@ repair_log_spark.md
 compact_skill_v2.md
 cost_summary.json
 spark_feedback_report.md
+validation_gate.json
 manifest.json
 ```
 
@@ -202,8 +203,10 @@ failure_type: verifier_failure
 affected_rule_ids: R005, R006
 patch_ready: true
 compact_skill_v1_tokens: 265
-compact_skill_v2_from_spark_tokens: 311
-compression_ratio_v2_from_spark: 0.234
+compact_skill_v2_from_spark_tokens: 315
+compression_ratio_v2_from_spark: 0.237
+validation_gate_accepted: true
+token_increase_ratio: 0.189
 ```
 
 边界：
@@ -212,3 +215,31 @@ compression_ratio_v2_from_spark: 0.234
 当前失败输入是 fixture，因此证明的是接口行为，不是真实任务效果提升。
 下一步需要把 fixture 替换为真实 Harbor API review task。
 ```
+
+## 7. Validation Gate v0
+
+为了避免失败反馈无条件进入 compact skill，当前实现了一个最小 promotion gate：
+
+```text
+patch_ready == true
+affected_rule_ids is not empty
+all affected rules appear in compact_skill_v2
+token increase ratio <= max_token_increase_ratio
+```
+
+默认阈值：
+
+```text
+max_token_increase_ratio = 0.30
+```
+
+当前 `spark_feedback_001` 结果：
+
+```text
+accepted: true
+affected_rules_present: true
+within_budget: true
+token_increase_ratio: 0.189
+```
+
+这个 gate 只是 MVP 级别的约束，不等价于完整 held-out validation 或 Pareto frontier selection。

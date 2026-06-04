@@ -89,6 +89,20 @@ decision_v2 = patch
 再在此基础上探索更强的 decision policy。
 ```
 
+## 5.1 评估维度
+
+当前 demo 使用五个轻量评估维度，不声称已经完成大规模 benchmark：
+
+| Dimension | Current Proxy | Artifact |
+|---|---|---|
+| Completeness | checklist coverage / missed rules | `comparison_summary.json` |
+| Executability | pass / reward / verifier result | `execution_report_*.json`, `execution_report_spark.json` |
+| Maintainability | rule-level repair log and patched ledger | `repair_log.md`, `repair_log_spark.md`, `rule_ledger_patched.json` |
+| Cost-awareness | input tokens, compact ratio, patch token increase | `cost_summary.json`, `validation_gate.json` |
+| Auditability | material evidence, rule decisions, source execution report | `evidence_map.json`, `rule_ledger.json`, `execution_report_spark.json` |
+
+这些维度用于让两周 demo 更可解释；它们不是对 SkillNet / SkillCraft 等大规模评测工作的替代。
+
 ## 6. SPARK-backed Execution Feedback
 
 当前已补充一个 SPARK-compatible feedback 闭环：
@@ -127,14 +141,17 @@ SPARK-compatible failure report
 | patch_ready | true |
 | full_skill_tokens | 1330 |
 | compact_skill_v1_tokens | 265 |
-| compact_skill_v2_from_spark_tokens | 311 |
-| compact_v2_from_spark_ratio | 0.234 |
+| compact_skill_v2_from_spark_tokens | 315 |
+| compact_v2_from_spark_ratio | 0.237 |
+| validation_gate_accepted | true |
+| token_increase_ratio | 0.189 |
 
 保守解释：
 
 - SPARK/Harbor 执行反馈现在不是独立日志，已经可以进入 rule-level patch 流程。
 - 失败报告中的 affected rules 会改变 `rule_ledger_patched.json`。
 - patched ledger 会进一步改变 `compact_skill_v2.md`。
+- validation gate 会检查 affected rules 是否进入 v2，以及 token 增量是否低于阈值。
 - 下一步需要把 fixture 替换为真实 Harbor API review task。
 
 ## 7. 下一步
