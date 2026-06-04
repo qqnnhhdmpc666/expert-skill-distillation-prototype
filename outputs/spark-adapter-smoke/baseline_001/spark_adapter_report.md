@@ -8,6 +8,8 @@
 - Final reward: 1.0
 - Attempts: 1
 - Failure type: none
+- Affected rule IDs: none
+- Patch ready: False
 
 ## Cost And Runtime
 

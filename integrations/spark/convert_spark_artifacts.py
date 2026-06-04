@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -60,6 +61,28 @@ def infer_failure_type(final_status: str, final_reward: float | None, events: li
     return "unknown_failure"
 
 
+def extract_rule_ids(attempts: list[dict[str, Any]], events: list[dict[str, Any]]) -> list[str]:
+    text_parts: list[str] = []
+    for attempt in attempts:
+        text_parts.extend(
+            [
+                str(attempt.get("test_summary") or ""),
+                str(attempt.get("agent_commands") or ""),
+            ]
+        )
+    for event in events:
+        text_parts.extend(
+            [
+                str(event.get("test_summary") or ""),
+                str(event.get("agent_stdout_full") or ""),
+                str(event.get("test_stdout_full") or ""),
+                str(event.get("error") or ""),
+            ]
+        )
+    joined = "\n".join(text_parts)
+    return sorted(set(re.findall(r"\bR\d{3}\b", joined)))
+
+
 def convert_task_dir(task_dir: Path) -> dict[str, Any]:
     attempts_path = task_dir / "attempts.json"
     trajectory_path = task_dir / "trajectory.jsonl"
@@ -74,6 +97,8 @@ def convert_task_dir(task_dir: Path) -> dict[str, Any]:
     total_time_s = task_summary.get("total_time_s")
     pdi_payload = attempts_payload.get("pdi") or {}
     pdi_history = pdi_payload.get("history") or []
+    affected_rule_ids = extract_rule_ids(attempts, events)
+    failure_type = infer_failure_type(final_status, final_reward, events)
     return {
         "adapter": "spark_artifact_adapter_v1",
         "source_task_dir": str(task_dir),
@@ -84,7 +109,12 @@ def convert_task_dir(task_dir: Path) -> dict[str, Any]:
         "attempt_count": len(attempts),
         "status_trajectory": [attempt.get("status") for attempt in attempts],
         "reward_trajectory": [attempt.get("reward") for attempt in attempts],
-        "failure_type": infer_failure_type(final_status, final_reward, events),
+        "failure_type": failure_type,
+        "diagnosis": {
+            "affected_rule_ids": affected_rule_ids,
+            "patch_ready": bool(affected_rule_ids and failure_type != "none"),
+            "patch_hint": "Map affected_rule_ids to rule_ledger patches." if affected_rule_ids and failure_type != "none" else "",
+        },
         "pdi": {
             "enabled": pdi_payload.get("enabled", False),
             "observe_only": pdi_payload.get("observe_only", None),
@@ -115,6 +145,7 @@ def convert_task_dir(task_dir: Path) -> dict[str, Any]:
 def render_report(report: dict[str, Any]) -> str:
     pdi = report["pdi"]
     cost = report["cost"]
+    diagnosis = report["diagnosis"]
     lines = [
         "# SPARK Adapter Report",
         "",
@@ -126,6 +157,8 @@ def render_report(report: dict[str, Any]) -> str:
         f"- Final reward: {report['final_reward']}",
         f"- Attempts: {report['attempt_count']}",
         f"- Failure type: {report['failure_type']}",
+        f"- Affected rule IDs: {', '.join(diagnosis['affected_rule_ids']) if diagnosis['affected_rule_ids'] else 'none'}",
+        f"- Patch ready: {diagnosis['patch_ready']}",
         "",
         "## Cost And Runtime",
         "",

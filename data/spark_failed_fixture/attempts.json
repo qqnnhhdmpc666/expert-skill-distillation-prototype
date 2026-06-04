@@ -1,0 +1,32 @@
+{
+  "task_name": "api-review-fixture",
+  "max_retries": 1,
+  "exploration_memo": "",
+  "memo_history": [],
+  "attempts": [
+    {
+      "attempt": 0,
+      "status": "FAIL",
+      "reward": 0.0,
+      "agent_commands": "",
+      "test_summary": "Verifier expected findings for R005 and R006, but the review omitted them.",
+      "n_passed": 4,
+      "n_tests": 6
+    }
+  ],
+  "pdi": {
+    "enabled": true,
+    "observe_only": true,
+    "warmup": 2,
+    "threshold": -0.5,
+    "method": "token_overlap",
+    "history": [
+      {
+        "step": 0,
+        "weighted_pdi": -0.72,
+        "level": "soft",
+        "note": "Generated review drifted away from required checklist coverage."
+      }
+    ]
+  }
+}

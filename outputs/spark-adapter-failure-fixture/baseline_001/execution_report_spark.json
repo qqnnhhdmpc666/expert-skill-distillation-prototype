@@ -1,0 +1,55 @@
+{
+  "adapter": "spark_artifact_adapter_v1",
+  "source_task_dir": "data\\spark_failed_fixture",
+  "task_name": "api-review-fixture",
+  "passed": false,
+  "final_status": "FAIL",
+  "final_reward": 0.0,
+  "attempt_count": 1,
+  "status_trajectory": [
+    "FAIL"
+  ],
+  "reward_trajectory": [
+    0.0
+  ],
+  "failure_type": "verifier_failure",
+  "diagnosis": {
+    "affected_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "patch_ready": true,
+    "patch_hint": "Map affected_rule_ids to rule_ledger patches."
+  },
+  "pdi": {
+    "enabled": true,
+    "observe_only": true,
+    "method": "token_overlap",
+    "history_count": 1,
+    "history": [
+      {
+        "step": 0,
+        "weighted_pdi": -0.72,
+        "level": "soft",
+        "note": "Generated review drifted away from required checklist coverage."
+      }
+    ]
+  },
+  "cost": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "skill_gen_calls": 0,
+    "skill_gen_latency_s": 0,
+    "total_time_s": 12.5
+  },
+  "events": {
+    "event_count": 2,
+    "execution_event_count": 1,
+    "skill_gen_call_count": 0,
+    "task_summary_count": 1
+  },
+  "raw_files": {
+    "attempts_json": "data\\spark_failed_fixture\\attempts.json",
+    "trajectory_jsonl": "data\\spark_failed_fixture\\trajectory.jsonl"
+  }
+}

@@ -375,10 +375,22 @@ failure_type: none
 
 - SPARK 最小执行链路不再只是外部结果，已经可以转成我们自己的 `execution_report` 格式。
 - smoke task 是 PASS，因此只提供正向执行证据，不产生 repair patch。
-- 下一步需要构造一个 API review Harbor task 或失败样例，让 `failure_type -> affected_rule -> rule_ledger.patch` 真正发生。
+- 已补充离线失败 fixture，验证 `failure_type -> affected_rule -> patch_ready` 的最小路径。
+- 下一步需要构造一个 API review Harbor task，让这个失败路径来自真实 Harbor/SPARK 执行，而不是 fixture。
 
 新增说明文档：
 
 ```text
 D:\solution\docs\SPARK_ADAPTER.md
+```
+
+失败 fixture 结果：
+
+```text
+task_name: api-review-fixture
+passed: false
+failure_type: verifier_failure
+affected_rule_ids: R005, R006
+patch_ready: true
+pdi_history_count: 1
 ```

@@ -96,6 +96,18 @@ reward < 1.0 -> verifier_failure
 otherwise -> unknown_failure
 ```
 
+同时，adapter 会从 `test_summary`、`agent_stdout_full`、`test_stdout_full`、`error` 等文本字段中抽取 `Rxxx` 格式的规则编号，形成：
+
+```json
+{
+  "diagnosis": {
+    "affected_rule_ids": ["R005", "R006"],
+    "patch_ready": true,
+    "patch_hint": "Map affected_rule_ids to rule_ledger patches."
+  }
+}
+```
+
 后续要扩展成 rule-level patch taxonomy：
 
 ```text
@@ -110,6 +122,29 @@ tool_contract_mismatch -> add tool/contract constraint
 ## 5. 与 rule_ledger 的关系
 
 当前 smoke task 是 PASS，因此 adapter 只提供正向执行证据，不产生 repair patch。
+
+为了验证失败路径，当前也提供了一个离线 fixture：
+
+```text
+D:\solution\data\spark_failed_fixture
+```
+
+转换输出：
+
+```text
+D:\solution\outputs\spark-adapter-failure-fixture\baseline_001
+```
+
+结果：
+
+```text
+task_name: api-review-fixture
+passed: false
+failure_type: verifier_failure
+affected_rule_ids: R005, R006
+patch_ready: true
+pdi_history_count: 1
+```
 
 后续当 SPARK task 失败或产生 PDI warning 时，转换流程应扩展为：
 

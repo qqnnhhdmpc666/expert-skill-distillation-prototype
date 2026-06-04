@@ -13,6 +13,11 @@
     1.0
   ],
   "failure_type": "none",
+  "diagnosis": {
+    "affected_rule_ids": [],
+    "patch_ready": false,
+    "patch_hint": ""
+  },
   "pdi": {
     "enabled": true,
     "observe_only": true,
