@@ -11,12 +11,12 @@
       "review_checklist.md:API Review Checklist, line 3"
     ],
     "material_status": "supported",
-    "execution_status": "detected",
+    "execution_status": "not_observed",
     "cost_status": "compact_keep",
     "decision_v1": "keep",
     "decision_v2": "keep",
     "decision_reason_v1": "High-priority supported rule retained in compact v1.",
-    "decision_reason_v2": "Compact v1 detected this rule; keep it in compact v2.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
     "patches": []
   },
   {
@@ -31,12 +31,12 @@
       "review_checklist.md:API Review Checklist, line 5"
     ],
     "material_status": "supported",
-    "execution_status": "detected",
+    "execution_status": "not_observed",
     "cost_status": "compact_keep",
     "decision_v1": "keep",
     "decision_v2": "keep",
     "decision_reason_v1": "High-priority supported rule retained in compact v1.",
-    "decision_reason_v2": "Compact v1 detected this rule; keep it in compact v2.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
     "patches": []
   },
   {
@@ -51,12 +51,12 @@
       "review_checklist.md:API Review Checklist, line 7"
     ],
     "material_status": "supported",
-    "execution_status": "detected",
+    "execution_status": "not_observed",
     "cost_status": "compact_keep",
     "decision_v1": "keep",
     "decision_v2": "keep",
     "decision_reason_v1": "High-priority supported rule retained in compact v1.",
-    "decision_reason_v2": "Compact v1 detected this rule; keep it in compact v2.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
     "patches": []
   },
   {
@@ -71,12 +71,12 @@
       "review_checklist.md:API Review Checklist, line 8"
     ],
     "material_status": "supported",
-    "execution_status": "detected",
+    "execution_status": "not_observed",
     "cost_status": "compact_keep",
     "decision_v1": "keep",
     "decision_v2": "keep",
     "decision_reason_v1": "High-priority supported rule retained in compact v1.",
-    "decision_reason_v2": "Compact v1 detected this rule; keep it in compact v2.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
     "patches": []
   },
   {
@@ -90,21 +90,13 @@
       "historical_review_comments.md:Example 4: Good Pattern, line 17"
     ],
     "material_status": "supported",
-    "execution_status": "failure_critical",
-    "cost_status": "compact_patch",
+    "execution_status": "not_observed",
+    "cost_status": "compact_drop",
     "decision_v1": "drop",
-    "decision_v2": "patch",
+    "decision_v2": "drop",
     "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence.",
-    "decision_reason_v2": "Compact v1 missed this expected task rule; execution feedback promotes it into compact v2.",
-    "patches": [
-      {
-        "patch_id": "P-R005-v2",
-        "source": "execution_report_v1.json",
-        "failure_type": "missing_rule",
-        "action": "patch_into_compact_v2",
-        "reason": "The rule was needed by the task but absent from compact v1."
-      }
-    ]
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
   },
   {
     "rule_id": "R006",
@@ -118,21 +110,13 @@
       "review_checklist.md:API Review Checklist, line 10"
     ],
     "material_status": "supported",
-    "execution_status": "failure_critical",
-    "cost_status": "compact_patch",
+    "execution_status": "not_observed",
+    "cost_status": "compact_drop",
     "decision_v1": "drop",
-    "decision_v2": "patch",
+    "decision_v2": "drop",
     "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence.",
-    "decision_reason_v2": "Compact v1 missed this expected task rule; execution feedback promotes it into compact v2.",
-    "patches": [
-      {
-        "patch_id": "P-R006-v2",
-        "source": "execution_report_v1.json",
-        "failure_type": "missing_rule",
-        "action": "patch_into_compact_v2",
-        "reason": "The rule was needed by the task but absent from compact v1."
-      }
-    ]
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
   },
   {
     "rule_id": "R007",
@@ -146,12 +130,12 @@
       "review_checklist.md:API Review Checklist, line 11"
     ],
     "material_status": "supported",
-    "execution_status": "unused",
+    "execution_status": "not_observed",
     "cost_status": "compact_drop",
     "decision_v1": "drop",
     "decision_v2": "drop",
     "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence.",
-    "decision_reason_v2": "Not triggered by this execution case; keep the initial compact decision.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
     "patches": []
   }
 ]

@@ -75,6 +75,19 @@ def apply_spark_feedback(ledger: list[dict[str, Any]], spark_report: dict[str, A
     return updated
 
 
+def reset_ledger_to_v1(ledger: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    reset: list[dict[str, Any]] = []
+    for row in ledger:
+        next_row = dict(row)
+        next_row["execution_status"] = "not_observed"
+        next_row["cost_status"] = "compact_keep" if row.get("decision_v1") in {"keep", "compress"} else "compact_drop"
+        next_row["decision_v2"] = row.get("decision_v1", "drop")
+        next_row["decision_reason_v2"] = "Reset to v1 decision before applying SPARK-compatible feedback."
+        next_row["patches"] = []
+        reset.append(next_row)
+    return reset
+
+
 def render_compact_skill(evidence_map: list[dict[str, Any]], ledger: list[dict[str, Any]]) -> str:
     evidence_by_rule = {str(row["rule_id"]): row for row in evidence_map}
     lines = [
@@ -219,7 +232,7 @@ def main() -> int:
     full_skill = read_text(source_run_dir / "full_skill.md")
     compact_v1 = read_text(source_run_dir / "compact_skill_v1.md")
     evidence_map = read_json(source_run_dir / "evidence_map.json")
-    rule_ledger = read_json(source_run_dir / "rule_ledger.json")
+    rule_ledger = reset_ledger_to_v1(read_json(source_run_dir / "rule_ledger.json"))
     spark_report = read_json(args.spark_report)
     patched_ledger = apply_spark_feedback(rule_ledger, spark_report)
     compact_v2 = render_compact_skill(evidence_map, patched_ledger)

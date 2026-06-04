@@ -2,9 +2,9 @@
   "token_estimator": "round(characters / 4)",
   "full_skill_tokens": 1330,
   "compact_skill_v1_tokens": 265,
-  "compact_skill_v2_from_spark_tokens": 311,
+  "compact_skill_v2_from_spark_tokens": 315,
   "compression_ratio_v1": 0.199,
-  "compression_ratio_v2_from_spark": 0.234,
+  "compression_ratio_v2_from_spark": 0.237,
   "spark_execution": {
     "passed": false,
     "failure_type": "verifier_failure",
