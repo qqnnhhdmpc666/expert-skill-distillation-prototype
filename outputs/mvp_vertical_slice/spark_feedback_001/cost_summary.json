@@ -1,0 +1,20 @@
+{
+  "token_estimator": "round(characters / 4)",
+  "full_skill_tokens": 1330,
+  "compact_skill_v1_tokens": 265,
+  "compact_skill_v2_from_spark_tokens": 311,
+  "compression_ratio_v1": 0.199,
+  "compression_ratio_v2_from_spark": 0.234,
+  "spark_execution": {
+    "passed": false,
+    "failure_type": "verifier_failure",
+    "affected_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "patch_ready": true,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_time_s": 12.5
+  }
+}

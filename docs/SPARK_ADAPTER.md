@@ -157,3 +157,58 @@ execution_report_spark.json
 ```
 
 也就是说，SPARK adapter 是从真实执行 artifact 到 `rule_ledger.json` 的桥，而不是另一个独立日志系统。
+
+## 6. SPARK Feedback Application
+
+已新增反馈应用脚本：
+
+```text
+D:\solution\integrations\spark\apply_spark_feedback.py
+```
+
+输入：
+
+```text
+source_run_dir/
+  full_skill.md
+  compact_skill_v1.md
+  evidence_map.json
+  rule_ledger.json
+
+execution_report_spark.json
+```
+
+输出：
+
+```text
+rule_ledger_patched.json
+repair_log_spark.md
+compact_skill_v2.md
+cost_summary.json
+spark_feedback_report.md
+manifest.json
+```
+
+当前验证输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\spark_feedback_001
+```
+
+当前结果：
+
+```text
+failure_type: verifier_failure
+affected_rule_ids: R005, R006
+patch_ready: true
+compact_skill_v1_tokens: 265
+compact_skill_v2_from_spark_tokens: 311
+compression_ratio_v2_from_spark: 0.234
+```
+
+边界：
+
+```text
+当前失败输入是 fixture，因此证明的是接口行为，不是真实任务效果提升。
+下一步需要把 fixture 替换为真实 Harbor API review task。
+```

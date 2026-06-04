@@ -394,3 +394,62 @@ affected_rule_ids: R005, R006
 patch_ready: true
 pdi_history_count: 1
 ```
+
+## 12. 最新更新：SPARK feedback 已能回写 rule_ledger
+
+更新时间：2026-06-04（Asia/Shanghai）
+
+已新增 SPARK feedback 应用脚本：
+
+```text
+D:\solution\integrations\spark\apply_spark_feedback.py
+```
+
+它将 SPARK-compatible execution report 回写到 MVP 的 rule-level decision layer：
+
+```text
+execution_report_spark.json
+-> affected_rule_ids
+-> rule_ledger_patched.json
+-> repair_log_spark.md
+-> compact_skill_v2.md
+```
+
+已生成完整闭环输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\spark_feedback_001
+```
+
+结果：
+
+```text
+failure_type: verifier_failure
+affected_rule_ids: R005, R006
+patch_ready: true
+full_skill_tokens: 1330
+compact_skill_v1_tokens: 265
+compact_skill_v2_from_spark_tokens: 311
+compression_ratio_v2_from_spark: 0.234
+```
+
+当前意义：
+
+- SPARK/Harbor 风格的执行失败不再只是日志，已经能改变具体 rule 的状态。
+- `R005/R006` 被标记为 `failure_critical` 与 `compact_patch`。
+- patched ledger 能生成新的 `compact_skill_v2.md`。
+
+边界：
+
+- 当前失败输入仍是 fixture，不是真实 Harbor API review task。
+- 因此当前证明的是结构接口已打通，不是证明真实任务成功率提升。
+
+下一步：
+
+```text
+构造真实 Harbor API review task
+-> 注入 compact_skill_v1
+-> 产生真实 attempts / trajectory
+-> adapter 转 execution_report_spark
+-> 回写 rule_ledger
+```

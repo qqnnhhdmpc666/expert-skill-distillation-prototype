@@ -89,7 +89,55 @@ decision_v2 = patch
 再在此基础上探索更强的 decision policy。
 ```
 
-## 6. 下一步
+## 6. SPARK-backed Execution Feedback
+
+当前已补充一个 SPARK-compatible feedback 闭环：
+
+```text
+compact_skill_v1
+-> execution_report_spark.json
+-> rule_ledger_patched.json
+-> repair_log_spark.md
+-> compact_skill_v2.md
+```
+
+输出目录：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\spark_feedback_001
+```
+
+该闭环使用的失败输入目前是 fixture，不是真实 Harbor API review task。因此它证明的是接口行为：
+
+```text
+SPARK-compatible failure report
+-> affected_rule_ids: R005, R006
+-> rule_ledger patch
+-> compact_skill_v2 content change
+```
+
+它还不能证明真实任务效果提升。
+
+当前结果：
+
+| Item | Value |
+|---|---|
+| failure_type | verifier_failure |
+| affected_rule_ids | R005, R006 |
+| patch_ready | true |
+| full_skill_tokens | 1330 |
+| compact_skill_v1_tokens | 265 |
+| compact_skill_v2_from_spark_tokens | 311 |
+| compact_v2_from_spark_ratio | 0.234 |
+
+保守解释：
+
+- SPARK/Harbor 执行反馈现在不是独立日志，已经可以进入 rule-level patch 流程。
+- 失败报告中的 affected rules 会改变 `rule_ledger_patched.json`。
+- patched ledger 会进一步改变 `compact_skill_v2.md`。
+- 下一步需要把 fixture 替换为真实 Harbor API review task。
+
+## 7. 下一步
 
 优先级 1：
 

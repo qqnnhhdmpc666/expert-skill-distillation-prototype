@@ -1,0 +1,19 @@
+{
+  "run_id": "spark_feedback_001",
+  "created_at": "2026-06-04T00:00:00+00:00",
+  "source_run_dir": "outputs\\mvp_vertical_slice\\baseline_001",
+  "spark_report": "outputs\\spark-adapter-failure-fixture\\baseline_001\\execution_report_spark.json",
+  "artifacts": [
+    "full_skill.md",
+    "compact_skill_v1.md",
+    "evidence_map.json",
+    "rule_ledger.json",
+    "execution_report_spark.json",
+    "rule_ledger_patched.json",
+    "repair_log_spark.md",
+    "compact_skill_v2.md",
+    "cost_summary.json",
+    "spark_feedback_report.md"
+  ],
+  "note": "SPARK-compatible feedback applied to rule_ledger; fixture-backed unless spark_report comes from a real Harbor task."
+}
