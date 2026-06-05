@@ -59,6 +59,7 @@ D:\solution\outputs\mvp_vertical_slice\baseline_001
 | SPARK fixture | SPARK-compatible attempts / trajectory fixture | 已完成 | 证明 adapter 接口可用 |
 | real Harbor verifier | Docker / Harbor verifier 实际执行 | 已完成 | 失败不再只是手写 fixture |
 | mock agent + Harbor | compact skill -> mock review.json -> Harbor verifier | 已完成 | 证明执行接口不依赖预设 oracle review |
+| external LLM agent | OpenAI-compatible endpoint -> review.json -> verifier | 入口已完成 | 当前本机未配置 endpoint，未声称真实 LLM 效果 |
 
 边界：
 
@@ -130,7 +131,59 @@ token_increase_ratio: 0.189
 within_budget: true
 ```
 
-## 6. 当前能对外说明什么
+## 6. OpenAI-compatible LLM Agent Layer
+
+新增 Harbor 外部 LLM agent：
+
+```text
+D:\solution\agents\api_review_llm_agent.py
+```
+
+新增四组 matrix runner：
+
+```text
+D:\solution\scripts\run_llm_agent_api_review_matrix.py
+```
+
+执行计划：
+
+```text
+case001 + compact_v1
+case001 + compact_v2
+case002 + compact_v1
+case002 + compact_v2
+```
+
+输出目录：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
+```
+
+当前状态：
+
+```text
+env_ready: false
+OPENAI_BASE_URL: unset
+OPENAI_API_KEY: unset
+MODEL: unset
+```
+
+因此这一层当前只证明：
+
+- LLM agent 的 OpenAI-compatible 调用入口已经实现。
+- prompt 会注入 compact skill 和 API case。
+- 模型输出会经过 JSON fence 去除、首个 JSON object 提取和 findings 字段校验。
+- 若真实 endpoint 未配置，会写入 diagnostic，而不是伪造实验结果。
+
+边界：
+
+```text
+这一层尚未证明真实 LLM 能稳定复现 compact_v1 fail / compact_v2 pass。
+它是增强层，不是两周 demo 的唯一成功路径。
+```
+
+## 7. 当前能对外说明什么
 
 可以说明：
 
@@ -139,14 +192,16 @@ within_budget: true
 - Harbor verifier 的真实失败可以转换为统一 execution report。
 - 执行失败可以回写到具体规则，并改变 compact skill v2。
 - mock agent 已验证 `skill prompt -> review.json -> Harbor verifier` 的执行接口。
+- OpenAI-compatible LLM agent 的外部运行入口已具备，等待 endpoint 配置后即可补跑。
 
 不能过度说明：
 
 - 不能说 `rule_ledger` 本身已经是强创新方法。
 - 不能说当前策略已经在大规模任务上稳定优于 related work。
 - 不能说 mock agent 等价于真实 LLM agent。
+- 不能在未配置 endpoint 的情况下声称已完成真实 LLM 实验。
 
-## 7. 下一步
+## 8. 下一步
 
 优先级 1：接一个真实或 OpenAI-compatible LLM agent，小心控制不稳定性。
 

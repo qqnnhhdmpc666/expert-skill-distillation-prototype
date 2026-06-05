@@ -1,0 +1,11 @@
+{
+  "agent": "api_review_llm_agent",
+  "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
+  "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
+  "output": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v1\\review.json",
+  "base_url_present": false,
+  "api_key_present": false,
+  "model": null,
+  "status": "skipped",
+  "reason": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+}

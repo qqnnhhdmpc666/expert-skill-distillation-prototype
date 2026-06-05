@@ -191,3 +191,45 @@ compact_v2 verifier: covers R001-R006
 ```text
 mock agent 只验证执行接口，不证明真实 LLM 能稳定完成任务。
 ```
+
+## 7. 运行 OpenAI-compatible LLM Agent Layer
+
+这一层先在 Harbor 外部运行，避免同时调试 Docker 网络、环境变量和模型输出格式。
+
+需要配置：
+
+```powershell
+$env:OPENAI_BASE_URL="https://your-endpoint.example/v1"
+$env:OPENAI_API_KEY="your-api-key"
+$env:MODEL="your-model"
+```
+
+单次运行：
+
+```powershell
+python agents\api_review_llm_agent.py `
+  --skill outputs\mvp_vertical_slice\baseline_001\compact_skill_v1.md `
+  --case data\harbor_api_review_tasks\api-review-001-compact-v1\case_001_openapi.md `
+  --output outputs\mvp_vertical_slice\llm_agent_api_review_001\case001_compact_v1\review.json
+```
+
+四组 matrix：
+
+```powershell
+python scripts\run_llm_agent_api_review_matrix.py `
+  --output-dir outputs\mvp_vertical_slice\llm_agent_api_review_001 `
+  --created-at 2026-06-05T05:15:00+00:00
+```
+
+当前本机环境未配置真实 endpoint，因此已生成的是 skipped diagnostic：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
+```
+
+边界：
+
+```text
+LLM agent 层用于验证真实模型接口和 skill-conditioned output。
+模型输出可能不稳定，不作为两周 demo 的唯一主线。
+```

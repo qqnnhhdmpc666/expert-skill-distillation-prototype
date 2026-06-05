@@ -142,7 +142,60 @@ compact skill -> mock agent -> review.json -> Harbor verifier
 
 ## 5. 下一步
 
-优先级 1：接真实或 OpenAI-compatible LLM agent，但不要让它成为唯一主线。
+## 5. 最新进展：OpenAI-compatible LLM Agent 入口
+
+新增 Harbor 外部 LLM agent：
+
+```text
+D:\solution\agents\api_review_llm_agent.py
+```
+
+新增四组 matrix runner：
+
+```text
+D:\solution\scripts\run_llm_agent_api_review_matrix.py
+```
+
+目标链路：
+
+```text
+compact_skill.md + case_openapi.md
+-> OpenAI-compatible chat/completions
+-> review.json
+-> local verifier / Harbor verifier
+```
+
+当前本机环境变量状态：
+
+```text
+OPENAI_BASE_URL: unset
+OPENAI_API_KEY: unset
+MODEL: unset
+```
+
+因此已生成的输出是 skipped diagnostic，而不是真实 LLM 实验结果：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
+```
+
+当前意义：
+
+- LLM agent 调用入口已完成。
+- JSON 提取与基本校验已完成。
+- 四组 case/skill matrix 已固定。
+- 真实 endpoint 配置后可直接补跑。
+
+边界：
+
+```text
+这一层还没有证明真实 LLM 能稳定完成任务。
+它是增强层，不是当前 demo 主线的阻塞项。
+```
+
+## 6. 下一步
+
+优先级 1：配置真实或 OpenAI-compatible LLM endpoint 并补跑四组 matrix，但不要让它成为唯一主线。
 
 优先级 2：增加不同 failure type 的 case，例如 `output_format_error`、`irrelevant_rule_interference`。
 

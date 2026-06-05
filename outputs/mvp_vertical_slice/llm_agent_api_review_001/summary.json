@@ -1,0 +1,73 @@
+{
+  "run_id": "llm_agent_api_review_001",
+  "created_at": "2026-06-05T05:15:00+00:00",
+  "layer": "openai_compatible_llm_agent_external",
+  "env_ready": false,
+  "boundary": "This layer validates the real/OpenAI-compatible LLM interface and skill-conditioned output when credentials are configured. It is not the two-week demo's only success path.",
+  "runs": [
+    {
+      "case_id": "case001",
+      "variant": "compact_v1",
+      "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
+      "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
+      "review": null,
+      "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v1\\llm_agent_diagnostic.json",
+      "verification": null,
+      "agent_exit_code": 2,
+      "agent_status": "skipped",
+      "passed": null,
+      "reward": null,
+      "failure_type": "skipped",
+      "rule_ids": [],
+      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+    },
+    {
+      "case_id": "case001",
+      "variant": "compact_v2",
+      "skill": "outputs\\mvp_vertical_slice\\harbor_api_review_002\\compact_skill_v2.md",
+      "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
+      "review": null,
+      "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v2\\llm_agent_diagnostic.json",
+      "verification": null,
+      "agent_exit_code": 2,
+      "agent_status": "skipped",
+      "passed": null,
+      "reward": null,
+      "failure_type": "skipped",
+      "rule_ids": [],
+      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+    },
+    {
+      "case_id": "case002",
+      "variant": "compact_v1",
+      "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
+      "case": "data\\harbor_api_review_tasks\\api-review-002-compact-v1\\case_002_openapi.md",
+      "review": null,
+      "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v1\\llm_agent_diagnostic.json",
+      "verification": null,
+      "agent_exit_code": 2,
+      "agent_status": "skipped",
+      "passed": null,
+      "reward": null,
+      "failure_type": "skipped",
+      "rule_ids": [],
+      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+    },
+    {
+      "case_id": "case002",
+      "variant": "compact_v2",
+      "skill": "outputs\\mvp_vertical_slice\\harbor_api_review_002\\compact_skill_v2.md",
+      "case": "data\\harbor_api_review_tasks\\api-review-002-compact-v1\\case_002_openapi.md",
+      "review": null,
+      "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v2\\llm_agent_diagnostic.json",
+      "verification": null,
+      "agent_exit_code": 2,
+      "agent_status": "skipped",
+      "passed": null,
+      "reward": null,
+      "failure_type": "skipped",
+      "rule_ids": [],
+      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+    }
+  ]
+}
