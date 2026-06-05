@@ -1,0 +1,96 @@
+{
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "applicable": true,
+      "trigger_condition_found": "endpoint requires authentication",
+      "evidence_span": "Notes: The endpoint requires login.",
+      "finding_id": "F1",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R002",
+      "applicable": true,
+      "trigger_condition_found": "request parameters and body fields are defined without full validation contract",
+      "evidence_span": "Path parameter: order_id: string; Body: amount, reason, notify_customer",
+      "finding_id": "F2",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R003",
+      "applicable": true,
+      "trigger_condition_found": "error code table does not define stable codes for common failure classes",
+      "evidence_span": "Error Codes: 0 success; 500 system error",
+      "finding_id": "F3",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R004",
+      "applicable": true,
+      "trigger_condition_found": "response includes internal implementation detail and unnecessary personal data",
+      "evidence_span": "internal_trace: RefundService.java:88; customer_phone: 13800138000",
+      "finding_id": "F4",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R005",
+      "applicable": true,
+      "trigger_condition_found": "response envelope is missing request_id",
+      "evidence_span": "Response JSON has code, message, and data only",
+      "finding_id": "F5",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R006",
+      "applicable": true,
+      "trigger_condition_found": "mutation endpoint creates a refund but does not specify idempotency or duplicate-submission handling",
+      "evidence_span": "POST /api/v1/orders/{order_id}/refund; Create a refund request for an order",
+      "finding_id": "F6",
+      "confidence": "high"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication is underspecified. The API only says login is required, but does not define the auth method, required roles or scopes, or behavior when authentication fails.",
+      "severity": "medium",
+      "evidence": "Notes: The endpoint requires login."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R002",
+      "issue": "Request field validation is incomplete. The specification does not state required fields, defaults, numeric range or precision for amount, allowed enum values for reason, boolean default for notify_customer, or length and format constraints for order_id.",
+      "severity": "medium",
+      "evidence": "Path parameter: order_id: string; Body includes amount, reason, notify_customer."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R003",
+      "issue": "Error codes are not sufficiently defined. Only success and system error are listed, with no stable codes for validation errors, authentication failures, permission failures, order not found, duplicate refund submission, or other expected refund errors.",
+      "severity": "medium",
+      "evidence": "Error Codes table contains only 0 success and 500 system error."
+    },
+    {
+      "id": "F4",
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive or unnecessary information. internal_trace leaks implementation details, and customer_phone is personal data that is not necessary to return refund status.",
+      "severity": "high",
+      "evidence": "Response data includes internal_trace: RefundService.java:88 and customer_phone: 13800138000."
+    },
+    {
+      "id": "F5",
+      "rule_id": "R005",
+      "issue": "Response envelope is missing request_id, which is needed for traceability and support diagnostics.",
+      "severity": "low",
+      "evidence": "Response JSON includes code, message, and data but no request_id."
+    },
+    {
+      "id": "F6",
+      "rule_id": "R006",
+      "issue": "Refund creation is a mutation but does not define idempotency or duplicate-submission handling, creating risk of multiple refunds from retries or repeated submissions.",
+      "severity": "high",
+      "evidence": "POST /api/v1/orders/{order_id}/refund creates a refund request, but no idempotency key or duplicate handling behavior is described."
+    }
+  ]
+}

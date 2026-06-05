@@ -308,3 +308,65 @@ The compressed candidate is not a rule-ID shortcut in this toy slice. It preserv
 Failure boundary:
 
 If a stricter verifier or human review finds that compressed wording causes shallow, template-like, or case-unrelated findings, then M2.2 should be downgraded to `partially_supported_for_artifact_compilation, not yet supported for LLM execution` or `inconclusive`.
+
+## M5: Skill-to-Agent Execution Protocol
+
+Hypothesis:
+
+Compact skill may still fail in complex tasks if it is used as a plain prompt. A structured skill invocation protocol can make the agent expose a rule-application trace, helping distinguish real rule use from mechanical rule-id output.
+
+Trigger condition:
+
+- Compact skill has been compressed.
+- The verifier may only check rule-id coverage.
+- Agent output lacks evidence linkage.
+- Or semantic verification detects template-like or case-unrelated findings.
+
+Decision rule:
+
+Require the agent to output:
+
+- `rule_applications`,
+- `trigger_condition_found`,
+- `evidence_span`,
+- `finding_id`,
+- confidence,
+- and findings linked to rule applications.
+
+Alternative or counterfactual:
+
+Compare:
+
+- candidate_C compressed skill without protocol,
+- rule-id shortcut skill,
+- protocolized compressed skill.
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/skill_to_agent_loop_001
+```
+
+Current observation:
+
+```text
+mock:
+  candidate_C and shortcut pass simple/semantic verification but fail trace verification.
+  protocolized compressed skill passes trace verification.
+
+RightCode gpt-5.5:
+  candidate_C and shortcut fail strict trace verification.
+  protocolized compressed skill passes trace verification on case001/case002.
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Structured skill-to-agent protocol helps distinguish semantic rule use from rule-id shortcut in this toy case.
+
+Failure boundary:
+
+If the protocol only adds output fields without reducing false positives/shortcut behavior, or if token overhead becomes too high, M5 remains an engineering constraint rather than a useful mechanism.

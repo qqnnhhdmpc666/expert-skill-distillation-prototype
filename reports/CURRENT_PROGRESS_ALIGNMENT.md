@@ -526,3 +526,59 @@ candidate_C 在 toy case 中不只是保留 R001-R006 rule IDs。
 semantic verifier 仍然是轻量关键词/字段检查，不是深层语义 judge。
 不能据此证明通用 fixed-budget compiler。
 ```
+## 14. 最新进展：Skill-to-Agent Execution Protocol
+
+新增 M5 方法探索支线：
+
+```text
+D:\solution\docs\SKILL_TO_AGENT_LOOP.md
+D:\solution\scripts\verify_api_review_trace_json.py
+D:\solution\scripts\run_skill_to_agent_loop.py
+D:\solution\outputs\mvp_vertical_slice\skill_to_agent_loop_001
+```
+
+要解决的问题：
+
+```text
+compressed skill 不能只靠 rule_id coverage 证明正确。
+需要让 agent 暴露 rule application trace，证明规则确实被应用到 case 证据上。
+```
+
+对比组：
+
+```text
+candidate_C_compressed_skill
+rule_id_shortcut_skill
+protocolized_compressed_skill
+```
+
+当前观察：
+
+```text
+mock:
+  candidate_C / shortcut 可过简单覆盖，但 trace verifier 失败
+  protocolized compressed skill 通过 trace verifier
+
+RightCode gpt-5.5:
+  candidate_C / shortcut 在 strict trace 下失败
+  protocolized compressed skill 在 case001/case002 通过 trace verifier
+```
+
+结论：
+
+```text
+partially_supported
+```
+
+解释：
+
+```text
+structured skill-to-agent protocol 在当前 toy case 中能区分 rule-id shortcut 和带证据链的规则应用。
+```
+
+边界：
+
+```text
+这不是通用 agent protocol，也不证明真实复杂任务正确性。
+它是 M5 的最小机制探针。
+```

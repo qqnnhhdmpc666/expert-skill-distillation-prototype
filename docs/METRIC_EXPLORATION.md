@@ -192,3 +192,34 @@ partially_supported
 ```
 
 Candidate_C appears to be semantic compression in this toy slice and passes mock plus RightCode GPT execution under a lightweight semantic verifier. This is still not a deep semantic guarantee.
+
+## 9. Rule-Application Trace Diagnostics
+
+Question:
+
+```text
+Did the agent expose how each rule was applied to the task input?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/skill_to_agent_loop_001
+```
+
+Diagnostic fields:
+
+- `rule_applications` exists.
+- each finding has a supporting rule application.
+- `trigger_condition_found` is non-empty and case-related.
+- `evidence_span` is non-empty and case-related.
+- `finding_id` links trace and finding.
+- rule-id shortcut fails stricter trace verification.
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The trace verifier separates protocolized compressed skill from plain compressed or rule-id shortcut outputs in this toy slice. This is a diagnostic for skill invocation quality, not a final correctness metric.

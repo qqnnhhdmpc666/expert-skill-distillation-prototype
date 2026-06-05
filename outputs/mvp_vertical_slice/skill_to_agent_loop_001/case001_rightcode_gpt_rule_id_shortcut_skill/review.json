@@ -1,0 +1,92 @@
+{
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "status": "failed",
+      "summary": "The endpoint uses POST for a profile update operation, which is less appropriate than PATCH or PUT for updating an existing resource."
+    },
+    {
+      "rule_id": "R002",
+      "status": "failed",
+      "summary": "The API requires login but does not describe authorization checks to ensure the authenticated user can update the specified user_id."
+    },
+    {
+      "rule_id": "R003",
+      "status": "failed",
+      "summary": "The response includes sensitive data, including an access_token and phone number."
+    },
+    {
+      "rule_id": "R004",
+      "status": "failed",
+      "summary": "The error model only defines success and server error, omitting expected client-side errors such as authentication failure, authorization failure, validation failure, and not found."
+    },
+    {
+      "rule_id": "R005",
+      "status": "failed",
+      "summary": "The request schema does not specify validation constraints for display_name, phone, or avatar_url."
+    },
+    {
+      "rule_id": "R006",
+      "status": "warning",
+      "summary": "The API returns a custom code/message envelope but does not specify corresponding HTTP status codes."
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "R001",
+      "severity": "medium",
+      "title": "Use PATCH or PUT for profile updates",
+      "description": "The endpoint updates an existing user profile but uses POST. PATCH is typically preferred for partial updates, while PUT is appropriate for full replacement.",
+      "location": "POST /api/v1/users/{user_id}/profile",
+      "recommendation": "Change the method to PATCH /api/v1/users/{user_id}/profile for partial updates, or PUT if the full profile resource is replaced."
+    },
+    {
+      "rule_id": "R002",
+      "severity": "high",
+      "title": "Potential missing authorization check",
+      "description": "The endpoint requires login, but the API does not state whether the authenticated user is allowed to update the user_id in the path. This may allow an authenticated user to update another user's profile.",
+      "location": "Path parameter: user_id",
+      "recommendation": "Require that user_id matches the authenticated principal, or enforce explicit administrative privileges. Return 403 when the caller is not authorized."
+    },
+    {
+      "rule_id": "R003",
+      "severity": "critical",
+      "title": "Access token exposed in response",
+      "description": "The response includes access_token: debug-token. Profile update responses should not return authentication tokens unless token issuance is the purpose of the endpoint.",
+      "location": "Response body: data.access_token",
+      "recommendation": "Remove access_token from the response. Never return debug tokens or credentials from profile update APIs."
+    },
+    {
+      "rule_id": "R003",
+      "severity": "medium",
+      "title": "Phone number returned in response",
+      "description": "The response returns the user's phone number, which is personally identifiable information. Returning it may be unnecessary and can increase exposure risk.",
+      "location": "Response body: data.phone",
+      "recommendation": "Return only fields needed by the client. Consider masking the phone number or omitting it unless explicitly required."
+    },
+    {
+      "rule_id": "R004",
+      "severity": "medium",
+      "title": "Incomplete error code definitions",
+      "description": "Only code 0 and 500 are documented. The API does not define common error cases such as invalid request body, invalid phone format, invalid avatar URL, unauthenticated request, unauthorized access, or missing user.",
+      "location": "Error Codes",
+      "recommendation": "Define and document appropriate HTTP status codes and application error codes, such as 400, 401, 403, 404, 409, and 422."
+    },
+    {
+      "rule_id": "R005",
+      "severity": "medium",
+      "title": "Missing input validation constraints",
+      "description": "The request fields display_name, phone, and avatar_url do not define required/optional status, length limits, allowed formats, or normalization rules.",
+      "location": "Request body",
+      "recommendation": "Specify validation rules, for example display_name length and allowed characters, phone format and region handling, and avatar_url requiring HTTPS with a maximum length."
+    },
+    {
+      "rule_id": "R006",
+      "severity": "low",
+      "title": "HTTP status code behavior is unspecified",
+      "description": "The response uses a code/message envelope but does not state whether HTTP status codes are also used consistently.",
+      "location": "Response and Error Codes",
+      "recommendation": "Document HTTP status codes for success and failure. Use HTTP 200 or 204 for successful updates and appropriate 4xx/5xx status codes for errors."
+    }
+  ]
+}

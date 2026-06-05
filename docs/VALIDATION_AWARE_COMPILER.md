@@ -113,3 +113,22 @@ Candidate_C is not a rule-id-only shortcut in this toy slice. It contains compre
 Boundary:
 
 This does not prove a general compiler. The semantic verifier is keyword/field based, not a deep NLP judge. Compressed wording success is only meaningful if semantic-preservation and execution validation pass; otherwise, it may reflect verifier-contract weakness rather than a robust compiler.
+
+## Link to M5
+
+M2.2 checks whether compressed wording preserves rule semantics. M5 goes one level further:
+
+```text
+compressed skill
+-> structured invocation protocol
+-> agent rule-application trace
+-> trace verifier
+```
+
+Current M5 artifact:
+
+```text
+outputs/mvp_vertical_slice/skill_to_agent_loop_001
+```
+
+This matters because a compressed skill can preserve semantics in text but still be used shallowly by an agent. The protocol requires the agent to expose how each rule is applied to the input evidence.

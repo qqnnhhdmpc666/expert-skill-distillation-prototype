@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 725,
+    "completion_tokens": 797,
+    "total_tokens": 1522,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 82
+    }
+  },
+  "raw_content_preview": "{\n  \"rule_applications\": [\n    {\n      \"rule_id\": \"R001\",\n      \"status\": \"fail\",\n      \"summary\": \"Auth method is only described as login; roles/scopes and auth-failure behavior are missing.\"\n    },\n    {\n      \"rule_id\": \"R002\",\n      \"status\": \"fail\",\n      \"summary\": \"Request field validation details are incomplete.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"status\": \"fail\",\n      \"summary\": \"Stable error codes are not defined for required error categories.\"\n    },\n    {\n      \"rule_id\": "
+}

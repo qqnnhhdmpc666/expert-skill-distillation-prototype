@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 296,
+    "completion_tokens": 1257,
+    "total_tokens": 1553,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 188
+    }
+  },
+  "raw_content_preview": "{\n  \"rule_applications\": [\n    {\n      \"rule_id\": \"R001\",\n      \"status\": \"failed\",\n      \"summary\": \"The endpoint uses POST for a profile update operation, which is less appropriate than PATCH or PUT for updating an existing resource.\"\n    },\n    {\n      \"rule_id\": \"R002\",\n      \"status\": \"failed\",\n      \"summary\": \"The API requires login but does not describe authorization checks to ensure the authenticated user can update the specified user_id.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"st"
+}

@@ -75,6 +75,24 @@ Current examples:
 - `outputs/mvp_vertical_slice/harbor_api_review_001/validation_gate.json`
 - `outputs/mvp_vertical_slice/rollback_gate_001/validation_gate.json`
 
+### InvocationProtocol
+
+Defines how a compact skill should be used by an agent, including rule-application traces and evidence spans.
+
+Current examples:
+
+- `docs/SKILL_TO_AGENT_LOOP.md`
+- `outputs/mvp_vertical_slice/skill_to_agent_loop_001/skill_variants/protocolized_compressed_skill.md`
+
+### TraceVerifier
+
+Checks whether findings are supported by rule applications grounded in case evidence.
+
+Current examples:
+
+- `scripts/verify_api_review_trace_json.py`
+- `outputs/mvp_vertical_slice/skill_to_agent_loop_001`
+
 ### ArtifactStore
 
 Keeps each run reproducible with a stable output directory, manifest, summary JSON, and summary Markdown.

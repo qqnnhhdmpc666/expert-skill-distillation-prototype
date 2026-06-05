@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 850,
+    "completion_tokens": 1333,
+    "total_tokens": 2183,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 251
+    }
+  },
+  "raw_content_preview": "{\n  \"rule_applications\": [\n    {\n      \"rule_id\": \"R001\",\n      \"applicable\": true,\n      \"trigger_condition_found\": \"endpoint requires login but authentication details and failure behavior are underspecified\",\n      \"evidence_span\": \"Notes: \\\"The endpoint requires login.\\\" No auth method, required roles/scopes, or auth-failure response behavior are provided.\",\n      \"finding_id\": \"F1\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"rule_id\": \"R002\",\n      \"applicable\": true,\n      \"trigger_cond"
+}

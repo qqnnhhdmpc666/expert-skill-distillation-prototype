@@ -464,3 +464,57 @@ RightCode gpt-5.5 + semantic verifier: pass on case001/case002 when endpoint env
 ```text
 通过该 slice 只能说明 toy case 中 compressed wording 有语义保真迹象，不能证明通用 fixed-budget compiler。
 ```
+
+## 14. 运行 Skill-to-Agent Loop 探索
+
+该支线用于检查 compact skill 是否只是进入 prompt，还是能让 agent 输出可验证的 rule-application trace。
+
+```powershell
+python scripts\run_skill_to_agent_loop.py
+```
+
+如果要启用 RightCode GPT，需要临时设置环境变量，不要写入文件：
+
+```powershell
+$env:OPENAI_BASE_URL="https://www.right.codes/codex/v1"
+$env:OPENAI_API_KEY="<your-api-key>"
+$env:MODEL="gpt-5.5"
+python scripts\run_skill_to_agent_loop.py
+Remove-Item Env:\OPENAI_API_KEY
+Remove-Item Env:\OPENAI_BASE_URL
+Remove-Item Env:\MODEL
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\skill_to_agent_loop_001
+```
+
+关键检查：
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\skill_to_agent_loop_001\summary.md
+Get-Content outputs\mvp_vertical_slice\skill_to_agent_loop_001\protocol_results.json
+Get-Content outputs\mvp_vertical_slice\skill_to_agent_loop_001\semantic_verifier_results.json
+```
+
+当前预期观察：
+
+```text
+candidate_C_compressed_skill:
+  simple/semantic verifier may pass, trace verifier fails without rule_applications
+
+rule_id_shortcut_skill:
+  trace verifier fails
+
+protocolized_compressed_skill:
+  mock trace verifier passes
+  RightCode gpt-5.5 trace verifier passes when endpoint env is configured
+```
+
+边界：
+
+```text
+这是 M5 的 toy protocol probe，不能证明真实复杂任务正确性或通用 agent protocol。
+```

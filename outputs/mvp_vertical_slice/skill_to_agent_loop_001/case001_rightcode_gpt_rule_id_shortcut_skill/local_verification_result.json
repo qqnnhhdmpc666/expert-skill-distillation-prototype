@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "output_format_error",
+  "missing_rule_ids": [],
+  "message": "finding[0] missing fields: issue, evidence; finding[1] missing fields: issue, evidence; finding[2] missing fields: issue, evidence; finding[3] missing fields: issue, evidence; finding[4] missing fields: issue, evidence; finding[5] missing fields: issue, evidence; finding[6] missing fields: issue, evidence"
+}

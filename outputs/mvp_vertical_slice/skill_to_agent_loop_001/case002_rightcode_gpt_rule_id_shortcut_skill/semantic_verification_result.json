@@ -1,0 +1,89 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "semantic_content_error",
+  "missing_rule_ids": [],
+  "semantic_errors": [
+    "finding[0] missing fields: issue, evidence",
+    "finding[0] R001 lacks rule trigger terms",
+    "finding[0] R001 lacks case-related trigger terms",
+    "finding[0] R001 looks template-like",
+    "finding[1] missing fields: issue, evidence",
+    "finding[1] R002 lacks rule trigger terms",
+    "finding[1] R002 lacks case-related trigger terms",
+    "finding[1] R002 looks template-like",
+    "finding[2] missing fields: issue, evidence",
+    "finding[2] R003 lacks rule trigger terms",
+    "finding[2] R003 lacks case-related trigger terms",
+    "finding[2] R003 looks template-like",
+    "finding[3] missing fields: issue, evidence",
+    "finding[3] R004 lacks rule trigger terms",
+    "finding[3] R004 lacks case-related trigger terms",
+    "finding[3] R004 looks template-like",
+    "finding[4] missing fields: issue, evidence",
+    "finding[4] R005 lacks rule trigger terms",
+    "finding[4] R005 lacks case-related trigger terms",
+    "finding[4] R005 looks template-like",
+    "finding[5] missing fields: issue, evidence",
+    "finding[5] R006 lacks rule trigger terms",
+    "finding[5] R006 lacks case-related trigger terms",
+    "finding[5] R006 looks template-like"
+  ],
+  "per_finding": [
+    {
+      "index": 0,
+      "rule_id": "R001",
+      "field_ok": false,
+      "has_rule_trigger": false,
+      "has_case_related_trigger": false,
+      "template_like": true,
+      "semantic_ok": false
+    },
+    {
+      "index": 1,
+      "rule_id": "R002",
+      "field_ok": false,
+      "has_rule_trigger": false,
+      "has_case_related_trigger": false,
+      "template_like": true,
+      "semantic_ok": false
+    },
+    {
+      "index": 2,
+      "rule_id": "R003",
+      "field_ok": false,
+      "has_rule_trigger": false,
+      "has_case_related_trigger": false,
+      "template_like": true,
+      "semantic_ok": false
+    },
+    {
+      "index": 3,
+      "rule_id": "R004",
+      "field_ok": false,
+      "has_rule_trigger": false,
+      "has_case_related_trigger": false,
+      "template_like": true,
+      "semantic_ok": false
+    },
+    {
+      "index": 4,
+      "rule_id": "R005",
+      "field_ok": false,
+      "has_rule_trigger": false,
+      "has_case_related_trigger": false,
+      "template_like": true,
+      "semantic_ok": false
+    },
+    {
+      "index": 5,
+      "rule_id": "R006",
+      "field_ok": false,
+      "has_rule_trigger": false,
+      "has_case_related_trigger": false,
+      "template_like": true,
+      "semantic_ok": false
+    }
+  ],
+  "message": "finding[0] missing fields: issue, evidence; finding[0] R001 lacks rule trigger terms; finding[0] R001 lacks case-related trigger terms; finding[0] R001 looks template-like; finding[1] missing fields: issue, evidence; finding[1] R002 lacks rule trigger terms; finding[1] R002 lacks case-related trigger terms; finding[1] R002 looks template-like; finding[2] missing fields: issue, evidence; finding[2] R003 lacks rule trigger terms; finding[2] R003 lacks case-related trigger terms; finding[2] R003 looks template-like; finding[3] missing fields: issue, evidence; finding[3] R004 lacks rule trigger terms; finding[3] R004 lacks case-related trigger terms; finding[3] R004 looks template-like; finding[4] missing fields: issue, evidence; finding[4] R005 lacks rule trigger terms; finding[4] R005 lacks case-related trigger terms; finding[4] R005 looks template-like; finding[5] missing fields: issue, evidence; finding[5] R006 lacks rule trigger terms; finding[5] R006 lacks case-related trigger terms; finding[5] R006 looks template-like"
+}

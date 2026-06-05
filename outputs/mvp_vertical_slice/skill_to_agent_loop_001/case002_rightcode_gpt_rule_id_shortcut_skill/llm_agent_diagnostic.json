@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 590,
+    "completion_tokens": 1315,
+    "total_tokens": 1905,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 227
+    }
+  },
+  "raw_content_preview": "{\n  \"rule_applications\": [\n    {\n      \"rule_id\": \"R001\",\n      \"status\": \"violation\",\n      \"summary\": \"Authentication is mentioned, but authorization requirements are insufficient.\"\n    },\n    {\n      \"rule_id\": \"R002\",\n      \"status\": \"violation\",\n      \"summary\": \"Response exposes sensitive or internal implementation information.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"status\": \"violation\",\n      \"summary\": \"Error code model is incomplete and too coarse for a refund workflow.\"\n    },\n "
+}

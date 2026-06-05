@@ -1,0 +1,72 @@
+{
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "status": "fail",
+      "summary": "Auth method is only described as login; roles/scopes and auth-failure behavior are missing."
+    },
+    {
+      "rule_id": "R002",
+      "status": "fail",
+      "summary": "Request field validation details are incomplete."
+    },
+    {
+      "rule_id": "R003",
+      "status": "fail",
+      "summary": "Stable error codes are not defined for required error categories."
+    },
+    {
+      "rule_id": "R004",
+      "status": "fail",
+      "summary": "Response includes internal trace and unnecessary personal data."
+    },
+    {
+      "rule_id": "R005",
+      "status": "fail",
+      "summary": "Response envelope lacks request_id."
+    },
+    {
+      "rule_id": "R006",
+      "status": "fail",
+      "summary": "No mutation idempotency or duplicate-submission handling is specified."
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "R001",
+      "severity": "medium",
+      "message": "Authentication requirements are underspecified. The API states that login is required, but does not define the auth method, required roles/scopes, or behavior for unauthenticated requests.",
+      "evidence": "Notes: \"The endpoint requires login.\" No roles/scopes or auth-failure response are specified."
+    },
+    {
+      "rule_id": "R002",
+      "severity": "medium",
+      "message": "Request field constraints are incomplete. Required/default status, types, ranges, lengths, and enums are not fully defined for order_id, amount, reason, and notify_customer.",
+      "evidence": "Request lists order_id as string and body fields amount, reason, notify_customer, but provides no required markers, amount range, string length, reason enum, or notify_customer default."
+    },
+    {
+      "rule_id": "R003",
+      "severity": "high",
+      "message": "Error code coverage is insufficient. Stable codes are missing for validation, authentication, permission, not found, duplicate submission, and specific server errors.",
+      "evidence": "Error Codes table only defines 0 as success and 500 as system error."
+    },
+    {
+      "rule_id": "R004",
+      "severity": "high",
+      "message": "Response exposes internal implementation details and unnecessary personal data.",
+      "evidence": "Response data includes \"internal_trace\": \"RefundService.java:88\" and \"customer_phone\": \"13800138000\"."
+    },
+    {
+      "rule_id": "R005",
+      "severity": "medium",
+      "message": "Response envelope is missing request_id, which is required for traceability.",
+      "evidence": "Response contains code, message, and data, but no request_id field."
+    },
+    {
+      "rule_id": "R006",
+      "severity": "high",
+      "message": "Refund creation is a mutation, but idempotency or duplicate-submission handling is not specified.",
+      "evidence": "Endpoint is POST /api/v1/orders/{order_id}/refund and creates a refund request; no idempotency key, duplicate request behavior, or duplicate error code is documented."
+    }
+  ]
+}

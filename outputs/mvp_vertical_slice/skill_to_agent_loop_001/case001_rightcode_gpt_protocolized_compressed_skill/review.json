@@ -1,0 +1,96 @@
+{
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "applicable": true,
+      "trigger_condition_found": "endpoint requires login but authentication details and failure behavior are underspecified",
+      "evidence_span": "Notes: \"The endpoint requires login.\" No auth method, required roles/scopes, or auth-failure response behavior are provided.",
+      "finding_id": "F1",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R002",
+      "applicable": true,
+      "trigger_condition_found": "request path and body fields are documented without required/default status and validation constraints",
+      "evidence_span": "Path parameter: user_id: string. Body includes display_name, phone, avatar_url, but no required/default flags, max lengths, phone format, URL validation, or allowed ranges are specified.",
+      "finding_id": "F2",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R003",
+      "applicable": true,
+      "trigger_condition_found": "error code table lacks stable codes for common failure classes",
+      "evidence_span": "Error Codes table only lists 0 success and 500 server error.",
+      "finding_id": "F3",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R004",
+      "applicable": true,
+      "trigger_condition_found": "response includes sensitive token and personal data beyond likely necessity",
+      "evidence_span": "Response data contains \"phone\": \"13800138000\" and \"access_token\": \"debug-token\".",
+      "finding_id": "F4",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R005",
+      "applicable": true,
+      "trigger_condition_found": "response envelope uses code, message, data but omits request_id",
+      "evidence_span": "Response JSON contains code, message, and data fields, but no request_id field.",
+      "finding_id": "F5",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "R006",
+      "applicable": true,
+      "trigger_condition_found": "POST mutation endpoint has no stated idempotency or duplicate-submission handling",
+      "evidence_span": "Endpoint is POST /api/v1/users/{user_id}/profile for updating profile, with no idempotency key, conditional update, or duplicate request behavior described.",
+      "finding_id": "F6",
+      "confidence": "high"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication requirements are incomplete. The API says login is required, but does not specify the auth method, required roles/scopes, or the exact behavior and response code for unauthenticated requests.",
+      "severity": "high",
+      "evidence": "Notes: \"The endpoint requires login.\""
+    },
+    {
+      "id": "F2",
+      "rule_id": "R002",
+      "issue": "Request field validation is underspecified. The API does not define which fields are required, defaults, length limits, allowed formats, or validation rules for user_id, display_name, phone, and avatar_url.",
+      "severity": "medium",
+      "evidence": "Request lists user_id as string and body fields display_name, phone, avatar_url without validation details."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R003",
+      "issue": "Error code coverage is insufficient. The API only defines success and server error, with no stable codes for validation failure, authentication failure, permission denial, user not found, or duplicate submission.",
+      "severity": "high",
+      "evidence": "Error Codes table lists only 0 success and 500 server error."
+    },
+    {
+      "id": "F4",
+      "rule_id": "R004",
+      "issue": "The response leaks sensitive information by returning an access_token, and also returns phone data that may be unnecessary for a profile update response.",
+      "severity": "high",
+      "evidence": "Response data includes \"phone\": \"13800138000\" and \"access_token\": \"debug-token\"."
+    },
+    {
+      "id": "F5",
+      "rule_id": "R005",
+      "issue": "The response envelope is missing request_id, which reduces traceability for debugging and support.",
+      "severity": "medium",
+      "evidence": "Response JSON includes code, message, and data but does not include request_id."
+    },
+    {
+      "id": "F6",
+      "rule_id": "R006",
+      "issue": "The mutation endpoint does not define idempotency or duplicate-submission handling, which can cause ambiguous results if clients retry the POST request.",
+      "severity": "medium",
+      "evidence": "POST /api/v1/users/{user_id}/profile updates profile fields but no idempotency key or duplicate handling is documented."
+    }
+  ]
+}

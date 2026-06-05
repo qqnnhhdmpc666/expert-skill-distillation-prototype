@@ -1,0 +1,84 @@
+{
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "status": "violation",
+      "summary": "Authentication is mentioned, but authorization requirements are insufficient."
+    },
+    {
+      "rule_id": "R002",
+      "status": "violation",
+      "summary": "Response exposes sensitive or internal implementation information."
+    },
+    {
+      "rule_id": "R003",
+      "status": "violation",
+      "summary": "Error code model is incomplete and too coarse for a refund workflow."
+    },
+    {
+      "rule_id": "R004",
+      "status": "violation",
+      "summary": "Request parameter validation rules are not specified."
+    },
+    {
+      "rule_id": "R005",
+      "status": "violation",
+      "summary": "Refund creation lacks idempotency protection."
+    },
+    {
+      "rule_id": "R006",
+      "status": "violation",
+      "summary": "Refund operation lacks clear auditability and operational controls."
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "R001",
+      "severity": "high",
+      "title": "Login requirement is not sufficient for refund authorization",
+      "location": "POST /api/v1/orders/{order_id}/refund",
+      "details": "The notes state that the endpoint requires login, but they do not specify whether the caller must own the order, have refund permissions, or be an administrator/operator. Refund creation is a sensitive financial operation and requires explicit authorization rules.",
+      "recommendation": "Define and enforce authorization checks such as order ownership, merchant/operator role, refund permission scope, and tenant boundaries."
+    },
+    {
+      "rule_id": "R002",
+      "severity": "high",
+      "title": "Response exposes internal trace and customer phone number",
+      "location": "response.data.internal_trace, response.data.customer_phone",
+      "details": "The response includes `internal_trace`, which leaks implementation details such as `RefundService.java:88`, and `customer_phone`, which is personally identifiable information. These fields are not necessary for creating a refund response and may expose sensitive data.",
+      "recommendation": "Remove `internal_trace` from public API responses. Do not return `customer_phone` unless strictly required and authorized; if needed, mask it or return it only through a dedicated, permission-protected endpoint."
+    },
+    {
+      "rule_id": "R003",
+      "severity": "medium",
+      "title": "Error codes are insufficient for expected refund failures",
+      "location": "Error Codes",
+      "details": "Only `0` and `500` are defined. A refund API should distinguish validation errors, authentication failures, authorization failures, order not found, duplicate refund, invalid refund amount, refund not allowed, payment provider failure, and rate limiting.",
+      "recommendation": "Add structured error codes and HTTP status mappings, for example `400` for invalid amount, `401` for unauthenticated, `403` for unauthorized, `404` for order not found, `409` for duplicate or already refunded, and provider-specific failure codes."
+    },
+    {
+      "rule_id": "R004",
+      "severity": "medium",
+      "title": "Missing validation constraints for request fields",
+      "location": "request path and body",
+      "details": "The API does not define constraints for `order_id`, `amount`, `reason`, or `notify_customer`. It is unclear whether `amount` must be positive, whether partial refunds are allowed, how currency is determined, what valid `reason` values are, or whether the amount can exceed the refundable balance.",
+      "recommendation": "Specify validation rules: `order_id` format, positive decimal amount with currency handling, maximum refundable amount, allowed `reason` enum values, required fields, and behavior for partial or repeated refunds."
+    },
+    {
+      "rule_id": "R005",
+      "severity": "high",
+      "title": "Refund creation is not idempotent",
+      "location": "POST /api/v1/orders/{order_id}/refund",
+      "details": "The endpoint creates a refund request but does not describe an idempotency key or duplicate request handling. Client retries or network failures could create multiple refund requests for the same order.",
+      "recommendation": "Require an idempotency key, such as an `Idempotency-Key` header or client-provided refund request ID, and define duplicate request behavior."
+    },
+    {
+      "rule_id": "R006",
+      "severity": "medium",
+      "title": "Refund operation lacks audit and control metadata",
+      "location": "POST /api/v1/orders/{order_id}/refund",
+      "details": "The API does not define how refund requests are audited, who initiated the refund, or whether approval workflows are required for large or risky refunds. Financial operations should be traceable and controllable.",
+      "recommendation": "Record audit metadata server-side, including actor ID, role, timestamp, request ID, order ID, amount, reason, and approval status. Consider approval thresholds and fraud/risk checks."
+    }
+  ]
+}

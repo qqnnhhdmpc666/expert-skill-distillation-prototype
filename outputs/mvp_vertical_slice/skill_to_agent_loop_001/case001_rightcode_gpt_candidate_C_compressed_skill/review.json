@@ -1,0 +1,72 @@
+{
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "status": "fail",
+      "summary": "Authentication is mentioned, but method, roles/scopes, and auth-failure behavior are not specified."
+    },
+    {
+      "rule_id": "R002",
+      "status": "fail",
+      "summary": "Request field validation details are incomplete."
+    },
+    {
+      "rule_id": "R003",
+      "status": "fail",
+      "summary": "Stable error codes are missing for validation, auth, permission, not found, and duplicate cases."
+    },
+    {
+      "rule_id": "R004",
+      "status": "fail",
+      "summary": "Response exposes a token and unnecessary sensitive data."
+    },
+    {
+      "rule_id": "R005",
+      "status": "fail",
+      "summary": "Response envelope is missing request_id."
+    },
+    {
+      "rule_id": "R006",
+      "status": "fail",
+      "summary": "Mutation idempotency or duplicate-submission handling is not described."
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "R001",
+      "severity": "medium",
+      "message": "The endpoint states that login is required, but does not define the authentication method, required roles or scopes, or the response behavior for authentication failures.",
+      "evidence": "Notes: \"The endpoint requires login.\" No auth scheme, roles/scopes, or auth-failure error code/response is specified."
+    },
+    {
+      "rule_id": "R002",
+      "severity": "medium",
+      "message": "Request field definitions do not specify required/default status, types, ranges, lengths, or validation constraints.",
+      "evidence": "Path parameter only lists `user_id`: string. Body fields `display_name`, `phone`, and `avatar_url` are shown by example only, without required/default, type, length, format, range, or enum rules."
+    },
+    {
+      "rule_id": "R003",
+      "severity": "medium",
+      "message": "Error code specification is incomplete and does not provide stable codes for validation, authentication, permission, not found, duplicate, and server errors.",
+      "evidence": "Error Codes table contains only `0 | success` and `500 | server error`."
+    },
+    {
+      "rule_id": "R004",
+      "severity": "high",
+      "message": "The response exposes an access token and includes personal data that may be unnecessary for a profile update response.",
+      "evidence": "Response data includes `\"access_token\": \"debug-token\"` and `\"phone\": \"13800138000\"`."
+    },
+    {
+      "rule_id": "R005",
+      "severity": "low",
+      "message": "The response envelope does not include `request_id`.",
+      "evidence": "Response contains `code`, `message`, and `data`, but no `request_id` field."
+    },
+    {
+      "rule_id": "R006",
+      "severity": "medium",
+      "message": "The mutation endpoint does not specify idempotency or duplicate-submission handling.",
+      "evidence": "Endpoint is `POST /api/v1/users/{user_id}/profile` for updating profile data, but no idempotency key, conditional update, retry semantics, or duplicate-submission behavior is documented."
+    }
+  ]
+}

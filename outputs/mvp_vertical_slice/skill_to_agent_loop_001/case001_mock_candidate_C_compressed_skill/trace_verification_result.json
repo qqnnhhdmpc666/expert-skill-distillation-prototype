@@ -1,0 +1,34 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "rule_application_trace_error",
+  "missing_rule_ids": [],
+  "missing_application_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "trace_errors": [
+    "rule_applications must be a list",
+    "finding F1 has no supporting rule_application",
+    "finding F2 has no supporting rule_application",
+    "finding F3 has no supporting rule_application",
+    "finding F4 has no supporting rule_application",
+    "finding F5 has no supporting rule_application",
+    "finding F6 has no supporting rule_application",
+    "missing rule_applications for R001 R002 R003 R004 R005 R006"
+  ],
+  "seen_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "application_rule_ids": [],
+  "message": "rule_applications must be a list; finding F1 has no supporting rule_application; finding F2 has no supporting rule_application; finding F3 has no supporting rule_application; finding F4 has no supporting rule_application; finding F5 has no supporting rule_application; finding F6 has no supporting rule_application; missing rule_applications for R001 R002 R003 R004 R005 R006"
+}
