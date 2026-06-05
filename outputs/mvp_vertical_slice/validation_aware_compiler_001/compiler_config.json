@@ -1,0 +1,50 @@
+{
+  "run_id": "validation_aware_compiler_001",
+  "created_at": "2026-06-05T12:16:39.920238+00:00",
+  "positioning": "M2.1 validation-aware fixed-budget compact compiler; method-discovery slice only",
+  "hard_constraints": {
+    "must_include_failure_critical_rules": [
+      "R005",
+      "R006"
+    ],
+    "must_preserve_previously_covered_rules": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "must_include_output_contract_rules": [],
+    "must_not_exceed_budget": true
+  },
+  "soft_objectives": [
+    "minimize token count",
+    "maximize risk/evidence/execution score",
+    "prefer supported rules",
+    "avoid unsupported or irrelevant rules"
+  ],
+  "budget": {
+    "token_budget": 237,
+    "budget_basis": "same as fixed_budget_compiler_001: compact_v1 rule cost plus one medium-rule margin",
+    "compact_v1_rule_cost": 199,
+    "one_medium_rule_margin": 38,
+    "required_original_rule_cost": 281,
+    "required_compressed_rule_cost": 93,
+    "rule_costs": {
+      "R001": 43,
+      "R002": 46,
+      "R003": 58,
+      "R004": 52,
+      "R005": 38,
+      "R006": 44,
+      "R007": 42
+    },
+    "compressed_rule_costs": {
+      "R001": 13,
+      "R002": 15,
+      "R003": 20,
+      "R004": 18,
+      "R005": 13,
+      "R006": 14
+    }
+  }
+}

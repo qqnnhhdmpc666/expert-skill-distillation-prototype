@@ -1,0 +1,148 @@
+[
+  {
+    "candidate_id": "candidate_A_naive_execution_aware",
+    "status": "candidate",
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "dropped_rule_ids": [
+      "R003",
+      "R007"
+    ],
+    "token_count": 223,
+    "token_budget": 237,
+    "over_budget": false,
+    "covered_rule_ids": [
+      "R001",
+      "R002",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "missed_rule_ids": [
+      "R003"
+    ],
+    "missing_failure_critical_rules": [],
+    "lost_previously_covered_rules": [
+      "R003"
+    ],
+    "missing_output_contract_rules": [],
+    "hard_constraints_satisfied": false,
+    "validation_result": "reject_regression",
+    "accepted": false,
+    "explanation": "Naive execution-aware fixed-budget selection from fixed_budget_compiler_001. It recovers R005/R006 but drops R003."
+  },
+  {
+    "candidate_id": "candidate_B_preserve_covered_first",
+    "status": "candidate",
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "dropped_rule_ids": [
+      "R007"
+    ],
+    "token_count": 281,
+    "token_budget": 237,
+    "over_budget": true,
+    "covered_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "missed_rule_ids": [],
+    "missing_failure_critical_rules": [],
+    "lost_previously_covered_rules": [],
+    "missing_output_contract_rules": [],
+    "hard_constraints_satisfied": false,
+    "validation_result": "reject_over_budget",
+    "accepted": false,
+    "explanation": "Preserve all previously covered R001-R004 and add failure-critical R005/R006 with original wording."
+  },
+  {
+    "candidate_id": "candidate_C_compressed_required_rules",
+    "status": "candidate",
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "dropped_rule_ids": [
+      "R007"
+    ],
+    "token_count": 93,
+    "token_budget": 237,
+    "over_budget": false,
+    "covered_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "missed_rule_ids": [],
+    "missing_failure_critical_rules": [],
+    "lost_previously_covered_rules": [],
+    "missing_output_contract_rules": [],
+    "hard_constraints_satisfied": true,
+    "validation_result": "accept",
+    "accepted": true,
+    "explanation": "Preserve R001-R006 by using compressed checklist wording. This is success with compressed wording, not natural success of the original selector."
+  },
+  {
+    "candidate_id": "candidate_D_infeasible_original_wording",
+    "status": "infeasible_under_budget",
+    "selected_rule_ids": [],
+    "dropped_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006",
+      "R007"
+    ],
+    "token_count": 0,
+    "token_budget": 237,
+    "over_budget": false,
+    "covered_rule_ids": [],
+    "missed_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "missing_failure_critical_rules": [
+      "R005",
+      "R006"
+    ],
+    "lost_previously_covered_rules": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "missing_output_contract_rules": [],
+    "hard_constraints_satisfied": false,
+    "validation_result": "infeasible",
+    "accepted": false,
+    "explanation": "Original R001-R006 wording cannot fit the current budget; required original rule cost exceeds the token budget."
+  }
+]

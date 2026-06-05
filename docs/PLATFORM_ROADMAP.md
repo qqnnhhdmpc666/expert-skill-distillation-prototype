@@ -97,3 +97,24 @@ Current examples:
 3. Use `scripts/run_demo_pipeline.py --check-existing` as the health check before demonstrations.
 4. Promote repeated logic into `src/` only after the method direction stabilizes.
 
+## Latest Maturation Slice
+
+The validation-aware compiler slice adds a useful boundary between `PatchCompiler` and `ValidationGate`:
+
+```text
+PatchCompiler proposes multiple candidates.
+ValidationGate checks hard constraints.
+ArtifactStore records accepted, rejected, and infeasible candidates.
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/validation_aware_compiler_001
+```
+
+Near-term platform implication:
+
+- Candidate generation and validation results should remain explicit artifacts.
+- Infeasible outcomes should be first-class outputs, not hidden errors.
+- Compression should be labeled separately from ordinary selection success.

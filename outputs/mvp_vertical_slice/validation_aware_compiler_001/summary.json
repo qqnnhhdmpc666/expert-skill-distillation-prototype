@@ -1,0 +1,8 @@
+{
+  "conclusion_status": "partially_supported",
+  "accepted_candidate_id": "candidate_C_compressed_required_rules",
+  "finding": "Validation-aware fixed-budget recompilation succeeds only when compressed wording is allowed; original wording is infeasible under the current budget.",
+  "boundary": "Toy API-review rules only. Success with compressed wording should not be read as proof of a general compact compiler.",
+  "run_id": "validation_aware_compiler_001",
+  "created_at": "2026-06-05T12:16:39.920238+00:00"
+}

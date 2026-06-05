@@ -384,3 +384,48 @@ decision: reject_and_rollback
 系统需要检查 regression、budget 和 failure-critical preservation。
 但这仍然只是小型机制探针，不是成熟 rollback 系统。
 ```
+## 14. Method Discovery Loop: Validation-Aware Compiler
+
+新增 M2.1 支线：
+
+```text
+D:\solution\docs\VALIDATION_AWARE_COMPILER.md
+D:\solution\scripts\run_validation_aware_compiler.py
+D:\solution\outputs\mvp_vertical_slice\validation_aware_compiler_001
+```
+
+这个 slice 把 fixed-budget compiler 和 rollback gate 联动起来：
+
+```text
+failure feedback
+-> fixed-budget recompilation
+-> validation constraints
+-> candidate compact skill
+-> validation gate
+-> accept / reject / rollback / infeasible
+```
+
+硬约束：
+
+```text
+must include R005/R006
+must preserve R001/R002/R003/R004
+must not exceed budget 237
+```
+
+候选结果：
+
+| Candidate | Tokens | Validation | Covered | Missed | Interpretation |
+|---|---:|---|---|---|---|
+| candidate_A_naive_execution_aware | 223 / 237 | reject_regression | R001, R002, R004, R005, R006 | R003 | 补了 R005/R006，但丢掉 R003 |
+| candidate_B_preserve_covered_first | 281 / 237 | reject_over_budget | R001-R006 | none | 原始规则全保留会超预算 |
+| candidate_C_compressed_required_rules | 93 / 237 | accept | R001-R006 | none | 通过压缩表述满足约束 |
+| candidate_D_infeasible_original_wording | 0 / 237 | infeasible | none | R001-R006 | 明确报告原始表述预算内不可行 |
+
+保守结论：
+
+```text
+partially_supported
+```
+
+validation-aware fixed-budget recompilation 在 toy case 中可以避免上一轮的 R003 regression，但成功依赖 compressed wording。不能说已经证明通用 compact compiler。

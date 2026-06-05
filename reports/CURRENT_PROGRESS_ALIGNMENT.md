@@ -412,3 +412,61 @@ decision: reject_and_rollback
 ```text
 这是 toy validation-gated revision slice，不是成熟 rollback 系统。
 ```
+## 12. 最新进展：Validation-Aware Compiler 001
+
+新增文档、脚本和输出：
+
+```text
+D:\solution\docs\VALIDATION_AWARE_COMPILER.md
+D:\solution\scripts\run_validation_aware_compiler.py
+D:\solution\outputs\mvp_vertical_slice\validation_aware_compiler_001
+```
+
+目标：
+
+```text
+把 fixed-budget compiler 和 rollback gate 联动起来。
+compiler 不仅要补 R005/R006，还要避免破坏已覆盖的 R001-R004。
+如果预算不够，要明确报告 infeasible。
+```
+
+候选结果：
+
+```text
+candidate_A_naive_execution_aware:
+  223 / 237 tokens
+  reject_regression
+  misses R003
+
+candidate_B_preserve_covered_first:
+  281 / 237 tokens
+  reject_over_budget
+
+candidate_C_compressed_required_rules:
+  93 / 237 tokens
+  accept
+  covers R001-R006
+
+candidate_D_infeasible_original_wording:
+  infeasible_under_budget
+  required original rule cost 281 > budget 237
+```
+
+当前结论：
+
+```text
+partially_supported
+```
+
+解释：
+
+```text
+validation-aware recompilation 能避免 naive fixed-budget 的 R003 regression。
+但当前成功依赖 compressed wording，不是原始 selector 自然成功。
+```
+
+边界：
+
+```text
+这是 toy case，不是通用 compact compiler 证明。
+```

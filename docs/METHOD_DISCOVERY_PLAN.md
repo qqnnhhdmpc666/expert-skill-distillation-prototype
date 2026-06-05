@@ -193,3 +193,62 @@ This is closest to "expert knowledge distillation" as a source-side mechanism, b
 2. If time allows, implement M3 rollback/validation-gated revision.
 3. Keep M1 and M4 documented, but do not broaden them unless M2/M3 are blocked.
 
+## M2.1: Validation-Aware Fixed-Budget Recompilation
+
+Hypothesis:
+
+A fixed-budget compiler should consider validation constraints during recompilation. It should not recover failure-critical rules by silently dropping previously covered rules. If the current budget cannot satisfy all hard constraints, it should report infeasibility or require compression rather than emitting a misleading compact skill.
+
+Trigger condition:
+
+The previous M2 and M3 probes disagree:
+
+```text
+fixed-budget compiler recovers R005/R006
+rollback gate rejects the same selection because it drops R003
+```
+
+Decision rule:
+
+Generate multiple candidates and validate each against hard constraints:
+
+- include failure-critical rules,
+- preserve previously covered rules,
+- include output-contract rules when applicable,
+- stay within token budget.
+
+Alternative or counterfactual:
+
+Compare:
+
+- naive execution-aware fixed-budget selection,
+- preserve-covered-rules-first selection,
+- compressed-rule selection,
+- explicit infeasible report for original wording.
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/validation_aware_compiler_001
+```
+
+Current observation:
+
+```text
+candidate_A_naive_execution_aware: rejects regression, drops R003
+candidate_B_preserve_covered_first: rejects over budget, original R001-R006 cost is 281 > budget 237
+candidate_C_compressed_required_rules: accepts, covers R001-R006 with compressed wording
+candidate_D_infeasible_original_wording: reports infeasible_under_budget
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The slice supports validation-aware recompilation only with compressed wording. It does not show that the original selector naturally succeeds under the same budget.
+
+Failure boundary:
+
+If compressed wording harms real agent behavior or loses semantic precision, then the apparent success is only token accounting, not a reliable compiler mechanism.
