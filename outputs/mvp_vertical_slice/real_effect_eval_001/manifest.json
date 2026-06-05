@@ -1,0 +1,12 @@
+{
+  "run_id": "real_effect_eval_001",
+  "created_at": "2026-06-05T14:30:23.793210+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "per_case_results.json",
+    "per_variant_results.json",
+    "cost_effect_table.md"
+  ],
+  "boundary": "Controlled 4-case holdout only. This is not a benchmark and does not prove general real-world correctness."
+}

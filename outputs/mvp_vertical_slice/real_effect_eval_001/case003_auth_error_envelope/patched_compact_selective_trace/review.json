@@ -1,0 +1,35 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication boundary is underspecified.",
+      "severity": "high",
+      "evidence": "The API mentions login/authentication but does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R003",
+      "issue": "Error code coverage is incomplete.",
+      "severity": "high",
+      "evidence": "The error table omits expected validation, auth, permission, not-found, duplicate, or server classes."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R005",
+      "issue": "Response envelope does not follow the required contract.",
+      "severity": "medium",
+      "evidence": "Response does not consistently expose code, message, request_id, and data."
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "R005",
+      "applicable": true,
+      "trigger_condition_found": "response envelope missing code/message/request_id/data",
+      "evidence_span": "# Holdout Case 003: Auth, Error Codes, Response Envelope Endpoint: `GET /v1/orders/{order_id}` Purpose: Return one order summar",
+      "finding_id": "F3",
+      "confidence": "medium"
+    }
+  ]
+}

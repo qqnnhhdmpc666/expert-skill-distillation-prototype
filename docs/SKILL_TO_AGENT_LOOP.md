@@ -132,3 +132,41 @@ partially_supported_with_protocol_overhead
 ```
 
 The protocol is useful as a verifier contract, but it must be compressed or amortized before it can be treated as a low-cost deployment layer.
+
+## Selective Trace Follow-Up
+
+Full trace is not always deployable under a compact budget. The follow-up slice tests partial trace:
+
+```text
+outputs/mvp_vertical_slice/selective_trace_compiler_001
+```
+
+Compared policies:
+
+- `no_trace`: no rule requires `rule_applications`.
+- `full_trace`: R001-R006 all require `rule_applications`.
+- `selective_trace_failure_critical`: only R005/R006 require trace.
+- `selective_trace_high_risk_or_patched`: R001/R003/R005/R006 require trace.
+
+Current observation:
+
+```text
+no_trace:
+  cheapest, but cannot block shortcut at trace level
+
+full_trace:
+  blocks shortcut, but exceeds fixed budget
+
+selective_trace_failure_critical:
+  blocks shortcut for R005/R006 and stays under budget
+```
+
+Conservative claim:
+
+```text
+partially_supported: selective trace can reduce protocol overhead while preserving traceability for failure-critical rules in this toy slice.
+```
+
+Boundary:
+
+This does not prove a universal tracing policy. It only shows that trace cost can be allocated by risk in a controlled API-review slice.

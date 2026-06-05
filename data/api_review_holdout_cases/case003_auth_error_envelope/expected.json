@@ -1,0 +1,8 @@
+{
+  "case_id": "case003_auth_error_envelope",
+  "expected_rule_ids": ["R001", "R003", "R005"],
+  "critical_rule_ids": ["R001", "R003"],
+  "negative_rule_ids": ["R002", "R004", "R006"],
+  "notes": "Covers auth boundary, incomplete error code table, and missing request_id in response envelope."
+}
+

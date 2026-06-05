@@ -265,3 +265,74 @@ This should be read as a diagnostic result:
 - Traceability has a real deployment cost.
 - A mature compact compiler must optimize both rule wording and protocol wording.
 - Passing trace verification is not sufficient if the compiled artifact exceeds budget.
+
+## 11. Real Effect Evaluation Fields
+
+Question:
+
+```text
+Does the deployed expert skill improve controlled task behavior?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/real_effect_eval_001
+```
+
+Evaluation fields:
+
+- checklist coverage.
+- critical missed rules.
+- false-positive rules.
+- pass@1.
+- input tokens.
+- output tokens.
+- trace tokens.
+- total tokens.
+- regression detected.
+- failure recurrence.
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The 4-case controlled holdout suggests patched compact skills improve coverage over compact_v1 while avoiding critical misses. This remains a small controlled family, not a benchmark.
+
+## 12. Selective Trace Diagnostics
+
+Question:
+
+```text
+Where should traceability cost be spent under a fixed budget?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/selective_trace_compiler_001
+```
+
+Diagnostic fields:
+
+- traced rule IDs.
+- untraced rule IDs.
+- skill tokens.
+- protocol tokens.
+- output trace tokens.
+- over budget.
+- partial trace verifier pass.
+- shortcut blocked.
+- trace-required rules missing trace.
+- semantic-only rules weak.
+- validation gate decision.
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Selective trace keeps traceability for failure-critical rules while reducing protocol overhead compared with full trace in this toy slice. This is a diagnostic for risk-budgeted deployment, not a final tracing metric.

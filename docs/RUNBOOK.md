@@ -569,3 +569,84 @@ partially_supported_with_protocol_overhead
 ```text
 这不是通用 compiler 证明。它说明 trace verifier 能阻止 shallow output / rule-id shortcut，但当前 protocol overhead 仍然太高，validation gate 拒绝部署是合理结果。
 ```
+## 16. Run Real Effect Evaluation
+
+This slice checks whether skill-conditioned deployment improves API-review behavior on a small controlled holdout set:
+
+```powershell
+python scripts\run_real_effect_eval.py
+```
+
+Input:
+
+```text
+D:\solution\data\api_review_holdout_cases
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\real_effect_eval_001
+```
+
+Key checks:
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\real_effect_eval_001\summary.md
+Get-Content outputs\mvp_vertical_slice\real_effect_eval_001\per_variant_results.json
+Get-Content outputs\mvp_vertical_slice\real_effect_eval_001\cost_effect_table.md
+```
+
+Expected observation:
+
+```text
+compact_v1: lower holdout coverage and recurring critical misses
+patched_compact: restores controlled holdout coverage
+patched_compact_selective_trace: keeps coverage while exposing trace for selected critical rules
+```
+
+Boundary:
+
+```text
+This is a 4-case controlled holdout, not a benchmark or general real-world correctness proof.
+```
+
+## 17. Run Selective Trace Compiler
+
+This slice compares where traceability cost should be spent:
+
+```powershell
+python scripts\run_selective_trace_compiler.py
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\selective_trace_compiler_001
+```
+
+Key checks:
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\selective_trace_compiler_001\summary.md
+Get-Content outputs\mvp_vertical_slice\selective_trace_compiler_001\variant_results.json
+```
+
+Expected observation:
+
+```text
+no_trace:
+  cheapest, but shortcut_blocked=false
+
+full_trace:
+  shortcut_blocked=true, but reject_over_budget
+
+selective_trace_failure_critical:
+  traces R005/R006, stays under budget, shortcut_blocked=true
+```
+
+Boundary:
+
+```text
+This is a toy selective-trace policy, not a mature tracing strategy.
+```

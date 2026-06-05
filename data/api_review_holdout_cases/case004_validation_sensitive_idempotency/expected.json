@@ -1,0 +1,8 @@
+{
+  "case_id": "case004_validation_sensitive_idempotency",
+  "expected_rule_ids": ["R002", "R004", "R006"],
+  "critical_rule_ids": ["R002", "R004"],
+  "negative_rule_ids": ["R001", "R003", "R005"],
+  "notes": "Covers input validation, sensitive response data, and mutation idempotency."
+}
+

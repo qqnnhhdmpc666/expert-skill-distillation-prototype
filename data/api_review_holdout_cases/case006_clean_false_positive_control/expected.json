@@ -1,0 +1,7 @@
+{
+  "case_id": "case006_clean_false_positive_control",
+  "expected_rule_ids": [],
+  "critical_rule_ids": [],
+  "negative_rule_ids": ["R001", "R002", "R003", "R004", "R005", "R006"],
+  "notes": "False-positive control: a clean API should not produce findings."
+}

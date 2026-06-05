@@ -1,0 +1,11 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R005",
+      "issue": "Response envelope does not follow the required contract.",
+      "severity": "medium",
+      "evidence": "Response does not consistently expose code, message, request_id, and data."
+    }
+  ]
+}

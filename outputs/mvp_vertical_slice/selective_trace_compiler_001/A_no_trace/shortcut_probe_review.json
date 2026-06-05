@@ -1,0 +1,46 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "rule id only",
+      "severity": "medium",
+      "evidence": "n/a"
+    },
+    {
+      "id": "F2",
+      "rule_id": "R002",
+      "issue": "rule id only",
+      "severity": "medium",
+      "evidence": "n/a"
+    },
+    {
+      "id": "F3",
+      "rule_id": "R003",
+      "issue": "rule id only",
+      "severity": "medium",
+      "evidence": "n/a"
+    },
+    {
+      "id": "F4",
+      "rule_id": "R004",
+      "issue": "rule id only",
+      "severity": "medium",
+      "evidence": "n/a"
+    },
+    {
+      "id": "F5",
+      "rule_id": "R005",
+      "issue": "rule id only",
+      "severity": "medium",
+      "evidence": "n/a"
+    },
+    {
+      "id": "F6",
+      "rule_id": "R006",
+      "issue": "rule id only",
+      "severity": "medium",
+      "evidence": "n/a"
+    }
+  ]
+}

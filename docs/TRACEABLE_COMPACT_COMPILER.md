@@ -106,3 +106,64 @@ Do not claim:
 - a universal compiler,
 - or superiority over related work.
 
+## Next Integration: Real Effect and Selective Trace
+
+The traceable compiler integration exposed a useful tradeoff:
+
+```text
+traceability improves verifier strength, but it is not free.
+```
+
+Two follow-up slices now connect this mechanism back to the original expert-skill deployment goal.
+
+### Real Effect Evaluation
+
+Artifact:
+
+```text
+outputs/mvp_vertical_slice/real_effect_eval_001
+```
+
+Purpose:
+
+```text
+Check whether skill-conditioned deployment improves API-review behavior on a small controlled holdout set.
+```
+
+Current result:
+
+```text
+partially_supported
+```
+
+In the 4-case controlled holdout, `patched_compact` improves average coverage over `compact_v1` and removes the observed critical misses. This is small holdout evidence, not a benchmark.
+
+### Selective Trace Compiler
+
+Artifact:
+
+```text
+outputs/mvp_vertical_slice/selective_trace_compiler_001
+```
+
+Purpose:
+
+```text
+Spend traceability cost only on failure-critical / high-risk / newly patched rules.
+```
+
+Current result:
+
+```text
+partially_supported
+```
+
+Full trace passes trace checks but exceeds the fixed budget. Selective trace for R005/R006 stays under budget and still blocks shortcut behavior for the failure-critical rules in this toy slice.
+
+Conservative interpretation:
+
+```text
+risk-budgeted traceable skill deployment prototype
+```
+
+This is still not a mature compiler. It is a more precise framing of the current direction: expert skill deployment should optimize cost under correctness, regression, and traceability constraints.

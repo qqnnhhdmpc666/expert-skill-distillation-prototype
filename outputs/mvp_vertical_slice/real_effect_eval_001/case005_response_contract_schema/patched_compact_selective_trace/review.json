@@ -1,0 +1,21 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R005",
+      "issue": "Response envelope does not follow the required contract.",
+      "severity": "medium",
+      "evidence": "Response does not consistently expose code, message, request_id, and data."
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "R005",
+      "applicable": true,
+      "trigger_condition_found": "response envelope missing code/message/request_id/data",
+      "evidence_span": "# Holdout Case 005: Response Contract Schema Endpoint: `GET /v1/reports/daily` Purpose: Return the daily bus",
+      "finding_id": "F1",
+      "confidence": "medium"
+    }
+  ]
+}

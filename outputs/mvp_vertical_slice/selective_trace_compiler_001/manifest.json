@@ -1,0 +1,11 @@
+{
+  "run_id": "selective_trace_compiler_001",
+  "created_at": "2026-06-05T14:30:23.802375+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "variant_results.json",
+    "*/variant_summary.json"
+  ],
+  "boundary": "Toy selective-trace slice only. It does not prove a mature protocol or general correctness."
+}

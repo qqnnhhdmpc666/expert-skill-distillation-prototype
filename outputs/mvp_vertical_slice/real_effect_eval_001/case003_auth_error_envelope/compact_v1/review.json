@@ -1,0 +1,18 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication boundary is underspecified.",
+      "severity": "high",
+      "evidence": "The API mentions login/authentication but does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R003",
+      "issue": "Error code coverage is incomplete.",
+      "severity": "high",
+      "evidence": "The error table omits expected validation, auth, permission, not-found, duplicate, or server classes."
+    }
+  ]
+}

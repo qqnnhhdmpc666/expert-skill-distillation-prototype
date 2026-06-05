@@ -641,3 +641,119 @@ partially_supported_with_protocol_overhead
 - validation gate 拒绝超预算 candidate 是成熟表现，而不是失败。
 
 下一步如果继续该线，优先不是新增机制，而是压缩/外置/摊销 invocation protocol，让 traceability 变得更便宜。
+## 16. 最新进展：Real Effect Evaluation Line
+
+新增小型 controlled holdout：
+
+```text
+D:\solution\data\api_review_holdout_cases
+D:\solution\scripts\run_real_effect_eval.py
+D:\solution\outputs\mvp_vertical_slice\real_effect_eval_001
+```
+
+这一步回答：
+
+```text
+专家 skill 是否真的让 agent 在任务行为上做得更好？
+```
+
+当前 4-case controlled holdout 结果：
+
+```text
+no_skill:
+  avg coverage 0.25
+  pass@1 1/4
+  critical misses 5
+
+compact_v1:
+  avg coverage 0.58
+  pass@1 1/4
+  critical misses 1
+
+patched_compact:
+  avg coverage 1.00
+  pass@1 4/4
+  critical misses 0
+
+patched_compact_selective_trace:
+  avg coverage 1.00
+  pass@1 4/4
+  critical misses 0
+```
+
+当前结论：
+
+```text
+partially_supported
+```
+
+意义：
+
+- 系统现在不只验证 artifact 闭环，也开始检查 skill-conditioned deployment 的任务效果。
+- 结果支持 patched compact 在当前 controlled family 上改善 API-review 行为。
+- 这不是 benchmark，也不能说成真实复杂任务泛化证明。
+
+## 17. 最新进展：Selective / Risk-Budgeted Trace Line
+
+新增 selective trace slice：
+
+```text
+D:\solution\scripts\run_selective_trace_compiler.py
+D:\solution\outputs\mvp_vertical_slice\selective_trace_compiler_001
+```
+
+这一步回答：
+
+```text
+traceability 有成本时，trace 应该花在哪些规则上？
+```
+
+当前结果：
+
+```text
+no_trace:
+  140 / 237 tokens
+  shortcut_blocked=false
+  accepted
+
+full_trace:
+  300 / 237 tokens
+  shortcut_blocked=true
+  reject_over_budget
+
+selective_trace_failure_critical:
+  trace R005/R006
+  183 / 237 tokens
+  shortcut_blocked=true
+  accepted
+
+selective_trace_high_risk_or_patched:
+  trace R001/R003/R005/R006
+  186 / 237 tokens
+  shortcut_blocked=true
+  accepted
+```
+
+当前结论：
+
+```text
+partially_supported
+```
+
+意义：
+
+- full trace 有用但贵。
+- no trace 便宜但不能阻止 shortcut。
+- selective trace 在 toy slice 中能把可验证性成本集中到 failure-critical / high-risk 规则上。
+
+当前更成熟的项目表述可以是：
+
+```text
+risk-budgeted traceable skill deployment prototype
+```
+
+或：
+
+```text
+correctness-constrained expert skill deployment optimization
+```

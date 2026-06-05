@@ -415,3 +415,71 @@ The trace verifier can block shallow output and rule-id shortcut behavior in thi
 Failure boundary:
 
 If future protocol compression cannot reduce overhead, this remains a useful diagnostic layer rather than a deployable compact compiler. Do not claim general correctness or a mature compiler.
+
+## Real Effect Evaluation Line
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/real_effect_eval_001
+```
+
+Hypothesis:
+
+Expert skill deployment should improve real task behavior, not only produce cleaner artifacts. In a small controlled API-review holdout set, patched compact skills should reduce critical misses compared with compact_v1.
+
+Current setup:
+
+- 4 holdout cases.
+- Mixed expected rules instead of only R005/R006.
+- Includes a false-positive control case.
+- Uses deterministic mock case-aware execution first; no LLM result is fabricated.
+
+Current observation:
+
+```text
+compact_v1 avg coverage: 0.58
+patched_compact avg coverage: 1.00
+patched_compact_selective_trace avg coverage: 1.00
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Small holdout evidence suggests patched compact skill improves controlled API-review task behavior. This is not a benchmark and does not prove real-world generalization.
+
+## Selective / Risk-Budgeted Trace Line
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/selective_trace_compiler_001
+```
+
+Hypothesis:
+
+Traceability has a cost, so the compiler should allocate trace requirements to failure-critical, high-risk, or newly patched rules instead of always tracing every rule.
+
+Current observation:
+
+```text
+no_trace: 140 / 237 tokens, accepted, but shortcut_blocked=false
+full_trace: 300 / 237 tokens, shortcut_blocked=true, rejected_over_budget
+selective_trace_failure_critical: 183 / 237 tokens, shortcut_blocked=true, accepted
+selective_trace_high_risk_or_patched: 186 / 237 tokens, shortcut_blocked=true, accepted
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Selective trace reduces protocol overhead while preserving traceability for failure-critical rules in this toy slice.
+
+Failure boundary:
+
+If future cases show that untraced rules produce shortcut errors or semantic drift, the trace selection policy should be tightened. Do not claim a mature tracing policy yet.

@@ -597,3 +597,88 @@ partially_supported_with_protocol_overhead
 ```text
 这不是通用 compact compiler 证明。它说明 traceability 有价值，但当前 invocation protocol 还需要压缩或外置/摊销，才能成为低成本部署层。
 ```
+## 18. Real Effect Evaluation Line
+
+新增小型 controlled holdout：
+
+```text
+D:\solution\data\api_review_holdout_cases
+D:\solution\scripts\run_real_effect_eval.py
+D:\solution\outputs\mvp_vertical_slice\real_effect_eval_001
+```
+
+目的：
+
+```text
+检查专家 skill 是否真的让 agent 在 API-review task family 中做得更好，而不是只让 artifact 更漂亮。
+```
+
+4-case controlled holdout 当前结果：
+
+| Variant | Avg Coverage | Pass@1 | Critical Misses | False Positives | Avg Total Tokens |
+|---|---:|---:|---:|---:|---:|
+| no_skill | 0.25 | 1 / 4 | 5 | 0 | 4.0 |
+| full_skill | 1.00 | 4 / 4 | 0 | 0 | 1429.8 |
+| compact_v1 | 0.58 | 1 / 4 | 1 | 0 | 323.5 |
+| patched_compact | 1.00 | 4 / 4 | 0 | 0 | 438.8 |
+| patched_compact_selective_trace | 1.00 | 4 / 4 | 0 | 0 | 335.0 |
+
+保守结论：
+
+```text
+partially_supported
+```
+
+解释：
+
+- patched compact skill 在这个 controlled holdout 中比 compact_v1 有更高 coverage。
+- 它消除了当前设置里的 critical missed rules。
+- 这说明 skill patch 不只是 artifact 变化，也能反映到任务行为上。
+
+边界：
+
+```text
+这是 4-case controlled holdout，不是 benchmark，不证明真实复杂任务泛化，也不证明优于 related work。
+```
+
+## 19. Selective / Risk-Budgeted Trace Line
+
+新增 selective trace slice：
+
+```text
+D:\solution\scripts\run_selective_trace_compiler.py
+D:\solution\outputs\mvp_vertical_slice\selective_trace_compiler_001
+```
+
+目的：
+
+```text
+traceability 有成本，因此系统应该决定哪些规则值得 trace，而不是永远 full trace。
+```
+
+当前结果：
+
+| Variant | Traced Rules | Tokens | Shortcut Blocked | Gate |
+|---|---|---:|---|---|
+| no_trace | none | 140 / 237 | false | accept |
+| full_trace | R001-R006 | 300 / 237 | true | reject_over_budget |
+| selective_trace_failure_critical | R005, R006 | 183 / 237 | true | accept |
+| selective_trace_high_risk_or_patched | R001, R003, R005, R006 | 186 / 237 | true | accept |
+
+保守结论：
+
+```text
+partially_supported
+```
+
+解释：
+
+- no_trace 最便宜，但无法在 trace layer 阻止 shortcut。
+- full_trace 能阻止 shortcut，但超预算。
+- selective_trace 能在 failure-critical rules 上保留 traceability，同时降低 protocol overhead。
+
+边界：
+
+```text
+这是 toy selective-trace policy，不是成熟 tracing strategy。
+```

@@ -165,3 +165,37 @@ Near-term engineering direction:
 - Compress the invocation protocol.
 - Explore whether a stable protocol contract can be cached or amortized outside per-call prompt tokens.
 - Keep over-budget rejection as a valid outcome rather than silently accepting an expensive artifact.
+
+## Real Effect and Risk-Budgeted Trace
+
+Two new slices add the missing platform direction: task-effect evaluation and selective trace allocation.
+
+Artifacts:
+
+```text
+outputs/mvp_vertical_slice/real_effect_eval_001
+outputs/mvp_vertical_slice/selective_trace_compiler_001
+```
+
+Platform implication:
+
+- The platform should evaluate whether deployed skills improve controlled task behavior, not only whether artifacts look valid.
+- The platform should support trace policies, not just a global trace on/off switch.
+- Trace requirements should be assigned by risk signals such as `failure_critical`, `previously_missed`, `high_priority`, `output_contract`, or `newly_patched`.
+- Validation gates should account for task effect, semantic quality, traceability, and budget together.
+
+Current positioning:
+
+```text
+correctness-constrained expert skill deployment optimization
+```
+
+or:
+
+```text
+risk-budgeted traceable skill deployment prototype
+```
+
+Boundary:
+
+This is a prototype roadmap. The current holdout set is small and the selective trace policy is a toy policy, not a mature benchmark-backed platform policy.
