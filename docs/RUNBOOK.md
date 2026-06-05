@@ -391,3 +391,76 @@ candidate_D_infeasible_original_wording: infeasible_under_budget
 这是 validation-aware fixed-budget recompilation 的 toy 探针。
 如果 compressed wording 成功，只能说 success with compressed wording，不能说原始 selector 已经自然成功。
 ```
+
+## 12. 运行 Semantic Preservation Audit
+
+该支线用于检查 compressed candidate 是否保留规则语义，而不是只保留 rule ID。
+
+```powershell
+python scripts\run_semantic_preservation_audit.py
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\semantic_preservation_audit_001
+```
+
+关键检查：
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\semantic_preservation_audit_001\semantic_audit.md
+Get-Content outputs\mvp_vertical_slice\semantic_preservation_audit_001\per_rule_audit.json
+```
+
+当前预期观察：
+
+```text
+overall_status: preserved
+```
+
+边界：
+
+```text
+这是启发式审计，不替代人工审查或复杂语义 judge。
+```
+
+## 13. 运行 Compressed Candidate Execution
+
+该支线用 candidate_C 跑 mock agent 和可用的 OpenAI-compatible LLM agent，并使用 stricter semantic verifier 检查输出。
+
+```powershell
+python scripts\run_compressed_candidate_execution.py
+```
+
+如果要启用 RightCode GPT，需要临时设置环境变量，不要写入文件：
+
+```powershell
+$env:OPENAI_BASE_URL="https://www.right.codes/codex/v1"
+$env:OPENAI_API_KEY="<your-api-key>"
+$env:MODEL="gpt-5.5"
+python scripts\run_compressed_candidate_execution.py
+Remove-Item Env:\OPENAI_API_KEY
+Remove-Item Env:\OPENAI_BASE_URL
+Remove-Item Env:\MODEL
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\compressed_candidate_execution_001
+D:\solution\outputs\mvp_vertical_slice\semantic_verifier_001
+```
+
+当前预期观察：
+
+```text
+mock + semantic verifier: pass on case001/case002
+RightCode gpt-5.5 + semantic verifier: pass on case001/case002 when endpoint env is configured
+```
+
+边界：
+
+```text
+通过该 slice 只能说明 toy case 中 compressed wording 有语义保真迹象，不能证明通用 fixed-budget compiler。
+```

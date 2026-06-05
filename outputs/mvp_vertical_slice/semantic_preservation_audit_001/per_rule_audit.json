@@ -1,0 +1,111 @@
+[
+  {
+    "rule_id": "R001",
+    "rule_line": "Auth method, roles/scopes, and auth-failure behavior.",
+    "rule_id_present": true,
+    "has_actionable_condition": true,
+    "has_expected_finding_behavior": true,
+    "has_evidence_or_trigger_phrase": true,
+    "trigger_hits": [
+      "auth",
+      "roles",
+      "scopes",
+      "auth-failure"
+    ],
+    "not_rule_id_only": true,
+    "compressed_token_count": 13,
+    "semantic_preservation_status": "preserved"
+  },
+  {
+    "rule_id": "R002",
+    "rule_line": "Request fields: required/default, type, range, length, enum.",
+    "rule_id_present": true,
+    "has_actionable_condition": true,
+    "has_expected_finding_behavior": true,
+    "has_evidence_or_trigger_phrase": true,
+    "trigger_hits": [
+      "request",
+      "fields",
+      "required",
+      "type",
+      "range",
+      "enum"
+    ],
+    "not_rule_id_only": true,
+    "compressed_token_count": 15,
+    "semantic_preservation_status": "preserved"
+  },
+  {
+    "rule_id": "R003",
+    "rule_line": "Stable error codes for validation, auth, permission, not found, duplicate, server.",
+    "rule_id_present": true,
+    "has_actionable_condition": true,
+    "has_expected_finding_behavior": true,
+    "has_evidence_or_trigger_phrase": true,
+    "trigger_hits": [
+      "error",
+      "codes",
+      "validation",
+      "auth",
+      "duplicate",
+      "server"
+    ],
+    "not_rule_id_only": true,
+    "compressed_token_count": 20,
+    "semantic_preservation_status": "preserved"
+  },
+  {
+    "rule_id": "R004",
+    "rule_line": "No tokens, secrets, stack traces, identity, or unnecessary personal data.",
+    "rule_id_present": true,
+    "has_actionable_condition": true,
+    "has_expected_finding_behavior": true,
+    "has_evidence_or_trigger_phrase": true,
+    "trigger_hits": [
+      "tokens",
+      "secrets",
+      "stack",
+      "identity",
+      "personal"
+    ],
+    "not_rule_id_only": true,
+    "compressed_token_count": 18,
+    "semantic_preservation_status": "preserved"
+  },
+  {
+    "rule_id": "R005",
+    "rule_line": "Response envelope: code, message, request_id, data.",
+    "rule_id_present": true,
+    "has_actionable_condition": true,
+    "has_expected_finding_behavior": true,
+    "has_evidence_or_trigger_phrase": true,
+    "trigger_hits": [
+      "response",
+      "envelope",
+      "code",
+      "message",
+      "request_id",
+      "data"
+    ],
+    "not_rule_id_only": true,
+    "compressed_token_count": 13,
+    "semantic_preservation_status": "preserved"
+  },
+  {
+    "rule_id": "R006",
+    "rule_line": "Mutation idempotency or duplicate-submission handling.",
+    "rule_id_present": true,
+    "has_actionable_condition": true,
+    "has_expected_finding_behavior": true,
+    "has_evidence_or_trigger_phrase": true,
+    "trigger_hits": [
+      "mutation",
+      "idempotency",
+      "duplicate",
+      "submission"
+    ],
+    "not_rule_id_only": true,
+    "compressed_token_count": 14,
+    "semantic_preservation_status": "preserved"
+  }
+]

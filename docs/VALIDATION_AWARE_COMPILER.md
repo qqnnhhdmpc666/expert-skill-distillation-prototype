@@ -77,3 +77,39 @@ success_with_compressed_wording
 
 This means the mechanism may work when rule granularity or wording is optimized. It does not prove that the original selector naturally succeeds.
 
+## M2.2 Semantic-Preservation Audit
+
+The compressed candidate is only meaningful if it preserves executable semantics. A compact skill that only lists `R001-R006` could exploit a weak verifier that checks rule IDs rather than review quality.
+
+Current audit artifact:
+
+```text
+outputs/mvp_vertical_slice/semantic_preservation_audit_001
+```
+
+Current execution artifact:
+
+```text
+outputs/mvp_vertical_slice/compressed_candidate_execution_001
+outputs/mvp_vertical_slice/semantic_verifier_001
+```
+
+Current result:
+
+```text
+semantic_preservation_status: preserved
+mock + semantic verifier: pass on case001/case002
+RightCode gpt-5.5 + semantic verifier: pass on case001/case002
+```
+
+Interpretation:
+
+```text
+partially_supported
+```
+
+Candidate_C is not a rule-id-only shortcut in this toy slice. It contains compressed trigger/action phrases and can drive both mock and RightCode GPT outputs that pass a lightweight semantic verifier.
+
+Boundary:
+
+This does not prove a general compiler. The semantic verifier is keyword/field based, not a deep NLP judge. Compressed wording success is only meaningful if semantic-preservation and execution validation pass; otherwise, it may reflect verifier-contract weakness rather than a robust compiler.

@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Auth is underspecified: only 'requires login' is stated; roles/scopes/permissions and auth-failure behavior are not defined.",
+      "severity": "high",
+      "evidence": "Notes: 'The endpoint requires login.' No roles/scopes or 401/403 behavior documented."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request validation contract is incomplete: required/default flags, types, ranges, lengths, and enums are not fully specified.",
+      "severity": "medium",
+      "evidence": "Path parameter only says 'order_id: string'; body fields are shown by example only, with no required/default, amount range/precision, reason enum, or length constraints."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Stable error codes are incomplete for validation, auth, permission, not found, duplicate, and server cases.",
+      "severity": "high",
+      "evidence": "Error Codes table only defines 0 success and 500 system error."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes internal implementation details and unnecessary personal data.",
+      "severity": "high",
+      "evidence": "Response data includes 'internal_trace': 'RefundService.java:88' and 'customer_phone': '13800138000'."
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope is missing request_id.",
+      "severity": "medium",
+      "evidence": "Response envelope includes code, message, and data, but no request_id."
+    },
+    {
+      "rule_id": "R006",
+      "issue": "Mutation endpoint lacks idempotency or duplicate-submission handling for refund creation.",
+      "severity": "high",
+      "evidence": "POST /api/v1/orders/{order_id}/refund creates a refund request, but no idempotency key, duplicate detection, or retry behavior is specified."
+    }
+  ]
+}

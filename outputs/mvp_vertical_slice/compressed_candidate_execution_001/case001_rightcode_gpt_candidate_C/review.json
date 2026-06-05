@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Auth is underspecified: login is required but auth method, roles/scopes/ownership rules, and auth-failure behavior are not defined.",
+      "severity": "high",
+      "evidence": "Notes only state: \"The endpoint requires login.\" No bearer/session method, required scopes/roles, whether user_id must match caller/admin, or 401/403 behavior is specified."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request validation rules are incomplete for path and body fields.",
+      "severity": "medium",
+      "evidence": "Request lists user_id, display_name, phone, avatar_url but does not specify required/default status, type constraints beyond examples, ranges/lengths, format validation for phone and URL, or allowed enums."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Stable error codes are missing for common failure classes.",
+      "severity": "medium",
+      "evidence": "Error Codes table defines only 0 success and 500 server error; no validation, auth, permission, not found, or duplicate error codes are specified."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive/unnecessary data, including an access token and phone number.",
+      "severity": "high",
+      "evidence": "Response data includes \"access_token\": \"debug-token\" and returns \"phone\": \"13800138000\"; tokens/secrets must not be returned, and unnecessary personal data should be avoided."
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope is incomplete because request_id is missing.",
+      "severity": "low",
+      "evidence": "Response contains code, message, and data, but no request_id field."
+    },
+    {
+      "rule_id": "R006",
+      "issue": "Mutation idempotency or duplicate-submission handling is not specified.",
+      "severity": "medium",
+      "evidence": "Endpoint is POST /api/v1/users/{user_id}/profile for updating profile data, but there is no idempotency key, conditional update/versioning, or duplicate submission behavior described."
+    }
+  ]
+}

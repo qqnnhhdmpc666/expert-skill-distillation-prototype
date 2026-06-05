@@ -252,3 +252,59 @@ The slice supports validation-aware recompilation only with compressed wording. 
 Failure boundary:
 
 If compressed wording harms real agent behavior or loses semantic precision, then the apparent success is only token accounting, not a reliable compiler mechanism.
+
+## M2.2: Semantic-Preserving Compression Audit
+
+Hypothesis:
+
+Compressed wording can make validation-aware fixed-budget recompilation feasible only if the compressed rules preserve executable review semantics. Otherwise, the compiler may be exploiting a verifier contract that only checks rule IDs.
+
+Trigger condition:
+
+`candidate_C_compressed_required_rules` is accepted by the validation-aware compiler.
+
+Decision rule:
+
+Audit each compressed rule for:
+
+- rule ID presence,
+- actionable condition,
+- expected finding behavior,
+- evidence or trigger phrase,
+- not being rule-ID-only.
+
+Then run the candidate through mock and available OpenAI-compatible LLM execution with both the original local verifier and a stricter semantic verifier.
+
+Alternative or counterfactual:
+
+If a candidate only contains rule IDs or generic text, downgrade the conclusion to:
+
+```text
+inconclusive: current verifier contract is too weak to validate semantic compression
+```
+
+Current artifacts:
+
+- `outputs/mvp_vertical_slice/semantic_preservation_audit_001`
+- `outputs/mvp_vertical_slice/compressed_candidate_execution_001`
+- `outputs/mvp_vertical_slice/semantic_verifier_001`
+
+Current observation:
+
+```text
+semantic audit: preserved
+mock execution: semantic verifier pass on case001/case002
+RightCode gpt-5.5 execution: semantic verifier pass on case001/case002
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The compressed candidate is not a rule-ID shortcut in this toy slice. It preserves enough trigger/action semantics to drive available agents under the lightweight semantic verifier.
+
+Failure boundary:
+
+If a stricter verifier or human review finds that compressed wording causes shallow, template-like, or case-unrelated findings, then M2.2 should be downgraded to `partially_supported_for_artifact_compilation, not yet supported for LLM execution` or `inconclusive`.

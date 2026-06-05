@@ -1,0 +1,12 @@
+{
+  "run_id": "semantic_preservation_audit_001",
+  "created_at": "2026-06-05T12:51:28.372674+00:00",
+  "artifacts": [
+    "manifest.json",
+    "semantic_audit.json",
+    "semantic_audit.md",
+    "per_rule_audit.json",
+    "updated_interpretation.md"
+  ],
+  "boundary": "Heuristic audit only; not a substitute for execution validation or human review."
+}

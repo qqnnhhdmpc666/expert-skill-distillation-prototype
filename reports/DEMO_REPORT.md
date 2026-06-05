@@ -429,3 +429,53 @@ partially_supported
 ```
 
 validation-aware fixed-budget recompilation 在 toy case 中可以避免上一轮的 R003 regression，但成功依赖 compressed wording。不能说已经证明通用 compact compiler。
+## 15. Method Discovery Loop: Semantic-Preserving Compression Audit
+
+新增 M2.2 支线：
+
+```text
+D:\solution\scripts\run_semantic_preservation_audit.py
+D:\solution\scripts\verify_api_review_semantic_json.py
+D:\solution\scripts\run_compressed_candidate_execution.py
+D:\solution\outputs\mvp_vertical_slice\semantic_preservation_audit_001
+D:\solution\outputs\mvp_vertical_slice\compressed_candidate_execution_001
+D:\solution\outputs\mvp_vertical_slice\semantic_verifier_001
+```
+
+目标：
+
+```text
+验证 candidate_C_compressed_required_rules 不是 rule-id shortcut。
+```
+
+semantic audit 结果：
+
+```text
+overall_status: preserved
+R001-R006 均包含 rule_id、触发短语、可执行检查动作和输出行为约束。
+```
+
+execution validation 结果：
+
+| Agent | Case | Local Verifier | Semantic Verifier | Result |
+|---|---|---|---|---|
+| mock | case001 | pass | pass | semantic pass |
+| mock | case002 | pass | pass | semantic pass |
+| RightCode gpt-5.5 | case001 | pass | pass | semantic pass |
+| RightCode gpt-5.5 | case002 | pass | pass | semantic pass |
+
+当前结论：
+
+```text
+partially_supported
+```
+
+candidate_C 在当前 toy slice 中不是只靠 rule_id 过关；它的压缩文本保留了足够的检查语义，并能驱动 mock 和 RightCode GPT 输出通过轻量 semantic verifier。
+
+边界：
+
+```text
+semantic verifier 只是字段 + 关键词触发检查，不是深层 NLP judge。
+Compressed wording success 只有在 semantic-preservation 和 execution validation 都通过时才有意义。
+否则它可能只是 verifier-contract weakness。
+```

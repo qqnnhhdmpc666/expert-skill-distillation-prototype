@@ -158,3 +158,37 @@ toy validation-gate probe
 ```
 
 The current slice rejects a patch that resolves R005/R006 but drops R003. This supports the need for validation-gated revision, but not a mature rollback system.
+
+## 8. Semantic Preservation Diagnostics
+
+Question:
+
+```text
+Did compressed wording preserve executable review semantics, or did it only preserve rule IDs?
+```
+
+Current artifacts:
+
+```text
+outputs/mvp_vertical_slice/semantic_preservation_audit_001
+outputs/mvp_vertical_slice/compressed_candidate_execution_001
+outputs/mvp_vertical_slice/semantic_verifier_001
+```
+
+Diagnostic fields:
+
+- rule ID present.
+- actionable condition.
+- expected finding behavior.
+- evidence or trigger phrase.
+- not rule-ID-only.
+- semantic verifier pass/fail.
+- semantic errors.
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Candidate_C appears to be semantic compression in this toy slice and passes mock plus RightCode GPT execution under a lightweight semantic verifier. This is still not a deep semantic guarantee.

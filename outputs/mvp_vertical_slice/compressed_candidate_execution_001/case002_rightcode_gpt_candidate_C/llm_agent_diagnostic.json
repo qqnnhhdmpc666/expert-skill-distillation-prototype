@@ -1,0 +1,31 @@
+{
+  "agent": "api_review_llm_agent",
+  "skill": "outputs\\mvp_vertical_slice\\validation_aware_compiler_001\\candidate_skills\\candidate_C_compressed_required_rules.md",
+  "case": "data\\harbor_api_review_tasks\\api-review-002-compact-v1\\case_002_openapi.md",
+  "output": "outputs\\mvp_vertical_slice\\compressed_candidate_execution_001\\case002_rightcode_gpt_candidate_C\\review.json",
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 6,
+  "rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "usage": {
+    "prompt_tokens": 772,
+    "completion_tokens": 512,
+    "total_tokens": 1284,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 159
+    }
+  },
+  "raw_content_preview": "{\"findings\":[{\"rule_id\":\"R001\",\"issue\":\"Auth is underspecified: only 'requires login' is stated; roles/scopes/permissions and auth-failure behavior are not defined.\",\"severity\":\"high\",\"evidence\":\"Notes: 'The endpoint requires login.' No roles/scopes or 401/403 behavior documented.\"},{\"rule_id\":\"R002\",\"issue\":\"Request validation contract is incomplete: required/default flags, types, ranges, lengths, and enums are not fully specified.\",\"severity\":\"medium\",\"evidence\":\"Path parameter only says 'orde"
+}

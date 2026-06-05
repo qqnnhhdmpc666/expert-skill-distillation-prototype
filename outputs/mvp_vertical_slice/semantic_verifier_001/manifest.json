@@ -1,0 +1,8 @@
+{
+  "run_id": "semantic_verifier_001",
+  "created_at": "2026-06-05T12:49:36.398748+00:00",
+  "artifacts": [
+    "summary.json"
+  ],
+  "boundary": "Semantic verifier output for compressed candidate execution."
+}
