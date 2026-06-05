@@ -582,3 +582,62 @@ structured skill-to-agent protocol 在当前 toy case 中能区分 rule-id short
 这不是通用 agent protocol，也不证明真实复杂任务正确性。
 它是 M5 的最小机制探针。
 ```
+## 15. 最新进展：Traceable Compact Compiler Integration
+
+新增 M2/M3/M5 integration 文档、脚本和输出：
+
+```text
+D:\solution\docs\TRACEABLE_COMPACT_COMPILER.md
+D:\solution\scripts\run_traceable_compiler_integration.py
+D:\solution\outputs\mvp_vertical_slice\traceable_compiler_integration_001
+```
+
+这一步不是新增机制候选，而是把已有三条线合并：
+
+```text
+M2 fixed-budget rule selection / compression
+M3 validation gate / rollback
+M5 skill-to-agent invocation protocol / trace verifier
+```
+
+统一后的部署产物是：
+
+```text
+compact skill rules
++ invocation protocol
++ trace verifier contract
+```
+
+四组对比结果：
+
+```text
+A plain compact skill:
+  simple/semantic/trace 均失败，missing R005/R006
+
+B compressed compact skill:
+  simple/semantic 通过
+  trace 失败
+
+C compressed compact skill + protocol:
+  simple/semantic/trace 通过
+  但 token 总成本 300 / 237，超预算
+
+D compressed compact skill + protocol + validation gate:
+  trace 通过
+  但被 gate 正确 reject_over_budget
+```
+
+当前结论：
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+意义：
+
+- trace verifier 可以阻止 shallow output / rule-id shortcut。
+- protocol 让 agent 暴露 rule_application trace，有助于证明规则确实被应用。
+- 但当前 protocol overhead 不可忽略，不能直接说已经得到低成本部署版本。
+- validation gate 拒绝超预算 candidate 是成熟表现，而不是失败。
+
+下一步如果继续该线，优先不是新增机制，而是压缩/外置/摊销 invocation protocol，让 traceability 变得更便宜。

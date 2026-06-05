@@ -1,0 +1,153 @@
+{
+  "variant_id": "A_plain_compact_skill",
+  "skill_path": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
+  "rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "token_budget": 237,
+  "skill_tokens": 265,
+  "protocol_tokens": 0,
+  "total_tokens": 265,
+  "protocol_overhead_tokens": 0,
+  "protocol_overhead_ratio": 0.0,
+  "include_protocol": false,
+  "include_gate": false,
+  "generated_findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication is underspecified.",
+      "severity": "high",
+      "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R002",
+      "issue": "Request validation rules are incomplete.",
+      "severity": "high",
+      "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R003",
+      "issue": "Error code coverage is incomplete.",
+      "severity": "high",
+      "evidence": "Error table only includes success and server/system error."
+    },
+    {
+      "id": "F4",
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive or internal information.",
+      "severity": "high",
+      "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+    }
+  ],
+  "generated_rule_applications": [],
+  "regression_detected": true,
+  "simple_verifier_result": {
+    "passed": false,
+    "reward": 0.0,
+    "failure_type": "missing_rule",
+    "missing_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "message": "missing expected findings for R005 R006"
+  },
+  "semantic_verifier_result": {
+    "passed": false,
+    "reward": 0.0,
+    "failure_type": "missing_rule",
+    "missing_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "semantic_errors": [
+      "missing expected findings for R005 R006"
+    ],
+    "per_finding": [
+      {
+        "index": 0,
+        "rule_id": "R001",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 1,
+        "rule_id": "R002",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 2,
+        "rule_id": "R003",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 3,
+        "rule_id": "R004",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      }
+    ],
+    "message": "missing expected findings for R005 R006"
+  },
+  "trace_verifier_result": {
+    "passed": false,
+    "reward": 0.0,
+    "failure_type": "rule_application_trace_error",
+    "missing_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "missing_application_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "trace_errors": [
+      "rule_applications must be a list",
+      "finding F1 has no supporting rule_application",
+      "finding F2 has no supporting rule_application",
+      "finding F3 has no supporting rule_application",
+      "finding F4 has no supporting rule_application",
+      "missing findings for R005 R006",
+      "missing rule_applications for R001 R002 R003 R004 R005 R006"
+    ],
+    "seen_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "application_rule_ids": [],
+    "message": "rule_applications must be a list; finding F1 has no supporting rule_application; finding F2 has no supporting rule_application; finding F3 has no supporting rule_application; finding F4 has no supporting rule_application; missing findings for R005 R006; missing rule_applications for R001 R002 R003 R004 R005 R006"
+  },
+  "simple_verifier_passed": false,
+  "semantic_verifier_passed": false,
+  "trace_verifier_passed": false,
+  "gate_enabled": false,
+  "accepted_by_gate": null,
+  "over_budget": true,
+  "decision": "not_gated",
+  "reason": "Validation gate is not enabled for this variant."
+}

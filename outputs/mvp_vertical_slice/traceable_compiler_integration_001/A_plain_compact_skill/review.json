@@ -1,0 +1,32 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication is underspecified.",
+      "severity": "high",
+      "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R002",
+      "issue": "Request validation rules are incomplete.",
+      "severity": "high",
+      "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R003",
+      "issue": "Error code coverage is incomplete.",
+      "severity": "high",
+      "evidence": "Error table only includes success and server/system error."
+    },
+    {
+      "id": "F4",
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive or internal information.",
+      "severity": "high",
+      "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+    }
+  ]
+}

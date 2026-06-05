@@ -1,0 +1,772 @@
+[
+  {
+    "variant_id": "A_plain_compact_skill",
+    "skill_path": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
+    "rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "token_budget": 237,
+    "skill_tokens": 265,
+    "protocol_tokens": 0,
+    "total_tokens": 265,
+    "protocol_overhead_tokens": 0,
+    "protocol_overhead_ratio": 0.0,
+    "include_protocol": false,
+    "include_gate": false,
+    "generated_findings": [
+      {
+        "id": "F1",
+        "rule_id": "R001",
+        "issue": "Authentication is underspecified.",
+        "severity": "high",
+        "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+      },
+      {
+        "id": "F2",
+        "rule_id": "R002",
+        "issue": "Request validation rules are incomplete.",
+        "severity": "high",
+        "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+      },
+      {
+        "id": "F3",
+        "rule_id": "R003",
+        "issue": "Error code coverage is incomplete.",
+        "severity": "high",
+        "evidence": "Error table only includes success and server/system error."
+      },
+      {
+        "id": "F4",
+        "rule_id": "R004",
+        "issue": "Response exposes sensitive or internal information.",
+        "severity": "high",
+        "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+      }
+    ],
+    "generated_rule_applications": [],
+    "regression_detected": true,
+    "simple_verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "missing_rule",
+      "missing_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "message": "missing expected findings for R005 R006"
+    },
+    "semantic_verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "missing_rule",
+      "missing_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "semantic_errors": [
+        "missing expected findings for R005 R006"
+      ],
+      "per_finding": [
+        {
+          "index": 0,
+          "rule_id": "R001",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 1,
+          "rule_id": "R002",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 2,
+          "rule_id": "R003",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 3,
+          "rule_id": "R004",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        }
+      ],
+      "message": "missing expected findings for R005 R006"
+    },
+    "trace_verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "rule_application_trace_error",
+      "missing_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "missing_application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "trace_errors": [
+        "rule_applications must be a list",
+        "finding F1 has no supporting rule_application",
+        "finding F2 has no supporting rule_application",
+        "finding F3 has no supporting rule_application",
+        "finding F4 has no supporting rule_application",
+        "missing findings for R005 R006",
+        "missing rule_applications for R001 R002 R003 R004 R005 R006"
+      ],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "application_rule_ids": [],
+      "message": "rule_applications must be a list; finding F1 has no supporting rule_application; finding F2 has no supporting rule_application; finding F3 has no supporting rule_application; finding F4 has no supporting rule_application; missing findings for R005 R006; missing rule_applications for R001 R002 R003 R004 R005 R006"
+    },
+    "simple_verifier_passed": false,
+    "semantic_verifier_passed": false,
+    "trace_verifier_passed": false,
+    "gate_enabled": false,
+    "accepted_by_gate": null,
+    "over_budget": true,
+    "decision": "not_gated",
+    "reason": "Validation gate is not enabled for this variant."
+  },
+  {
+    "variant_id": "B_compressed_compact_skill",
+    "skill_path": "outputs\\mvp_vertical_slice\\validation_aware_compiler_001\\candidate_skills\\candidate_C_compressed_required_rules.md",
+    "rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "token_budget": 237,
+    "skill_tokens": 195,
+    "protocol_tokens": 0,
+    "total_tokens": 195,
+    "protocol_overhead_tokens": 0,
+    "protocol_overhead_ratio": 0.0,
+    "include_protocol": false,
+    "include_gate": false,
+    "generated_findings": [
+      {
+        "id": "F1",
+        "rule_id": "R001",
+        "issue": "Authentication is underspecified.",
+        "severity": "high",
+        "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+      },
+      {
+        "id": "F2",
+        "rule_id": "R002",
+        "issue": "Request validation rules are incomplete.",
+        "severity": "high",
+        "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+      },
+      {
+        "id": "F3",
+        "rule_id": "R003",
+        "issue": "Error code coverage is incomplete.",
+        "severity": "high",
+        "evidence": "Error table only includes success and server/system error."
+      },
+      {
+        "id": "F4",
+        "rule_id": "R004",
+        "issue": "Response exposes sensitive or internal information.",
+        "severity": "high",
+        "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+      },
+      {
+        "id": "F5",
+        "rule_id": "R005",
+        "issue": "Response envelope lacks request_id.",
+        "severity": "medium",
+        "evidence": "Response contains code, message, and data but no request_id."
+      },
+      {
+        "id": "F6",
+        "rule_id": "R006",
+        "issue": "Mutation endpoint does not document idempotency or duplicate submission behavior.",
+        "severity": "medium",
+        "evidence": "POST endpoint notes do not describe idempotency or duplicate handling."
+      }
+    ],
+    "generated_rule_applications": [],
+    "regression_detected": false,
+    "simple_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "message": "review.json covers required rule ids R001-R006"
+    },
+    "semantic_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "semantic_errors": [],
+      "per_finding": [
+        {
+          "index": 0,
+          "rule_id": "R001",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 1,
+          "rule_id": "R002",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 2,
+          "rule_id": "R003",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 3,
+          "rule_id": "R004",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 4,
+          "rule_id": "R005",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 5,
+          "rule_id": "R006",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        }
+      ],
+      "message": "semantic verifier passed"
+    },
+    "trace_verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "rule_application_trace_error",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "trace_errors": [
+        "rule_applications must be a list",
+        "finding F1 has no supporting rule_application",
+        "finding F2 has no supporting rule_application",
+        "finding F3 has no supporting rule_application",
+        "finding F4 has no supporting rule_application",
+        "finding F5 has no supporting rule_application",
+        "finding F6 has no supporting rule_application",
+        "missing rule_applications for R001 R002 R003 R004 R005 R006"
+      ],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [],
+      "message": "rule_applications must be a list; finding F1 has no supporting rule_application; finding F2 has no supporting rule_application; finding F3 has no supporting rule_application; finding F4 has no supporting rule_application; finding F5 has no supporting rule_application; finding F6 has no supporting rule_application; missing rule_applications for R001 R002 R003 R004 R005 R006"
+    },
+    "simple_verifier_passed": true,
+    "semantic_verifier_passed": true,
+    "trace_verifier_passed": false,
+    "gate_enabled": false,
+    "accepted_by_gate": null,
+    "over_budget": false,
+    "decision": "not_gated",
+    "reason": "Validation gate is not enabled for this variant."
+  },
+  {
+    "variant_id": "C_compressed_plus_protocol",
+    "skill_path": "outputs\\mvp_vertical_slice\\skill_to_agent_loop_001\\skill_variants\\protocolized_compressed_skill.md",
+    "rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "token_budget": 237,
+    "skill_tokens": 140,
+    "protocol_tokens": 160,
+    "total_tokens": 300,
+    "protocol_overhead_tokens": 160,
+    "protocol_overhead_ratio": 1.1429,
+    "include_protocol": true,
+    "include_gate": false,
+    "generated_findings": [
+      {
+        "id": "F1",
+        "rule_id": "R001",
+        "issue": "Authentication is underspecified.",
+        "severity": "high",
+        "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+      },
+      {
+        "id": "F2",
+        "rule_id": "R002",
+        "issue": "Request validation rules are incomplete.",
+        "severity": "high",
+        "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+      },
+      {
+        "id": "F3",
+        "rule_id": "R003",
+        "issue": "Error code coverage is incomplete.",
+        "severity": "high",
+        "evidence": "Error table only includes success and server/system error."
+      },
+      {
+        "id": "F4",
+        "rule_id": "R004",
+        "issue": "Response exposes sensitive or internal information.",
+        "severity": "high",
+        "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+      },
+      {
+        "id": "F5",
+        "rule_id": "R005",
+        "issue": "Response envelope lacks request_id.",
+        "severity": "medium",
+        "evidence": "Response contains code, message, and data but no request_id."
+      },
+      {
+        "id": "F6",
+        "rule_id": "R006",
+        "issue": "Mutation endpoint does not document idempotency or duplicate submission behavior.",
+        "severity": "medium",
+        "evidence": "POST endpoint notes do not describe idempotency or duplicate handling."
+      }
+    ],
+    "generated_rule_applications": [
+      {
+        "rule_id": "R001",
+        "applicable": true,
+        "trigger_condition_found": "login requirement without roles/scopes/auth failure behavior",
+        "evidence_span": "The endpoint requires login.",
+        "finding_id": "F1",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R002",
+        "applicable": true,
+        "trigger_condition_found": "request fields lack validation constraints",
+        "evidence_span": "Request body lists fields but no required/type/range/enum constraints.",
+        "finding_id": "F2",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R003",
+        "applicable": true,
+        "trigger_condition_found": "error codes do not cover validation, auth, duplicate, and server classes",
+        "evidence_span": "Error Codes table only defines 0 and 500.",
+        "finding_id": "F3",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R004",
+        "applicable": true,
+        "trigger_condition_found": "sensitive response data is present",
+        "evidence_span": "Response data contains token/trace/phone-like fields.",
+        "finding_id": "F4",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R005",
+        "applicable": true,
+        "trigger_condition_found": "response envelope missing request_id",
+        "evidence_span": "Response JSON has code, message, data.",
+        "finding_id": "F5",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R006",
+        "applicable": true,
+        "trigger_condition_found": "mutation endpoint lacks idempotency/duplicate handling",
+        "evidence_span": "Endpoint uses POST.",
+        "finding_id": "F6",
+        "confidence": "medium"
+      }
+    ],
+    "regression_detected": false,
+    "simple_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "message": "review.json covers required rule ids R001-R006"
+    },
+    "semantic_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "semantic_errors": [],
+      "per_finding": [
+        {
+          "index": 0,
+          "rule_id": "R001",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 1,
+          "rule_id": "R002",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 2,
+          "rule_id": "R003",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 3,
+          "rule_id": "R004",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 4,
+          "rule_id": "R005",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 5,
+          "rule_id": "R006",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        }
+      ],
+      "message": "semantic verifier passed"
+    },
+    "trace_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "trace verifier passed"
+    },
+    "simple_verifier_passed": true,
+    "semantic_verifier_passed": true,
+    "trace_verifier_passed": true,
+    "gate_enabled": false,
+    "accepted_by_gate": null,
+    "over_budget": true,
+    "decision": "not_gated",
+    "reason": "Validation gate is not enabled for this variant."
+  },
+  {
+    "variant_id": "D_compressed_plus_protocol_plus_gate",
+    "skill_path": "outputs\\mvp_vertical_slice\\skill_to_agent_loop_001\\skill_variants\\protocolized_compressed_skill.md",
+    "rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "token_budget": 237,
+    "skill_tokens": 140,
+    "protocol_tokens": 160,
+    "total_tokens": 300,
+    "protocol_overhead_tokens": 160,
+    "protocol_overhead_ratio": 1.1429,
+    "include_protocol": true,
+    "include_gate": true,
+    "generated_findings": [
+      {
+        "id": "F1",
+        "rule_id": "R001",
+        "issue": "Authentication is underspecified.",
+        "severity": "high",
+        "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+      },
+      {
+        "id": "F2",
+        "rule_id": "R002",
+        "issue": "Request validation rules are incomplete.",
+        "severity": "high",
+        "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+      },
+      {
+        "id": "F3",
+        "rule_id": "R003",
+        "issue": "Error code coverage is incomplete.",
+        "severity": "high",
+        "evidence": "Error table only includes success and server/system error."
+      },
+      {
+        "id": "F4",
+        "rule_id": "R004",
+        "issue": "Response exposes sensitive or internal information.",
+        "severity": "high",
+        "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+      },
+      {
+        "id": "F5",
+        "rule_id": "R005",
+        "issue": "Response envelope lacks request_id.",
+        "severity": "medium",
+        "evidence": "Response contains code, message, and data but no request_id."
+      },
+      {
+        "id": "F6",
+        "rule_id": "R006",
+        "issue": "Mutation endpoint does not document idempotency or duplicate submission behavior.",
+        "severity": "medium",
+        "evidence": "POST endpoint notes do not describe idempotency or duplicate handling."
+      }
+    ],
+    "generated_rule_applications": [
+      {
+        "rule_id": "R001",
+        "applicable": true,
+        "trigger_condition_found": "login requirement without roles/scopes/auth failure behavior",
+        "evidence_span": "The endpoint requires login.",
+        "finding_id": "F1",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R002",
+        "applicable": true,
+        "trigger_condition_found": "request fields lack validation constraints",
+        "evidence_span": "Request body lists fields but no required/type/range/enum constraints.",
+        "finding_id": "F2",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R003",
+        "applicable": true,
+        "trigger_condition_found": "error codes do not cover validation, auth, duplicate, and server classes",
+        "evidence_span": "Error Codes table only defines 0 and 500.",
+        "finding_id": "F3",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R004",
+        "applicable": true,
+        "trigger_condition_found": "sensitive response data is present",
+        "evidence_span": "Response data contains token/trace/phone-like fields.",
+        "finding_id": "F4",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R005",
+        "applicable": true,
+        "trigger_condition_found": "response envelope missing request_id",
+        "evidence_span": "Response JSON has code, message, data.",
+        "finding_id": "F5",
+        "confidence": "medium"
+      },
+      {
+        "rule_id": "R006",
+        "applicable": true,
+        "trigger_condition_found": "mutation endpoint lacks idempotency/duplicate handling",
+        "evidence_span": "Endpoint uses POST.",
+        "finding_id": "F6",
+        "confidence": "medium"
+      }
+    ],
+    "regression_detected": false,
+    "simple_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "message": "review.json covers required rule ids R001-R006"
+    },
+    "semantic_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "semantic_errors": [],
+      "per_finding": [
+        {
+          "index": 0,
+          "rule_id": "R001",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 1,
+          "rule_id": "R002",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 2,
+          "rule_id": "R003",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 3,
+          "rule_id": "R004",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 4,
+          "rule_id": "R005",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        },
+        {
+          "index": 5,
+          "rule_id": "R006",
+          "field_ok": true,
+          "has_rule_trigger": true,
+          "has_case_related_trigger": true,
+          "template_like": false,
+          "semantic_ok": true
+        }
+      ],
+      "message": "semantic verifier passed"
+    },
+    "trace_verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "trace verifier passed"
+    },
+    "simple_verifier_passed": true,
+    "semantic_verifier_passed": true,
+    "trace_verifier_passed": true,
+    "gate_enabled": true,
+    "accepted_by_gate": false,
+    "over_budget": true,
+    "decision": "reject_over_budget",
+    "reason": "Candidate exceeds fixed token budget."
+  }
+]

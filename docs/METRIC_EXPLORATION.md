@@ -223,3 +223,45 @@ partially_supported
 ```
 
 The trace verifier separates protocolized compressed skill from plain compressed or rule-id shortcut outputs in this toy slice. This is a diagnostic for skill invocation quality, not a final correctness metric.
+
+## 10. Traceable Compilation Integration Diagnostics
+
+Question:
+
+```text
+Can compact skill compilation produce not only rules, but also an invocation protocol and trace verifier contract that survive validation?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/traceable_compiler_integration_001
+```
+
+Diagnostic fields:
+
+- skill token cost.
+- protocol token cost.
+- total token cost.
+- simple verifier result.
+- semantic verifier result.
+- trace verifier result.
+- regression detected.
+- accepted by validation gate.
+- generated findings.
+- generated rule applications.
+
+Current interpretation:
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+The protocolized variant passes trace verification and blocks shallow rule-id-only behavior, but its protocol overhead currently pushes the total prompt above the fixed token budget. The validation gate correctly rejects that candidate under the current constraint.
+
+This should be read as a diagnostic result:
+
+- Traceability improves verifier contract strength.
+- Traceability has a real deployment cost.
+- A mature compact compiler must optimize both rule wording and protocol wording.
+- Passing trace verification is not sufficient if the compiled artifact exceeds budget.

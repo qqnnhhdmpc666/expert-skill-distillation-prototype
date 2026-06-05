@@ -136,3 +136,32 @@ Near-term platform implication:
 - Candidate generation and validation results should remain explicit artifacts.
 - Infeasible outcomes should be first-class outputs, not hidden errors.
 - Compression should be labeled separately from ordinary selection success.
+
+## Traceable Compiler Integration
+
+The latest integration slice connects `PatchCompiler`, `ValidationGate`, `InvocationProtocol`, and `TraceVerifier` into one deployment loop.
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/traceable_compiler_integration_001
+```
+
+Platform implication:
+
+- A deployable compact skill should be represented as rules plus protocol plus verifier contract.
+- Token accounting must include both rule tokens and protocol tokens.
+- Validation should reject candidates that pass trace verification but exceed the deployment budget.
+- Trace verification should remain separate from simple rule-id coverage, because it catches shallow outputs that simple coverage misses.
+
+Current status:
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+Near-term engineering direction:
+
+- Compress the invocation protocol.
+- Explore whether a stable protocol contract can be cached or amortized outside per-call prompt tokens.
+- Keep over-budget rejection as a valid outcome rather than silently accepting an expensive artifact.

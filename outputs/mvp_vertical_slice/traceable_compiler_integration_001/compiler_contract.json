@@ -1,0 +1,10 @@
+{
+  "deployment_artifact_parts": [
+    "compact skill rules",
+    "invocation protocol",
+    "trace verifier contract"
+  ],
+  "m2_role": "fixed-budget rule selection / compression",
+  "m3_role": "patch accept / reject / rollback",
+  "m5_role": "agent rule-application trace verification"
+}

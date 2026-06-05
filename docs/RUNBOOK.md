@@ -518,3 +518,54 @@ protocolized_compressed_skill:
 ```text
 这是 M5 的 toy protocol probe，不能证明真实复杂任务正确性或通用 agent protocol。
 ```
+## 15. 运行 Traceable Compact Compiler Integration
+
+该支线用于把 M2 fixed-budget compiler、M3 validation gate 和 M5 skill-to-agent protocol 接成一个统一检查链路：
+
+```powershell
+python scripts\run_traceable_compiler_integration.py
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\traceable_compiler_integration_001
+```
+
+关键检查：
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\traceable_compiler_integration_001\summary.md
+Get-Content outputs\mvp_vertical_slice\traceable_compiler_integration_001\variant_results.json
+Get-Content outputs\mvp_vertical_slice\traceable_compiler_integration_001\compiler_contract.json
+```
+
+当前预期观察：
+
+```text
+plain compact skill:
+  fails coverage and trace verification
+
+compressed compact skill:
+  passes simple/semantic verification
+  fails trace verification
+
+compressed compact skill + protocol:
+  passes trace verification
+  exceeds fixed token budget
+
+compressed compact skill + protocol + validation gate:
+  rejected as over budget
+```
+
+当前结论：
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+边界：
+
+```text
+这不是通用 compiler 证明。它说明 trace verifier 能阻止 shallow output / rule-id shortcut，但当前 protocol overhead 仍然太高，validation gate 拒绝部署是合理结果。
+```

@@ -96,3 +96,39 @@ Do not claim:
 - a general agent protocol is proven,
 - or this replaces trajectory-level verification.
 
+## Integration With Compact Compilation
+
+M5 is now integrated with M2 and M3 in:
+
+```text
+outputs/mvp_vertical_slice/traceable_compiler_integration_001
+```
+
+The integrated deployment artifact is no longer just:
+
+```text
+compact_skill.md
+```
+
+It is:
+
+```text
+compact skill rules
++ invocation protocol
++ trace verifier contract
+```
+
+Current finding:
+
+- Plain compressed skill can pass simple/semantic verification but still fail trace verification.
+- Protocolized compressed skill can pass trace verification.
+- The current protocol adds enough tokens to exceed the fixed budget.
+- The validation gate therefore rejects the protocolized candidate under the current constraint.
+
+Conservative interpretation:
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+The protocol is useful as a verifier contract, but it must be compressed or amortized before it can be treated as a low-cost deployment layer.

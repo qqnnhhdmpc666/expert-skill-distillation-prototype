@@ -1,0 +1,51 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "missing_rule",
+  "missing_rule_ids": [
+    "R005",
+    "R006"
+  ],
+  "semantic_errors": [
+    "missing expected findings for R005 R006"
+  ],
+  "per_finding": [
+    {
+      "index": 0,
+      "rule_id": "R001",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 1,
+      "rule_id": "R002",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 2,
+      "rule_id": "R003",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 3,
+      "rule_id": "R004",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    }
+  ],
+  "message": "missing expected findings for R005 R006"
+}

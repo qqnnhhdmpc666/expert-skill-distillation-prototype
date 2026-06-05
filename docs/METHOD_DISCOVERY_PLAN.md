@@ -370,3 +370,48 @@ Structured skill-to-agent protocol helps distinguish semantic rule use from rule
 Failure boundary:
 
 If the protocol only adds output fields without reducing false positives/shortcut behavior, or if token overhead becomes too high, M5 remains an engineering constraint rather than a useful mechanism.
+
+## M2/M3/M5 Integration: Traceable Compact Compiler
+
+Current integration artifact:
+
+```text
+outputs/mvp_vertical_slice/traceable_compiler_integration_001
+```
+
+The integration step does not introduce another mechanism candidate. It combines the already explored parts into one compilation loop:
+
+```text
+M2 fixed-budget selection/compression
+-> M5 invocation protocol and trace contract
+-> M3 validation gate
+-> accept / reject / rollback / over-budget decision
+```
+
+Compared variants:
+
+- A: plain compact skill.
+- B: compressed compact skill.
+- C: compressed compact skill + invocation protocol.
+- D: compressed compact skill + invocation protocol + validation gate.
+
+Current observation:
+
+```text
+A fails coverage and trace verification.
+B passes simple and semantic verification, but fails trace verification.
+C passes simple, semantic, and trace verification, but exceeds the fixed token budget.
+D correctly rejects the protocolized candidate because it is over budget.
+```
+
+Current interpretation:
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+The trace verifier can block shallow output and rule-id shortcut behavior in this toy integration slice. However, the current invocation protocol adds substantial token overhead, so the validation gate should reject it under the fixed budget.
+
+Failure boundary:
+
+If future protocol compression cannot reduce overhead, this remains a useful diagnostic layer rather than a deployable compact compiler. Do not claim general correctness or a mature compiler.

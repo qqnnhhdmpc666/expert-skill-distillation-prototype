@@ -132,3 +132,47 @@ outputs/mvp_vertical_slice/skill_to_agent_loop_001
 ```
 
 This matters because a compressed skill can preserve semantics in text but still be used shallowly by an agent. The protocol requires the agent to expose how each rule is applied to the input evidence.
+
+## M2/M3/M5 Integration Result
+
+The next integration step combines validation-aware compression with the skill-to-agent protocol:
+
+```text
+compact rule selection / compression
+-> invocation protocol
+-> trace verifier contract
+-> validation gate
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/traceable_compiler_integration_001
+```
+
+Key result:
+
+```text
+compressed compact skill:
+  passes simple and semantic verification
+  fails trace verification
+
+compressed compact skill + protocol:
+  passes simple, semantic, and trace verification
+  exceeds the fixed token budget
+
+compressed compact skill + protocol + validation gate:
+  rejected as over budget
+```
+
+Interpretation:
+
+```text
+partially_supported_with_protocol_overhead
+```
+
+Validation-aware compilation cannot only optimize compact rule text. Once the deployment artifact includes an invocation protocol and trace verifier contract, protocol tokens become part of the budget. In this toy slice, traceability is useful but not yet cheap enough under the fixed budget.
+
+Boundary:
+
+This does not invalidate the compressed-rule result. It narrows the claim: compressed wording can make rule coverage feasible, but traceable deployment currently requires either protocol compression, a larger budget, or amortizing the protocol outside the per-call prompt.
