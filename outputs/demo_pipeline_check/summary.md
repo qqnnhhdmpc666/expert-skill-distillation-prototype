@@ -1,11 +1,10 @@
 # Demo Pipeline Check
 
-- Mode: `rerun-light`
-- Generated at: `2026-06-05T06:28:01.350513+00:00`
+- Mode: `check-existing`
+- Generated at: `2026-06-05T10:12:40.083894+00:00`
 
 | Item | Status | Message |
 |---|---|---|
-| rerun_light | ok | light rerun finished |
 | baseline_001 | ok | baseline comparison checked |
 | harbor_api_review_001 | ok | feedback run checked |
 | harbor_api_review_002 | ok | feedback run checked |
