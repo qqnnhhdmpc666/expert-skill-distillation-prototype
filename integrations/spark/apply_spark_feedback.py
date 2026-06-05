@@ -232,7 +232,7 @@ def render_spark_feedback_report(cost_summary: dict[str, Any], spark_report: dic
         else "This run demonstrates the structural bridge from SPARK-compatible execution feedback to rule-level compact skill repair. The failure input is currently a fixture, so this proves interface behavior rather than real-task effectiveness."
     )
     interpretation = (
-        "A real Harbor verifier failure now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing the oracle solution with a real LLM agent."
+        "A real Harbor verifier failure now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing controlled execution with a real LLM agent."
         if is_harbor
         else "SPARK-compatible feedback now changes the rule ledger and therefore changes the generated compact skill. The next step is replacing the fixture with a real Harbor API-review task."
     )

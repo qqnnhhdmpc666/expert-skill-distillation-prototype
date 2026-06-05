@@ -1,0 +1,141 @@
+[
+  {
+    "rule_id": "R001",
+    "rule_text": "Every API endpoint must document authentication method and authorization boundary.",
+    "category": "auth",
+    "priority": "high",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Authentication, line 3",
+      "historical_review_comments.md:Example 1: Missing Authorization Boundary, line 3",
+      "review_checklist.md:API Review Checklist, line 3"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_keep",
+    "decision_v1": "keep",
+    "decision_v2": "keep",
+    "decision_reason_v1": "High-priority supported rule retained in compact v1.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  },
+  {
+    "rule_id": "R002",
+    "rule_text": "Each request field must define required/optional status, type, range, length, and enum constraints.",
+    "category": "input_validation",
+    "priority": "high",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Input Validation, line 7",
+      "historical_review_comments.md:Example 1: Missing Authorization Boundary, line 5",
+      "review_checklist.md:API Review Checklist, line 5"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_keep",
+    "decision_v1": "keep",
+    "decision_v2": "keep",
+    "decision_reason_v1": "High-priority supported rule retained in compact v1.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  },
+  {
+    "rule_id": "R003",
+    "rule_text": "APIs should provide stable error codes for success, invalid input, unauthorized, forbidden, not found, duplicate request, and server failure.",
+    "category": "error_codes",
+    "priority": "high",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Error Codes, line 11",
+      "historical_review_comments.md:Example 2: Error Codes Too Vague, line 7",
+      "review_checklist.md:API Review Checklist, line 7"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_keep",
+    "decision_v1": "keep",
+    "decision_v2": "keep",
+    "decision_reason_v1": "High-priority supported rule retained in compact v1.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  },
+  {
+    "rule_id": "R004",
+    "rule_text": "API responses must not expose tokens, raw secrets, internal stack traces, full identity numbers, or unnecessary personal data.",
+    "category": "sensitive_data",
+    "priority": "high",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Sensitive Data, line 15",
+      "historical_review_comments.md:Example 3: Sensitive Field Exposure, line 11",
+      "review_checklist.md:API Review Checklist, line 8"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_keep",
+    "decision_v1": "keep",
+    "decision_v2": "keep",
+    "decision_reason_v1": "High-priority supported rule retained in compact v1.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  },
+  {
+    "rule_id": "R005",
+    "rule_text": "Responses should use a consistent envelope with code, message, request_id, and data.",
+    "category": "response_format",
+    "priority": "medium",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Response Envelope, line 19",
+      "historical_review_comments.md:Example 4: Good Pattern, line 17"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_drop",
+    "decision_v1": "drop",
+    "decision_v2": "drop",
+    "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  },
+  {
+    "rule_id": "R006",
+    "rule_text": "POST, PUT, and PATCH endpoints should explain idempotency or duplicate submission behavior.",
+    "category": "idempotency",
+    "priority": "medium",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Error Codes, line 13",
+      "historical_review_comments.md:Example 2: Error Codes Too Vague, line 9",
+      "review_checklist.md:API Review Checklist, line 10"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_drop",
+    "decision_v1": "drop",
+    "decision_v2": "drop",
+    "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  },
+  {
+    "rule_id": "R007",
+    "rule_text": "APIs should expose request_id or equivalent trace metadata and document key audit logging requirements.",
+    "category": "observability",
+    "priority": "medium",
+    "source": "material_seed",
+    "material_evidence": [
+      "api_design_guidelines.md:Response Envelope, line 21",
+      "historical_review_comments.md:Example 4: Good Pattern, line 17",
+      "review_checklist.md:API Review Checklist, line 11"
+    ],
+    "material_status": "supported",
+    "execution_status": "not_observed",
+    "cost_status": "compact_drop",
+    "decision_v1": "drop",
+    "decision_v2": "drop",
+    "decision_reason_v1": "Dropped from compact v1 to keep initial invocation lightweight; can be patched back by execution evidence.",
+    "decision_reason_v2": "Reset to v1 decision before applying SPARK-compatible feedback.",
+    "patches": []
+  }
+]

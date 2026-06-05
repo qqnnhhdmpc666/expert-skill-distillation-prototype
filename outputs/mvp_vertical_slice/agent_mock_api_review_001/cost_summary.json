@@ -1,0 +1,37 @@
+{
+  "token_estimator": "round(characters / 4)",
+  "full_skill_tokens": 1330,
+  "compact_skill_v1_tokens": 265,
+  "compact_skill_v2_from_spark_tokens": 315,
+  "compression_ratio_v1": 0.199,
+  "compression_ratio_v2_from_spark": 0.237,
+  "spark_execution": {
+    "passed": false,
+    "failure_type": "missing_rule",
+    "affected_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "patch_ready": true,
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_time_s": 73.287
+  },
+  "validation_gate": {
+    "gate": "spark_feedback_validation_gate_v0",
+    "accepted": true,
+    "max_token_increase_ratio": 0.3,
+    "compact_skill_v1_tokens": 265,
+    "candidate_compact_skill_v2_tokens": 315,
+    "token_increase_ratio": 0.189,
+    "affected_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "affected_rules_present": true,
+    "within_budget": true,
+    "reasons": [
+      "Patch accepted: affected rules are present and token increase is within budget."
+    ]
+  }
+}

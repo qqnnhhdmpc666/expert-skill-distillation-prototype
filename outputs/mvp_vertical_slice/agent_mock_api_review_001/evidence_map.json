@@ -1,0 +1,179 @@
+[
+  {
+    "rule_id": "R001",
+    "rule_text": "Every API endpoint must document authentication method and authorization boundary.",
+    "category": "auth",
+    "priority": "high",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Authentication, line 3",
+        "quote": "## Authentication"
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 1: Missing Authorization Boundary, line 3",
+        "quote": "## Example 1: Missing Authorization Boundary"
+      },
+      {
+        "source_id": "review_checklist.md",
+        "location": "API Review Checklist, line 3",
+        "quote": "- Confirm authentication method is explicit."
+      }
+    ]
+  },
+  {
+    "rule_id": "R002",
+    "rule_text": "Each request field must define required/optional status, type, range, length, and enum constraints.",
+    "category": "input_validation",
+    "priority": "high",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Input Validation, line 7",
+        "quote": "## Input Validation"
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 1: Missing Authorization Boundary, line 5",
+        "quote": "The endpoint says \"login required\" but does not say whether ordinary users, admins, or service accounts may call it. The design should specify roles or scopes, not just authentication."
+      },
+      {
+        "source_id": "review_checklist.md",
+        "location": "API Review Checklist, line 5",
+        "quote": "- Confirm required and optional request fields are documented."
+      }
+    ]
+  },
+  {
+    "rule_id": "R003",
+    "rule_text": "APIs should provide stable error codes for success, invalid input, unauthorized, forbidden, not found, duplicate request, and server failure.",
+    "category": "error_codes",
+    "priority": "high",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Error Codes, line 11",
+        "quote": "## Error Codes"
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 2: Error Codes Too Vague, line 7",
+        "quote": "## Example 2: Error Codes Too Vague"
+      },
+      {
+        "source_id": "review_checklist.md",
+        "location": "API Review Checklist, line 7",
+        "quote": "- Confirm error code coverage includes validation, auth, permission, not found, duplicate, and server errors."
+      }
+    ]
+  },
+  {
+    "rule_id": "R004",
+    "rule_text": "API responses must not expose tokens, raw secrets, internal stack traces, full identity numbers, or unnecessary personal data.",
+    "category": "sensitive_data",
+    "priority": "high",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Sensitive Data, line 15",
+        "quote": "## Sensitive Data"
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 3: Sensitive Field Exposure, line 11",
+        "quote": "## Example 3: Sensitive Field Exposure"
+      },
+      {
+        "source_id": "review_checklist.md",
+        "location": "API Review Checklist, line 8",
+        "quote": "- Confirm response does not expose secrets or internal implementation details."
+      }
+    ]
+  },
+  {
+    "rule_id": "R005",
+    "rule_text": "Responses should use a consistent envelope with code, message, request_id, and data.",
+    "category": "response_format",
+    "priority": "medium",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Response Envelope, line 19",
+        "quote": "## Response Envelope"
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 4: Good Pattern, line 17",
+        "quote": "The better design includes authentication scheme, required OAuth scope, request validation table, stable error code table, masked user fields, request_id, and pagination behavior."
+      }
+    ]
+  },
+  {
+    "rule_id": "R006",
+    "rule_text": "POST, PUT, and PATCH endpoints should explain idempotency or duplicate submission behavior.",
+    "category": "idempotency",
+    "priority": "medium",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Error Codes, line 13",
+        "quote": "APIs should return stable error codes for success, invalid input, unauthorized access, forbidden access, resource not found, duplicate request, and server failure."
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 2: Error Codes Too Vague, line 9",
+        "quote": "The design only lists `500 system error`. It should distinguish invalid input, unauthorized, forbidden, not found, and duplicate request. Otherwise client behavior and monitoring will be unstable."
+      },
+      {
+        "source_id": "review_checklist.md",
+        "location": "API Review Checklist, line 10",
+        "quote": "- Confirm POST, PUT, and PATCH endpoints explain idempotency or duplicate submission behavior."
+      }
+    ]
+  },
+  {
+    "rule_id": "R007",
+    "rule_text": "APIs should expose request_id or equivalent trace metadata and document key audit logging requirements.",
+    "category": "observability",
+    "priority": "medium",
+    "status": "supported",
+    "risk": "low",
+    "suggestion": "",
+    "evidence": [
+      {
+        "source_id": "api_design_guidelines.md",
+        "location": "Response Envelope, line 21",
+        "quote": "Responses should use a consistent envelope with `code`, `message`, `request_id`, and `data`. Paginated endpoints must document `page`, `page_size`, `total`, and empty result behavior."
+      },
+      {
+        "source_id": "historical_review_comments.md",
+        "location": "Example 4: Good Pattern, line 17",
+        "quote": "The better design includes authentication scheme, required OAuth scope, request validation table, stable error code table, masked user fields, request_id, and pagination behavior."
+      },
+      {
+        "source_id": "review_checklist.md",
+        "location": "API Review Checklist, line 11",
+        "quote": "- Confirm logs or response metadata include a request identifier for troubleshooting."
+      }
+    ]
+  }
+]
