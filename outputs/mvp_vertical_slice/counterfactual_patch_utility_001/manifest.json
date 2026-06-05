@@ -1,0 +1,13 @@
+{
+  "run_id": "counterfactual_patch_utility_001",
+  "created_at": "2026-06-05T10:11:06.304271+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "per_failure_results.json",
+    "patch_variants/",
+    "verifier_results/",
+    "README.md"
+  ],
+  "boundary": "Toy counterfactual; supports mechanism exploration only."
+}

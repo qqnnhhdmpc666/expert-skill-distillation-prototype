@@ -244,3 +244,43 @@ case002 + compact_v2: reward 1.0, covers R001-R006
 LLM agent 层用于验证真实模型接口和 skill-conditioned output。
 模型输出可能不稳定，不作为两周 demo 的唯一主线。
 ```
+
+## 8. 运行 Counterfactual Patch Utility
+
+方法探索支线，不替换稳定 demo 主线：
+
+```powershell
+python scripts\run_counterfactual_patch_utility.py
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\counterfactual_patch_utility_001
+```
+
+关键检查：
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\counterfactual_patch_utility_001\summary.md
+Get-Content outputs\mvp_vertical_slice\counterfactual_patch_utility_001\per_failure_results.json
+```
+
+预期观察：
+
+```text
+missing_rule:
+  compiler_patch resolves failure
+  no_patch / random_patch / wrong_type_patch do not
+
+output_format_error:
+  output_contract_patch resolves the format failure
+  wrong_missing_rule_patch does not resolve the format failure
+```
+
+边界：
+
+```text
+这是 toy counterfactual，用来探索机制解释力。
+它不是大规模 benchmark，也不证明通用 patch compiler。
+```

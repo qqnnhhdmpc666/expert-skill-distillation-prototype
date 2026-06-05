@@ -1,0 +1,18 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication boundary is underspecified."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request validation constraints are missing."
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope lacks request_id.",
+      "severity": "medium",
+      "evidence": "Response includes code, message, and data but no request_id."
+    }
+  ]
+}

@@ -265,6 +265,37 @@ D:\solution\outputs\mvp_vertical_slice\policy_comparison_001
 
 ## 10. 下一步
 
+## 10. Counterfactual Patch Utility
+
+新增方法探索支线：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\counterfactual_patch_utility_001
+```
+
+目标不是再命名一个指标，而是验证一个机制假设：
+
+```text
+correct failure attribution + correct patch action
+是否比 no patch / random patch / wrong type patch 更能解释 compact skill 修正有效？
+```
+
+当前 toy counterfactual 结果：
+
+| Failure | Correct Patch | Result | Counterfactual Observation |
+|---|---|---|---|
+| missing_rule | `patch_into_compact_v2` | pass | no/random/wrong-type patch 均未恢复 R005/R006 |
+| output_format_error | `rewrite_output_contract` | format failure resolved, full verifier still fails | wrong missing-rule patch 补了规则但没有解决输出格式错误 |
+
+保守解释：
+
+```text
+当前 toy counterfactual 部分支持 failure-to-patch mapping 有解释价值。
+它不能证明通用 patch compiler，也不是统计 benchmark。
+```
+
+## 11. 下一步
+
 优先级 1：把 `run_demo_pipeline.py --check-existing` 作为演示前健康检查。
 
 优先级 2：继续扩展 failure type，例如 `irrelevant_rule_interference`。

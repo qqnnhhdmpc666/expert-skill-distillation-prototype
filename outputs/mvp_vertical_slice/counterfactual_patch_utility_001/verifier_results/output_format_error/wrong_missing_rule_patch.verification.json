@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "output_format_error",
+  "missing_rule_ids": [
+    "R003",
+    "R004"
+  ],
+  "message": "finding[0] missing fields: severity, evidence; finding[1] missing fields: severity, evidence"
+}

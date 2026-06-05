@@ -1,0 +1,16 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication boundary is underspecified.",
+      "severity": "medium",
+      "evidence": "Evidence field required by output contract patch."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request validation constraints are missing.",
+      "severity": "medium",
+      "evidence": "Evidence field required by output contract patch."
+    }
+  ]
+}

@@ -266,6 +266,51 @@ execution-aware-risk-cost: 281 tokens, 6/6, reward 1.0, exceeds budget
 
 ## 7. 下一步
 
+## 7. 最新进展：Counterfactual Patch Utility
+
+新增方法探索支线：
+
+```text
+D:\solution\docs\METHOD_HYPOTHESIS.md
+D:\solution\docs\METRIC_EXPLORATION.md
+D:\solution\scripts\run_counterfactual_patch_utility.py
+D:\solution\outputs\mvp_vertical_slice\counterfactual_patch_utility_001
+```
+
+核心问题：
+
+```text
+正确 failure attribution + 正确 patch action
+是否比 no_patch / random_patch / wrong_type_patch 更能解释 compact skill 修正有效？
+```
+
+当前结果：
+
+```text
+missing_rule:
+  no_patch / random_patch / wrong_type_patch 均失败
+  compiler_patch 补 R005/R006 后通过
+
+output_format_error:
+  random_rule_patch / wrong_missing_rule_patch 仍保留 output_format_error
+  output_contract_patch 解决格式错误，但仍可能存在业务规则缺失
+  full_contract_patch 作为 upper bound 通过
+```
+
+当前结论标注：
+
+```text
+partially_supported
+```
+
+解释：
+
+- 对 `missing_rule`，toy counterfactual 支持“正确归因 + 正确 patch action”有解释价值。
+- 对 `output_format_error`，实验提醒我们要区分 `failure_resolved` 和 `verifier_passed`：格式问题可被解决，但完整任务仍可能因为缺规则失败。
+- 这不是通用 patch compiler 证明，也不是 benchmark。
+
+## 8. 下一步
+
 优先级 1：保留 RightCode `gpt-5.5` 作为真实 LLM 增强证据；如果后续需要 DeepSeek 等其他模型，再接入新的 key 和 endpoint。
 
 优先级 2：增加不同 failure type 的 case，例如 `output_format_error`、`irrelevant_rule_interference`。

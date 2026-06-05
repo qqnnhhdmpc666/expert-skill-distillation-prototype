@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "missing_rule",
+  "missing_rule_ids": [
+    "R005",
+    "R006"
+  ],
+  "message": "missing expected findings for R005 R006"
+}

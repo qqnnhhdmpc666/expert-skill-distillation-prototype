@@ -1,0 +1,368 @@
+{
+  "run_id": "counterfactual_patch_utility_001",
+  "created_at": "2026-06-05T10:11:06.304271+00:00",
+  "random_seed": 260605,
+  "positioning": "toy counterfactual method exploration; not a benchmark",
+  "records": [
+    {
+      "failure_case": "missing_rule",
+      "original_failure_type": "missing_rule",
+      "patch_variant": "no_patch",
+      "patch_action": "none",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [],
+      "random_seed": null,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 0,
+      "verifier_passed": false,
+      "recovered_rules": [],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "missing_rule",
+        "missing_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "message": "missing expected findings for R005 R006"
+      },
+      "notes": ""
+    },
+    {
+      "failure_case": "missing_rule",
+      "original_failure_type": "missing_rule",
+      "patch_variant": "random_patch_any",
+      "patch_action": "random_rule_patch",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [
+        "R003",
+        "R007"
+      ],
+      "random_seed": 260605,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 44,
+      "verifier_passed": false,
+      "recovered_rules": [],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "missing_rule",
+        "missing_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "message": "missing expected findings for R005 R006"
+      },
+      "notes": "Randomly sampled two candidate rules from a small rule pool."
+    },
+    {
+      "failure_case": "missing_rule",
+      "original_failure_type": "missing_rule",
+      "patch_variant": "random_patch_non_affected",
+      "patch_action": "random_rule_patch",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [
+        "R007",
+        "R003"
+      ],
+      "random_seed": 260605,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 44,
+      "verifier_passed": false,
+      "recovered_rules": [],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "missing_rule",
+        "missing_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "message": "missing expected findings for R005 R006"
+      },
+      "notes": "Randomly sampled only non-affected rules."
+    },
+    {
+      "failure_case": "missing_rule",
+      "original_failure_type": "missing_rule",
+      "patch_variant": "wrong_type_patch",
+      "patch_action": "rewrite_output_contract",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [],
+      "random_seed": null,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 38,
+      "verifier_passed": false,
+      "recovered_rules": [],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "missing_rule",
+        "missing_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "message": "missing expected findings for R005 R006"
+      },
+      "notes": "Wrong type: rewrites output contract but does not add R005/R006."
+    },
+    {
+      "failure_case": "missing_rule",
+      "original_failure_type": "missing_rule",
+      "patch_variant": "compiler_patch",
+      "patch_action": "patch_into_compact_v2",
+      "type_correct": true,
+      "affected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "random_seed": null,
+      "whether_hit_affected_rule": true,
+      "added_tokens": 44,
+      "verifier_passed": true,
+      "recovered_rules": [
+        "R005",
+        "R006"
+      ],
+      "failure_resolved": true,
+      "whether_patch_was_type_correct": true,
+      "verifier_result": {
+        "passed": true,
+        "reward": 1.0,
+        "failure_type": "none",
+        "missing_rule_ids": [],
+        "message": "review.json covers required rule ids R001-R006"
+      },
+      "notes": "Type-correct compiler patch adds affected missing rules."
+    },
+    {
+      "failure_case": "missing_rule",
+      "original_failure_type": "missing_rule",
+      "patch_variant": "full_skill_or_oracle_patch",
+      "patch_action": "upper_bound_full_review",
+      "type_correct": true,
+      "affected_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "random_seed": null,
+      "whether_hit_affected_rule": true,
+      "added_tokens": 44,
+      "verifier_passed": true,
+      "recovered_rules": [
+        "R005",
+        "R006"
+      ],
+      "failure_resolved": true,
+      "whether_patch_was_type_correct": true,
+      "verifier_result": {
+        "passed": true,
+        "reward": 1.0,
+        "failure_type": "none",
+        "missing_rule_ids": [],
+        "message": "review.json covers required rule ids R001-R006"
+      },
+      "notes": "Upper bound only; not part of fair budget comparison."
+    },
+    {
+      "failure_case": "output_format_error",
+      "original_failure_type": "output_format_error",
+      "patch_variant": "no_patch",
+      "patch_action": "none",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "OUTPUT_CONTRACT"
+      ],
+      "sampled_rule_ids": [],
+      "random_seed": null,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 0,
+      "verifier_passed": false,
+      "recovered_rules": [],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "output_format_error",
+        "missing_rule_ids": [
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "message": "finding[0] missing fields: severity, evidence; finding[1] missing fields: severity, evidence"
+      },
+      "notes": ""
+    },
+    {
+      "failure_case": "output_format_error",
+      "original_failure_type": "output_format_error",
+      "patch_variant": "random_rule_patch",
+      "patch_action": "random_rule_patch",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "R005"
+      ],
+      "sampled_rule_ids": [
+        "R005"
+      ],
+      "random_seed": 260605,
+      "whether_hit_affected_rule": true,
+      "added_tokens": 20,
+      "verifier_passed": false,
+      "recovered_rules": [
+        "R005"
+      ],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "output_format_error",
+        "missing_rule_ids": [
+          "R003",
+          "R004",
+          "R006"
+        ],
+        "message": "finding[0] missing fields: severity, evidence; finding[1] missing fields: severity, evidence"
+      },
+      "notes": "Random content rule patch; does not fix missing required fields in existing findings."
+    },
+    {
+      "failure_case": "output_format_error",
+      "original_failure_type": "output_format_error",
+      "patch_variant": "wrong_missing_rule_patch",
+      "patch_action": "patch_into_compact_v2",
+      "type_correct": false,
+      "affected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "sampled_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "random_seed": null,
+      "whether_hit_affected_rule": true,
+      "added_tokens": 44,
+      "verifier_passed": false,
+      "recovered_rules": [
+        "R005",
+        "R006"
+      ],
+      "failure_resolved": false,
+      "whether_patch_was_type_correct": false,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "output_format_error",
+        "missing_rule_ids": [
+          "R003",
+          "R004"
+        ],
+        "message": "finding[0] missing fields: severity, evidence; finding[1] missing fields: severity, evidence"
+      },
+      "notes": "Wrong type: adds missing-rule content but does not fix output contract."
+    },
+    {
+      "failure_case": "output_format_error",
+      "original_failure_type": "output_format_error",
+      "patch_variant": "output_contract_patch",
+      "patch_action": "rewrite_output_contract",
+      "type_correct": true,
+      "affected_rule_ids": [
+        "OUTPUT_CONTRACT"
+      ],
+      "sampled_rule_ids": [],
+      "random_seed": null,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 38,
+      "verifier_passed": false,
+      "recovered_rules": [],
+      "failure_resolved": true,
+      "whether_patch_was_type_correct": true,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "missing_rule",
+        "missing_rule_ids": [
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "message": "missing expected findings for R003 R004 R005 R006"
+      },
+      "notes": "Type-correct patch fills required fields."
+    },
+    {
+      "failure_case": "output_format_error",
+      "original_failure_type": "output_format_error",
+      "patch_variant": "full_contract_patch",
+      "patch_action": "full_contract_patch",
+      "type_correct": true,
+      "affected_rule_ids": [
+        "OUTPUT_CONTRACT"
+      ],
+      "sampled_rule_ids": [],
+      "random_seed": null,
+      "whether_hit_affected_rule": false,
+      "added_tokens": 38,
+      "verifier_passed": true,
+      "recovered_rules": [
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "failure_resolved": true,
+      "whether_patch_was_type_correct": true,
+      "verifier_result": {
+        "passed": true,
+        "reward": 1.0,
+        "failure_type": "none",
+        "missing_rule_ids": [],
+        "message": "review.json covers required rule ids R001-R006"
+      },
+      "notes": "Upper bound: complete review plus valid output contract."
+    }
+  ],
+  "conclusion": "partially_supported"
+}
