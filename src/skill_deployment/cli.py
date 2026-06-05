@@ -21,6 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     subparsers.add_parser("validate-cases", help="Validate API-review holdout task cases.")
     subparsers.add_parser("run-holdout", help="Run the small controlled holdout evaluation.")
     subparsers.add_parser("compare-baselines", help="Run the component baseline attribution slice.")
+    subparsers.add_parser("compare-trace-policy", help="Run the risk-vs-random selective trace baseline.")
     args = parser.parse_args(argv)
 
     if args.command == "check-existing":
@@ -33,6 +34,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_script(["scripts/run_real_effect_eval.py"])
     if args.command == "compare-baselines":
         return run_script(["scripts/run_component_baseline_eval.py"])
+    if args.command == "compare-trace-policy":
+        return run_script(["scripts/run_risk_trace_policy_baseline.py"])
     parser.error(f"unknown command: {args.command}")
     return 2
 

@@ -21,6 +21,7 @@ Audit what each core artifact can safely support, and prevent overclaiming befor
 | real_effect_eval_001 | platform_maturation | partially_supported | compact_v1 avg coverage 0.58; patched_compact avg coverage 1.00 on 4 cases. | 4-case controlled holdout; not a benchmark or real-world generalization proof. |
 | selective_trace_compiler_001 | platform_maturation | partially_supported | full_trace 300/237 rejected; selective_trace R005/R006 183/237 accepted and blocks shortcut. | Toy trace policy; not mature tracing strategy. |
 | component_baseline_direct_summary_001 | platform_maturation | partially_supported | direct_summary_skill avg coverage 0.92; patched_compact avg coverage 1.00 on 4 controlled cases. | Deterministic component attribution slice; not a benchmark and not broad evidence against summarization baselines. |
+| risk_trace_policy_baseline_001 | method_exploration | partially_supported | random_selective_trace R002/R003 gives failure-critical trace coverage 0.00; risk_based_selective_trace R005/R006 gives 1.00 at the same 183/237 token cost. | Single random seed and tiny rule pool; not statistical evidence for a mature risk policy. |
 
 ## Safe Main Claim
 

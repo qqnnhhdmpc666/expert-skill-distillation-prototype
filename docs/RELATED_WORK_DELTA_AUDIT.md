@@ -224,6 +224,41 @@ Boundary:
 This is a small deterministic attribution slice, not evidence that the prototype generally outperforms direct-summary skill generation.
 ```
 
+## Core Method Spec Status
+
+Current consolidated method spec:
+
+```text
+docs/CORE_METHOD_SPEC.md
+```
+
+The direct-summary baseline shifts the safe delta:
+
+```text
+not: better summarization alone
+but: skill deployment under feedback, risk, budget, and traceability constraints
+```
+
+Current concise claim:
+
+```text
+Skill deployment needs risk-budgeted verification, not just better summarization.
+```
+
+Supporting diagnostic:
+
+```text
+outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+```
+
+The risk-trace baseline compares same-size random selective trace against risk-based selective trace. In the toy slice, both use 183/237 tokens, but only risk-based trace covers R005/R006, the failure-critical rules.
+
+Boundary:
+
+```text
+This is still a scoped method-discovery contribution, not a claim of mature policy optimization or superiority over SPARK/COLLEAGUE.
+```
+
 ## What Is Baseline Adequate
 
 These parts are adequate for demo but should not be presented as core novelty:

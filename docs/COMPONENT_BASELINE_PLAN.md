@@ -307,3 +307,39 @@ case validation: added scripts/validate_task_cases.py
 ```
 
 This does not complete the maturation baseline. It only addresses the most visible engineering gap without disrupting existing demo scripts.
+
+## Trace Policy Baseline Progress
+
+The first selective-trace policy baseline has been implemented:
+
+```text
+outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+```
+
+Compared variants:
+
+```text
+no_trace
+full_trace
+random_selective_trace
+risk_based_selective_trace
+```
+
+Result:
+
+```text
+random_selective_trace: traced R002/R003, 183/237 tokens, failure-critical trace coverage 0.00
+risk_based_selective_trace: traced R005/R006, 183/237 tokens, failure-critical trace coverage 1.00
+```
+
+Interpretation:
+
+```text
+With the same selective-trace size and token cost, risk-based selection traces failure-critical rules while the fixed-seed random baseline does not.
+```
+
+Boundary:
+
+```text
+This is a toy baseline with one random seed and a tiny rule pool. Random selective trace can hit failure-critical rules by chance, so this is not statistical evidence for a mature risk policy.
+```

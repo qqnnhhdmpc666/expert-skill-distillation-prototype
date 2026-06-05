@@ -145,6 +145,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "platform_maturation",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "risk_trace_policy_baseline_001",
+        "path": "outputs/mvp_vertical_slice/risk_trace_policy_baseline_001",
+        "supported_claim": "Risk signals can allocate a fixed selective-trace budget to failure-critical rules better than a same-size random trace in this toy slice.",
+        "key_result": "random_selective_trace R002/R003 gives failure-critical trace coverage 0.00; risk_based_selective_trace R005/R006 gives 1.00 at the same 183/237 token cost.",
+        "limitation": "Single random seed and tiny rule pool; not statistical evidence for a mature risk policy.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

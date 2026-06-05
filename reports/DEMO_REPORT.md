@@ -16,6 +16,18 @@ Equivalent conservative wording:
 correctness-constrained expert skill deployment optimization
 ```
 
+Core method claim:
+
+```text
+Skill deployment needs risk-budgeted verification, not just better summarization.
+```
+
+Chinese wording:
+
+```text
+专家 skill 部署需要按风险分配验证成本，而不是只追求生成阶段的总结质量。
+```
+
 This prototype is not a full reproduction of SPARK, not a benchmark, and not a mature universal skill compiler. The demo goal is a controlled vertical loop:
 
 ```text
@@ -148,6 +160,7 @@ outputs/mvp_vertical_slice/real_effect_eval_001
 outputs/mvp_vertical_slice/selective_trace_compiler_001
 outputs/mvp_vertical_slice/artifact_claim_audit_001
 outputs/mvp_vertical_slice/component_baseline_direct_summary_001
+outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
 ```
 
 4-case controlled holdout:
@@ -195,6 +208,21 @@ Interpretation:
 
 ```text
 Direct summarization is a strong baseline in this small controlled family. The prototype's safer value claim is not "summaries cannot make useful checklists"; it is that verifier feedback, patching, validation gates, and selective trace can recover and control missed deployment-critical rules.
+```
+
+Risk trace policy baseline:
+
+| Trace Variant | Traced Rules | Tokens | Failure-Critical Trace Coverage | Shortcut Blocked | Gate |
+|---|---|---:|---:|---|---|
+| no_trace | none | 140 / 237 | 0.00 | false | accept |
+| full_trace | R001-R006 | 300 / 237 | 1.00 | true | reject_over_budget |
+| random_selective_trace | R002/R003 | 183 / 237 | 0.00 | true | accept |
+| risk_based_selective_trace | R005/R006 | 183 / 237 | 1.00 | true | accept |
+
+Interpretation:
+
+```text
+At the same selective-trace size and token cost, risk-based selection traces failure-critical rules while the fixed-seed random baseline does not. This supports risk-budgeted verification as a toy-slice diagnostic, not as a mature tracing policy.
 ```
 
 ## Claim Audit Summary

@@ -788,3 +788,36 @@ Boundary:
 ```text
 This is a deterministic component attribution slice. It is not a benchmark and does not prove broad superiority over direct summarization.
 ```
+
+## 22. Run Risk Trace Policy Baseline
+
+Run the risk-vs-random selective trace baseline:
+
+```powershell
+python scripts\run_risk_trace_policy_baseline.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py compare-trace-policy
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\risk_trace_policy_baseline_001
+```
+
+Expected observation:
+
+```text
+random_selective_trace: traced R002/R003, 183/237 tokens, failure-critical trace coverage 0.00
+risk_based_selective_trace: traced R005/R006, 183/237 tokens, failure-critical trace coverage 1.00
+```
+
+Boundary:
+
+```text
+This is a toy policy baseline with one random seed. It is not statistical validation of a mature trace-selection policy.
+```

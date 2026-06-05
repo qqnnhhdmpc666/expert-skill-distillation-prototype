@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "reward": 1.0,
+  "failure_type": "none",
+  "missing_rule_ids": [],
+  "semantic_errors": [],
+  "per_finding": [
+    {
+      "index": 0,
+      "rule_id": "R001",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 1,
+      "rule_id": "R002",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 2,
+      "rule_id": "R003",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 3,
+      "rule_id": "R004",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 4,
+      "rule_id": "R005",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    },
+    {
+      "index": 5,
+      "rule_id": "R006",
+      "field_ok": true,
+      "has_rule_trigger": true,
+      "has_case_related_trigger": true,
+      "template_like": false,
+      "semantic_ok": true
+    }
+  ],
+  "message": "semantic verifier passed"
+}

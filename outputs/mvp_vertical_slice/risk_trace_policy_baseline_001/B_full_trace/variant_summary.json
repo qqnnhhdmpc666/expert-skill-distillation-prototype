@@ -1,0 +1,133 @@
+{
+  "variant_id": "B_full_trace",
+  "selection_method": "full",
+  "traced_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "sampled_rule_ids": [],
+  "random_seed": null,
+  "whether_hit_failure_critical_rule": true,
+  "failure_critical_trace_coverage": 1.0,
+  "risk_scores": {
+    "R001": 3,
+    "R002": 3,
+    "R003": 3,
+    "R004": 3,
+    "R005": 17,
+    "R006": 14
+  },
+  "skill_tokens": 140,
+  "protocol_tokens": 160,
+  "output_trace_tokens": 342,
+  "total_tokens": 300,
+  "token_budget": 237,
+  "over_budget": true,
+  "simple_verifier_result": {
+    "passed": true,
+    "reward": 1.0,
+    "failure_type": "none",
+    "missing_rule_ids": [],
+    "message": "review.json covers required rule ids R001-R006"
+  },
+  "semantic_verifier_result": {
+    "passed": true,
+    "reward": 1.0,
+    "failure_type": "none",
+    "missing_rule_ids": [],
+    "semantic_errors": [],
+    "per_finding": [
+      {
+        "index": 0,
+        "rule_id": "R001",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 1,
+        "rule_id": "R002",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 2,
+        "rule_id": "R003",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 3,
+        "rule_id": "R004",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 4,
+        "rule_id": "R005",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      },
+      {
+        "index": 5,
+        "rule_id": "R006",
+        "field_ok": true,
+        "has_rule_trigger": true,
+        "has_case_related_trigger": true,
+        "template_like": false,
+        "semantic_ok": true
+      }
+    ],
+    "message": "semantic verifier passed"
+  },
+  "semantic_verifier_pass": true,
+  "simple_verifier_pass": true,
+  "partial_trace_verifier_result": {
+    "passed": true,
+    "trace_required_rules_missing_trace": [],
+    "trace_errors": [],
+    "message": "partial trace verifier passed"
+  },
+  "partial_trace_verifier_pass": true,
+  "shortcut_probe_partial_trace_result": {
+    "passed": false,
+    "trace_required_rules_missing_trace": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "trace_errors": [
+      "traced rule R001 missing rule_application",
+      "traced rule R002 missing rule_application",
+      "traced rule R003 missing rule_application",
+      "traced rule R004 missing rule_application",
+      "traced rule R005 missing rule_application",
+      "traced rule R006 missing rule_application"
+    ],
+    "message": "traced rule R001 missing rule_application; traced rule R002 missing rule_application; traced rule R003 missing rule_application; traced rule R004 missing rule_application; traced rule R005 missing rule_application; traced rule R006 missing rule_application"
+  },
+  "shortcut_blocked": true,
+  "gate_decision": "reject_over_budget",
+  "accepted_by_gate": false
+}

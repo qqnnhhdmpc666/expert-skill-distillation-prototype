@@ -457,6 +457,7 @@ Current artifact:
 
 ```text
 outputs/mvp_vertical_slice/selective_trace_compiler_001
+outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
 ```
 
 Hypothesis:
@@ -480,6 +481,23 @@ partially_supported
 
 Selective trace reduces protocol overhead while preserving traceability for failure-critical rules in this toy slice.
 
+Risk-vs-random baseline:
+
+```text
+no_trace: 140 / 237 tokens, failure-critical trace coverage 0.00, shortcut_blocked=false
+full_trace: 300 / 237 tokens, failure-critical trace coverage 1.00, reject_over_budget
+random_selective_trace: R002/R003, 183 / 237 tokens, failure-critical trace coverage 0.00
+risk_based_selective_trace: R005/R006, 183 / 237 tokens, failure-critical trace coverage 1.00
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+With the same selective-trace size and token cost, risk-based selection allocates trace to failure-critical rules while the fixed-seed random baseline does not. This supports the narrow diagnostic claim that risk signals can guide trace budget allocation in this toy slice.
+
 Failure boundary:
 
-If future cases show that untraced rules produce shortcut errors or semantic drift, the trace selection policy should be tightened. Do not claim a mature tracing policy yet.
+If future cases show that untraced rules produce shortcut errors or semantic drift, the trace selection policy should be tightened. The random baseline uses one seed in a tiny rule pool; random hits are possible, so this is not statistical evidence. Do not claim a mature tracing policy yet.

@@ -45,6 +45,7 @@ python scripts/skill_deploy.py audit-claims
 python scripts/skill_deploy.py validate-cases
 python scripts/skill_deploy.py run-holdout
 python scripts/skill_deploy.py compare-baselines
+python scripts/skill_deploy.py compare-trace-policy
 ```
 
 ## What This Patch Does Not Do

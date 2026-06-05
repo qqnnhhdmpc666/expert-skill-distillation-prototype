@@ -77,6 +77,19 @@ full_trace: 300 / 237, rejected
 selective_trace R005/R006: 183 / 237, accepted and blocks shortcut
 ```
 
+- Risk-based selective trace has a same-size random baseline in the toy slice:
+
+```text
+random_selective_trace R002/R003: 183 / 237, failure-critical trace coverage 0.00
+risk_based_selective_trace R005/R006: 183 / 237, failure-critical trace coverage 1.00
+```
+
+Safe interpretation:
+
+```text
+Risk signals can guide trace budget allocation to failure-critical rules in this toy slice.
+```
+
 - Component attribution now includes a direct-summary baseline:
 
 ```text
@@ -109,6 +122,7 @@ Do not say:
 - The current repository has the same engineering maturity as SPARK-PDI or COLLEAGUE.SKILL.
 - Direct summarization is always a weak baseline.
 - The prototype has broadly defeated direct-summary skill generation.
+- Risk-based selective trace has been statistically validated.
 
 ## Safe Main Claim
 

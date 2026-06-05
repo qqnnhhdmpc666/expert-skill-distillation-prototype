@@ -313,6 +313,7 @@ Current artifact:
 
 ```text
 outputs/mvp_vertical_slice/selective_trace_compiler_001
+outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
 ```
 
 Diagnostic fields:
@@ -336,3 +337,58 @@ partially_supported
 ```
 
 Selective trace keeps traceability for failure-critical rules while reducing protocol overhead compared with full trace in this toy slice. This is a diagnostic for risk-budgeted deployment, not a final tracing metric.
+
+## 13. Risk Trace Policy Baseline Diagnostics
+
+Question:
+
+```text
+Is selective trace doing more than randomly choosing a small set of rules to trace?
+```
+
+Diagnostic fields:
+
+- traced rule IDs.
+- random seed.
+- sampled rule IDs.
+- whether random trace hit failure-critical rules.
+- failure-critical trace coverage.
+- trace tokens.
+- total tokens.
+- over budget.
+- shortcut blocked.
+- semantic verifier pass.
+- partial trace verifier pass.
+- gate decision.
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+```
+
+Current observation:
+
+```text
+random_selective_trace:
+  traced R002/R003
+  total tokens 183 / 237
+  failure-critical trace coverage 0.00
+  shortcut_blocked true
+  gate accept
+
+risk_based_selective_trace:
+  traced R005/R006
+  total tokens 183 / 237
+  failure-critical trace coverage 1.00
+  shortcut_blocked true
+  gate accept
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Risk signals help allocate the same trace budget to failure-critical rules in this toy slice. This remains a diagnostic metric, not a final policy metric or statistical claim.

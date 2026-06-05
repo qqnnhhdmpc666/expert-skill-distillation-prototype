@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "reward": 1.0,
+  "failure_type": "none",
+  "missing_rule_ids": [],
+  "message": "review.json covers required rule ids R001-R006"
+}
