@@ -1,0 +1,217 @@
+{
+  "priority-only": {
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "dropped_rule_ids": [
+      "R005",
+      "R006",
+      "R007"
+    ],
+    "scores": {
+      "R001": {
+        "score": 1.0,
+        "cost": 43,
+        "score_per_token": 0.023255813953488372
+      },
+      "R002": {
+        "score": 1.0,
+        "cost": 46,
+        "score_per_token": 0.021739130434782608
+      },
+      "R003": {
+        "score": 1.0,
+        "cost": 58,
+        "score_per_token": 0.017241379310344827
+      },
+      "R004": {
+        "score": 1.0,
+        "cost": 52,
+        "score_per_token": 0.019230769230769232
+      }
+    },
+    "decision_rule": "Keep high-priority supported rules in ledger order until budget is reached."
+  },
+  "risk-cost": {
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R004",
+      "R005",
+      "R007"
+    ],
+    "dropped_rule_ids": [
+      "R003",
+      "R006"
+    ],
+    "scores": {
+      "R001": {
+        "score": 5,
+        "cost": 43,
+        "score_per_token": 0.11627906976744186,
+        "components": {
+          "priority_score": 3,
+          "material_score": 2
+        }
+      },
+      "R002": {
+        "score": 5,
+        "cost": 46,
+        "score_per_token": 0.10869565217391304,
+        "components": {
+          "priority_score": 3,
+          "material_score": 2
+        }
+      },
+      "R003": {
+        "score": 5,
+        "cost": 58,
+        "score_per_token": 0.08620689655172414,
+        "components": {
+          "priority_score": 3,
+          "material_score": 2
+        }
+      },
+      "R004": {
+        "score": 5,
+        "cost": 52,
+        "score_per_token": 0.09615384615384616,
+        "components": {
+          "priority_score": 3,
+          "material_score": 2
+        }
+      },
+      "R005": {
+        "score": 4,
+        "cost": 38,
+        "score_per_token": 0.10526315789473684,
+        "components": {
+          "priority_score": 2,
+          "material_score": 2
+        }
+      },
+      "R006": {
+        "score": 4,
+        "cost": 44,
+        "score_per_token": 0.09090909090909091,
+        "components": {
+          "priority_score": 2,
+          "material_score": 2
+        }
+      },
+      "R007": {
+        "score": 4,
+        "cost": 42,
+        "score_per_token": 0.09523809523809523,
+        "components": {
+          "priority_score": 2,
+          "material_score": 2
+        }
+      }
+    },
+    "decision_rule": "Greedy value-per-token selection using priority and material evidence."
+  },
+  "execution-aware-fixed-budget": {
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "dropped_rule_ids": [
+      "R003",
+      "R007"
+    ],
+    "scores": {
+      "R001": {
+        "score": 50,
+        "cost": 43,
+        "score_per_token": 1.1627906976744187,
+        "components": {
+          "priority_score": 30,
+          "material_score": 10,
+          "expected_score": 10,
+          "failure_critical_score": 0,
+          "previously_missed_score": 0
+        }
+      },
+      "R002": {
+        "score": 50,
+        "cost": 46,
+        "score_per_token": 1.0869565217391304,
+        "components": {
+          "priority_score": 30,
+          "material_score": 10,
+          "expected_score": 10,
+          "failure_critical_score": 0,
+          "previously_missed_score": 0
+        }
+      },
+      "R003": {
+        "score": 50,
+        "cost": 58,
+        "score_per_token": 0.8620689655172413,
+        "components": {
+          "priority_score": 30,
+          "material_score": 10,
+          "expected_score": 10,
+          "failure_critical_score": 0,
+          "previously_missed_score": 0
+        }
+      },
+      "R004": {
+        "score": 50,
+        "cost": 52,
+        "score_per_token": 0.9615384615384616,
+        "components": {
+          "priority_score": 30,
+          "material_score": 10,
+          "expected_score": 10,
+          "failure_critical_score": 0,
+          "previously_missed_score": 0
+        }
+      },
+      "R005": {
+        "score": 105,
+        "cost": 38,
+        "score_per_token": 2.763157894736842,
+        "components": {
+          "priority_score": 15,
+          "material_score": 10,
+          "expected_score": 10,
+          "failure_critical_score": 50,
+          "previously_missed_score": 20
+        }
+      },
+      "R006": {
+        "score": 105,
+        "cost": 44,
+        "score_per_token": 2.3863636363636362,
+        "components": {
+          "priority_score": 15,
+          "material_score": 10,
+          "expected_score": 10,
+          "failure_critical_score": 50,
+          "previously_missed_score": 20
+        }
+      },
+      "R007": {
+        "score": 25,
+        "cost": 42,
+        "score_per_token": 0.5952380952380952,
+        "components": {
+          "priority_score": 15,
+          "material_score": 10,
+          "expected_score": 0,
+          "failure_critical_score": 0,
+          "previously_missed_score": 0
+        }
+      }
+    },
+    "decision_rule": "Greedy value-per-token selection using priority, material evidence, expected verifier coverage, and execution failure evidence."
+  }
+}

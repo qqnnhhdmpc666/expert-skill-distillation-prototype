@@ -200,7 +200,7 @@ RightCode GPT 当前可用配置：
 
 ```powershell
 $env:OPENAI_BASE_URL="https://www.right.codes/codex/v1"
-$env:OPENAI_API_KEY="<your-rightcode-key>"
+$env:OPENAI_API_KEY="<your-api-key>"
 $env:MODEL="gpt-5.5"
 ```
 
@@ -283,4 +283,75 @@ output_format_error:
 ```text
 这是 toy counterfactual，用来探索机制解释力。
 它不是大规模 benchmark，也不证明通用 patch compiler。
+```
+## 9. 运行 Fixed-Budget Compiler 探索
+
+该支线不替换稳定 demo 主线，只用于检查 execution-aware compact policy 是否能在固定预算内做规则取舍。
+
+```powershell
+python scripts\run_fixed_budget_compiler.py
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\fixed_budget_compiler_001
+```
+
+关键检查：
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\fixed_budget_compiler_001\comparison.md
+Get-Content outputs\mvp_vertical_slice\fixed_budget_compiler_001\comparison.json
+```
+
+当前预期观察：
+
+```text
+priority-only: 4/6, misses R005/R006
+risk-cost: 4/6, misses R003/R006
+execution-aware-fixed-budget: 5/6, recovers R005/R006 but misses R003
+```
+
+边界：
+
+```text
+这是固定预算机制探针，不是 benchmark，也不证明已经得到最优 compact compiler。
+```
+
+## 10. 运行 Rollback Gate 探索
+
+该支线用于验证：patch 解决原始失败后，仍需要检查 regression / budget / failure-critical preservation。
+
+```powershell
+python scripts\run_rollback_gate.py
+```
+
+输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\rollback_gate_001
+```
+
+关键检查：
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\rollback_gate_001\validation_gate.json
+Get-Content outputs\mvp_vertical_slice\rollback_gate_001\rollback_report.md
+```
+
+当前预期观察：
+
+```text
+resolves_original_failure: true
+regression_detected: true
+lost_previously_covered_rules: R003
+accepted: false
+decision: reject_and_rollback
+```
+
+边界：
+
+```text
+这是 toy validation-gated revision slice，不是成熟 rollback 系统。
 ```

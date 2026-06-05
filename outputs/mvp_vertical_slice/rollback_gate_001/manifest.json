@@ -1,0 +1,12 @@
+{
+  "run_id": "rollback_gate_001",
+  "created_at": "2026-06-05T11:05:02.446136+00:00",
+  "artifacts": [
+    "patch_proposal.json",
+    "validation_gate.json",
+    "rollback_decision.json",
+    "before_after_comparison.json",
+    "rollback_report.md"
+  ],
+  "boundary": "This slice only shows that a patch can be rejected for regression despite resolving the original affected rules."
+}

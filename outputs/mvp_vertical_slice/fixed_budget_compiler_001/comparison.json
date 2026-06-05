@@ -1,0 +1,158 @@
+{
+  "run_id": "fixed_budget_compiler_001",
+  "created_at": "2026-06-05T11:05:02.450026+00:00",
+  "policy_config": {
+    "run_id": "fixed_budget_compiler_001",
+    "created_at": "2026-06-05T11:05:02.450026+00:00",
+    "positioning": "method-discovery fixed-budget compact compiler slice; not a benchmark",
+    "candidate_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006",
+      "R007"
+    ],
+    "expected_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "failure_critical_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "rule_costs": {
+      "R001": 43,
+      "R002": 46,
+      "R003": 58,
+      "R004": 52,
+      "R005": 38,
+      "R006": 44,
+      "R007": 42
+    },
+    "budget": {
+      "token_budget": 237,
+      "budget_basis": "compact_v1 rule cost plus one medium-rule margin; still below the cost of all expected rules",
+      "compact_v1_rule_cost": 199,
+      "one_medium_rule_margin": 38,
+      "all_expected_rule_cost": 281,
+      "all_candidate_rule_cost": 323
+    },
+    "policies": {
+      "priority-only": "high priority + supported only",
+      "risk-cost": "priority + material support per token",
+      "execution-aware-fixed-budget": "risk-cost plus verifier expectedness and previous failure evidence, still under the same budget"
+    }
+  },
+  "policies": [
+    {
+      "policy": "priority-only",
+      "token_budget": 237,
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "dropped_rule_ids": [
+        "R005",
+        "R006",
+        "R007"
+      ],
+      "token_count": 199,
+      "over_budget": false,
+      "missed_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "checklist_pass": 4,
+      "checklist_total": 6,
+      "checklist_coverage": 0.6667,
+      "verifier_reward": 0.0,
+      "patch_needed": true,
+      "failure_critical_recovered": [],
+      "failure_critical_missed": [
+        "R005",
+        "R006"
+      ],
+      "decision_rule": "Keep high-priority supported rules in ledger order until budget is reached.",
+      "explanation": "Retains high-priority supported rules only; it stays compact but misses execution-critical medium-priority rules."
+    },
+    {
+      "policy": "risk-cost",
+      "token_budget": 237,
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R004",
+        "R005",
+        "R007"
+      ],
+      "dropped_rule_ids": [
+        "R003",
+        "R006"
+      ],
+      "token_count": 221,
+      "over_budget": false,
+      "missed_rule_ids": [
+        "R003",
+        "R006"
+      ],
+      "checklist_pass": 4,
+      "checklist_total": 6,
+      "checklist_coverage": 0.6667,
+      "verifier_reward": 0.0,
+      "patch_needed": true,
+      "failure_critical_recovered": [
+        "R005"
+      ],
+      "failure_critical_missed": [
+        "R006"
+      ],
+      "decision_rule": "Greedy value-per-token selection using priority and material evidence.",
+      "explanation": "Selects good value-per-token supported rules, but without execution evidence it can keep R007 while still missing a previously failed rule."
+    },
+    {
+      "policy": "execution-aware-fixed-budget",
+      "token_budget": 237,
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "dropped_rule_ids": [
+        "R003",
+        "R007"
+      ],
+      "token_count": 223,
+      "over_budget": false,
+      "missed_rule_ids": [
+        "R003"
+      ],
+      "checklist_pass": 5,
+      "checklist_total": 6,
+      "checklist_coverage": 0.8333,
+      "verifier_reward": 0.0,
+      "patch_needed": true,
+      "failure_critical_recovered": [
+        "R005",
+        "R006"
+      ],
+      "failure_critical_missed": [],
+      "decision_rule": "Greedy value-per-token selection using priority, material evidence, expected verifier coverage, and execution failure evidence.",
+      "explanation": "Uses failure evidence to pull failure-critical rules into the fixed budget. It recovers R005, R006 and drops R003, R007; remaining missed rules: R003. Failure-critical still missed: none."
+    }
+  ],
+  "conclusion": {
+    "status": "partially_supported",
+    "summary": "Execution-aware fixed-budget selection recovers R005/R006 without exceeding the fixed budget, but it must sacrifice R003 and therefore does not fully pass the verifier.",
+    "boundary": "Toy comparison on current API review rules/cases only; not a benchmark or general compact compiler proof."
+  }
+}

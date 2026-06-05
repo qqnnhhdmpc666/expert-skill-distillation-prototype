@@ -1,0 +1,12 @@
+{
+  "run_id": "fixed_budget_compiler_001",
+  "created_at": "2026-06-05T11:05:02.450026+00:00",
+  "artifacts": [
+    "policy_config.json",
+    "selected_rules_by_policy.json",
+    "compact_skill_by_policy/",
+    "comparison.json",
+    "comparison.md"
+  ],
+  "boundary": "Fixed-budget method-discovery slice only; does not replace the stable demo pipeline."
+}

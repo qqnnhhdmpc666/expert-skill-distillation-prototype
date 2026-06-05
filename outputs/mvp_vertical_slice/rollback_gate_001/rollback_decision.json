@@ -1,0 +1,5 @@
+{
+  "decision": "reject_and_rollback",
+  "rollback_to": "compact_v1_baseline",
+  "reason": "Patch resolves R005/R006 but drops R003, causing a holdout regression; rollback keeps the previous compact skill."
+}

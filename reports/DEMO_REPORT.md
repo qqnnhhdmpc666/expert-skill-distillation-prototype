@@ -301,3 +301,86 @@ correct failure attribution + correct patch action
 优先级 2：继续扩展 failure type，例如 `irrelevant_rule_interference`。
 
 优先级 3：细化 policy comparison，让 budgeted policy 能在固定预算内更合理地权衡高风险规则和历史失败规则。
+## 12. Method Discovery Loop: Fixed-Budget Compiler
+
+新增方法探索支线：
+
+```text
+D:\solution\docs\METHOD_DISCOVERY_PLAN.md
+D:\solution\scripts\run_fixed_budget_compiler.py
+D:\solution\outputs\mvp_vertical_slice\fixed_budget_compiler_001
+```
+
+这个实验专门回答一个质疑：
+
+```text
+compact v2 是不是只是 prompt 变长了所以变好？
+```
+
+因此所有 policy 共用同一个 rule-token budget：
+
+```text
+token_budget: 237
+compact_v1_rule_cost: 199
+all_expected_rule_cost: 281
+```
+
+对比结果：
+
+| Policy | Selected Rules | Tokens | Over Budget | Checklist | Failure-Critical Recovered | Missed Rules |
+|---|---|---:|---|---:|---|---|
+| priority-only | R001, R002, R003, R004 | 199 | false | 4 / 6 | none | R005, R006 |
+| risk-cost | R001, R002, R004, R005, R007 | 221 | false | 4 / 6 | R005 | R003, R006 |
+| execution-aware-fixed-budget | R001, R002, R004, R005, R006 | 223 | false | 5 / 6 | R005, R006 | R003 |
+
+保守解释：
+
+```text
+fixed-budget execution-aware policy 部分支持 compiler 机制：
+它没有超预算，并且确实把 R005/R006 换进 compact skill。
+但它为了预算牺牲了 R003，因此没有完整通过 verifier。
+```
+
+这说明当前机制不是简单 append，但也还不是成熟的最优 compact compiler。
+
+## 13. Method Discovery Loop: Rollback Gate
+
+新增验证门控支线：
+
+```text
+D:\solution\scripts\run_rollback_gate.py
+D:\solution\outputs\mvp_vertical_slice\rollback_gate_001
+```
+
+该 slice 构造了一个 toy patch：
+
+```text
+selected rules: R001, R002, R004, R005, R006
+```
+
+它的特点是：
+
+```text
+解决原始 affected rules: R005/R006
+仍在预算内: 223 / 237
+但丢掉 compact v1 已覆盖的 R003
+```
+
+validation gate 结果：
+
+```text
+resolves_original_failure: true
+regression_detected: true
+lost_previously_covered_rules: R003
+over_budget: false
+accepted: false
+decision: reject_and_rollback
+```
+
+保守解释：
+
+```text
+这个 toy gate 说明 patch 不能因为解决局部失败就自动进入部署版本。
+系统需要检查 regression、budget 和 failure-critical preservation。
+但这仍然只是小型机制探针，不是成熟 rollback 系统。
+```

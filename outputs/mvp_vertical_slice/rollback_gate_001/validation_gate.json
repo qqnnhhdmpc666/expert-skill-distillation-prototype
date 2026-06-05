@@ -1,0 +1,18 @@
+{
+  "gate_id": "rollback_gate_v0",
+  "checks": [
+    "resolves_original_failure",
+    "no_holdout_regression",
+    "within_token_budget",
+    "preserves_failure_critical_rules"
+  ],
+  "resolves_original_failure": true,
+  "regression_detected": true,
+  "lost_previously_covered_rules": [
+    "R003"
+  ],
+  "over_budget": false,
+  "broke_failure_critical_rules": false,
+  "failure_critical_missing": [],
+  "accepted": false
+}

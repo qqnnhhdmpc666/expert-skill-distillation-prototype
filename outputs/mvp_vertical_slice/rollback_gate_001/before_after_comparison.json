@@ -1,0 +1,96 @@
+{
+  "before": {
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "token_count": 199,
+    "original_failure_eval": {
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "expected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "missed_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "checklist_pass": 0,
+      "checklist_total": 2,
+      "verifier_reward": 0.0
+    },
+    "holdout_eval": {
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "expected_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "missed_rule_ids": [],
+      "checklist_pass": 4,
+      "checklist_total": 4,
+      "verifier_reward": 1.0
+    }
+  },
+  "after_patch": {
+    "selected_rule_ids": [
+      "R001",
+      "R002",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "token_count": 223,
+    "original_failure_eval": {
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "expected_rule_ids": [
+        "R005",
+        "R006"
+      ],
+      "missed_rule_ids": [],
+      "checklist_pass": 2,
+      "checklist_total": 2,
+      "verifier_reward": 1.0
+    },
+    "holdout_eval": {
+      "selected_rule_ids": [
+        "R001",
+        "R002",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "expected_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "missed_rule_ids": [
+        "R003"
+      ],
+      "checklist_pass": 3,
+      "checklist_total": 4,
+      "verifier_reward": 0.0
+    }
+  }
+}

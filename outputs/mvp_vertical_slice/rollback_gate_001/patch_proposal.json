@@ -1,0 +1,22 @@
+{
+  "patch_id": "rollback-gate-toy-P001",
+  "patch_action": "patch_failure_rules_under_budget",
+  "original_failure_type": "missing_rule",
+  "affected_rule_ids": [
+    "R005",
+    "R006"
+  ],
+  "selected_rule_ids": [
+    "R001",
+    "R002",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "dropped_rule_ids": [
+    "R003"
+  ],
+  "token_budget": 237,
+  "token_count": 223,
+  "notes": "This patch fixes the originally affected R005/R006 by evicting R003 to stay under budget."
+}

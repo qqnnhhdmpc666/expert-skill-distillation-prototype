@@ -324,3 +324,91 @@ execution-aware risk-cost
 ```
 
 优先级 4：整理 demo 脚本和架构图，为导师演示做准备。
+## 9. 最新进展：Method Discovery Plan
+
+新增方法探索计划文档：
+
+```text
+D:\solution\docs\METHOD_DISCOVERY_PLAN.md
+```
+
+当前不把已有系统包装成成熟方法，而是进入 method discovery loop。四个候选机制分别是：
+
+```text
+M1 failure-to-patch mapping
+M2 fixed-budget compact skill compiler
+M3 rollback / validation-gated revision
+M4 evidence-grounded expert distillation
+```
+
+本轮优先推进 M2 和 M3，因为它们直接回应两个核心质疑：
+
+```text
+1. compact v2 是不是只是加长 prompt？
+2. patch 会不会修好一个问题又破坏另一个问题？
+```
+
+## 10. 最新进展：Fixed-Budget Compiler 001
+
+新增脚本和输出：
+
+```text
+D:\solution\scripts\run_fixed_budget_compiler.py
+D:\solution\outputs\mvp_vertical_slice\fixed_budget_compiler_001
+```
+
+核心结果：
+
+```text
+token_budget: 237
+priority-only: 199 tokens, 4/6, misses R005/R006
+risk-cost: 221 tokens, 4/6, misses R003/R006
+execution-aware-fixed-budget: 223 tokens, 5/6, recovers R005/R006, misses R003
+```
+
+当前解释：
+
+```text
+partially_supported
+```
+
+execution-aware policy 在固定预算内确实把 failure-critical 的 R005/R006 换了进来，不再是简单 append；但它为了预算牺牲 R003，所以还不能说已经形成成熟 compact compiler。
+
+## 11. 最新进展：Rollback Gate 001
+
+新增脚本和输出：
+
+```text
+D:\solution\scripts\run_rollback_gate.py
+D:\solution\outputs\mvp_vertical_slice\rollback_gate_001
+```
+
+toy patch：
+
+```text
+R001, R002, R004, R005, R006
+```
+
+validation gate 结果：
+
+```text
+resolves_original_failure: true
+regression_detected: true
+lost_previously_covered_rules: R003
+over_budget: false
+accepted: false
+decision: reject_and_rollback
+```
+
+意义：
+
+```text
+这说明 repair loop 不应该自动接受所有 patch。
+即使 patch 解决了 R005/R006，也可能因为丢失 R003 而被 gate 拒绝并回滚。
+```
+
+边界：
+
+```text
+这是 toy validation-gated revision slice，不是成熟 rollback 系统。
+```

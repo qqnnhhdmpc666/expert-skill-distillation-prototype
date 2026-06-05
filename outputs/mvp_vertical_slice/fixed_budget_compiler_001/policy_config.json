@@ -1,0 +1,48 @@
+{
+  "run_id": "fixed_budget_compiler_001",
+  "created_at": "2026-06-05T11:05:02.450026+00:00",
+  "positioning": "method-discovery fixed-budget compact compiler slice; not a benchmark",
+  "candidate_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006",
+    "R007"
+  ],
+  "expected_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "failure_critical_rule_ids": [
+    "R005",
+    "R006"
+  ],
+  "rule_costs": {
+    "R001": 43,
+    "R002": 46,
+    "R003": 58,
+    "R004": 52,
+    "R005": 38,
+    "R006": 44,
+    "R007": 42
+  },
+  "budget": {
+    "token_budget": 237,
+    "budget_basis": "compact_v1 rule cost plus one medium-rule margin; still below the cost of all expected rules",
+    "compact_v1_rule_cost": 199,
+    "one_medium_rule_margin": 38,
+    "all_expected_rule_cost": 281,
+    "all_candidate_rule_cost": 323
+  },
+  "policies": {
+    "priority-only": "high priority + supported only",
+    "risk-cost": "priority + material support per token",
+    "execution-aware-fixed-budget": "risk-cost plus verifier expectedness and previous failure evidence, still under the same budget"
+  }
+}

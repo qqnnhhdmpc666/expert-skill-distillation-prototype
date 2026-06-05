@@ -96,3 +96,65 @@ failure attribution quality
 ```
 
 This helps explain why a compact skill revision works, rather than merely reporting that it worked.
+## 6. Fixed-Budget Tradeoff Diagnostics
+
+Question:
+
+```text
+Can the compact decision policy improve failure-critical coverage under the same budget, or does it only improve by making the prompt longer?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/fixed_budget_compiler_001
+```
+
+Diagnostic fields:
+
+- token budget.
+- selected rule IDs.
+- dropped rule IDs.
+- over-budget status.
+- failure-critical recovered.
+- missed rules.
+- checklist coverage.
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The execution-aware fixed-budget policy recovers R005/R006 without exceeding budget, but misses R003. This is useful evidence for rule replacement under budget, not a proof of optimal selection.
+
+## 7. Rollback Gate Diagnostics
+
+Question:
+
+```text
+Should a patch be accepted if it resolves the original failure but creates a regression?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/rollback_gate_001
+```
+
+Diagnostic fields:
+
+- resolves original failure.
+- regression detected.
+- lost previously covered rules.
+- over budget.
+- broke failure-critical rules.
+- accepted / rejected / rollback decision.
+
+Current interpretation:
+
+```text
+toy validation-gate probe
+```
+
+The current slice rejects a patch that resolves R005/R006 but drops R003. This supports the need for validation-gated revision, but not a mature rollback system.

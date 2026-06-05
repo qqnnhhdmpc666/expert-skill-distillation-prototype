@@ -128,3 +128,65 @@ If execution-aware policy only improves by exceeding budget, or if rule scoring 
 ## Current Priority
 
 H1 is currently the strongest mechanism candidate because it already has two failure types and can be tested with counterfactual patch variants. H2 and H3 remain important, but they need more diverse data before stronger claims.
+## Update: Method Discovery Loop
+
+The next-stage plan is now tracked in:
+
+```text
+docs/METHOD_DISCOVERY_PLAN.md
+```
+
+The plan reframes the hypotheses as four mechanism candidates:
+
+- M1: failure-to-patch mapping.
+- M2: fixed-budget compact skill compiler.
+- M3: rollback / validation-gated revision.
+- M4: evidence-grounded expert distillation.
+
+Each candidate must specify a trigger condition, decision rule, alternative/counterfactual, and failure boundary before it can be treated as more than a pipeline component.
+
+### M2 Current Probe
+
+Artifact:
+
+```text
+outputs/mvp_vertical_slice/fixed_budget_compiler_001
+```
+
+Current observation:
+
+```text
+execution-aware-fixed-budget stays within budget and recovers R005/R006,
+but it sacrifices R003 and therefore does not fully pass the verifier.
+```
+
+Interpretation:
+
+```text
+partially_supported
+```
+
+This weakens the "it only works by appending more prompt" critique, but it does not yet prove a mature compact compiler.
+
+### M3 Current Probe
+
+Artifact:
+
+```text
+outputs/mvp_vertical_slice/rollback_gate_001
+```
+
+Current observation:
+
+```text
+The proposed patch resolves R005/R006 but drops R003.
+The validation gate rejects it and rolls back.
+```
+
+Interpretation:
+
+```text
+useful as a toy maturation probe
+```
+
+The slice shows why repair should be validation-gated, but it does not yet prove robust rollback across realistic tasks.
