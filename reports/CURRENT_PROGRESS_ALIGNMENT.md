@@ -831,3 +831,78 @@ The prototype demonstrates a risk-budgeted traceable skill deployment loop in a 
 - 不能把 4-case holdout 叫 benchmark。
 - 不能把 selective trace 叫成熟 tracing strategy。
 - 不能把当前系统叫 mature skill compiler。
+
+## 19. 最新进展：Related-Work Delta 与仓库成熟度审计
+
+新增：
+
+```text
+D:\solution\docs\RELATED_WORK_DELTA_AUDIT.md
+D:\solution\docs\COMPONENT_BASELINE_PLAN.md
+```
+
+这一步不只比较机制，也比较仓库工程成熟度。
+
+当前仓库体征对比：
+
+```text
+ours:
+  122 source/doc/config files excluding outputs/external_repos
+  28 Python files
+  ~6.7k Python LOC
+  no pyproject / no CI / script-first
+
+SPARK-PDI:
+  239 files
+  29 Python files
+  ~9.5k Python LOC
+  pyproject + uv.lock + ruff/mypy config
+  package-like research pipeline
+
+COLLEAGUE.SKILL:
+  108 files
+  30 Python files
+  ~8.1k Python LOC
+  tests + install docs + contribution docs + host installers
+  product-like skill artifact tooling
+```
+
+当前判断：
+
+```text
+我们不是空壳草稿；代码和 artifact 已经有一定规模。
+但工程成熟度还不是 SPARK/COLLEAGUE 级别。
+```
+
+我们的当前优势：
+
+- artifact discipline 强；
+- vertical slices 多且可复现；
+- demo loop 覆盖 material -> skill -> compact -> agent -> verifier -> patch -> gate -> trace；
+- claim audit 已经明确每个 artifact 能支撑什么。
+
+我们的当前短板：
+
+- script-first，缺少 package/API；
+- `src/` 尚未形成核心库；
+- 缺少 formal unit tests；
+- 缺少 typed schemas；
+- 缺少 pyproject/dependency lock/CI；
+- 一些标准在文档里写清楚了，但还没有被代码强制执行。
+
+安全表述：
+
+```text
+The repository is currently a reproducible research/demo prototype, not yet a mature open-source platform.
+```
+
+后续如果要提升成熟度，优先方向是：
+
+```text
+move reusable logic into src/
+define schemas
+add CLI
+add tests
+add pyproject/ruff/CI
+turn component baseline plan into runnable ablation
+```

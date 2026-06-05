@@ -30,6 +30,32 @@ expert material
 -> selective trace for high-risk rules
 ```
 
+Related-work delta audit:
+
+```text
+docs/RELATED_WORK_DELTA_AUDIT.md
+```
+
+Component baseline plan:
+
+```text
+docs/COMPONENT_BASELINE_PLAN.md
+```
+
+Safe relation to SPARK/COLLEAGUE:
+
+```text
+We build on COLLEAGUE.SKILL's inspectable skill artifact idea and SPARK-PDI's execution-evidence orientation. Our scoped exploration is correctness-constrained deployment in a controlled API-review family: budgeted compact skill generation, verifier-driven patching, validation gates, rule-application trace, and risk-budgeted selective trace.
+```
+
+Do not present this as a full SPARK reproduction, a COLLEAGUE replacement, or a claim that every module is original.
+
+Repository maturity boundary:
+
+```text
+Compared with SPARK-PDI and COLLEAGUE.SKILL, the current repository is a reproducible, artifact-rich demo prototype. It has substantial scripts and evidence artifacts, but it is not yet as mature as an open-source platform: package structure, formal tests, typed schemas, CLI/API, dependency lock, and CI are still limited.
+```
+
 ## Layer 1: Stable Demo Loop
 
 The stable demo loop demonstrates that expert materials can become deployable skill artifacts and that verifier feedback can repair a compact skill.
@@ -175,3 +201,24 @@ Do not claim:
 - This outperforms related work.
 - This is a mature skill compiler.
 - The trace protocol applies to all agents or tasks.
+
+## Component Baseline Direction
+
+The next baseline plan should explain which component is responsible for which gain:
+
+| Baseline | What It Tests |
+|---|---|
+| `direct_summary_skill` | whether structured rule distillation improves over direct summarization |
+| `full_skill_no_compiler` | full expert context coverage and cost |
+| `compact_no_feedback` | what compacting saves and loses |
+| `patched_no_gate` | whether blind patching creates regression or over-budget artifacts |
+| `patched_no_trace` | task behavior without rule-application observability |
+| `patched_selective_trace` | whether trace cost can be allocated to high-risk rules |
+
+This is a component attribution plan, not a benchmark plan.
+
+Engineering baseline direction:
+
+```text
+Future maturity work should compare not only task effect, but also implementation quality: entrypoints, package boundaries, schema enforcement, test coverage, dependency management, and docs/install experience.
+```

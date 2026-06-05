@@ -684,3 +684,28 @@ Boundary:
 ```text
 The audit is a claim guard. It does not add new experimental evidence.
 ```
+
+## 19. Review Related-Work Delta And Component Baselines
+
+Use these documents before writing slides or claims:
+
+```text
+D:\solution\docs\RELATED_WORK_DELTA_AUDIT.md
+D:\solution\docs\COMPONENT_BASELINE_PLAN.md
+```
+
+Purpose:
+
+```text
+RELATED_WORK_DELTA_AUDIT.md:
+  explains what is inherited, adapted, or genuinely explored relative to SPARK-PDI and COLLEAGUE.SKILL.
+
+COMPONENT_BASELINE_PLAN.md:
+  explains how to attribute improvements to expert rules, compacting, patching, validation gate, trace protocol, and selective trace.
+```
+
+Boundary:
+
+```text
+These are positioning and planning documents. They do not add new benchmark evidence.
+```
