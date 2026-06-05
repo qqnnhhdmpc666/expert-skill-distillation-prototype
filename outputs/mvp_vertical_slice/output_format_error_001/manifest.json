@@ -1,0 +1,15 @@
+{
+  "run_id": "output_format_error_001",
+  "created_at": "2026-06-05T06:23:13.851224+00:00",
+  "artifacts": [
+    "bad_review.json",
+    "verification_result.json",
+    "execution_report_spark.json",
+    "repair_log_format.md",
+    "compact_skill_v1.md",
+    "compact_skill_v2.md",
+    "validation_gate.json",
+    "cost_summary.json"
+  ],
+  "boundary": "Second failure taxonomy vertical slice only; not a complete taxonomy benchmark."
+}

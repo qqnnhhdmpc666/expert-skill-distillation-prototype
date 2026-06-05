@@ -1,0 +1,11 @@
+{
+  "gate": "output_contract_patch_gate_v0",
+  "accepted": true,
+  "affected_rule_ids": [
+    "OUTPUT_CONTRACT"
+  ],
+  "patch_action": "rewrite_output_contract",
+  "reasons": [
+    "Patch accepted because verifier failure is output_format_error and affected target is OUTPUT_CONTRACT."
+  ]
+}

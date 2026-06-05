@@ -1,0 +1,29 @@
+{
+  "adapter": "local_output_contract_adapter_v1",
+  "task_name": "api-review-output-format-error-001",
+  "passed": false,
+  "final_status": "FAIL",
+  "final_reward": 0.0,
+  "attempt_count": 1,
+  "status_trajectory": [
+    "FAIL"
+  ],
+  "reward_trajectory": [
+    0.0
+  ],
+  "failure_type": "output_format_error",
+  "diagnosis": {
+    "affected_rule_ids": [
+      "OUTPUT_CONTRACT"
+    ],
+    "patch_ready": true,
+    "patch_hint": "Rewrite the compact skill output contract with required finding fields.",
+    "verifier_stdout": "finding[0] missing fields: severity, evidence; finding[1] missing fields: severity, evidence"
+  },
+  "cost": {
+    "input_tokens": null,
+    "output_tokens": 42,
+    "skill_gen_calls": 0,
+    "total_time_s": 0
+  }
+}

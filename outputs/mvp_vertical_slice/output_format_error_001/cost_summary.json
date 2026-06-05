@@ -1,0 +1,8 @@
+{
+  "token_estimator": "round(characters / 4)",
+  "compact_skill_v1_tokens": 265,
+  "compact_skill_v2_tokens": 386,
+  "token_increase_ratio": 0.457,
+  "failure_type": "output_format_error",
+  "patch_action": "rewrite_output_contract"
+}

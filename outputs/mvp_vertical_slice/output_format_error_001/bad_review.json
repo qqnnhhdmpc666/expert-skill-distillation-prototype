@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication boundary is underspecified."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request validation constraints are missing."
+    }
+  ]
+}
