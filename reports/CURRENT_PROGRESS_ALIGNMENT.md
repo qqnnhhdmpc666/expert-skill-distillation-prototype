@@ -576,3 +576,50 @@ real Harbor verifier failure
 
 - 当前使用 Harbor oracle solution，不是真实 LLM agent。
 - 但失败/通过已经由 Docker/Harbor verifier 实际产生，不再是手写 fixture。
+
+## 15. 最新更新：api-review-002 holdout case 已跑通
+
+更新时间：2026-06-05（Asia/Shanghai）
+
+已新增第二个真实 Harbor holdout case：
+
+```text
+D:\solution\data\harbor_api_review_tasks\api-review-002-compact-v1
+D:\solution\data\harbor_api_review_tasks\api-review-002-compact-v2
+```
+
+case_002 使用不同 API 文本：
+
+```text
+POST /api/v1/orders/{order_id}/refund
+```
+
+真实 Harbor 运行结果：
+
+```text
+compact_v1: reward = 0.0
+compact_v1 verifier: FAIL: missing expected findings for R005 R006
+
+compact_v2: reward = 1.0
+compact_v2 verifier: PASS: review.json covers required rule ids R001-R006
+```
+
+转换输出：
+
+```text
+D:\solution\outputs\harbor-api-review-002-real\compact_v1_converted\execution_report_spark.json
+D:\solution\outputs\harbor-api-review-002-real\compact_v2_converted\execution_report_spark.json
+```
+
+闭环输出：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\harbor_api_review_002
+```
+
+当前意义：
+
+- 单 case existence proof 已扩展到第二个 holdout API 文本。
+- compact v1 在 case_001 和 case_002 中都因 R005/R006 缺失失败。
+- compact v2 在两个 case 中都通过 Harbor verifier。
+- 下一步可以探索新的 failure type，或接入 mock / scripted LLM agent。

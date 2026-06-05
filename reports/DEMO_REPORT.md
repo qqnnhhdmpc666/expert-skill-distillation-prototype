@@ -103,7 +103,7 @@ decision_v2 = patch
 
 这些维度用于让两周 demo 更可解释；它们不是对 SkillNet / SkillCraft 等大规模评测工作的替代。
 
-## 6. SPARK-backed Execution Feedback
+## 6. Execution Feedback Layers
 
 当前已补充一个 SPARK-compatible feedback 闭环：
 
@@ -152,7 +152,7 @@ SPARK-compatible failure report
 - 失败报告中的 affected rules 会改变 `rule_ledger_patched.json`。
 - patched ledger 会进一步改变 `compact_skill_v2.md`。
 - validation gate 会检查 affected rules 是否进入 v2，以及 token 增量是否低于阈值。
-- 下一步需要把 fixture 替换为真实 Harbor API review task。
+- fixture 层用于测试接口行为；真实 Harbor 层用于提升反馈可信度。
 
 ## 6.1 Feedback Source Maturity
 
@@ -180,15 +180,45 @@ D:\solution\outputs\mvp_vertical_slice\harbor_api_review_001
 
 这说明当前失败反馈已经不只来自手写 fixture，而是由 Harbor verifier 在 Docker 执行环境中实际产生。
 
+## 6.2 Holdout Case
+
+已新增第二个真实 Harbor holdout case：
+
+```text
+D:\solution\data\harbor_api_review_tasks\api-review-002-compact-v1
+D:\solution\data\harbor_api_review_tasks\api-review-002-compact-v2
+```
+
+case_002 使用不同 API 文本：
+
+```text
+POST /api/v1/orders/{order_id}/refund
+```
+
+真实 Harbor verifier 结果：
+
+| Case | Variant | Reward | Verifier Result | Closed-loop Output |
+|---|---|---:|---|---|
+| api-review-001 | compact_v1 | 0.0 | missing R005 R006 | `harbor_api_review_001` |
+| api-review-001 | compact_v2 | 1.0 | covers R001-R006 | `harbor_api_review_001` |
+| api-review-002 | compact_v1 | 0.0 | missing R005 R006 | `harbor_api_review_002` |
+| api-review-002 | compact_v2 | 1.0 | covers R001-R006 | `harbor_api_review_002` |
+
+当前解释：
+
+- 这不是大规模 benchmark。
+- 但它说明同一组 compact / patch 机制不只在单一 API 文本上成立。
+- 下一步才适合继续增加 failure type 或接 mock / scripted LLM agent。
+
 ## 7. 下一步
 
 优先级 1：
 
-将 SPARK / Harbor 的 `attempts.json` 与 `trajectory.jsonl` 转换为统一 `execution_report.json`，替代或并联当前 simulated execution。
+新增 `api-review-002` holdout case，验证同一个 compact / patch 机制是否能复用到不同 API 文本。
 
 优先级 2：
 
-实现更明确的 failure-to-patch taxonomy：
+尝试 mock / scripted LLM agent，把 compact skill 注入 prompt 或上下文，再交给 Harbor verifier。
 
 ```text
 missing_rule -> patch/add

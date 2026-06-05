@@ -1,0 +1,53 @@
+{
+  "adapter": "harbor_result_adapter_v1",
+  "source_job_dir": "outputs\\harbor-api-review-002-real\\compact_v1",
+  "source_trial_dir": "outputs\\harbor-api-review-002-real\\compact_v1\\api-review-002-compact-v1__dUnVgLW",
+  "task_name": "api-review-002-compact-v1",
+  "passed": false,
+  "final_status": "FAIL",
+  "final_reward": 0.0,
+  "attempt_count": 1,
+  "status_trajectory": [
+    "FAIL"
+  ],
+  "reward_trajectory": [
+    0.0
+  ],
+  "failure_type": "missing_rule",
+  "diagnosis": {
+    "affected_rule_ids": [
+      "R005",
+      "R006"
+    ],
+    "patch_ready": true,
+    "patch_hint": "Map affected_rule_ids to rule_ledger patches.",
+    "verifier_stdout": "FAIL: missing expected findings for R005 R006"
+  },
+  "pdi": {
+    "enabled": false,
+    "observe_only": null,
+    "method": null,
+    "history_count": 0,
+    "history": []
+  },
+  "cost": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "skill_gen_calls": 0,
+    "skill_gen_latency_s": 0,
+    "agent_time_s": 1.262,
+    "verifier_time_s": 1.89,
+    "total_time_s": 21.056
+  },
+  "events": {
+    "event_count": 1,
+    "execution_event_count": 1,
+    "skill_gen_call_count": 0,
+    "task_summary_count": 0
+  },
+  "raw_files": {
+    "job_result_json": "outputs\\harbor-api-review-002-real\\compact_v1\\result.json",
+    "trial_result_json": "outputs\\harbor-api-review-002-real\\compact_v1\\api-review-002-compact-v1__dUnVgLW\\result.json",
+    "verifier_stdout": "outputs\\harbor-api-review-002-real\\compact_v1\\api-review-002-compact-v1__dUnVgLW\\verifier\\test-stdout.txt"
+  }
+}

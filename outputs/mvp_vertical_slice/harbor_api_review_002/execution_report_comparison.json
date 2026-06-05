@@ -1,0 +1,50 @@
+{
+  "adapter": "harbor_result_adapter_v1",
+  "source_job_dir": "outputs\\harbor-api-review-002-real\\compact_v2",
+  "source_trial_dir": "outputs\\harbor-api-review-002-real\\compact_v2\\api-review-002-compact-v2__pby3hV4",
+  "task_name": "api-review-002-compact-v2",
+  "passed": true,
+  "final_status": "PASS",
+  "final_reward": 1.0,
+  "attempt_count": 1,
+  "status_trajectory": [
+    "PASS"
+  ],
+  "reward_trajectory": [
+    1.0
+  ],
+  "failure_type": "none",
+  "diagnosis": {
+    "affected_rule_ids": [],
+    "patch_ready": false,
+    "patch_hint": "",
+    "verifier_stdout": "PASS: review.json covers required rule ids R001-R006"
+  },
+  "pdi": {
+    "enabled": false,
+    "observe_only": null,
+    "method": null,
+    "history_count": 0,
+    "history": []
+  },
+  "cost": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "skill_gen_calls": 0,
+    "skill_gen_latency_s": 0,
+    "agent_time_s": 1.271,
+    "verifier_time_s": 4.687,
+    "total_time_s": 23.346
+  },
+  "events": {
+    "event_count": 1,
+    "execution_event_count": 1,
+    "skill_gen_call_count": 0,
+    "task_summary_count": 0
+  },
+  "raw_files": {
+    "job_result_json": "outputs\\harbor-api-review-002-real\\compact_v2\\result.json",
+    "trial_result_json": "outputs\\harbor-api-review-002-real\\compact_v2\\api-review-002-compact-v2__pby3hV4\\result.json",
+    "verifier_stdout": "outputs\\harbor-api-review-002-real\\compact_v2\\api-review-002-compact-v2__pby3hV4\\verifier\\test-stdout.txt"
+  }
+}
