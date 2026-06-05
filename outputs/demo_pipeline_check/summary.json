@@ -1,0 +1,175 @@
+{
+  "mode": "rerun-light",
+  "generated_at": "2026-06-05T06:28:01.349540+00:00",
+  "results": [
+    {
+      "name": "rerun_light",
+      "status": "ok",
+      "message": "light rerun finished",
+      "details": {
+        "commands": [
+          {
+            "command": [
+              "C:\\Python313\\python.exe",
+              "scripts/run_mvp_vertical_slice.py",
+              "--run-id",
+              "baseline_001",
+              "--created-at",
+              "2026-06-03T18:06:09.686982+00:00"
+            ],
+            "returncode": 0,
+            "stdout_tail": "{\n  \"run_id\": \"baseline_001\",\n  \"output_dir\": \"outputs\\\\mvp_vertical_slice\\\\baseline_001\",\n  \"artifacts\": [\n    \"compact_skill_v1.md\",\n    \"compact_skill_v2.md\",\n    \"comparison_summary.json\",\n    \"cost_summary.json\",\n    \"demo_report.md\",\n    \"evidence_map.json\",\n    \"evidence_report.md\",\n    \"execution_report_full_skill.json\",\n    \"execution_report_no_skill.json\",\n    \"execution_report_v1.json\",\n    \"execution_report_v2.json\",\n    \"full_skill.md\",\n    \"repair_log.md\",\n    \"rule_ledger.json\"\n  ]\n}\n",
+            "stderr_tail": "",
+            "accepted": true
+          },
+          {
+            "command": [
+              "C:\\Python313\\python.exe",
+              "scripts/verify_api_review_json.py",
+              "--review",
+              "outputs/mvp_vertical_slice/agent_mock_api_review_001/review_v1.json",
+              "--output",
+              "outputs/agent-mock-smoke/verify_review_v1.json"
+            ],
+            "returncode": 1,
+            "stdout_tail": "{\n  \"passed\": false,\n  \"reward\": 0.0,\n  \"failure_type\": \"missing_rule\",\n  \"missing_rule_ids\": [\n    \"R005\",\n    \"R006\"\n  ],\n  \"message\": \"missing expected findings for R005 R006\"\n}\n",
+            "stderr_tail": "",
+            "expected_nonzero": true,
+            "accepted": true
+          },
+          {
+            "command": [
+              "C:\\Python313\\python.exe",
+              "scripts/verify_api_review_json.py",
+              "--review",
+              "outputs/mvp_vertical_slice/agent_mock_api_review_001/review_v2.json",
+              "--output",
+              "outputs/agent-mock-smoke/verify_review_v2.json"
+            ],
+            "returncode": 0,
+            "stdout_tail": "{\n  \"passed\": true,\n  \"reward\": 1.0,\n  \"failure_type\": \"none\",\n  \"missing_rule_ids\": [],\n  \"message\": \"review.json covers required rule ids R001-R006\"\n}\n",
+            "stderr_tail": "",
+            "accepted": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline_001",
+      "status": "ok",
+      "message": "baseline comparison checked",
+      "details": {
+        "failures": [],
+        "rows": {
+          "no_skill": {
+            "variant": "no_skill",
+            "input_tokens": 0,
+            "passed": false,
+            "checklist_pass": 0,
+            "checklist_total": 6,
+            "missed_rules": [
+              "R001",
+              "R002",
+              "R003",
+              "R004",
+              "R005",
+              "R006"
+            ],
+            "retry_count": 0,
+            "verifier_calls": 1,
+            "latency_ms": 0
+          },
+          "full_skill": {
+            "variant": "full_skill",
+            "input_tokens": 1330,
+            "passed": true,
+            "checklist_pass": 6,
+            "checklist_total": 6,
+            "missed_rules": [],
+            "retry_count": 0,
+            "verifier_calls": 1,
+            "latency_ms": 0
+          },
+          "compact_skill_v1": {
+            "variant": "compact_skill_v1",
+            "input_tokens": 265,
+            "passed": false,
+            "checklist_pass": 4,
+            "checklist_total": 6,
+            "missed_rules": [
+              "R005",
+              "R006"
+            ],
+            "retry_count": 0,
+            "verifier_calls": 1,
+            "latency_ms": 0
+          },
+          "compact_skill_v2": {
+            "variant": "compact_skill_v2",
+            "input_tokens": 339,
+            "passed": true,
+            "checklist_pass": 6,
+            "checklist_total": 6,
+            "missed_rules": [],
+            "retry_count": 0,
+            "verifier_calls": 1,
+            "latency_ms": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "harbor_api_review_001",
+      "status": "ok",
+      "message": "feedback run checked",
+      "details": {
+        "failure_type": "missing_rule",
+        "affected_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "validation_gate_accepted": true,
+        "comparison_passed": true
+      }
+    },
+    {
+      "name": "harbor_api_review_002",
+      "status": "ok",
+      "message": "feedback run checked",
+      "details": {
+        "failure_type": "missing_rule",
+        "affected_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "validation_gate_accepted": true,
+        "comparison_passed": true
+      }
+    },
+    {
+      "name": "agent_mock_api_review_001",
+      "status": "ok",
+      "message": "feedback run checked",
+      "details": {
+        "failure_type": "missing_rule",
+        "affected_rule_ids": [
+          "R005",
+          "R006"
+        ],
+        "validation_gate_accepted": true,
+        "comparison_passed": true
+      }
+    },
+    {
+      "name": "llm_agent_api_review_001",
+      "status": "ok",
+      "message": "LLM matrix checked",
+      "details": {
+        "env_ready": true,
+        "model": "gpt-5.5",
+        "failures": []
+      }
+    }
+  ],
+  "overall_status": "ok"
+}
