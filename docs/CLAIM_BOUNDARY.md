@@ -90,6 +90,21 @@ Safe interpretation:
 Risk signals can guide trace budget allocation to failure-critical rules in this toy slice.
 ```
 
+- Risk trace robustness has been checked by enumerating all size=2 trace allocations:
+
+```text
+all size=2 combinations: 15
+only R005/R006 covers both failure-critical rules
+risk_based_selective_trace selects R005/R006
+```
+
+- Direct-summary miss analysis identifies the residual miss:
+
+```text
+failed case: case004_validation_sensitive_idempotency
+missed rule: R006 idempotency
+```
+
 - Component attribution now includes a direct-summary baseline:
 
 ```text
@@ -123,6 +138,8 @@ Do not say:
 - Direct summarization is always a weak baseline.
 - The prototype has broadly defeated direct-summary skill generation.
 - Risk-based selective trace has been statistically validated.
+- One direct-summary miss proves a general long-tail failure pattern.
+- The current risk policy will work beyond the current rule pool.
 
 ## Safe Main Claim
 

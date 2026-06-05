@@ -1,0 +1,10 @@
+{
+  "run_id": "risk_trace_policy_robustness_001",
+  "created_at": "2026-06-05T17:49:04.374463+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "all_size_2_combinations.json"
+  ],
+  "boundary": "Toy rule-pool enumeration only. This is not statistical significance and not a mature trace policy."
+}

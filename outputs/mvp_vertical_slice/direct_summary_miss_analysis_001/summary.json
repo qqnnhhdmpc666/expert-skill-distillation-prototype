@@ -1,0 +1,53 @@
+{
+  "run_id": "direct_summary_miss_analysis_001",
+  "created_at": "2026-06-05T17:49:04.367137+00:00",
+  "status": "partially_supported",
+  "failed_case_id": "case004_validation_sensitive_idempotency",
+  "missed_rule_ids": [
+    "R006"
+  ],
+  "expected_rule_ids": [
+    "R002",
+    "R004",
+    "R006"
+  ],
+  "direct_summary_available_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005"
+  ],
+  "direct_summary_contains_nearby_phrase": {
+    "duplicate": false,
+    "idempotency": false,
+    "retry": false
+  },
+  "missed_rule_analysis": [
+    {
+      "rule_id": "R006",
+      "name": "idempotency",
+      "priority": "medium",
+      "failure_critical": true,
+      "salience": "lower_than_auth_validation_error_sensitive_data",
+      "long_tail": true,
+      "why_missed": "The direct summary covers common API concerns but omits explicit idempotency / duplicate submission behavior.",
+      "requires_execution_feedback": true
+    }
+  ],
+  "patched_compact_recovery": {
+    "pass_at_1": true,
+    "missing_rule_ids": [],
+    "available_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ]
+  },
+  "patch_recovery": "patched_compact includes R006 explicitly, so the mock case-aware agent emits the idempotency finding and the verifier marks the failed case as pass.",
+  "meaning_for_core_claim": "Direct summary is not weak: it covers most salient rules. Its only miss is R006, a medium-priority but deployment-critical idempotency/duplicate-submission rule that compact_v1 also missed. This supports the narrow claim that deployment feedback is useful for recovering residual failure-critical rules.",
+  "boundary": "One failed case is explanatory, not statistical. More holdout cases are needed before claiming a general long-tail failure pattern."
+}

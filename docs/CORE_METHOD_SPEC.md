@@ -177,12 +177,19 @@ Current supporting artifacts:
 ```text
 outputs/mvp_vertical_slice/selective_trace_compiler_001
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 ```
 
 Claim strength:
 
 ```text
 partially_supported in toy slices
+```
+
+Current robustness observation:
+
+```text
+Among all 15 size=2 trace allocations over R001-R006, only R005/R006 covers both failure-critical rules. The risk-based policy selects R005/R006 under the same 183/237 token cost.
 ```
 
 ### H4: Joint Deployment Optimization
@@ -220,4 +227,10 @@ Safe claim:
 
 ```text
 In a controlled API-review family, the prototype explores expert skill deployment under correctness, budget, and traceability constraints. Direct summaries can cover salient rules, while verifier feedback, patch gates, and risk-budgeted trace help recover and control residual deployment failures.
+```
+
+Falsification plan:
+
+```text
+docs/FALSIFICATION_AND_NEXT_EVIDENCE.md
 ```

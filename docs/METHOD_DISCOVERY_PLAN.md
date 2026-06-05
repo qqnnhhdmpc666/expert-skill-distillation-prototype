@@ -458,6 +458,7 @@ Current artifact:
 ```text
 outputs/mvp_vertical_slice/selective_trace_compiler_001
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 ```
 
 Hypothesis:
@@ -498,6 +499,30 @@ partially_supported
 
 With the same selective-trace size and token cost, risk-based selection allocates trace to failure-critical rules while the fixed-seed random baseline does not. This supports the narrow diagnostic claim that risk signals can guide trace budget allocation in this toy slice.
 
+Robustness enumeration:
+
+```text
+all size=2 trace combinations over R001-R006: 15
+full failure-critical coverage count: 1
+partial failure-critical coverage count: 8
+zero failure-critical coverage count: 6
+risk-based selection: R005/R006, coverage 1.00
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The result no longer depends only on one random seed. It shows that, in the current toy rule pool, the risk-based choice is the only size=2 allocation that covers both failure-critical rules.
+
 Failure boundary:
 
 If future cases show that untraced rules produce shortcut errors or semantic drift, the trace selection policy should be tightened. The random baseline uses one seed in a tiny rule pool; random hits are possible, so this is not statistical evidence. Do not claim a mature tracing policy yet.
+
+Falsification plan:
+
+```text
+docs/FALSIFICATION_AND_NEXT_EVIDENCE.md
+```

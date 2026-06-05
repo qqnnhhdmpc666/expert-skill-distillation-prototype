@@ -314,6 +314,7 @@ The first selective-trace policy baseline has been implemented:
 
 ```text
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 ```
 
 Compared variants:
@@ -330,6 +331,7 @@ Result:
 ```text
 random_selective_trace: traced R002/R003, 183/237 tokens, failure-critical trace coverage 0.00
 risk_based_selective_trace: traced R005/R006, 183/237 tokens, failure-critical trace coverage 1.00
+all size=2 combinations: only R005/R006 gives full failure-critical trace coverage
 ```
 
 Interpretation:
@@ -342,4 +344,26 @@ Boundary:
 
 ```text
 This is a toy baseline with one random seed and a tiny rule pool. Random selective trace can hit failure-critical rules by chance, so this is not statistical evidence for a mature risk policy.
+```
+
+## Direct Summary Miss Analysis
+
+The direct-summary miss has been analyzed:
+
+```text
+outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
+```
+
+Result:
+
+```text
+failed case: case004_validation_sensitive_idempotency
+missed rule: R006 idempotency
+patched compact: recovers R006 and passes
+```
+
+Interpretation:
+
+```text
+Direct summary is strong but omits one medium-priority deployment-critical rule. This supports the residual failure-critical rule framing more than the "direct summary is weak" framing.
 ```

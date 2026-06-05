@@ -161,6 +161,8 @@ outputs/mvp_vertical_slice/selective_trace_compiler_001
 outputs/mvp_vertical_slice/artifact_claim_audit_001
 outputs/mvp_vertical_slice/component_baseline_direct_summary_001
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
+outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
 ```
 
 4-case controlled holdout:
@@ -223,6 +225,22 @@ Interpretation:
 
 ```text
 At the same selective-trace size and token cost, risk-based selection traces failure-critical rules while the fixed-seed random baseline does not. This supports risk-budgeted verification as a toy-slice diagnostic, not as a mature tracing policy.
+```
+
+Risk trace robustness:
+
+```text
+all size=2 trace combinations: 15
+full failure-critical coverage count: 1
+risk-based selected R005/R006, the only full-coverage size=2 allocation
+```
+
+Direct summary miss analysis:
+
+```text
+failed case: case004_validation_sensitive_idempotency
+missed rule: R006 idempotency
+meaning: direct summary is strong, but can omit a medium-priority deployment-critical rule
 ```
 
 ## Claim Audit Summary

@@ -154,6 +154,24 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "risk_trace_policy_robustness_001",
+        "path": "outputs/mvp_vertical_slice/risk_trace_policy_robustness_001",
+        "supported_claim": "Risk-based selective trace does not rely only on one random seed in the current toy rule pool.",
+        "key_result": "Among all 15 size=2 trace allocations, only R005/R006 covers both failure-critical rules; risk-based selection picks R005/R006.",
+        "limitation": "Complete enumeration of a tiny toy rule pool; not statistical significance or mature policy validation.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
+    {
+        "artifact": "direct_summary_miss_analysis_001",
+        "path": "outputs/mvp_vertical_slice/direct_summary_miss_analysis_001",
+        "supported_claim": "The direct-summary miss is a residual deployment-critical idempotency rule rather than broad summary failure.",
+        "key_result": "Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes.",
+        "limitation": "One explanatory miss case; not a general long-tail failure pattern.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

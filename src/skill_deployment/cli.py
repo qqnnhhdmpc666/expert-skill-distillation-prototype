@@ -22,6 +22,8 @@ def main(argv: list[str] | None = None) -> int:
     subparsers.add_parser("run-holdout", help="Run the small controlled holdout evaluation.")
     subparsers.add_parser("compare-baselines", help="Run the component baseline attribution slice.")
     subparsers.add_parser("compare-trace-policy", help="Run the risk-vs-random selective trace baseline.")
+    subparsers.add_parser("trace-robustness", help="Enumerate all size-2 trace policy allocations.")
+    subparsers.add_parser("analyze-summary-miss", help="Analyze direct-summary residual misses.")
     args = parser.parse_args(argv)
 
     if args.command == "check-existing":
@@ -36,6 +38,10 @@ def main(argv: list[str] | None = None) -> int:
         return run_script(["scripts/run_component_baseline_eval.py"])
     if args.command == "compare-trace-policy":
         return run_script(["scripts/run_risk_trace_policy_baseline.py"])
+    if args.command == "trace-robustness":
+        return run_script(["scripts/run_risk_trace_policy_robustness.py"])
+    if args.command == "analyze-summary-miss":
+        return run_script(["scripts/run_direct_summary_miss_analysis.py"])
     parser.error(f"unknown command: {args.command}")
     return 2
 

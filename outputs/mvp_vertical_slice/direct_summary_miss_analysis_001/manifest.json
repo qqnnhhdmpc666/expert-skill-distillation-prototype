@@ -1,0 +1,10 @@
+{
+  "run_id": "direct_summary_miss_analysis_001",
+  "created_at": "2026-06-05T17:49:04.367137+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "manifest.json"
+  ],
+  "boundary": "One failed case is explanatory, not statistical. More holdout cases are needed before claiming a general long-tail failure pattern."
+}

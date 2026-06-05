@@ -821,3 +821,64 @@ Boundary:
 ```text
 This is a toy policy baseline with one random seed. It is not statistical validation of a mature trace-selection policy.
 ```
+
+## 23. Run Risk Trace Robustness Enumeration
+
+Enumerate every size=2 trace allocation over R001-R006:
+
+```powershell
+python scripts\run_risk_trace_policy_robustness.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py trace-robustness
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\risk_trace_policy_robustness_001
+```
+
+Expected observation:
+
+```text
+total_combinations: 15
+full_failure_critical_coverage_count: 1
+risk_based_selective_trace: R005/R006
+```
+
+## 24. Run Direct Summary Miss Analysis
+
+Analyze the only failed direct-summary case:
+
+```powershell
+python scripts\run_direct_summary_miss_analysis.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py analyze-summary-miss
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\direct_summary_miss_analysis_001
+```
+
+Expected observation:
+
+```text
+failed_case_id: case004_validation_sensitive_idempotency
+missed_rule_ids: R006
+```
+
+Boundary:
+
+```text
+This is explanatory evidence for the current controlled family, not a general long-tail failure proof.
+```

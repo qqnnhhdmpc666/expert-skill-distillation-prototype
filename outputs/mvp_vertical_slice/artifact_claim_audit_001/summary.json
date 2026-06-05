@@ -1,6 +1,6 @@
 {
   "run_id": "artifact_claim_audit_001",
-  "created_at": "2026-06-05T17:23:19.188878+00:00",
+  "created_at": "2026-06-05T17:49:04.395338+00:00",
   "status": "ok",
   "missing_artifacts": [],
   "safe_main_claim": "The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.",
@@ -147,6 +147,24 @@
       "supported_claim": "Risk signals can allocate a fixed selective-trace budget to failure-critical rules better than a same-size random trace in this toy slice.",
       "key_result": "random_selective_trace R002/R003 gives failure-critical trace coverage 0.00; risk_based_selective_trace R005/R006 gives 1.00 at the same 183/237 token cost.",
       "limitation": "Single random seed and tiny rule pool; not statistical evidence for a mature risk policy.",
+      "role": "method_exploration",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "risk_trace_policy_robustness_001",
+      "path": "outputs/mvp_vertical_slice/risk_trace_policy_robustness_001",
+      "supported_claim": "Risk-based selective trace does not rely only on one random seed in the current toy rule pool.",
+      "key_result": "Among all 15 size=2 trace allocations, only R005/R006 covers both failure-critical rules; risk-based selection picks R005/R006.",
+      "limitation": "Complete enumeration of a tiny toy rule pool; not statistical significance or mature policy validation.",
+      "role": "method_exploration",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "direct_summary_miss_analysis_001",
+      "path": "outputs/mvp_vertical_slice/direct_summary_miss_analysis_001",
+      "supported_claim": "The direct-summary miss is a residual deployment-critical idempotency rule rather than broad summary failure.",
+      "key_result": "Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes.",
+      "limitation": "One explanatory miss case; not a general long-tail failure pattern.",
       "role": "method_exploration",
       "claim_strength": "partially_supported"
     }

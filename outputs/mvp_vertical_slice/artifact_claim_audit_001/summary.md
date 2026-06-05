@@ -22,6 +22,8 @@ Audit what each core artifact can safely support, and prevent overclaiming befor
 | selective_trace_compiler_001 | platform_maturation | partially_supported | full_trace 300/237 rejected; selective_trace R005/R006 183/237 accepted and blocks shortcut. | Toy trace policy; not mature tracing strategy. |
 | component_baseline_direct_summary_001 | platform_maturation | partially_supported | direct_summary_skill avg coverage 0.92; patched_compact avg coverage 1.00 on 4 controlled cases. | Deterministic component attribution slice; not a benchmark and not broad evidence against summarization baselines. |
 | risk_trace_policy_baseline_001 | method_exploration | partially_supported | random_selective_trace R002/R003 gives failure-critical trace coverage 0.00; risk_based_selective_trace R005/R006 gives 1.00 at the same 183/237 token cost. | Single random seed and tiny rule pool; not statistical evidence for a mature risk policy. |
+| risk_trace_policy_robustness_001 | method_exploration | partially_supported | Among all 15 size=2 trace allocations, only R005/R006 covers both failure-critical rules; risk-based selection picks R005/R006. | Complete enumeration of a tiny toy rule pool; not statistical significance or mature policy validation. |
+| direct_summary_miss_analysis_001 | method_exploration | partially_supported | Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes. | One explanatory miss case; not a general long-tail failure pattern. |
 
 ## Safe Main Claim
 

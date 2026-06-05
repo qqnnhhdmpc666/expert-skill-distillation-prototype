@@ -1077,3 +1077,83 @@ partially_supported
 ```text
 这是 toy baseline，只有一个 random seed 和很小的 rule pool。random trace 可能偶然命中关键规则，所以不能说已经统计验证 risk policy。
 ```
+
+## 23. 最新进展：Risk Trace Robustness 与 Direct Summary Miss Analysis
+
+新增 risk trace robustness 枚举：
+
+```text
+D:\solution\scripts\run_risk_trace_policy_robustness.py
+D:\solution\outputs\mvp_vertical_slice\risk_trace_policy_robustness_001
+```
+
+目标：
+
+```text
+不只依赖一个 random seed，而是在当前 R001-R006 规则池内枚举所有 size=2 trace 组合。
+```
+
+当前结果：
+
+```text
+total_combinations: 15
+full_failure_critical_coverage_count: 1
+partial_failure_critical_coverage_count: 8
+zero_failure_critical_coverage_count: 6
+risk_based_selective_trace: R005/R006, coverage 1.00, 183/237 tokens
+previous_random_seed_4: R002/R003, coverage 0.00, 183/237 tokens
+```
+
+当前解释：
+
+```text
+partially_supported
+```
+
+含义：
+
+```text
+在当前 toy rule pool 中，R005/R006 是唯一能完整覆盖 failure-critical rules 的 size=2 trace allocation。
+这比单个 random seed 对照更稳，但仍不是统计显著性验证。
+```
+
+新增 direct summary miss analysis：
+
+```text
+D:\solution\scripts\run_direct_summary_miss_analysis.py
+D:\solution\outputs\mvp_vertical_slice\direct_summary_miss_analysis_001
+```
+
+当前结果：
+
+```text
+failed_case_id: case004_validation_sensitive_idempotency
+missed_rule_ids: R006
+missed rule: idempotency / duplicate submission behavior
+patched_compact: recovers R006 and passes
+```
+
+当前解释：
+
+```text
+direct summary 并不弱，它只漏了一个 medium-priority 但 deployment-critical 的 R006。
+这支持“deployment-time residual failure recovery”的主线，而不是“direct summary 不会生成 checklist”的主线。
+```
+
+边界：
+
+```text
+这是解释性 evidence，不是 general long-tail failure proof。
+```
+
+新增 falsification 文档：
+
+```text
+D:\solution\docs\FALSIFICATION_AND_NEXT_EVIDENCE.md
+```
+
+作用：
+
+```text
+明确当前核心 claim 在什么条件下会变弱或被推翻，以及下一步优先收集什么证据。
+```

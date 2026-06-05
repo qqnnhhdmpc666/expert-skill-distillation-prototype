@@ -365,6 +365,7 @@ Current artifact:
 
 ```text
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
+outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 ```
 
 Current observation:
@@ -392,3 +393,77 @@ partially_supported
 ```
 
 Risk signals help allocate the same trace budget to failure-critical rules in this toy slice. This remains a diagnostic metric, not a final policy metric or statistical claim.
+
+## 14. Risk Trace Robustness Diagnostics
+
+Question:
+
+```text
+Does the risk-trace result depend on one random seed?
+```
+
+Diagnostic fields:
+
+- all size=2 trace combinations.
+- failure-critical trace coverage per combination.
+- trace tokens.
+- total tokens.
+- shortcut blocked.
+- partial trace verifier pass.
+- gate decision.
+- risk score sum.
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
+```
+
+Current observation:
+
+```text
+total combinations: 15
+full failure-critical coverage: 1
+partial failure-critical coverage: 8
+zero failure-critical coverage: 6
+risk-based selected R005/R006, the only full-coverage size=2 combination
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This strengthens the diagnostic relative to a single random seed, but it is still a toy rule-pool enumeration rather than statistical validation.
+
+## 15. Direct Summary Miss Diagnostics
+
+Question:
+
+```text
+If direct summary is strong, what exactly does it miss?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
+```
+
+Current observation:
+
+```text
+failed case: case004_validation_sensitive_idempotency
+missed rule: R006 idempotency
+direct summary available rules: R001-R005
+patched compact recovers R006 and passes
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The miss analysis supports the narrow residual-failure story: direct summary covers salient rules but can omit medium-priority deployment-critical rules such as idempotency.
