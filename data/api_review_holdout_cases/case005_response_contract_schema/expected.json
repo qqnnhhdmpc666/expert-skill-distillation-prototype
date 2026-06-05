@@ -3,6 +3,10 @@
   "expected_rule_ids": ["R005"],
   "critical_rule_ids": ["R005"],
   "negative_rule_ids": ["R001", "R002", "R003", "R004", "R006"],
-  "notes": "Isolates response envelope/schema drift without adding unrelated rule failures."
+  "notes": "Isolates response envelope/schema drift without adding unrelated rule failures.",
+  "metadata": {
+    "scenario": "response_contract_schema",
+    "difficulty": "small",
+    "control_type": "isolated_rule"
+  }
 }
-

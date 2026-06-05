@@ -169,6 +169,34 @@ skill-deploy compare-baselines
 5. Add `pyproject.toml`, dependency lock strategy, ruff/format config, and a CI smoke workflow.
 6. Convert component baseline plan into runnable ablation scripts only after the demo story is stable.
 
+## Repository Maturity Patch Status
+
+The repository now includes a minimal maturity patch:
+
+```text
+pyproject.toml
+src/skill_deployment/
+tests/
+scripts/validate_task_cases.py
+scripts/skill_deploy.py
+docs/REPOSITORY_MATURITY_PATCH_PLAN.md
+```
+
+This moves the implementation from pure script-first toward a minimal package/schema/test skeleton.
+
+Updated assessment:
+
+- `TaskCase`, token budget, manifest checking, validation gate, and trace helper now have shared modules.
+- Fast unit tests cover the new shared helpers.
+- A lightweight CLI wrapper calls existing scripts without rewriting the demo.
+- Existing outputs and experiment results are unchanged.
+
+Still true:
+
+- The repository is not yet as mature as SPARK-PDI or COLLEAGUE.SKILL.
+- Most experimental logic still lives in scripts.
+- CI, dependency lock, typed schemas for all artifacts, and a stable public API are still missing.
+
 ## What Is Baseline Adequate
 
 These parts are adequate for demo but should not be presented as core novelty:

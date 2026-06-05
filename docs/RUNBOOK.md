@@ -709,3 +709,49 @@ Boundary:
 ```text
 These are positioning and planning documents. They do not add new benchmark evidence.
 ```
+
+## 20. Run Repository Maturity Patch Checks
+
+The repository now has a minimal package/schema/test skeleton:
+
+```text
+pyproject.toml
+src/skill_deployment/
+tests/
+scripts/validate_task_cases.py
+scripts/skill_deploy.py
+```
+
+Run fast tests:
+
+```powershell
+python -m pytest
+```
+
+Expected:
+
+```text
+11 passed
+```
+
+Validate holdout cases:
+
+```powershell
+python scripts\validate_task_cases.py
+python scripts\skill_deploy.py validate-cases
+```
+
+Use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py check-existing
+python scripts\skill_deploy.py audit-claims
+python scripts\skill_deploy.py validate-cases
+python scripts\skill_deploy.py run-holdout
+```
+
+Boundary:
+
+```text
+This patch adds minimum engineering maturity. It does not convert the repository into a mature platform.
+```

@@ -275,3 +275,18 @@ Near-term maturation baseline:
 Before claiming platform maturity, match at least the basics visible in related repos:
 package config, dependency strategy, unit tests, install/run docs, stable CLI entrypoint, and schema validation.
 ```
+
+## Maturity Patch Progress
+
+Current patch status:
+
+```text
+package config: added minimal pyproject.toml
+package namespace: added src/skill_deployment/
+shared schemas/helpers: added TaskCase, token budget, artifact manifest, gate, trace helpers
+tests: added fast pytest tests for core helpers
+CLI wrapper: added scripts/skill_deploy.py and skill_deployment.cli
+case validation: added scripts/validate_task_cases.py
+```
+
+This does not complete the maturation baseline. It only addresses the most visible engineering gap without disrupting existing demo scripts.

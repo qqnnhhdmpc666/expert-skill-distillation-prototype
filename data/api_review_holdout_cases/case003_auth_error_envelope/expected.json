@@ -3,6 +3,10 @@
   "expected_rule_ids": ["R001", "R003", "R005"],
   "critical_rule_ids": ["R001", "R003"],
   "negative_rule_ids": ["R002", "R004", "R006"],
-  "notes": "Covers auth boundary, incomplete error code table, and missing request_id in response envelope."
+  "notes": "Covers auth boundary, incomplete error code table, and missing request_id in response envelope.",
+  "metadata": {
+    "scenario": "auth_error_envelope",
+    "difficulty": "small",
+    "control_type": "mixed_rule"
+  }
 }
-

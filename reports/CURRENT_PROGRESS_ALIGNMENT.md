@@ -906,3 +906,50 @@ add tests
 add pyproject/ruff/CI
 turn component baseline plan into runnable ablation
 ```
+
+## 20. 最新进展：Repository Maturity Patch
+
+新增最小工程骨架：
+
+```text
+D:\solution\pyproject.toml
+D:\solution\src\skill_deployment
+D:\solution\tests
+D:\solution\scripts\validate_task_cases.py
+D:\solution\scripts\skill_deploy.py
+D:\solution\docs\REPOSITORY_MATURITY_PATCH_PLAN.md
+```
+
+抽取的稳定逻辑：
+
+- `TaskCase` schema 和 loader；
+- token budget check；
+- artifact manifest check；
+- validation gate result helper；
+- partial trace verifier helper；
+- lightweight CLI wrapper。
+
+新增快速测试：
+
+```text
+test_task_case_schema.py
+test_validation_gate.py
+test_trace_verifier.py
+test_token_budget.py
+test_artifact_manifest.py
+```
+
+验证结果：
+
+```text
+python -m pytest: 11 passed
+python scripts\validate_task_cases.py: status ok
+python scripts\skill_deploy.py check-existing: overall_status ok
+```
+
+当前成熟度判断更新：
+
+```text
+仓库已经从 pure script-first demo 往 minimal package/schema/test skeleton 推进了一步。
+但仍不是 mature open-source platform。
+```

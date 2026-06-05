@@ -3,5 +3,10 @@
   "expected_rule_ids": [],
   "critical_rule_ids": [],
   "negative_rule_ids": ["R001", "R002", "R003", "R004", "R005", "R006"],
-  "notes": "False-positive control: a clean API should not produce findings."
+  "notes": "False-positive control: a clean API should not produce findings.",
+  "metadata": {
+    "scenario": "clean_false_positive_control",
+    "difficulty": "small",
+    "control_type": "false_positive_control"
+  }
 }
