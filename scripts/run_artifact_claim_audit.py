@@ -172,6 +172,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "adversarial_trace_verifier_001",
+        "path": "outputs/mvp_vertical_slice/adversarial_trace_verifier_001",
+        "supported_claim": "Trace verifier has basic adversarial sanity checks against obvious fake or weak rule-application evidence.",
+        "key_result": "Valid control passes; fake evidence span, generic trigger, mismatched finding_id, and rule-id-only trace are rejected.",
+        "limitation": "Toy adversarial checks only; not a deep semantic verifier or proof against sophisticated fake evidence.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

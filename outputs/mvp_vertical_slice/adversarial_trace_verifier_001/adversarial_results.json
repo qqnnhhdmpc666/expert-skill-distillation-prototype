@@ -1,0 +1,146 @@
+[
+  {
+    "adversarial_case": "fake_evidence_span",
+    "expected_reject_reason": "evidence span is unrelated to the API case and R005 trigger terms",
+    "verifier_decision": "reject",
+    "verifier_passed": false,
+    "rejected_as_expected": true,
+    "verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "rule_application_trace_error",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [
+        "rule_applications[4] R005 evidence_span lacks case-relevant terms"
+      ],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "rule_applications[4] R005 evidence_span lacks case-relevant terms"
+    },
+    "interpretation": "rejected_as_expected"
+  },
+  {
+    "adversarial_case": "generic_trigger",
+    "expected_reject_reason": "trigger and evidence are generic rather than case/rule relevant",
+    "verifier_decision": "reject",
+    "verifier_passed": false,
+    "rejected_as_expected": true,
+    "verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "rule_application_trace_error",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [
+        "rule_applications[5] R006 evidence_span lacks case-relevant terms",
+        "rule_applications[5] R006 lacks case-relevant trigger/evidence"
+      ],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "rule_applications[5] R006 evidence_span lacks case-relevant terms; rule_applications[5] R006 lacks case-relevant trigger/evidence"
+    },
+    "interpretation": "rejected_as_expected"
+  },
+  {
+    "adversarial_case": "mismatched_finding_id",
+    "expected_reject_reason": "rule_application points to a finding with a different rule_id",
+    "verifier_decision": "reject",
+    "verifier_passed": false,
+    "rejected_as_expected": true,
+    "verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "rule_application_trace_error",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [
+        "rule_applications[0] R001 does not match finding F2",
+        "finding F1 has no supporting rule_application"
+      ],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "rule_applications[0] R001 does not match finding F2; finding F1 has no supporting rule_application"
+    },
+    "interpretation": "rejected_as_expected"
+  },
+  {
+    "adversarial_case": "rule_id_only_trace",
+    "expected_reject_reason": "trace has rule_id but no real trigger/evidence",
+    "verifier_decision": "reject",
+    "verifier_passed": false,
+    "rejected_as_expected": true,
+    "verifier_result": {
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "rule_application_trace_error",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [
+        "rule_applications[1] R002 has template-like trigger/evidence",
+        "rule_applications[1] R002 evidence_span lacks case-relevant terms",
+        "rule_applications[1] R002 lacks case-relevant trigger/evidence"
+      ],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "rule_applications[1] R002 has template-like trigger/evidence; rule_applications[1] R002 evidence_span lacks case-relevant terms; rule_applications[1] R002 lacks case-relevant trigger/evidence"
+    },
+    "interpretation": "rejected_as_expected"
+  }
+]

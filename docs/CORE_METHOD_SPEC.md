@@ -117,6 +117,7 @@ A candidate deployment skill should only be accepted when:
 - selected high-risk rules have required `rule_application` evidence;
 - semantic verifier passes for generated findings;
 - trace verifier passes for traced rules;
+- trace evidence spans pass basic case/rule relevance checks;
 - patch and gate records explain why the candidate was accepted or rejected.
 
 If constraints cannot be satisfied under budget, the mature behavior is to report infeasible rather than silently drop critical requirements.
@@ -202,12 +203,19 @@ Current supporting artifacts:
 outputs/mvp_vertical_slice/traceable_compiler_integration_001
 outputs/mvp_vertical_slice/validation_aware_compiler_001
 outputs/mvp_vertical_slice/semantic_preservation_audit_001
+outputs/mvp_vertical_slice/adversarial_trace_verifier_001
 ```
 
 Claim strength:
 
 ```text
 partially_supported_with_protocol_overhead
+```
+
+Current adversarial trace observation:
+
+```text
+valid control passes; fake evidence span, generic trigger, mismatched finding_id, and rule-id-only trace are rejected in the toy API-review case.
 ```
 
 ## Claim Boundary

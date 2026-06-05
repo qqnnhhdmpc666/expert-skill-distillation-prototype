@@ -1,0 +1,184 @@
+{
+  "run_id": "adversarial_trace_verifier_001",
+  "created_at": "2026-06-05T18:02:45.713367+00:00",
+  "valid_control": {
+    "review": "outputs\\mvp_vertical_slice\\adversarial_trace_verifier_001\\valid_control\\review.json",
+    "verifier_passed": true,
+    "verifier_result": {
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "missing_rule_ids": [],
+      "missing_application_rule_ids": [],
+      "trace_errors": [],
+      "seen_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "application_rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "trace verifier passed"
+    }
+  },
+  "results": [
+    {
+      "adversarial_case": "fake_evidence_span",
+      "expected_reject_reason": "evidence span is unrelated to the API case and R005 trigger terms",
+      "verifier_decision": "reject",
+      "verifier_passed": false,
+      "rejected_as_expected": true,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "rule_application_trace_error",
+        "missing_rule_ids": [],
+        "missing_application_rule_ids": [],
+        "trace_errors": [
+          "rule_applications[4] R005 evidence_span lacks case-relevant terms"
+        ],
+        "seen_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "application_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "message": "rule_applications[4] R005 evidence_span lacks case-relevant terms"
+      },
+      "interpretation": "rejected_as_expected"
+    },
+    {
+      "adversarial_case": "generic_trigger",
+      "expected_reject_reason": "trigger and evidence are generic rather than case/rule relevant",
+      "verifier_decision": "reject",
+      "verifier_passed": false,
+      "rejected_as_expected": true,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "rule_application_trace_error",
+        "missing_rule_ids": [],
+        "missing_application_rule_ids": [],
+        "trace_errors": [
+          "rule_applications[5] R006 evidence_span lacks case-relevant terms",
+          "rule_applications[5] R006 lacks case-relevant trigger/evidence"
+        ],
+        "seen_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "application_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "message": "rule_applications[5] R006 evidence_span lacks case-relevant terms; rule_applications[5] R006 lacks case-relevant trigger/evidence"
+      },
+      "interpretation": "rejected_as_expected"
+    },
+    {
+      "adversarial_case": "mismatched_finding_id",
+      "expected_reject_reason": "rule_application points to a finding with a different rule_id",
+      "verifier_decision": "reject",
+      "verifier_passed": false,
+      "rejected_as_expected": true,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "rule_application_trace_error",
+        "missing_rule_ids": [],
+        "missing_application_rule_ids": [],
+        "trace_errors": [
+          "rule_applications[0] R001 does not match finding F2",
+          "finding F1 has no supporting rule_application"
+        ],
+        "seen_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "application_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "message": "rule_applications[0] R001 does not match finding F2; finding F1 has no supporting rule_application"
+      },
+      "interpretation": "rejected_as_expected"
+    },
+    {
+      "adversarial_case": "rule_id_only_trace",
+      "expected_reject_reason": "trace has rule_id but no real trigger/evidence",
+      "verifier_decision": "reject",
+      "verifier_passed": false,
+      "rejected_as_expected": true,
+      "verifier_result": {
+        "passed": false,
+        "reward": 0.0,
+        "failure_type": "rule_application_trace_error",
+        "missing_rule_ids": [],
+        "missing_application_rule_ids": [],
+        "trace_errors": [
+          "rule_applications[1] R002 has template-like trigger/evidence",
+          "rule_applications[1] R002 evidence_span lacks case-relevant terms",
+          "rule_applications[1] R002 lacks case-relevant trigger/evidence"
+        ],
+        "seen_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "application_rule_ids": [
+          "R001",
+          "R002",
+          "R003",
+          "R004",
+          "R005",
+          "R006"
+        ],
+        "message": "rule_applications[1] R002 has template-like trigger/evidence; rule_applications[1] R002 evidence_span lacks case-relevant terms; rule_applications[1] R002 lacks case-relevant trigger/evidence"
+      },
+      "interpretation": "rejected_as_expected"
+    }
+  ],
+  "conclusion": {
+    "status": "partially_supported",
+    "finding": "Trace verifier rejects the constructed obvious fake/weak evidence cases while accepting the valid control.",
+    "boundary": "Toy adversarial sanity check only. This is not a deep semantic verifier or proof against sophisticated fake evidence."
+  }
+}

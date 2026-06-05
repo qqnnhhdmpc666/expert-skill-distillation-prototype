@@ -467,3 +467,44 @@ partially_supported
 ```
 
 The miss analysis supports the narrow residual-failure story: direct summary covers salient rules but can omit medium-priority deployment-critical rules such as idempotency.
+
+## 16. Adversarial Trace Verifier Diagnostics
+
+Question:
+
+```text
+Does the trace verifier reject obvious fake or weak evidence?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/adversarial_trace_verifier_001
+```
+
+Diagnostic fields:
+
+- adversarial case name.
+- expected reject reason.
+- verifier decision.
+- trace errors.
+- rejected as expected.
+- valid control pass.
+
+Current observation:
+
+```text
+valid control: pass
+fake_evidence_span: reject
+generic_trigger: reject
+mismatched_finding_id: reject
+rule_id_only_trace: reject
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+The trace verifier now has basic adversarial sanity checks. This is still a lightweight verifier, not a deep semantic judge.

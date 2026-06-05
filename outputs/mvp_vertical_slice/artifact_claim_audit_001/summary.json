@@ -1,6 +1,6 @@
 {
   "run_id": "artifact_claim_audit_001",
-  "created_at": "2026-06-05T17:49:04.395338+00:00",
+  "created_at": "2026-06-05T18:02:45.713701+00:00",
   "status": "ok",
   "missing_artifacts": [],
   "safe_main_claim": "The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.",
@@ -165,6 +165,15 @@
       "supported_claim": "The direct-summary miss is a residual deployment-critical idempotency rule rather than broad summary failure.",
       "key_result": "Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes.",
       "limitation": "One explanatory miss case; not a general long-tail failure pattern.",
+      "role": "method_exploration",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "adversarial_trace_verifier_001",
+      "path": "outputs/mvp_vertical_slice/adversarial_trace_verifier_001",
+      "supported_claim": "Trace verifier has basic adversarial sanity checks against obvious fake or weak rule-application evidence.",
+      "key_result": "Valid control passes; fake evidence span, generic trigger, mismatched finding_id, and rule-id-only trace are rejected.",
+      "limitation": "Toy adversarial checks only; not a deep semantic verifier or proof against sophisticated fake evidence.",
       "role": "method_exploration",
       "claim_strength": "partially_supported"
     }

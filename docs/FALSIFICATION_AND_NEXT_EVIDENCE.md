@@ -29,6 +29,7 @@ Current supporting evidence:
 - Risk-based selective trace selects `R005/R006`, the failure-critical rules.
 - All size=2 trace combinations show only `R005/R006` covers both failure-critical rules under the same trace size.
 - Validation gate rejects known regression and over-budget candidates in toy slices.
+- Adversarial trace verifier sanity check rejects obvious fake/weak evidence cases after adding an `evidence_span` relevance check.
 
 ## Falsification Conditions
 
@@ -79,6 +80,28 @@ Next evidence:
 - Add adversarial trace examples.
 - Check whether evidence spans actually appear in the case text.
 - Add stronger verifier contracts before making larger claims.
+
+Current progress:
+
+```text
+outputs/mvp_vertical_slice/adversarial_trace_verifier_001
+```
+
+Current observation:
+
+```text
+valid control passes
+fake_evidence_span rejected
+generic_trigger rejected
+mismatched_finding_id rejected
+rule_id_only_trace rejected
+```
+
+Boundary:
+
+```text
+This is a basic adversarial sanity check, not deep semantic verification.
+```
 
 ### F4: Validation Gate Only Catches Toy Regressions
 
@@ -134,8 +157,8 @@ Priority order:
 
 1. `risk_trace_policy_robustness_001`: done. Enumerates all size=2 trace combinations in the current rule pool.
 2. `direct_summary_miss_analysis_001`: done. Explains the only direct-summary miss.
-3. Expand to 6-8 holdout cases only after demo stability is preserved.
-4. Add adversarial trace-verifier checks if traceability becomes a central claim.
+3. `adversarial_trace_verifier_001`: done. Checks obvious fake/weak trace evidence.
+4. Expand to 6-8 holdout cases only after demo stability is preserved.
 5. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
 
 ## Safe Wording

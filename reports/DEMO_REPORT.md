@@ -163,6 +163,7 @@ outputs/mvp_vertical_slice/component_baseline_direct_summary_001
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
 outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
+outputs/mvp_vertical_slice/adversarial_trace_verifier_001
 ```
 
 4-case controlled holdout:
@@ -241,6 +242,22 @@ Direct summary miss analysis:
 failed case: case004_validation_sensitive_idempotency
 missed rule: R006 idempotency
 meaning: direct summary is strong, but can omit a medium-priority deployment-critical rule
+```
+
+Adversarial trace sanity check:
+
+```text
+valid control: pass
+fake_evidence_span: reject
+generic_trigger: reject
+mismatched_finding_id: reject
+rule_id_only_trace: reject
+```
+
+Boundary:
+
+```text
+Trace verifier has basic adversarial checks, but it is not a deep semantic judge.
 ```
 
 ## Claim Audit Summary

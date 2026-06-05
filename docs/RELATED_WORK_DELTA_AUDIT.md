@@ -251,11 +251,14 @@ Supporting diagnostic:
 outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
 outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
+outputs/mvp_vertical_slice/adversarial_trace_verifier_001
 ```
 
 The risk-trace baseline compares same-size random selective trace against risk-based selective trace. In the toy slice, both use 183/237 tokens, but only risk-based trace covers R005/R006, the failure-critical rules.
 
 The robustness slice enumerates all 15 size=2 trace allocations over R001-R006. Only R005/R006 covers both failure-critical rules. The direct-summary miss analysis shows the only direct-summary failure is R006 idempotency, which patched compact recovers.
+
+The adversarial trace sanity check rejects obvious fake or weak trace evidence, including fake evidence spans, generic triggers, mismatched finding IDs, and rule-id-only traces. This strengthens the traceability contract at toy scale but remains far weaker than SPARK-style trajectory grounding.
 
 Boundary:
 

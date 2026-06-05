@@ -130,6 +130,8 @@ def verify_trace(review_path: Path, case_path: Path) -> dict[str, Any]:
             trace_errors.append(f"rule_applications[{idx}] {rule_id} has invalid confidence")
         if template_like(trigger) or template_like(evidence_span):
             trace_errors.append(f"rule_applications[{idx}] {rule_id} has template-like trigger/evidence")
+        if not case_relevant(evidence_span, case_text, rule_id):
+            trace_errors.append(f"rule_applications[{idx}] {rule_id} evidence_span lacks case-relevant terms")
         if not case_relevant(f"{trigger} {evidence_span}", case_text, rule_id):
             trace_errors.append(f"rule_applications[{idx}] {rule_id} lacks case-relevant trigger/evidence")
         applications_by_finding[finding_id] = app
@@ -173,4 +175,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

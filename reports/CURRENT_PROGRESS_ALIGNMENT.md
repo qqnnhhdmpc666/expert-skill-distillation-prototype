@@ -1157,3 +1157,60 @@ D:\solution\docs\FALSIFICATION_AND_NEXT_EVIDENCE.md
 ```text
 明确当前核心 claim 在什么条件下会变弱或被推翻，以及下一步优先收集什么证据。
 ```
+
+## 24. 最新进展：Risk Signal Taxonomy 与 Adversarial Trace Verifier
+
+新增 risk signal taxonomy：
+
+```text
+D:\solution\docs\RISK_SIGNAL_TAXONOMY.md
+```
+
+核心边界：
+
+```text
+当前系统主要支持 post-execution risk-budgeted verification。
+也就是 verifier feedback 暴露 residual failure 后，系统把 patch / gate / trace 预算集中到 failure-critical 或 newly patched rules。
+当前还不能声称已经证明 pre-execution risk prediction。
+```
+
+新增 adversarial trace verifier sanity check：
+
+```text
+D:\solution\scripts\run_adversarial_trace_verifier.py
+D:\solution\outputs\mvp_vertical_slice\adversarial_trace_verifier_001
+```
+
+当前结果：
+
+```text
+valid control: pass
+fake_evidence_span: reject
+generic_trigger: reject
+mismatched_finding_id: reject
+rule_id_only_trace: reject
+```
+
+本轮还补强了：
+
+```text
+D:\solution\scripts\verify_api_review_trace_json.py
+```
+
+新增检查：
+
+```text
+evidence_span 本身也必须和 case / rule 相关，不能只靠 trigger_condition_found 里的关键词过关。
+```
+
+当前解释：
+
+```text
+partially_supported
+```
+
+边界：
+
+```text
+这是 basic adversarial sanity check，不是 deep semantic verifier，也不能证明能抵御复杂伪 evidence。
+```

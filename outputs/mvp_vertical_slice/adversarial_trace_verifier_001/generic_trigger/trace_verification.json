@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "reward": 0.0,
+  "failure_type": "rule_application_trace_error",
+  "missing_rule_ids": [],
+  "missing_application_rule_ids": [],
+  "trace_errors": [
+    "rule_applications[5] R006 evidence_span lacks case-relevant terms",
+    "rule_applications[5] R006 lacks case-relevant trigger/evidence"
+  ],
+  "seen_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "application_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "message": "rule_applications[5] R006 evidence_span lacks case-relevant terms; rule_applications[5] R006 lacks case-relevant trigger/evidence"
+}

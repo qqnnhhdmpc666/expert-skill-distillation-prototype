@@ -526,3 +526,50 @@ Falsification plan:
 ```text
 docs/FALSIFICATION_AND_NEXT_EVIDENCE.md
 ```
+
+## Adversarial Trace Verifier Sanity Check
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/adversarial_trace_verifier_001
+```
+
+Hypothesis:
+
+Trace verifier should reject obvious fake or weak rule-application evidence, not only check that fields exist.
+
+Adversarial cases:
+
+```text
+fake_evidence_span
+generic_trigger
+mismatched_finding_id
+rule_id_only_trace
+```
+
+Current observation:
+
+```text
+valid control: pass
+fake_evidence_span: reject
+generic_trigger: reject
+mismatched_finding_id: reject
+rule_id_only_trace: reject
+```
+
+Implementation note:
+
+```text
+verify_api_review_trace_json.py now checks evidence_span case/rule relevance separately, so fake spans cannot pass only because trigger_condition_found contains relevant keywords.
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+Boundary:
+
+This is a basic adversarial sanity check for the toy API-review family, not a deep semantic verifier.

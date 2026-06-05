@@ -50,6 +50,12 @@ python scripts/skill_deploy.py trace-robustness
 python scripts/skill_deploy.py analyze-summary-miss
 ```
 
+Additional method-sanity runner:
+
+```text
+python scripts/run_adversarial_trace_verifier.py
+```
+
 ## What This Patch Does Not Do
 
 It does not:

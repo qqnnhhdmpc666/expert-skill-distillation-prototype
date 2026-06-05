@@ -24,6 +24,7 @@ Audit what each core artifact can safely support, and prevent overclaiming befor
 | risk_trace_policy_baseline_001 | method_exploration | partially_supported | random_selective_trace R002/R003 gives failure-critical trace coverage 0.00; risk_based_selective_trace R005/R006 gives 1.00 at the same 183/237 token cost. | Single random seed and tiny rule pool; not statistical evidence for a mature risk policy. |
 | risk_trace_policy_robustness_001 | method_exploration | partially_supported | Among all 15 size=2 trace allocations, only R005/R006 covers both failure-critical rules; risk-based selection picks R005/R006. | Complete enumeration of a tiny toy rule pool; not statistical significance or mature policy validation. |
 | direct_summary_miss_analysis_001 | method_exploration | partially_supported | Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes. | One explanatory miss case; not a general long-tail failure pattern. |
+| adversarial_trace_verifier_001 | method_exploration | partially_supported | Valid control passes; fake evidence span, generic trigger, mismatched finding_id, and rule-id-only trace are rejected. | Toy adversarial checks only; not a deep semantic verifier or proof against sophisticated fake evidence. |
 
 ## Safe Main Claim
 

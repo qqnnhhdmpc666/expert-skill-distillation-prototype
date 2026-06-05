@@ -1,0 +1,96 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R001",
+      "issue": "Authentication is underspecified.",
+      "severity": "high",
+      "evidence": "Notes say the endpoint requires login but do not define roles, scopes, or auth failure behavior."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R002",
+      "issue": "Request validation rules are incomplete.",
+      "severity": "high",
+      "evidence": "Request fields are listed without required/default status, type constraints, ranges, length, or enum rules."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R003",
+      "issue": "Error code coverage is incomplete.",
+      "severity": "high",
+      "evidence": "Error table only includes success and server/system error."
+    },
+    {
+      "id": "F4",
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive or internal information.",
+      "severity": "high",
+      "evidence": "Response includes access_token, internal_trace, phone, or personal data."
+    },
+    {
+      "id": "F5",
+      "rule_id": "R005",
+      "issue": "Response envelope lacks request_id.",
+      "severity": "medium",
+      "evidence": "Response contains code, message, and data but no request_id."
+    },
+    {
+      "id": "F6",
+      "rule_id": "R006",
+      "issue": "Mutation endpoint does not document idempotency or duplicate submission behavior.",
+      "severity": "medium",
+      "evidence": "POST endpoint notes do not describe idempotency or duplicate handling."
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "R001",
+      "applicable": true,
+      "trigger_condition_found": "login requirement without roles/scopes/auth failure behavior",
+      "evidence_span": "The endpoint requires login.",
+      "finding_id": "F1",
+      "confidence": "medium"
+    },
+    {
+      "rule_id": "R002",
+      "applicable": true,
+      "trigger_condition_found": "request fields lack validation constraints",
+      "evidence_span": "Request body lists fields but no required/type/range/enum constraints.",
+      "finding_id": "F2",
+      "confidence": "medium"
+    },
+    {
+      "rule_id": "R003",
+      "applicable": true,
+      "trigger_condition_found": "error codes do not cover validation, auth, duplicate, and server classes",
+      "evidence_span": "Error Codes table only defines 0 and 500.",
+      "finding_id": "F3",
+      "confidence": "medium"
+    },
+    {
+      "rule_id": "R004",
+      "applicable": true,
+      "trigger_condition_found": "sensitive response data is present",
+      "evidence_span": "Response data contains token/trace/phone-like fields.",
+      "finding_id": "F4",
+      "confidence": "medium"
+    },
+    {
+      "rule_id": "R005",
+      "applicable": true,
+      "trigger_condition_found": "response envelope missing request_id",
+      "evidence_span": "Checkout callback contains refund webhook signature.",
+      "finding_id": "F5",
+      "confidence": "medium"
+    },
+    {
+      "rule_id": "R006",
+      "applicable": true,
+      "trigger_condition_found": "mutation endpoint lacks idempotency/duplicate handling",
+      "evidence_span": "Endpoint uses POST.",
+      "finding_id": "F6",
+      "confidence": "medium"
+    }
+  ]
+}

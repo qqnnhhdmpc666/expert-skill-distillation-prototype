@@ -105,6 +105,16 @@ failed case: case004_validation_sensitive_idempotency
 missed rule: R006 idempotency
 ```
 
+- Adversarial trace sanity check rejects obvious fake or weak trace evidence:
+
+```text
+valid control: pass
+fake_evidence_span: reject
+generic_trigger: reject
+mismatched_finding_id: reject
+rule_id_only_trace: reject
+```
+
 - Component attribution now includes a direct-summary baseline:
 
 ```text
@@ -140,6 +150,8 @@ Do not say:
 - Risk-based selective trace has been statistically validated.
 - One direct-summary miss proves a general long-tail failure pattern.
 - The current risk policy will work beyond the current rule pool.
+- The trace verifier is a deep semantic judge.
+- Adversarial trace sanity checks prove robustness against sophisticated fake evidence.
 
 ## Safe Main Claim
 

@@ -882,3 +882,33 @@ Boundary:
 ```text
 This is explanatory evidence for the current controlled family, not a general long-tail failure proof.
 ```
+
+## 25. Run Adversarial Trace Verifier Sanity Check
+
+Run the adversarial trace verifier slice:
+
+```powershell
+python scripts\run_adversarial_trace_verifier.py
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\adversarial_trace_verifier_001
+```
+
+Expected observation:
+
+```text
+valid control: pass
+fake_evidence_span: reject
+generic_trigger: reject
+mismatched_finding_id: reject
+rule_id_only_trace: reject
+```
+
+Boundary:
+
+```text
+This is a toy adversarial sanity check. It is not a deep semantic verifier or proof against sophisticated fake evidence.
+```
