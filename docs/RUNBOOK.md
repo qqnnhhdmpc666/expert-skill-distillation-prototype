@@ -196,13 +196,15 @@ mock agent 只验证执行接口，不证明真实 LLM 能稳定完成任务。
 
 这一层先在 Harbor 外部运行，避免同时调试 Docker 网络、环境变量和模型输出格式。
 
-需要配置：
+RightCode GPT 当前可用配置：
 
 ```powershell
-$env:OPENAI_BASE_URL="https://your-endpoint.example/v1"
-$env:OPENAI_API_KEY="your-api-key"
-$env:MODEL="your-model"
+$env:OPENAI_BASE_URL="https://www.right.codes/codex/v1"
+$env:OPENAI_API_KEY="<your-rightcode-key>"
+$env:MODEL="gpt-5.5"
 ```
+
+注意：官方 GPT-Codex 示例中出现过 `gpt-5.2`，但当前 key 对 `/codex` 站点实际可用的是 `gpt-5.5`。不要把 API key 写入仓库文件。
 
 单次运行：
 
@@ -221,10 +223,19 @@ python scripts\run_llm_agent_api_review_matrix.py `
   --created-at 2026-06-05T05:15:00+00:00
 ```
 
-当前本机环境未配置真实 endpoint，因此已生成的是 skipped diagnostic：
+当前已使用 RightCode `gpt-5.5` 补跑四组 matrix：
 
 ```text
 D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
+```
+
+预期结果：
+
+```text
+case001 + compact_v1: reward 0.0, missing R005 R006
+case001 + compact_v2: reward 1.0, covers R001-R006
+case002 + compact_v1: reward 0.0, missing R005 R006
+case002 + compact_v2: reward 1.0, covers R001-R006
 ```
 
 边界：

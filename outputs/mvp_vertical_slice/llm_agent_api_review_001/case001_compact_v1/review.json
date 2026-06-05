@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication requirements are underspecified. The spec only says the endpoint requires login, but does not define the authentication method, required roles/scopes, whether users may update only their own profile or others', or the behavior/status/error code for authentication and authorization failures.",
+      "severity": "high",
+      "evidence": "Notes: \"The endpoint requires login.\""
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request parameter and body field constraints are incomplete. The spec does not define which body fields are required or optional, default behavior for omitted fields, or validation constraints such as display_name length, phone format, avatar_url URL format/length, and user_id format.",
+      "severity": "medium",
+      "evidence": "Path parameter: \"user_id: string\"; Body example includes \"display_name\", \"phone\", and \"avatar_url\" without required/optional or constraint definitions."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code coverage is insufficient. Only success and server error are documented; validation errors, authentication failures, permission failures, user not found, and duplicate/conflict cases are not specified.",
+      "severity": "high",
+      "evidence": "Error Codes table only lists: \"0 | success\" and \"500 | server error\"."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive information. The response includes a full phone number and an access_token, which should not be returned by a profile update API response unless explicitly justified and protected; tokens/secrets should not be exposed.",
+      "severity": "high",
+      "evidence": "Response data contains \"phone\": \"13800138000\" and \"access_token\": \"debug-token\"."
+    }
+  ]
+}

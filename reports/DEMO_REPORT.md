@@ -59,7 +59,7 @@ D:\solution\outputs\mvp_vertical_slice\baseline_001
 | SPARK fixture | SPARK-compatible attempts / trajectory fixture | 已完成 | 证明 adapter 接口可用 |
 | real Harbor verifier | Docker / Harbor verifier 实际执行 | 已完成 | 失败不再只是手写 fixture |
 | mock agent + Harbor | compact skill -> mock review.json -> Harbor verifier | 已完成 | 证明执行接口不依赖预设 oracle review |
-| external LLM agent | OpenAI-compatible endpoint -> review.json -> verifier | 入口已完成 | 当前本机未配置 endpoint，未声称真实 LLM 效果 |
+| external LLM agent | RightCode GPT -> review.json -> verifier | 已完成 | 已用 `gpt-5.5` 跑通四组 matrix |
 
 边界：
 
@@ -160,27 +160,35 @@ case002 + compact_v2
 D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
 ```
 
-当前状态：
+当前配置：
 
 ```text
-env_ready: false
-OPENAI_BASE_URL: unset
-OPENAI_API_KEY: unset
-MODEL: unset
+env_ready: true
+OPENAI_BASE_URL: https://www.right.codes/codex/v1
+MODEL: gpt-5.5
 ```
 
-因此这一层当前只证明：
+四组结果：
+
+| Case | Variant | Model Output Rule IDs | Reward | Result |
+|---|---|---|---:|---|
+| case001 | compact_v1 | R001-R004 | 0.0 | missing R005 R006 |
+| case001 | compact_v2 | R001-R006 | 1.0 | covers R001-R006 |
+| case002 | compact_v1 | R001-R004 | 0.0 | missing R005 R006 |
+| case002 | compact_v2 | R001-R006 | 1.0 | covers R001-R006 |
+
+这一层证明：
 
 - LLM agent 的 OpenAI-compatible 调用入口已经实现。
 - prompt 会注入 compact skill 和 API case。
 - 模型输出会经过 JSON fence 去除、首个 JSON object 提取和 findings 字段校验。
-- 若真实 endpoint 未配置，会写入 diagnostic，而不是伪造实验结果。
+- 在 RightCode `gpt-5.5` 上，compact skill 的规则集合会影响真实模型输出。
 
 边界：
 
 ```text
-这一层尚未证明真实 LLM 能稳定复现 compact_v1 fail / compact_v2 pass。
-它是增强层，不是两周 demo 的唯一成功路径。
+这一层是小样本增强证据，不是大规模稳定性结论。
+它仍然不是两周 demo 的唯一成功路径。
 ```
 
 ## 7. 当前能对外说明什么
@@ -192,14 +200,14 @@ MODEL: unset
 - Harbor verifier 的真实失败可以转换为统一 execution report。
 - 执行失败可以回写到具体规则，并改变 compact skill v2。
 - mock agent 已验证 `skill prompt -> review.json -> Harbor verifier` 的执行接口。
-- OpenAI-compatible LLM agent 的外部运行入口已具备，等待 endpoint 配置后即可补跑。
+- OpenAI-compatible LLM agent 已使用 RightCode `gpt-5.5` 补跑，并复现 compact_v1 fail / compact_v2 pass。
 
 不能过度说明：
 
 - 不能说 `rule_ledger` 本身已经是强创新方法。
 - 不能说当前策略已经在大规模任务上稳定优于 related work。
 - 不能说 mock agent 等价于真实 LLM agent。
-- 不能在未配置 endpoint 的情况下声称已完成真实 LLM 实验。
+- 不能把四组小样本结果扩大成真实 LLM 大规模稳定性结论。
 
 ## 8. 下一步
 

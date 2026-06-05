@@ -3,9 +3,29 @@
   "skill": "outputs\\mvp_vertical_slice\\harbor_api_review_002\\compact_skill_v2.md",
   "case": "data\\harbor_api_review_tasks\\api-review-002-compact-v1\\case_002_openapi.md",
   "output": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v2\\review.json",
-  "base_url_present": false,
-  "api_key_present": false,
-  "model": null,
-  "status": "skipped",
-  "reason": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 6,
+  "rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "usage": {
+    "prompt_tokens": 866,
+    "completion_tokens": 628,
+    "total_tokens": 1494,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 212
+    }
+  },
+  "raw_content_preview": "{\"findings\":[{\"rule_id\":\"R001\",\"issue\":\"Authentication details are incomplete: the spec only says the endpoint requires login, but does not define the authentication method, required roles/scopes, or behavior on authentication failure.\",\"severity\":\"high\",\"evidence\":\"Notes: \\\"The endpoint requires login.\\\"\"},{\"rule_id\":\"R002\",\"issue\":\"Request field constraints are under-specified: required/optional status, defaults, types, ranges, lengths, and enum values are not fully documented.\",\"severity\":\"me"
 }

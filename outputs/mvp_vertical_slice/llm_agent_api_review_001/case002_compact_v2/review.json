@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication details are incomplete: the spec only says the endpoint requires login, but does not define the authentication method, required roles/scopes, or behavior on authentication failure.",
+      "severity": "high",
+      "evidence": "Notes: \"The endpoint requires login.\""
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request field constraints are under-specified: required/optional status, defaults, types, ranges, lengths, and enum values are not fully documented.",
+      "severity": "medium",
+      "evidence": "Path parameter only lists `order_id: string`; body example includes `amount`, `reason`, and `notify_customer` without required flags, amount range/currency/precision, reason enum, or notify_customer default."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code coverage is insufficient: only success and system error are documented, with no validation, authentication, permission, not found, duplicate, or refund-specific failure codes.",
+      "severity": "high",
+      "evidence": "Error Codes table only includes `0 | success` and `500 | system error`."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes internal implementation details and full customer phone number, which may leak sensitive information.",
+      "severity": "high",
+      "evidence": "Response data includes `internal_trace: \"RefundService.java:88\"` and `customer_phone: \"13800138000\"`."
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope is inconsistent/incomplete because it lacks `request_id`, and error response envelope format is not documented.",
+      "severity": "medium",
+      "evidence": "Response example includes `code`, `message`, and `data`, but no `request_id`."
+    },
+    {
+      "rule_id": "R006",
+      "issue": "Mutation endpoint does not document idempotency or duplicate submission handling, which can lead to repeated refund requests.",
+      "severity": "high",
+      "evidence": "`POST /api/v1/orders/{order_id}/refund` creates a refund request, but there is no idempotency key, duplicate request behavior, or retry guidance documented."
+    }
+  ]
+}

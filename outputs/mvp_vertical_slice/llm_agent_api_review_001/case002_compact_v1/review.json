@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication requirements are underspecified. The spec only says login is required and does not define the authentication method, required roles/scopes/permissions for refund creation, or behavior on authentication/authorization failure.",
+      "severity": "high",
+      "evidence": "Notes: The endpoint requires login."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request parameter and body field constraints are incomplete. The spec does not define required vs optional fields, defaults, amount range/precision/currency, allowed reason enum values, notify_customer default, or order_id format/length constraints.",
+      "severity": "medium",
+      "evidence": "Path parameter: order_id: string; Body: { \"amount\": 125.50, \"reason\": \"customer_request\", \"notify_customer\": true }"
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code coverage is insufficient. Only success and system error are documented; validation errors, authentication failures, permission failures, order not found, duplicate refund/idempotency conflicts, and refund business-rule failures are not specified.",
+      "severity": "high",
+      "evidence": "Error Codes: 0 success; 500 system error."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive/internal information, including an internal stack/code trace and a full customer phone number. These should be removed or masked.",
+      "severity": "high",
+      "evidence": "Response data includes \"internal_trace\": \"RefundService.java:88\" and \"customer_phone\": \"13800138000\"."
+    }
+  ]
+}

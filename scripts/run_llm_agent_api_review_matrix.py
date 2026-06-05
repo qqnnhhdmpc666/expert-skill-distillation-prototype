@@ -98,6 +98,8 @@ def main() -> int:
         "created_at": args.created_at or datetime.now(timezone.utc).isoformat(),
         "layer": "openai_compatible_llm_agent_external",
         "env_ready": env_ready,
+        "base_url": os.environ.get("OPENAI_BASE_URL"),
+        "model": os.environ.get("MODEL"),
         "boundary": "This layer validates the real/OpenAI-compatible LLM interface and skill-conditioned output when credentials are configured. It is not the two-week demo's only success path.",
         "runs": runs,
     }

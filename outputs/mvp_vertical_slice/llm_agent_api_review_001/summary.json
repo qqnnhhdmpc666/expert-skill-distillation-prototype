@@ -1,8 +1,10 @@
 {
   "run_id": "llm_agent_api_review_001",
-  "created_at": "2026-06-05T05:15:00+00:00",
+  "created_at": "2026-06-05T05:55:00+00:00",
   "layer": "openai_compatible_llm_agent_external",
-  "env_ready": false,
+  "env_ready": true,
+  "base_url": "https://www.right.codes/codex/v1",
+  "model": "gpt-5.5",
   "boundary": "This layer validates the real/OpenAI-compatible LLM interface and skill-conditioned output when credentials are configured. It is not the two-week demo's only success path.",
   "runs": [
     {
@@ -10,64 +12,88 @@
       "variant": "compact_v1",
       "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
       "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
-      "review": null,
+      "review": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v1\\review.json",
       "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v1\\llm_agent_diagnostic.json",
-      "verification": null,
-      "agent_exit_code": 2,
-      "agent_status": "skipped",
-      "passed": null,
-      "reward": null,
-      "failure_type": "skipped",
-      "rule_ids": [],
-      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+      "verification": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v1\\verification_result.json",
+      "agent_exit_code": 0,
+      "agent_status": "ok",
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "missing_rule",
+      "rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "message": "missing expected findings for R005 R006"
     },
     {
       "case_id": "case001",
       "variant": "compact_v2",
       "skill": "outputs\\mvp_vertical_slice\\harbor_api_review_002\\compact_skill_v2.md",
       "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
-      "review": null,
+      "review": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v2\\review.json",
       "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v2\\llm_agent_diagnostic.json",
-      "verification": null,
-      "agent_exit_code": 2,
-      "agent_status": "skipped",
-      "passed": null,
-      "reward": null,
-      "failure_type": "skipped",
-      "rule_ids": [],
-      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+      "verification": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v2\\verification_result.json",
+      "agent_exit_code": 0,
+      "agent_status": "ok",
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "review.json covers required rule ids R001-R006"
     },
     {
       "case_id": "case002",
       "variant": "compact_v1",
       "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
       "case": "data\\harbor_api_review_tasks\\api-review-002-compact-v1\\case_002_openapi.md",
-      "review": null,
+      "review": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v1\\review.json",
       "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v1\\llm_agent_diagnostic.json",
-      "verification": null,
-      "agent_exit_code": 2,
-      "agent_status": "skipped",
-      "passed": null,
-      "reward": null,
-      "failure_type": "skipped",
-      "rule_ids": [],
-      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+      "verification": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v1\\verification_result.json",
+      "agent_exit_code": 0,
+      "agent_status": "ok",
+      "passed": false,
+      "reward": 0.0,
+      "failure_type": "missing_rule",
+      "rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004"
+      ],
+      "message": "missing expected findings for R005 R006"
     },
     {
       "case_id": "case002",
       "variant": "compact_v2",
       "skill": "outputs\\mvp_vertical_slice\\harbor_api_review_002\\compact_skill_v2.md",
       "case": "data\\harbor_api_review_tasks\\api-review-002-compact-v1\\case_002_openapi.md",
-      "review": null,
+      "review": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v2\\review.json",
       "diagnostic": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v2\\llm_agent_diagnostic.json",
-      "verification": null,
-      "agent_exit_code": 2,
-      "agent_status": "skipped",
-      "passed": null,
-      "reward": null,
-      "failure_type": "skipped",
-      "rule_ids": [],
-      "message": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+      "verification": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case002_compact_v2\\verification_result.json",
+      "agent_exit_code": 0,
+      "agent_status": "ok",
+      "passed": true,
+      "reward": 1.0,
+      "failure_type": "none",
+      "rule_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006"
+      ],
+      "message": "review.json covers required rule ids R001-R006"
     }
   ]
 }

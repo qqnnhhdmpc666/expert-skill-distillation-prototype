@@ -165,18 +165,26 @@ compact_skill.md + case_openapi.md
 -> local verifier / Harbor verifier
 ```
 
-当前本机环境变量状态：
+当前 RightCode GPT 配置：
 
 ```text
-OPENAI_BASE_URL: unset
-OPENAI_API_KEY: unset
-MODEL: unset
+OPENAI_BASE_URL: https://www.right.codes/codex/v1
+MODEL: gpt-5.5
 ```
 
-因此已生成的输出是 skipped diagnostic，而不是真实 LLM 实验结果：
+已生成真实 LLM 输出：
 
 ```text
 D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
+```
+
+四组结果：
+
+```text
+case001 + compact_v1: R001-R004, reward 0.0, missing R005 R006
+case001 + compact_v2: R001-R006, reward 1.0
+case002 + compact_v1: R001-R004, reward 0.0, missing R005 R006
+case002 + compact_v2: R001-R006, reward 1.0
 ```
 
 当前意义：
@@ -184,18 +192,18 @@ D:\solution\outputs\mvp_vertical_slice\llm_agent_api_review_001
 - LLM agent 调用入口已完成。
 - JSON 提取与基本校验已完成。
 - 四组 case/skill matrix 已固定。
-- 真实 endpoint 配置后可直接补跑。
+- RightCode `gpt-5.5` 已验证 compact skill 会影响真实模型输出。
 
 边界：
 
 ```text
-这一层还没有证明真实 LLM 能稳定完成任务。
+这一层还不能证明真实 LLM 在大规模任务中稳定完成任务。
 它是增强层，不是当前 demo 主线的阻塞项。
 ```
 
 ## 6. 下一步
 
-优先级 1：配置真实或 OpenAI-compatible LLM endpoint 并补跑四组 matrix，但不要让它成为唯一主线。
+优先级 1：保留 RightCode `gpt-5.5` 作为真实 LLM 增强证据；如果后续需要 DeepSeek 等其他模型，再接入新的 key 和 endpoint。
 
 优先级 2：增加不同 failure type 的 case，例如 `output_format_error`、`irrelevant_rule_interference`。
 

@@ -3,9 +3,27 @@
   "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
   "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
   "output": "outputs\\mvp_vertical_slice\\llm_agent_api_review_001\\case001_compact_v1\\review.json",
-  "base_url_present": false,
-  "api_key_present": false,
-  "model": null,
-  "status": "skipped",
-  "reason": "OPENAI_BASE_URL, OPENAI_API_KEY, and MODEL must be set or provided as arguments."
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 4,
+  "rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "usage": {
+    "prompt_tokens": 846,
+    "completion_tokens": 389,
+    "total_tokens": 1235,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 50
+    }
+  },
+  "raw_content_preview": "{\"findings\":[{\"rule_id\":\"R001\",\"issue\":\"Authentication requirements are underspecified. The spec only says the endpoint requires login, but does not define the authentication method, required roles/scopes, whether users may update only their own profile or others', or the behavior/status/error code for authentication and authorization failures.\",\"severity\":\"high\",\"evidence\":\"Notes: \\\"The endpoint requires login.\\\"\"},{\"rule_id\":\"R002\",\"issue\":\"Request parameter and body field constraints are inco"
 }

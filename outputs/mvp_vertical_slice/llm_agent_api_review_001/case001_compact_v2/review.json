@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication details are incomplete: method, roles/scopes/ownership requirements, and authentication failure behavior are not specified.",
+      "severity": "high",
+      "evidence": "Notes only state: \"The endpoint requires login.\""
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request field requirements and constraints are not documented, including required vs optional fields, defaults, types beyond examples, length/range limits, and format validation.",
+      "severity": "medium",
+      "evidence": "Path parameter only lists `user_id: string`; body shows `display_name`, `phone`, and `avatar_url` examples without required/optional status or constraints."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code coverage is insufficient for validation errors, authentication failures, permission/ownership failures, not found, duplicate submission, and structured server errors.",
+      "severity": "high",
+      "evidence": "Error Codes table only includes `0` success and `500` server error."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive data, including a full phone number and an access token.",
+      "severity": "high",
+      "evidence": "Response `data` includes `\"phone\": \"13800138000\"` and `\"access_token\": \"debug-token\"`."
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope is incomplete/inconsistent because `request_id` is not documented in the response schema or error responses.",
+      "severity": "medium",
+      "evidence": "Response includes `code`, `message`, and `data`, but no `request_id`."
+    },
+    {
+      "rule_id": "R006",
+      "issue": "Mutation endpoint does not document idempotency or duplicate submission handling.",
+      "severity": "medium",
+      "evidence": "`POST /api/v1/users/{user_id}/profile` updates user data, but no idempotency key, retry behavior, or duplicate submission handling is described."
+    }
+  ]
+}

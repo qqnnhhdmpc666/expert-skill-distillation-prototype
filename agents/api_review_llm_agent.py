@@ -130,14 +130,17 @@ def call_chat_completions(
     messages: list[dict[str, str]],
     temperature: float,
     timeout: float,
+    response_format_json: bool,
 ) -> dict[str, Any]:
     endpoint = base_url.rstrip("/") + "/chat/completions"
     payload = {
         "model": model,
         "messages": messages,
+        "stream": False,
         "temperature": temperature,
-        "response_format": {"type": "json_object"},
     }
+    if response_format_json:
+        payload["response_format"] = {"type": "json_object"}
     request = urllib.request.Request(
         endpoint,
         data=json.dumps(payload).encode("utf-8"),
@@ -173,6 +176,7 @@ def main() -> int:
     parser.add_argument("--model", default=os.environ.get("MODEL"))
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--timeout", type=float, default=60.0)
+    parser.add_argument("--response-format-json", action="store_true", help="Send OpenAI response_format=json_object. Leave off for RightCode GPT-Codex compatibility.")
     args = parser.parse_args()
 
     diagnostic_path = args.diagnostic or args.output.with_suffix(".diagnostic.json")
@@ -201,6 +205,7 @@ def main() -> int:
             messages=messages,
             temperature=args.temperature,
             timeout=args.timeout,
+            response_format_json=args.response_format_json,
         )
         content = extract_message_content(response)
         review = parse_review_from_model_output(content)
@@ -217,7 +222,13 @@ def main() -> int:
         write_json(diagnostic_path, diagnostic)
         print(json.dumps({"status": "ok", "output": str(args.output), "rule_ids": diagnostic["rule_ids"]}, ensure_ascii=False))
         return 0
-    except (OSError, urllib.error.URLError, urllib.error.HTTPError, ValueError, json.JSONDecodeError) as exc:
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        diagnostic.update({"status": "error", "error": str(exc), "http_status": exc.code, "response_body": body[:1000]})
+        write_json(diagnostic_path, diagnostic)
+        print(json.dumps(diagnostic, ensure_ascii=False, indent=2), file=sys.stderr)
+        return 1
+    except (OSError, urllib.error.URLError, ValueError, json.JSONDecodeError) as exc:
         diagnostic.update({"status": "error", "error": str(exc)})
         write_json(diagnostic_path, diagnostic)
         print(json.dumps(diagnostic, ensure_ascii=False, indent=2), file=sys.stderr)
