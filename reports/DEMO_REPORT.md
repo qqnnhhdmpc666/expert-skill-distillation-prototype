@@ -147,6 +147,7 @@ Core artifacts:
 outputs/mvp_vertical_slice/real_effect_eval_001
 outputs/mvp_vertical_slice/selective_trace_compiler_001
 outputs/mvp_vertical_slice/artifact_claim_audit_001
+outputs/mvp_vertical_slice/component_baseline_direct_summary_001
 ```
 
 4-case controlled holdout:
@@ -180,6 +181,22 @@ Boundary:
 The holdout set has 4 cases and is not a benchmark. Selective trace is a toy policy, not a mature tracing strategy.
 ```
 
+Component attribution result:
+
+| Variant | Avg Coverage | Pass@1 | Critical Misses | Avg Total Tokens |
+|---|---:|---:|---:|---:|
+| direct_summary_skill | 0.92 | 3 / 4 | 0 | 263.0 |
+| full_skill | 1.00 | 4 / 4 | 0 | 1429.8 |
+| compact_v1 | 0.58 | 1 / 4 | 1 | 323.5 |
+| patched_compact | 1.00 | 4 / 4 | 0 | 438.8 |
+| patched_compact_selective_trace | 1.00 | 4 / 4 | 0 | 335.0 |
+
+Interpretation:
+
+```text
+Direct summarization is a strong baseline in this small controlled family. The prototype's safer value claim is not "summaries cannot make useful checklists"; it is that verifier feedback, patching, validation gates, and selective trace can recover and control missed deployment-critical rules.
+```
+
 ## Claim Audit Summary
 
 Claim audit artifact:
@@ -208,7 +225,7 @@ The next baseline plan should explain which component is responsible for which g
 
 | Baseline | What It Tests |
 |---|---|
-| `direct_summary_skill` | whether structured rule distillation improves over direct summarization |
+| `direct_summary_skill` | available: plain summary reaches 0.92 avg coverage but misses one long-tail/failure-critical rule |
 | `full_skill_no_compiler` | full expert context coverage and cost |
 | `compact_no_feedback` | what compacting saves and loses |
 | `patched_no_gate` | whether blind patching creates regression or over-budget artifacts |

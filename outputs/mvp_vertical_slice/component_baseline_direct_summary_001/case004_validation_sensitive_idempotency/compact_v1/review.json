@@ -1,0 +1,18 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R002",
+      "issue": "Request validation rules are incomplete.",
+      "severity": "high",
+      "evidence": "Request fields lack required/optional markers, type constraints, ranges, lengths, or enum values."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive or internal data.",
+      "severity": "high",
+      "evidence": "Response includes token-like fields, internal traces, or unnecessary personal data."
+    }
+  ]
+}

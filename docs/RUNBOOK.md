@@ -755,3 +755,36 @@ Boundary:
 ```text
 This patch adds minimum engineering maturity. It does not convert the repository into a mature platform.
 ```
+
+## 21. Run Component Baseline Attribution
+
+Run the direct-summary component baseline:
+
+```powershell
+python scripts\run_component_baseline_eval.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py compare-baselines
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\component_baseline_direct_summary_001
+```
+
+Expected observation:
+
+```text
+direct_summary_skill: avg coverage 0.92, pass@1 3/4
+patched_compact: avg coverage 1.00, pass@1 4/4
+```
+
+Boundary:
+
+```text
+This is a deterministic component attribution slice. It is not a benchmark and does not prove broad superiority over direct summarization.
+```

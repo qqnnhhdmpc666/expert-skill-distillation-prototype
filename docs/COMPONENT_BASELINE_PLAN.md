@@ -29,7 +29,7 @@ Which improvement comes from expert rules, which from patching, which from valid
 
 | Baseline | Existing Approximation | Status |
 |---|---|---|
-| `direct_summary_skill` | Not implemented yet | planned |
+| `direct_summary_skill` | `component_baseline_direct_summary_001` | available |
 | `full_skill_no_compiler` | `real_effect_eval_001` / `full_skill` | available |
 | `compact_no_feedback` | `baseline_001` compact_v1; `real_effect_eval_001` compact_v1 | available |
 | `patched_no_gate` | Fixed-budget and counterfactual patch variants approximate this | partial |
@@ -189,20 +189,37 @@ Current evidence:
 selective_trace R005/R006: 183/237, accepted, shortcut_blocked=true
 ```
 
-## Minimal Next Experiment
+## Completed Minimal Experiment
 
-If time allows, implement only one missing baseline:
+The first missing baseline has been implemented:
 
 ```text
 direct_summary_skill
 ```
 
-Keep it small:
+Artifact:
 
-- use the same 4 holdout cases;
-- do not call it a benchmark;
-- compare against `full_skill_no_compiler` and `compact_no_feedback`;
-- record whether direct summary misses rule IDs, creates false positives, or lacks evidence grounding.
+```text
+outputs/mvp_vertical_slice/component_baseline_direct_summary_001
+```
+
+Result:
+
+```text
+direct_summary_skill: avg coverage 0.92, pass@1 3/4, avg total tokens 263.0
+full_skill_no_compiler: avg coverage 1.00, pass@1 4/4, avg total tokens 1429.8
+compact_no_feedback: avg coverage 0.58, pass@1 1/4, avg total tokens 323.5
+patched_no_trace: avg coverage 1.00, pass@1 4/4, avg total tokens 438.8
+patched_selective_trace: avg coverage 1.00, pass@1 4/4, avg total tokens 335.0
+```
+
+Interpretation:
+
+```text
+Plain direct summarization already covers several high-salience API-review concerns in this small controlled family.
+The structured deployment loop should therefore not be sold as merely "better checklist generation."
+Its more defensible value is recovering missed long-tail/failure-critical rules through verifier feedback, then controlling deployment risk with patch, gate, and trace machinery.
+```
 
 ## Claim Boundary
 

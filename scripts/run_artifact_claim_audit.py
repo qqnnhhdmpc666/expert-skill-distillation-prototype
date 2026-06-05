@@ -136,6 +136,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "platform_maturation",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "component_baseline_direct_summary_001",
+        "path": "outputs/mvp_vertical_slice/component_baseline_direct_summary_001",
+        "supported_claim": "Component attribution can compare structured deployment against a plain direct-summary skill.",
+        "key_result": "direct_summary_skill avg coverage 0.92; patched_compact avg coverage 1.00 on 4 controlled cases.",
+        "limitation": "Deterministic component attribution slice; not a benchmark and not broad evidence against summarization baselines.",
+        "role": "platform_maturation",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

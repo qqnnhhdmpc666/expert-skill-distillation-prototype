@@ -1,6 +1,6 @@
 {
   "run_id": "artifact_claim_audit_001",
-  "created_at": "2026-06-05T15:28:31.496411+00:00",
+  "created_at": "2026-06-05T16:58:46.834205+00:00",
   "status": "ok",
   "missing_artifacts": [],
   "safe_main_claim": "The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.",
@@ -129,6 +129,15 @@
       "supported_claim": "Selective trace can reduce protocol overhead while preserving traceability for failure-critical rules.",
       "key_result": "full_trace 300/237 rejected; selective_trace R005/R006 183/237 accepted and blocks shortcut.",
       "limitation": "Toy trace policy; not mature tracing strategy.",
+      "role": "platform_maturation",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "component_baseline_direct_summary_001",
+      "path": "outputs/mvp_vertical_slice/component_baseline_direct_summary_001",
+      "supported_claim": "Component attribution can compare structured deployment against a plain direct-summary skill.",
+      "key_result": "direct_summary_skill avg coverage 0.92; patched_compact avg coverage 1.00 on 4 controlled cases.",
+      "limitation": "Deterministic component attribution slice; not a benchmark and not broad evidence against summarization baselines.",
       "role": "platform_maturation",
       "claim_strength": "partially_supported"
     }

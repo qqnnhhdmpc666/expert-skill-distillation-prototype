@@ -77,6 +77,19 @@ full_trace: 300 / 237, rejected
 selective_trace R005/R006: 183 / 237, accepted and blocks shortcut
 ```
 
+- Component attribution now includes a direct-summary baseline:
+
+```text
+direct_summary_skill avg coverage: 0.92
+patched_compact avg coverage: 1.00
+```
+
+Safe interpretation:
+
+```text
+Plain summarization can be strong for obvious rules in the controlled API-review family. The current structured loop is best claimed as recovering missed long-tail/failure-critical rules and controlling deployment risk, not as proof that summaries are generally weak.
+```
+
 ## What We Cannot Say
 
 Do not say:
@@ -94,6 +107,8 @@ Do not say:
 - Every component is original.
 - This is already a mature open-source platform.
 - The current repository has the same engineering maturity as SPARK-PDI or COLLEAGUE.SKILL.
+- Direct summarization is always a weak baseline.
+- The prototype has broadly defeated direct-summary skill generation.
 
 ## Safe Main Claim
 

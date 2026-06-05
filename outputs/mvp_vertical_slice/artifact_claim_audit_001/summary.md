@@ -20,6 +20,7 @@ Audit what each core artifact can safely support, and prevent overclaiming befor
 | traceable_compiler_integration_001 | platform_maturation | partially_supported | protocolized variant passes trace verification but is 300/237 tokens; validation gate rejects over budget. | Integration toy slice; exposes overhead rather than solving it. |
 | real_effect_eval_001 | platform_maturation | partially_supported | compact_v1 avg coverage 0.58; patched_compact avg coverage 1.00 on 4 cases. | 4-case controlled holdout; not a benchmark or real-world generalization proof. |
 | selective_trace_compiler_001 | platform_maturation | partially_supported | full_trace 300/237 rejected; selective_trace R005/R006 183/237 accepted and blocks shortcut. | Toy trace policy; not mature tracing strategy. |
+| component_baseline_direct_summary_001 | platform_maturation | partially_supported | direct_summary_skill avg coverage 0.92; patched_compact avg coverage 1.00 on 4 controlled cases. | Deterministic component attribution slice; not a benchmark and not broad evidence against summarization baselines. |
 
 ## Safe Main Claim
 

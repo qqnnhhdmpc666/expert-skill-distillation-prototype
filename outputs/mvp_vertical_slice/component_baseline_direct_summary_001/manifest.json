@@ -1,0 +1,13 @@
+{
+  "run_id": "component_baseline_direct_summary_001",
+  "created_at": "2026-06-05T16:58:47.086396+00:00",
+  "artifacts": [
+    "direct_summary_skill.md",
+    "summary.json",
+    "summary.md",
+    "per_case_results.json",
+    "per_variant_results.json",
+    "component_attribution.md"
+  ],
+  "boundary": "Controlled 4-case attribution slice only. This is not a benchmark and does not prove broad superiority over direct summarization."
+}

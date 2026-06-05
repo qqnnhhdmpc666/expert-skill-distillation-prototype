@@ -1,0 +1,35 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "R002",
+      "issue": "Request validation rules are incomplete.",
+      "severity": "high",
+      "evidence": "Request fields lack required/optional markers, type constraints, ranges, lengths, or enum values."
+    },
+    {
+      "id": "F2",
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive or internal data.",
+      "severity": "high",
+      "evidence": "Response includes token-like fields, internal traces, or unnecessary personal data."
+    },
+    {
+      "id": "F3",
+      "rule_id": "R006",
+      "issue": "Mutation endpoint lacks idempotency or duplicate submission behavior.",
+      "severity": "medium",
+      "evidence": "POST/PUT/PATCH endpoint does not document idempotency keys or duplicate handling."
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "R006",
+      "applicable": true,
+      "trigger_condition_found": "mutation endpoint lacks idempotency or duplicate handling",
+      "evidence_span": "ion, Sensitive Data, Idempotency Endpoint: `POST /v1/customers/update-profile` Purpose: Update a customer's profile. Authentication:",
+      "finding_id": "F3",
+      "confidence": "medium"
+    }
+  ]
+}

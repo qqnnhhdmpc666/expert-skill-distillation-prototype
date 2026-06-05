@@ -953,3 +953,43 @@ python scripts\skill_deploy.py check-existing: overall_status ok
 仓库已经从 pure script-first demo 往 minimal package/schema/test skeleton 推进了一步。
 但仍不是 mature open-source platform。
 ```
+
+## 21. 最新进展：Component Baseline Direct Summary
+
+新增 component attribution slice：
+
+```text
+D:\solution\scripts\run_component_baseline_eval.py
+D:\solution\outputs\mvp_vertical_slice\component_baseline_direct_summary_001
+```
+
+目标：
+
+```text
+检查普通 direct-summary skill 是否已经足够覆盖受控 API-review family。
+这用于解释结构化 rule / patch / gate / trace 各组件的实际增量，而不是做 benchmark。
+```
+
+当前结果：
+
+```text
+direct_summary_skill: avg coverage 0.92, pass@1 3/4, avg total tokens 263.0
+full_skill: avg coverage 1.00, pass@1 4/4, avg total tokens 1429.8
+compact_v1: avg coverage 0.58, pass@1 1/4, avg total tokens 323.5
+patched_compact: avg coverage 1.00, pass@1 4/4, avg total tokens 438.8
+patched_compact_selective_trace: avg coverage 1.00, pass@1 4/4, avg total tokens 335.0
+```
+
+当前解释：
+
+```text
+direct summary 在这个小型受控场景里并不弱，它能覆盖大部分高显著规则。
+因此我们的价值不能说成“普通总结不会生成 checklist”。
+更稳的价值是：verifier feedback 找到 direct summary / compact skill 容易遗漏的长尾或 failure-critical 规则，再通过 patch、validation gate 和 selective trace 控制部署风险。
+```
+
+边界：
+
+```text
+这是 deterministic component attribution slice，不是 benchmark，也不证明我们已经普遍优于 direct-summary skill generation。
+```

@@ -197,6 +197,33 @@ Still true:
 - Most experimental logic still lives in scripts.
 - CI, dependency lock, typed schemas for all artifacts, and a stable public API are still missing.
 
+## Component Baseline Status
+
+The repository now includes the first runnable component attribution baseline:
+
+```text
+outputs/mvp_vertical_slice/component_baseline_direct_summary_001
+```
+
+Result:
+
+```text
+direct_summary_skill avg coverage: 0.92
+patched_compact avg coverage: 1.00
+```
+
+Interpretation:
+
+- Direct summarization is a meaningful baseline in this controlled API-review family.
+- The current prototype should not claim value merely from generating an API-review checklist.
+- The safer delta is correctness-constrained deployment: verifier feedback recovers missed failure-critical rules, validation gates prevent risky patches, and selective trace controls observability cost.
+
+Boundary:
+
+```text
+This is a small deterministic attribution slice, not evidence that the prototype generally outperforms direct-summary skill generation.
+```
+
 ## What Is Baseline Adequate
 
 These parts are adequate for demo but should not be presented as core novelty:
