@@ -1,83 +1,101 @@
 # Platform Roadmap
 
-This is a scoped maturation roadmap for the prototype. It is intentionally lightweight: the current code should not be heavily refactored before the two-week demo unless a module boundary directly improves reproducibility.
+This roadmap keeps the prototype lightweight for the demo. It describes module boundaries but does not require a large refactor now.
 
-## Current Position
+## Positioning
 
-The project has moved from a single MVP run into a small artifact platform:
+Current platform direction:
+
+```text
+risk-budgeted traceable skill deployment prototype
+```
+
+or:
+
+```text
+correctness-constrained expert skill deployment optimization
+```
+
+The platform should support this loop:
 
 ```text
 expert material
--> skill artifacts
+-> evidence-grounded full skill
+-> compact deployment skill
 -> agent output
--> verifier report
+-> verifier feedback
 -> patch proposal
 -> validation gate
--> compact skill revision
+-> invocation protocol / selective trace
+-> trace verifier
+-> artifact store
 ```
 
-The next platform work should make this flow reusable without turning the prototype into a large framework too early.
-
-## Proposed Modules
+## Module Boundaries
 
 ### TaskCase
 
-Stores the case input, expected rule IDs, verifier contract, and scenario metadata.
+Stores task input, expected rule IDs, negative/forbidden rule IDs, verifier contract, and scenario metadata.
 
 Current examples:
 
 - `data/harbor_api_review_tasks/api-review-001-*`
 - `data/harbor_api_review_tasks/api-review-002-*`
+- `data/api_review_holdout_cases/*`
 
 ### AgentRunner
 
-Runs a skill-conditioned agent and writes `review.json`.
+Runs a skill-conditioned agent and writes agent output such as `review.json`.
 
 Current examples:
 
 - `agents/api_review_mock_agent.py`
 - `agents/api_review_llm_agent.py`
+- `scripts/run_real_effect_eval.py`
 
 ### VerifierRunner
 
-Checks `review.json` against the case contract and returns pass/fail, missing rules, and failure type.
+Checks agent output against a task contract and returns pass/fail, missing rules, semantic errors, trace errors, and failure type.
 
 Current examples:
 
-- Harbor verifier tasks
+- Harbor verifier tasks.
 - `scripts/verify_api_review_json.py`
-
-### ExecutionReport
-
-Normalizes verifier output into a common report that downstream patch logic can consume.
-
-Current examples:
-
-- `integrations/spark/convert_spark_artifacts.py`
-- `integrations/spark/convert_harbor_result.py`
+- `scripts/verify_api_review_semantic_json.py`
+- `scripts/verify_api_review_trace_json.py`
 
 ### PatchCompiler
 
-Maps failure type and affected target into a patch proposal.
+Maps verifier feedback and failure type into patch proposals.
 
 Current examples:
 
 - `integrations/spark/apply_spark_feedback.py`
 - `scripts/run_counterfactual_patch_utility.py`
 - `scripts/run_fixed_budget_compiler.py`
+- `scripts/run_validation_aware_compiler.py`
 
 ### ValidationGate
 
-Accepts, rejects, or rolls back a patch proposal based on original failure resolution, regressions, budget, and failure-critical preservation.
+Accepts, rejects, rolls back, or reports infeasible candidates based on:
+
+- original failure resolution,
+- regression detection,
+- token budget,
+- failure-critical preservation,
+- semantic preservation,
+- trace requirements.
 
 Current examples:
 
 - `outputs/mvp_vertical_slice/harbor_api_review_001/validation_gate.json`
 - `outputs/mvp_vertical_slice/rollback_gate_001/validation_gate.json`
+- `outputs/mvp_vertical_slice/traceable_compiler_integration_001`
+- `outputs/mvp_vertical_slice/selective_trace_compiler_001`
 
 ### InvocationProtocol
 
-Defines how a compact skill should be used by an agent, including rule-application traces and evidence spans.
+Defines how compact skill should be invoked by an agent, including required output fields and optional rule-application trace.
 
 Current examples:
 
@@ -86,116 +104,38 @@ Current examples:
 
 ### TraceVerifier
 
-Checks whether findings are supported by rule applications grounded in case evidence.
+Checks whether traced findings are supported by rule applications grounded in task evidence.
 
 Current examples:
 
 - `scripts/verify_api_review_trace_json.py`
 - `outputs/mvp_vertical_slice/skill_to_agent_loop_001`
+- `outputs/mvp_vertical_slice/selective_trace_compiler_001`
 
 ### ArtifactStore
 
-Keeps each run reproducible with a stable output directory, manifest, summary JSON, and summary Markdown.
+Keeps each run reproducible with stable output directories, manifest files, summary JSON, and summary Markdown.
 
 Current examples:
 
 - `outputs/mvp_vertical_slice/*/manifest.json`
+- `outputs/mvp_vertical_slice/*/summary.json`
 - `outputs/demo_pipeline_check/summary.json`
 
-## What Not To Do Yet
+## Near-Term Work
+
+Do next:
+
+- Keep demo core stable.
+- Use `scripts/run_demo_pipeline.py --check-existing` before demos.
+- Maintain `outputs/mvp_vertical_slice/artifact_claim_audit_001` as a claim guard.
+- Add common schemas only when repeated fields become painful.
+- If expanding real-effect evaluation, add diverse cases instead of repeating the same R005/R006 pattern.
+
+Do not do yet:
 
 - Do not rewrite all scripts into a framework before the demo.
-- Do not hide simple deterministic steps behind unnecessary abstractions.
-- Do not claim this roadmap is a mature open-source platform design.
-
-## Near-Term Maturation
-
-1. Keep adding new slices as isolated output directories.
-2. Add common schemas only when two or more slices need the same field.
-3. Use `scripts/run_demo_pipeline.py --check-existing` as the health check before demonstrations.
-4. Promote repeated logic into `src/` only after the method direction stabilizes.
-
-## Latest Maturation Slice
-
-The validation-aware compiler slice adds a useful boundary between `PatchCompiler` and `ValidationGate`:
-
-```text
-PatchCompiler proposes multiple candidates.
-ValidationGate checks hard constraints.
-ArtifactStore records accepted, rejected, and infeasible candidates.
-```
-
-Current artifact:
-
-```text
-outputs/mvp_vertical_slice/validation_aware_compiler_001
-```
-
-Near-term platform implication:
-
-- Candidate generation and validation results should remain explicit artifacts.
-- Infeasible outcomes should be first-class outputs, not hidden errors.
-- Compression should be labeled separately from ordinary selection success.
-
-## Traceable Compiler Integration
-
-The latest integration slice connects `PatchCompiler`, `ValidationGate`, `InvocationProtocol`, and `TraceVerifier` into one deployment loop.
-
-Current artifact:
-
-```text
-outputs/mvp_vertical_slice/traceable_compiler_integration_001
-```
-
-Platform implication:
-
-- A deployable compact skill should be represented as rules plus protocol plus verifier contract.
-- Token accounting must include both rule tokens and protocol tokens.
-- Validation should reject candidates that pass trace verification but exceed the deployment budget.
-- Trace verification should remain separate from simple rule-id coverage, because it catches shallow outputs that simple coverage misses.
-
-Current status:
-
-```text
-partially_supported_with_protocol_overhead
-```
-
-Near-term engineering direction:
-
-- Compress the invocation protocol.
-- Explore whether a stable protocol contract can be cached or amortized outside per-call prompt tokens.
-- Keep over-budget rejection as a valid outcome rather than silently accepting an expensive artifact.
-
-## Real Effect and Risk-Budgeted Trace
-
-Two new slices add the missing platform direction: task-effect evaluation and selective trace allocation.
-
-Artifacts:
-
-```text
-outputs/mvp_vertical_slice/real_effect_eval_001
-outputs/mvp_vertical_slice/selective_trace_compiler_001
-```
-
-Platform implication:
-
-- The platform should evaluate whether deployed skills improve controlled task behavior, not only whether artifacts look valid.
-- The platform should support trace policies, not just a global trace on/off switch.
-- Trace requirements should be assigned by risk signals such as `failure_critical`, `previously_missed`, `high_priority`, `output_contract`, or `newly_patched`.
-- Validation gates should account for task effect, semantic quality, traceability, and budget together.
-
-Current positioning:
-
-```text
-correctness-constrained expert skill deployment optimization
-```
-
-or:
-
-```text
-risk-budgeted traceable skill deployment prototype
-```
-
-Boundary:
-
-This is a prototype roadmap. The current holdout set is small and the selective trace policy is a toy policy, not a mature benchmark-backed platform policy.
+- Do not hide deterministic slices behind abstractions.
+- Do not call the current 4-case holdout a benchmark.
+- Do not call selective trace a mature tracing strategy.
+- Do not claim a universal compact skill compiler.

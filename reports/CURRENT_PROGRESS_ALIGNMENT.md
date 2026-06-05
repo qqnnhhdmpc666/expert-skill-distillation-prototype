@@ -757,3 +757,77 @@ risk-budgeted traceable skill deployment prototype
 ```text
 correctness-constrained expert skill deployment optimization
 ```
+
+## 18. 最新进展：主线收束与 Claim Audit
+
+当前方法探索主线已经收束为：
+
+```text
+risk-budgeted traceable skill deployment prototype
+```
+
+也可以保守表述为：
+
+```text
+correctness-constrained expert skill deployment optimization
+```
+
+统一逻辑链：
+
+```text
+expert material
+-> evidence-grounded full skill
+-> compact deployment skill
+-> verifier feedback
+-> patch proposal
+-> validation gate
+-> agent output
+-> selective trace for high-risk / failure-critical rules
+-> trace verifier checks rule-application evidence
+```
+
+新增 claim audit：
+
+```text
+D:\solution\scripts\run_artifact_claim_audit.py
+D:\solution\outputs\mvp_vertical_slice\artifact_claim_audit_001
+```
+
+审计覆盖核心 artifact：
+
+```text
+baseline_001
+harbor_api_review_001 / 002
+llm_agent_api_review_001
+output_format_error_001
+counterfactual_patch_utility_001
+fixed_budget_compiler_001
+rollback_gate_001
+validation_aware_compiler_001
+semantic_preservation_audit_001
+skill_to_agent_loop_001
+traceable_compiler_integration_001
+real_effect_eval_001
+selective_trace_compiler_001
+```
+
+当前审计结果：
+
+```text
+status: ok
+missing_artifacts: []
+```
+
+安全主张：
+
+```text
+The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.
+```
+
+明确不能说：
+
+- 不能说已经证明通用正确性。
+- 不能说优于 related work。
+- 不能把 4-case holdout 叫 benchmark。
+- 不能把 selective trace 叫成熟 tracing strategy。
+- 不能把当前系统叫 mature skill compiler。

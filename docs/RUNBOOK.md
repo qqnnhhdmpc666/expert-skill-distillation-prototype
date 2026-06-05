@@ -650,3 +650,37 @@ Boundary:
 ```text
 This is a toy selective-trace policy, not a mature tracing strategy.
 ```
+
+## 18. Run Artifact Claim Audit
+
+This slice audits what each core artifact can safely support before demos or reports:
+
+```powershell
+python scripts\run_artifact_claim_audit.py
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\artifact_claim_audit_001
+```
+
+Key checks:
+
+```powershell
+Get-Content outputs\mvp_vertical_slice\artifact_claim_audit_001\summary.md
+Get-Content outputs\mvp_vertical_slice\artifact_claim_audit_001\summary.json
+```
+
+Expected observation:
+
+```text
+status: ok
+missing_artifacts: []
+```
+
+Boundary:
+
+```text
+The audit is a claim guard. It does not add new experimental evidence.
+```
