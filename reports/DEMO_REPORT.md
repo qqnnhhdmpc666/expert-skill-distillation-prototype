@@ -211,8 +211,62 @@ MODEL: gpt-5.5
 
 ## 8. 下一步
 
-优先级 1：接一个真实或 OpenAI-compatible LLM agent，小心控制不稳定性。
+## 8. Failure Taxonomy Expansion
 
-优先级 2：新增不同 failure type 的 case，例如 `output_format_error` 或 `irrelevant_rule_interference`。
+新增第二个 failure-to-patch vertical slice：
 
-优先级 3：开始比较 decision policy，例如 priority-only、risk-cost、execution-aware risk-cost。
+```text
+D:\solution\outputs\mvp_vertical_slice\output_format_error_001
+```
+
+该 case 构造了一个输出格式错误：`findings` 中缺少 `severity` / `evidence` 字段。verifier 返回：
+
+```text
+failure_type: output_format_error
+affected_rule_ids: OUTPUT_CONTRACT
+patch_action: rewrite_output_contract
+```
+
+这和已有的 missing_rule 路径不同：
+
+| Failure Type | Example | Patch Target | Patch Action |
+|---|---|---|---|
+| missing_rule | compact v1 缺 R005/R006 | domain rule | patch_into_compact_v2 |
+| output_format_error | findings 缺 severity/evidence | output contract | rewrite_output_contract |
+
+边界：
+
+```text
+这是 taxonomy 的第二个 vertical slice，不是完整 failure taxonomy benchmark。
+```
+
+## 9. Policy Comparison
+
+新增最小 compact decision policy 对比：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\policy_comparison_001
+```
+
+当前三种策略：
+
+| Policy | Selected Rules | Tokens | Within Budget | Checklist | Reward | Patch Needed |
+|---|---|---:|---|---:|---:|---|
+| priority-only | R001, R002, R003, R004 | 199 | true | 4 / 6 | 0.0 | true |
+| risk-cost | R001, R002, R004, R005, R007 | 221 | true | 4 / 6 | 0.0 | true |
+| execution-aware risk-cost | R001, R002, R003, R004, R005, R006 | 281 | false | 6 / 6 | 1.0 | false |
+
+保守解释：
+
+- `priority-only` 便宜，但漏掉 medium priority 的 execution-critical 规则。
+- `risk-cost` 在预算内选择规则，但没有执行证据时仍可能漏掉 verifier 需要的规则。
+- `execution-aware risk-cost` 加入历史失败证据后补齐 R005/R006，但代价是超过当前预算。
+- 当前只是 exploratory comparison，case 数很少，不能说大规模优越。
+
+## 10. 下一步
+
+优先级 1：把 `run_demo_pipeline.py --check-existing` 作为演示前健康检查。
+
+优先级 2：继续扩展 failure type，例如 `irrelevant_rule_interference`。
+
+优先级 3：细化 policy comparison，让 budgeted policy 能在固定预算内更合理地权衡高风险规则和历史失败规则。

@@ -203,6 +203,69 @@ case002 + compact_v2: R001-R006, reward 1.0
 
 ## 6. 下一步
 
+## 6. 最新进展：Demo Stability 与探索线
+
+新增 demo 健康检查脚本：
+
+```text
+D:\solution\scripts\run_demo_pipeline.py
+```
+
+当前 `--check-existing` 输出：
+
+```text
+D:\solution\outputs\demo_pipeline_check\summary.json
+D:\solution\outputs\demo_pipeline_check\summary.md
+```
+
+结果：
+
+```text
+overall_status: ok
+baseline_001: ok
+harbor_api_review_001: ok
+harbor_api_review_002: ok
+agent_mock_api_review_001: ok
+llm_agent_api_review_001: ok
+```
+
+新增第二个 failure-to-patch vertical slice：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\output_format_error_001
+```
+
+该 slice 展示：
+
+```text
+output_format_error
+-> affected target: OUTPUT_CONTRACT
+-> patch action: rewrite_output_contract
+-> compact_skill_v2 adds JSON schema / required fields
+```
+
+新增 policy comparison：
+
+```text
+D:\solution\outputs\mvp_vertical_slice\policy_comparison_001
+```
+
+当前结果：
+
+```text
+priority-only: 199 tokens, 4/6, reward 0.0
+risk-cost: 221 tokens, 4/6, reward 0.0
+execution-aware-risk-cost: 281 tokens, 6/6, reward 1.0, exceeds budget
+```
+
+边界：
+
+- output_format_error 是第二个 vertical slice，不是完整 taxonomy benchmark。
+- policy comparison 是探索性对比，不是大规模实验结论。
+- `execution-aware-risk-cost` 当前展示的是覆盖和成本之间的 tradeoff，不是免费改进。
+
+## 7. 下一步
+
 优先级 1：保留 RightCode `gpt-5.5` 作为真实 LLM 增强证据；如果后续需要 DeepSeek 等其他模型，再接入新的 key 和 endpoint。
 
 优先级 2：增加不同 failure type 的 case，例如 `output_format_error`、`irrelevant_rule_interference`。
