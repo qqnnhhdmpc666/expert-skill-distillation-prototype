@@ -979,3 +979,38 @@ Boundary:
 ```text
 This is a method-level audit over existing controlled artifacts. It is not a PDI-scale metric, benchmark, or cross-domain proof.
 ```
+
+## 28. Run Naive Revision Ablation
+
+Run the naive revision ablation:
+
+```powershell
+python scripts\run_naive_revision_ablation.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py naive-revision-ablation
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\naive_revision_ablation_001
+```
+
+Expected observation:
+
+```text
+always_append_domain_rules fixes missing_rule but fails output_format_error
+always_rewrite_output_contract fixes output_format_error but fails missing_rule
+always_full_trace blocks shortcut but is 300/237 over budget
+type_specific_operator_plus_gate_and_selective_trace resolves all tested axes in the toy slice
+```
+
+Boundary:
+
+```text
+This is a diagnostic pressure test over existing artifacts. It does not prove the typed revision strategy is generally better.
+```

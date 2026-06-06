@@ -1,6 +1,6 @@
 {
   "run_id": "artifact_claim_audit_001",
-  "created_at": "2026-06-06T06:36:06.575007+00:00",
+  "created_at": "2026-06-06T06:56:25.580854+00:00",
   "status": "ok",
   "missing_artifacts": [],
   "safe_main_claim": "The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.",
@@ -192,6 +192,15 @@
       "supported_claim": "Post-execution evidence can be audited as a revision signal that changes patch, gate, and trace decisions beyond prior skill generation.",
       "key_result": "patched_compact improves coverage over compact_v1 by 0.4166 and over direct_summary by 0.0833; type-correct missing-rule and output-contract patches beat wrong-type counterfactuals.",
       "limitation": "Audit over existing controlled API-review artifacts only; not a cross-domain posterior-revision metric.",
+      "role": "method_exploration",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "naive_revision_ablation_001",
+      "path": "outputs/mvp_vertical_slice/naive_revision_ablation_001",
+      "supported_claim": "Generic revision strategies are insufficient to explain the current deployment constraints in toy slices.",
+      "key_result": "always_append fixes missing_rule but not output_format_error; always_contract fixes format but not missing_rule; always_full_trace is 300/237 over budget; type-specific operator plus gate/selective trace resolves all tested axes.",
+      "limitation": "Diagnostic ablation over existing artifacts only; always_regenerate_full_skill remains a strong high-cost upper bound.",
       "role": "method_exploration",
       "claim_strength": "partially_supported"
     }

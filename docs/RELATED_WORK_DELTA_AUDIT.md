@@ -248,6 +248,36 @@ not: better summarization alone
 but: skill deployment under feedback, risk, budget, and traceability constraints
 ```
 
+## Novelty Pressure Test Status
+
+Current novelty pressure test:
+
+```text
+docs/RELATED_WORK_NOVELTY_PRESSURE_TEST.md
+```
+
+Current conclusion:
+
+```text
+Posterior feedback itself is not novel. The narrower possible delta is typed posterior revision over deployable expert-skill packages: rule-level, output-contract-level, trace-contract-level, and gate-level operators under correctness, budget, and traceability constraints.
+```
+
+Current naive revision ablation:
+
+```text
+outputs/mvp_vertical_slice/naive_revision_ablation_001
+```
+
+Current observation:
+
+```text
+always_append_domain_rules fixes missing_rule but fails output_format_error
+always_rewrite_output_contract fixes output_format_error but fails missing_rule
+always_regenerate_full_skill is a strong high-cost upper bound
+always_full_trace blocks shortcut but exceeds budget
+type_specific_operator_plus_gate_and_selective_trace is the best-supported narrow combination in current toy slices
+```
+
 Current concise claim:
 
 ```text

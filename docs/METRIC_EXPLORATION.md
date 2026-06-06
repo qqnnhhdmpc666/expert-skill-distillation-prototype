@@ -593,3 +593,46 @@ partially_supported
 ```
 
 This is the closest current diagnostic to a method-level abstraction. It should not be described as a final metric. Its value is that it asks whether posterior execution/verifier evidence changes revision decisions in ways that prior skill generation alone did not.
+
+## 19. Naive Revision Ablation Diagnostics
+
+Question:
+
+```text
+Do simple revision policies explain the current gains just as well as typed revision operators?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/naive_revision_ablation_001
+```
+
+Compared policies:
+
+- no revision;
+- always append domain rules;
+- always rewrite output contract;
+- always regenerate full skill;
+- accept if current failure is fixed;
+- always full trace;
+- type-specific operator plus deployment gate and selective trace.
+
+Current observation:
+
+```text
+always_append_domain_rules: fixes missing_rule but fails output_format_error
+always_rewrite_output_contract: fixes output_format_error but fails missing_rule
+always_regenerate_full_skill: resolves tested failures but costs 1429.75 avg tokens
+accept_if_current_failure_fixed: unsafe because rollback gate observes reject_and_rollback
+always_full_trace: blocks shortcut but is 300/237 over budget
+type_specific_operator_plus_gate_and_selective_trace: resolves all tested axes in the toy slice
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This diagnostic is a pressure test, not proof. It supports the narrower claim that typed operators plus deployment gates are useful in the current controlled artifacts, while acknowledging full regeneration as a strong high-cost upper bound.

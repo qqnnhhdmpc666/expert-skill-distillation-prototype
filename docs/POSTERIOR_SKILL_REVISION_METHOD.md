@@ -18,6 +18,18 @@ When a generated expert skill enters execution, can posterior evidence guide how
 
 This document is a method hypothesis, not a final contribution claim.
 
+Important novelty pressure:
+
+```text
+Posterior feedback itself is not novel.
+```
+
+Reflection, self-improvement, prompt repair, program repair, memory update, and skill-library systems can all use execution feedback to revise behavior. The possible contribution must therefore be narrower:
+
+```text
+typed posterior revision over deployable expert-skill packages
+```
+
 ## Related-Work Pressure
 
 SPARK-PDI's important move is methodological: it argues that posterior execution evidence is more reliable than prior plans for skill distillation. The transferable lesson is not just "run a verifier"; it is that the timing and grounding of evidence matter.
@@ -239,3 +251,36 @@ posterior_revision_utility =
 ```
 
 This is not yet a final metric. It is a research direction that can be falsified by broader evidence.
+
+## Novelty Pressure And Naive Ablation
+
+Current novelty pressure test:
+
+```text
+docs/RELATED_WORK_NOVELTY_PRESSURE_TEST.md
+```
+
+Current naive revision ablation:
+
+```text
+outputs/mvp_vertical_slice/naive_revision_ablation_001
+```
+
+Current observation:
+
+```text
+always_append_domain_rules fixes missing_rule but fails output_format_error
+always_rewrite_output_contract fixes output_format_error but fails missing_rule
+accept_if_current_failure_fixed is unsafe under rollback_gate_001
+always_full_trace blocks shortcut but exceeds budget at 300/237
+always_regenerate_full_skill fixes tested failures but is a high-cost upper bound
+type_specific_operator_plus_gate_and_selective_trace is the best-supported narrow combination in current toy slices
+```
+
+Interpretation:
+
+```text
+The current method gap is not "feedback-driven revision".
+It is whether posterior feedback can be attributed to typed revision operators over a deployable expert-skill package,
+and whether the resulting revision can pass deployment-level promotion constraints.
+```

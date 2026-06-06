@@ -32,6 +32,7 @@ Current supporting evidence:
 - Adversarial trace verifier sanity check rejects obvious fake/weak evidence cases after adding an `evidence_span` relevance check.
 - Revision decision matrix shows different feedback/risk types currently map to different constrained actions rather than one budget check.
 - Posterior revision signal audit connects recovery gain, attribution specificity, rollback, and trace allocation into a method-level diagnostic.
+- Naive revision ablation pressure-tests always-append, always-contract, always-regenerate, accept-if-fixed, and always-full-trace baselines.
 
 ## Falsification Conditions
 
@@ -204,6 +205,43 @@ Boundary:
 This is a small controlled-family diagnostic, not evidence that posterior revision is broadly superior to prior generation.
 ```
 
+### F9: Naive Revision Strategies Are Sufficient
+
+If always-append, always-regenerate, or always-full-trace strategies solve the same failures with acceptable cost and safety, then typed posterior revision becomes unnecessary.
+
+Impact:
+
+```text
+The method claim should be downgraded to engineering organization around known repair strategies.
+```
+
+Next evidence:
+
+- Compare simple revision policies against type-specific operators.
+- Treat full regeneration as a strong upper bound, not a weak baseline.
+- Measure whether generic policies also pass regression, semantic, budget, and trace gates.
+
+Current progress:
+
+```text
+outputs/mvp_vertical_slice/naive_revision_ablation_001
+```
+
+Current observation:
+
+```text
+always_append_domain_rules fixes missing_rule but fails output_format_error
+always_rewrite_output_contract fixes output_format_error but fails missing_rule
+always_full_trace blocks shortcut but is over budget
+always_regenerate_full_skill fixes tested failures but is high-cost and weakly diagnostic
+```
+
+Boundary:
+
+```text
+This is a diagnostic ablation over existing toy artifacts, not statistical evidence.
+```
+
 ## Next Evidence Priority
 
 Priority order:
@@ -213,8 +251,9 @@ Priority order:
 3. `adversarial_trace_verifier_001`: done. Checks obvious fake/weak trace evidence.
 4. `revision_decision_matrix_001`: done. Consolidates constrained post-execution revision decisions.
 5. `posterior_revision_signal_audit_001`: done. Audits whether posterior evidence changes patch/gate/trace decisions beyond prior skill generation.
-6. Expand to 6-8 holdout cases only after demo stability is preserved.
-7. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
+6. `naive_revision_ablation_001`: done. Pressure-tests simple revision policies against type-specific operators and gates.
+7. Expand to 6-8 holdout cases only after demo stability is preserved.
+8. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
 
 ## Safe Wording
 

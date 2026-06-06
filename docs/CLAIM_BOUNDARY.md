@@ -173,6 +173,17 @@ Safe interpretation:
 Post-execution evidence can be audited as a revision signal that changes patch, gate, and trace decisions in the current controlled family.
 ```
 
+- Naive revision ablation pressure-tests simple alternatives:
+
+```text
+always_append_domain_rules: fixes missing_rule, fails output_format_error
+always_rewrite_output_contract: fixes output_format_error, fails missing_rule
+always_regenerate_full_skill: fixes tested failures but costs 1429.75 avg tokens
+accept_if_current_failure_fixed: unsafe under rollback_gate_001
+always_full_trace: blocks shortcut but is 300/237 over budget
+type_specific_operator_plus_gate_and_selective_trace: best-supported narrow combination in current toy slices
+```
+
 ## What We Cannot Say
 
 Do not say:
@@ -201,6 +212,8 @@ Do not say:
 - The current revision decision matrix proves a mature revision algorithm.
 - Posterior revision utility is already a mature PDI-like metric.
 - The current API-review probe proves the method transfers across domains.
+- Typed posterior revision is proven novel against all reflection, prompt repair, program repair, or memory-update work.
+- Always-regenerate baselines are weak; in the current slice they are actually a strong high-cost upper bound.
 
 ## Safe Main Claim
 
@@ -242,6 +255,12 @@ Method-level opening:
 
 ```text
 How much of a deployed skill's later success is explained by posterior evidence-grounded revision, rather than by prior material summarization or generic model capability?
+```
+
+Novelty pressure wording:
+
+```text
+Posterior feedback itself is not novel. The current possible delta is narrower: mapping posterior feedback to typed revision operators over a deployable expert-skill package, then promoting revisions only through deployment gates for regression, budget, semantics, and traceability.
 ```
 
 ## Baseline Attribution Boundary

@@ -1306,3 +1306,51 @@ Boundary:
 This is still controlled API-review evidence. It is a method hypothesis and audit,
 not a broad PDI-like metric or cross-domain proof.
 ```
+
+## 27. Novelty Pressure Test And Naive Revision Ablation
+
+New related-work pressure document:
+
+```text
+D:\solution\docs\RELATED_WORK_NOVELTY_PRESSURE_TEST.md
+```
+
+Main correction:
+
+```text
+Posterior feedback itself is not novel.
+The narrower possible delta is typed posterior revision over deployable expert-skill packages.
+```
+
+New ablation artifact:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\naive_revision_ablation_001
+```
+
+Key diagnostic results:
+
+```text
+always_append_domain_rules: fixes missing_rule, fails output_format_error
+always_rewrite_output_contract: fixes output_format_error, fails missing_rule
+always_regenerate_full_skill: fixes tested failures but costs 1429.75 avg tokens
+accept_if_current_failure_fixed: unsafe under rollback_gate_001
+always_full_trace: blocks shortcut but is 300/237 over budget
+type_specific_operator_plus_gate_and_selective_trace: resolves tested axes in toy slice
+```
+
+Current interpretation:
+
+```text
+The strongest current formulation is not "we have feedback revision".
+It is: expert skill deployment feedback is attributed to typed revision operators
+over rule/output-contract/trace-contract/gate records, then promoted through
+deployment-level constraints.
+```
+
+Boundary:
+
+```text
+This remains narrow method evidence. Related work may still cover parts of the combination,
+and full regeneration remains a strong high-cost upper bound.
+```

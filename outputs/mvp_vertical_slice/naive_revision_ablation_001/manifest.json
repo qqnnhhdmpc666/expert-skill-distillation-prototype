@@ -1,0 +1,17 @@
+{
+  "run_id": "naive_revision_ablation_001",
+  "created_at": "2026-06-06T06:56:25.721695+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "strategy_results.json",
+    "manifest.json"
+  ],
+  "source_artifacts": [
+    "outputs\\mvp_vertical_slice\\counterfactual_patch_utility_001\\per_failure_results.json",
+    "outputs\\mvp_vertical_slice\\rollback_gate_001\\rollback_decision.json",
+    "outputs\\mvp_vertical_slice\\selective_trace_compiler_001\\summary.json",
+    "outputs\\mvp_vertical_slice\\real_effect_eval_001\\summary.json"
+  ],
+  "boundary": "This reuses existing controlled artifacts and is not a statistically valid ablation. Full regeneration remains a strong upper bound, so future work must show the targeted strategy transfers beyond this rule family."
+}

@@ -1,0 +1,173 @@
+{
+  "run_id": "naive_revision_ablation_001",
+  "created_at": "2026-06-06T06:56:25.721695+00:00",
+  "positioning": "diagnostic ablation over existing artifacts; not a benchmark",
+  "ablation_question": "Are generic strategies such as always append, always regenerate, or always full trace sufficient, or does the current evidence favor feedback-type-specific operators plus deployment gates?",
+  "strategy_results": [
+    {
+      "strategy": "no_revision",
+      "missing_rule_result": "resolved=False",
+      "output_format_result": "resolved=False",
+      "regression_safety_result": "not_applicable",
+      "trace_budget_result": "not_applicable",
+      "resolved_axes": 0,
+      "hard_failures": 2,
+      "main_cost_or_failure": "keeps observed deployment failures",
+      "interpretation": "useful as lower bound only",
+      "source_artifacts": [
+        "counterfactual_patch_utility_001"
+      ]
+    },
+    {
+      "strategy": "always_append_domain_rules",
+      "missing_rule_result": "resolved=True",
+      "output_format_result": "resolved=False",
+      "regression_safety_result": "not_checked",
+      "trace_budget_result": "not_checked",
+      "resolved_axes": 1,
+      "hard_failures": 1,
+      "main_cost_or_failure": "fixes missing rules but does not fix output-contract failures",
+      "interpretation": "too generic; failure type matters",
+      "source_artifacts": [
+        "counterfactual_patch_utility_001"
+      ]
+    },
+    {
+      "strategy": "always_rewrite_output_contract",
+      "missing_rule_result": "resolved=False",
+      "output_format_result": "resolved=True",
+      "regression_safety_result": "not_checked",
+      "trace_budget_result": "not_checked",
+      "resolved_axes": 1,
+      "hard_failures": 1,
+      "main_cost_or_failure": "fixes format failure but does not recover missing domain rules",
+      "interpretation": "too generic; failure type matters",
+      "source_artifacts": [
+        "counterfactual_patch_utility_001"
+      ]
+    },
+    {
+      "strategy": "always_regenerate_full_skill",
+      "missing_rule_result": "resolved=True",
+      "output_format_result": "resolved=True",
+      "regression_safety_result": "not_targeted",
+      "trace_budget_result": "not_targeted",
+      "resolved_axes": 2,
+      "hard_failures": 0,
+      "main_cost_or_failure": "works as upper bound but avg tokens=1429.75",
+      "interpretation": "strong but expensive and weakly diagnostic",
+      "source_artifacts": [
+        "counterfactual_patch_utility_001",
+        "real_effect_eval_001"
+      ]
+    },
+    {
+      "strategy": "accept_if_current_failure_fixed",
+      "missing_rule_result": "can_resolve_current_failure",
+      "output_format_result": "not_targeted",
+      "regression_safety_result": "unsafe; gate observed reject_and_rollback",
+      "trace_budget_result": "not_checked",
+      "resolved_axes": 1,
+      "hard_failures": 1,
+      "main_cost_or_failure": "can promote a patch that regresses previously covered rules",
+      "interpretation": "current-failure success is insufficient for deployment promotion",
+      "source_artifacts": [
+        "rollback_gate_001"
+      ]
+    },
+    {
+      "strategy": "always_full_trace",
+      "missing_rule_result": "not_a_patch_strategy",
+      "output_format_result": "not_a_patch_strategy",
+      "regression_safety_result": "traceable",
+      "trace_budget_result": "over_budget=True total=300/237",
+      "resolved_axes": 1,
+      "hard_failures": 1,
+      "main_cost_or_failure": "blocks shortcut but exceeds the trace budget",
+      "interpretation": "useful upper bound; not deployable under current budget",
+      "source_artifacts": [
+        "selective_trace_compiler_001"
+      ]
+    },
+    {
+      "strategy": "type_specific_operator_plus_gate_and_selective_trace",
+      "missing_rule_result": "resolved=True",
+      "output_format_result": "resolved=True",
+      "regression_safety_result": "safe_gate=True",
+      "trace_budget_result": "selective_trace over_budget=False shortcut_blocked=True total=183/237",
+      "resolved_axes": 4,
+      "hard_failures": 0,
+      "main_cost_or_failure": "avg tokens with selective trace=335.0; still toy and rule-family-specific",
+      "interpretation": "currently best-supported narrow mechanism combination",
+      "source_artifacts": [
+        "counterfactual_patch_utility_001",
+        "rollback_gate_001",
+        "selective_trace_compiler_001",
+        "real_effect_eval_001"
+      ]
+    }
+  ],
+  "strategy_scores": [
+    {
+      "strategy": "no_revision",
+      "resolved_axes": 0,
+      "total_axes": 4,
+      "hard_failures": 2,
+      "notes": "useful as lower bound only"
+    },
+    {
+      "strategy": "always_append_domain_rules",
+      "resolved_axes": 1,
+      "total_axes": 4,
+      "hard_failures": 1,
+      "notes": "too generic; failure type matters"
+    },
+    {
+      "strategy": "always_rewrite_output_contract",
+      "resolved_axes": 1,
+      "total_axes": 4,
+      "hard_failures": 1,
+      "notes": "too generic; failure type matters"
+    },
+    {
+      "strategy": "always_regenerate_full_skill",
+      "resolved_axes": 2,
+      "total_axes": 4,
+      "hard_failures": 0,
+      "notes": "strong but expensive and weakly diagnostic"
+    },
+    {
+      "strategy": "accept_if_current_failure_fixed",
+      "resolved_axes": 1,
+      "total_axes": 4,
+      "hard_failures": 1,
+      "notes": "current-failure success is insufficient for deployment promotion"
+    },
+    {
+      "strategy": "always_full_trace",
+      "resolved_axes": 1,
+      "total_axes": 4,
+      "hard_failures": 1,
+      "notes": "useful upper bound; not deployable under current budget"
+    },
+    {
+      "strategy": "type_specific_operator_plus_gate_and_selective_trace",
+      "resolved_axes": 4,
+      "total_axes": 4,
+      "hard_failures": 0,
+      "notes": "currently best-supported narrow mechanism combination"
+    }
+  ],
+  "key_observations": {
+    "always_append_failure": "resolves missing_rule but not output_format_error",
+    "always_contract_failure": "resolves output_format_error but not missing_rule",
+    "always_full_regenerate_tradeoff": "resolves tested failures but uses full_skill avg tokens 1429.75",
+    "always_full_trace_tradeoff": "blocks shortcut but costs 300/237 tokens and is rejected",
+    "type_specific_combo": "resolves tested failure types, keeps rollback safety, and uses selective trace under budget in toy slices"
+  },
+  "conclusion": {
+    "status": "partially_supported",
+    "finding": "Existing toy artifacts support the claim that generic revision strategies are not enough to explain all observed constraints: always-append and always-contract each fail one failure type, current-failure-only acceptance can regress, and full trace is over budget. The best current narrow mechanism is type-specific revision plus deployment promotion gate plus selective trace.",
+    "boundary": "This reuses existing controlled artifacts and is not a statistically valid ablation. Full regeneration remains a strong upper bound, so future work must show the targeted strategy transfers beyond this rule family."
+  }
+}

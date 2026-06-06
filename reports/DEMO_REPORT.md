@@ -60,6 +60,12 @@ Related-work delta audit:
 docs/RELATED_WORK_DELTA_AUDIT.md
 ```
 
+Novelty pressure test:
+
+```text
+docs/RELATED_WORK_NOVELTY_PRESSURE_TEST.md
+```
+
 Component baseline plan:
 
 ```text
@@ -184,6 +190,7 @@ outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
 outputs/mvp_vertical_slice/adversarial_trace_verifier_001
 outputs/mvp_vertical_slice/revision_decision_matrix_001
 outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
+outputs/mvp_vertical_slice/naive_revision_ablation_001
 ```
 
 4-case controlled holdout:
@@ -246,6 +253,23 @@ Safe interpretation:
 
 ```text
 The current evidence is best understood as a posterior-revision method hypothesis: post-execution evidence changes deployment decisions. This is more method-like than simple budget checking, but still far from a broad PDI-style result.
+```
+
+Naive revision ablation:
+
+| Strategy | Observation |
+|---|---|
+| always_append_domain_rules | fixes missing_rule but not output_format_error |
+| always_rewrite_output_contract | fixes output_format_error but not missing_rule |
+| always_regenerate_full_skill | fixes tested failures but costs 1429.75 avg tokens as an upper bound |
+| accept_if_current_failure_fixed | unsafe because rollback gate observes reject_and_rollback |
+| always_full_trace | blocks shortcut but is 300/237 and over budget |
+| type_specific_operator_plus_gate_and_selective_trace | resolves tested axes with selective trace 183/237 in the toy slice |
+
+Safe interpretation:
+
+```text
+The current method gap is not "posterior feedback exists". It is typed posterior revision over deployable expert-skill packages, with promotion gates and selective trace. This remains a narrow method prototype, not a broad new paradigm.
 ```
 
 Risk trace policy baseline:

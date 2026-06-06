@@ -1,0 +1,104 @@
+[
+  {
+    "strategy": "no_revision",
+    "missing_rule_result": "resolved=False",
+    "output_format_result": "resolved=False",
+    "regression_safety_result": "not_applicable",
+    "trace_budget_result": "not_applicable",
+    "resolved_axes": 0,
+    "hard_failures": 2,
+    "main_cost_or_failure": "keeps observed deployment failures",
+    "interpretation": "useful as lower bound only",
+    "source_artifacts": [
+      "counterfactual_patch_utility_001"
+    ]
+  },
+  {
+    "strategy": "always_append_domain_rules",
+    "missing_rule_result": "resolved=True",
+    "output_format_result": "resolved=False",
+    "regression_safety_result": "not_checked",
+    "trace_budget_result": "not_checked",
+    "resolved_axes": 1,
+    "hard_failures": 1,
+    "main_cost_or_failure": "fixes missing rules but does not fix output-contract failures",
+    "interpretation": "too generic; failure type matters",
+    "source_artifacts": [
+      "counterfactual_patch_utility_001"
+    ]
+  },
+  {
+    "strategy": "always_rewrite_output_contract",
+    "missing_rule_result": "resolved=False",
+    "output_format_result": "resolved=True",
+    "regression_safety_result": "not_checked",
+    "trace_budget_result": "not_checked",
+    "resolved_axes": 1,
+    "hard_failures": 1,
+    "main_cost_or_failure": "fixes format failure but does not recover missing domain rules",
+    "interpretation": "too generic; failure type matters",
+    "source_artifacts": [
+      "counterfactual_patch_utility_001"
+    ]
+  },
+  {
+    "strategy": "always_regenerate_full_skill",
+    "missing_rule_result": "resolved=True",
+    "output_format_result": "resolved=True",
+    "regression_safety_result": "not_targeted",
+    "trace_budget_result": "not_targeted",
+    "resolved_axes": 2,
+    "hard_failures": 0,
+    "main_cost_or_failure": "works as upper bound but avg tokens=1429.75",
+    "interpretation": "strong but expensive and weakly diagnostic",
+    "source_artifacts": [
+      "counterfactual_patch_utility_001",
+      "real_effect_eval_001"
+    ]
+  },
+  {
+    "strategy": "accept_if_current_failure_fixed",
+    "missing_rule_result": "can_resolve_current_failure",
+    "output_format_result": "not_targeted",
+    "regression_safety_result": "unsafe; gate observed reject_and_rollback",
+    "trace_budget_result": "not_checked",
+    "resolved_axes": 1,
+    "hard_failures": 1,
+    "main_cost_or_failure": "can promote a patch that regresses previously covered rules",
+    "interpretation": "current-failure success is insufficient for deployment promotion",
+    "source_artifacts": [
+      "rollback_gate_001"
+    ]
+  },
+  {
+    "strategy": "always_full_trace",
+    "missing_rule_result": "not_a_patch_strategy",
+    "output_format_result": "not_a_patch_strategy",
+    "regression_safety_result": "traceable",
+    "trace_budget_result": "over_budget=True total=300/237",
+    "resolved_axes": 1,
+    "hard_failures": 1,
+    "main_cost_or_failure": "blocks shortcut but exceeds the trace budget",
+    "interpretation": "useful upper bound; not deployable under current budget",
+    "source_artifacts": [
+      "selective_trace_compiler_001"
+    ]
+  },
+  {
+    "strategy": "type_specific_operator_plus_gate_and_selective_trace",
+    "missing_rule_result": "resolved=True",
+    "output_format_result": "resolved=True",
+    "regression_safety_result": "safe_gate=True",
+    "trace_budget_result": "selective_trace over_budget=False shortcut_blocked=True total=183/237",
+    "resolved_axes": 4,
+    "hard_failures": 0,
+    "main_cost_or_failure": "avg tokens with selective trace=335.0; still toy and rule-family-specific",
+    "interpretation": "currently best-supported narrow mechanism combination",
+    "source_artifacts": [
+      "counterfactual_patch_utility_001",
+      "rollback_gate_001",
+      "selective_trace_compiler_001",
+      "real_effect_eval_001"
+    ]
+  }
+]

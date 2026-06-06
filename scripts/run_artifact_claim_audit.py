@@ -199,6 +199,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "naive_revision_ablation_001",
+        "path": "outputs/mvp_vertical_slice/naive_revision_ablation_001",
+        "supported_claim": "Generic revision strategies are insufficient to explain the current deployment constraints in toy slices.",
+        "key_result": "always_append fixes missing_rule but not output_format_error; always_contract fixes format but not missing_rule; always_full_trace is 300/237 over budget; type-specific operator plus gate/selective trace resolves all tested axes.",
+        "limitation": "Diagnostic ablation over existing artifacts only; always_regenerate_full_skill remains a strong high-cost upper bound.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 
