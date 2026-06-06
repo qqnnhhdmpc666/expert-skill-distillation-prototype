@@ -41,6 +41,14 @@ C. our method-discovery contribution
 
 Not every row should be C. Most rows are A or B. The current true exploration points are mainly around compact deployment under correctness, budget, validation, and selective trace constraints.
 
+Latest method-level exploration:
+
+```text
+posterior skill revision
+```
+
+This adapts SPARK-PDI's posterior-evidence orientation to deployable expert skill artifacts: execution/verifier feedback is treated as a revision signal that can change patch, gate, rollback, and trace decisions. This is a method hypothesis, not a PDI-scale metric.
+
 ## Delta By Component
 
 | Component | Related Work Inspiration | What We Reuse | What We Simplify | What We Add | Current Supporting Artifact | Limitation | Claim Strength | Category |
@@ -53,6 +61,7 @@ Not every row should be C. Most rows are A or B. The current true exploration po
 | compact skill -> agent invocation | COLLEAGUE deployable skill surface; agent skill invocation literature | Skill as agent-facing artifact | No cross-host packaging or installation | API-review agent prompt/output contract for compact skill | `agent_mock_api_review_001`, `llm_agent_api_review_001` | Small controlled matrix; not broad agent stability | partially_supported | B |
 | trace verifier / selective trace | SPARK evidence-over-plans principle and trajectory grounding | Agent behavior should expose evidence beyond final answer | Not full trajectories or PDI; only rule-application traces | Selective trace for high-risk/failure-critical rules under token budget | `skill_to_agent_loop_001`, `traceable_compiler_integration_001`, `selective_trace_compiler_001` | Toy trace policy; not a mature tracing strategy | partially_supported | C |
 | real effect evaluation | SPARK compares skills against no-skill/human-written skills on runnable tasks | Need task-level effect, not only artifact validity | No 86-task benchmark; no large model/student sweep | 4-case controlled holdout for skill-conditioned API-review behavior | `real_effect_eval_001` | Controlled family only; not benchmark | partially_supported | B |
+| posterior skill revision signal | SPARK-PDI posterior evidence over prior plans; COLLEAGUE correction lifecycle | Posterior evidence should matter after deployment | No PDI-like cross-task metric; no broad trajectory suite | Audits recovery gain, attribution specificity, rollback, and trace allocation over existing artifacts | `posterior_revision_signal_audit_001` | Controlled-family diagnostic only; not cross-domain proof | partially_supported | C |
 
 ## Repository / Implementation Maturity Audit
 
@@ -64,7 +73,7 @@ The following counts exclude `.git`, caches, and for our repository exclude `out
 
 | Repository | Files | Python Files | Markdown Files | Test-like Files | Python LOC | Markdown LOC | Packaging / Config |
 |---|---:|---:|---:|---:|---:|---:|---|
-| ours: `D:\solution` | 122 | 28 | 56 | 6 | ~6.7k | ~8.4k | no `pyproject.toml`; script-first |
+| ours: `D:\solution` | 122+ | 28+ | 56+ | 6+ | ~6.7k+ | ~8.4k+ | minimal `pyproject.toml`; still script-first |
 | SPARK-PDI repo | 239 | 29 | 52 | 1 | ~9.5k | ~34.4k | `pyproject.toml`, `uv.lock`, ruff, mypy |
 | COLLEAGUE.SKILL repo | 108 | 30 | 57 | 7 | ~8.1k | ~13.0k | `requirements.txt`, install docs, tests, CI-like repo hygiene |
 

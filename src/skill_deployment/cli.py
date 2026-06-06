@@ -24,6 +24,8 @@ def main(argv: list[str] | None = None) -> int:
     subparsers.add_parser("compare-trace-policy", help="Run the risk-vs-random selective trace baseline.")
     subparsers.add_parser("trace-robustness", help="Enumerate all size-2 trace policy allocations.")
     subparsers.add_parser("analyze-summary-miss", help="Analyze direct-summary residual misses.")
+    subparsers.add_parser("revision-matrix", help="Run the constrained post-execution revision matrix.")
+    subparsers.add_parser("posterior-signal-audit", help="Audit posterior revision signal diagnostics.")
     args = parser.parse_args(argv)
 
     if args.command == "check-existing":
@@ -42,6 +44,10 @@ def main(argv: list[str] | None = None) -> int:
         return run_script(["scripts/run_risk_trace_policy_robustness.py"])
     if args.command == "analyze-summary-miss":
         return run_script(["scripts/run_direct_summary_miss_analysis.py"])
+    if args.command == "revision-matrix":
+        return run_script(["scripts/run_revision_decision_matrix.py"])
+    if args.command == "posterior-signal-audit":
+        return run_script(["scripts/run_posterior_revision_signal_audit.py"])
     parser.error(f"unknown command: {args.command}")
     return 2
 

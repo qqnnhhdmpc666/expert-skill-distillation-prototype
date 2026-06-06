@@ -28,6 +28,12 @@ Sharper method framing:
 The core problem is not budget checking, but constrained post-execution skill revision.
 ```
 
+Latest method hypothesis:
+
+```text
+Posterior skill revision treats a generated skill as a deployable hypothesis. Execution/verifier feedback becomes a posterior signal that decides what to patch, what to reject, what to trace, and when to roll back.
+```
+
 Chinese wording:
 
 ```text
@@ -67,6 +73,12 @@ We build on COLLEAGUE.SKILL's inspectable skill artifact idea and SPARK-PDI's ex
 ```
 
 Do not present this as a full SPARK reproduction, a COLLEAGUE replacement, or a claim that every module is original.
+
+Method synthesis note:
+
+```text
+SPARK-PDI's transferable lesson is posterior evidence over prior plans. COLLEAGUE.SKILL's transferable lesson is versioned and correctable skill artifacts. Our current method gap is posterior revision of deployable skill artifacts, not another checklist generator.
+```
 
 Repository maturity boundary:
 
@@ -171,6 +183,7 @@ outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
 outputs/mvp_vertical_slice/adversarial_trace_verifier_001
 outputs/mvp_vertical_slice/revision_decision_matrix_001
+outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
 ```
 
 4-case controlled holdout:
@@ -218,6 +231,21 @@ Interpretation:
 
 ```text
 Direct summarization is a strong baseline in this small controlled family. The prototype's safer value claim is not "summaries cannot make useful checklists"; it is that verifier feedback, patching, validation gates, and selective trace can recover and control missed deployment-critical rules.
+```
+
+Posterior revision signal audit:
+
+| Diagnostic Axis | Current Observation | Status |
+|---|---|---|
+| posterior recovery | compact_v1 0.5834 -> patched_compact 1.0000; direct_summary 0.9167 -> patched_compact 1.0000 | partially_supported |
+| attribution specificity | type-correct missing-rule and output-contract patches beat wrong-type counterfactuals | partially_supported |
+| revision safety | rollback gate rejects a patch that recovers R005/R006 but drops R003 | supported_in_toy_slice |
+| trace allocation | only 1/15 size-2 trace allocations covers both failure-critical rules; risk policy selects it | partially_supported |
+
+Safe interpretation:
+
+```text
+The current evidence is best understood as a posterior-revision method hypothesis: post-execution evidence changes deployment decisions. This is more method-like than simple budget checking, but still far from a broad PDI-style result.
 ```
 
 Risk trace policy baseline:

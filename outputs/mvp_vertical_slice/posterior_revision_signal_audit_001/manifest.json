@@ -1,0 +1,19 @@
+{
+  "run_id": "posterior_revision_signal_audit_001",
+  "created_at": "2026-06-06T06:36:06.704069+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "diagnostic_axes.json",
+    "manifest.json"
+  ],
+  "source_artifacts": [
+    "outputs\\mvp_vertical_slice\\real_effect_eval_001\\summary.json",
+    "outputs\\mvp_vertical_slice\\component_baseline_direct_summary_001\\summary.json",
+    "outputs\\mvp_vertical_slice\\counterfactual_patch_utility_001\\summary.json",
+    "outputs\\mvp_vertical_slice\\rollback_gate_001\\rollback_decision.json",
+    "outputs\\mvp_vertical_slice\\risk_trace_policy_robustness_001\\summary.json",
+    "outputs\\mvp_vertical_slice\\revision_decision_matrix_001\\summary.json"
+  ],
+  "boundary": "Controlled API-review family only. This audit reuses toy-slice artifacts and does not establish a broad method like PDI. It identifies a promising method gap to test next: posterior revision utility across more task families and failure modes."
+}

@@ -944,3 +944,38 @@ Boundary:
 ```text
 This is a mechanism matrix over existing toy artifacts. It is not a mature revision algorithm.
 ```
+
+## 27. Run Posterior Revision Signal Audit
+
+Run the posterior revision signal audit:
+
+```powershell
+python scripts\run_posterior_revision_signal_audit.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py posterior-signal-audit
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\posterior_revision_signal_audit_001
+```
+
+Expected observation:
+
+```text
+posterior_recovery_gain_over_compact_v1: 0.4166
+posterior_recovery_gain_over_direct_summary: 0.0833
+missing_rule_type_specificity_margin: 1
+output_format_type_specificity_margin: 1
+```
+
+Boundary:
+
+```text
+This is a method-level audit over existing controlled artifacts. It is not a PDI-scale metric, benchmark, or cross-domain proof.
+```

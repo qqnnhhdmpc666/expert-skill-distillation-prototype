@@ -22,6 +22,12 @@ Current method framing:
 constrained post-execution skill revision
 ```
 
+Latest method hypothesis:
+
+```text
+posterior skill revision
+```
+
 Meaning:
 
 ```text
@@ -152,6 +158,21 @@ Safe interpretation:
 Plain summarization can be strong for obvious rules in the controlled API-review family. The current structured loop is best claimed as recovering missed long-tail/failure-critical rules and controlling deployment risk, not as proof that summaries are generally weak.
 ```
 
+- Posterior revision signal audit connects the existing slices into a method hypothesis:
+
+```text
+posterior_recovery_gain_over_compact_v1: 0.4166
+posterior_recovery_gain_over_direct_summary: 0.0833
+missing_rule_type_specificity_margin: 1
+output_format_type_specificity_margin: 1
+```
+
+Safe interpretation:
+
+```text
+Post-execution evidence can be audited as a revision signal that changes patch, gate, and trace decisions in the current controlled family.
+```
+
 ## What We Cannot Say
 
 Do not say:
@@ -178,6 +199,8 @@ Do not say:
 - Adversarial trace sanity checks prove robustness against sophisticated fake evidence.
 - The contribution is simply a token-budget if/else check.
 - The current revision decision matrix proves a mature revision algorithm.
+- Posterior revision utility is already a mature PDI-like metric.
+- The current API-review probe proves the method transfers across domains.
 
 ## Safe Main Claim
 
@@ -213,6 +236,12 @@ The most promising research question is not whether we can log more fields. It i
 
 ```text
 Given material evidence, execution feedback, risk, and budget, how should a system decide which rules to keep, patch, compress, trace, accept, reject, or roll back?
+```
+
+Method-level opening:
+
+```text
+How much of a deployed skill's later success is explained by posterior evidence-grounded revision, rather than by prior material summarization or generic model capability?
 ```
 
 ## Baseline Attribution Boundary

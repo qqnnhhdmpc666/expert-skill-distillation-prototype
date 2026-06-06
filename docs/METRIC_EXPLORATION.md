@@ -553,3 +553,43 @@ partially_supported
 ```
 
 This diagnostic supports the reframing from budget checking to constrained post-execution revision, while preserving the boundary that this is not a mature algorithm.
+
+## 18. Posterior Revision Signal Diagnostics
+
+Question:
+
+```text
+Does post-execution evidence add a useful revision signal beyond prior skill generation?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
+```
+
+Diagnostic axes:
+
+- posterior recovery;
+- attribution specificity;
+- revision safety;
+- posterior trace allocation.
+
+Current observation:
+
+```text
+posterior_recovery_gain_over_compact_v1: 0.4166
+posterior_recovery_gain_over_direct_summary: 0.0833
+missing_rule_type_specificity_margin: 1
+output_format_type_specificity_margin: 1
+risk_trace_unique_full_coverage_pair: 1 / 15
+rollback_gate_decision_observed: reject_and_rollback
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This is the closest current diagnostic to a method-level abstraction. It should not be described as a final metric. Its value is that it asks whether posterior execution/verifier evidence changes revision decisions in ways that prior skill generation alone did not.

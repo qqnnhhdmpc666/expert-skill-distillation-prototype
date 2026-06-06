@@ -31,6 +31,7 @@ Current supporting evidence:
 - Validation gate rejects known regression and over-budget candidates in toy slices.
 - Adversarial trace verifier sanity check rejects obvious fake/weak evidence cases after adding an `evidence_span` relevance check.
 - Revision decision matrix shows different feedback/risk types currently map to different constrained actions rather than one budget check.
+- Posterior revision signal audit connects recovery gain, attribution specificity, rollback, and trace allocation into a method-level diagnostic.
 
 ## Falsification Conditions
 
@@ -168,6 +169,41 @@ Next evidence:
 - Add counterfactuals for patch-rule vs output-contract vs rollback actions.
 - Track whether each constrained action improves over naive append or blind accept.
 
+### F8: Posterior Revision Adds No Signal Beyond Prior Skill Generation
+
+If direct summary or initial full/compact skill generation already solves the deployment cases without residual failures, then posterior revision is less important as a correctness mechanism.
+
+Impact:
+
+```text
+The method should shift toward auditability, version control, and traceability rather than recovery gain.
+```
+
+Next evidence:
+
+- Compare posterior-revised skills against direct summary and full-skill baselines on a larger controlled holdout.
+- Separate prior signals from posterior signals.
+- Report posterior gain over direct summary, not only over compact_v1.
+
+Current progress:
+
+```text
+outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
+```
+
+Current observation:
+
+```text
+posterior gain over compact_v1: +0.4166
+posterior gain over direct_summary: +0.0833
+```
+
+Boundary:
+
+```text
+This is a small controlled-family diagnostic, not evidence that posterior revision is broadly superior to prior generation.
+```
+
 ## Next Evidence Priority
 
 Priority order:
@@ -176,8 +212,9 @@ Priority order:
 2. `direct_summary_miss_analysis_001`: done. Explains the only direct-summary miss.
 3. `adversarial_trace_verifier_001`: done. Checks obvious fake/weak trace evidence.
 4. `revision_decision_matrix_001`: done. Consolidates constrained post-execution revision decisions.
-5. Expand to 6-8 holdout cases only after demo stability is preserved.
-6. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
+5. `posterior_revision_signal_audit_001`: done. Audits whether posterior evidence changes patch/gate/trace decisions beyond prior skill generation.
+6. Expand to 6-8 holdout cases only after demo stability is preserved.
+7. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
 
 ## Safe Wording
 

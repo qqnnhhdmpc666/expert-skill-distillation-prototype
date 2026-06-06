@@ -1266,3 +1266,43 @@ partially_supported
 ```text
 这是 existing toy artifacts 上的机制矩阵，不是成熟 revision algorithm，也不是 benchmark。
 ```
+
+## 26. Method Exploration Update: Posterior Skill Revision
+
+New method hypothesis:
+
+```text
+Posterior skill revision treats a generated skill as a deployable hypothesis.
+After execution, verifier or trajectory feedback should determine what to patch,
+what to reject, what to trace, and when to roll back.
+```
+
+New artifact:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\posterior_revision_signal_audit_001
+```
+
+Key diagnostic results:
+
+```text
+posterior_recovery_gain_over_compact_v1: 0.4166
+posterior_recovery_gain_over_direct_summary: 0.0833
+missing_rule_type_specificity_margin: 1
+output_format_type_specificity_margin: 1
+```
+
+Current interpretation:
+
+```text
+The stronger story is not "we added token budget" or "we beat summary generation".
+The stronger story is that posterior execution/verifier evidence can guide
+type-specific repair, regression gating, and selective trace allocation.
+```
+
+Boundary:
+
+```text
+This is still controlled API-review evidence. It is a method hypothesis and audit,
+not a broad PDI-like metric or cross-domain proof.
+```

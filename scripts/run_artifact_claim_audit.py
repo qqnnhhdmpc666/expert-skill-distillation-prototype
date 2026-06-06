@@ -190,6 +190,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "posterior_revision_signal_audit_001",
+        "path": "outputs/mvp_vertical_slice/posterior_revision_signal_audit_001",
+        "supported_claim": "Post-execution evidence can be audited as a revision signal that changes patch, gate, and trace decisions beyond prior skill generation.",
+        "key_result": "patched_compact improves coverage over compact_v1 by 0.4166 and over direct_summary by 0.0833; type-correct missing-rule and output-contract patches beat wrong-type counterfactuals.",
+        "limitation": "Audit over existing controlled API-review artifacts only; not a cross-domain posterior-revision metric.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

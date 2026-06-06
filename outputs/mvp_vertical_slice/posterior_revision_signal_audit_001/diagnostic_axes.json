@@ -1,0 +1,26 @@
+[
+  {
+    "axis": "posterior recovery",
+    "question": "Does execution feedback recover residual failures that prior skill generation missed?",
+    "evidence": "compact_v1 coverage 0.5834 -> patched_compact 1.0; direct summary 0.9167 -> patched 1.0.",
+    "status": "partially_supported"
+  },
+  {
+    "axis": "attribution specificity",
+    "question": "Does the failure type matter, or can any patch work?",
+    "evidence": "missing_rule compiler_patch resolved=True while no/random/wrong-type patches did not; output_format wrong_missing_rule resolved=False vs output_contract_patch resolved=True.",
+    "status": "partially_supported"
+  },
+  {
+    "axis": "revision safety",
+    "question": "Can a patch that fixes the observed failure still be unsafe?",
+    "evidence": "rollback gate decision: reject_and_rollback.",
+    "status": "supported_in_toy_slice"
+  },
+  {
+    "axis": "posterior trace allocation",
+    "question": "Can failure-critical evidence guide trace budget better than arbitrary allocation?",
+    "evidence": "only 1/15 size-2 trace allocations cover both failure-critical rules; risk policy selects that pair.",
+    "status": "partially_supported"
+  }
+]

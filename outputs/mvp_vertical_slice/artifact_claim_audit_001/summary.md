@@ -26,6 +26,7 @@ Audit what each core artifact can safely support, and prevent overclaiming befor
 | direct_summary_miss_analysis_001 | method_exploration | partially_supported | Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes. | One explanatory miss case; not a general long-tail failure pattern. |
 | adversarial_trace_verifier_001 | method_exploration | partially_supported | Valid control passes; fake evidence span, generic trigger, mismatched finding_id, and rule-id-only trace are rejected. | Toy adversarial checks only; not a deep semantic verifier or proof against sophisticated fake evidence. |
 | revision_decision_matrix_001 | method_exploration | partially_supported | Different feedback/risk types map to different constrained decisions: patch rule, rewrite output contract, reject/rollback, semantic audit, trace contract, verifier strengthening, or selective trace. | Mechanism matrix over existing toy artifacts only; not a mature revision algorithm. |
+| posterior_revision_signal_audit_001 | method_exploration | partially_supported | patched_compact improves coverage over compact_v1 by 0.4166 and over direct_summary by 0.0833; type-correct missing-rule and output-contract patches beat wrong-type counterfactuals. | Audit over existing controlled API-review artifacts only; not a cross-domain posterior-revision metric. |
 
 ## Safe Main Claim
 

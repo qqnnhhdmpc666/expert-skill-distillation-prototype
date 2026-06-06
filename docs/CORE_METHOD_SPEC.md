@@ -16,6 +16,12 @@ Revision framing:
 The core problem is not budget checking, but constrained post-execution skill revision.
 ```
 
+Latest method hypothesis:
+
+```text
+Posterior skill revision treats a generated skill as a deployable hypothesis. After execution, verifier or trajectory feedback should determine what to patch, what to reject, what to trace, and when to roll back.
+```
+
 Chinese wording:
 
 ```text
@@ -104,6 +110,12 @@ Current decision-matrix artifact:
 
 ```text
 outputs/mvp_vertical_slice/revision_decision_matrix_001
+```
+
+Posterior signal audit artifact:
+
+```text
+outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
 ```
 
 This matrix maps feedback/risk types to constrained decisions:
@@ -218,6 +230,32 @@ Among all 15 size=2 trace allocations over R001-R006, only R005/R006 covers both
 ```
 
 ### H4: Joint Deployment Optimization
+
+Joint deployment optimization is still an open direction. The current evidence is better framed as a posterior-revision signal audit:
+
+```text
+posterior_revision_utility =
+  recovery_gain
+  + attribution_specificity
+  + regression_avoidance
+  + trace_allocation_utility
+```
+
+This is not a final metric. It is a diagnostic scaffold for future method work.
+
+Current observation:
+
+```text
+patched_compact improves over compact_v1 by +0.4166 average coverage
+patched_compact improves over direct_summary by +0.0833 average coverage
+missing_rule and output_format_error show type-specific patch utility over wrong-type counterfactuals
+```
+
+Claim strength:
+
+```text
+partially_supported as method exploration
+```
 
 Compact deployment must optimize correctness, cost, and traceability together.
 
