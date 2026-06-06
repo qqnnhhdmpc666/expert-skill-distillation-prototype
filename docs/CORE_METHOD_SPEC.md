@@ -10,6 +10,12 @@ Current concise claim:
 Skill deployment needs risk-budgeted verification, not just better summarization.
 ```
 
+Revision framing:
+
+```text
+The core problem is not budget checking, but constrained post-execution skill revision.
+```
+
 Chinese wording:
 
 ```text
@@ -93,6 +99,24 @@ The deployment loop makes rule-level and package-level decisions:
 - `accept`: promote a candidate deployment skill.
 - `reject`: block an unsafe, regressive, or over-budget candidate.
 - `rollback`: return to the last accepted deployment skill.
+
+Current decision-matrix artifact:
+
+```text
+outputs/mvp_vertical_slice/revision_decision_matrix_001
+```
+
+This matrix maps feedback/risk types to constrained decisions:
+
+```text
+missing_rule -> patch affected rules
+output_format_error -> rewrite output contract
+regression_observed -> reject and rollback
+semantic_compressed -> audit semantic preservation
+rule_id_shortcut -> require rule_application trace
+fake_trace_evidence -> strengthen trace verifier contract
+trace_budget_pressure -> allocate trace to failure-critical rules
+```
 
 ## Risk Signals
 
@@ -230,6 +254,8 @@ Do not claim:
 - direct summary is generally weak;
 - every component is original;
 - the repository is already a mature open-source platform.
+- the innovation is simply adding a token budget.
+- the current prototype is a mature post-execution revision algorithm.
 
 Safe claim:
 

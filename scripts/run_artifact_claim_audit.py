@@ -181,6 +181,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "revision_decision_matrix_001",
+        "path": "outputs/mvp_vertical_slice/revision_decision_matrix_001",
+        "supported_claim": "The prototype is better framed as constrained post-execution skill revision rather than simple budget checking.",
+        "key_result": "Different feedback/risk types map to different constrained decisions: patch rule, rewrite output contract, reject/rollback, semantic audit, trace contract, verifier strengthening, or selective trace.",
+        "limitation": "Mechanism matrix over existing toy artifacts only; not a mature revision algorithm.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

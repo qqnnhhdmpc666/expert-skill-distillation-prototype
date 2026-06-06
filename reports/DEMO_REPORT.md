@@ -22,6 +22,12 @@ Core method claim:
 Skill deployment needs risk-budgeted verification, not just better summarization.
 ```
 
+Sharper method framing:
+
+```text
+The core problem is not budget checking, but constrained post-execution skill revision.
+```
+
 Chinese wording:
 
 ```text
@@ -164,6 +170,7 @@ outputs/mvp_vertical_slice/risk_trace_policy_baseline_001
 outputs/mvp_vertical_slice/risk_trace_policy_robustness_001
 outputs/mvp_vertical_slice/direct_summary_miss_analysis_001
 outputs/mvp_vertical_slice/adversarial_trace_verifier_001
+outputs/mvp_vertical_slice/revision_decision_matrix_001
 ```
 
 4-case controlled holdout:
@@ -258,6 +265,24 @@ Boundary:
 
 ```text
 Trace verifier has basic adversarial checks, but it is not a deep semantic judge.
+```
+
+Revision decision matrix:
+
+| Feedback / Risk | Naive Action | Constrained Decision |
+|---|---|---|
+| missing_rule | append more rules | patch affected rules and compare no/random/wrong-type repairs |
+| output_format_error | append domain rules | rewrite output contract |
+| regression_observed | accept if original failure fixed | reject and rollback |
+| semantic_compressed | trust shorter wording | audit semantic preservation |
+| rule_id_shortcut | trust rule ID coverage | require rule-application trace |
+| fake_trace_evidence | trust trace fields | strengthen trace verifier |
+| trace_budget_pressure | trace all or none | allocate trace to failure-critical rules |
+
+Interpretation:
+
+```text
+The nontrivial part is not the budget check itself. The prototype studies how post-execution feedback changes skill revision decisions under correctness, regression, budget, semantic, and traceability constraints.
 ```
 
 ## Claim Audit Summary

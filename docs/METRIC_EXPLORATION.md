@@ -508,3 +508,48 @@ partially_supported
 ```
 
 The trace verifier now has basic adversarial sanity checks. This is still a lightweight verifier, not a deep semantic judge.
+
+## 17. Revision Decision Matrix Diagnostics
+
+Question:
+
+```text
+Does the prototype make different decisions for different feedback/risk types, or only check token budget?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/revision_decision_matrix_001
+```
+
+Diagnostic fields:
+
+- feedback or risk type.
+- naive action.
+- constrained decision.
+- primary action.
+- counterfactual.
+- supporting artifacts.
+- claim strength.
+- limitation.
+
+Current observation:
+
+```text
+missing_rule -> patch_rule
+output_format_error -> rewrite_output_contract
+regression_observed -> reject_and_rollback
+semantic_compressed -> semantic_preservation_audit
+rule_id_shortcut -> add trace contract
+fake_trace_evidence -> strengthen trace verifier
+trace_budget_pressure -> risk_based_selective_trace
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This diagnostic supports the reframing from budget checking to constrained post-execution revision, while preserving the boundary that this is not a mature algorithm.

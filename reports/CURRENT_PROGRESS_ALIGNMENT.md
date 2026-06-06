@@ -1214,3 +1214,55 @@ partially_supported
 ```text
 这是 basic adversarial sanity check，不是 deep semantic verifier，也不能证明能抵御复杂伪 evidence。
 ```
+
+## 25. 最新进展：Constrained Post-Execution Skill Revision
+
+新增方法定位文档：
+
+```text
+D:\solution\docs\CONSTRAINED_POST_EXECUTION_REVISION.md
+```
+
+核心修正：
+
+```text
+弱表述：加一个 token budget，预算够就接受，不够就拒绝。
+强表述：核心不是检查预算，而是在执行反馈之后，对 skill 进行受约束修正。
+```
+
+新增 revision decision matrix：
+
+```text
+D:\solution\scripts\run_revision_decision_matrix.py
+D:\solution\outputs\mvp_vertical_slice\revision_decision_matrix_001
+```
+
+当前矩阵：
+
+```text
+missing_rule -> patch affected rules
+output_format_error -> rewrite output contract
+regression_observed -> reject and rollback
+semantic_compressed -> semantic preservation audit
+rule_id_shortcut -> require rule_application trace
+fake_trace_evidence -> strengthen trace verifier
+trace_budget_pressure -> risk-based selective trace
+```
+
+当前解释：
+
+```text
+partially_supported
+```
+
+含义：
+
+```text
+目前创新潜力不在“预算限制”本身，而在 post-execution feedback 之后如何归因、定向修正、检查回归、验证语义和分配 trace 证据。
+```
+
+边界：
+
+```text
+这是 existing toy artifacts 上的机制矩阵，不是成熟 revision algorithm，也不是 benchmark。
+```

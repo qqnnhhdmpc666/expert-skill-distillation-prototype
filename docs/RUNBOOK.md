@@ -912,3 +912,35 @@ Boundary:
 ```text
 This is a toy adversarial sanity check. It is not a deep semantic verifier or proof against sophisticated fake evidence.
 ```
+
+## 26. Run Revision Decision Matrix
+
+Run the constrained post-execution revision matrix:
+
+```powershell
+python scripts\run_revision_decision_matrix.py
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\revision_decision_matrix_001
+```
+
+Expected observation:
+
+```text
+missing_rule -> patch_rule
+output_format_error -> rewrite_output_contract
+regression_observed -> reject_and_rollback
+semantic_compressed -> semantic_preservation_audit
+rule_id_shortcut -> require rule_application trace
+fake_trace_evidence -> strengthen trace verifier
+trace_budget_pressure -> risk_based_selective_trace
+```
+
+Boundary:
+
+```text
+This is a mechanism matrix over existing toy artifacts. It is not a mature revision algorithm.
+```

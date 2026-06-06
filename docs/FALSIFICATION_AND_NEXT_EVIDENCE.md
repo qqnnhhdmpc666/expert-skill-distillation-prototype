@@ -30,6 +30,7 @@ Current supporting evidence:
 - All size=2 trace combinations show only `R005/R006` covers both failure-critical rules under the same trace size.
 - Validation gate rejects known regression and over-budget candidates in toy slices.
 - Adversarial trace verifier sanity check rejects obvious fake/weak evidence cases after adding an `evidence_span` relevance check.
+- Revision decision matrix shows different feedback/risk types currently map to different constrained actions rather than one budget check.
 
 ## Falsification Conditions
 
@@ -151,6 +152,22 @@ Next evidence:
 - Track which rules were high-risk before the verifier failure.
 - Evaluate whether pre-execution risk predicts later failures.
 
+### F7: Revision Matrix Is Only Documentation
+
+If future slices show that all failure types can be handled equally well by the same append-more-rules strategy, then the constrained revision framing becomes weak.
+
+Impact:
+
+```text
+The revision decision matrix becomes a taxonomy document rather than evidence for a method.
+```
+
+Next evidence:
+
+- Add more failure types where wrong repair actions fail.
+- Add counterfactuals for patch-rule vs output-contract vs rollback actions.
+- Track whether each constrained action improves over naive append or blind accept.
+
 ## Next Evidence Priority
 
 Priority order:
@@ -158,8 +175,9 @@ Priority order:
 1. `risk_trace_policy_robustness_001`: done. Enumerates all size=2 trace combinations in the current rule pool.
 2. `direct_summary_miss_analysis_001`: done. Explains the only direct-summary miss.
 3. `adversarial_trace_verifier_001`: done. Checks obvious fake/weak trace evidence.
-4. Expand to 6-8 holdout cases only after demo stability is preserved.
-5. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
+4. `revision_decision_matrix_001`: done. Consolidates constrained post-execution revision decisions.
+5. Expand to 6-8 holdout cases only after demo stability is preserved.
+6. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
 
 ## Safe Wording
 

@@ -573,3 +573,43 @@ partially_supported
 Boundary:
 
 This is a basic adversarial sanity check for the toy API-review family, not a deep semantic verifier.
+
+## Constrained Post-Execution Revision Matrix
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/revision_decision_matrix_001
+```
+
+Question:
+
+```text
+Is the current method more than a token-budget if/else?
+```
+
+Current framing:
+
+```text
+The core problem is not budget checking, but constrained post-execution skill revision.
+```
+
+Decision matrix:
+
+```text
+missing_rule -> patch affected rules
+output_format_error -> rewrite output contract
+regression_observed -> reject and rollback
+semantic_compressed -> semantic preservation audit
+rule_id_shortcut -> require rule_application trace
+fake_trace_evidence -> strengthen trace verifier contract
+trace_budget_pressure -> risk-based selective trace
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This matrix is not a new algorithm. It is a claim-discipline artifact showing that existing toy slices support a nontrivial decision-chain framing rather than a simple budget check.

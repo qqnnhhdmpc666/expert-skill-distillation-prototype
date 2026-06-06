@@ -54,6 +54,7 @@ Additional method-sanity runner:
 
 ```text
 python scripts/run_adversarial_trace_verifier.py
+python scripts/run_revision_decision_matrix.py
 ```
 
 ## What This Patch Does Not Do

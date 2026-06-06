@@ -25,6 +25,7 @@ Audit what each core artifact can safely support, and prevent overclaiming befor
 | risk_trace_policy_robustness_001 | method_exploration | partially_supported | Among all 15 size=2 trace allocations, only R005/R006 covers both failure-critical rules; risk-based selection picks R005/R006. | Complete enumeration of a tiny toy rule pool; not statistical significance or mature policy validation. |
 | direct_summary_miss_analysis_001 | method_exploration | partially_supported | Direct summary fails only case004 by missing R006; patched_compact includes R006 and passes. | One explanatory miss case; not a general long-tail failure pattern. |
 | adversarial_trace_verifier_001 | method_exploration | partially_supported | Valid control passes; fake evidence span, generic trigger, mismatched finding_id, and rule-id-only trace are rejected. | Toy adversarial checks only; not a deep semantic verifier or proof against sophisticated fake evidence. |
+| revision_decision_matrix_001 | method_exploration | partially_supported | Different feedback/risk types map to different constrained decisions: patch rule, rewrite output contract, reject/rollback, semantic audit, trace contract, verifier strengthening, or selective trace. | Mechanism matrix over existing toy artifacts only; not a mature revision algorithm. |
 
 ## Safe Main Claim
 

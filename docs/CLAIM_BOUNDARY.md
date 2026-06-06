@@ -16,6 +16,18 @@ or:
 correctness-constrained expert skill deployment optimization
 ```
 
+Current method framing:
+
+```text
+constrained post-execution skill revision
+```
+
+Meaning:
+
+```text
+The system does not merely check whether a patch fits a token budget. It attributes post-execution feedback, proposes targeted repairs, rejects regressions, checks semantic/trace evidence, and allocates verification cost to high-risk rules.
+```
+
 Avoid presenting the work as a mature universal compiler, benchmark, or replacement for SPARK.
 
 ## Relationship To SPARK-PDI And COLLEAGUE.SKILL
@@ -115,6 +127,18 @@ mismatched_finding_id: reject
 rule_id_only_trace: reject
 ```
 
+- Revision decision matrix consolidates the nontrivial decision chain:
+
+```text
+missing_rule -> patch_rule
+output_format_error -> rewrite_output_contract
+regression_observed -> reject_and_rollback
+semantic_compressed -> semantic_preservation_audit
+rule_id_shortcut -> require_trace_contract
+fake_trace_evidence -> strengthen_trace_verifier
+trace_budget_pressure -> risk_based_selective_trace
+```
+
 - Component attribution now includes a direct-summary baseline:
 
 ```text
@@ -152,6 +176,8 @@ Do not say:
 - The current risk policy will work beyond the current rule pool.
 - The trace verifier is a deep semantic judge.
 - Adversarial trace sanity checks prove robustness against sophisticated fake evidence.
+- The contribution is simply a token-budget if/else check.
+- The current revision decision matrix proves a mature revision algorithm.
 
 ## Safe Main Claim
 

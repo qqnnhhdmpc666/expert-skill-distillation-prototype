@@ -260,6 +260,15 @@ The robustness slice enumerates all 15 size=2 trace allocations over R001-R006. 
 
 The adversarial trace sanity check rejects obvious fake or weak trace evidence, including fake evidence spans, generic triggers, mismatched finding IDs, and rule-id-only traces. This strengthens the traceability contract at toy scale but remains far weaker than SPARK-style trajectory grounding.
 
+Current revision framing:
+
+```text
+docs/CONSTRAINED_POST_EXECUTION_REVISION.md
+outputs/mvp_vertical_slice/revision_decision_matrix_001
+```
+
+This framing clarifies that the current delta is not "we added a budget." The scoped method-discovery question is how post-execution feedback should trigger targeted repair, rollback, semantic audit, trace contracts, or selective trace under correctness and cost constraints.
+
 Boundary:
 
 ```text
