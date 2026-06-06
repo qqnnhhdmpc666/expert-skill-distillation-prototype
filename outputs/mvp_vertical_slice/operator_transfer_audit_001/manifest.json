@@ -1,0 +1,11 @@
+{
+  "run_id": "operator_transfer_audit_001",
+  "created_at": "2026-06-06T07:34:37.517313+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "transfer_rows.json",
+    "manifest.json"
+  ],
+  "boundary": "This audit checks reuse over a hand-constructed second domain. It does not prove that the skeleton transfers to arbitrary expert-skill domains or complex trajectory settings."
+}

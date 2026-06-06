@@ -167,3 +167,30 @@ Boundary:
 ```text
 This reduces API-review overfitting concern, but it is still hand-constructed and deterministic.
 ```
+
+The freeze-and-transfer audit is:
+
+```text
+outputs/mvp_vertical_slice/operator_transfer_audit_001
+```
+
+Current observation:
+
+```text
+Config-security reuses the frozen typed-revision skeleton for missing_rule, output_contract_error,
+regression_observed, and trace_budget_pressure. Domain-specific pieces are rule semantics,
+config_path, and the residual trace target.
+```
+
+The prior/posterior split is:
+
+```text
+outputs/mvp_vertical_slice/prior_posterior_split_001
+```
+
+Current observation:
+
+```text
+Prior signals explain initial skill construction and salient-rule coverage.
+Posterior signals explain residual misses, wrong repair type, regression, and trace-budget pressure.
+```

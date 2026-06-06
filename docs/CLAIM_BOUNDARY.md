@@ -283,6 +283,18 @@ Second-domain wording:
 The config-security slice is a second-domain probe that reduces API-review overfitting concern, but it is still deterministic and hand-constructed. It supports method plausibility, not generalization.
 ```
 
+Operator-transfer wording:
+
+```text
+The second domain reuses the frozen typed-revision skeleton for the tested feedback types. The transferred object is the operator/gate/trace-policy structure, while rule semantics and field names remain domain-specific.
+```
+
+Prior/posterior wording:
+
+```text
+Prior signals are enough to build many useful initial skill rules. Posterior signals matter when the deployment run reveals residual missing rules, wrong repair type, regression, or trace-budget pressure.
+```
+
 ## Baseline Attribution Boundary
 
 Use component baselines to explain contribution sources:

@@ -671,3 +671,64 @@ partially_supported
 ```
 
 This diagnostic reduces the concern that typed posterior revision is only an API-review construction. It does not prove cross-domain transfer because the second domain is still hand-constructed and deterministic.
+
+## 21. Operator Transfer Audit Diagnostics
+
+Question:
+
+```text
+Did the second domain reuse the typed revision skeleton, or did it redesign the method?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/operator_transfer_audit_001
+```
+
+Current observation:
+
+```text
+missing_rule -> patch_rule reused
+output_contract_error -> rewrite_output_contract reused
+regression_observed -> reject/rollback gate reused
+trace_budget_pressure -> selective trace reused
+domain-specific adapters: C006 semantics, config_path field, residual trace target
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This supports "two-domain schematic transfer" rather than strong cross-domain proof.
+
+## 22. Prior-vs-Posterior Signal Split Diagnostics
+
+Question:
+
+```text
+Which revision decisions can be made from prior expert-material signals, and which require posterior verifier evidence?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/prior_posterior_split_001
+```
+
+Current observation:
+
+```text
+prior signals: useful for full skill construction and high-salience rule coverage
+posterior signals: needed for residual deployment-critical misses, wrong repair type, regression, and trace-budget pressure
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This is the current closest diagnostic bridge to SPARK's posterior-evidence motivation, but it is not causal proof.

@@ -34,6 +34,8 @@ Current supporting evidence:
 - Posterior revision signal audit connects recovery gain, attribution specificity, rollback, and trace allocation into a method-level diagnostic.
 - Naive revision ablation pressure-tests always-append, always-contract, always-regenerate, accept-if-fixed, and always-full-trace baselines.
 - Second-domain config-security probe checks whether the typed-revision pattern is only API-review-specific.
+- Operator transfer audit checks whether the second domain reuses a frozen skeleton or redesigns the method.
+- Prior/posterior split checks which revision decisions require posterior evidence rather than prior expert-material signals.
 
 ## Falsification Conditions
 
@@ -277,6 +279,52 @@ Boundary:
 This is hand-constructed and deterministic. It reduces one overfitting concern but is not cross-domain proof.
 ```
 
+### F11: Second Domain Requires A New Operator Matrix
+
+If the config-security domain only works after rewriting the feedback types, operators, gates, or trace policy, then the method has not transferred as a skeleton.
+
+Current progress:
+
+```text
+outputs/mvp_vertical_slice/operator_transfer_audit_001
+```
+
+Current observation:
+
+```text
+tested feedback types reuse the same skeleton:
+missing_rule, output_contract_error, regression_observed, trace_budget_pressure
+```
+
+Boundary:
+
+```text
+This is an audit over two controlled domains only.
+```
+
+### F12: Prior Signals Are Enough
+
+If prior expert-material signals can consistently identify which residual rules should be kept, which patches are needed, and which traces are worth paying for, then the posterior-evidence claim weakens.
+
+Current progress:
+
+```text
+outputs/mvp_vertical_slice/prior_posterior_split_001
+```
+
+Current observation:
+
+```text
+prior signals build useful initial skills;
+posterior signals identify residual deployment misses, wrong repair type, regression, and trace-budget pressure.
+```
+
+Boundary:
+
+```text
+This is diagnostic. Prior-only baselines are not exhaustive optimizers.
+```
+
 ## Next Evidence Priority
 
 Priority order:
@@ -288,8 +336,10 @@ Priority order:
 5. `posterior_revision_signal_audit_001`: done. Audits whether posterior evidence changes patch/gate/trace decisions beyond prior skill generation.
 6. `naive_revision_ablation_001`: done. Pressure-tests simple revision policies against type-specific operators and gates.
 7. `second_domain_config_security_001`: done. Adds a minimal configuration-security domain probe.
-8. Expand to 6-8 holdout cases only after demo stability is preserved.
-9. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
+8. `operator_transfer_audit_001`: done. Audits frozen skeleton reuse across API-review and config-security.
+9. `prior_posterior_split_001`: done. Separates prior and posterior signals across two controlled domains.
+10. Expand to 6-8 holdout cases only after demo stability is preserved.
+11. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
 
 ## Safe Wording
 

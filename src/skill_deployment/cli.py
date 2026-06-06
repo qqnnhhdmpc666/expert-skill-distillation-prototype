@@ -28,6 +28,8 @@ def main(argv: list[str] | None = None) -> int:
     subparsers.add_parser("posterior-signal-audit", help="Audit posterior revision signal diagnostics.")
     subparsers.add_parser("naive-revision-ablation", help="Run naive revision strategy pressure-test ablation.")
     subparsers.add_parser("second-domain-config", help="Run the config-security second-domain method probe.")
+    subparsers.add_parser("operator-transfer-audit", help="Audit typed operator transfer between API-review and config-security.")
+    subparsers.add_parser("prior-posterior-split", help="Split prior vs posterior revision signals across controlled domains.")
     args = parser.parse_args(argv)
 
     if args.command == "check-existing":
@@ -54,6 +56,10 @@ def main(argv: list[str] | None = None) -> int:
         return run_script(["scripts/run_naive_revision_ablation.py"])
     if args.command == "second-domain-config":
         return run_script(["scripts/run_second_domain_config_security.py"])
+    if args.command == "operator-transfer-audit":
+        return run_script(["scripts/run_operator_transfer_audit.py"])
+    if args.command == "prior-posterior-split":
+        return run_script(["scripts/run_prior_posterior_split.py"])
     parser.error(f"unknown command: {args.command}")
     return 2
 

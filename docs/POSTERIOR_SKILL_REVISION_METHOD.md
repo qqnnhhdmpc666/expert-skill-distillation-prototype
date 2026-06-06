@@ -230,6 +230,47 @@ Interpretation:
 partially_supported as a second-domain probe
 ```
 
+## Freeze-And-Transfer Audit
+
+Current transfer audit:
+
+```text
+outputs/mvp_vertical_slice/operator_transfer_audit_001
+```
+
+The frozen skeleton is:
+
+```text
+missing_rule -> patch_rule
+output_contract_error -> rewrite_output_contract
+regression_observed -> reject_and_rollback
+trace_budget_pressure -> risk_based_selective_trace
+```
+
+Current observation:
+
+```text
+Config-security reuses the same operator/gate/trace-policy skeleton for the tested feedback types.
+Domain-specific adapters are rule semantics, required config_path field, and the residual trace target C006.
+```
+
+## Prior-vs-Posterior Split
+
+Current split artifact:
+
+```text
+outputs/mvp_vertical_slice/prior_posterior_split_001
+```
+
+Current observation:
+
+```text
+Prior signals are enough to build useful full skills and cover many salient rules.
+Posterior signals are needed to identify residual deployment-critical misses, wrong repair type, regression, and trace-budget pressure.
+```
+
+This is the closest current bridge to SPARK-PDI's posterior-evidence motivation. It is still diagnostic rather than causal or statistical.
+
 ## Current Safe Claim
 
 Use:

@@ -217,6 +217,24 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "operator_transfer_audit_001",
+        "path": "outputs/mvp_vertical_slice/operator_transfer_audit_001",
+        "supported_claim": "The config-security slice reuses the frozen API-review typed revision skeleton rather than inventing a wholly new flow.",
+        "key_result": "missing_rule, output_contract_error, regression_observed, and trace_budget_pressure reuse the same operators/gates; domain-specific parts are rule semantics, config_path, and C006 trace target.",
+        "limitation": "Transfer audit over a hand-constructed second domain; not proof of arbitrary domain transfer.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
+    {
+        "artifact": "prior_posterior_split_001",
+        "path": "outputs/mvp_vertical_slice/prior_posterior_split_001",
+        "supported_claim": "Prior expert-material signals and posterior verifier signals play different roles in revision decisions.",
+        "key_result": "Prior signals build initial skills and cover salient rules; posterior signals identify residual deployment-critical misses, wrong repair type, regression, and trace-budget pressure across two controlled domains.",
+        "limitation": "Diagnostic split, not causal proof; prior-only is represented by controlled baselines, not exhaustive prior optimization.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 

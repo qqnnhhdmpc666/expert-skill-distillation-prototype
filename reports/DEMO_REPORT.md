@@ -192,6 +192,8 @@ outputs/mvp_vertical_slice/revision_decision_matrix_001
 outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
 outputs/mvp_vertical_slice/naive_revision_ablation_001
 outputs/mvp_vertical_slice/second_domain_config_security_001
+outputs/mvp_vertical_slice/operator_transfer_audit_001
+outputs/mvp_vertical_slice/prior_posterior_split_001
 ```
 
 4-case controlled holdout:
@@ -289,6 +291,23 @@ Safe interpretation:
 
 ```text
 The second-domain probe strengthens the method seed because the same typed-revision pressure appears in configuration-security: residual domain-rule miss, output-contract failure, regression risk, and trace-budget pressure. It is still hand-constructed and not a benchmark.
+```
+
+Operator transfer audit:
+
+```text
+Config-security reuses the frozen API-review skeleton for missing_rule, output_contract_error,
+regression_observed, and trace_budget_pressure. Domain-specific adapters are rule semantics,
+config_path, and the residual trace target C006.
+```
+
+Prior/posterior split:
+
+```text
+Prior signals build the initial full/compact skills and cover salient rules.
+Posterior signals identify residual deployment-critical misses, wrong repair type,
+regression, and trace-budget pressure. This is the current closest bridge to
+SPARK's posterior-evidence motivation, but it is still diagnostic rather than causal proof.
 ```
 
 Risk trace policy baseline:

@@ -1,0 +1,84 @@
+[
+  {
+    "domain": "api_review",
+    "residual_rule": "R006 idempotency / duplicate submission",
+    "prior_signals": [
+      "expert material contains API review rules",
+      "R006 exists in full skill evidence",
+      "rule priority is medium rather than high",
+      "initial compact selection prefers R001-R004"
+    ],
+    "posterior_signals": [
+      "Harbor/verifier reports missing_rule for R005/R006",
+      "compact_v1 fails while compact_v2 passes",
+      "rollback gate observes R003 regression in fixed-budget patch",
+      "trace budget pressure shows full trace over budget"
+    ],
+    "prior_only_decision": {
+      "decision": "likely_drop_or_deprioritize_residual_rule",
+      "expected_result": "misses R006 under compact budget",
+      "supported_by": "direct_summary_miss_analysis_001 and real_effect_eval_001"
+    },
+    "posterior_only_decision": {
+      "decision": "patch affected missing rules and trace failure-critical rules",
+      "expected_result": "recovers residual missing rules after verifier failure",
+      "supported_by": "harbor_api_review_001/002, counterfactual_patch_utility_001, selective_trace_compiler_001"
+    },
+    "prior_plus_posterior_decision": {
+      "decision": "preserve prior high-salience rules while patching posterior failure-critical rules and gating regression",
+      "expected_result": "best current deployment decision",
+      "supported_by": "validation_aware_compiler_001, rollback_gate_001, risk_trace_policy_robustness_001"
+    },
+    "posterior_required_for": [
+      "identifying R006/R005 as failure-critical in compact deployment",
+      "rejecting a patch that drops R003",
+      "allocating trace to failure-critical rules rather than arbitrary high-priority rules"
+    ],
+    "prior_sufficient_for": [
+      "building the initial full skill",
+      "covering high-salience rules such as auth, validation, errors, and sensitive data"
+    ]
+  },
+  {
+    "domain": "config_security",
+    "residual_rule": "C006 audit logging retention/export",
+    "prior_signals": [
+      "expert material contains configuration security rules",
+      "C006 exists in full skill evidence",
+      "C006 priority is medium and residual-deployment-critical",
+      "initial compact/direct summary covers C001-C005"
+    ],
+    "posterior_signals": [
+      "direct_summary/compact_v1 miss C006 in two cases",
+      "always_append reveals output_contract_error",
+      "accept_if_current_failure_fixed regresses C003",
+      "always_full_trace and full skill exceed the budget"
+    ],
+    "prior_only_decision": {
+      "decision": "likely_keep C001-C005 and omit C006",
+      "expected_result": "coverage 0.825; misses two C006 instances",
+      "supported_by": "second_domain_config_security_001 direct_summary_skill and compact_v1_no_revision"
+    },
+    "posterior_only_decision": {
+      "decision": "patch C006, repair output contract, and trace C006",
+      "expected_result": "recovers C006 but needs gate to avoid C003 regression and over-budget trace",
+      "supported_by": "second_domain_config_security_001 strategy comparisons"
+    },
+    "prior_plus_posterior_decision": {
+      "decision": "keep C001-C005, patch C006, preserve C003, use compact trace for C006, reject full trace/full skill over budget",
+      "expected_result": "4/4 pass and accepted at 166/260",
+      "supported_by": "second_domain_config_security_001 type_specific_operator_plus_gate_and_selective_trace"
+    },
+    "posterior_required_for": [
+      "marking C006 as a residual deployment miss",
+      "discovering that append-only repair breaks output contract",
+      "detecting C003 regression under accept-if-fixed",
+      "choosing selective trace instead of full trace under budget"
+    ],
+    "prior_sufficient_for": [
+      "building the initial full skill",
+      "covering salient rules C001-C005",
+      "defining the output contract requirement before execution"
+    ]
+  }
+]

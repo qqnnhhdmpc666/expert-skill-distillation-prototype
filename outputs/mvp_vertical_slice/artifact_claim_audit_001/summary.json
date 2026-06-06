@@ -1,6 +1,6 @@
 {
   "run_id": "artifact_claim_audit_001",
-  "created_at": "2026-06-06T07:14:04.536937+00:00",
+  "created_at": "2026-06-06T07:34:37.448161+00:00",
   "status": "ok",
   "missing_artifacts": [],
   "safe_main_claim": "The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.",
@@ -210,6 +210,24 @@
       "supported_claim": "Typed posterior revision is not only an API-review surface artifact in the current minimal evidence.",
       "key_result": "In config-security, direct_summary coverage is 0.825 with residual C006 misses; always_append fails output contract; always_contract misses C006; accept-if-fixed regresses C003; full_trace/full_skill exceed budget; typed+gate+selective_trace passes 4/4 at 166/260.",
       "limitation": "Hand-constructed second-domain probe; not a benchmark, not cross-domain proof, and not evidence against full regeneration when cost is ignored.",
+      "role": "method_exploration",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "operator_transfer_audit_001",
+      "path": "outputs/mvp_vertical_slice/operator_transfer_audit_001",
+      "supported_claim": "The config-security slice reuses the frozen API-review typed revision skeleton rather than inventing a wholly new flow.",
+      "key_result": "missing_rule, output_contract_error, regression_observed, and trace_budget_pressure reuse the same operators/gates; domain-specific parts are rule semantics, config_path, and C006 trace target.",
+      "limitation": "Transfer audit over a hand-constructed second domain; not proof of arbitrary domain transfer.",
+      "role": "method_exploration",
+      "claim_strength": "partially_supported"
+    },
+    {
+      "artifact": "prior_posterior_split_001",
+      "path": "outputs/mvp_vertical_slice/prior_posterior_split_001",
+      "supported_claim": "Prior expert-material signals and posterior verifier signals play different roles in revision decisions.",
+      "key_result": "Prior signals build initial skills and cover salient rules; posterior signals identify residual deployment-critical misses, wrong repair type, regression, and trace-budget pressure across two controlled domains.",
+      "limitation": "Diagnostic split, not causal proof; prior-only is represented by controlled baselines, not exhaustive prior optimization.",
       "role": "method_exploration",
       "claim_strength": "partially_supported"
     }

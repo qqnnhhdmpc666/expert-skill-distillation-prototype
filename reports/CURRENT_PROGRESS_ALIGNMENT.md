@@ -1402,3 +1402,63 @@ Boundary:
 ```text
 This is still a hand-constructed deterministic second-domain probe, not a benchmark or cross-domain proof.
 ```
+
+## 29. Freeze-and-Transfer Audit
+
+New artifact:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\operator_transfer_audit_001
+```
+
+Frozen skeleton:
+
+```text
+missing_rule -> patch_rule
+output_contract_error -> rewrite_output_contract
+regression_observed -> reject_and_rollback
+trace_budget_pressure -> risk_based_selective_trace
+```
+
+Current result:
+
+```text
+Config-security reuses the same skeleton for the tested feedback types.
+Domain-specific adapters are rule semantics, config_path, and C006 as residual trace target.
+```
+
+Boundary:
+
+```text
+This is two-domain schematic transfer evidence, not arbitrary-domain transfer proof.
+```
+
+## 30. Prior-vs-Posterior Split
+
+New artifact:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\prior_posterior_split_001
+```
+
+Current result:
+
+```text
+prior signals: expert materials, full-skill evidence, priority, initial compact choice
+posterior signals: missing_rule, output_contract_error, regression_observed, trace_budget_pressure
+```
+
+Interpretation:
+
+```text
+Prior signals are enough to build useful initial skills and cover many salient rules.
+Posterior signals identify residual deployment-critical misses, wrong repair type,
+regression, and trace-budget pressure.
+```
+
+Boundary:
+
+```text
+This is the current closest bridge to SPARK's posterior-evidence motivation,
+but it remains diagnostic rather than causal proof.
+```

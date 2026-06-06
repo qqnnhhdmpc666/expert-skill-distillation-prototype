@@ -301,6 +301,27 @@ Boundary:
 This is still a hand-constructed deterministic probe, not a related-work-scale benchmark.
 ```
 
+Freeze-and-transfer audit:
+
+```text
+outputs/mvp_vertical_slice/operator_transfer_audit_001
+```
+
+Prior/posterior split:
+
+```text
+outputs/mvp_vertical_slice/prior_posterior_split_001
+```
+
+Current interpretation:
+
+```text
+The second-domain evidence is stronger when presented as two-domain schematic transfer:
+the operator/gate/trace-policy skeleton is reused, while domain-specific adapters handle rule semantics and output fields.
+The posterior-evidence claim is strongest where posterior verifier feedback identifies residual misses, wrong repair type,
+regression, and trace-budget pressure that prior material signals did not resolve.
+```
+
 Current concise claim:
 
 ```text

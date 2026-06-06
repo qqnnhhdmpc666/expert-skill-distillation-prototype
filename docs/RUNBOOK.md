@@ -1051,3 +1051,72 @@ Boundary:
 ```text
 This is a hand-constructed second-domain probe. It reduces API-review overfitting concern but is not a benchmark or cross-domain proof.
 ```
+
+## 30. Run Operator Transfer Audit
+
+Run the operator transfer audit:
+
+```powershell
+python scripts\run_operator_transfer_audit.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py operator-transfer-audit
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\operator_transfer_audit_001
+```
+
+Expected observation:
+
+```text
+missing_rule -> patch_rule reused
+output_contract_error -> rewrite_output_contract reused
+regression_observed -> reject/rollback gate reused
+trace_budget_pressure -> selective trace reused
+domain-specific adapters: rule semantics, config_path, residual trace target
+```
+
+Boundary:
+
+```text
+This audit checks skeleton reuse across two controlled domains. It is not arbitrary-domain transfer proof.
+```
+
+## 31. Run Prior/Posterior Split
+
+Run the prior/posterior signal split:
+
+```powershell
+python scripts\run_prior_posterior_split.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py prior-posterior-split
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\prior_posterior_split_001
+```
+
+Expected observation:
+
+```text
+prior signals: expert materials, full skill evidence, priority, initial compact choice
+posterior signals: missing_rule, output_contract_error, regression_observed, trace_budget_pressure
+```
+
+Boundary:
+
+```text
+This is a diagnostic split, not a causal proof that posterior evidence is universally better.
+```
