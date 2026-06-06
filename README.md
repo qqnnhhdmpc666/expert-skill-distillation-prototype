@@ -2,6 +2,16 @@
 
 This folder is the official workspace for the mentor-requested prototype task.
 
+## Codex / Cloud Handoff
+
+If this repository is opened from a new Codex session, cloud worktree, or another device, read this file first:
+
+```text
+docs/CODEX_CONTEXT_HANDOFF.md
+```
+
+It summarizes the current project positioning, completed artifacts, safe claim boundary, verification commands, and recommended next steps.
+
 中文说明：本目录是“专家知识蒸馏原型系统”任务的正式交接与开发入口。之前位于 `C:\Users\老板\Desktop\new\expert_skill_distillation_prototype` 的内容只作为草稿参考，后续以 `D:\solution` 为准。
 
 ## Project Goal
@@ -56,4 +66,3 @@ D:\solution
 - Do not use private expert data without permission.
 - Do not overclaim automatic correctness.
 - Do not force this prototype to become the next migration-system paper.
-
