@@ -1354,3 +1354,51 @@ Boundary:
 This remains narrow method evidence. Related work may still cover parts of the combination,
 and full regeneration remains a strong high-cost upper bound.
 ```
+
+## 28. Second-Domain Minimal Validation: Config Security
+
+New domain:
+
+```text
+configuration security review
+```
+
+New input data:
+
+```text
+D:\solution\data\config_security_expert_materials
+D:\solution\data\config_security_cases
+```
+
+New runner and output:
+
+```text
+D:\solution\scripts\run_second_domain_config_security.py
+D:\solution\outputs\mvp_vertical_slice\second_domain_config_security_001
+```
+
+Key results:
+
+```text
+direct_summary_skill: 0.825 coverage, 2 / 4 pass, residual C006 miss
+always_append_domain_rules: 1.0 coverage but 27 output-contract errors
+always_rewrite_output_contract: 0.825 coverage, C006 remains missing
+always_regenerate_full_skill: 4 / 4 pass but 289 / 260 over budget
+accept_if_current_failure_fixed: 3 / 4 pass but rejected for C003 regression
+always_full_trace: 4 / 4 pass but 629 / 260 over budget
+type_specific_operator_plus_gate_and_selective_trace: 4 / 4 pass, accepted at 166 / 260
+```
+
+Current interpretation:
+
+```text
+This reduces the concern that typed posterior revision is only an API-review-specific construction.
+The same pressure pattern appears in config security: residual rule miss, contract failure,
+regression risk, and trace-budget pressure.
+```
+
+Boundary:
+
+```text
+This is still a hand-constructed deterministic second-domain probe, not a benchmark or cross-domain proof.
+```

@@ -191,6 +191,7 @@ outputs/mvp_vertical_slice/adversarial_trace_verifier_001
 outputs/mvp_vertical_slice/revision_decision_matrix_001
 outputs/mvp_vertical_slice/posterior_revision_signal_audit_001
 outputs/mvp_vertical_slice/naive_revision_ablation_001
+outputs/mvp_vertical_slice/second_domain_config_security_001
 ```
 
 4-case controlled holdout:
@@ -270,6 +271,24 @@ Safe interpretation:
 
 ```text
 The current method gap is not "posterior feedback exists". It is typed posterior revision over deployable expert-skill packages, with promotion gates and selective trace. This remains a narrow method prototype, not a broad new paradigm.
+```
+
+Second-domain config-security probe:
+
+| Strategy | Avg Coverage | Pass@1 | Gate | Tokens |
+|---|---:|---:|---|---:|
+| direct_summary_skill | 0.825 | 2 / 4 | reject_unresolved_failure | 150 / 260 |
+| always_append_domain_rules | 1.000 | 1 / 4 | reject_unresolved_failure | 152 / 260 |
+| always_rewrite_output_contract | 0.825 | 2 / 4 | reject_unresolved_failure | 152 / 260 |
+| always_regenerate_full_skill | 1.000 | 4 / 4 | reject_over_budget | 289 / 260 |
+| accept_if_current_failure_fixed | 0.950 | 3 / 4 | reject_regression | 152 / 260 |
+| always_full_trace | 1.000 | 4 / 4 | reject_over_budget | 629 / 260 |
+| type_specific_operator_plus_gate_and_selective_trace | 1.000 | 4 / 4 | accept | 166 / 260 |
+
+Safe interpretation:
+
+```text
+The second-domain probe strengthens the method seed because the same typed-revision pressure appears in configuration-security: residual domain-rule miss, output-contract failure, regression risk, and trace-budget pressure. It is still hand-constructed and not a benchmark.
 ```
 
 Risk trace policy baseline:

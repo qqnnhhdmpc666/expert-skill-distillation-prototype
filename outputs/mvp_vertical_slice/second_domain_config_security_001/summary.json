@@ -1,0 +1,1302 @@
+{
+  "run_id": "second_domain_config_security_001",
+  "created_at": "2026-06-06T07:14:04.603463+00:00",
+  "domain": "config_security",
+  "positioning": "second-domain method probe; not a benchmark",
+  "case_count": 4,
+  "rule_ids": [
+    "C001",
+    "C002",
+    "C003",
+    "C004",
+    "C005",
+    "C006"
+  ],
+  "strategy_results": [
+    {
+      "strategy": "direct_summary_skill",
+      "description": "Strong prior-summary baseline that omits the residual audit-retention rule C006.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005"
+      ],
+      "trace_rule_ids": [],
+      "avg_checklist_coverage": 0.825,
+      "pass_at_1_count": 2,
+      "case_count": 4,
+      "missing_rule_count": 2,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_unresolved_failure",
+      "accepted_by_gate": false,
+      "skill_tokens": 150,
+      "estimated_trace_tokens": 0,
+      "total_tokens": 150,
+      "token_budget": 260,
+      "over_budget": false,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.8,
+          "missing_rule_ids": [
+            "C006"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.5,
+          "missing_rule_ids": [
+            "C006"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "strong prior baseline but misses residual C006 audit-retention cases"
+    },
+    {
+      "strategy": "compact_v1_no_revision",
+      "description": "Deployable compact skill before posterior revision.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005"
+      ],
+      "trace_rule_ids": [],
+      "avg_checklist_coverage": 0.825,
+      "pass_at_1_count": 2,
+      "case_count": 4,
+      "missing_rule_count": 2,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_unresolved_failure",
+      "accepted_by_gate": false,
+      "skill_tokens": 150,
+      "estimated_trace_tokens": 0,
+      "total_tokens": 150,
+      "token_budget": 260,
+      "over_budget": false,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.8,
+          "missing_rule_ids": [
+            "C006"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.5,
+          "missing_rule_ids": [
+            "C006"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "shows residual deployment failure before posterior revision"
+    },
+    {
+      "strategy": "always_append_domain_rules",
+      "description": "Generic domain-rule append strategy.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "trace_rule_ids": [],
+      "avg_checklist_coverage": 1.0,
+      "pass_at_1_count": 1,
+      "case_count": 4,
+      "missing_rule_count": 0,
+      "contract_error_count": 27,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_unresolved_failure",
+      "accepted_by_gate": false,
+      "skill_tokens": 152,
+      "estimated_trace_tokens": 0,
+      "total_tokens": 152,
+      "token_budget": 260,
+      "over_budget": false,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [
+            "finding[0] missing severity",
+            "finding[0] missing evidence",
+            "finding[0] missing config_path",
+            "finding[1] missing severity",
+            "finding[1] missing evidence",
+            "finding[1] missing config_path",
+            "finding[2] missing severity",
+            "finding[2] missing evidence",
+            "finding[2] missing config_path",
+            "finding[3] missing severity",
+            "finding[3] missing evidence",
+            "finding[3] missing config_path",
+            "finding[4] missing severity",
+            "finding[4] missing evidence",
+            "finding[4] missing config_path"
+          ],
+          "trace_errors": [],
+          "failure_type": "output_contract_error",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [
+            "finding[0] missing severity",
+            "finding[0] missing evidence",
+            "finding[0] missing config_path",
+            "finding[1] missing severity",
+            "finding[1] missing evidence",
+            "finding[1] missing config_path"
+          ],
+          "trace_errors": [],
+          "failure_type": "output_contract_error",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [
+            "finding[0] missing severity",
+            "finding[0] missing evidence",
+            "finding[0] missing config_path",
+            "finding[1] missing severity",
+            "finding[1] missing evidence",
+            "finding[1] missing config_path"
+          ],
+          "trace_errors": [],
+          "failure_type": "output_contract_error",
+          "pass_at_1": false
+        }
+      ],
+      "interpretation": "recovers domain missing rule but fails output-contract quality"
+    },
+    {
+      "strategy": "always_rewrite_output_contract",
+      "description": "Generic output-contract rewrite strategy without domain patch.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005"
+      ],
+      "trace_rule_ids": [],
+      "avg_checklist_coverage": 0.825,
+      "pass_at_1_count": 2,
+      "case_count": 4,
+      "missing_rule_count": 2,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_unresolved_failure",
+      "accepted_by_gate": false,
+      "skill_tokens": 152,
+      "estimated_trace_tokens": 0,
+      "total_tokens": 152,
+      "token_budget": 260,
+      "over_budget": false,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.8,
+          "missing_rule_ids": [
+            "C006"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.5,
+          "missing_rule_ids": [
+            "C006"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "contract is valid but residual C006 remains missing"
+    },
+    {
+      "strategy": "always_regenerate_full_skill",
+      "description": "High-cost upper bound: regenerate or use the full skill package.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "trace_rule_ids": [],
+      "avg_checklist_coverage": 1.0,
+      "pass_at_1_count": 4,
+      "case_count": 4,
+      "missing_rule_count": 0,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_over_budget",
+      "accepted_by_gate": false,
+      "skill_tokens": 289,
+      "estimated_trace_tokens": 0,
+      "total_tokens": 289,
+      "token_budget": 260,
+      "over_budget": true,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "strong high-cost upper bound"
+    },
+    {
+      "strategy": "accept_if_current_failure_fixed",
+      "description": "Unsafe strategy that patches C006 but drops previously covered C003.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "trace_rule_ids": [],
+      "avg_checklist_coverage": 0.95,
+      "pass_at_1_count": 3,
+      "case_count": 4,
+      "missing_rule_count": 1,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": true,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_regression",
+      "accepted_by_gate": false,
+      "skill_tokens": 152,
+      "estimated_trace_tokens": 0,
+      "total_tokens": 152,
+      "token_budget": 260,
+      "over_budget": false,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 0.8,
+          "missing_rule_ids": [
+            "C003"
+          ],
+          "critical_missed_rule_ids": [
+            "C003"
+          ],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "missing_rule",
+          "pass_at_1": false
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "unsafe because it drops previously covered C003"
+    },
+    {
+      "strategy": "always_full_trace",
+      "description": "Trace every rule; useful upper bound but expected to exceed budget.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "trace_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "avg_checklist_coverage": 1.0,
+      "pass_at_1_count": 4,
+      "case_count": 4,
+      "missing_rule_count": 0,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": false,
+      "gate_decision": "reject_over_budget",
+      "accepted_by_gate": false,
+      "skill_tokens": 222,
+      "estimated_trace_tokens": 407,
+      "total_tokens": 629,
+      "token_budget": 260,
+      "over_budget": true,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "traceable but over budget"
+    },
+    {
+      "strategy": "type_specific_operator_plus_gate_and_selective_trace",
+      "description": "Typed missing-rule patch plus output contract repair, regression gate, and selective trace for residual C006.",
+      "available_rule_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "trace_rule_ids": [
+        "C006"
+      ],
+      "avg_checklist_coverage": 1.0,
+      "pass_at_1_count": 4,
+      "case_count": 4,
+      "missing_rule_count": 0,
+      "contract_error_count": 0,
+      "trace_error_count": 0,
+      "regression_detected": false,
+      "shortcut_blocked": true,
+      "gate_decision": "accept",
+      "accepted_by_gate": true,
+      "skill_tokens": 155,
+      "estimated_trace_tokens": 11,
+      "total_tokens": 166,
+      "token_budget": 260,
+      "over_budget": false,
+      "case_results": [
+        {
+          "case_id": "case001_prod_config_security",
+          "expected_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C005"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "expected_rule_ids": [
+            "C005",
+            "C006"
+          ],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case003_clean_control",
+          "expected_rule_ids": [],
+          "negative_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        },
+        {
+          "case_id": "case004_secret_and_resource",
+          "expected_rule_ids": [
+            "C001",
+            "C005"
+          ],
+          "negative_rule_ids": [
+            "C002",
+            "C003",
+            "C004",
+            "C006"
+          ],
+          "available_rule_ids": [
+            "C001",
+            "C002",
+            "C003",
+            "C004",
+            "C005",
+            "C006"
+          ],
+          "trace_rule_ids": [
+            "C006"
+          ],
+          "checklist_coverage": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "contract_errors": [],
+          "trace_errors": [],
+          "failure_type": "none",
+          "pass_at_1": true
+        }
+      ],
+      "interpretation": "best-supported typed revision combination in this second-domain probe"
+    }
+  ],
+  "key_findings": [
+    "direct_summary_skill remains a strong prior baseline: coverage 0.825 but it misses residual C006 audit-retention cases.",
+    "always_append_domain_rules reaches coverage 1.0 but has 27 output-contract errors.",
+    "always_rewrite_output_contract has valid output contract but leaves 2 missing rule instances.",
+    "accept_if_current_failure_fixed is rejected by gate because regression_detected=True.",
+    "always_full_trace blocks shortcut but is over budget: 629/260.",
+    "always_regenerate_full_skill is a strong upper bound with tokens 289/260.",
+    "type_specific_operator_plus_gate_and_selective_trace passes all 4 cases and is under budget: 166/260."
+  ],
+  "conclusion": {
+    "status": "partially_supported",
+    "finding": "The typed posterior revision pattern is not limited to the API-review surface in this minimal probe: a residual domain rule miss, output-contract failure, regression risk, and trace-budget pressure appear in a configuration-security domain.",
+    "boundary": "This is a hand-constructed second-domain probe with deterministic checks. It is not a benchmark, not a cross-domain proof, and not evidence that the strategy beats full regeneration when cost is ignored."
+  }
+}

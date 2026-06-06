@@ -1,0 +1,30 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C005",
+      "issue": "Runtime resource limits",
+      "severity": "medium",
+      "evidence": "reader roles: - read_metrics resources: limits: audit: enabled: false export_sink:",
+      "config_path": "resources"
+    },
+    {
+      "id": "F2",
+      "rule_id": "C006",
+      "issue": "Audit logging and retention",
+      "severity": "medium",
+      "evidence": "read_metrics resources: limits: audit: enabled: false export_sink:",
+      "config_path": "audit"
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "C006",
+      "finding_id": "F2",
+      "trigger_condition_found": "audit:, enabled: false",
+      "evidence_span": "read_metrics resources: limits: audit: enabled: false export_sink:",
+      "config_path": "audit",
+      "confidence": "medium"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C001",
+      "issue": "No hardcoded secrets"
+    },
+    {
+      "id": "F2",
+      "rule_id": "C005",
+      "issue": "Runtime resource limits"
+    }
+  ]
+}

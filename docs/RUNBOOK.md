@@ -1014,3 +1014,40 @@ Boundary:
 ```text
 This is a diagnostic pressure test over existing artifacts. It does not prove the typed revision strategy is generally better.
 ```
+
+## 29. Run Second-Domain Config Security Probe
+
+Run the second-domain config-security method probe:
+
+```powershell
+python scripts\run_second_domain_config_security.py
+```
+
+Or use the lightweight CLI wrapper:
+
+```powershell
+python scripts\skill_deploy.py second-domain-config
+```
+
+Output:
+
+```text
+D:\solution\outputs\mvp_vertical_slice\second_domain_config_security_001
+```
+
+Expected observation:
+
+```text
+direct_summary_skill: 0.825 coverage, residual C006 audit-retention miss
+always_append_domain_rules: coverage 1.0 but output-contract errors
+always_rewrite_output_contract: valid contract but C006 remains missing
+accept_if_current_failure_fixed: reject_regression
+always_full_trace: reject_over_budget
+type_specific_operator_plus_gate_and_selective_trace: accept, 166/260
+```
+
+Boundary:
+
+```text
+This is a hand-constructed second-domain probe. It reduces API-review overfitting concern but is not a benchmark or cross-domain proof.
+```

@@ -636,3 +636,38 @@ partially_supported
 ```
 
 This diagnostic is a pressure test, not proof. It supports the narrower claim that typed operators plus deployment gates are useful in the current controlled artifacts, while acknowledging full regeneration as a strong high-cost upper bound.
+
+## 20. Second-Domain Transfer Probe Diagnostics
+
+Question:
+
+```text
+Does typed posterior revision survive outside the API-review surface task?
+```
+
+Current artifact:
+
+```text
+outputs/mvp_vertical_slice/second_domain_config_security_001
+```
+
+Current observation:
+
+```text
+domain: config_security
+direct_summary_skill: 0.825 coverage, 2 / 4 pass
+always_append_domain_rules: 1.0 coverage but 27 output-contract errors
+always_rewrite_output_contract: 0.825 coverage, C006 remains missing
+accept_if_current_failure_fixed: rejected for C003 regression
+always_full_trace: 629 / 260, over budget
+always_regenerate_full_skill: 289 / 260, high-cost upper bound
+type_specific_operator_plus_gate_and_selective_trace: 1.0 coverage, 4 / 4 pass, accepted at 166 / 260
+```
+
+Current interpretation:
+
+```text
+partially_supported
+```
+
+This diagnostic reduces the concern that typed posterior revision is only an API-review construction. It does not prove cross-domain transfer because the second domain is still hand-constructed and deterministic.

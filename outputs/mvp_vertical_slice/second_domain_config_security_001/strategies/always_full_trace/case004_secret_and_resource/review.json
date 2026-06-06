@@ -1,0 +1,38 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C001",
+      "issue": "No hardcoded secrets",
+      "severity": "high",
+      "evidence": "rl: https://exports.example.com/v1 api_key: \"plain-text-demo-key\" service_account: name: export-reader roles: - read_",
+      "config_path": "secrets or credential-like fields"
+    },
+    {
+      "id": "F2",
+      "rule_id": "C005",
+      "issue": "Runtime resource limits",
+      "severity": "medium",
+      "evidence": "-reader roles: - read_export resources: requests: audit: enabled: true retention_days: 30",
+      "config_path": "resources"
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "C001",
+      "finding_id": "F1",
+      "trigger_condition_found": "token, api_key",
+      "evidence_span": "rl: https://exports.example.com/v1 api_key: \"plain-text-demo-key\" service_account: name: export-reader roles: - read_",
+      "config_path": "secrets or credential-like fields",
+      "confidence": "medium"
+    },
+    {
+      "rule_id": "C005",
+      "finding_id": "F2",
+      "trigger_condition_found": "resources:, limits:",
+      "evidence_span": "-reader roles: - read_export resources: requests: audit: enabled: true retention_days: 30",
+      "config_path": "resources",
+      "confidence": "medium"
+    }
+  ]
+}

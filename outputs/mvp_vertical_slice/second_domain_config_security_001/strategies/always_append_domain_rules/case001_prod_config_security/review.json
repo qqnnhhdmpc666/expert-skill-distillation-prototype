@@ -1,0 +1,29 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C001",
+      "issue": "No hardcoded secrets"
+    },
+    {
+      "id": "F2",
+      "rule_id": "C002",
+      "issue": "TLS for production endpoints"
+    },
+    {
+      "id": "F3",
+      "rule_id": "C003",
+      "issue": "Least-privilege service accounts"
+    },
+    {
+      "id": "F4",
+      "rule_id": "C004",
+      "issue": "Disable production debug"
+    },
+    {
+      "id": "F5",
+      "rule_id": "C006",
+      "issue": "Audit logging and retention"
+    }
+  ]
+}

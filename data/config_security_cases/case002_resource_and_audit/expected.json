@@ -1,0 +1,11 @@
+{
+  "case_id": "case002_resource_and_audit",
+  "expected_rule_ids": ["C005", "C006"],
+  "negative_rule_ids": ["C001", "C002", "C003", "C004"],
+  "critical_rule_ids": ["C005"],
+  "metadata": {
+    "scenario": "resource_limits_and_audit_retention",
+    "domain": "config_security",
+    "control_type": "residual_rule"
+  }
+}

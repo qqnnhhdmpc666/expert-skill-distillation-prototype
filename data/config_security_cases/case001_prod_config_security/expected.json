@@ -1,0 +1,11 @@
+{
+  "case_id": "case001_prod_config_security",
+  "expected_rule_ids": ["C001", "C002", "C003", "C004", "C006"],
+  "negative_rule_ids": ["C005"],
+  "critical_rule_ids": ["C001", "C002", "C003"],
+  "metadata": {
+    "scenario": "production_config_multiple_security_findings",
+    "domain": "config_security",
+    "control_type": "mixed_rule"
+  }
+}

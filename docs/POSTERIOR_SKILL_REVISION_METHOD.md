@@ -206,6 +206,30 @@ Minimum next evidence:
 
 The goal is not a large benchmark yet. The goal is to see whether "posterior skill revision" survives outside the current API-review probe.
 
+Current second-domain probe:
+
+```text
+outputs/mvp_vertical_slice/second_domain_config_security_001
+```
+
+Observation:
+
+```text
+Configuration-security review shows the same typed-revision pressure:
+direct summary misses residual C006 audit retention,
+always append recovers rules but fails output contract,
+always contract leaves C006 missing,
+accept-if-fixed regresses C003,
+full trace and full regeneration exceed budget,
+typed operator plus gate and selective trace is accepted at 166/260.
+```
+
+Interpretation:
+
+```text
+partially_supported as a second-domain probe
+```
+
 ## Current Safe Claim
 
 Use:

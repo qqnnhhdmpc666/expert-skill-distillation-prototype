@@ -148,3 +148,22 @@ Current expected interpretation:
 type-specific operator + deployment gate + selective trace is the best-supported narrow mechanism combination in the current toy slices,
 but always_regenerate_full_skill remains a strong upper bound and must be treated honestly.
 ```
+
+The first second-domain probe is:
+
+```text
+outputs/mvp_vertical_slice/second_domain_config_security_001
+```
+
+Current observation:
+
+```text
+Config-security reproduces the main pressure pattern in a different surface domain:
+residual domain-rule miss, output-contract failure, regression risk, and trace-budget pressure.
+```
+
+Boundary:
+
+```text
+This reduces API-review overfitting concern, but it is still hand-constructed and deterministic.
+```

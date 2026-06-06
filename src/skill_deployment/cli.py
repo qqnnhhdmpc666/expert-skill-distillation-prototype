@@ -27,6 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     subparsers.add_parser("revision-matrix", help="Run the constrained post-execution revision matrix.")
     subparsers.add_parser("posterior-signal-audit", help="Audit posterior revision signal diagnostics.")
     subparsers.add_parser("naive-revision-ablation", help="Run naive revision strategy pressure-test ablation.")
+    subparsers.add_parser("second-domain-config", help="Run the config-security second-domain method probe.")
     args = parser.parse_args(argv)
 
     if args.command == "check-existing":
@@ -51,6 +52,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_script(["scripts/run_posterior_revision_signal_audit.py"])
     if args.command == "naive-revision-ablation":
         return run_script(["scripts/run_naive_revision_ablation.py"])
+    if args.command == "second-domain-config":
+        return run_script(["scripts/run_second_domain_config_security.py"])
     parser.error(f"unknown command: {args.command}")
     return 2
 

@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C005",
+      "issue": "Runtime resource limits",
+      "severity": "medium",
+      "evidence": "reader roles: - read_metrics resources: limits: audit: enabled: false export_sink:",
+      "config_path": "resources"
+    }
+  ]
+}

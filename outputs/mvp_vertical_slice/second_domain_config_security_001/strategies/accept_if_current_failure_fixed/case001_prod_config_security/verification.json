@@ -1,0 +1,14 @@
+{
+  "checklist_coverage": 0.8,
+  "missing_rule_ids": [
+    "C003"
+  ],
+  "critical_missed_rule_ids": [
+    "C003"
+  ],
+  "false_positive_rule_ids": [],
+  "contract_errors": [],
+  "trace_errors": [],
+  "failure_type": "missing_rule",
+  "pass_at_1": false
+}

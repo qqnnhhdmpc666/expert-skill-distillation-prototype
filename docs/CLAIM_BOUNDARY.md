@@ -184,6 +184,18 @@ always_full_trace: blocks shortcut but is 300/237 over budget
 type_specific_operator_plus_gate_and_selective_trace: best-supported narrow combination in current toy slices
 ```
 
+- A second-domain config-security probe now exists:
+
+```text
+direct_summary_skill: 0.825 coverage, 2 / 4 pass, residual C006 audit-retention miss
+always_append_domain_rules: 1.0 coverage, but output-contract errors remain
+always_rewrite_output_contract: valid contract, but C006 remains missing
+accept_if_current_failure_fixed: rejected for C003 regression
+always_full_trace: 629 / 260, rejected over budget
+always_regenerate_full_skill: 289 / 260, strong high-cost upper bound
+type_specific_operator_plus_gate_and_selective_trace: 4 / 4 pass, accepted at 166 / 260
+```
+
 ## What We Cannot Say
 
 Do not say:
@@ -214,6 +226,8 @@ Do not say:
 - The current API-review probe proves the method transfers across domains.
 - Typed posterior revision is proven novel against all reflection, prompt repair, program repair, or memory-update work.
 - Always-regenerate baselines are weak; in the current slice they are actually a strong high-cost upper bound.
+- The second-domain config-security probe is a benchmark or cross-domain proof.
+- The typed revision mechanism is no longer hand-constructed.
 
 ## Safe Main Claim
 
@@ -261,6 +275,12 @@ Novelty pressure wording:
 
 ```text
 Posterior feedback itself is not novel. The current possible delta is narrower: mapping posterior feedback to typed revision operators over a deployable expert-skill package, then promoting revisions only through deployment gates for regression, budget, semantics, and traceability.
+```
+
+Second-domain wording:
+
+```text
+The config-security slice is a second-domain probe that reduces API-review overfitting concern, but it is still deterministic and hand-constructed. It supports method plausibility, not generalization.
 ```
 
 ## Baseline Attribution Boundary

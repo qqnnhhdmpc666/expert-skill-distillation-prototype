@@ -278,6 +278,29 @@ always_full_trace blocks shortcut but exceeds budget
 type_specific_operator_plus_gate_and_selective_trace is the best-supported narrow combination in current toy slices
 ```
 
+Second-domain probe:
+
+```text
+outputs/mvp_vertical_slice/second_domain_config_security_001
+```
+
+Current observation:
+
+```text
+In a configuration-security domain, direct summary is strong but misses C006 audit retention;
+always-append fails output contract;
+always-contract misses C006;
+accept-if-fixed regresses C003;
+full trace and full skill exceed budget;
+typed operator + gate + selective trace is accepted at 166/260.
+```
+
+Boundary:
+
+```text
+This is still a hand-constructed deterministic probe, not a related-work-scale benchmark.
+```
+
 Current concise claim:
 
 ```text

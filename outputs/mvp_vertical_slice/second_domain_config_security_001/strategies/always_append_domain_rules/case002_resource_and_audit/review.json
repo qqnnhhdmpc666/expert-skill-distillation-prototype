@@ -1,0 +1,14 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C005",
+      "issue": "Runtime resource limits"
+    },
+    {
+      "id": "F2",
+      "rule_id": "C006",
+      "issue": "Audit logging and retention"
+    }
+  ]
+}

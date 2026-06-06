@@ -1,0 +1,11 @@
+{
+  "case_id": "case004_secret_and_resource",
+  "expected_rule_ids": ["C001", "C005"],
+  "negative_rule_ids": ["C002", "C003", "C004", "C006"],
+  "critical_rule_ids": ["C001"],
+  "metadata": {
+    "scenario": "secret_and_resource_limits",
+    "domain": "config_security",
+    "control_type": "mixed_rule"
+  }
+}

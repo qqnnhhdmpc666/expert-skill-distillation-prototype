@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "id": "F1",
+      "rule_id": "C001",
+      "issue": "No hardcoded secrets",
+      "severity": "high",
+      "evidence": "p://partner.example.com/v1 payment_token: \"sk_live_demo_value\" service_account: name: billing-admin roles: - admin au",
+      "config_path": "secrets or credential-like fields"
+    },
+    {
+      "id": "F2",
+      "rule_id": "C002",
+      "issue": "TLS for production endpoints",
+      "severity": "high",
+      "evidence": "tion debug: true external_api_url: http://partner.example.com/v1 payment_token: \"sk_live_demo_value\" service_account: name:",
+      "config_path": "external_api_url"
+    },
+    {
+      "id": "F3",
+      "rule_id": "C003",
+      "issue": "Least-privilege service accounts",
+      "severity": "high",
+      "evidence": "\" service_account: name: billing-admin roles: - admin audit: enabled: false retention_days:",
+      "config_path": "service_account.roles"
+    },
+    {
+      "id": "F4",
+      "rule_id": "C004",
+      "issue": "Disable production debug",
+      "severity": "high",
+      "evidence": "ing-worker environment: production debug: true external_api_url: http://partner.example.com/v1 payment_token: \"sk_live_demo_v",
+      "config_path": "debug"
+    },
+    {
+      "id": "F5",
+      "rule_id": "C006",
+      "issue": "Audit logging and retention",
+      "severity": "medium",
+      "evidence": "billing-admin roles: - admin audit: enabled: false retention_days:",
+      "config_path": "audit"
+    }
+  ],
+  "rule_applications": [
+    {
+      "rule_id": "C006",
+      "finding_id": "F5",
+      "trigger_condition_found": "audit:, enabled: false",
+      "evidence_span": "billing-admin roles: - admin audit: enabled: false retention_days:",
+      "config_path": "audit",
+      "confidence": "medium"
+    }
+  ]
+}

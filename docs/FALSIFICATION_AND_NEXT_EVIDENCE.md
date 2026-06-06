@@ -33,6 +33,7 @@ Current supporting evidence:
 - Revision decision matrix shows different feedback/risk types currently map to different constrained actions rather than one budget check.
 - Posterior revision signal audit connects recovery gain, attribution specificity, rollback, and trace allocation into a method-level diagnostic.
 - Naive revision ablation pressure-tests always-append, always-contract, always-regenerate, accept-if-fixed, and always-full-trace baselines.
+- Second-domain config-security probe checks whether the typed-revision pattern is only API-review-specific.
 
 ## Falsification Conditions
 
@@ -242,6 +243,40 @@ Boundary:
 This is a diagnostic ablation over existing toy artifacts, not statistical evidence.
 ```
 
+### F10: Second Domain Does Not Reproduce The Typed-Revision Pressure
+
+If a second task domain does not show residual domain-rule miss, contract failure, regression risk, or trace-budget pressure, then the method may be API-review-specific.
+
+Impact:
+
+```text
+The method should remain a demo-specific artifact workflow rather than a broader method seed.
+```
+
+Current progress:
+
+```text
+outputs/mvp_vertical_slice/second_domain_config_security_001
+```
+
+Current observation:
+
+```text
+config-security probe partially reproduces the pressure:
+direct summary misses C006 audit retention
+always append fails output contract
+always contract misses C006
+accept-if-fixed regresses C003
+full trace and full skill exceed budget
+typed+gate+selective trace is accepted at 166/260
+```
+
+Boundary:
+
+```text
+This is hand-constructed and deterministic. It reduces one overfitting concern but is not cross-domain proof.
+```
+
 ## Next Evidence Priority
 
 Priority order:
@@ -252,8 +287,9 @@ Priority order:
 4. `revision_decision_matrix_001`: done. Consolidates constrained post-execution revision decisions.
 5. `posterior_revision_signal_audit_001`: done. Audits whether posterior evidence changes patch/gate/trace decisions beyond prior skill generation.
 6. `naive_revision_ablation_001`: done. Pressure-tests simple revision policies against type-specific operators and gates.
-7. Expand to 6-8 holdout cases only after demo stability is preserved.
-8. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
+7. `second_domain_config_security_001`: done. Adds a minimal configuration-security domain probe.
+8. Expand to 6-8 holdout cases only after demo stability is preserved.
+9. Separate pre-execution risk and post-execution failure signals before claiming predictive risk allocation.
 
 ## Safe Wording
 

@@ -208,6 +208,15 @@ ARTIFACTS: list[dict[str, Any]] = [
         "role": "method_exploration",
         "claim_strength": "partially_supported",
     },
+    {
+        "artifact": "second_domain_config_security_001",
+        "path": "outputs/mvp_vertical_slice/second_domain_config_security_001",
+        "supported_claim": "Typed posterior revision is not only an API-review surface artifact in the current minimal evidence.",
+        "key_result": "In config-security, direct_summary coverage is 0.825 with residual C006 misses; always_append fails output contract; always_contract misses C006; accept-if-fixed regresses C003; full_trace/full_skill exceed budget; typed+gate+selective_trace passes 4/4 at 166/260.",
+        "limitation": "Hand-constructed second-domain probe; not a benchmark, not cross-domain proof, and not evidence against full regeneration when cost is ignored.",
+        "role": "method_exploration",
+        "claim_strength": "partially_supported",
+    },
 ]
 
 
