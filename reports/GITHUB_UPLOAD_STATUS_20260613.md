@@ -74,6 +74,51 @@ commit_sha=772ff9bb6809dbf7330fb6561bd73c23af70aa76
 
 reports/REVIEW_PACKAGE_INTEGRITY_STATUS.md
 commit_sha=fac5d7c41ff2d6d7da8e0b47bfe7b6d9cd288fa8
+
+LICENSE
+commit_sha=55f9cddacb7ba5a71d5d5dc03cc35f22f14cabc7
+
+requirements.txt
+commit_sha=52acbefabfbf564f5f8ca82f641cb29cfb5fc91d
+
+docs/RELEASE.md
+commit_sha=52cf992b8d6c6ec356159863a66d1d21ded72834
+
+docs/CLEAN_CLONE_SMOKE.md
+commit_sha=decadb2b683405626c64a6b95eac11f24c415917
+
+pyproject.toml
+commit_sha=19b77945458fbb372e3b34d889f2e29bcf866666
+
+data/external_security_mini_suite/holdout_cases.json
+commit_sha=b81d195a1b3357c4b4b0abe4decb85cfda1992d1
+
+data/external_security_mini_suite/cases.json
+commit_sha=b81e6fd397c4a60dc7d9e89b85239cb4e5d10caf
+
+scripts/run_live_contract_validation.py
+commit_sha=2932c5d74adba3cdc9e6a480f18c3c9014aebb5c
+
+scripts/run_external_generalization_validation.py
+commit_sha=8eb8c8ce6a3fda9dc4fdebfa9ab2e779f6f71274
+
+scripts/run_live_mechanism_ablation.py
+commit_sha=733770401c4a5aa0681b703638ee0620d013b566
+
+scripts/run_contract_improvement_demo.py
+commit_sha=6408102833ca2f84d6e21092115a7fa0eee3a280
+
+scripts/run_clean_clone_smoke.py
+commit_sha=ab6a91c9b84e7ee113b1b115aaa0a3480eec5cd3
+
+scripts/build_review_package_manifest.py
+commit_sha=b6cb092b8c9187d4380c08eb45a257657df59da8
+
+src/skill_deployment/install_state.py
+commit_sha=a3dc437a9c067309f21d6258a8a298a0d256a39d
+
+src/skill_deployment/evidence.py
+commit_sha=3fb1f83a4500b0cf5025c5eecd6d94468cdeb537
 ```
 
 This is still not a full worktree push, but the core contract normalizer, CLI entrypoint, iterative improvement runner, latest staged-promotion report, and main user-facing docs are now present at normal repository paths.
@@ -83,6 +128,8 @@ This is still not a full worktree push, but the core contract normalizer, CLI en
 This was not a full worktree push. The local directory is not currently a git repository, `gh auth status` is not authenticated, and SSH access was not available. The available GitHub connector can create/update individual text files, but it does not provide a full tree-commit/push workflow.
 
 The full `review_package/MANIFEST.json` was rebuilt locally and validated, but it contains 1377 artifact entries and was not uploaded through the text-only GitHub connector. The uploaded integrity report records its pass status and evidence-type counts.
+
+`data/external_security_mini_suite/cases_extended.json` and many generated output artifacts remain local-only in this connector-based upload pass. The normal GitHub paths now contain the core runtime, CLI, live/external/evolution runners, release docs, package metadata, and base/holdout mini-suite data, but this is still not a repository tree push.
 
 ## Current Local Validation
 
