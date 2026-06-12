@@ -71,6 +71,9 @@ commit_sha=78fa87f6d6ca90e276134a4c941184cc8bc60163
 
 reports/LIVE_MECHANISM_ABLATION_STATUS.md
 commit_sha=772ff9bb6809dbf7330fb6561bd73c23af70aa76
+
+reports/REVIEW_PACKAGE_INTEGRITY_STATUS.md
+commit_sha=fac5d7c41ff2d6d7da8e0b47bfe7b6d9cd288fa8
 ```
 
 This is still not a full worktree push, but the core contract normalizer, CLI entrypoint, iterative improvement runner, latest staged-promotion report, and main user-facing docs are now present at normal repository paths.
@@ -78,6 +81,8 @@ This is still not a full worktree push, but the core contract normalizer, CLI en
 ## What Was Not Fully Uploaded
 
 This was not a full worktree push. The local directory is not currently a git repository, `gh auth status` is not authenticated, and SSH access was not available. The available GitHub connector can create/update individual text files, but it does not provide a full tree-commit/push workflow.
+
+The full `review_package/MANIFEST.json` was rebuilt locally and validated, but it contains 1377 artifact entries and was not uploaded through the text-only GitHub connector. The uploaded integrity report records its pass status and evidence-type counts.
 
 ## Current Local Validation
 
