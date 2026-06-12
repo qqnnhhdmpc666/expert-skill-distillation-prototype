@@ -1,0 +1,22 @@
+# Review Package Integrity Status
+
+Generated at: `2026-06-12T18:57:29.752094+00:00`
+Manifest: `C:\Users\31552\Documents\New project\expert-skill-distillation-prototype-main\review_package\MANIFEST.json`
+
+## Summary
+
+- Artifact entries: `1377`
+- Missing artifact issues: `0`
+- Verification issues: `0`
+- Overall status: `pass`
+
+## Evidence Type Counts
+
+- `derived_summary`: `860`
+- `fresh_run`: `503`
+- `infra_blocked`: `2`
+- `scaffold`: `12`
+
+## Note
+
+`review_package/MANIFEST.json` is not self-hashed to avoid recursive manifest drift.
