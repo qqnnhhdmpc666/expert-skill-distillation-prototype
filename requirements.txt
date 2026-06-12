@@ -1,0 +1,6 @@
+# Runtime dependency declared in pyproject.toml
+streamlit>=1.35
+
+# Development and validation dependencies
+pytest>=8.0
+ruff>=0.8
