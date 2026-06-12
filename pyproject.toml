@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Risk-budgeted traceable skill deployment prototype for controlled expert skill distillation demos."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+  "streamlit>=1.35",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -17,7 +19,7 @@ skill-deploy = "skill_deployment.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = [".", "src"]
 
 [tool.ruff]
 line-length = 120
@@ -26,4 +28,3 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
 ignore = ["E501"]
-
