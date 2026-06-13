@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response uses 'status' and 'payload' instead of standard envelope with code, message, request_id, data",
+      "severity": "medium",
+      "evidence": "Response: {\"status\": \"ok\", \"payload\": {...}}"
+    }
+  ],
+  "summary": "One finding: R005 violation; otherwise clean.",
+  "status": "completed"
+}

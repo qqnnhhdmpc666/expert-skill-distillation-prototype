@@ -1,0 +1,219 @@
+{
+  "method": "diversity",
+  "selection": {
+    "method": "diversity",
+    "selected_case_id": "case002_resource_and_audit",
+    "selection_reason": "max_lexical_distance_from_seed:0.8444",
+    "distance_scores": [
+      {
+        "case_id": "case002_resource_and_audit",
+        "distance": 0.8444
+      },
+      {
+        "case_id": "case004_validation_sensitive_idempotency",
+        "distance": 0.7794
+      }
+    ]
+  },
+  "query_case": "case002_resource_and_audit",
+  "query_run": {
+    "case_id": "case002_resource_and_audit",
+    "domain": "config_security",
+    "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\seed_skill.md",
+    "returncode": 0,
+    "review": {
+      "findings": [
+        {
+          "rule_id": "C006",
+          "issue": "Audit logging is disabled and no export sink defined",
+          "severity": "high",
+          "evidence": "audit:\n  enabled: false\n  export_sink:",
+          "config_path": "audit.enabled, audit.export_sink"
+        }
+      ],
+      "summary": "Found C006 violation: production audit logging disabled.",
+      "status": "completed"
+    },
+    "evaluation": {
+      "pass_at_1": false,
+      "coverage": 0.5,
+      "score": 0.45,
+      "missing_rule_ids": [
+        "C005"
+      ],
+      "critical_missed_rule_ids": [
+        "C005"
+      ],
+      "false_positive_rule_ids": [],
+      "format_errors": [],
+      "seen_rule_ids": [
+        "C006"
+      ],
+      "clean_control_pass": false
+    },
+    "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\query\\case002_resource_and_audit"
+  },
+  "query_lesson": {
+    "case_id": "case002_resource_and_audit",
+    "domain": "config_security",
+    "pass_at_1": false,
+    "score": 0.45,
+    "focus_rules": [
+      "C005"
+    ],
+    "lesson": "case002_resource_and_audit: do not miss C005 when the visible case text exposes those triggers; repair the review checklist before adding broader findings.",
+    "review_summary": {
+      "seen_rule_ids": [
+        "C006"
+      ],
+      "missing_rule_ids": [
+        "C005"
+      ],
+      "false_positive_rule_ids": [],
+      "format_errors": []
+    },
+    "review": {
+      "findings": [
+        {
+          "rule_id": "C006",
+          "issue": "Audit logging is disabled and no export sink defined",
+          "severity": "high",
+          "evidence": "audit:\n  enabled: false\n  export_sink:",
+          "config_path": "audit.enabled, audit.export_sink"
+        }
+      ],
+      "summary": "Found C006 violation: production audit logging disabled.",
+      "status": "completed"
+    }
+  },
+  "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
+  "validation_runs": [
+    {
+      "case_id": "case005_response_contract_schema",
+      "domain": "api_review",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [
+          {
+            "rule_id": "R005",
+            "issue": "Response envelope does not follow standard contract (code, message, request_id, data)",
+            "severity": "high",
+            "evidence": "{\n  \"status\": \"ok\",\n  \"payload\": {\n    \"date\": \"2026-06-05\",\n    \"gross_amount\": 12000\n  }\n}"
+          }
+        ],
+        "summary": "The response example uses 'status' and 'payload' instead of the required envelope fields code, message, request_id, data.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [
+          "R005"
+        ],
+        "clean_control_pass": false
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\validation\\case005_response_contract_schema"
+    },
+    {
+      "case_id": "case003_clean_control",
+      "domain": "config_security",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [],
+        "summary": "Configuration is clean: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled, resource limits defined, audit logging enabled with retention.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [],
+        "clean_control_pass": true
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\validation\\case003_clean_control"
+    }
+  ],
+  "hidden_runs": [
+    {
+      "case_id": "case006_clean_false_positive_control",
+      "domain": "api_review",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [],
+        "summary": "Clean control: all domain rules satisfied.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [],
+        "clean_control_pass": true
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\hidden\\case006_clean_false_positive_control"
+    },
+    {
+      "case_id": "case004_secret_and_resource",
+      "domain": "config_security",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [
+          {
+            "rule_id": "C001",
+            "issue": "Hardcoded API key in configuration file",
+            "severity": "high",
+            "evidence": "api_key: \"plain-text-demo-key\"",
+            "config_path": "api_key"
+          },
+          {
+            "rule_id": "C005",
+            "issue": "Missing CPU and memory requests for the service",
+            "severity": "medium",
+            "evidence": "resources:\n  requests:",
+            "config_path": "resources.requests"
+          }
+        ],
+        "summary": "Two issues: hardcoded secret (C001) and missing resource requests (C005).",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [
+          "C001",
+          "C005"
+        ],
+        "clean_control_pass": false
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\hidden\\case004_secret_and_resource"
+    }
+  ],
+  "validation_score": 1.0,
+  "hidden_score": 1.0,
+  "validation_delta": 0.0,
+  "hidden_delta": 0.25,
+  "hidden_pass_count": 2,
+  "candidate_updates": []
+}

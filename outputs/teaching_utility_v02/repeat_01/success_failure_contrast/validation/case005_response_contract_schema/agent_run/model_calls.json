@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Response envelope does not match standard\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R005\",\n      \"issue\": \"Response uses 'status' and 'payload' instead of standard envelope with code, message, request_id, data\",\n      \"severity\": \"medium\",\n      \"evidence\": \"Response: {\\\"status\\\": \\\"ok\\\", \\\"payload\\\": {...}}\"\n    }\n  ],\n  \"summary\": \"One finding: R005 violation; otherwise clean.\"\n}",
+    "usage": {
+      "prompt_tokens": 1925,
+      "completion_tokens": 419,
+      "total_tokens": 2344,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 304
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 133
+    },
+    "latency_ms": 4627
+  }
+]

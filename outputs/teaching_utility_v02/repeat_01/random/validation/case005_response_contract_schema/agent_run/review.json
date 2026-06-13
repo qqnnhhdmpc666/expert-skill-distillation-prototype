@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response uses 'status' and 'payload' instead of standard envelope with code, message, request_id, data",
+      "severity": "high",
+      "evidence": "Response example: {\n  \"status\": \"ok\",\n  \"payload\": {\n    \"date\": \"2026-06-05\",\n    \"gross_amount\": 12000\n  }\n}"
+    }
+  ],
+  "summary": "Response contract missing standard envelope fields (code, message, request_id, data)",
+  "status": "completed"
+}

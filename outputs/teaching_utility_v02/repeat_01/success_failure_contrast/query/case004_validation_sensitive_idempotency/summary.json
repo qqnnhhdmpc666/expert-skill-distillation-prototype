@@ -1,0 +1,50 @@
+{
+  "case_id": "case004_validation_sensitive_idempotency",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\seed_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R002",
+        "issue": "Request fields lack documentation for required status, type, range, length, or enum constraints.",
+        "severity": "high",
+        "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+      },
+      {
+        "rule_id": "R003",
+        "issue": "Stable error code coverage missing a code for resource not found (e.g., 404).",
+        "severity": "medium",
+        "evidence": "Error Codes: - `0`: success - `400`: validation error - `401`: unauthorized - `403`: forbidden - `409`: duplicate request - `500`: server error"
+      },
+      {
+        "rule_id": "R004",
+        "issue": "Response exposes `access_token` and `internal_trace` (stack trace), which are sensitive.",
+        "severity": "high",
+        "evidence": "Response: ... \"access_token\": \"debug-token\", \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+      }
+    ],
+    "summary": "Case 004: validation, sensitive, idempotency issues",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.6667,
+    "score": 0.4667,
+    "missing_rule_ids": [
+      "R006"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [
+      "R003"
+    ],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\success_failure_contrast\\query\\case004_validation_sensitive_idempotency"
+}

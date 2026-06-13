@@ -1,0 +1,5 @@
+{
+  "findings": [],
+  "summary": "All api_review rules (R001-R006) are satisfied. Authentication, request validation, error codes, sensitive data, response envelope, and idempotency are documented correctly.",
+  "status": "completed"
+}

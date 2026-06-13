@@ -1,0 +1,7 @@
+{
+  "action": "finish",
+  "note": "Case is clean for all R001-R006 rules",
+  "path": null,
+  "findings": [],
+  "summary": "No issues found; all domain rules satisfied."
+}

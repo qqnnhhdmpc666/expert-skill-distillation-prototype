@@ -1,0 +1,6 @@
+{
+  "action": "read_file",
+  "note": "Read visible case file for evidence",
+  "path": "case.md",
+  "findings": []
+}

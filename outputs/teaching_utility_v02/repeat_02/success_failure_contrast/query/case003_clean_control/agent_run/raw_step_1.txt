@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "All config security rules pass",
+  "findings": [],
+  "summary": "Clean config - no issues found"
+}

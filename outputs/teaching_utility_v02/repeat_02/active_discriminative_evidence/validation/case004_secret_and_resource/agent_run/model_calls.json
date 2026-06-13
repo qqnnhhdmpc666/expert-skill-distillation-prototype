@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed review of config.md for config_security rules.\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in configuration file\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Missing runtime resource limits (CPU/memory requests or limits)\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  requests:\",\n      \"config_path\": \"resources.requests\"\n    }\n  ],\n  \"summary\": \"Found 2 issues: hardcoded secret (C001) and missing resource limits (C005).\"\n}",
+    "usage": {
+      "prompt_tokens": 1728,
+      "completion_tokens": 649,
+      "total_tokens": 2377,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 467
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 64
+    },
+    "latency_ms": 7057
+  }
+]

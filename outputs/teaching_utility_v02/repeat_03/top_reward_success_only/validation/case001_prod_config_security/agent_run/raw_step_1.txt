@@ -1,0 +1,7 @@
+{
+  "action": "read_file",
+  "note": "Read visible configuration file for review",
+  "path": "config.md",
+  "findings": [],
+  "summary": ""
+}

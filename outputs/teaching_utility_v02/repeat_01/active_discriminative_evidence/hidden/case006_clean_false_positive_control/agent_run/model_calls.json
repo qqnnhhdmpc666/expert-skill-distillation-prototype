@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\"action\":\"finish\",\"note\":\"Clean API, no violations found\",\"findings\":[],\"summary\":\"The API design meets all requirements; no findings.\"}",
+    "usage": {
+      "prompt_tokens": 1982,
+      "completion_tokens": 466,
+      "total_tokens": 2448,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 432
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 62
+    },
+    "latency_ms": 4914
+  }
+]

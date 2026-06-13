@@ -11,6 +11,7 @@ At the current stage, it can safely claim:
 - local defensive representative mini-suite evidence when leakage controls pass
 - bounded public-material automatic distillation into an installable Skill package
 - bounded stable closed-loop improvement on top of the open-world distilled Skill
+- a bounded teaching-utility pilot that can falsify active trajectory-selection hypotheses instead of assuming they work
 
 ## What “bounded” means here
 
@@ -37,6 +38,7 @@ Do not claim:
 - official CyberSecEval / CVE-Bench / AutoPatchBench result
 - universal automatic Skill induction from arbitrary public materials
 - broad stable autonomous improvement across arbitrary tasks
+- proven superiority of the current active discriminative teaching-utility selector
 - exploit generation, attack-chain execution, or unauthorized target testing
 
 ## Evidence Lanes
@@ -45,6 +47,7 @@ Do not claim:
 - Secure-code-review evidence supports bounded defensive review behavior under controlled installed runtime.
 - Open-world distillation evidence supports bounded public-material distillation into the current capability registry.
 - Open-world closed-loop evidence supports one bounded stable improvement line on top of the distilled runtime.
+- Teaching-utility v0.2 evidence supports comparison of trajectory-selection methods under a local bounded live-agent setup, including negative outcomes.
 - Software-patch-review evidence supports only internal smoke and harness readiness until non-oracle SWE-bench evaluation succeeds.
 
 ## SWE-bench Boundary

@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\"action\":\"read_file\",\"note\":\"Read config.md to check security rules\",\"path\":\"config.md\"}",
+    "usage": {
+      "prompt_tokens": 1733,
+      "completion_tokens": 113,
+      "total_tokens": 1846,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 91
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 69
+    },
+    "latency_ms": 2359
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"All config security rules pass\",\n  \"findings\": [],\n  \"summary\": \"Configuration is clean: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled, resource limits defined, audit logging enabled with retention.\"\n}",
+    "usage": {
+      "prompt_tokens": 1882,
+      "completion_tokens": 261,
+      "total_tokens": 2143,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 194
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 218
+    },
+    "latency_ms": 2865
+  }
+]

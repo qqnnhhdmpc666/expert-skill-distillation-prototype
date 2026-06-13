@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "Case is clean, no issues found",
+  "findings": [],
+  "summary": "No violations of allowed rules R001-R005."
+}

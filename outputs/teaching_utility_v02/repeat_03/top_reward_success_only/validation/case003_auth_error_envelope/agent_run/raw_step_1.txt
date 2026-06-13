@@ -1,0 +1,9 @@
+{
+  "action": "finish",
+  "note": "Case has violations for R001, R003, R005",
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary: no roles, scopes, or failure behavior documented",
+      "severity": "high",
+      "evidence":

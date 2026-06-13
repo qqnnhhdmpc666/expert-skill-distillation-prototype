@@ -1,0 +1,75 @@
+{
+  "case_id": "case001_prod_config_security",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\seed_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "C001",
+        "issue": "Hardcoded secret payment_token",
+        "severity": "high",
+        "evidence": "payment_token: \"sk_live_demo_value\"",
+        "config_path": "payment_token"
+      },
+      {
+        "rule_id": "C002",
+        "issue": "Production endpoint uses HTTP instead of TLS",
+        "severity": "high",
+        "evidence": "external_api_url: http://partner.example.com/v1",
+        "config_path": "external_api_url"
+      },
+      {
+        "rule_id": "C003",
+        "issue": "Service account has admin role without justification",
+        "severity": "high",
+        "evidence": "roles: [admin]",
+        "config_path": "service_account.roles"
+      },
+      {
+        "rule_id": "C004",
+        "issue": "Debug mode enabled in production",
+        "severity": "high",
+        "evidence": "debug: true",
+        "config_path": "debug"
+      },
+      {
+        "rule_id": "C005",
+        "issue": "No CPU/memory resource limits defined",
+        "severity": "medium",
+        "evidence": "Missing resource limits in config",
+        "config_path": "N/A"
+      },
+      {
+        "rule_id": "C006",
+        "issue": "Audit logging disabled with no retention defined",
+        "severity": "medium",
+        "evidence": "audit: enabled: false, retention_days: null",
+        "config_path": "audit"
+      }
+    ],
+    "summary": "6 findings: hardcoded secret, HTTP endpoint, admin role, debug enabled, missing resource limits, audit disabled",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 1.0,
+    "score": 0.8,
+    "missing_rule_ids": [],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [
+      "C005"
+    ],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "C001",
+      "C002",
+      "C003",
+      "C004",
+      "C005",
+      "C006"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\baseline_hidden\\case001_prod_config_security"
+}

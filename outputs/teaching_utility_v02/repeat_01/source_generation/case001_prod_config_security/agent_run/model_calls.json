@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 4,
+    "raw_preview": "{\"action\":\"finish\",\"note\":\"Completed review of config.md\",\"findings\":[{\"rule_id\":\"C001\",\"issue\":\"Hardcoded payment token secret\",\"severity\":\"high\",\"evidence\":\"payment_token: \\\"sk_live_demo_value\\\"\",\"config_path\":\"payment_token\"},{\"rule_id\":\"C002\",\"issue\":\"Plain HTTP external endpoint\",\"severity\":\"high\",\"evidence\":\"external_api_url: http://partner.example.com/v1\",\"config_path\":\"external_api_url\"},{\"rule_id\":\"C003\",\"issue\":\"Admin role for service account\",\"severity\":\"high\",\"evidence\":\"roles:\\n    - admin\",\"config_path\":\"service_account.roles\"},{\"rule_id\":\"C004\",\"issue\":\"Debug mode enabled in production\",\"severity\":\"high\",\"evidence\":\"debug: true\",\"config_path\":\"debug\"}],\"summary\":\"Found 4 security configuration violations.\"}",
+    "usage": {
+      "prompt_tokens": 2340,
+      "completion_tokens": 231,
+      "total_tokens": 2571,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 53
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 420
+    },
+    "latency_ms": 2928
+  }
+]

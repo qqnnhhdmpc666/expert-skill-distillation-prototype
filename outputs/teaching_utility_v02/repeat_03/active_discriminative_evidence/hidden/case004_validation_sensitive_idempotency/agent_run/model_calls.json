@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed review of case004\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R002\",\n      \"issue\": \"Request fields lack required/optional, type, range, length, or enum documentation\",\n      \"severity\": \"high\",\n      \"evidence\": \"The request does not document required fields, types, ranges, length limits, or enum values.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Missing not found error code in stable error code coverage\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error codes: `0`: success, `400`: validation error, `401`: unauthorized, `403`: forbidden, `409`: duplicate request, `500`: server error. Does not include 404 for not found.\"\n    },\n    {\n      \"rule_id\": \"R004\",\n      \"issue\": \"Response exposes sensitive data: access token and internal trace\",\n      \"severity\": \"high\",\n      \"evidence\": \"Response includes `\\\"access_token\\\": \\\"debug-token\\\"` and `\\\"internal_trace\\\": \\\"svc.customer.ProfileUpdater:line87\\\"`.\"\n    }\n  ],\n  \"summary\": \"Fo",
+    "usage": {
+      "prompt_tokens": 1868,
+      "completion_tokens": 780,
+      "total_tokens": 2648,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 486
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 76
+    },
+    "latency_ms": 7071
+  }
+]

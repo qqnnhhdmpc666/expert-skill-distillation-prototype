@@ -1,0 +1,25 @@
+{
+  "action": "finish",
+  "note": "Completed review of case003",
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary: roles/scopes not defined, authorization failure behavior not documented",
+      "severity": "high",
+      "evidence": "- The endpoint says \"login required\".\n- It does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Stable error code coverage insufficient: only success (0) and server error (500) defined, missing validation, unauthorized, forbidden, not found, duplicate",
+      "severity": "high",
+      "evidence": "Error Codes:\n- `0`: success\n- `500`: server error"
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope missing 'request_id' field",
+      "severity": "medium",
+      "evidence": "{\n  \"code\": 0,\n  \"message\": \"ok\",\n  \"data\": {\n    \"order_id\": \"ORD-20260605\",\n    \"status\": \"paid\"\n  }\n}"
+    }
+  ],
+  "summary": "Found 3 issues: missing authorization boundary (R001), insufficient error codes (R003), and missing request_id in response envelope (R005)."
+}

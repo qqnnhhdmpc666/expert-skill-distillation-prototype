@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope missing code, message, request_id, data; uses status and payload instead",
+      "severity": "high",
+      "evidence": "Response:\n\n{\n  \"status\": \"ok\",\n  \"payload\": {\n    \"date\": \"2026-06-05\",\n    \"gross_amount\": 12000\n  }\n}"
+    }
+  ],
+  "summary": "Found 1 finding: response envelope contract violation",
+  "status": "completed"
+}

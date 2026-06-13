@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Read config.md for analysis\",\n  \"path\": \"config.md\",\n  \"findings\": [],\n  \"summary\": \"\"\n}",
+    "usage": {
+      "prompt_tokens": 1612,
+      "completion_tokens": 78,
+      "total_tokens": 1690,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 37
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1612
+    },
+    "latency_ms": 1733
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\"action\": \"finish\", \"note\": \"No violations found; config meets all C001-C004 rules\", \"findings\": [], \"summary\": \"config.md is clean: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled.\"}",
+    "usage": {
+      "prompt_tokens": 1730,
+      "completion_tokens": 330,
+      "total_tokens": 2060,
+      "prompt_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 270
+      },
+      "prompt_cache_hit_tokens": 1536,
+      "prompt_cache_miss_tokens": 194
+    },
+    "latency_ms": 4392
+  }
+]

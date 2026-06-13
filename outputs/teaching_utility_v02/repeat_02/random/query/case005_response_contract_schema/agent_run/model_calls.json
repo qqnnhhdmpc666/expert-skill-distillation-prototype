@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"All rules satisfied; case is clean\",\n  \"findings\": [],\n  \"summary\": \"Case 005 response contract schema meets all applicable rules (R001-R004, R006). No issues found.\"\n}",
+    "usage": {
+      "prompt_tokens": 1802,
+      "completion_tokens": 700,
+      "total_tokens": 2502,
+      "prompt_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 642
+      },
+      "prompt_cache_hit_tokens": 1408,
+      "prompt_cache_miss_tokens": 394
+    },
+    "latency_ms": 8091
+  }
+]

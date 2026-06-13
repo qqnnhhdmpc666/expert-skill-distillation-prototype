@@ -1,0 +1,41 @@
+{
+  "case_id": "case004_validation_sensitive_idempotency",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\seed_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R002",
+        "issue": "Request fields lack documentation of required/optional status, type, range, length, and enum constraints",
+        "severity": "high",
+        "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+      },
+      {
+        "rule_id": "R004",
+        "issue": "Response exposes sensitive data: access token and internal stack trace",
+        "severity": "high",
+        "evidence": "Response includes 'access_token': 'debug-token' and 'internal_trace': 'svc.customer.ProfileUpdater:line87'"
+      }
+    ],
+    "summary": "Found 2 issues: missing request validation documentation and sensitive data exposure in response.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.6667,
+    "score": 0.6667,
+    "missing_rule_ids": [
+      "R006"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R002",
+      "R004"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\query\\case004_validation_sensitive_idempotency"
+}

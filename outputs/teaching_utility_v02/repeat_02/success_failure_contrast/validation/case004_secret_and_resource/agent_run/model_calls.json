@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Found hardcoded secret and missing resource limits\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in config\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Empty resource requests block, no CPU or memory limits defined\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  requests:\",\n      \"config_path\": \"resources.requests\"\n    }\n  ],\n  \"summary\": \"Config has a plain-text API key (C001) and missing resource limits (C005). TLS, debug, service account, and audit logging are acceptable.\"\n}",
+    "usage": {
+      "prompt_tokens": 1728,
+      "completion_tokens": 799,
+      "total_tokens": 2527,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 609
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 1472
+    },
+    "latency_ms": 8065
+  }
+]

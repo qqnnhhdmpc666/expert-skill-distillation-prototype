@@ -1,0 +1,2 @@
+{"event": "start", "timestamp": "2026-06-13T11:43:09.788031+00:00", "domain": "config_security", "model": "deepseek-v4-flash"}
+{"event": "model_action", "step_index": 1, "timestamp": "2026-06-13T11:43:12.549223+00:00", "action": {"action": "finish", "note": "No config security violations found", "findings": [], "summary": "Clean control: all domain rules passed."}}

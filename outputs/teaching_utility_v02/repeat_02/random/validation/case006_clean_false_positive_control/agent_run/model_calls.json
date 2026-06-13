@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case is clean; no violations found.\",\n  \"findings\": [],\n  \"summary\": \"All api_review rules (R001-R006) are satisfied. Authentication, request validation, error codes, sensitive data, response envelope, and idempotency are documented correctly.\"\n}",
+    "usage": {
+      "prompt_tokens": 2006,
+      "completion_tokens": 335,
+      "total_tokens": 2341,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 263
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2006
+    },
+    "latency_ms": 4022
+  }
+]

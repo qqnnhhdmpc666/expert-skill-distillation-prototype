@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"All config security rules pass\",\n  \"findings\": [],\n  \"summary\": \"Clean config - no issues found\"\n}",
+    "usage": {
+      "prompt_tokens": 1706,
+      "completion_tokens": 267,
+      "total_tokens": 1973,
+      "prompt_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 227
+      },
+      "prompt_cache_hit_tokens": 1408,
+      "prompt_cache_miss_tokens": 298
+    },
+    "latency_ms": 3167
+  }
+]

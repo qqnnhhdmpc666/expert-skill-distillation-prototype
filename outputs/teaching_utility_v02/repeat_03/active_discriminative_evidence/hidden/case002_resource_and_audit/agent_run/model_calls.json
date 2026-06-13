@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"No violations found for C001-C004 in visible config\",\n  \"path\": null,\n  \"findings\": [],\n  \"summary\": \"Clean configuration: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled.\"\n}",
+    "usage": {
+      "prompt_tokens": 1654,
+      "completion_tokens": 376,
+      "total_tokens": 2030,
+      "prompt_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 308
+      },
+      "prompt_cache_hit_tokens": 1536,
+      "prompt_cache_miss_tokens": 118
+    },
+    "latency_ms": 3590
+  }
+]

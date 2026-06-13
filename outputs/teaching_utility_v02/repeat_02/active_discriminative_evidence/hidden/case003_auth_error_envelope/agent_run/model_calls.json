@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case review complete\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R001\",\n      \"issue\": \"Missing authorization boundary: authentication method specified only as 'login required', no roles/scopes or failure behavior documented\",\n      \"severity\": \"high\",\n      \"evidence\": \"The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Insufficient error code coverage: only success and server error codes defined; missing validation, unauthorized, forbidden, not found, duplicate\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error Codes: '0': success, '500': server error\"\n    }\n  ],\n  \"summary\": \"Two high-severity issues found: missing authorization boundary (R001) and incomplete stable error code coverage (R003).\"\n}",
+    "usage": {
+      "prompt_tokens": 1923,
+      "completion_tokens": 481,
+      "total_tokens": 2404,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 276
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 131
+    },
+    "latency_ms": 5826
+  }
+]

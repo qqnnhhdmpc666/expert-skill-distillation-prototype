@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "All config security rules pass",
+  "findings": [],
+  "summary": "Configuration is clean: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled, resource limits defined, audit logging enabled with retention."
+}

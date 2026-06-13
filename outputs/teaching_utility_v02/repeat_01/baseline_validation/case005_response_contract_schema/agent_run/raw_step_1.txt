@@ -1,0 +1,12 @@
+{
+  "action": "finish",
+  "note": "Response envelope missing standard fields",
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope does not follow standard contract; uses 'status' and 'payload' instead of 'code', 'message', 'request_id', 'data'",
+      "severity": "high",
+      "evidence": "Response JSON: ```json { \"status\": \"ok\", \"payload\": { \"date\": \"2026-06-05\", \"gross_amount\": 12000 } } ```"
+    }
+  ],
+ 

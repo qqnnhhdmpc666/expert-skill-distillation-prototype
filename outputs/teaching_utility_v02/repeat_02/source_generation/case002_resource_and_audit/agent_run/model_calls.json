@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case is clean; no violations found for C001-C004.\",\n  \"findings\": [],\n  \"summary\": \"No configuration security issues detected in config.md.\"\n}",
+    "usage": {
+      "prompt_tokens": 1455,
+      "completion_tokens": 380,
+      "total_tokens": 1835,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 331
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1455
+    },
+    "latency_ms": 4560
+  }
+]

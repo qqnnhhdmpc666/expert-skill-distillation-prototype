@@ -1,0 +1,13 @@
+{
+  "action": "finish",
+  "note": "Found R005 violation in response envelope",
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope does not follow standard contract (code, message, request_id, data)",
+      "severity": "high",
+      "evidence": "{\n  \"status\": \"ok\",\n  \"payload\": {\n    \"date\": \"2026-06-05\",\n    \"gross_amount\": 12000\n  }\n}"
+    }
+  ],
+  "summary": "The response example uses 'status' and 'payload' instead of the required envelope fields code, message, request_id, data."
+}

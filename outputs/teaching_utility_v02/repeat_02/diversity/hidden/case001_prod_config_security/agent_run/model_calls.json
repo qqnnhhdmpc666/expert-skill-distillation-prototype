@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Reading config.md to inspect configuration\",\n  \"path\": \"config.md\"\n}",
+    "usage": {
+      "prompt_tokens": 1755,
+      "completion_tokens": 84,
+      "total_tokens": 1839,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 53
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 91
+    },
+    "latency_ms": 1836
+  },
+  {
+    "step_index": 4,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"All config findings identified from visible file\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded payment token in production config\",\n      \"severity\": \"high\",\n      \"evidence\": \"payment_token: \\\"sk_live_demo_value\\\"\",\n      \"config_path\": \"payment_token\"\n    },\n    {\n      \"rule_id\": \"C002\",\n      \"issue\": \"Production external endpoint uses plain HTTP\",\n      \"severity\": \"high\",\n      \"evidence\": \"external_api_url: http://partner.example.com/v1\",\n      \"config_path\": \"external_api_url\"\n    },\n    {\n      \"rule_id\": \"C003\",\n      \"issue\": \"Service account has admin role without justification\",\n      \"severity\": \"medium\",\n      \"evidence\": \"roles: - admin\",\n      \"config_path\": \"service_account.roles\"\n    },\n    {\n      \"rule_id\": \"C004\",\n      \"issue\": \"Debug mode enabled in production\",\n      \"severity\": \"high\",\n      \"evidence\": \"debug: true\",\n      \"config_path\": \"debug\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\"",
+    "usage": {
+      "prompt_tokens": 1923,
+      "completion_tokens": 848,
+      "total_tokens": 2771,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 454
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 131
+    },
+    "latency_ms": 9517
+  }
+]

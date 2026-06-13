@@ -1,0 +1,19 @@
+{
+  "action": "finish",
+  "note": "Completed review based on visible case file",
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary: roles/scopes and failure behavior not defined",
+      "severity": "high",
+      "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Insufficient error code coverage: missing validation, unauthorized, forbidden, and not found codes",
+      "severity": "medium",
+      "evidence": "Error Codes: - `0`: success - `500`: server error"
+    }
+  ],
+  "summary": "Two issues found: missing authorization boundary and insufficient error code coverage."
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Read the case file to inspect content\",\n  \"path\": \"case.md\",\n  \"findings\": []\n}",
+    "usage": {
+      "prompt_tokens": 2006,
+      "completion_tokens": 494,
+      "total_tokens": 2500,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 456
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 86
+    },
+    "latency_ms": 5629
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\"action\":\"finish\",\"note\":\"Clean case: all rules covered.\",\"findings\":[],\"summary\":\"No violations found.\"}",
+    "usage": {
+      "prompt_tokens": 2435,
+      "completion_tokens": 451,
+      "total_tokens": 2886,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 422
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 515
+    },
+    "latency_ms": 5015
+  }
+]

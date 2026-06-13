@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case appears clean; all rules satisfied.\",\n  \"findings\": [],\n  \"summary\": \"No issues found in api_review case006_clean_false_positive_control.\"\n}",
+    "usage": {
+      "prompt_tokens": 1937,
+      "completion_tokens": 266,
+      "total_tokens": 2203,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 213
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1937
+    },
+    "latency_ms": 3504
+  }
+]

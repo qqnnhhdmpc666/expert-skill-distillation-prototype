@@ -25,6 +25,19 @@ flowchart LR
 
 **Evidence-Grounded Skill Evolution Runtime**
 
+## 当前最前沿的问题
+
+我们现在最关心的已经不是“这个 Skill 又多过了几个 case”，而是两个更本质的问题：
+
+1. 从专家知识、用户材料、公开材料里自动蒸馏出来的 Skill，能不能真的迁移到新任务？
+2. 一条执行轨迹对当前任务有用，不等于它对“教会下一个 Skill”有用。那什么样的轨迹才有 teaching utility？
+
+这也是这个仓库最近新增 `v0.2` 试验线的原因：
+
+- 用一个真实 live tool-agent 去跑任务，而不是只做静态比表
+- 把 `task utility` 和 `teaching utility` 分开测
+- 比较 `random / success-only / contrast / diversity / active discriminative` 这 5 种轨迹选择策略
+
 ## 现在已经做到什么
 
 下面这些能力目前都已经有代码入口，而且不是只停留在报告表面：
@@ -108,6 +121,32 @@ Skill package 至少包含：
 
 > 在当前“公开材料蒸馏 -> 安装运行 -> 基于真实失败修订”的有界场景里，我们已经拿到了一条稳定 improvement 证据。
 
+### C. v0.2 teaching-utility pilot 已经跑通，而且保留了负结果
+
+这是当前最新、也最像研究问题本体的一条证据线：
+
+- 2 个 domain：`api_review`、`config_security`
+- 8 个本地任务，按 repeat 旋转成 `source_generation / active_query_pool / promotion_validation / sealed_hidden_test`
+- 1 个真实 live tool-agent
+- 5 种轨迹选择方法
+- 3 次 repeat
+
+当前 fresh 结果：
+
+- `top_reward_success_only` 平均 hidden delta：`0.2222`
+- `diversity` 平均 hidden delta：`0.2000`
+- `active_discriminative_evidence` 平均 hidden delta：`0.0000`
+- 当前 `active` 假设结论：`hypothesis_not_supported`
+
+这条结果很重要，因为它说明：
+
+> “更会做当前任务” 和 “更会教出下一个 Skill” 不是一回事；  
+> 而且我们当前写的 active 选择器，还没有赢过更朴素的选择策略。
+
+对应报告：
+
+- `reports/TEACHING_UTILITY_V02_STATUS.md`
+
 ## 这不意味着什么
 
 我们刻意不把它说大。当前还**不能**声称：
@@ -116,11 +155,14 @@ Skill package 至少包含：
 - 通用 exploit 生成或攻击链执行
 - 任意 open-world 材料上都能稳定自动蒸馏
 - evolution 已经在任意任务上稳定搜索出更优 Skill
+- 已经证明 open-world teaching-utility active selection 普遍成立
 - 官方 CyberSecEval / AutoPatchBench / CVE-Bench / SWE-bench 成绩
 
 当前最准确的说法是：
 
-> 这是一个已经具备“有界 open-world 自动蒸馏 + 有界稳定进化改进证据”的研究级原型。
+> 这是一个已经具备“专家/公开材料蒸馏 -> Skill 安装运行 -> verifier/evidence 反馈 -> 候选修订与门控”的研究级原型；  
+> 它已经拿到有界 open-world 自动蒸馏和有界稳定改进证据，  
+> 但在更强的 teaching-utility v0.2 试验里，当前 active 轨迹选择策略还没有被证明优于朴素基线。
 
 ## 最短上手路径
 
@@ -168,6 +210,15 @@ $env:OPENAI_API_KEY = "<your key>"
 skill-deploy open-world-closed-loop --installed secure_code_review_open_world_distilled --repeats 3 --base-url https://api.deepseek.com --model deepseek-v4-flash
 ```
 
+### 7. 跑 v0.2 teaching-utility pilot
+
+```powershell
+$env:OPENAI_API_KEY = "<your key>"
+skill-deploy teaching-utility-v02 --repeats 3 --base-url https://api.deepseek.com --model deepseek-v4-flash
+```
+
+这条命令会真的调用 live tool-agent，比较不同轨迹选择策略对 hidden test 的教学收益。
+
 ## 这个仓库里最值得看的文件
 
 如果你第一次来，不用把所有文件夹都翻一遍。建议只看下面这些：
@@ -177,7 +228,8 @@ skill-deploy open-world-closed-loop --installed secure_code_review_open_world_di
 3. `docs/CLAIM_BOUNDARY.md`
 4. `reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md`
 5. `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
-6. `reports/TEACHER_PROGRESS_BRIEF_20260613.md`
+6. `reports/TEACHING_UTILITY_V02_STATUS.md`
+7. `reports/TEACHER_PROGRESS_BRIEF_20260613.md`
 
 ## 关键目录
 

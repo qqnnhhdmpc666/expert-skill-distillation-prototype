@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Response envelope missing code, message, request_id, and data fields\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R005\",\n      \"issue\": \"Response does not use standard envelope with code, message, request_id, and data; instead uses status and payload\",\n      \"severity\": \"high\",\n      \"evidence\": \"Response JSON in case.md uses {\\\"status\\\":\\\"ok\\\",\\\"payload\\\":{...}} instead of {\\\"code\\\":...,\\\"message\\\":...,\\\"request_id\\\":...,\\\"data\\\":...}\"\n    }\n  ],\n  \"summary\": \"Holdout case found one R005 violation. All other rules satisfied.\"\n}",
+    "usage": {
+      "prompt_tokens": 1933,
+      "completion_tokens": 299,
+      "total_tokens": 2232,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 148
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 269
+    },
+    "latency_ms": 3895
+  }
+]

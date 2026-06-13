@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Read visible case file for review\",\n  \"path\": \"case.md\",\n  \"findings\": []\n}",
+    "usage": {
+      "prompt_tokens": 1971,
+      "completion_tokens": 123,
+      "total_tokens": 2094,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 86
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1971
+    },
+    "latency_ms": 2968
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"No issues found; case is clean across all allowed rules\",\n  \"findings\": [],\n  \"summary\": \"The API design meets R001, R002, R003, R004, and R006 requirements with clear documentation.\"\n}",
+    "usage": {
+      "prompt_tokens": 2399,
+      "completion_tokens": 362,
+      "total_tokens": 2761,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 299
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 479
+    },
+    "latency_ms": 3696
+  }
+]

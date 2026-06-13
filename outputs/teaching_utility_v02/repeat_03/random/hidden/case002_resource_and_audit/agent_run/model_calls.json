@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Config review complete, one finding for C005\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Runtime resource limits are not defined for deployed service\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  limits:\",\n      \"config_path\": \"resources.limits\"\n    }\n  ],\n  \"summary\": \"Found missing resource limits in production config.\"\n}",
+    "usage": {
+      "prompt_tokens": 1676,
+      "completion_tokens": 737,
+      "total_tokens": 2413,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 631
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1676
+    },
+    "latency_ms": 7923
+  }
+]

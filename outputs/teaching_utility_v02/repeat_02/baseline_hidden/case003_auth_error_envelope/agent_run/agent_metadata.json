@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-06-13T11:48:26.617207+00:00",
+  "domain": "api_review",
+  "case_root": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\baseline_hidden\\case003_auth_error_envelope\\visible_case",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\seed_skill.md",
+  "allowed_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R006"
+  ],
+  "reviewed_files": [
+    "case.md"
+  ],
+  "model": "deepseek-v4-flash",
+  "base_url_present": true,
+  "api_key_present": true,
+  "status": "completed"
+}

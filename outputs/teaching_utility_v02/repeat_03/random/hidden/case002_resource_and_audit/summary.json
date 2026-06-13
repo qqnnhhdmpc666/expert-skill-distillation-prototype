@@ -1,0 +1,35 @@
+{
+  "case_id": "case002_resource_and_audit",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "C005",
+        "issue": "Runtime resource limits are not defined for deployed service",
+        "severity": "medium",
+        "evidence": "resources:\n  limits:",
+        "config_path": "resources.limits"
+      }
+    ],
+    "summary": "Found missing resource limits in production config.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.5,
+    "score": 0.5,
+    "missing_rule_ids": [
+      "C006"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "C005"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\hidden\\case002_resource_and_audit"
+}

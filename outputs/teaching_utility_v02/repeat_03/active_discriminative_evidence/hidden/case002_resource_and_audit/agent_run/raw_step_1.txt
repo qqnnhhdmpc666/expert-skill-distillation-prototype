@@ -1,0 +1,7 @@
+{
+  "action": "finish",
+  "note": "No violations found for C001-C004 in visible config",
+  "path": null,
+  "findings": [],
+  "summary": "Clean configuration: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled."
+}

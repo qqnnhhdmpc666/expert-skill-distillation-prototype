@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed review of config.md\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded payment token in config file\",\n      \"severity\": \"high\",\n      \"evidence\": \"payment_token: \\\"sk_live_demo_value\\\"\",\n      \"config_path\": \"payment_token\"\n    },\n    {\n      \"rule_id\": \"C002\",\n      \"issue\": \"Production external endpoint uses plain HTTP\",\n      \"severity\": \"high\",\n      \"evidence\": \"external_api_url: http://partner.example.com/v1\",\n      \"config_path\": \"external_api_url\"\n    },\n    {\n      \"rule_id\": \"C003\",\n      \"issue\": \"Service account uses admin role without justification\",\n      \"severity\": \"high\",\n      \"evidence\": \"roles:\\n    - admin\",\n      \"config_path\": \"service_account.roles\"\n    },\n    {\n      \"rule_id\": \"C004\",\n      \"issue\": \"Debug mode enabled in production\",\n      \"severity\": \"high\",\n      \"evidence\": \"debug: true\",\n      \"config_path\": \"debug\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"No CPU or memory r",
+    "usage": {
+      "prompt_tokens": 1893,
+      "completion_tokens": 646,
+      "total_tokens": 2539,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 242
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 229
+    },
+    "latency_ms": 6145
+  }
+]

@@ -138,6 +138,36 @@ skill-deploy open-world-closed-loop --installed secure_code_review_open_world_di
 - `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
 - `outputs/open_world_closed_loop/open_world_closed_loop_summary.json`
 
+### 第三步：看“哪些轨迹真的值得教给 Skill”
+
+这是当前仓库最新的一条研究线，不是为了多跑几个 case，而是为了回答：
+
+> 一条轨迹能帮当前任务过关，是否也真的能帮助蒸馏出更好的下一个 Skill？
+
+命令：
+
+```powershell
+$env:OPENAI_API_KEY = "<your key>"
+skill-deploy teaching-utility-v02 --repeats 3 --base-url https://api.deepseek.com --model deepseek-v4-flash
+```
+
+它会做什么：
+
+- 用 live tool-agent 跑 2 个 domain 的任务
+- 把任务分成 `source_generation / active_query_pool / promotion_validation / sealed_hidden_test`
+- 比较 `random / success-only / contrast / diversity / active discriminative` 这 5 种轨迹选择方法
+- 分开记录 `task utility` 和 `teaching utility`
+
+优先看：
+
+- `reports/TEACHING_UTILITY_V02_STATUS.md`
+- `outputs/teaching_utility_v02/teaching_utility_v02_summary.json`
+
+这条线当前最重要的意义，不是“证明 active 一定最好”，而是：
+
+- 如果 active 没赢，也必须保留这个负结果
+- 这样我们才真的知道，Skill distillation 更像主动实验设计，还是更像高分轨迹收集
+
 ## 4. 你不需要关心的目录
 
 第一次使用时，不必完整理解这些目录：

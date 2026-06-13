@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Clean control, no issues found.\",\n  \"findings\": [],\n  \"summary\": \"All visible config fields satisfy C001-C006 rules.\"\n}",
+    "usage": {
+      "prompt_tokens": 1745,
+      "completion_tokens": 196,
+      "total_tokens": 1941,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 151
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 81
+    },
+    "latency_ms": 2466
+  }
+]

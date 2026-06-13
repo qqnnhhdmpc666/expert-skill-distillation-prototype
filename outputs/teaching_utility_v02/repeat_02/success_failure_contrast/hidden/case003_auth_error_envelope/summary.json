@@ -1,0 +1,41 @@
+{
+  "case_id": "case003_auth_error_envelope",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R001",
+        "issue": "Missing authorization boundary",
+        "severity": "high",
+        "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+      },
+      {
+        "rule_id": "R003",
+        "issue": "Incomplete error code coverage",
+        "severity": "high",
+        "evidence": "Error Codes: `0`: success, `500`: server error"
+      }
+    ],
+    "summary": "Case003: Missing auth boundary and incomplete error codes.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.6667,
+    "score": 0.6667,
+    "missing_rule_ids": [
+      "R005"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R001",
+      "R003"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\hidden\\case003_auth_error_envelope"
+}

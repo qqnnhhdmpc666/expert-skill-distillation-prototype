@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 3,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed review of case004\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R002\",\n      \"issue\": \"Request validation contract missing: fields not documented with required/optional, type, range, length, or enum constraints.\",\n      \"severity\": \"high\",\n      \"evidence\": \"The request does not document required fields, types, ranges, length limits, or enum values.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Error code coverage missing 'not found' (404) error code.\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error Codes: ... missing 404 for resource not found.\"\n    },\n    {\n      \"rule_id\": \"R004\",\n      \"issue\": \"Sensitive response data exposure: access_token and internal_trace (stack trace) returned in response.\",\n      \"severity\": \"high\",\n      \"evidence\": \"\\\"access_token\\\": \\\"debug-token\\\", \\\"internal_trace\\\": \\\"svc.customer.ProfileUpdater:line87\\\"\"\n    }\n  ],\n  \"summary\": \"Found 3 issues: missing request validation documentation (R002), incom",
+    "usage": {
+      "prompt_tokens": 1759,
+      "completion_tokens": 809,
+      "total_tokens": 2568,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 535
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 95
+    },
+    "latency_ms": 8273
+  }
+]

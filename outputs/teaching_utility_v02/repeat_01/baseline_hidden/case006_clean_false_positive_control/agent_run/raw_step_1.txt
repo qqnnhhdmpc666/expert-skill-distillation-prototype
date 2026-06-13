@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "Case is clean; no issues found.",
+  "findings": [],
+  "summary": "All api_review rules (R001-R005) are satisfied; no violations."
+}

@@ -1,0 +1,21 @@
+{
+  "action": "finish",
+  "note": "Completed config.md review",
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key in config",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "config.md > api_key"
+    },
+    {
+      "rule_id": "C005",
+      "issue": "Resource requests defined but empty; no CPU/memory limits set",
+      "severity": "medium",
+      "evidence": "resources:\n  requests:",
+      "config_path": "config.md > resources > requests"
+    }
+  ],
+  "summary": "Found hardcoded secret (C001) and missing resource limits (C005)."
+}

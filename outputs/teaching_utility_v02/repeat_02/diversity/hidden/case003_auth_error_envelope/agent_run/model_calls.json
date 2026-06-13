@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Review complete with findings for R001 and R003\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R001\",\n      \"issue\": \"Authentication and authorization boundary missing\",\n      \"severity\": \"high\",\n      \"evidence\": \"The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Stable error code coverage insufficient\",\n      \"severity\": \"medium\",\n      \"evidence\": \"Error Codes: - `0`: success - `500`: server error\"\n    }\n  ],\n  \"summary\": \"Found 2 issues: missing authorization boundary and insufficient error codes.\"\n}",
+    "usage": {
+      "prompt_tokens": 1801,
+      "completion_tokens": 691,
+      "total_tokens": 2492,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 527
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 9
+    },
+    "latency_ms": 6263
+  }
+]

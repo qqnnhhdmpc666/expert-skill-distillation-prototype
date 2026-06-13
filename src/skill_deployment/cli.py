@@ -131,6 +131,12 @@ def main(argv: list[str] | None = None) -> int:
     open_world_closed_loop.add_argument("--base-url", default="https://api.deepseek.com")
     open_world_closed_loop.add_argument("--model", default="deepseek-v4-flash")
     open_world_closed_loop.add_argument("--timeout-seconds", default="60")
+    teaching_utility = subparsers.add_parser("teaching-utility-v02", help="Run the v0.2 task-utility vs teaching-utility pilot.")
+    teaching_utility.add_argument("--repeats", default="3")
+    teaching_utility.add_argument("--base-url", default="https://api.deepseek.com")
+    teaching_utility.add_argument("--model", default="deepseek-v4-flash")
+    teaching_utility.add_argument("--timeout-seconds", default="60")
+    teaching_utility.add_argument("--max-steps", default="4")
     subparsers.add_parser("open-source-readiness", help="Audit open-source prototype readiness.")
     subparsers.add_parser("public-release-readiness", help="Audit strict public release readiness.")
     subparsers.add_parser("swebench-infra-final", help="Finalize SWE-bench infra status from bounded official harness attempts.")
@@ -465,6 +471,22 @@ def main(argv: list[str] | None = None) -> int:
                 args.model,
                 "--timeout-seconds",
                 args.timeout_seconds,
+            ]
+        )
+    if args.command == "teaching-utility-v02":
+        return run_script(
+            [
+                "scripts/run_teaching_utility_v02_pilot.py",
+                "--repeats",
+                args.repeats,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+                "--max-steps",
+                args.max_steps,
             ]
         )
     if args.command == "open-source-readiness":

@@ -1,0 +1,13 @@
+{
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key in configuration file",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "config.md / api_key"
+    }
+  ],
+  "summary": "One security finding: hardcoded API key (C001). No other violations detected.",
+  "status": "completed"
+}

@@ -1,0 +1,1609 @@
+{
+  "repeat_index": 3,
+  "generation_cases": [
+    "case005_response_contract_schema",
+    "case003_clean_control"
+  ],
+  "query_cases": [
+    "case006_clean_false_positive_control",
+    "case004_secret_and_resource"
+  ],
+  "validation_cases": [
+    "case003_auth_error_envelope",
+    "case001_prod_config_security"
+  ],
+  "hidden_cases": [
+    "case004_validation_sensitive_idempotency",
+    "case002_resource_and_audit"
+  ],
+  "source_runs": [
+    {
+      "case_id": "case005_response_contract_schema",
+      "domain": "api_review",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\base_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [],
+        "summary": "Case005 is clean. Authentication, authorization, request validation, error codes, and sensitive data handling are compliant.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": false,
+        "coverage": 0.0,
+        "score": 0.0,
+        "missing_rule_ids": [
+          "R005"
+        ],
+        "critical_missed_rule_ids": [
+          "R005"
+        ],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [],
+        "clean_control_pass": false
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\source_generation\\case005_response_contract_schema"
+    },
+    {
+      "case_id": "case003_clean_control",
+      "domain": "config_security",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\base_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [],
+        "summary": "All config_security rules pass. No issues found.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [],
+        "clean_control_pass": true
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\source_generation\\case003_clean_control"
+    }
+  ],
+  "source_lessons": [
+    {
+      "case_id": "case005_response_contract_schema",
+      "domain": "api_review",
+      "pass_at_1": false,
+      "score": 0.0,
+      "focus_rules": [
+        "R005"
+      ],
+      "lesson": "case005_response_contract_schema: do not miss R005 when the visible case text exposes those triggers; repair the review checklist before adding broader findings.",
+      "review_summary": {
+        "seen_rule_ids": [],
+        "missing_rule_ids": [
+          "R005"
+        ],
+        "false_positive_rule_ids": [],
+        "format_errors": []
+      },
+      "review": {
+        "findings": [],
+        "summary": "Case005 is clean. Authentication, authorization, request validation, error codes, and sensitive data handling are compliant.",
+        "status": "completed"
+      }
+    },
+    {
+      "case_id": "case003_clean_control",
+      "domain": "config_security",
+      "pass_at_1": true,
+      "score": 1.0,
+      "focus_rules": [],
+      "lesson": "case003_clean_control: when visible evidence matches no rule, emit grounded findings only and preserve the output contract.",
+      "review_summary": {
+        "seen_rule_ids": [],
+        "missing_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": []
+      },
+      "review": {
+        "findings": [],
+        "summary": "All config_security rules pass. No issues found.",
+        "status": "completed"
+      }
+    }
+  ],
+  "baseline_validation_score": 0.9,
+  "baseline_hidden_score": 0.2334,
+  "methods": [
+    {
+      "method": "random",
+      "selection": {
+        "method": "random",
+        "selected_case_id": "case004_secret_and_resource",
+        "selection_reason": "seeded_random_choice:301"
+      },
+      "query_case": "case004_secret_and_resource",
+      "query_run": {
+        "case_id": "case004_secret_and_resource",
+        "domain": "config_security",
+        "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+        "returncode": 0,
+        "review": {
+          "findings": [
+            {
+              "rule_id": "C001",
+              "issue": "Hardcoded API key in configuration file",
+              "severity": "high",
+              "evidence": "api_key: \"plain-text-demo-key\"",
+              "config_path": "api_key"
+            }
+          ],
+          "summary": "Single high-severity finding: hardcoded API key. TLS, service account roles, and debug mode are acceptable.",
+          "status": "completed"
+        },
+        "evaluation": {
+          "pass_at_1": false,
+          "coverage": 0.5,
+          "score": 0.5,
+          "missing_rule_ids": [
+            "C005"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": [],
+          "seen_rule_ids": [
+            "C001"
+          ],
+          "clean_control_pass": false
+        },
+        "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\query\\case004_secret_and_resource"
+      },
+      "query_lesson": {
+        "case_id": "case004_secret_and_resource",
+        "domain": "config_security",
+        "pass_at_1": false,
+        "score": 0.5,
+        "focus_rules": [
+          "C005"
+        ],
+        "lesson": "case004_secret_and_resource: do not miss C005 when the visible case text exposes those triggers; repair the review checklist before adding broader findings.",
+        "review_summary": {
+          "seen_rule_ids": [
+            "C001"
+          ],
+          "missing_rule_ids": [
+            "C005"
+          ],
+          "false_positive_rule_ids": [],
+          "format_errors": []
+        },
+        "review": {
+          "findings": [
+            {
+              "rule_id": "C001",
+              "issue": "Hardcoded API key in configuration file",
+              "severity": "high",
+              "evidence": "api_key: \"plain-text-demo-key\"",
+              "config_path": "api_key"
+            }
+          ],
+          "summary": "Single high-severity finding: hardcoded API key. TLS, service account roles, and debug mode are acceptable.",
+          "status": "completed"
+        }
+      },
+      "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+      "validation_runs": [
+        {
+          "case_id": "case003_auth_error_envelope",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R001",
+                "issue": "Authorization boundary not defined: endpoint says 'login required' but does not specify roles, scopes, or authorization failure behavior.",
+                "severity": "high",
+                "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Insufficient error code coverage: only success (0) and server error (500) provided; missing validation, unauthorized, forbidden, not found, duplicate errors.",
+                "severity": "high",
+                "evidence": "Error Codes: - `0`: success - `500`: server error"
+              },
+              {
+                "rule_id": "R005",
+                "issue": "Response envelope missing request_id: required by response envelope contract.",
+                "severity": "high",
+                "evidence": "\"code\": 0, \"message\": \"ok\", \"data\": {...}"
+              }
+            ],
+            "summary": "Three violations found: missing authorization boundary (R001), insufficient error codes (R003), and missing request_id in envelope (R005).",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": true,
+            "coverage": 1.0,
+            "score": 1.0,
+            "missing_rule_ids": [],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R001",
+              "R003",
+              "R005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\validation\\case003_auth_error_envelope"
+        },
+        {
+          "case_id": "case001_prod_config_security",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C001",
+                "issue": "hardcoded payment token",
+                "severity": "high",
+                "evidence": "payment_token: \"sk_live_demo_value\"",
+                "config_path": "config.md -> payment_token"
+              },
+              {
+                "rule_id": "C002",
+                "issue": "production endpoint uses plain HTTP",
+                "severity": "medium",
+                "evidence": "external_api_url: http://partner.example.com/v1",
+                "config_path": "config.md -> external_api_url"
+              },
+              {
+                "rule_id": "C003",
+                "issue": "service account has admin role without justification",
+                "severity": "medium",
+                "evidence": "service_account:\n  name: billing-admin\n  roles:\n    - admin",
+                "config_path": "config.md -> service_account.roles"
+              },
+              {
+                "rule_id": "C004",
+                "issue": "production debug mode enabled",
+                "severity": "high",
+                "evidence": "debug: true",
+                "config_path": "config.md -> debug"
+              },
+              {
+                "rule_id": "C005",
+                "issue": "missing CPU and memory resource limits",
+                "severity": "medium",
+                "evidence": "No CPU or memory requests/limits defined in configuration",
+                "config_path": "config.md -> (root)"
+              }
+            ],
+            "summary": "5 findings: C001 hardcoded secret, C002 missing TLS, C003 overprivileged role, C004 debug enabled, C005 missing resource limits",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.8,
+            "score": 0.6,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [
+              "C005"
+            ],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C001",
+              "C002",
+              "C003",
+              "C004",
+              "C005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\validation\\case001_prod_config_security"
+        }
+      ],
+      "hidden_runs": [
+        {
+          "case_id": "case004_validation_sensitive_idempotency",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R002",
+                "issue": "Request fields lack documentation of required/optional, types, ranges, length limits, and enum values",
+                "severity": "high",
+                "evidence": "\"The request does not document required fields, types, ranges, length limits, or enum values.\""
+              },
+              {
+                "rule_id": "R004",
+                "issue": "Response exposes sensitive data: access_token and internal_trace",
+                "severity": "high",
+                "evidence": "\"access_token\": \"debug-token\", \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+              }
+            ],
+            "summary": "Two findings: missing request validation documentation and sensitive data exposure in response.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.6667,
+            "score": 0.6667,
+            "missing_rule_ids": [
+              "R006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R002",
+              "R004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\hidden\\case004_validation_sensitive_idempotency"
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C005",
+                "issue": "Runtime resource limits are not defined for deployed service",
+                "severity": "medium",
+                "evidence": "resources:\n  limits:",
+                "config_path": "resources.limits"
+              }
+            ],
+            "summary": "Found missing resource limits in production config.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.5,
+            "score": 0.5,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\hidden\\case002_resource_and_audit"
+        }
+      ],
+      "validation_score": 0.8,
+      "hidden_score": 0.5834,
+      "validation_delta": -0.1,
+      "hidden_delta": 0.35,
+      "hidden_pass_count": 0,
+      "candidate_updates": []
+    },
+    {
+      "method": "top_reward_success_only",
+      "selection": {
+        "method": "top_reward_success_only",
+        "selected_case_id": "case004_secret_and_resource",
+        "selection_reason": "follow_highest_seed_reward_domain:config_security"
+      },
+      "query_case": "case004_secret_and_resource",
+      "query_run": {
+        "case_id": "case004_secret_and_resource",
+        "domain": "config_security",
+        "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+        "returncode": 0,
+        "review": {
+          "findings": [
+            {
+              "rule_id": "C001",
+              "issue": "Hardcoded API key in configuration",
+              "severity": "high",
+              "evidence": "api_key: \"plain-text-demo-key\"",
+              "config_path": "api_key"
+            }
+          ],
+          "summary": "Found one hardcoded secret; other rules pass.",
+          "status": "completed"
+        },
+        "evaluation": {
+          "pass_at_1": false,
+          "coverage": 0.5,
+          "score": 0.5,
+          "missing_rule_ids": [
+            "C005"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": [],
+          "seen_rule_ids": [
+            "C001"
+          ],
+          "clean_control_pass": false
+        },
+        "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\query\\case004_secret_and_resource"
+      },
+      "query_lesson": {
+        "case_id": "case004_secret_and_resource",
+        "domain": "config_security",
+        "pass_at_1": false,
+        "score": 0.5,
+        "focus_rules": [
+          "C005"
+        ],
+        "lesson": "case004_secret_and_resource: do not miss C005 when the visible case text exposes those triggers; repair the review checklist before adding broader findings.",
+        "review_summary": {
+          "seen_rule_ids": [
+            "C001"
+          ],
+          "missing_rule_ids": [
+            "C005"
+          ],
+          "false_positive_rule_ids": [],
+          "format_errors": []
+        },
+        "review": {
+          "findings": [
+            {
+              "rule_id": "C001",
+              "issue": "Hardcoded API key in configuration",
+              "severity": "high",
+              "evidence": "api_key: \"plain-text-demo-key\"",
+              "config_path": "api_key"
+            }
+          ],
+          "summary": "Found one hardcoded secret; other rules pass.",
+          "status": "completed"
+        }
+      },
+      "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
+      "validation_runs": [
+        {
+          "case_id": "case003_auth_error_envelope",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R001",
+                "issue": "Missing authorization boundary: no roles, scopes, or authorization failure behavior documented",
+                "severity": "high",
+                "evidence": "The endpoint says \"login required\". It does not define roles, scopes, or authorization failure behavior."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Error code coverage insufficient: only 0 and 500; missing validation, unauthorized, forbidden, not found, duplicate",
+                "severity": "high",
+                "evidence": "Error Codes: - `0`: success - `500`: server error"
+              },
+              {
+                "rule_id": "R005",
+                "issue": "Response envelope missing request_id field",
+                "severity": "medium",
+                "evidence": "Response example shows code, message, data but no request_id"
+              }
+            ],
+            "summary": "Three issues: auth boundary unclear, error codes too narrow, envelope incomplete",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": true,
+            "coverage": 1.0,
+            "score": 1.0,
+            "missing_rule_ids": [],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R001",
+              "R003",
+              "R005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\validation\\case003_auth_error_envelope"
+        },
+        {
+          "case_id": "case001_prod_config_security",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C001",
+                "issue": "Hardcoded payment token in configuration file",
+                "severity": "high",
+                "evidence": "payment_token: \"sk_live_demo_value\"",
+                "config_path": "payment_token"
+              },
+              {
+                "rule_id": "C002",
+                "issue": "Production external endpoint uses plain HTTP instead of TLS",
+                "severity": "high",
+                "evidence": "external_api_url: http://partner.example.com/v1",
+                "config_path": "external_api_url"
+              },
+              {
+                "rule_id": "C003",
+                "issue": "Service account has admin role without justification",
+                "severity": "high",
+                "evidence": "service_account:\n  name: billing-admin\n  roles:\n    - admin",
+                "config_path": "service_account.roles"
+              },
+              {
+                "rule_id": "C004",
+                "issue": "Production debug mode enabled",
+                "severity": "high",
+                "evidence": "debug: true",
+                "config_path": "debug"
+              },
+              {
+                "rule_id": "C005",
+                "issue": "No CPU or memory resource limits defined for deployed service",
+                "severity": "medium",
+                "evidence": "No resource limits present in configuration file",
+                "config_path": "resources"
+              }
+            ],
+            "summary": "5 violations: hardcoded secret, HTTP endpoint, admin role, debug enabled, missing resource limits",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.8,
+            "score": 0.6,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [
+              "C005"
+            ],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C001",
+              "C002",
+              "C003",
+              "C004",
+              "C005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\validation\\case001_prod_config_security"
+        }
+      ],
+      "hidden_runs": [
+        {
+          "case_id": "case004_validation_sensitive_idempotency",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R002",
+                "issue": "Request validation contract missing: required fields, types, ranges, length limits, and enums not documented",
+                "severity": "high",
+                "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Stable error code coverage incomplete: 404 Not Found not listed",
+                "severity": "medium",
+                "evidence": "Error Codes: 0: success, 400: validation error, 401: unauthorized, 403: forbidden, 409: duplicate request, 500: server error"
+              },
+              {
+                "rule_id": "R004",
+                "issue": "Sensitive response data exposed: access_token and internal_trace returned",
+                "severity": "high",
+                "evidence": "Response data includes 'access_token': 'debug-token' and 'internal_trace': 'svc.customer.ProfileUpdater:line87'"
+              }
+            ],
+            "summary": "Case has three rule violations; auth boundary and envelope are acceptable.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.6667,
+            "score": 0.4667,
+            "missing_rule_ids": [
+              "R006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [
+              "R003"
+            ],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R002",
+              "R003",
+              "R004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\hidden\\case004_validation_sensitive_idempotency"
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C005",
+                "issue": "Runtime resource limits not defined",
+                "severity": "medium",
+                "evidence": "resources:\n  limits:",
+                "config_path": "resources.limits"
+              }
+            ],
+            "summary": "One finding: missing CPU/memory limits in resources.limits.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.5,
+            "score": 0.5,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\hidden\\case002_resource_and_audit"
+        }
+      ],
+      "validation_score": 0.8,
+      "hidden_score": 0.4834,
+      "validation_delta": -0.1,
+      "hidden_delta": 0.25,
+      "hidden_pass_count": 0,
+      "candidate_updates": []
+    },
+    {
+      "method": "success_failure_contrast",
+      "selection": {
+        "method": "success_failure_contrast",
+        "selected_case_id": "case006_clean_false_positive_control",
+        "selection_reason": "follow_lower_seed_reward_domain_for_contrast:api_review"
+      },
+      "query_case": "case006_clean_false_positive_control",
+      "query_run": {
+        "case_id": "case006_clean_false_positive_control",
+        "domain": "api_review",
+        "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+        "returncode": 0,
+        "review": {
+          "findings": [],
+          "summary": "All visible evidence satisfies R001-R005; no findings.",
+          "status": "completed"
+        },
+        "evaluation": {
+          "pass_at_1": true,
+          "coverage": 1.0,
+          "score": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": [],
+          "seen_rule_ids": [],
+          "clean_control_pass": true
+        },
+        "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\query\\case006_clean_false_positive_control"
+      },
+      "query_lesson": {
+        "case_id": "case006_clean_false_positive_control",
+        "domain": "api_review",
+        "pass_at_1": true,
+        "score": 1.0,
+        "focus_rules": [],
+        "lesson": "case006_clean_false_positive_control: when visible evidence matches no rule, emit grounded findings only and preserve the output contract.",
+        "review_summary": {
+          "seen_rule_ids": [],
+          "missing_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": []
+        },
+        "review": {
+          "findings": [],
+          "summary": "All visible evidence satisfies R001-R005; no findings.",
+          "status": "completed"
+        }
+      },
+      "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
+      "validation_runs": [
+        {
+          "case_id": "case003_auth_error_envelope",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R001",
+                "issue": "Missing authorization boundary: endpoint requires login but does not specify roles, scopes, or authorization failure behavior.",
+                "severity": "high",
+                "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Insufficient error code coverage: only success and server error are listed; missing validation, unauthorized, forbidden, not found, and duplicate error codes.",
+                "severity": "medium",
+                "evidence": "Error Codes: - `0`: success - `500`: server error"
+              },
+              {
+                "rule_id": "R005",
+                "issue": "Response envelope missing required field: request_id is not present in the response example.",
+                "severity": "medium",
+                "evidence": "{\n  \"code\": 0,\n  \"message\": \"ok\",\n  \"data\": {...}\n}"
+              }
+            ],
+            "summary": "Three issues found: missing auth boundary, incomplete error codes, missing request_id in envelope.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": true,
+            "coverage": 1.0,
+            "score": 1.0,
+            "missing_rule_ids": [],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R001",
+              "R003",
+              "R005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\validation\\case003_auth_error_envelope"
+        },
+        {
+          "case_id": "case001_prod_config_security",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C001",
+                "issue": "Hardcoded payment token in production config",
+                "severity": "high",
+                "evidence": "payment_token: \"sk_live_demo_value\"",
+                "config_path": "config.md: payment_token"
+              },
+              {
+                "rule_id": "C002",
+                "issue": "Production external endpoint uses plain HTTP",
+                "severity": "high",
+                "evidence": "external_api_url: http://partner.example.com/v1",
+                "config_path": "config.md: external_api_url"
+              },
+              {
+                "rule_id": "C003",
+                "issue": "Service account granted admin role without justification",
+                "severity": "high",
+                "evidence": "service_account: name: billing-admin, roles: [admin]",
+                "config_path": "config.md: service_account.roles"
+              },
+              {
+                "rule_id": "C004",
+                "issue": "Production debug mode enabled",
+                "severity": "high",
+                "evidence": "debug: true",
+                "config_path": "config.md: debug"
+              }
+            ],
+            "summary": "Found 4 high severity violations: hardcoded secret, plain HTTP endpoint, admin service account, debug mode enabled.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.8,
+            "score": 0.8,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C001",
+              "C002",
+              "C003",
+              "C004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\validation\\case001_prod_config_security"
+        }
+      ],
+      "hidden_runs": [
+        {
+          "case_id": "case004_validation_sensitive_idempotency",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R002",
+                "issue": "Request fields missing validation documentation",
+                "severity": "high",
+                "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+              },
+              {
+                "rule_id": "R004",
+                "issue": "Sensitive data (access token and internal trace) exposed in response",
+                "severity": "high",
+                "evidence": "\"access_token\": \"debug-token\", \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+              }
+            ],
+            "summary": "Two findings: missing request validation contract (R002) and sensitive data exposure (R004). Authentication, error codes, and envelope are compliant.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.6667,
+            "score": 0.6667,
+            "missing_rule_ids": [
+              "R006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R002",
+              "R004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\hidden\\case004_validation_sensitive_idempotency"
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [],
+            "summary": "No issues found: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.0,
+            "score": 0.0,
+            "missing_rule_ids": [
+              "C005",
+              "C006"
+            ],
+            "critical_missed_rule_ids": [
+              "C005"
+            ],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\hidden\\case002_resource_and_audit"
+        }
+      ],
+      "validation_score": 0.9,
+      "hidden_score": 0.3333,
+      "validation_delta": 0.0,
+      "hidden_delta": 0.0999,
+      "hidden_pass_count": 0,
+      "candidate_updates": []
+    },
+    {
+      "method": "diversity",
+      "selection": {
+        "method": "diversity",
+        "selected_case_id": "case004_secret_and_resource",
+        "selection_reason": "max_lexical_distance_from_seed:0.8333",
+        "distance_scores": [
+          {
+            "case_id": "case004_secret_and_resource",
+            "distance": 0.8333
+          },
+          {
+            "case_id": "case006_clean_false_positive_control",
+            "distance": 0.7576
+          }
+        ]
+      },
+      "query_case": "case004_secret_and_resource",
+      "query_run": {
+        "case_id": "case004_secret_and_resource",
+        "domain": "config_security",
+        "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+        "returncode": 0,
+        "review": {
+          "findings": [
+            {
+              "rule_id": "C001",
+              "issue": "Hardcoded API key",
+              "severity": "high",
+              "evidence": "api_key: \"plain-text-demo-key\"",
+              "config_path": "api_key"
+            }
+          ],
+          "summary": "One high severity finding: hardcoded plain-text API key in config.",
+          "status": "completed"
+        },
+        "evaluation": {
+          "pass_at_1": false,
+          "coverage": 0.5,
+          "score": 0.5,
+          "missing_rule_ids": [
+            "C005"
+          ],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": [],
+          "seen_rule_ids": [
+            "C001"
+          ],
+          "clean_control_pass": false
+        },
+        "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\query\\case004_secret_and_resource"
+      },
+      "query_lesson": {
+        "case_id": "case004_secret_and_resource",
+        "domain": "config_security",
+        "pass_at_1": false,
+        "score": 0.5,
+        "focus_rules": [
+          "C005"
+        ],
+        "lesson": "case004_secret_and_resource: do not miss C005 when the visible case text exposes those triggers; repair the review checklist before adding broader findings.",
+        "review_summary": {
+          "seen_rule_ids": [
+            "C001"
+          ],
+          "missing_rule_ids": [
+            "C005"
+          ],
+          "false_positive_rule_ids": [],
+          "format_errors": []
+        },
+        "review": {
+          "findings": [
+            {
+              "rule_id": "C001",
+              "issue": "Hardcoded API key",
+              "severity": "high",
+              "evidence": "api_key: \"plain-text-demo-key\"",
+              "config_path": "api_key"
+            }
+          ],
+          "summary": "One high severity finding: hardcoded plain-text API key in config.",
+          "status": "completed"
+        }
+      },
+      "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
+      "validation_runs": [
+        {
+          "case_id": "case003_auth_error_envelope",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R001",
+                "issue": "Missing authorization boundary: no roles, scopes, or failure behavior defined",
+                "severity": "high",
+                "evidence": "The endpoint says \"login required\". It does not define roles, scopes, or authorization failure behavior."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Incomplete error code coverage: only success and server error defined",
+                "severity": "high",
+                "evidence": "Error Codes: - `0`: success - `500`: server error"
+              },
+              {
+                "rule_id": "R005",
+                "issue": "Response envelope missing required field 'request_id'",
+                "severity": "high",
+                "evidence": "Response JSON envelope contains code, message, data but no request_id."
+              }
+            ],
+            "summary": "Case003: Missing authorization boundary (R001), incomplete error codes (R003), and envelope missing request_id (R005).",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": true,
+            "coverage": 1.0,
+            "score": 1.0,
+            "missing_rule_ids": [],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R001",
+              "R003",
+              "R005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\validation\\case003_auth_error_envelope"
+        },
+        {
+          "case_id": "case001_prod_config_security",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C001",
+                "issue": "Hardcoded payment token in config",
+                "severity": "high",
+                "evidence": "payment_token: \"sk_live_demo_value\"",
+                "config_path": "payment_token"
+              },
+              {
+                "rule_id": "C002",
+                "issue": "Production external URL uses plain HTTP",
+                "severity": "high",
+                "evidence": "external_api_url: http://partner.example.com/v1",
+                "config_path": "external_api_url"
+              },
+              {
+                "rule_id": "C003",
+                "issue": "Service account has admin role without justification",
+                "severity": "high",
+                "evidence": "roles:\n    - admin",
+                "config_path": "service_account.roles"
+              },
+              {
+                "rule_id": "C004",
+                "issue": "Debug mode enabled in production",
+                "severity": "high",
+                "evidence": "debug: true",
+                "config_path": "debug"
+              },
+              {
+                "rule_id": "C005",
+                "issue": "No CPU or memory resource limits defined",
+                "severity": "medium",
+                "evidence": "Missing CPU and memory requests or limits in config",
+                "config_path": "deployment"
+              }
+            ],
+            "summary": "Five configuration security issues found: hardcoded secret, plain HTTP endpoint, over-privileged service account, debug mode enabled, missing resource limits.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.8,
+            "score": 0.6,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [
+              "C005"
+            ],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C001",
+              "C002",
+              "C003",
+              "C004",
+              "C005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\validation\\case001_prod_config_security"
+        }
+      ],
+      "hidden_runs": [
+        {
+          "case_id": "case004_validation_sensitive_idempotency",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R002",
+                "issue": "Missing request field validation documentation",
+                "severity": "high",
+                "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+              },
+              {
+                "rule_id": "R004",
+                "issue": "Sensitive data exposed in response: access token and internal trace",
+                "severity": "high",
+                "evidence": "Response includes \"access_token\": \"debug-token\" and \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+              }
+            ],
+            "summary": "Two violations: missing request validation constraints (R002) and exposure of sensitive data (R004). Authentication, error codes, and response envelope conform.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.6667,
+            "score": 0.6667,
+            "missing_rule_ids": [
+              "R006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R002",
+              "R004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\hidden\\case004_validation_sensitive_idempotency"
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C005",
+                "issue": "Resource limits not defined for production service",
+                "severity": "medium",
+                "evidence": "resources:\n  limits:",
+                "config_path": "resources.limits"
+              }
+            ],
+            "summary": "Found missing runtime resource limits.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.5,
+            "score": 0.5,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\hidden\\case002_resource_and_audit"
+        }
+      ],
+      "validation_score": 0.8,
+      "hidden_score": 0.5834,
+      "validation_delta": -0.1,
+      "hidden_delta": 0.35,
+      "hidden_pass_count": 0,
+      "candidate_updates": []
+    },
+    {
+      "method": "active_discriminative_evidence",
+      "selection": {
+        "method": "active_discriminative_evidence",
+        "selected_case_id": "case006_clean_false_positive_control",
+        "selection_reason": "max_residual_repair_overlap_then_disagreement:overlap=1,disagreement=0.5556",
+        "candidates": [
+          {
+            "candidate_id": "h0_base_conservative",
+            "focus_domain": "config_security",
+            "allowed_rules": [
+              "R005"
+            ],
+            "assumption": "Preserve currently successful domain behavior and avoid speculative expansion."
+          },
+          {
+            "candidate_id": "h1_low_score_repair",
+            "focus_domain": "api_review",
+            "allowed_rules": [
+              "R005",
+              "R001",
+              "R002",
+              "R003",
+              "R004",
+              "R005",
+              "R006"
+            ],
+            "assumption": "Repair the weakest current domain by adding missing rule reminders."
+          },
+          {
+            "candidate_id": "h2_broad_union",
+            "focus_domain": "cross_domain",
+            "allowed_rules": [
+              "C001",
+              "C002",
+              "C003",
+              "C004",
+              "C005",
+              "C006",
+              "R001",
+              "R002",
+              "R003",
+              "R004",
+              "R005",
+              "R006"
+            ],
+            "assumption": "Prefer wider teaching coverage even if immediate seed reward was lower."
+          }
+        ],
+        "disagreement_matrix": [
+          {
+            "case_id": "case006_clean_false_positive_control",
+            "domain": "api_review",
+            "predictions": [
+              {
+                "candidate_id": "h0_base_conservative",
+                "predicted_rule_ids": [
+                  "R005"
+                ],
+                "focus_domain": "config_security"
+              },
+              {
+                "candidate_id": "h1_low_score_repair",
+                "predicted_rule_ids": [
+                  "R005",
+                  "R001",
+                  "R002",
+                  "R003",
+                  "R004",
+                  "R005",
+                  "R006"
+                ],
+                "focus_domain": "api_review"
+              },
+              {
+                "candidate_id": "h2_broad_union",
+                "predicted_rule_ids": [
+                  "R001",
+                  "R002",
+                  "R003",
+                  "R004",
+                  "R005",
+                  "R006"
+                ],
+                "focus_domain": "cross_domain"
+              }
+            ],
+            "mean_pairwise_disagreement": 0.5556,
+            "repair_overlap": 1
+          },
+          {
+            "case_id": "case004_secret_and_resource",
+            "domain": "config_security",
+            "predictions": [
+              {
+                "candidate_id": "h0_base_conservative",
+                "predicted_rule_ids": [],
+                "focus_domain": "config_security"
+              },
+              {
+                "candidate_id": "h1_low_score_repair",
+                "predicted_rule_ids": [],
+                "focus_domain": "api_review"
+              },
+              {
+                "candidate_id": "h2_broad_union",
+                "predicted_rule_ids": [
+                  "C001",
+                  "C002",
+                  "C003",
+                  "C004",
+                  "C005",
+                  "C006"
+                ],
+                "focus_domain": "cross_domain"
+              }
+            ],
+            "mean_pairwise_disagreement": 0.6667,
+            "repair_overlap": 0
+          }
+        ]
+      },
+      "query_case": "case006_clean_false_positive_control",
+      "query_run": {
+        "case_id": "case006_clean_false_positive_control",
+        "domain": "api_review",
+        "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+        "returncode": 0,
+        "review": {
+          "findings": [],
+          "summary": "No violations of allowed rules R001-R005.",
+          "status": "completed"
+        },
+        "evaluation": {
+          "pass_at_1": true,
+          "coverage": 1.0,
+          "score": 1.0,
+          "missing_rule_ids": [],
+          "critical_missed_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": [],
+          "seen_rule_ids": [],
+          "clean_control_pass": true
+        },
+        "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\query\\case006_clean_false_positive_control"
+      },
+      "query_lesson": {
+        "case_id": "case006_clean_false_positive_control",
+        "domain": "api_review",
+        "pass_at_1": true,
+        "score": 1.0,
+        "focus_rules": [],
+        "lesson": "case006_clean_false_positive_control: when visible evidence matches no rule, emit grounded findings only and preserve the output contract.",
+        "review_summary": {
+          "seen_rule_ids": [],
+          "missing_rule_ids": [],
+          "false_positive_rule_ids": [],
+          "format_errors": []
+        },
+        "review": {
+          "findings": [],
+          "summary": "No violations of allowed rules R001-R005.",
+          "status": "completed"
+        }
+      },
+      "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+      "validation_runs": [
+        {
+          "case_id": "case003_auth_error_envelope",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R001",
+                "issue": "Missing authorization boundary: endpoint says 'login required' but does not define roles, scopes, or authorization failure behavior",
+                "severity": "high",
+                "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Incomplete error code coverage: only success (0) and server error (500) are defined; missing validation, unauthorized, forbidden, not found, and duplicate codes",
+                "severity": "medium",
+                "evidence": "Error Codes: - `0`: success - `500`: server error"
+              },
+              {
+                "rule_id": "R005",
+                "issue": "Response envelope missing request_id field; envelope should include code, message, request_id, and data",
+                "severity": "medium",
+                "evidence": "Response example: { \"code\": 0, \"message\": \"ok\", \"data\": { ... } } — missing request_id"
+              }
+            ],
+            "summary": "Three R-level issues found: missing authorization boundary, incomplete error codes, and missing request_id in envelope",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": true,
+            "coverage": 1.0,
+            "score": 1.0,
+            "missing_rule_ids": [],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R001",
+              "R003",
+              "R005"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\validation\\case003_auth_error_envelope"
+        },
+        {
+          "case_id": "case001_prod_config_security",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "C001",
+                "issue": "Hardcoded payment token in production config",
+                "severity": "high",
+                "evidence": "payment_token: \"sk_live_demo_value\"",
+                "config_path": "payment_token"
+              },
+              {
+                "rule_id": "C002",
+                "issue": "Production external endpoint uses plain HTTP instead of TLS",
+                "severity": "high",
+                "evidence": "external_api_url: http://partner.example.com/v1",
+                "config_path": "external_api_url"
+              },
+              {
+                "rule_id": "C003",
+                "issue": "Service account has broad admin role without justification",
+                "severity": "high",
+                "evidence": "roles:\n    - admin",
+                "config_path": "service_account.roles"
+              },
+              {
+                "rule_id": "C004",
+                "issue": "Production debug mode is enabled",
+                "severity": "high",
+                "evidence": "debug: true",
+                "config_path": "debug"
+              }
+            ],
+            "summary": "Found 4 critical violations: hardcoded secret, plain HTTP endpoint, admin service account role, debug mode enabled in production.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.8,
+            "score": 0.8,
+            "missing_rule_ids": [
+              "C006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "C001",
+              "C002",
+              "C003",
+              "C004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\validation\\case001_prod_config_security"
+        }
+      ],
+      "hidden_runs": [
+        {
+          "case_id": "case004_validation_sensitive_idempotency",
+          "domain": "api_review",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [
+              {
+                "rule_id": "R002",
+                "issue": "Request fields lack required/optional, type, range, length, or enum documentation",
+                "severity": "high",
+                "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+              },
+              {
+                "rule_id": "R003",
+                "issue": "Missing not found error code in stable error code coverage",
+                "severity": "high",
+                "evidence": "Error codes: `0`: success, `400`: validation error, `401`: unauthorized, `403`: forbidden, `409`: duplicate request, `500`: server error. Does not include 404 for not found."
+              },
+              {
+                "rule_id": "R004",
+                "issue": "Response exposes sensitive data: access token and internal trace",
+                "severity": "high",
+                "evidence": "Response includes `\"access_token\": \"debug-token\"` and `\"internal_trace\": \"svc.customer.ProfileUpdater:line87\"`."
+              }
+            ],
+            "summary": "Found violations: missing request validation contract (R002), incomplete error code coverage (R003), and sensitive data exposure (R004).",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.6667,
+            "score": 0.4667,
+            "missing_rule_ids": [
+              "R006"
+            ],
+            "critical_missed_rule_ids": [],
+            "false_positive_rule_ids": [
+              "R003"
+            ],
+            "format_errors": [],
+            "seen_rule_ids": [
+              "R002",
+              "R003",
+              "R004"
+            ],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\hidden\\case004_validation_sensitive_idempotency"
+        },
+        {
+          "case_id": "case002_resource_and_audit",
+          "domain": "config_security",
+          "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+          "returncode": 0,
+          "review": {
+            "findings": [],
+            "summary": "Clean configuration: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled.",
+            "status": "completed"
+          },
+          "evaluation": {
+            "pass_at_1": false,
+            "coverage": 0.0,
+            "score": 0.0,
+            "missing_rule_ids": [
+              "C005",
+              "C006"
+            ],
+            "critical_missed_rule_ids": [
+              "C005"
+            ],
+            "false_positive_rule_ids": [],
+            "format_errors": [],
+            "seen_rule_ids": [],
+            "clean_control_pass": false
+          },
+          "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\hidden\\case002_resource_and_audit"
+        }
+      ],
+      "validation_score": 0.9,
+      "hidden_score": 0.2334,
+      "validation_delta": 0.0,
+      "hidden_delta": 0.0,
+      "hidden_pass_count": 0,
+      "candidate_updates": [
+        {
+          "candidate_id": "h0_base_conservative",
+          "predicted_rule_ids": [
+            "R005"
+          ],
+          "actual_rule_ids": [],
+          "agreement": 0.0,
+          "status": "downweighted"
+        },
+        {
+          "candidate_id": "h1_low_score_repair",
+          "predicted_rule_ids": [
+            "R001",
+            "R002",
+            "R003",
+            "R004",
+            "R005",
+            "R006"
+          ],
+          "actual_rule_ids": [],
+          "agreement": 0.0,
+          "status": "downweighted"
+        },
+        {
+          "candidate_id": "h2_broad_union",
+          "predicted_rule_ids": [
+            "R001",
+            "R002",
+            "R003",
+            "R004",
+            "R005",
+            "R006"
+          ],
+          "actual_rule_ids": [],
+          "agreement": 0.0,
+          "status": "downweighted"
+        }
+      ]
+    }
+  ]
+}

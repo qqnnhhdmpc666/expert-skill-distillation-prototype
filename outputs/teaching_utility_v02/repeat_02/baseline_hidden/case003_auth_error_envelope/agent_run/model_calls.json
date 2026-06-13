@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\"action\":\"read_file\",\"note\":\"Read case003 file for review\",\"path\":\"case.md\"}",
+    "usage": {
+      "prompt_tokens": 1767,
+      "completion_tokens": 528,
+      "total_tokens": 2295,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 507
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1767
+    },
+    "latency_ms": 6552
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\"action\": \"finish\", \"note\": \"Review complete for case003\", \"findings\": [{\"rule_id\": \"R001\", \"issue\": \"Missing authorization boundary: roles, scopes, and failure behavior not defined\", \"severity\": \"high\", \"evidence\": \"The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior.\"}, {\"rule_id\": \"R003\", \"issue\": \"Incomplete error code coverage: missing validation, unauthorized, forbidden, not found, duplicate codes\", \"severity\": \"high\", \"evidence\": \"Error Codes:\\n\\n- `0`: success\\n- `500`: server error\"}], \"summary\": \"Found two violations: missing authorization boundary and incomplete error code coverage\"}",
+    "usage": {
+      "prompt_tokens": 2012,
+      "completion_tokens": 544,
+      "total_tokens": 2556,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 383
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 348
+    },
+    "latency_ms": 5427
+  }
+]

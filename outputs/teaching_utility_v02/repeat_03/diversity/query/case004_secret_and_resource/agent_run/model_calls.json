@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Found hardcoded secret in config.md\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    }\n  ],\n  \"summary\": \"One high severity finding: hardcoded plain-text API key in config.\"\n}",
+    "usage": {
+      "prompt_tokens": 1624,
+      "completion_tokens": 361,
+      "total_tokens": 1985,
+      "prompt_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 251
+      },
+      "prompt_cache_hit_tokens": 1536,
+      "prompt_cache_miss_tokens": 88
+    },
+    "latency_ms": 3779
+  }
+]

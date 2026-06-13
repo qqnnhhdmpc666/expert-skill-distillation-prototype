@@ -1,0 +1,41 @@
+{
+  "case_id": "case004_secret_and_resource",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "C001",
+        "issue": "Hardcoded API key in config",
+        "severity": "high",
+        "evidence": "api_key: \"plain-text-demo-key\"",
+        "config_path": "api_key"
+      },
+      {
+        "rule_id": "C005",
+        "issue": "Empty resource requests block, no CPU or memory limits defined",
+        "severity": "medium",
+        "evidence": "resources:\n  requests:",
+        "config_path": "resources.requests"
+      }
+    ],
+    "summary": "Config has a plain-text API key (C001) and missing resource limits (C005). TLS, debug, service account, and audit logging are acceptable.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": true,
+    "coverage": 1.0,
+    "score": 1.0,
+    "missing_rule_ids": [],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "C001",
+      "C005"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\validation\\case004_secret_and_resource"
+}

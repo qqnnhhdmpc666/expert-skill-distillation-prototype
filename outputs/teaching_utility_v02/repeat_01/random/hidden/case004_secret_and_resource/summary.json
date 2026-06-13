@@ -1,0 +1,35 @@
+{
+  "case_id": "case004_secret_and_resource",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "C001",
+        "issue": "Hardcoded API key in configuration file",
+        "severity": "high",
+        "evidence": "api_key: \"plain-text-demo-key\"",
+        "config_path": "config.md / api_key"
+      }
+    ],
+    "summary": "One security finding: hardcoded API key (C001). No other violations detected.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.5,
+    "score": 0.5,
+    "missing_rule_ids": [
+      "C005"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "C001"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\hidden\\case004_secret_and_resource"
+}

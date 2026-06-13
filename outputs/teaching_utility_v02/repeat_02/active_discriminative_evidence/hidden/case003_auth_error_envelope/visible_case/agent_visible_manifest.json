@@ -1,0 +1,8 @@
+{
+  "case_id": "case003_auth_error_envelope",
+  "domain": "api_review",
+  "visible_files": [
+    "case.md"
+  ],
+  "boundary": "No verifier-only oracle fields are present in this workspace."
+}

@@ -1,0 +1,20 @@
+{
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key in configuration file",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "api_key"
+    },
+    {
+      "rule_id": "C005",
+      "issue": "Missing CPU and memory requests for the service",
+      "severity": "medium",
+      "evidence": "resources:\n  requests:",
+      "config_path": "resources.requests"
+    }
+  ],
+  "summary": "Two issues: hardcoded secret (C001) and missing resource requests (C005).",
+  "status": "completed"
+}

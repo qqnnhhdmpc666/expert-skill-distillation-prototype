@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Read config.md to confirm exact text for findings\",\n  \"path\": \"config.md\",\n  \"findings\": []\n}",
+    "usage": {
+      "prompt_tokens": 1733,
+      "completion_tokens": 281,
+      "total_tokens": 2014,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 241
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 69
+    },
+    "latency_ms": 5926
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Return findings from config.md\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in plain text\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    }\n  ],\n  \"summary\": \"One finding: hardcoded secret (C001). No other rule violations detected.\"\n}",
+    "usage": {
+      "prompt_tokens": 1869,
+      "completion_tokens": 350,
+      "total_tokens": 2219,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 238
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 205
+    },
+    "latency_ms": 3945
+  }
+]

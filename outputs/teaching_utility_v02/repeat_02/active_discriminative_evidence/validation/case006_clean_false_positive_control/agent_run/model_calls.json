@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"No violations from visible evidence\",\n  \"findings\": [],\n  \"summary\": \"All api_review rules satisfied: authentication, validation, error codes, idempotency, and sensitive data handling are properly documented.\"\n}",
+    "usage": {
+      "prompt_tokens": 1971,
+      "completion_tokens": 268,
+      "total_tokens": 2239,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 208
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 51
+    },
+    "latency_ms": 3664
+  }
+]

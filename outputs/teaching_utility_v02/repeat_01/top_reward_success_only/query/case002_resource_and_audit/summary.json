@@ -1,0 +1,37 @@
+{
+  "case_id": "case002_resource_and_audit",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\seed_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "C006",
+        "issue": "Audit logging is disabled; production environment must enable audit logging and define retention or export behavior.",
+        "severity": "high",
+        "evidence": "audit:\n  enabled: false\n  export_sink:",
+        "config_path": "config.md :: audit.enabled"
+      }
+    ],
+    "summary": "Found 1 config security issue: audit logging disabled (C006). All other rules satisfied.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.5,
+    "score": 0.45,
+    "missing_rule_ids": [
+      "C005"
+    ],
+    "critical_missed_rule_ids": [
+      "C005"
+    ],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "C006"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\query\\case002_resource_and_audit"
+}

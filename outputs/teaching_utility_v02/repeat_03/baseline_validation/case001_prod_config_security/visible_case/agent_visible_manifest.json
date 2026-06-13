@@ -1,0 +1,8 @@
+{
+  "case_id": "case001_prod_config_security",
+  "domain": "config_security",
+  "visible_files": [
+    "config.md"
+  ],
+  "boundary": "No verifier-only oracle fields are present in this workspace."
+}

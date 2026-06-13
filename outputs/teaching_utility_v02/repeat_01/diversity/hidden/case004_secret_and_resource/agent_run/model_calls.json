@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Findings from config.md review\",\n  \"path\": null,\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in configuration file\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Missing CPU and memory requests for the service\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  requests:\",\n      \"config_path\": \"resources.requests\"\n    }\n  ],\n  \"summary\": \"Two issues: hardcoded secret (C001) and missing resource requests (C005).\"\n}",
+    "usage": {
+      "prompt_tokens": 1877,
+      "completion_tokens": 349,
+      "total_tokens": 2226,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 170
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 213
+    },
+    "latency_ms": 3888
+  }
+]

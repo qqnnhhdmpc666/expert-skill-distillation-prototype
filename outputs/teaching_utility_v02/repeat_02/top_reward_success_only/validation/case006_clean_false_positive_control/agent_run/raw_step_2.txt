@@ -1,0 +1,1 @@
+{"action":"finish","note":"Clean case: all rules covered.","findings":[],"summary":"No violations found."}

@@ -1,0 +1,24 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary: no roles, scopes, or authorization failure behavior documented",
+      "severity": "high",
+      "evidence": "The endpoint says \"login required\". It does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code coverage insufficient: only 0 and 500; missing validation, unauthorized, forbidden, not found, duplicate",
+      "severity": "high",
+      "evidence": "Error Codes: - `0`: success - `500`: server error"
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope missing request_id field",
+      "severity": "medium",
+      "evidence": "Response example shows code, message, data but no request_id"
+    }
+  ],
+  "summary": "Three issues: auth boundary unclear, error codes too narrow, envelope incomplete",
+  "status": "completed"
+}

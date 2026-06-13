@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"No issues found\",\n  \"path\": null,\n  \"findings\": [],\n  \"summary\": \"All config_security checks passed: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled, resource limits set, audit logging enabled with retention.\"\n}",
+    "usage": {
+      "prompt_tokens": 1733,
+      "completion_tokens": 410,
+      "total_tokens": 2143,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 336
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 69
+    },
+    "latency_ms": 4074
+  }
+]

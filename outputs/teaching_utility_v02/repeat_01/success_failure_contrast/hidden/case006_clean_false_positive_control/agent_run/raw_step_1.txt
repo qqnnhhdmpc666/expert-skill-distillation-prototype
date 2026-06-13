@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "Clean case with no violations found",
+  "findings": [],
+  "summary": "All api_review rules satisfied: authentication, validation, error codes, sensitive data, envelope, idempotency are properly documented."
+}

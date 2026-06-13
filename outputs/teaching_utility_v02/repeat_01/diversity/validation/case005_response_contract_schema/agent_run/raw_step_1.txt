@@ -1,0 +1,9 @@
+{
+  "action": "finish",
+  "note": "Found R005 violation in response envelope",
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope does not follow standard contract (code, message, request_id, data)",
+      "severity": "high",
+      "evidence": "{\n  \"status\":
