@@ -119,9 +119,42 @@ commit_sha=a3dc437a9c067309f21d6258a8a298a0d256a39d
 
 src/skill_deployment/evidence.py
 commit_sha=3fb1f83a4500b0cf5025c5eecd6d94468cdeb537
+
+src/skill_deployment/provenance.py
+commit_sha=568add1200cbb68cdc0b9a57a311cc62c57e765e
+
+src/skill_deployment/capability_registry.py
+commit_sha=dba01ce5ea8a4ca7e1f692b9edb89b94accfb1d3
+
+src/skill_deployment/schemas.py
+commit_sha=89078ebc778e700f26ae53cdbbf7fa1f8bcd07c6
+
+src/skill_deployment/verifier.py
+commit_sha=530be5196fa5bb6c28a938d8c6a0937b9ab9220f
+
+src/skill_deployment/__init__.py
+commit_sha=81808acf3e3ac1d1436f7daffd57681e2e4e9333
+
+src/skill_deployment/task_cases.py
+commit_sha=b8636e9ff4ea4a159697d1335c036482bceae76d
+
+src/skill_deployment/runner.py
+commit_sha=43de2c82747570673ae637c0ae8ba0f87f6d10a6
+
+src/skill_deployment/repair.py
+commit_sha=606fe0cbdeea9217f08549b71b03edec374a6e85
+
+src/skill_deployment/qualification.py
+commit_sha=9d4b7171c40d731f5ffd36ec459ab0206bba0f6f
+
+src/skill_deployment/validity.py
+commit_sha=7ef6f57108d1f9443ad36a99ac34ef881931753c
+
+src/skill_deployment/harbor_adapter.py
+commit_sha=c5288bc7450b0bce578e0a359030f915356ca2ee
 ```
 
-This is still not a full worktree push, but the core contract normalizer, CLI entrypoint, iterative improvement runner, latest staged-promotion report, and main user-facing docs are now present at normal repository paths.
+This is still not a full worktree push, but the core contract normalizer, CLI entrypoint, iterative improvement runner, installed-skill state helpers, runner chain, repair/gate logic, qualification/validity builders, and main user-facing docs are now present at normal repository paths.
 
 ## What Was Not Fully Uploaded
 
@@ -129,23 +162,26 @@ This was not a full worktree push. The local directory is not currently a git re
 
 The full `review_package/MANIFEST.json` was rebuilt locally and validated, but it contains 1377 artifact entries and was not uploaded through the text-only GitHub connector. The uploaded integrity report records its pass status and evidence-type counts.
 
-`data/external_security_mini_suite/cases_extended.json` and many generated output artifacts remain local-only in this connector-based upload pass. The normal GitHub paths now contain the core runtime, CLI, live/external/evolution runners, release docs, package metadata, and base/holdout mini-suite data, but this is still not a repository tree push.
+`data/external_security_mini_suite/cases_extended.json`, the full `data/task_cases/**` directory, and many generated output artifacts remain local-only in this connector-based upload pass. The normal GitHub paths now contain the core runtime, CLI, live/external/evolution runners, installed-runtime state modules, release docs, package metadata, and base/holdout mini-suite data, but this is still not a repository tree push.
 
 ## Current Local Validation
 
 ```text
 python -m pytest -q
-46 passed in 0.31s
+46 passed in 0.30s
 
 python scripts\validate_task_cases.py
 status=ok, case_count=8
 
 skill-deploy validate-review-package
 status=ok, error_count=0
+
+python scripts\build_review_package_manifest.py
+status=pass
 ```
 
 ## Secret Scan
 
-The literal DeepSeek key provided in chat was not found in scanned local artifacts. Generic API-key scans found only placeholders and variable names.
+The literal DeepSeek key provided in chat was not found in scanned local artifacts. A generic `sk-...` pattern scan over `reports`, `docs`, `review_package`, `scripts`, `src`, `data`, `pyproject.toml`, `requirements.txt`, and `LICENSE` returned no matches.
 
 Because the key appeared in chat, rotation is still recommended.
