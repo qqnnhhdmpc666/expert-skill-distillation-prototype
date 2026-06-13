@@ -1,0 +1,29 @@
+{
+  "agent": "api_review_llm_agent",
+  "skill": "outputs\\mvp_vertical_slice\\baseline_001\\compact_skill_v1.md",
+  "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
+  "output": "outputs\\manual_rightcode_probe\\case001_compact_v1\\review.json",
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 4,
+  "rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "usage": {
+    "prompt_tokens": 846,
+    "completion_tokens": 297,
+    "total_tokens": 1143,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 22
+    }
+  },
+  "raw_content_preview": "{\"findings\":[{\"rule_id\":\"R001\",\"issue\":\"Authentication is underspecified: the spec only says login is required and does not define the authentication method, required roles/scopes, or behavior on authentication failure.\",\"severity\":\"high\",\"evidence\":\"Notes: The endpoint requires login.\"},{\"rule_id\":\"R002\",\"issue\":\"Request field constraints are incomplete: required vs optional fields, defaults, string length limits, phone format, avatar_url URL validation, and user_id constraints are not specifie"
+}

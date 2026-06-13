@@ -1,0 +1,130 @@
+{
+  "case_id": "auth_access_control_001",
+  "backend": "offline_deterministic",
+  "source": "installed",
+  "installed_skill_id": "secure_code_review",
+  "variants": [
+    "installed_v1",
+    "installed_v2",
+    "active_installed"
+  ],
+  "scores": {
+    "installed_v1": 0.6,
+    "installed_v2": 1.0,
+    "active_installed": 1.0
+  },
+  "costs": {
+    "installed_v1": 109,
+    "installed_v2": 184,
+    "active_installed": 184
+  },
+  "false_positives": {
+    "installed_v1": 0,
+    "installed_v2": 0,
+    "active_installed": 0
+  },
+  "metrics": {
+    "installed_v2_over_installed_v1_gain": 0.4,
+    "active_installed_over_installed_v1_gain": 0.4,
+    "active_installed_over_installed_v2_gain": 0.0
+  },
+  "run_metadata": {
+    "installed_v1": {
+      "run_id": "auth_access_control_001::offline_deterministic::installed_v1",
+      "case_id": "auth_access_control_001",
+      "backend": "offline_deterministic",
+      "variant": "installed_v1",
+      "task_family": "auth_access_control",
+      "activated_capability_group": "out_of_scope_guard",
+      "out_of_scope": true,
+      "unsupported_task_family": "auth_access_control",
+      "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+      "target_hash": "7c143a54c706d61566c38e9fcad85d4ace4404fadf5e32d72e3b2d84cc222cca",
+      "skill_hash": "9f498c16c81acf64979cfbce106c7615875cbb357441acc83124a1b2811858ca",
+      "manifest_hash": "a11d823e0aca5a800b13ccd7d9a6d692922ffba487e0de02da926122303f7701",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-12T11:38:30.782850+00:00",
+      "cost": null,
+      "tokens": 109,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "estimated from skill text only",
+      "verifier_feedback_type": "missing_capability",
+      "active_pointer_snapshot": {
+        "skill_id": "secure_code_review",
+        "active_version": "v2",
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "updated_at": "2026-06-12T11:38:15.443320+00:00"
+      }
+    },
+    "installed_v2": {
+      "run_id": "auth_access_control_001::offline_deterministic::installed_v2",
+      "case_id": "auth_access_control_001",
+      "backend": "offline_deterministic",
+      "variant": "installed_v2",
+      "task_family": "auth_access_control",
+      "activated_capability_group": "auth_access_control",
+      "out_of_scope": false,
+      "unsupported_task_family": null,
+      "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "target_hash": "7c143a54c706d61566c38e9fcad85d4ace4404fadf5e32d72e3b2d84cc222cca",
+      "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+      "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-12T11:38:30.790925+00:00",
+      "cost": null,
+      "tokens": 184,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "estimated from skill text only",
+      "verifier_feedback_type": "pass",
+      "active_pointer_snapshot": {
+        "skill_id": "secure_code_review",
+        "active_version": "v2",
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "updated_at": "2026-06-12T11:38:15.443320+00:00"
+      }
+    },
+    "active_installed": {
+      "run_id": "auth_access_control_001::offline_deterministic::active_installed",
+      "case_id": "auth_access_control_001",
+      "backend": "offline_deterministic",
+      "variant": "active_installed",
+      "task_family": "auth_access_control",
+      "activated_capability_group": "auth_access_control",
+      "out_of_scope": false,
+      "unsupported_task_family": null,
+      "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "target_hash": "7c143a54c706d61566c38e9fcad85d4ace4404fadf5e32d72e3b2d84cc222cca",
+      "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+      "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-12T11:38:30.802157+00:00",
+      "cost": null,
+      "tokens": 184,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "estimated from skill text only",
+      "verifier_feedback_type": "pass",
+      "active_pointer_snapshot": {
+        "skill_id": "secure_code_review",
+        "active_version": "v2",
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "updated_at": "2026-06-12T11:38:15.443320+00:00"
+      }
+    }
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\auth_access_control_001",
+  "unavailable_variants": [
+    {
+      "variant": "candidate_v3_package",
+      "reason": "no candidate package exists for `auth_access_control_001`"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "attempt": "A1_skill_v1",
+  "task_family": "access_control",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Privileged endpoints need explicit role and scope matrix",
+      "severity": "high",
+      "evidence_span": "delete_invoice() accepts user_id but checks only is_authenticated",
+      "recommended_fix": "Define required roles/scopes per operation and verify them before mutation."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Object access must bind the resource owner or tenant boundary",
+      "severity": "high",
+      "evidence_span": "",
+      "recommended_fix": "Check authorization."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Authorization failures need non-leaking error envelope",
+      "severity": "medium",
+      "evidence_span": "raw permission details can reveal whether an invoice id exists",
+      "recommended_fix": "Return consistent 403/404 style envelopes with request_id and no internal policy details."
+    }
+  ]
+}

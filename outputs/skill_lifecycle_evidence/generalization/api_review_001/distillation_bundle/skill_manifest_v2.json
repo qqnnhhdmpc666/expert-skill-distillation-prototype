@@ -1,0 +1,23 @@
+{
+  "skill_id": "api_review_001",
+  "version": "v2",
+  "task_family": "api_or_code_review",
+  "capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "event",
+    "capability_id",
+    "evidence_span"
+  ],
+  "metadata": {
+    "repair_action": "rewrite_output_contract",
+    "operator_id": "op_rewrite_output_contract_generic"
+  }
+}

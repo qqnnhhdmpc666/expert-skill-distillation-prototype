@@ -1,0 +1,29 @@
+[
+  {
+    "candidate_id": "cand_01",
+    "natural_language_capability": "Production audit retention/export",
+    "normalized_capability_id": "CONFIG_AUDIT_EXPORT",
+    "source_span": "audit retention",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "audit retention",
+      "audit"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_02",
+    "natural_language_capability": "Environment-aware config guard",
+    "normalized_capability_id": "CONFIG_ENV_GUARD",
+    "source_span": "Config review must separate prod from dev/test",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "separate prod from dev/test",
+      "prod",
+      "dev/test"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  }
+]

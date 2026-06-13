@@ -1,0 +1,34 @@
+{
+  "run_id": "harbor_non_oracle_upload_001",
+  "backend": "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+  "task": "real-upload-security-review",
+  "agent": "nop",
+  "oracle": false,
+  "environment": "docker",
+  "entered_harbor": true,
+  "entered_container_task": true,
+  "agent_read_target_files": false,
+  "agent_generated_report": false,
+  "verifier_ran": true,
+  "reward": 0.0,
+  "passed": false,
+  "failure_feedback": {
+    "feedback_type": "missing_report",
+    "message": "/app/security_report.json was not created",
+    "missing_capabilities": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "schema_errors": []
+  },
+  "artifacts": {
+    "job_result": "jobs/harbor_non_oracle_upload_001/result.json",
+    "trial_result": "jobs/harbor_non_oracle_upload_001/real-upload-security-review__YfzBaaN/result.json",
+    "verifier_result": "jobs/harbor_non_oracle_upload_001/real-upload-security-review__YfzBaaN/verifier/result.json",
+    "verifier_stdout": "jobs/harbor_non_oracle_upload_001/real-upload-security-review__YfzBaaN/verifier/test-stdout.txt",
+    "trial_log": "jobs/harbor_non_oracle_upload_001/real-upload-security-review__YfzBaaN/trial.log",
+    "job_log": "jobs/harbor_non_oracle_upload_001/job.log"
+  },
+  "boundary": "This is a real Harbor/Docker non-oracle baseline using the nop agent. It proves non-oracle Harbor execution and verifier feedback plumbing, but it intentionally does not solve the task."
+}

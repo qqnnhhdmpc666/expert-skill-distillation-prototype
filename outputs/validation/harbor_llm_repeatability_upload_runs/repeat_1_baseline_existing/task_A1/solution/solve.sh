@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+cat > /app/security_report.json <<'JSON'
+{
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "evidence_span": "if filename.endswith((\".png\", \".jpg\")): saves file bytes without MIME, magic-byte, or size validation",
+      "recommended_fix": "Validate MIME type, file signature, size, and extension together before storage; reject mismatches."
+    },
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "evidence_span": "save(str(UPLOAD_ROOT / filename), file_bytes) with UPLOAD_ROOT=/public/uploads joins a user filename into a public path",
+      "recommended_fix": "Generate server-side object names, normalize paths, enforce a storage root, and store uploads outside executable public directories."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "evidence_span": "config.yaml has audit_log_retention_days empty and upload/download handlers do not write audit events",
+      "recommended_fix": "Record actor, object id, action, result, timestamp, and configure audit retention/export."
+    }
+  ]
+}
+JSON
+echo "security_report.json written"

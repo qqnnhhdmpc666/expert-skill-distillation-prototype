@@ -1,0 +1,11 @@
+{
+  "pass": false,
+  "feedback_type": "evidence_gap",
+  "missing_capabilities": [],
+  "evidence_errors": [
+    "AUTH_OBJECT_OWNERSHIP missing evidence_span",
+    "AUTH_OBJECT_OWNERSHIP has weak recommended_fix"
+  ],
+  "false_positive_capabilities": [],
+  "coverage": 1.0
+}

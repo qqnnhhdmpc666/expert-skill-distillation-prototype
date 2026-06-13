@@ -1,0 +1,17 @@
+[
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+    "skill_file": "skills/skill_v2/SKILL.md#DATA_REQUIRED_FIELD_COVERAGE"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+    "skill_file": "skills/skill_v2/SKILL.md#DATA_TEMPORAL_SPLIT_GUARD"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+    "skill_file": "skills/skill_v2/SKILL.md#DATA_LABEL_ENUM_ALIGNMENT"
+  }
+]

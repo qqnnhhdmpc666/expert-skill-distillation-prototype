@@ -1,0 +1,21 @@
+{
+  "attempt": "active_installed",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "OpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    },
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Overbroad finding control",
+      "evidence_span": "OpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span",
+      "recommended_fix": "Reject findings not grounded in target spans."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:api_or_code_review"
+  ]
+}

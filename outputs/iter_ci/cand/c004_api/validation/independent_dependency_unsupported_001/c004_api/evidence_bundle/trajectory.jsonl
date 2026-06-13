@@ -1,0 +1,2 @@
+{"event": "variant_started", "created_at": "2026-06-12T18:07:08.044833+00:00", "case_id": "independent_dependency_unsupported_001", "backend": "live_llm_text", "variant": "c004_api", "status": "completed"}
+{"event": "verifier_feedback", "feedback_type": "pass", "passed": true}

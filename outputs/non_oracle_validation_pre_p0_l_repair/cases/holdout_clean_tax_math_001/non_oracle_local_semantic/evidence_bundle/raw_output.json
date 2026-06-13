@@ -1,0 +1,13 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "target.md: Requested output schema: capability_id, evidence_span, recommended_fix",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    }
+  ],
+  "notes": []
+}

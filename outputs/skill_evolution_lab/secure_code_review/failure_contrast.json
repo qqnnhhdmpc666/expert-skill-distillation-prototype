@@ -1,0 +1,22 @@
+[
+  {
+    "case_id": "config_security_001",
+    "artifact": "outputs/live_llm_repair_loop_config_security_001",
+    "a1_failure_pattern": "missing_capability",
+    "a2_success_pattern": "none",
+    "contrastive_lesson": "A2 still misses the same capability set: ['CONFIG_ENV_GUARD'].",
+    "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+    "candidate_patch": "do_not_promote_without_manifest_diff_and_behavior_gain",
+    "patch_risk": "skill_to_execution_gap"
+  },
+  {
+    "case_id": "api_review_001",
+    "artifact": "outputs/live_llm_repair_loop_api_review_001",
+    "a1_failure_pattern": "missing_capability",
+    "a2_success_pattern": "none",
+    "contrastive_lesson": "A2 still misses the same capability set: ['API_OVERBROAD_RISK'].",
+    "text_gradient": "Patch operators must verify a manifest diff before rerun; no-op capability patches must be rejected early.",
+    "candidate_patch": "do_not_promote_without_manifest_diff_and_behavior_gain",
+    "patch_risk": "repair_operator_noop_or_patch_application_failure"
+  }
+]

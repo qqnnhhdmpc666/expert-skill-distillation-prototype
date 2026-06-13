@@ -351,12 +351,6 @@ def run_one(
         }
 
 
-def read_json(path: Path, default: Any = None) -> Any:
-    if not path.exists():
-        return default
-    return json.loads(path.read_text(encoding="utf-8-sig"))
-
-
 def summarize(rows: list[dict[str, Any]], source_status: dict[str, dict[str, Any]], backend: str) -> dict[str, Any]:
     completed = [row for row in rows if row.get("status") == "completed"]
     pass_count = sum(1 for row in completed if row.get("effective_pass"))

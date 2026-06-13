@@ -1,0 +1,9 @@
+{"stage": "A1", "event": "skill_loaded", "skill_manifest_artifact": "outputs/harbor_llm_repair_loop_upload_001/A1/skill_manifest.json", "capabilities": ["UPLOAD_PATH_ISOLATION"]}
+{"stage": "A1", "event": "target_read_set", "read_files": ["/app/target/app.py", "/app/target/config.yaml"], "skill_files": ["/app/skill/SKILL.md", "/app/skill/manifest.json"]}
+{"stage": "A1", "event": "agent_run_completed", "process": {"returncode": 0, "job_name": "harbor_llm_repair_loop_A1"}, "model_call_present": true}
+{"stage": "A1", "event": "verifier_feedback", "feedback_type": "missing_capability", "pass": false, "scores": {"capability_coverage_score": 0.3333, "evidence_binding_score": 1.0, "output_contract_score": 1.0, "regression_safety_score": null}}
+{"stage": "revision", "event": "typed_repair", "repair_action": "patch_capability", "gate_decision": "accept"}
+{"stage": "A2", "event": "skill_loaded", "skill_manifest_artifact": "outputs/harbor_llm_repair_loop_upload_001/A2/skill_manifest.json", "capabilities": ["UPLOAD_TYPE_MAGIC", "UPLOAD_PATH_ISOLATION", "UPLOAD_AUDIT_RETENTION"]}
+{"stage": "A2", "event": "target_read_set", "read_files": ["/app/target/app.py", "/app/target/config.yaml"], "skill_files": ["/app/skill/SKILL.md", "/app/skill/manifest.json"]}
+{"stage": "A2", "event": "agent_run_completed", "process": {"returncode": 0, "job_name": "harbor_llm_repair_loop_A2"}, "model_call_present": true}
+{"stage": "A2", "event": "verifier_feedback", "feedback_type": "pass", "pass": true, "scores": {"capability_coverage_score": 1.0, "evidence_binding_score": 1.0, "output_contract_score": 1.0, "regression_safety_score": null}}

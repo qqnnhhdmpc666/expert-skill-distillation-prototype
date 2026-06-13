@@ -1,0 +1,31 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "target.md: Requested output schema: capability_id, evidence_span, recommended_fix",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    },
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Role and scope authorization",
+      "evidence_span": "target.md: defensively. Snippet: archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial p",
+      "recommended_fix": "Check required role/scope before mutation."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Object ownership boundary",
+      "evidence_span": "target.md: e_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in",
+      "recommended_fix": "Bind resource access to tenant and owner."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Non-leaking authorization error",
+      "evidence_span": "target.md: or owner_id filtering. The denial path returns invoice_id in the error body. Requested output schema: capability_id, evidence_span, reco",
+      "recommended_fix": "Use consistent 403/404 envelope with request id."
+    }
+  ],
+  "notes": []
+}

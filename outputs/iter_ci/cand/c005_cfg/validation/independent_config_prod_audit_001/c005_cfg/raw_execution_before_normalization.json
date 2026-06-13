@@ -1,0 +1,13 @@
+{
+  "attempt": "c005_cfg",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit enabled without retention duration or export sink",
+      "evidence_span": "target.md: prod.yml: audit.enabled=true but retention_days/export_sink empty.",
+      "recommended_fix": "Set retention_days and export_sink in the production audit configuration."
+    }
+  ],
+  "notes": []
+}

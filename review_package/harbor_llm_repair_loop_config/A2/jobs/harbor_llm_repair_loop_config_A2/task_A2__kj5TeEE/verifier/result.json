@@ -1,0 +1,16 @@
+{
+  "report_exists": true,
+  "expected": [
+    "CONFIG_HARDCODED_SECRET",
+    "CONFIG_INSECURE_HTTP",
+    "CONFIG_PROD_DEBUG"
+  ],
+  "seen": [
+    "CONFIG_HARDCODED_SECRET",
+    "CONFIG_INSECURE_HTTP",
+    "CONFIG_PROD_DEBUG"
+  ],
+  "missing": [],
+  "false_positive": [],
+  "schema_errors": []
+}

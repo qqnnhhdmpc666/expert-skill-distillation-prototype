@@ -1,0 +1,22 @@
+{
+  "backend_type": "harbor_live_llm_security_agent",
+  "oracle": false,
+  "llm": true,
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 1,
+  "usage": {
+    "prompt_tokens": 466,
+    "completion_tokens": 211,
+    "total_tokens": 677,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 69
+    }
+  },
+  "latency_ms": 13779
+}

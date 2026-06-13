@@ -184,37 +184,175 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run-validity-cards":
         return run_script(["scripts/run_skill_revision_validity_cards.py"])
     if args.command == "run-suite":
-        return run_script(["scripts/run_generalization_suite.py", "--backend", args.backend, "--scenarios", args.scenarios])
+        return run_script(
+            [
+                "scripts/run_generalization_suite.py",
+                "--backend",
+                args.backend,
+                "--scenarios",
+                args.scenarios,
+            ]
+        )
     if args.command == "run-skill":
-        return run_script(["scripts/run_installed_skill.py", "--installed", args.installed, "--case", args.case, "--backend", args.backend])
+        return run_script(
+            [
+                "scripts/run_installed_skill.py",
+                "--installed",
+                args.installed,
+                "--case",
+                args.case,
+                "--backend",
+                args.backend,
+            ]
+        )
     if args.command == "compare-variants":
-        return run_script(["scripts/run_skill_marginal_utility.py", "--backend", args.backend, "--cases", args.cases, "--source", args.source, "--installed-skill", args.installed_skill])
+        return run_script(
+            [
+                "scripts/run_skill_marginal_utility.py",
+                "--backend",
+                args.backend,
+                "--cases",
+                args.cases,
+                "--source",
+                args.source,
+                "--installed-skill",
+                args.installed_skill,
+            ]
+        )
     if args.command == "defensive-security-mini-suite":
-        return run_script(["scripts/run_defensive_security_mini_suite.py", "--installed", args.installed, "--backend", args.backend])
+        return run_script(
+            [
+                "scripts/run_defensive_security_mini_suite.py",
+                "--installed",
+                args.installed,
+                "--backend",
+                args.backend,
+            ]
+        )
     if args.command == "holdout-security-mini-suite":
-        return run_script(["scripts/run_holdout_security_mini_suite.py", "--installed", args.installed, "--backend", args.backend])
+        return run_script(
+            [
+                "scripts/run_holdout_security_mini_suite.py",
+                "--installed",
+                args.installed,
+                "--backend",
+                args.backend,
+            ]
+        )
     if args.command == "non-oracle-validation":
         return run_script(["scripts/run_non_oracle_validation.py", "--installed", args.installed])
     if args.command == "live-llm-validation":
-        return run_script(["scripts/run_live_llm_validation.py", "--installed", args.installed, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds])
+        return run_script(
+            [
+                "scripts/run_live_llm_validation.py",
+                "--installed",
+                args.installed,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "live-contract-validation":
-        return run_script(["scripts/run_live_contract_validation.py", "--installed", args.installed, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds])
+        return run_script(
+            [
+                "scripts/run_live_contract_validation.py",
+                "--installed",
+                args.installed,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "improvement-demo":
-        return run_script(["scripts/run_improvement_demo.py", "--installed", args.installed, "--source", args.source, "--budget", args.budget, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds])
+        return run_script(
+            [
+                "scripts/run_improvement_demo.py",
+                "--installed",
+                args.installed,
+                "--source",
+                args.source,
+                "--budget",
+                args.budget,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "contract-improvement-demo":
-        return run_script(["scripts/run_contract_improvement_demo.py", "--installed", args.installed, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds])
+        return run_script(
+            [
+                "scripts/run_contract_improvement_demo.py",
+                "--installed",
+                args.installed,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "iterative-contract-improvement":
-        return run_script(["scripts/run_iterative_contract_improvement.py", "--installed", args.installed, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds, "--budget", args.budget])
+        return run_script(
+            [
+                "scripts/run_iterative_contract_improvement.py",
+                "--installed",
+                args.installed,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+                "--budget",
+                args.budget,
+            ]
+        )
     if args.command == "activation-ablation":
         return run_script(["scripts/run_task_conditioned_activation_ablation.py", "--installed", args.installed, "--backend", args.backend])
     if args.command == "live-mechanism-ablation":
-        return run_script(["scripts/run_live_mechanism_ablation.py", "--installed", args.installed, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds])
+        return run_script(
+            [
+                "scripts/run_live_mechanism_ablation.py",
+                "--installed",
+                args.installed,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "advanced-evolve":
         return run_script(["scripts/run_advanced_candidate_evolution.py", "--installed", args.installed, "--budget", args.budget])
     if args.command == "defensive-security-mini-suite-extended":
         return run_script(["scripts/run_extended_defensive_security_mini_suite.py", "--installed", args.installed, "--backend", args.backend])
     if args.command == "external-generalization":
-        return run_script(["scripts/run_external_generalization_validation.py", "--installed", args.installed, "--backend", args.backend, "--base-url", args.base_url, "--model", args.model, "--timeout-seconds", args.timeout_seconds])
+        return run_script(
+            [
+                "scripts/run_external_generalization_validation.py",
+                "--installed",
+                args.installed,
+                "--backend",
+                args.backend,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "open-source-readiness":
         return run_script(["scripts/check_open_source_readiness.py"])
     if args.command == "public-release-readiness":
@@ -224,9 +362,29 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "grand-maturity-report":
         return run_script(["scripts/build_grand_autonomous_maturity_reports.py"])
     if args.command == "evolve":
-        return run_script(["scripts/run_skill_evolution_lab.py", "--suite", args.suite, "--budget", args.budget, "--gate", args.gate])
+        return run_script(
+            [
+                "scripts/run_skill_evolution_lab.py",
+                "--suite",
+                args.suite,
+                "--budget",
+                args.budget,
+                "--gate",
+                args.gate,
+            ]
+        )
     if args.command == "swebench-infra-unblock":
-        return run_script(["scripts/run_swebench_infra_unblock.py", "--run-id", args.run_id, "--instance-id", args.instance_id, "--max-retries", args.max_retries])
+        return run_script(
+            [
+                "scripts/run_swebench_infra_unblock.py",
+                "--run-id",
+                args.run_id,
+                "--instance-id",
+                args.instance_id,
+                "--max-retries",
+                args.max_retries,
+            ]
+        )
     if args.command == "representative-matrix":
         return run_script(["scripts/build_representative_validation_matrix.py"])
     if args.command == "harbor-skeleton":
@@ -238,16 +396,55 @@ def main(argv: list[str] | None = None) -> int:
         if args.external_command == "prepare":
             command.extend(["--dataset", args.dataset, "--limit", args.limit, "--selection", args.selection, "--seed", args.seed])
         elif args.external_command == "run":
-            command.extend(["--run-id", args.run_id, "--dataset", args.dataset, "--variants", args.variants, "--installed", args.installed, "--max-workers", args.max_workers, "--backend", args.backend])
+            command.extend(
+                [
+                    "--run-id",
+                    args.run_id,
+                    "--dataset",
+                    args.dataset,
+                    "--variants",
+                    args.variants,
+                    "--installed",
+                    args.installed,
+                    "--max-workers",
+                    args.max_workers,
+                    "--backend",
+                    args.backend,
+                ]
+            )
         elif args.external_command == "summarize":
             command.extend(["--run-id", args.run_id])
         elif args.external_command == "gold-smoke":
-            command = ["scripts/run_swebench_gold_patch_smoke.py", "--run-id", args.run_id, "--dataset", args.dataset, "--instance-id", args.instance_id, "--backend", args.backend, "--max-workers", args.max_workers, "--timeout-seconds", args.timeout_seconds]
+            command = [
+                "scripts/run_swebench_gold_patch_smoke.py",
+                "--run-id",
+                args.run_id,
+                "--dataset",
+                args.dataset,
+                "--instance-id",
+                args.instance_id,
+                "--backend",
+                args.backend,
+                "--max-workers",
+                args.max_workers,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
             if args.attempt_mirrors:
                 command.append("--attempt-mirrors")
         return run_script(command)
     if args.command == "harbor-swebench-smoke":
-        return run_script(["scripts/run_harbor_swebench_smoke.py", "--source-run", args.source_run, "--instances", args.instances, "--variants", args.variants])
+        return run_script(
+            [
+                "scripts/run_harbor_swebench_smoke.py",
+                "--source-run",
+                args.source_run,
+                "--instances",
+                args.instances,
+                "--variants",
+                args.variants,
+            ]
+        )
     if args.command == "export-review-package":
         return run_script(["scripts/export_review_package.py"])
     if args.command == "run-holdout":

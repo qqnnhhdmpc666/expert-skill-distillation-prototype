@@ -1,0 +1,35 @@
+{
+  "variant": "installed_runtime",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "v1",
+    "task_family": "upload_security",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "upload_security_001",
+      "package_role": "installed_runtime",
+      "package_family_scope": "upload_security_only_for_p0_runtime_acceptance"
+    }
+  },
+  "skill_text_chars": 536,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v1\n\nThis installed runtime is bounded to the controlled `upload_security_001` task family.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Runtime Case\n\n- `case_id`: `upload_security_001`\n- `task_family`: `upload_security`\n\n## Active Capabilities\n\n- `UPLOAD_PATH_ISOLATION`\n\n## Output Contract\n\n- `capability_id`\n- ",
+  "provenance": {
+    "runtime_source": "installed_skill_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+    "skill_version": "v1",
+    "manifest_hash": "7533066d1761226eda43c7528c8ef45d977bec6e15edae928e0cc8e62360410d",
+    "skill_hash": "6aa4603e9f9c457b8ee42bad9ee22ff52aff27051835626f92c30075785e17a5"
+  }
+}

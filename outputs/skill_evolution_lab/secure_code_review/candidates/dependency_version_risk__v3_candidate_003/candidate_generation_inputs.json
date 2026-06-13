@@ -1,0 +1,10 @@
+{
+  "source_type": "limitation_summary",
+  "case_id": "mini_dependency_version_risk_001",
+  "failure_or_limitation": "dependency/version risk is unsupported and must remain outside secure_code_review core capability",
+  "capability_group_changed": "dependency_version_risk",
+  "scope_expansion_risk": "high",
+  "risk_case_id": "mini_dependency_version_risk_001",
+  "mini_suite_status": "retained",
+  "verifier_only_oracle_fields_read": false
+}

@@ -1,0 +1,19 @@
+{
+  "case_id": "api_review_001",
+  "a1_failure_pattern": "output_contract_error",
+  "a2_outcome": "pass",
+  "repair_action": "rewrite_output_contract",
+  "contrastive_lesson": "Capability presence is insufficient when the output contract is loose; repair must tighten how evidence and fixes are emitted.",
+  "persistent_memory_note": {
+    "before_capabilities": [
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK"
+    ],
+    "after_capabilities": [
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK"
+    ],
+    "operator_id": "op_rewrite_output_contract_generic",
+    "preferred_action": "rewrite_output_contract"
+  }
+}

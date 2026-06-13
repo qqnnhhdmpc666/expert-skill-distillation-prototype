@@ -1,0 +1,25 @@
+{
+  "case_id": "prod_config_audit",
+  "title": "Production configuration security review",
+  "task_family": "config_security",
+  "expected_capabilities": [
+    "CONFIG_AUDIT_EXPORT"
+  ],
+  "feedback_type": "false_positive",
+  "patch_operator": "add_environment_negative_guard",
+  "a0_pass": false,
+  "a1_pass": false,
+  "a2_pass": true,
+  "a0_coverage": 0.0,
+  "a1_coverage": 1.0,
+  "a2_coverage": 1.0,
+  "v1_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_SECRET_REF",
+    "CONFIG_TLS"
+  ],
+  "v2_capabilities": [
+    "CONFIG_AUDIT_EXPORT"
+  ],
+  "artifact_dir": "cases\\prod_config_audit"
+}

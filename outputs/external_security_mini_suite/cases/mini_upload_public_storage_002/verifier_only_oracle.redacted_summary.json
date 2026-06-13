@@ -1,0 +1,8 @@
+{
+  "case_id": "mini_upload_public_storage_002",
+  "expected_capability_count": 3,
+  "expected_capability_group": "upload_security",
+  "clean_or_negative": false,
+  "unsupported_limitation": false,
+  "note": "Full oracle fields are not written into runner inputs."
+}

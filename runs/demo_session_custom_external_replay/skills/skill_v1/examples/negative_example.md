@@ -1,0 +1,3 @@
+- 只说存在安全风险，但没有 evidence_span。
+- 把 verifier contract 中的 expected ids 当成答案提前展示给 agent。
+- 只生成 checklist，不生成可安装、可回滚、可审计的技能包文件。

@@ -1,0 +1,10 @@
+{
+  "backend_type": "non_oracle_local_semantic_agent",
+  "oracle": false,
+  "llm": false,
+  "generated_by": "agents/non_oracle_local_security_agent.py",
+  "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\upload_security_001\\skills\\skill_v2",
+  "target_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\upload_security_001\\target_asset",
+  "timestamp": "2026-06-07T23:58:03.320646+00:00",
+  "latency_ms": 3
+}

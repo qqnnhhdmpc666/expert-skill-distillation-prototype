@@ -1,0 +1,50 @@
+{
+  "skill_id": "software_patch_review",
+  "version": "v1",
+  "task_family": "software_patch_review",
+  "capabilities": [
+    "PATCH_TEST_FAILURE_REPRO",
+    "PATCH_MINIMAL_CODE_CHANGE",
+    "PATCH_REGRESSION_VALIDATION"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "runtime_case_id": "software_patch_review_001",
+    "package_role": "installed_runtime",
+    "package_family_scope": "software_patch_review_and_swebench_smoke",
+    "supported_task_families": [
+      "software_patch_review"
+    ],
+    "out_of_scope_group": "out_of_scope_guard",
+    "external_adapters": [
+      "swebench_lite_smoke"
+    ],
+    "capability_groups": [
+      {
+        "name": "software_patch_review",
+        "task_families": [
+          "software_patch_review"
+        ],
+        "capabilities": [
+          "PATCH_TEST_FAILURE_REPRO",
+          "PATCH_MINIMAL_CODE_CHANGE",
+          "PATCH_REGRESSION_VALIDATION"
+        ]
+      },
+      {
+        "name": "out_of_scope_guard",
+        "task_families": [],
+        "capabilities": []
+      }
+    ]
+  }
+}

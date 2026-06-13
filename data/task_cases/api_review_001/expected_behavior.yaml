@@ -1,0 +1,7 @@
+{
+  "expected_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "forbidden_capabilities": []
+}

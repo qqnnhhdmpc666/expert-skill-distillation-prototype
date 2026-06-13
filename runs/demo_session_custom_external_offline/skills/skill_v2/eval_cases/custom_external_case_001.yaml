@@ -1,0 +1,6 @@
+scenario_id: "custom_external"
+asset_type: "用户输入文本 / 代码 / 配置 / API 片段"
+success_criteria:
+  - verifier_status == PASS
+  - no missing_rule_ids
+  - output_schema_fields_present

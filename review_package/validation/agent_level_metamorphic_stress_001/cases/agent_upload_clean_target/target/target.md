@@ -1,0 +1,1 @@
+app.py: upload() validates MIME type and file signature, stores a generated UUID name outside public roots, and returns only file_id. config.yaml: audit_log_retention_days=90.

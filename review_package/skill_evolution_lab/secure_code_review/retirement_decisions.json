@@ -1,0 +1,26 @@
+[
+  {
+    "skill_id": "live_llm_config_security_repair_loop",
+    "case_id": "config_security_001",
+    "action": "quarantine",
+    "trigger": "skill_to_execution_gap",
+    "evidence": "outputs/live_llm_repair_loop_config_security_001",
+    "rejected_edit_count": 1
+  },
+  {
+    "skill_id": "live_llm_api_review_repair_loop",
+    "case_id": "api_review_001",
+    "action": "retire",
+    "trigger": "skill_to_execution_gap",
+    "evidence": "outputs/live_llm_repair_loop_api_review_001",
+    "rejected_edit_count": 1
+  },
+  {
+    "skill_id": "data_quality_review_001_v2",
+    "case_id": "data_quality_review_001",
+    "action": "downgrade",
+    "trigger": "no_positive_marginal_gain_or_false_positive_increase",
+    "evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\data_quality_review_001",
+    "rejected_edit_count": 0
+  }
+]

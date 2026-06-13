@@ -1,0 +1,50 @@
+{
+  "normalizer_version": "live_contract_normalizer.v1",
+  "oracle_fields_visible_to_normalizer": false,
+  "out_of_scope": false,
+  "suppressed_findings_count": 0,
+  "finding_traces": [
+    {
+      "index": 0,
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "input_evidence_span": "stores uploads_dir / file.name",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset."
+    },
+    {
+      "index": 1,
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "input_evidence_span": "trusts file.name.endswith('.png')",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset."
+    },
+    {
+      "index": 2,
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "input_evidence_span": "audit.retention_days is unset",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset."
+    }
+  ],
+  "failure_taxonomy_counts": {
+    "schema_error": 0,
+    "missing_evidence": 0,
+    "non_exact_span": 3,
+    "unsupported_evidence": 0,
+    "wrong_capability_group": 0,
+    "over_reporting": 0,
+    "under_reporting": 0,
+    "unsupported_scope": 0,
+    "low_confidence_needed": 0,
+    "normalizer_needed": 3,
+    "model_contract_violation": 0
+  },
+  "evidence_exact_match_rate": 1.0,
+  "normalized_finding_count": 3
+}

@@ -1,0 +1,5 @@
+{
+  "agent": "nop",
+  "report_exists": false,
+  "note": "No agent report was generated. This is the expected failure mode for the non-oracle nop baseline."
+}

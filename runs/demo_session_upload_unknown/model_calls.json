@@ -1,0 +1,13 @@
+[
+  {
+    "步骤": "真实模型模式状态",
+    "provider": "OpenAI-compatible",
+    "model": "未配置",
+    "latency": "-",
+    "input_tokens": "-",
+    "output_tokens": "-",
+    "status": "not_configured",
+    "response_preview": "真实模型模式已切到 live，但当前 Streamlit 进程没有完整 endpoint/key/model 环境变量。",
+    "prompt_preview": "需要在启动 Streamlit 的同一进程环境里设置 OPENAI_BASE_URL / OPENAI_API_KEY / MODEL。"
+  }
+]

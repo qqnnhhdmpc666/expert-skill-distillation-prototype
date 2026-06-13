@@ -1,0 +1,12 @@
+trace_policy:
+  default: evidence_first
+  required_events:
+    - skill_loaded
+    - rule_application
+    - evidence_span_bound
+    - verifier_result
+  intensified_rule_ids:
+    - R005
+    - R006
+    - R007
+    - R008

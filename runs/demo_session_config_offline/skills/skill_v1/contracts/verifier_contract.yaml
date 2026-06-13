@@ -1,0 +1,12 @@
+verifier: coverage_and_schema_gate
+expected_rule_ids:
+  - R004
+  - R006
+  - R007
+required_fields:
+  - finding_id
+  - rule_id
+  - evidence_span
+  - risk_level
+  - recommended_fix
+failure_policy: "verifier 检查配置风险覆盖、schema 完整性和 evidence_span 是否指向具体配置行。"

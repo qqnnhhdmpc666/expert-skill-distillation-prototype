@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_auth_invoice_scope_001",
+  "target_digest": {
+    "chars": 275,
+    "preview": "Task: Review this authorization handler defensively.\n\nSnippet:\ndelete_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id, and returns invoice_id in permission errors.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

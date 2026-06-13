@@ -1,0 +1,28 @@
+{
+  "variant": "skill_v2",
+  "skill": {
+    "skill_id": "data_quality_review_001",
+    "version": "v2",
+    "task_family": "data_quality_review",
+    "capabilities": [
+      "DATA_REQUIRED_FIELD_COVERAGE",
+      "DATA_TEMPORAL_SPLIT_GUARD",
+      "DATA_LABEL_ENUM_ALIGNMENT"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "repair_action": "add_observation_step"
+    }
+  },
+  "skill_text_chars": 809,
+  "skill_text_preview": "# Defensive Secure Review Skill data_quality_review_001 v2\n\nSafety boundary: defensive review only. Do not generate exploits, attack chains, or real-target automation.\n\nTask family: `data_quality_review`\n\n## Capabilities\n\n### DATA_REQUIRED_FIELD_COVERAGE: Required field coverage\n- Evidence: row 1042 has blank country_code in a required column\n- Fix: Enforce non-null checks and reject rows missing required fields.\n\n### DATA_TEMPORAL_SPLIT_GUARD: Temporal split guard\n- Evidence: train.csv includes"
+}

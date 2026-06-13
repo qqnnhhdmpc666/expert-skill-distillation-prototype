@@ -1,6 +1,6 @@
 {
   "run_id": "posterior_revision_signal_audit_001",
-  "created_at": "2026-06-06T06:36:06.704069+00:00",
+  "created_at": "2026-06-06T13:31:43.091528+00:00",
   "positioning": "method exploration over existing toy artifacts; not a benchmark",
   "candidate_method_statement": "Posterior skill revision treats a generated skill as a deployable hypothesis, not a final artifact. The method question is whether environment/verifier feedback can diagnose residual failure, choose a type-specific revision action, validate against regressions, and allocate trace evidence to high-risk rules under budget.",
   "related_work_delta": {

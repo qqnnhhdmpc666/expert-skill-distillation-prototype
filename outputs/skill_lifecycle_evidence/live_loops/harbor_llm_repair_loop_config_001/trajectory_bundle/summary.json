@@ -1,0 +1,10 @@
+{
+  "run_id": "harbor_llm_repair_loop_config_001",
+  "kind": "harbor_llm_repair_loop",
+  "source_artifact": "outputs/harbor_llm_repair_loop_config_001",
+  "a1_pass": false,
+  "a2_pass": true,
+  "feedback_type": "output_contract_error",
+  "repair_action": "rewrite_output_contract",
+  "boundary": "This is one controlled Harbor LLM repair loop for a configuration-security task. The repair tightens the output contract; it does not prove broad Harbor LLM multi-task generalization."
+}

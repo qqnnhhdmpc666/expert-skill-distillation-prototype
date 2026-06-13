@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_config_prod_audit_001",
+  "target_digest": {
+    "chars": 321,
+    "preview": "Task: Review this config defensively and separate production findings from dev-only settings.\n\nSnippet:\nprod.yaml: audit.enabled=true but retention_days/export_sink empty. dev.yaml: dev.api_token is set and dev.debug=true; these are marked dev-only.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

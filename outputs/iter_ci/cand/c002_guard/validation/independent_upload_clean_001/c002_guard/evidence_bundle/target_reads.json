@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_upload_clean_001",
+  "target_digest": {
+    "chars": 263,
+    "preview": "Task: Independently authored holdout: clean upload review.\n\nSnippet:\nupload.py: content signature and extension are both checked; server_filename is generated; audit_log_retention_days is 90.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

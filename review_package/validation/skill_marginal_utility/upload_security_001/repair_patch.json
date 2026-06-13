@@ -1,0 +1,17 @@
+{
+  "feedback_type": "missing_capability",
+  "repair_action": "patch_capability",
+  "before_capabilities": [
+    "UPLOAD_PATH_ISOLATION"
+  ],
+  "after_capabilities": [
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "operator_id": "op_patch_capability_generic",
+  "operator_strategy": "add_missing_expected",
+  "operator_description": "Append missing expected capabilities while keeping the current package compact.",
+  "selection_score": 152,
+  "preferred_action": "patch_capability"
+}

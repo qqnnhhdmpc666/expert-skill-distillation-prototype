@@ -1,0 +1,15 @@
+{
+  "variant": "no_skill",
+  "skill": null,
+  "skill_text_chars": 0,
+  "skill_text_preview": "",
+  "provenance": {
+    "runtime_source": "no_skill",
+    "skill_package_path": "none",
+    "skill_version": "none",
+    "manifest_hash": "none",
+    "skill_hash": "none",
+    "run_id": "upload_security_001::offline_deterministic::no_skill",
+    "schema_version": "skill_marginal_utility.v1"
+  }
+}

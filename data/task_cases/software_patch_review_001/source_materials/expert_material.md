@@ -1,0 +1,1 @@
+Patch review should identify the failing behavior, propose the smallest source change, and name the regression test that validates the patch. Avoid broad rewrites when a local expression fix is enough.

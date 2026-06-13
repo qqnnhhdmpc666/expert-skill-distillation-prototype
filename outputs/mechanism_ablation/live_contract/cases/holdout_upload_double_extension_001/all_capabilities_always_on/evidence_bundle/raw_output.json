@@ -1,0 +1,27 @@
+{
+  "attempt": "all_capabilities_always_on",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Missing magic byte validation on uploaded files",
+      "evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty.",
+      "recommended_fix": "Use magic bytes detection (e.g., python-magic) to validate the actual file type instead of relying solely on the file extension.",
+      "capability_group": "all_capabilities_always_on",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Empty audit log retention configuration",
+      "evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty.",
+      "recommended_fix": "Set a non-empty retention period in settings.toml, such as audit_log_retention_days = 90, to ensure audit logs are retained for a defined period.",
+      "capability_group": "all_capabilities_always_on",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

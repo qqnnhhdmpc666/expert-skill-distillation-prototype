@@ -1,0 +1,16 @@
+  1/1 Mean: 0.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:00:27 0:00:00Results written to /mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/validation/harbor_llm_repeatability_upload_runs/repeat_2/A1/jobs/harbor_llm_repair_loop_A1/result.json
+        upload-security-llm-agent on adhoc         
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Metric              ┃ Value                     ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Agent               │ upload-security-llm-agent │
+│ Dataset             │ adhoc                     │
+│ Trials              │ 1                         │
+│ Errors              │ 0                         │
+│                     │                           │
+│ Mean                │ 0.000                     │
+│                     │                           │
+│ Reward Distribution │                           │
+│   reward = 0.0      │ 1                         │
+└─────────────────────┴───────────────────────────┘
+

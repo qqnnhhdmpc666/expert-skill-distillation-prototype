@@ -1,0 +1,15 @@
+verifier: coverage_and_schema_gate
+expected_rule_ids:
+  - R002
+  - R004
+  - R005
+  - R006
+  - R007
+  - R008
+required_fields:
+  - finding_id
+  - rule_id
+  - evidence_span
+  - risk_level
+  - recommended_fix
+failure_policy: "verifier 会根据从专家材料和目标对象推断出的 rule ids 检查覆盖率，并要求 finding_id/rule_id/evidence_span/risk_level/recommended_fix。"

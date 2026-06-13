@@ -1,0 +1,32 @@
+[
+  {
+    "attempt": "A0",
+    "skill_version": "no_skill",
+    "status": "FAIL",
+    "failure_type": "missing_rule",
+    "observed_rule_ids": "-",
+    "missing_rule_ids": "R004, R006, R007",
+    "token_cost": 64,
+    "latency_ms": 510
+  },
+  {
+    "attempt": "A1",
+    "skill_version": "v1",
+    "status": "FAIL",
+    "failure_type": "output_contract_error",
+    "observed_rule_ids": "R004, R006, R007",
+    "missing_rule_ids": "-",
+    "token_cost": 125,
+    "latency_ms": 535
+  },
+  {
+    "attempt": "A2",
+    "skill_version": "v2",
+    "status": "PASS",
+    "failure_type": "none",
+    "observed_rule_ids": "R004, R006, R007",
+    "missing_rule_ids": "-",
+    "token_cost": 125,
+    "latency_ms": 535
+  }
+]

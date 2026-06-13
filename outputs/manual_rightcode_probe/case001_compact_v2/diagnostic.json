@@ -1,0 +1,31 @@
+{
+  "agent": "api_review_llm_agent",
+  "skill": "outputs\\mvp_vertical_slice\\harbor_api_review_002\\compact_skill_v2.md",
+  "case": "data\\harbor_api_review_tasks\\api-review-001-compact-v1\\case_001_openapi.md",
+  "output": "outputs\\manual_rightcode_probe\\case001_compact_v2\\review.json",
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 6,
+  "rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006"
+  ],
+  "usage": {
+    "prompt_tokens": 868,
+    "completion_tokens": 541,
+    "total_tokens": 1409,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 52
+    }
+  },
+  "raw_content_preview": "{\"findings\":[{\"rule_id\":\"R001\",\"issue\":\"Authentication requirements are underspecified. The spec only says the endpoint requires login, but does not define the authentication method, required roles/scopes, whether users can update only their own profile or admins can update others, or the auth failure behavior.\",\"severity\":\"high\",\"evidence\":\"Notes: \\\"The endpoint requires login.\\\" Path parameter includes user_id, but no authorization rules or 401/403 behavior are documented.\"},{\"rule_id\":\"R002\","
+}

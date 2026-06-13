@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-06-12T11:09:21.024193+00:00",
+  "rows": [
+    {
+      "component": "oracle_leakage_audit",
+      "status": "pass",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\oracle_leakage_audit.json"
+    },
+    {
+      "component": "evidence_type_consistency",
+      "status": "pass",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\evidence_type_consistency_audit.json"
+    },
+    {
+      "component": "rerun_stability",
+      "status": "pass",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\rerun_stability\\latest_rerun_stability_summary.json"
+    },
+    {
+      "component": "multi_skill_isolation",
+      "status": "pass",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\multi_skill_isolation_status.json"
+    },
+    {
+      "component": "review_package_manifest",
+      "status": "pass",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\review_package_integrity_status.json"
+    },
+    {
+      "component": "claim_boundary_redteam",
+      "status": "pass",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\claim_boundary_redteam.json"
+    }
+  ],
+  "hardening_status": "pass",
+  "judgment": {
+    "controlled_internal": "pass",
+    "security_depth": "pass",
+    "external_harness": "infra_blocked",
+    "open_source_readiness": "pass",
+    "academic_claim_readiness": "moderate"
+  },
+  "boundary": "Academic claim readiness remains at most moderate unless external harness and stronger independent evidence improve."
+}

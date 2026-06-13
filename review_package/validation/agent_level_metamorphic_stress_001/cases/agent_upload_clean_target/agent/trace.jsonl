@@ -1,0 +1,5 @@
+{"event": "read_target", "path": "target.md", "chars": 175}
+{"event": "read_skill", "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_upload_clean_target\\skill", "capabilities": ["UPLOAD_TYPE_MAGIC", "UPLOAD_PATH_ISOLATION", "UPLOAD_AUDIT_RETENTION"]}
+{"event": "no_evidence", "capability_id": "UPLOAD_TYPE_MAGIC"}
+{"event": "no_evidence", "capability_id": "UPLOAD_PATH_ISOLATION"}
+{"event": "finding", "capability_id": "UPLOAD_AUDIT_RETENTION", "issue": "Upload audit retention", "evidence_span": "target.md: and returns only file_id. config.yaml: audit_log_retention_days=90.", "recommended_fix": "Record actor/object/action/result/timestamp with retention."}

@@ -1,0 +1,22 @@
+{
+  "attempt": "A1_skill_v1",
+  "answer": "总体风险高：存在路径穿越任意读写、公开目录潜在执行/直链、调试与密钥泄露、审计缺失等真实用户安全风险。",
+  "evidence": [
+    "高危：save(\"/public/uploads/\" + filename) 直接拼接用户filename；可用../或绝对路径尝试任意写入。",
+    "高危：send_file(\"/public/uploads/\" + filename) 直接拼接下载路径；可控filename可能读取上传目录外文件。",
+    "中高：仅filename.endswith((\".png\", \".jpg\"))；未校验MIME、魔数、大小、恶意内容，content_type未使用。",
+    "中高：返回debug_path内部路径；配置debug: true、SECRET_KEY: changeme，可能泄露stacktrace或弱密钥。",
+    "中：audit_log_retention_days: null；代码未见上传/下载审计记录，难以追踪滥用与取证。"
+  ],
+  "improvements": [
+    "文件名归一化后拒绝..、绝对路径、分隔符；使用UUID随机存储名，并用数据库映射原始名。",
+    "下载仅按文件ID查受控路径，校验所有者/权限；send_file前确保realpath位于上传根目录内。",
+    "校验MIME、文件魔数、大小上限，进行病毒/恶意内容扫描；不信任客户端content_type。",
+    "上传目录移出公开Web根目录或禁脚本执行；下载走鉴权接口，避免/public/uploads直连执行。",
+    "生产关闭debug，移除debug_path，SECRET_KEY改为强随机环境变量；记录操作者、对象、IP、结果并设置保留期。"
+  ],
+  "limits": [
+    "未提供save/send_file框架实现，路径穿越拦截能力需以实际运行验证。",
+    "未提供认证授权代码，下载越权影响按需确认。"
+  ]
+}

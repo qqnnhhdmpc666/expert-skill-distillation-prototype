@@ -1,0 +1,1 @@
+PASS: config report covers expected findings with evidence and fixes

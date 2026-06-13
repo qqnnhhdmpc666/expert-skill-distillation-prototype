@@ -1,0 +1,27 @@
+{
+  "patch_plan": {
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "before_capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "after_capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "consumes": "A1/failure_feedback.json"
+  },
+  "gate_decision": {
+    "decision": "accept",
+    "reason": "Harbor A1 missed verifier-required capabilities and patch only expands capability coverage.",
+    "checks": {
+      "schema": "A1 verifier schema_errors",
+      "missing": [
+        "UPLOAD_AUDIT_RETENTION",
+        "UPLOAD_TYPE_MAGIC"
+      ],
+      "unsupported_evidence_checked": false
+    }
+  }
+}

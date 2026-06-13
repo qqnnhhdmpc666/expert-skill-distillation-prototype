@@ -1,0 +1,72 @@
+{
+  "variant": "gold_patch",
+  "status": "official_harness_infra_failed",
+  "recorded_result": "infra_failed",
+  "official_harness": true,
+  "official_harness_call_path": "/opt/spark/swebench-tools/swebench-venv/bin/python -m swebench.harness.run_evaluation",
+  "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_20260612/official_dataset.json' --split test --instance_ids 'astropy__astropy-12907' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 1800 --run_id 'swebench_gold_patch_smoke_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_20260612/evaluation/gold_patch/official_reports' --namespace none",
+  "command_result": {
+    "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_20260612/official_dataset.json' --split test --instance_ids 'astropy__astropy-12907' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 1800 --run_id 'swebench_gold_patch_smoke_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_20260612/evaluation/gold_patch/official_reports' --namespace none",
+    "return_code": 0,
+    "stdout": "Base image sweb.base.py.x86_64:latest already exists, skipping build.\nBase images built successfully.\nNo environment images need to be built.\nRunning 1 instances...\nError building image sweb.eval.x86_64.astropy__astropy-12907:latest: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128\nCheck (logs/build_images/instances/sweb.eval.x86_64.astropy__astropy-12907__latest/build_image.log) for more information.\nAll instances run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 0\nInstances with errors: 1\nUnstopped containers: 0\nUnremoved images: 0\nReport written to gold_patch.swebench_gold_patch_smoke_20260612_gold_patch.json\n",
+    "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\n\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]\nEvaluation:   0%|          | 0/1 [15:48<?, ?it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [15:48<00:00, 948.20s/it, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [15:48<00:00, 948.21s/it, ✓=0, ✖=0, error=1]\n",
+    "ok": true
+  },
+  "official_report": {
+    "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_20260612\\gold_patch.swebench_gold_patch_smoke_20260612_gold_patch.json",
+    "payload": {
+      "total_instances": 1,
+      "submitted_instances": 1,
+      "completed_instances": 0,
+      "resolved_instances": 0,
+      "unresolved_instances": 0,
+      "empty_patch_instances": 0,
+      "error_instances": 1,
+      "completed_ids": [],
+      "incomplete_ids": [],
+      "empty_patch_ids": [],
+      "submitted_ids": [
+        "astropy__astropy-12907"
+      ],
+      "resolved_ids": [],
+      "unresolved_ids": [],
+      "error_ids": [
+        "astropy__astropy-12907"
+      ],
+      "schema_version": 2
+    }
+  },
+  "resolved_count": 0,
+  "completed_instances": 0,
+  "error_instances": 1,
+  "empty_patch_instances": 0,
+  "prediction_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_20260612\\predictions\\gold_patch.jsonl",
+  "environment": {
+    "wsl_distro": "Ubuntu-24.04-Codex",
+    "python": "/opt/spark/swebench-tools/swebench-venv/bin/python",
+    "docker": {
+      "command": "docker --version",
+      "return_code": 0,
+      "stdout": "Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2\n",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+      "ok": true
+    },
+    "swebench_python_package": {
+      "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -c \"import importlib.util; raise SystemExit(0 if importlib.util.find_spec('swebench') else 3)\"",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+      "ok": true
+    },
+    "docker_available": true,
+    "official_harness_available": true
+  },
+  "blocked_reason": "Official harness instance-image build failed while cloning the target GitHub repository: RPC failed / early EOF.",
+  "infra_error": {
+    "reason": "Official harness instance-image build failed while cloning the target GitHub repository: RPC failed / early EOF.",
+    "run_instance_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_20260612\\logs\\run_evaluation\\swebench_gold_patch_smoke_20260612_gold_patch\\gold_patch\\astropy__astropy-12907\\run_instance.log",
+    "build_image_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_20260612\\logs\\build_images\\instances\\sweb.eval.x86_64.astropy__astropy-12907__latest\\build_image.log",
+    "run_instance_tail": "2026-06-12 14:23:22,978 - INFO - Environment image sweb.env.py.x86_64.7d2281f8cd4608b2972430:latest found for astropy__astropy-12907\nBuilding instance image sweb.eval.x86_64.astropy__astropy-12907:latest for astropy__astropy-12907\n2026-06-12 14:39:11,117 - INFO - Traceback (most recent call last):\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py\", line 148, in build_image\n    raise docker.errors.BuildError(\ndocker.errors.BuildError: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/run_evaluation.py\", line 152, in run_instance\n    container = build_container(\n                ^^^^^^^^^^^^^^^^\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py\", line 493, in build_container\n    build_instance_image(test_spec, client, logger, nocache)\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py\", line 452, in build_instance_image\n    build_image(\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py\", line 154, in build_image\n    raise BuildImageError(image_name, str(e), logger) from e\nswebench.harness.docker_build.BuildImageError: Error building image sweb.eval.x86_64.astropy__astropy-12907:latest: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128\nCheck (logs/build_images/instances/sweb.eval.x86_64.astropy__astropy-12907__latest/build_image.log) for more information.\n\n2026-06-12 14:39:11,117 - INFO - Attempting to remove image sweb.eval.x86_64.astropy__astropy-12907:latest...\n2026-06-12 14:39:11,119 - INFO - Image sweb.eval.x86_64.astropy__astropy-12907:latest not found, removing has no effect.\n",
+    "build_image_tail": "NT=$(git log --oneline --all --since=\"$AFTER_TIMESTAMP\" | wc -l)\n[ \"$COMMIT_COUNT\" -eq 0 ] || exit 1\nsource /opt/miniconda3/bin/activate\nconda activate testbed\necho \"Current environment: $CONDA_DEFAULT_ENV\"\nsed -i 's/requires = \\[\"setuptools\",/requires = \\[\"setuptools==68.0.0\",/' pyproject.toml\npython -m pip install -e .[test] --verbose\ngit config --global user.email setup@swebench.config\ngit config --global user.name SWE-bench\ngit commit --allow-empty -am SWE-bench\n\n2026-06-12 14:23:22,995 - INFO - Building docker image sweb.eval.x86_64.astropy__astropy-12907:latest in logs/build_images/instances/sweb.eval.x86_64.astropy__astropy-12907__latest with platform linux/x86_64\n2026-06-12 14:23:23,013 - INFO - Step 1/5 : FROM --platform=linux/x86_64 sweb.env.py.x86_64.7d2281f8cd4608b2972430:latest\n2026-06-12 14:23:23,014 - INFO - \n2026-06-12 14:23:23,025 - INFO - ---> aabacb4584db\n2026-06-12 14:23:23,025 - INFO - Step 2/5 : COPY ./setup_repo.sh /root/\n2026-06-12 14:23:23,026 - INFO - \n2026-06-12 14:23:44,163 - INFO - ---> 817e58b64f79\n2026-06-12 14:23:44,164 - INFO - Step 3/5 : RUN sed -i -e 's/\\r$//' /root/setup_repo.sh\n2026-06-12 14:23:44,165 - INFO - \n2026-06-12 14:23:44,226 - INFO - ---> Running in 04165c697934\n2026-06-12 14:23:52,074 - INFO - ---> Removed intermediate container 04165c697934\n2026-06-12 14:23:52,074 - INFO - ---> c728e025b285\n2026-06-12 14:23:52,074 - INFO - Step 4/5 : RUN /bin/bash /root/setup_repo.sh\n2026-06-12 14:23:52,075 - INFO - \n2026-06-12 14:23:52,132 - INFO - ---> Running in 22393cbb6483\n2026-06-12 14:23:52,330 - INFO - + git clone -o origin --single-branch https://github.com/astropy/astropy /testbed\n2026-06-12 14:23:52,331 - INFO - Cloning into '/testbed'...\n2026-06-12 14:39:10,805 - INFO - error: RPC failed; curl 56 GnuTLS recv error (-54): Error in the pull function.\nerror: 6979 bytes of body are still expected\n2026-06-12 14:39:10,813 - INFO - fetch-pack: unexpected disconnect while reading sideband packet\n2026-06-12 14:39:10,813 - INFO - fatal: early EOF\n2026-06-12 14:39:10,814 - INFO - fatal: fetch-pack: invalid index-pack output\n2026-06-12 14:39:11,105 - INFO - ---> Removed intermediate container 22393cbb6483\n2026-06-12 14:39:11,111 - ERROR - Error: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128\n2026-06-12 14:39:11,112 - ERROR - docker.errors.BuildError during sweb.eval.x86_64.astropy__astropy-12907:latest: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128\n"
+  }
+}

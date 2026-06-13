@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "feedback_type": "pass",
+  "missing_capabilities": [],
+  "false_positive_capabilities": [],
+  "schema_errors": [],
+  "weak_evidence_capabilities": [],
+  "unsupported_evidence_capabilities": [],
+  "scores": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  }
+}

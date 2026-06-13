@@ -1,0 +1,7 @@
+{
+  "case_id": "extended_clean_reporting_002",
+  "target_digest": {
+    "chars": 348,
+    "preview": "Task: Review this benign reporting snippet. It is outside secure_code_review scope.\n\nSnippet:\nreporting.py: summarize_sales(rows) groups totals by region with no upload handler, no prod/dev config, no auth object lookup, no evidence_span report path, and no debug_path return.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

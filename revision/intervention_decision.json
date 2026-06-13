@@ -1,0 +1,19 @@
+{
+  "soft_intervention": [
+    "weak_evidence",
+    "false_positive_risk",
+    "high_cost_low_gain",
+    "trace_missing",
+    "target_context_missing",
+    "config_path_missing",
+    "overbroad_finding"
+  ],
+  "hard_intervention": [
+    "missing_capability",
+    "output_contract_error",
+    "unsafe_action_risk",
+    "regression_observed",
+    "ownership_boundary_missing"
+  ],
+  "decision_rule": "hard feedback blocks pass until repaired; soft feedback may pass only if gate scores remain above thresholds and no regression is introduced"
+}

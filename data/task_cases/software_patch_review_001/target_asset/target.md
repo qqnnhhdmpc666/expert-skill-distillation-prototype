@@ -1,0 +1,1 @@
+Issue: test_discount_rounding fails because round_discount uses int(amount * rate), truncating cents. Candidate patch should replace int(amount * rate) with round(amount * rate, 2). Validate with pytest tests/test_pricing.py::test_discount_rounding.

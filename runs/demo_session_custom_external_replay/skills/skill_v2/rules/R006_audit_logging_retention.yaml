@@ -1,0 +1,9 @@
+rule_id: R006
+title: "审计日志保留"
+risk: "medium"
+action: "检查关键安全事件是否有审计日志和保留策略。"
+evidence_terms:
+  - "audit_log_retention_days"
+  - "audit"
+  - "security_event"
+repair_operator: patch_rule

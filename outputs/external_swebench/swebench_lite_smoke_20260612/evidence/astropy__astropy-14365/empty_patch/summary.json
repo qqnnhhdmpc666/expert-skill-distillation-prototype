@@ -1,0 +1,10 @@
+{
+  "run_id": "swebench_lite_smoke_20260612",
+  "instance_id": "astropy__astropy-14365",
+  "variant": "empty_patch",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "prediction_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_lite_smoke_20260612\\predictions\\empty_patch.jsonl",
+  "evaluation_status": "completed_empty_patch_skipped_by_official_harness",
+  "skill_provenance": null,
+  "claim_boundary": "SWE-bench smoke evidence; no external effectiveness claim unless non-oracle patch beats empty_patch."
+}

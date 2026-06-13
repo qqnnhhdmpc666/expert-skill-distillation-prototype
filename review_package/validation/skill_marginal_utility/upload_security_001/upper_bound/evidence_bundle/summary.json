@@ -1,0 +1,20 @@
+{
+  "bundle_id": "upload_security_001_upper_bound_offline_deterministic",
+  "created_at": "2026-06-11T11:19:58.649007+00:00",
+  "case_id": "upload_security_001",
+  "backend": "offline_deterministic",
+  "variant": "upper_bound",
+  "status": "completed",
+  "artifacts": [
+    "raw_output.json",
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json",
+    "verifier_feedback.json",
+    "repair_patch.json",
+    "qualification_decision.json"
+  ],
+  "score": 0.6,
+  "token_cost_estimate": 148,
+  "safety_boundary": "defensive_review_only_no_exploit_generation"
+}

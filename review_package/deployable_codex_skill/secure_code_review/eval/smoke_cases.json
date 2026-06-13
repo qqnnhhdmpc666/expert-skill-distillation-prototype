@@ -1,0 +1,12 @@
+{
+  "cases": [
+    {
+      "case_id": "upload_security_001",
+      "command": "skill-deploy run-skill --case upload_security_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "data_quality_review_001",
+      "command": "skill-deploy compare-variants --cases data_quality"
+    }
+  ]
+}

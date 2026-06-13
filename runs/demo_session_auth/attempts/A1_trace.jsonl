@@ -1,0 +1,3 @@
+{"step": 1, "event": "规则应用", "rule_id": "R002", "evidence": "def list_users(tenant_id: str):"}
+{"step": 2, "event": "规则应用", "rule_id": "R003", "evidence": "return db.query(\"select * from users where tenant_id=\" + tenant_id)"}
+{"step": 3, "event": "规则应用", "rule_id": "R004", "evidence": "return {\"message\": \"SQL syntax error near user_email=alice@example.com\"}"}

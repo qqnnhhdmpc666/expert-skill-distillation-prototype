@@ -1,0 +1,18 @@
+{
+  "attempt": "A1_skill_v1",
+  "answer": "已完成目标任务的结构化处理。",
+  "evidence": [
+    "上传逻辑只检查 filename.endswith，并把用户文件名拼接到 /public/uploads。",
+    "目标资产暴露 debug_path 或包含 debug/弱密钥配置。",
+    "配置中 audit_log_retention_days 为空，审计保留策略缺失。"
+  ],
+  "improvements": [
+    "补充可验证证据片段。",
+    "给出可执行修复步骤。",
+    "按专家 Skill 要求区分目标、约束、证据和限制。",
+    "将修复建议绑定到具体资产片段。"
+  ],
+  "limits": [
+    "这是本地 fallback 输出；配置 LLM 后会记录真实模型响应。"
+  ]
+}

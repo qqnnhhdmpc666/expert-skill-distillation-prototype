@@ -1,0 +1,39 @@
+{
+  "A1": {
+    "backend_type": "controlled_security_llm_agent",
+    "findings": [
+      {
+        "capability_id": "CONFIG_PROD_DEBUG",
+        "evidence_span": "environment: production\ndebug: true"
+      },
+      {
+        "capability_id": "CONFIG_INSECURE_HTTP",
+        "evidence_span": "environment: production\nexternal_api_url: http://partner.example.com/v1"
+      },
+      {
+        "capability_id": "CONFIG_HARDCODED_SECRET",
+        "evidence_span": "payment_token: \"sk_live_demo_value\""
+      }
+    ]
+  },
+  "A2": {
+    "backend_type": "controlled_security_llm_agent",
+    "findings": [
+      {
+        "capability_id": "CONFIG_PROD_DEBUG",
+        "evidence_span": "environment: production\ndebug: true",
+        "recommended_fix": "Set debug to false in the production configuration."
+      },
+      {
+        "capability_id": "CONFIG_INSECURE_HTTP",
+        "evidence_span": "environment: production\nexternal_api_url: http://partner.example.com/v1",
+        "recommended_fix": "Use an HTTPS endpoint for the production external_api_url, e.g. https://partner.example.com/v1."
+      },
+      {
+        "capability_id": "CONFIG_HARDCODED_SECRET",
+        "evidence_span": "payment_token: \"sk_live_demo_value\"",
+        "recommended_fix": "Remove the inline payment_token from production config and reference it from a vault or environment-secret mechanism instead."
+      }
+    ]
+  }
+}

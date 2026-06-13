@@ -1,0 +1,18 @@
+{
+  "repair_actions": {
+    "pass": "no_op",
+    "missing_capability": "patch_capability",
+    "weak_evidence": "strengthen_evidence_requirement",
+    "output_contract_error": "rewrite_output_contract",
+    "false_positive_risk": "reduce_false_positive_risk",
+    "unsafe_action_risk": "add_safety_boundary",
+    "regression_observed": "reject_and_rollback",
+    "high_cost_low_gain": "reduce_or_select_trace",
+    "trace_missing": "reduce_or_select_trace",
+    "target_context_missing": "add_observation_step",
+    "unsupported_evidence": "add_observation_step",
+    "ownership_boundary_missing": "patch_boundary",
+    "config_path_missing": "add_observation_step",
+    "overbroad_finding": "reduce_false_positive_risk"
+  }
+}

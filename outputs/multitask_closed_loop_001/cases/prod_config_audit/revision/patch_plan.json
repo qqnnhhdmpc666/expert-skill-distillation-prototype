@@ -1,0 +1,13 @@
+{
+  "patch_operator": "add_environment_negative_guard",
+  "feedback_type": "false_positive",
+  "before_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_SECRET_REF",
+    "CONFIG_TLS"
+  ],
+  "after_capabilities": [
+    "CONFIG_AUDIT_EXPORT"
+  ],
+  "rationale": "Add environment-aware negative guard and remove unsupported findings."
+}

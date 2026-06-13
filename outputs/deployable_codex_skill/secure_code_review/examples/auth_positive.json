@@ -1,0 +1,10 @@
+{
+  "case_id": "auth_access_control_001",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "evidence_span": "target.md: loads invoice by id without tenant or owner binding",
+      "recommended_fix": "Apply the scoped defensive remediation and rerun validation."
+    }
+  ]
+}

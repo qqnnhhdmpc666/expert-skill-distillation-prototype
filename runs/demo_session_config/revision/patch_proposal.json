@@ -1,0 +1,8 @@
+[
+  {
+    "后验信号": "output_contract_error",
+    "修正算子": "rewrite_output_contract",
+    "修正内容": "补齐 risk_level / recommended_fix / evidence_span",
+    "原因": "agent findings 未满足 verifier contract。"
+  }
+]

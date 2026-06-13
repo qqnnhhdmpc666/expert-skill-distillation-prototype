@@ -1,0 +1,25 @@
+{
+  "attempt": "no_out_of_scope_guard",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "No path isolation or sanitization on uploaded filenames",
+      "evidence_span": "save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename",
+      "recommended_fix": "Sanitize filenames to prevent directory traversal, e.g., by using os.path.basename and joining with a secure base path."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validation relies solely on extension, not on content magic bytes",
+      "evidence_span": "accepts report.pdf.jpg when filename.endswith('.jpg')",
+      "recommended_fix": "Validate file type by reading magic bytes (e.g., using python-magic) instead of relying solely on extension."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention configuration is missing or empty",
+      "evidence_span": "settings.toml: audit_log_retention_days is empty",
+      "recommended_fix": "Set a default value for audit_log_retention_days in settings.toml and enforce it in the code."
+    }
+  ],
+  "notes": []
+}

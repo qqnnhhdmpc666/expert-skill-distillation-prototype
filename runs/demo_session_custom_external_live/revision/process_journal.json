@@ -1,0 +1,30 @@
+[
+  {
+    "阶段": "Prior Distillation",
+    "输入": "专家材料 + 目标资产",
+    "决策": "生成 full skill -> compact v1",
+    "证据": "rule ledger / source evidence",
+    "说明": "先做受控压缩，再观察部署失败点。"
+  },
+  {
+    "阶段": "Attempt A1",
+    "输入": "compact skill v1",
+    "决策": "真实模型执行",
+    "证据": "FAIL: expected=['R002', 'R004', 'R005', 'R006', 'R007', 'R008'] observed=['R002', 'R004', 'R007'] missing=['R005', 'R006', 'R008']",
+    "说明": "让 v1 真正落到 agent 输出，而不是直接展示预写结果。"
+  },
+  {
+    "阶段": "Posterior Revision",
+    "输入": "missing_rule",
+    "决策": "custom_input -> infer_rules -> execute -> posterior_patch",
+    "证据": "R005, R006, R008",
+    "说明": "根据 failure type 选择修正算子，而不是一律重写。"
+  },
+  {
+    "阶段": "Validation Gate",
+    "输入": "patched compact v2",
+    "决策": "accept",
+    "证据": "v2 verifier 通过。; 未丢失 v1 已覆盖规则。; token 成本在预算内。",
+    "说明": "检查回归、预算、trace 与 verifier 是否同时通过。"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "failure_type": "none",
+  "failure_types": [],
+  "expected_rule_ids": [
+    "R002",
+    "R004",
+    "R005",
+    "R006",
+    "R007",
+    "R008"
+  ],
+  "observed_rule_ids": [
+    "R002",
+    "R004",
+    "R005",
+    "R006",
+    "R007",
+    "R008"
+  ],
+  "missing_rule_ids": [],
+  "contract_errors": [],
+  "evidence_missing": [],
+  "verifier_stdout": "PASS: observed findings cover expected rules and required schema."
+}

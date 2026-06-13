@@ -1,0 +1,19 @@
+{
+  "attempt": "simple_prompt_baseline",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing object-level ownership check on invoice loading",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering.",
+      "recommended_fix": "Add a tenant_id or owner_id filter when loading the invoice, comparing against the authenticated user's tenant/owner ID."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Invoice ID leaked in denial error response",
+      "evidence_span": "The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Return a generic error message without including the invoice_id in the denial response."
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,14 @@
+{
+  "card_id": "live_llm_upload_repair_loop_validity_card",
+  "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled upload task; verifier and gate remain deterministic.",
+  "summary": {
+    "scenario": "upload_security_001",
+    "backend": "live_llm_text",
+    "a1_pass": false,
+    "a2_pass": true,
+    "reward_delta": 1.0,
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "gate_decision": "accept"
+  }
+}

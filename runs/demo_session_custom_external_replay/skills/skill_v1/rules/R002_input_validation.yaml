@@ -1,0 +1,10 @@
+rule_id: R002
+title: "用户输入校验"
+risk: "high"
+action: "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+evidence_terms:
+  - "q:"
+  - "tenant_id"
+  - "filename"
+  - "user_id"
+repair_operator: patch_rule

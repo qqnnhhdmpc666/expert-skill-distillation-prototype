@@ -1,0 +1,13 @@
+{
+  "attempt": "no_task_router",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit export sink not configured despite audit enabled",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty",
+      "recommended_fix": "Configure export_sink in prod.yaml to ensure audit logs are exported to a persistent storage"
+    }
+  ],
+  "notes": []
+}

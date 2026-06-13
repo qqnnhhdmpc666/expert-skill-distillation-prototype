@@ -1,0 +1,9 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [],
+  "notes": [
+    "task_conditioned_active_capabilities_applied",
+    "active_capabilities:none"
+  ]
+}

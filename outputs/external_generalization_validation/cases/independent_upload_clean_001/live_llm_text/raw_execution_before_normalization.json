@@ -1,0 +1,19 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Content signature and extension validation implemented",
+      "evidence_span": "upload.py: content signature and extension are both checked",
+      "recommended_fix": "Maintain magic-byte (content signature) verification alongside extension checks to prevent type-confusion attacks."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention period configured",
+      "evidence_span": "audit_log_retention_days is 90",
+      "recommended_fix": "Keep audit log retention at a sufficient duration (e.g., 90 days) to support incident investigations and compliance requirements."
+    }
+  ],
+  "notes": []
+}

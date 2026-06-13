@@ -1,0 +1,204 @@
+{
+  "A1": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v1",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    }
+  ],
+  "A2": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\config_security_001\\skills\\skill_v2",
+      "capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD",
+        "UPLOAD_TYPE_MAGIC"
+      ]
+    }
+  ]
+}

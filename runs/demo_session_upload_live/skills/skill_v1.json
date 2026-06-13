@@ -1,0 +1,38 @@
+{
+  "skill_name": "upload_security_review_skill",
+  "domain": "漏洞挖掘 / 文件上传安全",
+  "version": "v1",
+  "source_materials": "expert_rules + target_asset + verifier_contract",
+  "rules": [
+    {
+      "rule_id": "R002",
+      "title": "用户输入校验",
+      "risk": "high",
+      "action": "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+    },
+    {
+      "rule_id": "R004",
+      "title": "敏感信息泄露",
+      "risk": "medium",
+      "action": "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+    },
+    {
+      "rule_id": "R008",
+      "title": "路径穿越",
+      "risk": "high",
+      "action": "检查 filename/path 参数是否可写入非预期目录。"
+    }
+  ],
+  "output_contract": [
+    "finding_id",
+    "rule_id",
+    "evidence_span"
+  ],
+  "trace_policy": [],
+  "verifier_contract": "review.json 必须覆盖 expected rule ids，并且每个 finding 包含 finding_id/rule_id/evidence_span/risk_level/recommended_fix。",
+  "token_cost": 122,
+  "status": "部署失败",
+  "change_log": [
+    "由专家材料蒸馏得到初始检查规则。"
+  ]
+}

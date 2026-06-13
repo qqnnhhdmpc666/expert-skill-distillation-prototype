@@ -1,0 +1,1 @@
+FAIL: {"report_exists": true, "expected": ["UPLOAD_AUDIT_RETENTION", "UPLOAD_PATH_ISOLATION", "UPLOAD_TYPE_MAGIC"], "seen": ["UPLOAD_PATH_ISOLATION"], "missing": ["UPLOAD_AUDIT_RETENTION", "UPLOAD_TYPE_MAGIC"], "schema_errors": []}

@@ -1,0 +1,13 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit logging lacks retention and export sink",
+      "evidence_span": "target.md: \"prod.audit.enabled=true but retention_days/export_sink empty.\"",
+      "recommended_fix": "Set a production audit log retention_days value and configure a non-empty export_sink for prod.audit."
+    }
+  ],
+  "attempt": "A1_skill_v1",
+  "backend": "live_llm_text"
+}

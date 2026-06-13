@@ -279,6 +279,7 @@ CLI entry points are still lightweight wrappers over scripts. Do not do a large 
 Short-term cloud handoff tasks:
 
 - Confirm the cloud worktree can run the quick verification commands.
+- Use the zero-dependency interactive web demo at `demo/web/index.html` for mentor-facing walkthroughs. If the in-app browser blocks `file://`, serve it locally, for example `python -m http.server 8765 --directory demo/web`, then open `http://127.0.0.1:8765/index.html`.
 - Keep `docs/CODEX_CONTEXT_HANDOFF.md` updated whenever the project direction changes.
 - Do not rerun heavy Harbor or LLM workflows unless needed.
 - Keep GitHub `main` synchronized after meaningful work.

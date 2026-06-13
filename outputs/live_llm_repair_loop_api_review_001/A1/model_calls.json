@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "temperature": 0.0,
+  "usage": {
+    "prompt_tokens": 892,
+    "completion_tokens": 195,
+    "total_tokens": 1087,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 133
+    }
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a API and code review agent that returns JSON for a deterministic verifier."
+      },
+      {
+        "role": "user",
+        "content": "You are a non-oracle API and code review agent.\n\nRead the target files and the Skill Package. Produce only a JSON object for the deterministic verifier.\n\nRules:\n- Do not invent findings that are not grounded in the target text.\n- Use only these capability_id values exposed by the Skill Package: API_SCHEMA_CONTRACT, API_OVERBROAD_RISK.\n- Each finding must include capability_id, issue, and evidence_span. recommended_fix is optional in this exploratory run.\n- If the Skill Package does not expose a capability, do not report it even if you notice it.\n- Return JSON only. No markdown fences.\nIn this exploratory v1 run, every finding may omit recommended_fix. Keep findings target-grounded and structured under `findings`. Review each exposed capability_id one by one; for every capability that is concretely grounded in the target, emit a separate finding.\n\nExpected JSON shape:\n{\n  \"findings\": [\n    {\n      \"capability_id\": \"API_SCHEMA_CONTRACT\",\n      \"issue\": \"short issue title\",\n      \"evidence_span\": \"quote or tightly paraphrase the concrete target span, including file name when possible\"\n    }\n  ]\n}\n\n# Skill Package\n\n## manifest.json\n\n```text\n{\n  \"skill_id\": \"api_review_001\",\n  \"version\": \"v1\",\n  \"task_family\": \"api_or_code_review\",\n  \"capabilities\": [\n    \"API_SCHEMA_CONTRACT\",\n    \"API_OVERBROAD_RISK\"\n  ],\n  \"output_contract\": [\n    \"capability_id\",\n    \"evidence_span\",\n    \"recommended_fix\"\n  ],\n  \"trace_contract\": [\n    \"event\",\n    \"capability_id\",\n    \"evidence_span\"\n  ],\n  \"metadata\": {}\n}\n\n```\n\n## SKILL.md\n\n```text\n# API/code review report contract check Skill v1\n\nTask family: `api_or_code_review`\n\n## Inspection Procedure\n\n1. Read the target assets and identify concrete evidence spans.\n2. Emit only findings grounded in the current target.\n3. Follow the output contract: capability_id, evidence_span, recommended_fix.\n\n## Capabilities\n\n### API_SCHEMA_CONTRACT: Strict report schema\n- Evidence: agent output omits evidence_span or uses free-form prose\n- Fix: Emit JSON findings with required evidence and fix fields.\n\n### API_OVERBROAD_RISK: Overbroad finding control\n- Evidence: generic security risk without code/config evidence\n- Fix: Reject findings not grounded in target spans.\n\n\n## Attempt Note\n\nExploratory v1: findings may omit recommended_fix so the verifier can test output-contract repair.\n\n```\n\n# Target Asset\n\n## target.md\n\n```text\nOpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span.\n```\n"
+      }
+    ]
+  },
+  "response": {
+    "id": "resp_07fb9ac83810d2b9016a2726335d64819da40d76737e63225d",
+    "object": "chat.completion",
+    "created": 1780950584,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"API_SCHEMA_CONTRACT\",\"issue\":\"Prior report omitted required evidence_span and used prose\",\"evidence_span\":\"target.md: \\\"OpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span.\\\"\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 892,
+      "completion_tokens": 195,
+      "total_tokens": 1087,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 133
+      }
+    }
+  }
+}

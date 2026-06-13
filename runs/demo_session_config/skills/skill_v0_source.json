@@ -1,0 +1,8 @@
+{
+  "source_material": "专家规则：\n1. 生产配置不得开启 debug。\n2. SECRET_KEY/JWT secret 不能使用默认值或弱值。\n3. CORS 不能对所有来源开放。\n4. 敏感配置不能进入日志或错误响应。\n5. 安全事件必须配置日志保留策略。",
+  "expected_rule_ids": [
+    "R004",
+    "R006",
+    "R007"
+  ]
+}

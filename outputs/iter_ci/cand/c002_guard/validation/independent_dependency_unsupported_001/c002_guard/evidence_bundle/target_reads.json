@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_dependency_unsupported_001",
+  "target_digest": {
+    "chars": 288,
+    "preview": "Task: Independently authored holdout: unsupported dependency review.\n\nSnippet:\nrequirements.txt: legacy-xml==0.9.1 is pinned, but no advisory database, reachability analysis, or patch-validation evidence is provided.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

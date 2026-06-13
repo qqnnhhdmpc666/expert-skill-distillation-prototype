@@ -1,0 +1,14 @@
+{
+  "card_id": "harbor_llm_upload_repair_loop",
+  "claim_boundary": "Controlled single-scenario Harbor LLM repair-loop evidence, not general Harbor LLM security capability.",
+  "summary": {
+    "scenario": "real-upload-security-review",
+    "backend": "harbor_llm_repair_upload_replay",
+    "a1_pass": false,
+    "a2_pass": true,
+    "reward_delta": 1.0,
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "gate_decision": "accept"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "run_id": "repair_policy_alignment_001",
+  "created_at": "2026-06-08T20:14:35.690713+00:00",
+  "policy_path": "revision/repair_policy.json",
+  "operator_count": 10,
+  "feedback_mapping_count": 14,
+  "rows": [
+    {
+      "feedback_type": "config_path_missing",
+      "preferred_action": "add_observation_step",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_add_observation_step_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_add_observation_step_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "false_positive_risk",
+      "preferred_action": "reduce_false_positive_risk",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_reduce_false_positive_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_reduce_false_positive_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "high_cost_low_gain",
+      "preferred_action": "reduce_or_select_trace",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_reduce_select_trace_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_reduce_select_trace_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "missing_capability",
+      "preferred_action": "patch_capability",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_patch_capability_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_patch_capability_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "output_contract_error",
+      "preferred_action": "rewrite_output_contract",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_rewrite_output_contract_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_rewrite_output_contract_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "overbroad_finding",
+      "preferred_action": "reduce_false_positive_risk",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_reduce_false_positive_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_reduce_false_positive_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "ownership_boundary_missing",
+      "preferred_action": "patch_boundary",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_patch_boundary_auth"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_patch_boundary_auth"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "pass",
+      "preferred_action": "no_op",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_noop_pass"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_noop_pass"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "regression_observed",
+      "preferred_action": "reject_and_rollback",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_reject_and_rollback_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_reject_and_rollback_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "target_context_missing",
+      "preferred_action": "add_observation_step",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_add_observation_step_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_add_observation_step_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "trace_missing",
+      "preferred_action": "reduce_or_select_trace",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_reduce_select_trace_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_reduce_select_trace_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "unsafe_action_risk",
+      "preferred_action": "add_safety_boundary",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_add_safety_boundary_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_add_safety_boundary_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "unsupported_evidence",
+      "preferred_action": "add_observation_step",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_add_observation_step_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_add_observation_step_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    },
+    {
+      "feedback_type": "weak_evidence",
+      "preferred_action": "strengthen_evidence_requirement",
+      "status": "aligned",
+      "matched_operator_ids": [
+        "op_strengthen_evidence_generic"
+      ],
+      "feedback_covered_operator_ids": [
+        "op_strengthen_evidence_generic"
+      ],
+      "note": "Policy action matches at least one typed operator."
+    }
+  ],
+  "fallback_risks": [],
+  "fully_aligned": true,
+  "boundary": "This audit checks typed naming and coverage alignment, not whether the operator strategies are semantically optimal."
+}

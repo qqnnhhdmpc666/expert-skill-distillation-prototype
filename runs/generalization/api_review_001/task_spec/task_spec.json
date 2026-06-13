@@ -1,0 +1,8 @@
+{
+  "case_id": "api_review_001",
+  "backend": "offline_deterministic",
+  "expected": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ]
+}

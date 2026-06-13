@@ -1,0 +1,19 @@
+{
+  "skill_name": "upload_external_review_skill",
+  "version": "v2",
+  "capabilities": [
+    "input_validation",
+    "sensitive_leak",
+    "upload_storage",
+    "audit_logging",
+    "path_traversal",
+    "weak_config"
+  ],
+  "output_contract": [
+    "finding_id",
+    "capability",
+    "evidence_span",
+    "risk_level",
+    "recommended_fix"
+  ]
+}

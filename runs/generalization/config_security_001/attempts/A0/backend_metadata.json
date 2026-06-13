@@ -1,0 +1,6 @@
+{
+  "backend_type": "offline_deterministic",
+  "attempt_id": "A0_no_skill",
+  "task_case": "config_security_001",
+  "generated_by": "src/skill_deployment/runner.py::OfflineDeterministicRunner"
+}

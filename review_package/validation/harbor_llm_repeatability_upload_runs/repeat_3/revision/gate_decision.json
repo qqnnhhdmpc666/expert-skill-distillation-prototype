@@ -1,0 +1,12 @@
+{
+  "decision": "accept",
+  "reason": "Harbor A1 missed verifier-required capabilities and patch only expands capability coverage.",
+  "checks": {
+    "schema": "A1 verifier schema_errors",
+    "missing": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "unsupported_evidence_checked": false
+  }
+}

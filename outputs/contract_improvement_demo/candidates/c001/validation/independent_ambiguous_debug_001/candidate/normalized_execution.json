@@ -1,0 +1,18 @@
+{
+  "attempt": "candidate",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Potential overbroad logging of debug_path without evidence of controls",
+      "evidence_span": "design_note.md: debug_path might be logged in a future diagnostics mode, but no route, response schema, production caller, or emitted field is shown.",
+      "recommended_fix": "Clarify the logging scope for debug_path: only enable in non-production diagnostics, ensure strict access controls, and document the explicit route, schema, and caller to prevent overbroad exposure.",
+      "capability_group": "api_or_code_review",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

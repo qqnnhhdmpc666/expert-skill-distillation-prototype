@@ -1,0 +1,17 @@
+[
+  {
+    "finding_id": "F001",
+    "rule_id": "R002",
+    "evidence_span": "def list_users(tenant_id: str):"
+  },
+  {
+    "finding_id": "F002",
+    "rule_id": "R003",
+    "evidence_span": "return db.query(\"select * from users where tenant_id=\" + tenant_id)"
+  },
+  {
+    "finding_id": "F003",
+    "rule_id": "R004",
+    "evidence_span": "return {\"message\": \"SQL syntax error near user_email=alice@example.com\"}"
+  }
+]

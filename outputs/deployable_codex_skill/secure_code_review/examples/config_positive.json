@@ -1,0 +1,10 @@
+{
+  "case_id": "config_security_001",
+  "findings": [
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "evidence_span": "target.md: debug configuration is not environment guarded",
+      "recommended_fix": "Apply the scoped defensive remediation and rerun validation."
+    }
+  ]
+}

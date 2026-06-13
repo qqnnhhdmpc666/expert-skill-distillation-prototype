@@ -1,0 +1,38 @@
+{
+  "skill_name": "auth_security_review_skill",
+  "domain": "漏洞挖掘 / 鉴权与访问控制",
+  "version": "v1",
+  "source_materials": "expert_rules + target_asset + verifier_contract",
+  "rules": [
+    {
+      "rule_id": "R002",
+      "title": "用户输入校验",
+      "risk": "high",
+      "action": "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+    },
+    {
+      "rule_id": "R003",
+      "title": "SQL 注入",
+      "risk": "high",
+      "action": "检查用户输入是否拼接进入 SQL 查询。"
+    },
+    {
+      "rule_id": "R004",
+      "title": "敏感信息泄露",
+      "risk": "medium",
+      "action": "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+    }
+  ],
+  "output_contract": [
+    "finding_id",
+    "rule_id",
+    "evidence_span"
+  ],
+  "trace_policy": [],
+  "verifier_contract": "verifier 比对 admin/user 数据访问规则覆盖率、输出 schema 和 evidence_span 质量。",
+  "token_cost": 127,
+  "status": "部署失败",
+  "change_log": [
+    "由专家材料蒸馏得到初始检查规则。"
+  ]
+}

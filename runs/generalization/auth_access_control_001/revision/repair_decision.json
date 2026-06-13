@@ -1,0 +1,19 @@
+{
+  "feedback_type": "ownership_boundary_missing",
+  "repair_action": "patch_boundary",
+  "before_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "after_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "operator_id": "op_patch_boundary_auth",
+  "operator_strategy": "replace_with_expected",
+  "operator_description": "Rewrite the package to reassert ownership and boundary checks.",
+  "selection_score": 170,
+  "preferred_action": "patch_boundary"
+}

@@ -1,0 +1,10 @@
+{
+  "feedback_type": "missing_report",
+  "message": "/app/security_report.json was not created",
+  "missing_capabilities": [
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "schema_errors": []
+}

@@ -1,0 +1,9 @@
+﻿{
+    "reason":  "A1 verifier reported missing required upload capabilities and no schema errors; patch only expands capability coverage.",
+    "checks":  {
+                   "evidence":  "deferred_to_A2_verifier",
+                   "schema":  "A1 schema_errors empty",
+                   "regression":  "no capability removed"
+               },
+    "decision":  "accept"
+}

@@ -1,0 +1,22 @@
+{
+  "score_fields": [
+    "capability_coverage_score",
+    "evidence_binding_score",
+    "output_contract_score",
+    "regression_safety_score",
+    "cost_budget_score",
+    "trace_observability_score",
+    "safety_boundary_score"
+  ],
+  "hard_intervention_thresholds": {
+    "capability_coverage_score": 0.99,
+    "output_contract_score": 0.99,
+    "regression_safety_score": 0.99,
+    "safety_boundary_score": 0.99
+  },
+  "soft_intervention_thresholds": {
+    "evidence_binding_score": 0.99,
+    "trace_observability_score": 0.99,
+    "cost_budget_score": 0.5
+  }
+}

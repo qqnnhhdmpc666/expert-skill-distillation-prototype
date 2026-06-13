@@ -1,0 +1,41 @@
+{
+  "normalizer_version": "live_contract_normalizer.v1",
+  "oracle_fields_visible_to_normalizer": false,
+  "out_of_scope": false,
+  "suppressed_findings_count": 0,
+  "finding_traces": [
+    {
+      "index": 0,
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "input_evidence_span": "target.md: loads invoice by id without tenant_id or owner_id filtering.",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body."
+    },
+    {
+      "index": 1,
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "input_evidence_span": "target.md: The denial path returns invoice_id in the error body.",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body."
+    }
+  ],
+  "failure_taxonomy_counts": {
+    "schema_error": 0,
+    "missing_evidence": 0,
+    "non_exact_span": 2,
+    "unsupported_evidence": 0,
+    "wrong_capability_group": 0,
+    "over_reporting": 0,
+    "under_reporting": 0,
+    "unsupported_scope": 0,
+    "low_confidence_needed": 0,
+    "normalizer_needed": 2,
+    "model_contract_violation": 0
+  },
+  "evidence_exact_match_rate": 1.0,
+  "normalized_finding_count": 2
+}

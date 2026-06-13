@@ -1,0 +1,8 @@
+{
+  "case_id": "holdout_api_overbroad_schema_001",
+  "expected_capability_count": 2,
+  "expected_capability_group": "api_or_code_review",
+  "clean_or_negative": false,
+  "unsupported_limitation": false,
+  "note": "Full oracle fields are not written into runner inputs."
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": "c006_combo",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Missing audit retention and export configuration",
+      "evidence_span": "prod.yml: audit.enabled=true but retention_days/export_sink empty",
+      "recommended_fix": "Set retention_days to a positive integer and configure export_sink with a valid destination (e.g., S3 bucket) in prod.yml"
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Hardcoded API key in configuration file",
+      "evidence_span": "zapApiKey: \"v9dn0balpqas1pcc281tn5ood1\",",
+      "recommended_fix": "Remove the hardcoded API key and retrieve it from an environment variable or a secure secrets management system at runtime."
+    }
+  ],
+  "notes": []
+}

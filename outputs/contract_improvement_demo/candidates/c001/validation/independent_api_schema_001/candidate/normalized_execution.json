@@ -1,0 +1,18 @@
+{
+  "attempt": "candidate",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Debug_path risk labeled without evidence_span",
+      "evidence_span": "review_output.py: report_builder emits prose without evidence_span; debug_path is labeled as a risk without pointing to a target line.",
+      "recommended_fix": "Include a specific evidence_span pointing to a concrete target line when labeling any risk, including debug_path.",
+      "capability_group": "api_or_code_review",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

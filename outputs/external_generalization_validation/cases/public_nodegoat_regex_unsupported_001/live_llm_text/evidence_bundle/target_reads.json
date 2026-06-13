@@ -1,0 +1,7 @@
+{
+  "case_id": "public_nodegoat_regex_unsupported_001",
+  "target_digest": {
+    "chars": 591,
+    "preview": "Task: Read-only defensive review of a public OWASP NodeGoat regex excerpt. This task family is outside the current secure_code_review capability set.\n\nSnippet:\n} = req.body;\n\n        // Fix for Section: ReDoS attack\n        // The following regexPattern that is used to validate the bankRouting number is insecure and vulnerable to\n        // catastrophic backtracking which means that specific type of input may cause it to consume all CPU resources\n        // with an exponential time until it comp"
+  }
+}

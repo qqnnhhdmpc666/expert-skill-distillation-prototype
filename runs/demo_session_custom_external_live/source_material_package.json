@@ -1,0 +1,73 @@
+{
+  "审查目标": "将 外部安全审查 / 自定义任务 的专家经验转成可执行、可验证、可修正的 Skill Package。",
+  "规则列表": [
+    {
+      "rule_id": "R002",
+      "title": "用户输入校验",
+      "risk": "high",
+      "action": "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+    },
+    {
+      "rule_id": "R004",
+      "title": "敏感信息泄露",
+      "risk": "medium",
+      "action": "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+    },
+    {
+      "rule_id": "R005",
+      "title": "文件上传安全",
+      "risk": "high",
+      "action": "检查上传是否同时校验扩展名、MIME、内容魔数和隔离存储路径。"
+    },
+    {
+      "rule_id": "R006",
+      "title": "审计日志保留",
+      "risk": "medium",
+      "action": "检查关键安全事件是否有审计日志和保留策略。"
+    },
+    {
+      "rule_id": "R007",
+      "title": "弱密钥与调试配置",
+      "risk": "high",
+      "action": "检查 debug=true、默认密钥、弱 JWT secret 和过宽 CORS。"
+    },
+    {
+      "rule_id": "R008",
+      "title": "路径穿越",
+      "risk": "high",
+      "action": "检查 filename/path 参数是否可写入非预期目录。"
+    }
+  ],
+  "证据要求": [
+    "每个 finding 必须绑定 target asset 中的 evidence_span。",
+    "没有证据时必须省略或标记 evidence_missing，不能直接下结论。",
+    "高风险规则需要在 trace 中记录 rule_application -> evidence_span -> finding_id。"
+  ],
+  "输出报告要求": [
+    "finding_id",
+    "rule_id",
+    "evidence_span",
+    "risk_level",
+    "recommended_fix"
+  ],
+  "正例": [
+    "指出具体端点、配置键或代码行，并给出 rule_id、risk_level 与 recommended_fix。",
+    "把审计日志、路径边界、输出契约等非显性但关键的专家要求纳入检查。"
+  ],
+  "反例": [
+    "只说存在安全风险，但没有 evidence_span。",
+    "把 verifier contract 中的 expected ids 当成答案提前展示给 agent。",
+    "只生成 checklist，不生成可安装、可回滚、可审计的技能包文件。"
+  ],
+  "常见漏检点": [
+    "R005 文件上传安全",
+    "R006 审计日志保留",
+    "R008 路径穿越"
+  ],
+  "适用边界": [
+    "仅用于受控 toy code / config / API 片段审查。",
+    "不连接真实目标，不执行漏洞利用，不宣称通用漏洞扫描能力。",
+    "当前外部输入会映射到受控规则库，用于演示蒸馏闭环。"
+  ],
+  "原始材料": "任务目标：\n让 agent 检查一个文件上传服务，识别扩展名/MIME/内容魔数校验不足、路径穿越、敏感调试路径泄露和审计日志缺失。\n\n专家材料：\n文件上传安全审查专家材料：\n1. 上传接口不能只依赖 filename.endswith；必须同时校验扩展名、MIME 类型和内容魔数。\n2. 文件名和存储路径必须做规范化，拒绝 ../ 等路径穿越输入。\n3. 上传目录不能直接暴露为可执行或可公开枚举目录。\n4. 错误响应不能泄露内部路径、邮箱、token、api_key 或 stacktrace。\n5. 上传、下载等高风险文件操作必须写入审计日志，并定义保留策略。\n6. 每个 finding 必须给出 affected endpoint、evidence_span、risk_level 和 recommended_fix。\n\n输出要求：\n输出 findings 数组；每个 finding 包含 finding_id、rule_id、evidence_span、risk_level、recommended_fix。\n\n验证标准：\n验证器检查是否覆盖上传校验、路径穿越、敏感信息泄露、审计日志保留；检查输出 schema 和 evidence_span；要求 Skill v2 能通过。\n"
+}

@@ -1,0 +1,18 @@
+{
+  "attempt": "c004_api",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit export sink not configured",
+      "evidence_span": "prod.yml: audit.enabled=true but retention_days/export_sink empty. dev.yml: dev.api_token is marked dev-only.",
+      "recommended_fix": "Configure retention_days and export_sink for audit logs",
+      "capability_group": "config_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

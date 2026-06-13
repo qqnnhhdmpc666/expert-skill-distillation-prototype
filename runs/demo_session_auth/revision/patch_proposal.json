@@ -1,0 +1,32 @@
+[
+  {
+    "后验信号": "missing_rule:R001",
+    "修正算子": "patch_rule",
+    "修正内容": "补入 R001 权限与租户边界",
+    "原因": "verifier 发现目标资产存在该类证据，但 Skill v1 未覆盖。"
+  },
+  {
+    "后验信号": "missing_rule:R006",
+    "修正算子": "patch_rule",
+    "修正内容": "补入 R006 审计日志保留",
+    "原因": "verifier 发现目标资产存在该类证据，但 Skill v1 未覆盖。"
+  },
+  {
+    "后验信号": "output_contract_error",
+    "修正算子": "rewrite_output_contract",
+    "修正内容": "补齐 risk_level / recommended_fix / evidence_span",
+    "原因": "agent findings 未满足 verifier contract。"
+  },
+  {
+    "后验信号": "regression_observed",
+    "修正算子": "reject_and_rollback",
+    "修正内容": "拒绝一个会丢失 R002/R003 的 bad patch，回滚到安全修正路径。",
+    "原因": "bad patch 虽补了 admin 鉴权，但导致原本覆盖的输入校验/SQL 注入规则回归。"
+  },
+  {
+    "后验信号": "failure_critical_rule",
+    "修正算子": "add_trace_requirement",
+    "修正内容": "对 R001, R006 要求 rule_application trace",
+    "原因": "让后续 findings 绑定可审计 evidence_span。"
+  }
+]

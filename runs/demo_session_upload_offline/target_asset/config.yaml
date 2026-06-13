@@ -1,0 +1,3 @@
+debug: true
+audit_log_retention_days: null
+upload_root: /public/uploads

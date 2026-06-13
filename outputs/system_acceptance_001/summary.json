@@ -1,0 +1,704 @@
+{
+  "run_id": "system_acceptance_001",
+  "created_at": "2026-06-07T22:30:51.285742+00:00",
+  "passed": true,
+  "checks": {
+    "tests_pass": true,
+    "task_cases_valid": true,
+    "generalization_suite_pass": true,
+    "ablation_suite_pass": true,
+    "multitask_script_pass": true,
+    "review_package_exported": true,
+    "review_package_valid": true,
+    "same_pipeline_multi_task": true,
+    "different_feedback": true,
+    "different_repairs": true,
+    "repaired_passes": true,
+    "wsl_backend_ready": true,
+    "real_security_task_passed": true
+  },
+  "multitask": {
+    "run_id": "multitask_closed_loop_001",
+    "created_at": "2026-06-07T22:30:31.473171+00:00",
+    "case_count": 3,
+    "task_family_count": 3,
+    "feedback_types": [
+      "evidence_gap",
+      "false_positive",
+      "missing_capability"
+    ],
+    "patch_operators": [
+      "add_environment_negative_guard",
+      "add_missing_capability_modules",
+      "strengthen_evidence_protocol"
+    ],
+    "a2_pass_count": 3,
+    "case_summaries": [
+      {
+        "case_id": "upload_api_vulnerability",
+        "title": "File upload API security review",
+        "task_family": "api_security",
+        "expected_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "feedback_type": "missing_capability",
+        "patch_operator": "add_missing_capability_modules",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "a0_coverage": 0.0,
+        "a1_coverage": 0.3333,
+        "a2_coverage": 1.0,
+        "v1_capabilities": [
+          "UPLOAD_PATH_ISOLATION"
+        ],
+        "v2_capabilities": [
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION",
+          "UPLOAD_TYPE_MAGIC"
+        ],
+        "artifact_dir": "cases\\upload_api_vulnerability"
+      },
+      {
+        "case_id": "auth_object_access",
+        "title": "Authorization and object ownership review",
+        "task_family": "access_control",
+        "expected_capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
+        "feedback_type": "evidence_gap",
+        "patch_operator": "strengthen_evidence_protocol",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "a0_coverage": 0.0,
+        "a1_coverage": 1.0,
+        "a2_coverage": 1.0,
+        "v1_capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
+        "v2_capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
+        "artifact_dir": "cases\\auth_object_access"
+      },
+      {
+        "case_id": "prod_config_audit",
+        "title": "Production configuration security review",
+        "task_family": "config_security",
+        "expected_capabilities": [
+          "CONFIG_AUDIT_EXPORT"
+        ],
+        "feedback_type": "false_positive",
+        "patch_operator": "add_environment_negative_guard",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "a0_coverage": 0.0,
+        "a1_coverage": 1.0,
+        "a2_coverage": 1.0,
+        "v1_capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_SECRET_REF",
+          "CONFIG_TLS"
+        ],
+        "v2_capabilities": [
+          "CONFIG_AUDIT_EXPORT"
+        ],
+        "artifact_dir": "cases\\prod_config_audit"
+      }
+    ],
+    "claim_support": {
+      "same_pipeline_multi_task": true,
+      "different_feedback": true,
+      "different_repairs": true,
+      "repaired_passes": true,
+      "recorded_reproducible": true
+    }
+  },
+  "generalization": {
+    "run_id": "generalization_suite_offline_deterministic",
+    "created_at": "2026-06-07T22:30:31.350405+00:00",
+    "backend": "offline_deterministic",
+    "scenario_count": 4,
+    "a2_pass_count": 4,
+    "feedback_types": [
+      "false_positive_risk",
+      "missing_capability",
+      "output_contract_error",
+      "ownership_boundary_missing"
+    ],
+    "repair_actions": [
+      "patch_boundary",
+      "patch_capability",
+      "reduce_false_positive_risk",
+      "rewrite_output_contract"
+    ],
+    "results": [
+      {
+        "scenario": "upload_security_001",
+        "family": "upload_security",
+        "backend": "offline_deterministic",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "feedback_type": "missing_capability",
+        "repair_action": "patch_capability",
+        "gate_decision": "accept",
+        "scores_before": {
+          "capability_coverage_score": 0.3333,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "scores_after": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "latency_ms": 9,
+        "artifact_dir": "runs\\generalization\\upload_security_001"
+      },
+      {
+        "scenario": "auth_access_control_001",
+        "family": "auth_access_control",
+        "backend": "offline_deterministic",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "feedback_type": "ownership_boundary_missing",
+        "repair_action": "patch_boundary",
+        "gate_decision": "accept",
+        "scores_before": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 0.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "scores_after": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "latency_ms": 11,
+        "artifact_dir": "runs\\generalization\\auth_access_control_001"
+      },
+      {
+        "scenario": "config_security_001",
+        "family": "config_security",
+        "backend": "offline_deterministic",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "feedback_type": "false_positive_risk",
+        "repair_action": "reduce_false_positive_risk",
+        "gate_decision": "accept",
+        "scores_before": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 0.0,
+          "trace_observability_score": 1.0
+        },
+        "scores_after": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "latency_ms": 10,
+        "artifact_dir": "runs\\generalization\\config_security_001"
+      },
+      {
+        "scenario": "api_review_001",
+        "family": "api_or_code_review",
+        "backend": "offline_deterministic",
+        "a0_pass": false,
+        "a1_pass": false,
+        "a2_pass": true,
+        "feedback_type": "output_contract_error",
+        "repair_action": "rewrite_output_contract",
+        "gate_decision": "accept",
+        "scores_before": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 0.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "scores_after": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        },
+        "latency_ms": 10,
+        "artifact_dir": "runs\\generalization\\api_review_001"
+      }
+    ],
+    "claim_support": {
+      "same_pipeline_four_tasks": true,
+      "different_feedback": true,
+      "different_repair_actions": true,
+      "all_a2_pass": true,
+      "artifact_backed": true
+    }
+  },
+  "ablation": {
+    "run_id": "ablation_minimal_001",
+    "created_at": "2026-06-07T22:30:31.393079+00:00",
+    "scenarios": [
+      "upload_security",
+      "config_security"
+    ],
+    "rows": [
+      {
+        "scenario": "upload_security",
+        "strategy": "A0_naive_baseline",
+        "task_pass": false,
+        "capability_coverage_score": 0.0,
+        "evidence_binding_score": 0.0,
+        "output_contract_score": 0.5,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 0.5,
+        "cost_budget_score": 1.0,
+        "finding_count": 0,
+        "missing_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "repaired_capabilities": [],
+        "regression_count": 0,
+        "gate_decision": "n/a"
+      },
+      {
+        "scenario": "upload_security",
+        "strategy": "Skill_v1",
+        "task_pass": false,
+        "capability_coverage_score": 0.33,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 1.0,
+        "finding_count": 1,
+        "missing_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "repaired_capabilities": [],
+        "regression_count": 0,
+        "gate_decision": "fail"
+      },
+      {
+        "scenario": "upload_security",
+        "strategy": "Skill_v1_plus_naive_regenerate",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 0.8,
+        "output_contract_score": 0.8,
+        "regression_safety_score": 0.8,
+        "trace_observability_score": 0.7,
+        "cost_budget_score": 0.4,
+        "finding_count": 4,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "regression_count": 1,
+        "gate_decision": "accept_with_risk"
+      },
+      {
+        "scenario": "upload_security",
+        "strategy": "Skill_v1_plus_always_append",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 0.9,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 0.7,
+        "trace_observability_score": 0.8,
+        "cost_budget_score": 0.7,
+        "finding_count": 5,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "regression_count": 1,
+        "gate_decision": "accept_with_risk"
+      },
+      {
+        "scenario": "upload_security",
+        "strategy": "Skill_v1_plus_typed_repair_only",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 0.9,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 0.9,
+        "finding_count": 3,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "regression_count": 0,
+        "gate_decision": "not_applied"
+      },
+      {
+        "scenario": "upload_security",
+        "strategy": "Skill_v1_plus_typed_repair_plus_gate",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 0.9,
+        "finding_count": 3,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "regression_count": 0,
+        "gate_decision": "accept"
+      },
+      {
+        "scenario": "upload_security",
+        "strategy": "Skill_v2_final",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 0.9,
+        "finding_count": 3,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "regression_count": 0,
+        "gate_decision": "accept"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "A0_naive_baseline",
+        "task_pass": false,
+        "capability_coverage_score": 0.0,
+        "evidence_binding_score": 0.0,
+        "output_contract_score": 0.5,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 0.5,
+        "cost_budget_score": 1.0,
+        "finding_count": 0,
+        "missing_capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_ENV_GUARD"
+        ],
+        "repaired_capabilities": [],
+        "regression_count": 0,
+        "gate_decision": "n/a"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "Skill_v1",
+        "task_pass": false,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 0.0,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 1.0,
+        "finding_count": 3,
+        "missing_capabilities": [],
+        "repaired_capabilities": [],
+        "regression_count": 1,
+        "gate_decision": "fail"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "Skill_v1_plus_naive_regenerate",
+        "task_pass": false,
+        "capability_coverage_score": 0.5,
+        "evidence_binding_score": 0.8,
+        "output_contract_score": 0.8,
+        "regression_safety_score": 0.5,
+        "trace_observability_score": 0.6,
+        "cost_budget_score": 0.4,
+        "finding_count": 3,
+        "missing_capabilities": [
+          "CONFIG_ENV_GUARD"
+        ],
+        "repaired_capabilities": [],
+        "regression_count": 1,
+        "gate_decision": "reject"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "Skill_v1_plus_always_append",
+        "task_pass": false,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 0.9,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 0.0,
+        "trace_observability_score": 0.8,
+        "cost_budget_score": 0.7,
+        "finding_count": 4,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "CONFIG_ENV_GUARD"
+        ],
+        "regression_count": 2,
+        "gate_decision": "reject"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "Skill_v1_plus_typed_repair_only",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 0.8,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 0.9,
+        "finding_count": 2,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "CONFIG_ENV_GUARD"
+        ],
+        "regression_count": 0,
+        "gate_decision": "not_applied"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "Skill_v1_plus_typed_repair_plus_gate",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 0.9,
+        "finding_count": 2,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "CONFIG_ENV_GUARD"
+        ],
+        "regression_count": 0,
+        "gate_decision": "accept"
+      },
+      {
+        "scenario": "config_security",
+        "strategy": "Skill_v2_final",
+        "task_pass": true,
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0,
+        "cost_budget_score": 0.9,
+        "finding_count": 2,
+        "missing_capabilities": [],
+        "repaired_capabilities": [
+          "CONFIG_ENV_GUARD"
+        ],
+        "regression_count": 0,
+        "gate_decision": "accept"
+      }
+    ],
+    "conclusion": {
+      "typed_repair_plus_gate_passes": true,
+      "always_append_has_regression_risk": true,
+      "naive_regenerate_not_stable": true,
+      "evidence_scope": "controlled_minimal_ablation"
+    }
+  },
+  "wsl_backend": {
+    "wsl_available": true,
+    "distro": "Ubuntu-24.04-Codex",
+    "distro_installed": true,
+    "distro_version": "* Ubuntu-24.04-Codex    Stopped         2",
+    "spark_root": "/opt/spark/spark-skills",
+    "spark_present": true,
+    "spark_commit": "4c79c5a",
+    "spark_core_imports": true,
+    "harbor_available": true,
+    "docker_available": true,
+    "docker_compose_available": true,
+    "docker_local_smoke_image": true,
+    "pipeline_smoke_present": true,
+    "pipeline_smoke_passed": true,
+    "pipeline_smoke_summary": {
+      "model": "oracle",
+      "agent": "oracle",
+      "max_retries": 1,
+      "total_tasks": 1,
+      "passed": 1,
+      "failed": 0,
+      "infra_error": 0,
+      "tasks": {
+        "hello-local": {
+          "task": "hello-local",
+          "success": true,
+          "attempts": 1,
+          "final_status": "PASS",
+          "final_reward": 1.0
+        }
+      }
+    },
+    "real_security_task_present": true,
+    "real_security_task_passed": true,
+    "real_security_task_summary": {
+      "run_id": "wsl_harbor_real_upload_001",
+      "backend": "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+      "task": "real-upload-security-review",
+      "agent": "oracle",
+      "environment": "docker",
+      "reward": 1.0,
+      "passed": true,
+      "expected_capabilities": [
+        "UPLOAD_AUDIT_RETENTION",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_TYPE_MAGIC"
+      ],
+      "seen_capabilities": [
+        "UPLOAD_AUDIT_RETENTION",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_TYPE_MAGIC"
+      ],
+      "missing": [],
+      "schema_errors": [],
+      "evidence": {
+        "job_result": "result.json",
+        "trial_result": "real-upload-security-review__dCxSUn5/result.json",
+        "agent_log": "real-upload-security-review__dCxSUn5/agent/oracle.txt",
+        "security_report": "real-upload-security-review__dCxSUn5/artifacts/security_report.json",
+        "verifier_result": "real-upload-security-review__dCxSUn5/artifacts/result.json",
+        "verifier_stdout": "real-upload-security-review__dCxSUn5/verifier/test-stdout.txt"
+      },
+      "boundary": "This is a real WSL2/Docker/Harbor task with target files, agent execution, artifact download, and verifier reward. The agent is Harbor oracle, so it proves sandbox/verifier plumbing and task realism, not yet open-world CLI-agent autonomy."
+    },
+    "notes": []
+  },
+  "commands": {
+    "pytest": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "returncode": 0,
+      "stdout": "...............                                                          [100%]\n15 passed in 0.13s\n",
+      "stderr": "",
+      "stdout_tail": "...............                                                          [100%]\n15 passed in 0.13s\n",
+      "stderr_tail": ""
+    },
+    "validate_task_cases": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\validate_task_cases.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"case_count\": 4,\n  \"results\": [\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\api_review_001\",\n      \"case_id\": \"api_review_001\",\n      \"task_family\": \"api_or_code_review\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"API_SCHEMA_CONTRACT\",\n        \"API_OVERBROAD_RISK\"\n      ]\n    },\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\auth_access_control_001\",\n      \"case_id\": \"auth_access_control_001\",\n      \"task_family\": \"auth_access_control\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"AUTH_SCOPE_MATRIX\",\n        \"AUTH_OBJECT_OWNERSHIP\",\n        \"AUTH_ERROR_ENVELOPE\"\n      ]\n    },\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\config_security_001\",\n      \"case_id\": \"config_security_001\",\n      \"task_family\": \"config_security\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"CONFIG_AUDIT_EXPORT\",\n        \"CONFIG_ENV_GUARD\"\n      ]\n    },\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\upload_security_001\",\n      \"case_id\": \"upload_security_001\",\n      \"task_family\": \"upload_security\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"UPLOAD_TYPE_MAGIC\",\n        \"UPLOAD_PATH_ISOLATION\",\n        \"UPLOAD_AUDIT_RETENTION\"\n      ]\n    }\n  ]\n}\n",
+      "stderr": "",
+      "stdout_tail": "{\n  \"status\": \"ok\",\n  \"case_count\": 4,\n  \"results\": [\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\api_review_001\",\n      \"case_id\": \"api_review_001\",\n      \"task_family\": \"api_or_code_review\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"API_SCHEMA_CONTRACT\",\n        \"API_OVERBROAD_RISK\"\n      ]\n    },\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\auth_access_control_001\",\n      \"case_id\": \"auth_access_control_001\",\n      \"task_family\": \"auth_access_control\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"AUTH_SCOPE_MATRIX\",\n        \"AUTH_OBJECT_OWNERSHIP\",\n        \"AUTH_ERROR_ENVELOPE\"\n      ]\n    },\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\config_security_001\",\n      \"case_id\": \"config_security_001\",\n      \"task_family\": \"config_security\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"CONFIG_AUDIT_EXPORT\",\n        \"CONFIG_ENV_GUARD\"\n      ]\n    },\n    {\n      \"case_dir\": \"data\\\\task_cases\\\\upload_security_001\",\n      \"case_id\": \"upload_security_001\",\n      \"task_family\": \"upload_security\",\n      \"status\": \"ok\",\n      \"errors\": [],\n      \"expected_capabilities\": [\n        \"UPLOAD_TYPE_MAGIC\",\n        \"UPLOAD_PATH_ISOLATION\",\n        \"UPLOAD_AUDIT_RETENTION\"\n      ]\n    }\n  ]\n}\n",
+      "stderr_tail": ""
+    },
+    "generalization": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\run_generalization_suite.py",
+        "--scenarios",
+        "upload,auth,config,api_review",
+        "--backend",
+        "offline_deterministic"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"output\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\outputs\\\\validation\\\\generalization_suite.json\",\n  \"a2_pass\": 4,\n  \"scenarios\": 4\n}\n",
+      "stderr": "",
+      "stdout_tail": "{\n  \"output\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\outputs\\\\validation\\\\generalization_suite.json\",\n  \"a2_pass\": 4,\n  \"scenarios\": 4\n}\n",
+      "stderr_tail": ""
+    },
+    "ablation": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\run_ablation_suite.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"summary\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\outputs\\\\validation\\\\ablation_summary.md\",\n  \"rows\": 14\n}\n",
+      "stderr": "",
+      "stdout_tail": "{\n  \"summary\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\outputs\\\\validation\\\\ablation_summary.md\",\n  \"rows\": 14\n}\n",
+      "stderr_tail": ""
+    },
+    "multitask": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\run_multitask_closed_loop.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"output_dir\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\outputs\\\\multitask_closed_loop_001\",\n  \"a2_pass_count\": 3,\n  \"case_count\": 3\n}\n",
+      "stderr": "",
+      "stdout_tail": "{\n  \"output_dir\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\outputs\\\\multitask_closed_loop_001\",\n  \"a2_pass_count\": 3,\n  \"case_count\": 3\n}\n",
+      "stderr_tail": ""
+    },
+    "export_review_package": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\export_review_package.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"review_package\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\review_package\",\n  \"zip\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\review_package.zip\",\n  \"index\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\review_package\\\\index.html\"\n}\n",
+      "stderr": "",
+      "stdout_tail": "{\n  \"review_package\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\review_package\",\n  \"zip\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\review_package.zip\",\n  \"index\": \"C:\\\\Users\\\\31552\\\\Documents\\\\New project\\\\expert-skill-distillation-prototype-main\\\\review_package\\\\index.html\"\n}\n",
+      "stderr_tail": ""
+    },
+    "validate_review_package": {
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\validate_review_package.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"error_count\": 0,\n  \"errors\": []\n}\n",
+      "stderr": "",
+      "stdout_tail": "{\n  \"status\": \"ok\",\n  \"error_count\": 0,\n  \"errors\": []\n}\n",
+      "stderr_tail": ""
+    },
+    "wsl_backend_check": {
+      "command": [
+        "powershell",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\scripts\\check_wsl2_spark_backend.ps1"
+      ],
+      "returncode": 0,
+      "stdout": "{\n    \"wsl_available\":  true,\n    \"distro\":  \"Ubuntu-24.04-Codex\",\n    \"distro_installed\":  true,\n    \"distro_version\":  \"* Ubuntu-24.04-Codex    Stopped         2\",\n    \"spark_root\":  \"/opt/spark/spark-skills\",\n    \"spark_present\":  true,\n    \"spark_commit\":  \"4c79c5a\",\n    \"spark_core_imports\":  true,\n    \"harbor_available\":  true,\n    \"docker_available\":  true,\n    \"docker_compose_available\":  true,\n    \"docker_local_smoke_image\":  true,\n    \"pipeline_smoke_present\":  true,\n    \"pipeline_smoke_passed\":  true,\n    \"pipeline_smoke_summary\":  {\n                                   \"model\":  \"oracle\",\n                                   \"agent\":  \"oracle\",\n                                   \"max_retries\":  1,\n                                   \"total_tasks\":  1,\n                                   \"passed\":  1,\n                                   \"failed\":  0,\n                                   \"infra_error\":  0,\n                                   \"tasks\":  {\n                                                 \"hello-local\":  {\n                                                                     \"task\":  \"hello-local\",\n                                                                     \"success\":  true,\n                                                                     \"attempts\":  1,\n                                                                     \"final_status\":  \"PASS\",\n                                                                     \"final_reward\":  1.0\n                                                                 }\n                                             }\n                               },\n    \"real_security_task_present\":  true,\n    \"real_security_task_passed\":  true,\n    \"real_security_task_summary\":  {\n                                       \"run_id\":  \"wsl_harbor_real_upload_001\",\n                                       \"backend\":  \"WSL2 Ubuntu-24.04-Codex + Docker + Harbor\",\n                                       \"task\":  \"real-upload-security-review\",\n                                       \"agent\":  \"oracle\",\n                                       \"environment\":  \"docker\",\n                                       \"reward\":  1.0,\n                                       \"passed\":  true,\n                                       \"expected_capabilities\":  [\n                                                                     \"UPLOAD_AUDIT_RETENTION\",\n                                                                     \"UPLOAD_PATH_ISOLATION\",\n                                                                     \"UPLOAD_TYPE_MAGIC\"\n                                                                 ],\n                                       \"seen_capabilities\":  [\n                                                                 \"UPLOAD_AUDIT_RETENTION\",\n                                                                 \"UPLOAD_PATH_ISOLATION\",\n                                                                 \"UPLOAD_TYPE_MAGIC\"\n                                                             ],\n                                       \"missing\":  [\n\n                                                   ],\n                                       \"schema_errors\":  [\n\n                                                         ],\n                                       \"evidence\":  {\n                                                        \"job_result\":  \"result.json\",\n                                                        \"trial_result\":  \"real-upload-security-review__dCxSUn5/result.json\",\n                                                        \"agent_log\":  \"real-upload-security-review__dCxSUn5/agent/oracle.txt\",\n                                                        \"security_report\":  \"real-upload-security-review__dCxSUn5/artifacts/security_report.json\",\n                                                        \"verifier_result\":  \"real-upload-security-review__dCxSUn5/artifacts/result.json\",\n                                                        \"verifier_stdout\":  \"real-upload-security-review__dCxSUn5/verifier/test-stdout.txt\"\n                                                    },\n                                       \"boundary\":  \"This is a real WSL2/Docker/Harbor task with target files, agent execution, artifact download, and verifier reward. The agent is Harbor oracle, so it proves sandbox/verifier plumbing and task realism, not yet open-world CLI-agent autonomy.\"\n                                   },\n    \"notes\":  [\n\n              ]\n}\n",
+      "stderr": "",
+      "stdout_tail": "true,\n    \"pipeline_smoke_summary\":  {\n                                   \"model\":  \"oracle\",\n                                   \"agent\":  \"oracle\",\n                                   \"max_retries\":  1,\n                                   \"total_tasks\":  1,\n                                   \"passed\":  1,\n                                   \"failed\":  0,\n                                   \"infra_error\":  0,\n                                   \"tasks\":  {\n                                                 \"hello-local\":  {\n                                                                     \"task\":  \"hello-local\",\n                                                                     \"success\":  true,\n                                                                     \"attempts\":  1,\n                                                                     \"final_status\":  \"PASS\",\n                                                                     \"final_reward\":  1.0\n                                                                 }\n                                             }\n                               },\n    \"real_security_task_present\":  true,\n    \"real_security_task_passed\":  true,\n    \"real_security_task_summary\":  {\n                                       \"run_id\":  \"wsl_harbor_real_upload_001\",\n                                       \"backend\":  \"WSL2 Ubuntu-24.04-Codex + Docker + Harbor\",\n                                       \"task\":  \"real-upload-security-review\",\n                                       \"agent\":  \"oracle\",\n                                       \"environment\":  \"docker\",\n                                       \"reward\":  1.0,\n                                       \"passed\":  true,\n                                       \"expected_capabilities\":  [\n                                                                     \"UPLOAD_AUDIT_RETENTION\",\n                                                                     \"UPLOAD_PATH_ISOLATION\",\n                                                                     \"UPLOAD_TYPE_MAGIC\"\n                                                                 ],\n                                       \"seen_capabilities\":  [\n                                                                 \"UPLOAD_AUDIT_RETENTION\",\n                                                                 \"UPLOAD_PATH_ISOLATION\",\n                                                                 \"UPLOAD_TYPE_MAGIC\"\n                                                             ],\n                                       \"missing\":  [\n\n                                                   ],\n                                       \"schema_errors\":  [\n\n                                                         ],\n                                       \"evidence\":  {\n                                                        \"job_result\":  \"result.json\",\n                                                        \"trial_result\":  \"real-upload-security-review__dCxSUn5/result.json\",\n                                                        \"agent_log\":  \"real-upload-security-review__dCxSUn5/agent/oracle.txt\",\n                                                        \"security_report\":  \"real-upload-security-review__dCxSUn5/artifacts/security_report.json\",\n                                                        \"verifier_result\":  \"real-upload-security-review__dCxSUn5/artifacts/result.json\",\n                                                        \"verifier_stdout\":  \"real-upload-security-review__dCxSUn5/verifier/test-stdout.txt\"\n                                                    },\n                                       \"boundary\":  \"This is a real WSL2/Docker/Harbor task with target files, agent execution, artifact download, and verifier reward. The agent is Harbor oracle, so it proves sandbox/verifier plumbing and task realism, not yet open-world CLI-agent autonomy.\"\n                                   },\n    \"notes\":  [\n\n              ]\n}\n",
+      "stderr_tail": ""
+    }
+  }
+}

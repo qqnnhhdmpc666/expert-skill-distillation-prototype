@@ -1,0 +1,23 @@
+[
+  {
+    "finding_id": "F001",
+    "rule_id": "R004",
+    "evidence_span": "error_template: \"stacktrace=${stacktrace}, api_key=${api_key}\"",
+    "risk_level": "medium",
+    "recommended_fix": "统一错误 envelope，并对邮箱、token、密钥、内部错误脱敏。"
+  },
+  {
+    "finding_id": "F002",
+    "rule_id": "R006",
+    "evidence_span": "audit_log_retention_days: null",
+    "risk_level": "medium",
+    "recommended_fix": "设置安全事件审计日志和保留策略。"
+  },
+  {
+    "finding_id": "F003",
+    "rule_id": "R007",
+    "evidence_span": "debug: true",
+    "risk_level": "high",
+    "recommended_fix": "关闭生产 debug，替换默认 secret，收紧 CORS。"
+  }
+]

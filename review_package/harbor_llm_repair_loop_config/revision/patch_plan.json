@@ -1,0 +1,17 @@
+{
+  "feedback_type": "output_contract_error",
+  "repair_action": "rewrite_output_contract",
+  "before_capabilities": [
+    "CONFIG_HARDCODED_SECRET",
+    "CONFIG_INSECURE_HTTP",
+    "CONFIG_PROD_DEBUG"
+  ],
+  "after_capabilities": [
+    "CONFIG_HARDCODED_SECRET",
+    "CONFIG_INSECURE_HTTP",
+    "CONFIG_PROD_DEBUG"
+  ],
+  "before_contract": "relaxed",
+  "after_contract": "strict",
+  "consumes": "A1/failure_feedback.json"
+}

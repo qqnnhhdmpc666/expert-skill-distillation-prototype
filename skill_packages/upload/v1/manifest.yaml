@@ -1,0 +1,26 @@
+schema_version: 0.2.0
+package_id: "upload/v1"
+name: "upload_security_review_skill"
+version: "v1"
+domain: "漏洞挖掘 / 文件上传安全"
+package_type: deployable_skill_package
+entrypoint: SKILL.md
+meta: meta.json
+lifecycle: source_material -> skill_v1 -> attempt -> verifier -> patch -> skill_v2
+inputs:
+  source_materials: source_materials/*
+  target_asset: target_asset/*
+  task_spec: task_spec/task_spec.json
+contracts:
+  output_schema: contracts/output_schema.json
+  verifier_contract: contracts/verifier_contract.yaml
+inspired_by:
+  - COLLEAGUE.SKILL: versioned and inspectable skill lifecycle
+  - SPARK-PDI: evidence-first trajectory verification
+rule_ids:
+  - R002
+  - R004
+  - R008
+rule_count: 3
+token_cost: 122
+status: "部署失败"

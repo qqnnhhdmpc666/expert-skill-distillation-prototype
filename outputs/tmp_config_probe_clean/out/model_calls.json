@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "temperature": 0.0,
+  "usage": {
+    "prompt_tokens": 687,
+    "completion_tokens": 56,
+    "total_tokens": 743,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 45
+    }
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a security-review agent that returns strict JSON for a deterministic verifier."
+      },
+      {
+        "role": "user",
+        "content": "You are a non-oracle security-review agent.\n\nRead the target files and the Skill Package. Produce only a JSON object for the deterministic verifier.\n\nRules:\n- Do not invent findings that are not grounded in the target text.\n- Use only these capability_id values exposed by the Skill Package: CONFIG_AUDIT_EXPORT, CONFIG_ENV_GUARD.\n- Each finding must include capability_id, issue, evidence_span, and recommended_fix.\n- If the Skill Package does not expose a capability, do not report it even if you notice it.\n- Return JSON only. No markdown fences.\n\nExpected JSON shape:\n{\n  \"findings\": [\n    {\n      \"capability_id\": \"CONFIG_AUDIT_EXPORT\",\n      \"issue\": \"short issue title\",\n      \"evidence_span\": \"quote or tightly paraphrase the concrete target span, including file name when possible\",\n      \"recommended_fix\": \"specific fix grounded in the target\"\n    }\n  ]\n}\n\n# Skill Package\n\n## manifest.json\n\n```text\n﻿{\"version\":\"v1\",\"capabilities\":[\"CONFIG_AUDIT_EXPORT\",\"CONFIG_ENV_GUARD\"]}\n\n```\n\n## SKILL.md\n\n```text\n﻿# Config Security Skill\n\n## Capabilities\n\n### CONFIG_AUDIT_EXPORT\n- Evidence: prod.audit enabled but retention_days/export_sink missing\n- Fix: Require retention and export sink for production audit logs.\n\n### CONFIG_ENV_GUARD\n- Evidence: dev api_token/debug should not be production findings\n- Fix: Bind findings to prod/dev/test path before flagging.\n\n```\n\n# Target Asset\n\n## target.md\n\n```text\nconfig.yaml: prod.debug=false; prod.audit.enabled=true; prod.audit.retention_days=90; prod.audit.export_sink=siem; prod.secret_ref=vault://prod/api-token.\n```\n"
+      }
+    ]
+  },
+  "response": {
+    "id": "resp_0d93cb1af7023844016a26673ab7788196aa8916e8a27e3fe0",
+    "object": "chat.completion",
+    "created": 1780901693,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 687,
+      "completion_tokens": 56,
+      "total_tokens": 743,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 45
+      }
+    }
+  }
+}

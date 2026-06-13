@@ -1,0 +1,8 @@
+{
+  "output": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree\\outputs\\deployable_codex_skill\\secure_code_review",
+  "manifest": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree\\outputs\\deployable_codex_skill\\secure_code_review\\manifest.json",
+  "versions": [
+    "v1",
+    "v2"
+  ]
+}

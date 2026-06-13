@@ -1,0 +1,147 @@
+{
+  "variant": "c005_cfg",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "iterative_contract_c005_cfg",
+    "task_family": "secure_code_review",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC",
+      "UPLOAD_AUDIT_RETENTION",
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK",
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "task_conditioned_secure_review",
+      "package_role": "installed_runtime",
+      "package_family_scope": "task_conditioned_secure_review",
+      "supported_task_families": [
+        "upload_security",
+        "config_security",
+        "api_or_code_review",
+        "auth_access_control"
+      ],
+      "out_of_scope_group": "out_of_scope_guard",
+      "capability_groups": [
+        {
+          "name": "upload_security",
+          "task_families": [
+            "upload_security"
+          ],
+          "capabilities": [
+            "UPLOAD_PATH_ISOLATION",
+            "UPLOAD_TYPE_MAGIC",
+            "UPLOAD_AUDIT_RETENTION"
+          ]
+        },
+        {
+          "name": "config_security",
+          "task_families": [
+            "config_security"
+          ],
+          "capabilities": [
+            "CONFIG_AUDIT_EXPORT",
+            "CONFIG_ENV_GUARD"
+          ]
+        },
+        {
+          "name": "api_or_code_review",
+          "task_families": [
+            "api_or_code_review"
+          ],
+          "capabilities": [
+            "API_SCHEMA_CONTRACT",
+            "API_OVERBROAD_RISK"
+          ]
+        },
+        {
+          "name": "auth_access_control",
+          "task_families": [
+            "auth_access_control"
+          ],
+          "capabilities": [
+            "AUTH_SCOPE_MATRIX",
+            "AUTH_OBJECT_OWNERSHIP",
+            "AUTH_ERROR_ENVELOPE"
+          ]
+        },
+        {
+          "name": "out_of_scope_guard",
+          "task_families": [],
+          "capabilities": []
+        }
+      ],
+      "iterative_contract_candidate_id": "c005_cfg",
+      "candidate_generation_sources": [
+        "failure report",
+        "verifier feedback",
+        "evidence summary",
+        "normalization trace"
+      ],
+      "verifier_only_oracle_fields_read": false,
+      "scope_expansion_forbidden": true
+    }
+  },
+  "skill_text_chars": 1649,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v2\n\nThis installed runtime uses task-conditioned capability activation inside the controlled secure-review prototype.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Capability Groups\n\n### upload_security\n- task_families: `upload_security`\n- capabilities:\n  - `UPLOAD_PATH_ISOLATION`\n  - `UPLOAD_TYPE_MAGIC`\n  - `UP",
+  "provenance": {
+    "run_id": "independent_upload_mime_storage_001::live_llm_text::c005_cfg",
+    "case_id": "independent_upload_mime_storage_001",
+    "backend": "live_llm_text",
+    "variant": "c005_cfg",
+    "runtime_source": "iterative_contract_candidate",
+    "task_family": "upload_security",
+    "activated_capability_group": "upload_security",
+    "expected_capability_group": "upload_security",
+    "capability_group_correct": true,
+    "out_of_scope": false,
+    "unsupported_task_family": null,
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\iter_ci\\cand\\c005_cfg",
+    "skill_hash": "99e13b83d74d5bf24beae4a0059d7a275a6291fce5538a649cebbe8a8a31fd16",
+    "manifest_hash": "59570e373461afa39812d57237f7204c95395b9d41043888e73648bc7aa9040e",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T14:51:51.537540+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T18:07:38.577923+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "live_llm_text",
+    "cost": null,
+    "tokens": 293,
+    "evidence_normalizer_enabled": true,
+    "normalizer_version": "live_contract_normalizer.v1",
+    "evidence_exact_match_rate": 1.0,
+    "normalizer_taxonomy_counts": {
+      "schema_error": 0,
+      "missing_evidence": 0,
+      "non_exact_span": 3,
+      "unsupported_evidence": 0,
+      "wrong_capability_group": 0,
+      "over_reporting": 0,
+      "under_reporting": 0,
+      "unsupported_scope": 0,
+      "low_confidence_needed": 0,
+      "normalizer_needed": 3,
+      "model_contract_violation": 0
+    },
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

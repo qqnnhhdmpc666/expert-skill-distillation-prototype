@@ -1,0 +1,99 @@
+{
+    "id": "187cff85-4afe-4544-afd3-01568c6c1ba1",
+    "task_name": "real-upload-security-review",
+    "trial_name": "real-upload-security-review__dCxSUn5",
+    "trial_uri": "file:///opt/spark/harbor-real-upload-security-review/2026-06-08__01-27-14/real-upload-security-review__dCxSUn5",
+    "task_id": {
+        "path": "/opt/spark/spark-skills/tasks_no_skills_generate/real-upload-security-review"
+    },
+    "source": null,
+    "task_checksum": "48893a1e53ee48ea0709cc0de58a25eb1b6fa885201d3c66ce042874efd94cd2",
+    "config": {
+        "task": {
+            "path": "/opt/spark/spark-skills/tasks_no_skills_generate/real-upload-security-review",
+            "git_url": null,
+            "git_commit_id": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "real-upload-security-review__dCxSUn5",
+        "trials_dir": "/opt/spark/harbor-real-upload-security-review/2026-06-08__01-27-14",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": true,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts_json": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [
+            "/app/security_report.json",
+            "/logs/verifier/result.json"
+        ],
+        "job_id": "76958871-0769-4b87-949c-363f465324c2"
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-06-07T17:27:14.905145Z",
+    "finished_at": "2026-06-07T17:27:33.547145Z",
+    "environment_setup": {
+        "started_at": "2026-06-07T17:27:14.972678Z",
+        "finished_at": "2026-06-07T17:27:18.026114Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-06-07T17:27:18.026164Z",
+        "finished_at": "2026-06-07T17:27:18.026246Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-06-07T17:27:18.026339Z",
+        "finished_at": "2026-06-07T17:27:18.727692Z"
+    },
+    "verifier": {
+        "started_at": "2026-06-07T17:27:18.727932Z",
+        "finished_at": "2026-06-07T17:27:19.906109Z"
+    }
+}

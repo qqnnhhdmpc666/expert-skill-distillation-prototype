@@ -1,0 +1,24 @@
+{
+  "backend_type": "controlled_security_llm_agent",
+  "oracle": false,
+  "llm": true,
+  "task_label": "configuration security review",
+  "relaxed_contract": true,
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "status": "ok",
+  "finding_count": 3,
+  "usage": {
+    "prompt_tokens": 846,
+    "completion_tokens": 134,
+    "total_tokens": 980,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 44
+    }
+  },
+  "latency_ms": 5016
+}

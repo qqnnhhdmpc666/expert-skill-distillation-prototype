@@ -1,0 +1,18 @@
+{
+  "attempt": "active",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Missing audit export configuration",
+      "evidence_span": "prod.yml: audit.enabled=true but retention_days/export_sink empty. dev.yml: dev.api_token is marked dev-only.",
+      "recommended_fix": "Configure retention_days and export_sink in prod.yml to enable proper audit log export.",
+      "capability_group": "config_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

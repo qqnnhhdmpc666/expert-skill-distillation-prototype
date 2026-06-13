@@ -1,0 +1,33 @@
+{
+  "run_id": "live_llm_agent_level_metamorphic_stress_001",
+  "status": "error",
+  "failure_reason": "api_error",
+  "model": "gpt-5.5",
+  "agent_exit_code": 1,
+  "verifier": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "coverage": 0.0,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [
+      "DATA_LABEL_ENUM_ALIGNMENT",
+      "DATA_REQUIRED_FIELD_COVERAGE",
+      "DATA_TEMPORAL_SPLIT_GUARD"
+    ],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_checked": false
+  },
+  "artifacts": {
+    "prompt": "agent/prompt.md",
+    "raw_response": "agent/raw_response.txt",
+    "security_report": "agent/security_report.json",
+    "verifier_report": "agent/verifier_report.json",
+    "model_calls": "agent/model_calls.json",
+    "backend_metadata": "agent/backend_metadata.json"
+  },
+  "boundary": "One live LLM agent-level data-quality row-shuffle stress; not hidden external validation."
+}

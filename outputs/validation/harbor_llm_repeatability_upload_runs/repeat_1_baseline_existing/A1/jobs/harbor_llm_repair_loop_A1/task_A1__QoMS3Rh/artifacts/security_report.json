@@ -1,0 +1,11 @@
+{
+  "backend_type": "harbor_live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Uploaded files are saved under a public uploads directory using the user-supplied filename, which can allow path traversal or unsafe placement of attacker-controlled content in a public root.",
+      "evidence_span": "app.py: UPLOAD_ROOT = Path(\"/public/uploads\"); upload(filename: str, content_type: str, file_bytes: bytes): if filename.endswith((\".png\", \".jpg\")): save(str(UPLOAD_ROOT / filename), file_bytes); config.yaml: upload_storage: /public/uploads",
+      "recommended_fix": "Generate server-side random filenames, normalize and reject path components in user input, and store uploads outside public executable/static roots. Serve files through controlled application endpoints with authorization and safe content handling."
+    }
+  ]
+}

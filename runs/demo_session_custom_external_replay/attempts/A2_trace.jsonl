@@ -1,0 +1,6 @@
+{"step": 1, "event": "规则应用", "rule_id": "R002", "evidence": "def upload(filename, content_type, file_bytes):"}
+{"step": 2, "event": "规则应用", "rule_id": "R004", "evidence": "return {\"ok\": True, \"debug_path\": \"/public/uploads/\" + filename}"}
+{"step": 3, "event": "规则应用", "rule_id": "R005", "evidence": "@app.post(\"/upload\")"}
+{"step": 4, "event": "规则应用", "rule_id": "R006", "evidence": "audit_log_retention_days: null"}
+{"step": 5, "event": "规则跳过", "rule_id": "R007", "evidence": "目标资产中未找到匹配证据"}
+{"step": 6, "event": "规则应用", "rule_id": "R008", "evidence": "save(\"/public/uploads/\" + filename, file_bytes)"}

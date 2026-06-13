@@ -1,0 +1,114 @@
+{
+  "A1": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    }
+  ],
+  "A2": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\data_quality_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "DATA_REQUIRED_FIELD_COVERAGE",
+        "DATA_TEMPORAL_SPLIT_GUARD",
+        "DATA_LABEL_ENUM_ALIGNMENT"
+      ]
+    }
+  ]
+}

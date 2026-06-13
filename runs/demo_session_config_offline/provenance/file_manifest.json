@@ -1,0 +1,428 @@
+[
+  {
+    "file": "attempts/A0_no_skill_input.json",
+    "generated_by": "A0 no-skill baseline",
+    "depends_on": "target_asset/*",
+    "used_by": "before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A0_no_skill_output.json",
+    "generated_by": "A0 no-skill baseline",
+    "depends_on": "target_asset/*",
+    "used_by": "before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A0_no_skill_trace.jsonl",
+    "generated_by": "A0 no-skill baseline",
+    "depends_on": "target_asset/*",
+    "used_by": "before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A0_no_skill_verifier_report.json",
+    "generated_by": "A0 no-skill baseline",
+    "depends_on": "target_asset/*",
+    "used_by": "before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A1_agent_input.json",
+    "generated_by": "A1 executor",
+    "depends_on": "skills/skill_v1/*, target_asset/*",
+    "used_by": "A1_agent_output.json"
+  },
+  {
+    "file": "attempts/A1_agent_output.json",
+    "generated_by": "A1 executor",
+    "depends_on": "A1_agent_input.json",
+    "used_by": "A1_verifier_report.json"
+  },
+  {
+    "file": "attempts/A1_trace.jsonl",
+    "generated_by": "A1 executor",
+    "depends_on": "A1_agent_input.json",
+    "used_by": "A1_verifier_report.json"
+  },
+  {
+    "file": "attempts/A1_verifier_report.json",
+    "generated_by": "Verifier check",
+    "depends_on": "A1_agent_output.json, contracts/verifier_contract.yaml",
+    "used_by": "patch_proposal.json, gate_decision.json, Skill v2 compiler"
+  },
+  {
+    "file": "attempts/A2_agent_input.json",
+    "generated_by": "A2 rerun executor / verifier",
+    "depends_on": "skills/skill_v2/*, target_asset/*",
+    "used_by": "final_report.md, before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A2_agent_output.json",
+    "generated_by": "A2 rerun executor / verifier",
+    "depends_on": "skills/skill_v2/*, target_asset/*",
+    "used_by": "final_report.md, before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A2_trace.jsonl",
+    "generated_by": "A2 rerun executor / verifier",
+    "depends_on": "skills/skill_v2/*, target_asset/*",
+    "used_by": "final_report.md, before_after_metrics.json"
+  },
+  {
+    "file": "attempts/A2_verifier_report.json",
+    "generated_by": "A2 rerun executor / verifier",
+    "depends_on": "skills/skill_v2/*, target_asset/*",
+    "used_by": "final_report.md, before_after_metrics.json"
+  },
+  {
+    "file": "attempts/attempts.json",
+    "generated_by": "Attempt timeline recorder",
+    "depends_on": "A0/A1/A2 verifier reports",
+    "used_by": "timeline replay, external review"
+  },
+  {
+    "file": "model_calls.json",
+    "generated_by": "Model call recorder",
+    "depends_on": "run mode, live/recorded/offline calls",
+    "used_by": "模型调用证据"
+  },
+  {
+    "file": "provenance/file_manifest.json",
+    "generated_by": "Artifact manifest builder",
+    "depends_on": "all generated run files",
+    "used_by": "file preview metadata panel"
+  },
+  {
+    "file": "provenance/source_to_skill_mapping.json",
+    "generated_by": "Provenance builder",
+    "depends_on": "source_materials/*, rule_ledger.json, skills/skill_v2/rules/*",
+    "used_by": "输入与蒸馏来源对齐表"
+  },
+  {
+    "file": "revision/compression_ledger.json",
+    "generated_by": "Compact decision logger",
+    "depends_on": "rule_ledger.json, token budget, verifier feedback",
+    "used_by": "Skill v2 patch rationale"
+  },
+  {
+    "file": "revision/correction_report.md",
+    "generated_by": "Correction report writer",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, skill_directory_diff.md, A2_agent_output.json",
+    "used_by": "demo front stage, external review"
+  },
+  {
+    "file": "revision/gate_decision.json",
+    "generated_by": "Validation gate",
+    "depends_on": "patch_proposal.json, A2_verifier_report.json",
+    "used_by": "Skill v2 acceptance, final_report.md"
+  },
+  {
+    "file": "revision/patch_proposal.json",
+    "generated_by": "Posterior patch builder",
+    "depends_on": "A1_verifier_report.json",
+    "used_by": "gate_decision.json, Skill v2 compiler"
+  },
+  {
+    "file": "revision/process_journal.json",
+    "generated_by": "Run artifact writer",
+    "depends_on": "current demo run",
+    "used_by": "review/export"
+  },
+  {
+    "file": "revision/rule_ledger.json",
+    "generated_by": "Deterministic extractor",
+    "depends_on": "source_materials/*, task_spec/task_spec.json",
+    "used_by": "Skill v1 compiler, provenance/source_to_skill_mapping.json"
+  },
+  {
+    "file": "revision/skill_diff.md",
+    "generated_by": "Run artifact writer",
+    "depends_on": "current demo run",
+    "used_by": "review/export"
+  },
+  {
+    "file": "revision/skill_directory_diff.md",
+    "generated_by": "Directory diff engine",
+    "depends_on": "skills/skill_v1/*, skills/skill_v2/*",
+    "used_by": "reviewer evidence, final_report.md"
+  },
+  {
+    "file": "skills/skill_v0_source.json",
+    "generated_by": "Run artifact writer",
+    "depends_on": "current demo run",
+    "used_by": "review/export"
+  },
+  {
+    "file": "skills/skill_v1/SKILL.md",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/changelog.md",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/contracts/output_schema.json",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/contracts/verifier_contract.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/eval_cases/config_case_001.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/examples/negative_example.md",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/examples/positive_example.md",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/manifest.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/meta.json",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/rules/R004_sensitive_information_leak.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/rules/R006_audit_logging_retention.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/rules/R007_weak_secret_debug_config.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v1/trace_policy.yaml",
+    "generated_by": "Skill v1 compiler",
+    "depends_on": "source_materials/*, task_spec/task_spec.json, rule ledger",
+    "used_by": "A1_agent_input.json, A1_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/SKILL.md",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/changelog.md",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/contracts/output_schema.json",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/contracts/verifier_contract.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/eval_cases/config_case_001.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/examples/negative_example.md",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/examples/positive_example.md",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/manifest.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/meta.json",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/rules/R004_sensitive_information_leak.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/rules/R006_audit_logging_retention.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/rules/R007_weak_secret_debug_config.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "skills/skill_v2/trace_policy.yaml",
+    "generated_by": "Skill v2 compiler",
+    "depends_on": "A1_verifier_report.json, patch_proposal.json, gate_decision.json",
+    "used_by": "A2_agent_input.json, A2_agent_output.json"
+  },
+  {
+    "file": "source_material.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_material_package.json",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_materials/anti_examples.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_materials/boundary.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_materials/evidence_requirements.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_materials/examples.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_materials/output_report_spec.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "source_materials/security_review_guide.md",
+    "generated_by": "Source material loader",
+    "depends_on": "selected scenario / user material",
+    "used_by": "rule_ledger.json, Skill compiler"
+  },
+  {
+    "file": "summary/before_after_metrics.json",
+    "generated_by": "Run summarizer",
+    "depends_on": "attempts, verifier reports, gate decision",
+    "used_by": "review/export"
+  },
+  {
+    "file": "summary/final_report.md",
+    "generated_by": "Run summarizer",
+    "depends_on": "attempts, verifier reports, gate decision",
+    "used_by": "review/export"
+  },
+  {
+    "file": "summary/front_stage_metrics.json",
+    "generated_by": "Run summarizer",
+    "depends_on": "attempts, verifier reports, gate decision",
+    "used_by": "review/export"
+  },
+  {
+    "file": "summary/mode_status.json",
+    "generated_by": "Run summarizer",
+    "depends_on": "attempts, verifier reports, gate decision",
+    "used_by": "review/export"
+  },
+  {
+    "file": "summary/online_optimization_metrics.json",
+    "generated_by": "Run summarizer",
+    "depends_on": "attempts, verifier reports, gate decision",
+    "used_by": "review/export"
+  },
+  {
+    "file": "target_asset/api.yaml",
+    "generated_by": "Target asset loader",
+    "depends_on": "selected scenario / user asset",
+    "used_by": "A0/A1/A2 executor, verifier evidence_span checks"
+  },
+  {
+    "file": "target_asset/app.py",
+    "generated_by": "Target asset loader",
+    "depends_on": "selected scenario / user asset",
+    "used_by": "A0/A1/A2 executor, verifier evidence_span checks"
+  },
+  {
+    "file": "target_asset/config.yaml",
+    "generated_by": "Target asset loader",
+    "depends_on": "selected scenario / user asset",
+    "used_by": "A0/A1/A2 executor, verifier evidence_span checks"
+  },
+  {
+    "file": "target_asset/task_brief.md",
+    "generated_by": "Target asset loader",
+    "depends_on": "selected scenario / user asset",
+    "used_by": "A0/A1/A2 executor, verifier evidence_span checks"
+  },
+  {
+    "file": "task_spec/task_spec.json",
+    "generated_by": "Task spec builder",
+    "depends_on": "scenario goal, output requirements, validation standard",
+    "used_by": "Skill compiler, verifier contract"
+  },
+  {
+    "file": "timeline.json",
+    "generated_by": "Run artifact writer",
+    "depends_on": "current demo run",
+    "used_by": "review/export"
+  },
+  {
+    "file": "trajectory/online_trajectory.jsonl",
+    "generated_by": "Online trajectory recorder",
+    "depends_on": "A0/A1/A2 outputs, posterior feedback, online metrics",
+    "used_by": "SPARK-style execution trace review"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "run_id": "harbor_live_skeleton_upload_001",
+  "case_id": "upload_security_001",
+  "live_ready": false,
+  "probes": {
+    "docker": {
+      "command": [
+        "docker",
+        "--version"
+      ],
+      "available": false,
+      "error": "FileNotFoundError: [WinError 2] 系统找不到指定的文件。"
+    },
+    "wsl": {
+      "command": [
+        "wsl",
+        "--status"
+      ],
+      "available": true,
+      "return_code": 0,
+      "stdout": "؞��\u0006R�S:\u0000 \u0000U\u0000b\u0000u\u0000n\u0000t\u0000u\u0000-\u00002\u00004\u0000.\u00000\u00004\u0000-\u0000C\u0000o\u0000d\u0000e\u0000x\u0000\n\u0000\n\u0000؞��Hr,g:\u0000 \u00002\u0000\n\u0000\n\u0000",
+      "stderr": ""
+    }
+  },
+  "evidence_bundle": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\harbor_live_skeleton_upload_001\\evidence_bundle",
+  "boundary": "P0 skeleton; failure/unavailability is valid evidence and is not hidden."
+}

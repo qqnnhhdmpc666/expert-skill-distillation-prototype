@@ -1,0 +1,7 @@
+{
+  "case_id": "config_security_001",
+  "target_digest": {
+    "chars": 115,
+    "preview": "prod.audit.enabled=true but retention_days/export_sink empty. dev.api_token and dev.debug are present but dev-only."
+  }
+}

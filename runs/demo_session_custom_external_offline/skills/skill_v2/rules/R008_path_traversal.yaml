@@ -1,0 +1,10 @@
+rule_id: R008
+title: "路径穿越"
+risk: "high"
+action: "检查 filename/path 参数是否可写入非预期目录。"
+evidence_terms:
+  - "../"
+  - "save("
+  - "filename"
+  - "/public/uploads/"
+repair_operator: patch_rule

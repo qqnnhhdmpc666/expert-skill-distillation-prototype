@@ -1,0 +1,40 @@
+{
+  "case_id": "data_quality_review_001",
+  "task_family": "data_quality_review",
+  "review_readiness": "review_now",
+  "recommended_audience": "external reviewer",
+  "opening_claim": "Controlled expert-skill lifecycle for `data_quality_review_001` with artifact-backed distillation, execution, and revision evidence.",
+  "what_to_show_first": [
+    "outputs/skill_lifecycle_evidence/generalization/data_quality_review_001/distillation_bundle",
+    "outputs/skill_lifecycle_evidence/generalization/data_quality_review_001/trajectory_bundle",
+    "outputs/installed_skills/data_quality_review_001/deployment_record.json"
+  ],
+  "supporting_cards": {
+    "qualification_card_id": "live_llm_data_quality_repair_loop",
+    "promotion_level": "L2_PROMOTE_LOCAL_WITH_SCOPE_LIMIT",
+    "validity_card_id": "live_llm_data_quality_repair_loop"
+  },
+  "rubric": {
+    "task_usefulness": {
+      "score": 4,
+      "reason": "A2 passes the controlled verifier and the task-level artifact chain is complete."
+    },
+    "evidence_clarity": {
+      "score": 4,
+      "reason": "Distillation bundle, trajectory bundle, and patch/gate files are all present."
+    },
+    "fix_actionability": {
+      "score": 4,
+      "reason": "Repair action is `add_observation_step` and can be inspected in the revision artifacts."
+    },
+    "scope_honesty": {
+      "score": 5,
+      "reason": "Claim boundary is explicitly controlled and does not present broad autonomous generalization."
+    },
+    "deployment_readiness": {
+      "score": 3,
+      "reason": "A generated install/rollback surface now exists, but it is still a controlled prototype surface rather than a production package manager."
+    }
+  },
+  "boundary": "Reviewer-readiness packet authored from internal artifacts. It is preparation for human/external review, not itself external human validation."
+}

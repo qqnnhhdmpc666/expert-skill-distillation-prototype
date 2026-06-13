@@ -1,0 +1,27 @@
+{
+  "scenario": "config_security_001",
+  "family": "config_security",
+  "backend": "offline_deterministic",
+  "a0_pass": false,
+  "a1_pass": false,
+  "a2_pass": true,
+  "feedback_type": "false_positive_risk",
+  "repair_action": "reduce_false_positive_risk",
+  "gate_decision": "accept",
+  "scores_before": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 0.0,
+    "trace_observability_score": 1.0
+  },
+  "scores_after": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  },
+  "latency_ms": 12,
+  "artifact_dir": "runs\\generalization\\config_security_001"
+}

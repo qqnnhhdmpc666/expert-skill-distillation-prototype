@@ -1,0 +1,32 @@
+{
+  "normalizer_version": "live_contract_normalizer.v1",
+  "oracle_fields_visible_to_normalizer": false,
+  "out_of_scope": false,
+  "suppressed_findings_count": 0,
+  "finding_traces": [
+    {
+      "index": 0,
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "input_evidence_span": "review_output.py: report_builder emits prose without evidence_span",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "review_output.py: report_builder emits prose without evidence_span; debug_path is labeled as a risk without pointing to a target line."
+    }
+  ],
+  "failure_taxonomy_counts": {
+    "schema_error": 0,
+    "missing_evidence": 0,
+    "non_exact_span": 1,
+    "unsupported_evidence": 0,
+    "wrong_capability_group": 0,
+    "over_reporting": 0,
+    "under_reporting": 0,
+    "unsupported_scope": 0,
+    "low_confidence_needed": 0,
+    "normalizer_needed": 1,
+    "model_contract_violation": 0
+  },
+  "evidence_exact_match_rate": 1.0,
+  "normalized_finding_count": 1
+}

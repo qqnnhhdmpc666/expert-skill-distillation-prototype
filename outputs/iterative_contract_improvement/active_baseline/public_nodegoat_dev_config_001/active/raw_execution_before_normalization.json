@@ -1,0 +1,13 @@
+{
+  "attempt": "active",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Hardcoded API key in configuration file",
+      "evidence_span": "zapApiKey: \"v9dn0balpqas1pcc281tn5ood1\",",
+      "recommended_fix": "Move the API key to an environment variable and reference it securely, e.g., via process.env.ZAP_API_KEY."
+    }
+  ],
+  "notes": []
+}

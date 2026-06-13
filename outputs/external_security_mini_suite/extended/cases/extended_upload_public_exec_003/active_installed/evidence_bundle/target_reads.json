@@ -1,0 +1,7 @@
+{
+  "case_id": "extended_upload_public_exec_003",
+  "target_digest": {
+    "chars": 309,
+    "preview": "Task: Review this upload endpoint defensively.\n\nSnippet:\nmedia_upload.py: upload_media checks filename.endswith('.png'), writes UPLOAD_ROOT / filename, and serves files from /public/uploads. config.ini: audit_log_retention_days is empty.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

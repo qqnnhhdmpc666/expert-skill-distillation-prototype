@@ -1,0 +1,19 @@
+{
+  "attempt": "active",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing owner/tenant filtering when loading invoice by id",
+      "evidence_span": "loads invoice by id without tenant_id or owner_id filtering",
+      "recommended_fix": "Add a filter to ensure the invoice belongs to the authenticated user, e.g., by checking owner_id or tenant_id before returning the invoice."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Denial response leaks invoice_id",
+      "evidence_span": "the denial body returns invoice_id",
+      "recommended_fix": "In the denial response, do not include the invoice_id. Return a generic error message without revealing the identifier."
+    }
+  ],
+  "notes": []
+}

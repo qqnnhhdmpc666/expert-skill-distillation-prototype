@@ -1,0 +1,37 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Upload path isolation",
+      "evidence_span": "target.md: filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty. Requested output schema: ca",
+      "recommended_fix": "Generate server-side names and store outside public executable roots."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload type and content validation",
+      "evidence_span": "target.md: ve_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention",
+      "recommended_fix": "Validate MIME, signature, size, and extension together."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload audit retention",
+      "evidence_span": "target.md: UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty. Requested output schema: capability_id, evidence_span, recommended_fix",
+      "recommended_fix": "Record actor/object/action/result/timestamp with retention."
+    },
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit retention/export",
+      "evidence_span": "target.md: OT / filename. settings.toml: audit_log_retention_days is empty. Requested output schema: capability_id, evidence_span, recommended_f",
+      "recommended_fix": "Require retention and export sink for production audit logs."
+    },
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "target.md: Requested output schema: capability_id, evidence_span, recommended_fix",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    }
+  ],
+  "notes": []
+}

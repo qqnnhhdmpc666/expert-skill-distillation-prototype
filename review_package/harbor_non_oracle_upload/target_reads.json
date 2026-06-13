@@ -1,0 +1,5 @@
+{
+  "agent": "nop",
+  "agent_read_target_files": false,
+  "note": "The nop agent entered the Harbor task but performed no target inspection."
+}

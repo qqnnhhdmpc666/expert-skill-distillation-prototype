@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "agents/llm_security_agent.py",
+    "--skill",
+    "<skill>",
+    "--target",
+    "<target>",
+    "--out",
+    "<out>"
+  ],
+  "output_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_upload_001\\security_report.json",
+  "stdout_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_upload_001\\stdout.log",
+  "stderr_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_upload_001\\stderr.log",
+  "metadata_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_upload_001\\backend_metadata.json"
+}

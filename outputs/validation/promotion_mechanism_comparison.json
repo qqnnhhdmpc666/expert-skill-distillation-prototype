@@ -1,0 +1,401 @@
+{
+  "best_current_mechanism": "qgse_protocol",
+  "selection_rule": "highest criteria score on current grounded cards; tie-break in favor of explicit failure origin and scope handling",
+  "mechanisms": [
+    {
+      "mechanism": "reward_delta_only",
+      "score": 2,
+      "criteria": {
+        "matches_current_grounded_labels": false,
+        "does_not_promote_support_cards": true,
+        "rejects_api_noop_repair": true,
+        "quarantines_config_behavior_gap": false,
+        "keeps_promotion_scope_explicit": false,
+        "can_explain_failure_origin": false
+      },
+      "rows": [
+        {
+          "card_id": "live_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_data_quality_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_config_security_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false
+        },
+        {
+          "card_id": "live_llm_api_review_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_config_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "offline_generalization_qualification_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "negative_control_robustness_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "harbor_upload_repeatability_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        }
+      ],
+      "recommendation": "candidate_or_baseline",
+      "failure_mode": "Cannot distinguish lucky pass, repair attribution, no-op repair, or scoped promotion evidence."
+    },
+    {
+      "mechanism": "gate_only",
+      "score": 1,
+      "criteria": {
+        "matches_current_grounded_labels": false,
+        "does_not_promote_support_cards": true,
+        "rejects_api_noop_repair": false,
+        "quarantines_config_behavior_gap": false,
+        "keeps_promotion_scope_explicit": false,
+        "can_explain_failure_origin": false
+      },
+      "rows": [
+        {
+          "card_id": "live_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_data_quality_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_config_security_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "quarantine",
+          "actual": "promote",
+          "match": false
+        },
+        {
+          "card_id": "live_llm_api_review_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "reject",
+          "actual": "promote",
+          "match": false
+        },
+        {
+          "card_id": "harbor_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_config_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "offline_generalization_qualification_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "negative_control_robustness_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "harbor_upload_repeatability_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        }
+      ],
+      "recommendation": "candidate_or_baseline",
+      "failure_mode": "Promotes accepted patches even when A2 behavior does not improve."
+    },
+    {
+      "mechanism": "weighted_validity_score",
+      "score": 2,
+      "criteria": {
+        "matches_current_grounded_labels": false,
+        "does_not_promote_support_cards": true,
+        "rejects_api_noop_repair": true,
+        "quarantines_config_behavior_gap": false,
+        "keeps_promotion_scope_explicit": false,
+        "can_explain_failure_origin": false
+      },
+      "rows": [
+        {
+          "card_id": "live_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_data_quality_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_config_security_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false
+        },
+        {
+          "card_id": "live_llm_api_review_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_config_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "offline_generalization_qualification_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "negative_control_robustness_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "harbor_upload_repeatability_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        }
+      ],
+      "recommendation": "candidate_or_baseline",
+      "failure_mode": "Compresses hard blockers into a score and can hide why a revision is non-promotable."
+    },
+    {
+      "mechanism": "pareto_conservative",
+      "score": 5,
+      "criteria": {
+        "matches_current_grounded_labels": true,
+        "does_not_promote_support_cards": true,
+        "rejects_api_noop_repair": true,
+        "quarantines_config_behavior_gap": true,
+        "keeps_promotion_scope_explicit": false,
+        "can_explain_failure_origin": true
+      },
+      "rows": [
+        {
+          "card_id": "live_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_data_quality_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_config_security_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_api_review_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_config_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "offline_generalization_qualification_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "negative_control_robustness_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "harbor_upload_repeatability_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        }
+      ],
+      "recommendation": "candidate_or_baseline",
+      "failure_mode": "Useful as a baseline, but does not model evidence support cards or promotion scopes as explicitly as QGSE."
+    },
+    {
+      "mechanism": "qgse_protocol",
+      "score": 6,
+      "criteria": {
+        "matches_current_grounded_labels": true,
+        "does_not_promote_support_cards": true,
+        "rejects_api_noop_repair": true,
+        "quarantines_config_behavior_gap": true,
+        "keeps_promotion_scope_explicit": true,
+        "can_explain_failure_origin": true
+      },
+      "rows": [
+        {
+          "card_id": "live_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_data_quality_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_config_security_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true
+        },
+        {
+          "card_id": "live_llm_api_review_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_upload_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "harbor_llm_config_repair_loop",
+          "card_type": "RevisionQualificationCard",
+          "expected": "promote",
+          "actual": "promote",
+          "match": true
+        },
+        {
+          "card_id": "offline_generalization_qualification_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "negative_control_robustness_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        },
+        {
+          "card_id": "harbor_upload_repeatability_support",
+          "card_type": "EvidenceSupportCard",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true
+        }
+      ],
+      "recommendation": "best_current",
+      "failure_mode": "Current best mechanism, but still needs stronger metamorphic and human-review evidence."
+    }
+  ]
+}

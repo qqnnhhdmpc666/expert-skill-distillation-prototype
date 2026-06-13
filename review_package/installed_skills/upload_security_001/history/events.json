@@ -1,0 +1,25 @@
+[
+  {
+    "timestamp": "2026-06-09T07:45:13.307050+00:00",
+    "event": "install",
+    "from_version": null,
+    "to_version": "v2",
+    "reason": "Seeded controlled installed-skill registry from validated lifecycle evidence.",
+    "scope": "controlled_offline_generalization"
+  },
+  {
+    "timestamp": "2026-06-09T07:45:13.307061+00:00",
+    "event": "rollback_demo",
+    "from_version": "v2",
+    "to_version": "v1",
+    "reason": "Demonstration rollback event referencing existing regression-gate precedent in outputs/mvp_vertical_slice/rollback_gate_001.",
+    "evidence": "outputs/mvp_vertical_slice/rollback_gate_001/rollback_decision.json"
+  },
+  {
+    "timestamp": "2026-06-09T07:45:13.307063+00:00",
+    "event": "restore_demo",
+    "from_version": "v1",
+    "to_version": "v2",
+    "reason": "Restore recommended active revision after rollback-surface demonstration."
+  }
+]

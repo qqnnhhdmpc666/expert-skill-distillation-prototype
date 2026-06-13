@@ -1,0 +1,10 @@
+[
+  {
+    "timestamp": "2026-06-09T07:45:13.300690+00:00",
+    "event": "install",
+    "from_version": null,
+    "to_version": "v2",
+    "reason": "Seeded controlled installed-skill registry from validated lifecycle evidence.",
+    "scope": "controlled_offline_generalization"
+  }
+]

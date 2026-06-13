@@ -1,0 +1,28 @@
+{
+  "run_id": "holdout_clean_tax_math_001::offline_deterministic::ablated_no_task_router",
+  "case_id": "holdout_clean_tax_math_001",
+  "backend": "offline_deterministic",
+  "variant": "ablated_no_task_router",
+  "runtime_source": "ablation_experiment_package",
+  "task_family": "clean_business_logic_review",
+  "activated_capability_group": "out_of_scope_guard",
+  "expected_capability_group": "out_of_scope_guard",
+  "capability_group_correct": true,
+  "out_of_scope": true,
+  "unsupported_task_family": "clean_business_logic_review",
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\ablation\\task_conditioned_activation\\variants\\ablated_no_task_router",
+  "skill_hash": "f6e9c29d19dc8e9dbbf0bba655f5425ecd17786784a9eec6e6146190e291bf31",
+  "manifest_hash": "e77cf2b9cd28077f29fb6b647ae5af6acd58c822369a0ff5d1625fb6cf057604",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T11:38:15.443320+00:00"
+  },
+  "schema_version": "external_security_mini_suite.run_metadata.v1",
+  "timestamp": "2026-06-12T11:39:00.050294+00:00",
+  "oracle_fields_visible_to_runner": false,
+  "model": "offline_deterministic",
+  "cost": null,
+  "tokens": 209
+}

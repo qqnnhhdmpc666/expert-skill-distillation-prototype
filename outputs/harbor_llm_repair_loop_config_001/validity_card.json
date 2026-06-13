@@ -1,0 +1,64 @@
+{
+  "card_id": "harbor_llm_config_repair_loop",
+  "artifact": "outputs/harbor_llm_repair_loop_config_001",
+  "scope": "Controlled repair loop for controlled-config-security-review on backend harbor_llm_repair_config_replay.",
+  "metrics": {
+    "outcome_delta": {
+      "status": "supported",
+      "note": "A1 pass=False, A2 pass=True, reward_delta=+1.0."
+    },
+    "evidence_grounding": {
+      "status": "supported",
+      "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+    },
+    "repair_attribution": {
+      "status": "supported",
+      "note": "A1 feedback `output_contract_error` triggered repair `rewrite_output_contract` and gate `accept`."
+    },
+    "regression_safety": {
+      "status": "supported",
+      "note": "After repair: missing=['none'], schema_errors=['none'], weak_evidence=['none']."
+    },
+    "transferability": {
+      "status": "partially_supported",
+      "note": "Second distinct Harbor task family, but still narrow controlled evidence."
+    },
+    "repeatability": {
+      "status": "not_measured",
+      "note": "Not measured for this single loop artifact."
+    },
+    "cost_budget": {
+      "status": "partially_supported",
+      "note": "Harbor prompt/response/job artifacts exist, but no normalized cost table is computed here."
+    },
+    "verifier_robustness": {
+      "status": "partially_supported",
+      "note": "Verifier distinguished A1 vs A2; before repair missing=['none'], schema_errors=['CONFIG_PROD_DEBUG missing recommended_fix', 'CONFIG_INSECURE_HTTP missing recommended_fix', 'CONFIG_HARDCODED_SECRET missing recommended_fix'], weak_evidence=['none']."
+    },
+    "human_plausibility": {
+      "status": "manual_review_pending",
+      "note": "No human usefulness review is attached to this loop artifact."
+    }
+  },
+  "summary": {
+    "scenario": "controlled-config-security-review",
+    "backend": "harbor_llm_repair_config_replay",
+    "a1_pass": false,
+    "a2_pass": true,
+    "reward_delta": 1.0,
+    "feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "gate_decision": "accept"
+  },
+  "claim_boundary": "Second-task Harbor LLM evidence, still controlled and narrow.",
+  "sources": [
+    "outputs/harbor_llm_repair_loop_config_001/A1/verifier_report.json",
+    "outputs/harbor_llm_repair_loop_config_001/revision/patch_plan.json",
+    "outputs/harbor_llm_repair_loop_config_001/revision/gate_decision.json",
+    "outputs/harbor_llm_repair_loop_config_001/A2/verifier_report.json",
+    "outputs/harbor_llm_repair_loop_config_001/A1/security_report.json",
+    "outputs/harbor_llm_repair_loop_config_001/A2/security_report.json",
+    "outputs/harbor_llm_repair_loop_config_001/A1/target_reads.json",
+    "outputs/harbor_llm_repair_loop_config_001/A2/target_reads.json"
+  ]
+}

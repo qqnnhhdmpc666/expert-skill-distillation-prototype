@@ -1,0 +1,204 @@
+{
+  "variant": "c003_auth",
+  "score": 0.7,
+  "pass": false,
+  "feedback_type": "missing_capability",
+  "activated_capability_group": "api_or_code_review",
+  "expected_capability_group": "api_or_code_review",
+  "capability_group_correct": true,
+  "finding_detected": true,
+  "evidence_grounded": true,
+  "patch_or_recommendation_valid": true,
+  "schema_valid": true,
+  "false_positive": false,
+  "false_positive_count": 0,
+  "out_of_scope_correct": true,
+  "unsupported_limitation": false,
+  "clean_or_negative": false,
+  "run_metadata": {
+    "run_id": "independent_api_schema_001::live_llm_text::c003_auth",
+    "case_id": "independent_api_schema_001",
+    "backend": "live_llm_text",
+    "variant": "c003_auth",
+    "runtime_source": "iterative_contract_candidate",
+    "task_family": "api_or_code_review",
+    "activated_capability_group": "api_or_code_review",
+    "expected_capability_group": "api_or_code_review",
+    "capability_group_correct": true,
+    "out_of_scope": false,
+    "unsupported_task_family": null,
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\iter_ci\\cand\\c003_auth",
+    "skill_hash": "3c5243425d0f9603734a95a4fa276183cb9a5aaf1f76fe03ebaf878d921f320e",
+    "manifest_hash": "5eeb29919be8d5cf2910c1ed8b2fe257dc0805113ac88ffac325628cd525a99c",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T14:51:51.537540+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T18:05:02.713694+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "live_llm_text",
+    "cost": null,
+    "tokens": 328,
+    "evidence_normalizer_enabled": true,
+    "normalizer_version": "live_contract_normalizer.v1",
+    "evidence_exact_match_rate": 1.0,
+    "normalizer_taxonomy_counts": {
+      "schema_error": 0,
+      "missing_evidence": 0,
+      "non_exact_span": 1,
+      "unsupported_evidence": 0,
+      "wrong_capability_group": 0,
+      "over_reporting": 0,
+      "under_reporting": 0,
+      "unsupported_scope": 0,
+      "low_confidence_needed": 0,
+      "normalizer_needed": 1,
+      "model_contract_violation": 0
+    }
+  },
+  "normalization_trace": {
+    "normalizer_version": "live_contract_normalizer.v1",
+    "oracle_fields_visible_to_normalizer": false,
+    "out_of_scope": false,
+    "suppressed_findings_count": 0,
+    "finding_traces": [
+      {
+        "index": 0,
+        "capability_id": "API_SCHEMA_CONTRACT",
+        "input_evidence_span": "review_output.py: report_builder emits prose without evidence_span",
+        "action": "rewrote_evidence_span",
+        "normalization_reason": "substring_to_complete_line",
+        "failure_taxonomy": [],
+        "output_evidence_span": "review_output.py: report_builder emits prose without evidence_span; debug_path is labeled as a risk without pointing to a target line."
+      }
+    ],
+    "failure_taxonomy_counts": {
+      "schema_error": 0,
+      "missing_evidence": 0,
+      "non_exact_span": 1,
+      "unsupported_evidence": 0,
+      "wrong_capability_group": 0,
+      "over_reporting": 0,
+      "under_reporting": 0,
+      "unsupported_scope": 0,
+      "low_confidence_needed": 0,
+      "normalizer_needed": 1,
+      "model_contract_violation": 0
+    },
+    "evidence_exact_match_rate": 1.0,
+    "normalized_finding_count": 1
+  },
+  "pre_normalization_verifier": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "missing_capabilities": [
+      "API_OVERBROAD_RISK"
+    ],
+    "false_positive_capabilities": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_capabilities": [],
+    "scores": {
+      "capability_coverage_score": 0.5,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0
+    }
+  },
+  "post_normalization_verifier": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "missing_capabilities": [
+      "API_OVERBROAD_RISK"
+    ],
+    "false_positive_capabilities": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_capabilities": [],
+    "scores": {
+      "capability_coverage_score": 0.5,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0
+    }
+  },
+  "pre_normalization_verifier_taxonomy": [
+    "under_reporting"
+  ],
+  "post_normalization_verifier_taxonomy": [
+    "under_reporting"
+  ],
+  "evidence_bundle_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\iter_ci\\cand\\c003_auth\\validation\\independent_api_schema_001\\c003_auth\\evidence_bundle\\summary.json",
+  "bundle": {
+    "bundle_id": "independent_api_schema_001_c003_auth_live_llm_text",
+    "created_at": "2026-06-12T18:05:02.720508+00:00",
+    "case_id": "independent_api_schema_001",
+    "backend": "live_llm_text",
+    "variant": "c003_auth",
+    "status": "completed",
+    "verifier_result": "fail",
+    "verifier_feedback_type": "missing_capability",
+    "artifacts": [
+      "raw_output.json",
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json",
+      "verifier_feedback.json",
+      "repair_patch.json",
+      "qualification_decision.json"
+    ],
+    "score": 0.7,
+    "token_cost_estimate": 328,
+    "safety_boundary": "defensive_review_only_no_exploit_generation",
+    "provenance": {
+      "run_id": "independent_api_schema_001::live_llm_text::c003_auth",
+      "case_id": "independent_api_schema_001",
+      "backend": "live_llm_text",
+      "variant": "c003_auth",
+      "runtime_source": "iterative_contract_candidate",
+      "task_family": "api_or_code_review",
+      "activated_capability_group": "api_or_code_review",
+      "expected_capability_group": "api_or_code_review",
+      "capability_group_correct": true,
+      "out_of_scope": false,
+      "unsupported_task_family": null,
+      "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\iter_ci\\cand\\c003_auth",
+      "skill_hash": "3c5243425d0f9603734a95a4fa276183cb9a5aaf1f76fe03ebaf878d921f320e",
+      "manifest_hash": "5eeb29919be8d5cf2910c1ed8b2fe257dc0805113ac88ffac325628cd525a99c",
+      "active_pointer_snapshot": {
+        "skill_id": "secure_code_review",
+        "active_version": "v2",
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "updated_at": "2026-06-12T14:51:51.537540+00:00"
+      },
+      "schema_version": "external_security_mini_suite.run_metadata.v1",
+      "timestamp": "2026-06-12T18:05:02.713694+00:00",
+      "oracle_fields_visible_to_runner": false,
+      "model": "live_llm_text",
+      "cost": null,
+      "tokens": 328,
+      "evidence_normalizer_enabled": true,
+      "normalizer_version": "live_contract_normalizer.v1",
+      "evidence_exact_match_rate": 1.0,
+      "normalizer_taxonomy_counts": {
+        "schema_error": 0,
+        "missing_evidence": 0,
+        "non_exact_span": 1,
+        "unsupported_evidence": 0,
+        "wrong_capability_group": 0,
+        "over_reporting": 0,
+        "under_reporting": 0,
+        "unsupported_scope": 0,
+        "low_confidence_needed": 0,
+        "normalizer_needed": 1,
+        "model_contract_violation": 0
+      },
+      "safety_boundary": "defensive_review_only_no_exploit_generation"
+    }
+  }
+}

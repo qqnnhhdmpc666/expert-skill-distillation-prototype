@@ -1,0 +1,8 @@
+{
+  "case_id": "mini_auth_owner_boundary_002",
+  "expected_capability_count": 3,
+  "expected_capability_group": "auth_access_control",
+  "clean_or_negative": false,
+  "unsupported_limitation": false,
+  "note": "Full oracle fields are not written into runner inputs."
+}

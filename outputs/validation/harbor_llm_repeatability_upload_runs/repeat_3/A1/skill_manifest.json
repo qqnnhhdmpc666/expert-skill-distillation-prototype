@@ -1,0 +1,6 @@
+{
+  "version": "generated",
+  "capabilities": [
+    "UPLOAD_PATH_ISOLATION"
+  ]
+}

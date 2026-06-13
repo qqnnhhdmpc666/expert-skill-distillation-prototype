@@ -1,0 +1,6 @@
+scenario_id: "upload"
+asset_type: "Toy API + Python 代码 + YAML 配置"
+success_criteria:
+  - verifier_status == PASS
+  - no missing_rule_ids
+  - output_schema_fields_present

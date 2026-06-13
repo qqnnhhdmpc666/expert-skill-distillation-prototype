@@ -1,0 +1,28 @@
+{
+  "run_id": "mini_dependency_version_risk_001::offline_deterministic::installed_v1",
+  "case_id": "mini_dependency_version_risk_001",
+  "backend": "offline_deterministic",
+  "variant": "installed_v1",
+  "runtime_source": "installed_variant_package",
+  "task_family": "dependency_version_risk",
+  "activated_capability_group": "out_of_scope_guard",
+  "expected_capability_group": "out_of_scope_guard",
+  "capability_group_correct": true,
+  "out_of_scope": true,
+  "unsupported_task_family": "dependency_version_risk",
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+  "skill_hash": "9f498c16c81acf64979cfbce106c7615875cbb357441acc83124a1b2811858ca",
+  "manifest_hash": "a11d823e0aca5a800b13ccd7d9a6d692922ffba487e0de02da926122303f7701",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T10:24:22.679142+00:00"
+  },
+  "schema_version": "external_security_mini_suite.run_metadata.v1",
+  "timestamp": "2026-06-12T10:24:50.408312+00:00",
+  "oracle_fields_visible_to_runner": false,
+  "model": "offline_deterministic",
+  "cost": null,
+  "tokens": 109
+}

@@ -1,0 +1,2 @@
+{"event": "variant_started", "created_at": "2026-06-12T10:24:50.133749+00:00", "case_id": "mini_config_prod_audit_001", "backend": "offline_deterministic", "variant": "no_skill", "status": "completed"}
+{"event": "verifier_feedback", "feedback_type": "missing_capability", "passed": false}

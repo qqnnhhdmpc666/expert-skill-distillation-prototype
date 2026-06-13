@@ -1,0 +1,24 @@
+{
+  "attempt": "A0",
+  "summary": "No skill baseline.",
+  "findings": [
+    {
+      "finding_id": "A0-F01",
+      "capability": "敏感信息泄露",
+      "capability_id": "sensitive_leak",
+      "evidence_span": "debug_path, stacktrace, token, api_key 暴露在返回或日志中。",
+      "risk_level": "medium",
+      "recommended_fix": "统一错误响应，并对路径、邮箱、token 和内部错误脱敏。"
+    },
+    {
+      "finding_id": "A0-F02",
+      "capability": "弱密钥与调试配置",
+      "capability_id": "weak_config",
+      "evidence_span": "debug: true, SECRET_KEY: changeme。",
+      "risk_level": "high",
+      "recommended_fix": "关闭生产 debug，替换强密钥，并限制敏感配置暴露。"
+    }
+  ],
+  "token_cost": 180,
+  "latency_ms": 1260
+}

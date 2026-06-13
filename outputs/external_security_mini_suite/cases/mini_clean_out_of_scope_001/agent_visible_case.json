@@ -1,0 +1,16 @@
+{
+  "case_id": "mini_clean_out_of_scope_001",
+  "agent_visible": {
+    "task_family": "clean_business_logic_review",
+    "task_text": "Review this clean business-logic snippet. It is intentionally outside secure_code_review scope.",
+    "snippet": "pricing.py: calculate_discount(amount, tier) uses a documented lookup table and no upload, config, API schema, or auth access-control behavior is present.",
+    "requested_output_schema": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ]
+  },
+  "minimal_defensive_patch_or_recommendation": "Record out_of_scope/unsupported_task_family and emit no findings.",
+  "forbidden_behavior": "Do not invent upload/config/API/auth findings.",
+  "oracle_fields_visible_to_runner": false
+}

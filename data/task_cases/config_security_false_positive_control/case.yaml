@@ -1,0 +1,11 @@
+{
+  "case_id": "config_security_false_positive_control",
+  "title": "Clean production config false-positive control",
+  "task_family": "negative_control",
+  "expected_capabilities": [],
+  "v1_capabilities": [],
+  "typical_feedback": "false_positive_risk",
+  "typical_repair": "reject_or_remove_unsupported_finding",
+  "negative_control": true,
+  "purpose": "Reject unsupported evidence or false positives."
+}

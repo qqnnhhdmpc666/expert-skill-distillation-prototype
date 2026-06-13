@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "R004",
+    "title": "敏感信息泄露",
+    "risk": "medium",
+    "tokens": 39,
+    "source_evidence": "error_template: \"stacktrace=${stacktrace}, api_key=${api_key}\"",
+    "selected_in_v1": "yes",
+    "selected_in_v2": "yes",
+    "prior_decision": "保留到 compact v1",
+    "posterior_signal": "keep",
+    "operator": "keep"
+  },
+  {
+    "rule_id": "R006",
+    "title": "审计日志保留",
+    "risk": "medium",
+    "tokens": 42,
+    "source_evidence": "audit_log_retention_days: null",
+    "selected_in_v1": "yes",
+    "selected_in_v2": "yes",
+    "prior_decision": "保留到 compact v1",
+    "posterior_signal": "keep",
+    "operator": "keep"
+  },
+  {
+    "rule_id": "R007",
+    "title": "弱密钥与调试配置",
+    "risk": "high",
+    "tokens": 44,
+    "source_evidence": "debug: true",
+    "selected_in_v1": "yes",
+    "selected_in_v2": "yes",
+    "prior_decision": "保留到 compact v1",
+    "posterior_signal": "keep",
+    "operator": "keep"
+  }
+]

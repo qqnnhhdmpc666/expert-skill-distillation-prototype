@@ -1,0 +1,14 @@
+{
+  "card_id": "live_llm_data_quality_repair_loop_validity_card",
+  "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled non-security data-quality task; verifier and gate remain deterministic.",
+  "summary": {
+    "scenario": "data_quality_review_001",
+    "backend": "live_llm_text",
+    "a1_pass": false,
+    "a2_pass": true,
+    "reward_delta": 1.0,
+    "feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "gate_decision": "accept"
+  }
+}

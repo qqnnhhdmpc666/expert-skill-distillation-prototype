@@ -1,0 +1,17 @@
+{
+  "status": "FAIL",
+  "pass": false,
+  "feedback_type": "missing_capability",
+  "missing_capabilities": [
+    "audit_logging",
+    "upload_storage"
+  ],
+  "scores": {
+    "capability_coverage_score": 0.6667,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  },
+  "evidence_fields_ok": true
+}

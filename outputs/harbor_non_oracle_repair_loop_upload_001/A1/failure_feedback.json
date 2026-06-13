@@ -1,0 +1,12 @@
+﻿{
+    "observed_capabilities":  [
+                                  "UPLOAD_PATH_ISOLATION"
+                              ],
+    "feedback_type":  "missing_capability",
+    "instruction":  "Patch the Harbor agent capability config so the next run checks upload type/magic-byte validation and audit retention.",
+    "verifier_report":  "verifier_report.json",
+    "missing_capabilities":  [
+                                 "UPLOAD_AUDIT_RETENTION",
+                                 "UPLOAD_TYPE_MAGIC"
+                             ]
+}

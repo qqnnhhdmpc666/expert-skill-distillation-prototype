@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "temperature": 0.0,
+  "usage": {
+    "prompt_tokens": 847,
+    "completion_tokens": 590,
+    "total_tokens": 1437,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 516
+    }
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a configuration security review agent that returns JSON for a deterministic verifier."
+      },
+      {
+        "role": "user",
+        "content": "You are a non-oracle configuration security review agent.\n\nRead the target files and the Skill Package. Produce only a JSON object for the deterministic verifier.\n\nRules:\n- Do not invent findings that are not grounded in the target text.\n- Use only these capability_id values exposed by the Skill Package: CONFIG_AUDIT_EXPORT, CONFIG_ENV_GUARD.\n- Each finding must include capability_id, issue, evidence_span, and recommended_fix.\n- If the Skill Package does not expose a capability, do not report it even if you notice it.\n- Return JSON only. No markdown fences.\n\n\nExpected JSON shape:\n{\n  \"findings\": [\n    {\n      \"capability_id\": \"CONFIG_AUDIT_EXPORT\",\n      \"issue\": \"short issue title\",\n      \"evidence_span\": \"quote or tightly paraphrase the concrete target span, including file name when possible\",\n      \"recommended_fix\": \"specific fix grounded in the target\"\n    }\n  ]\n}\n\n# Skill Package\n\n## manifest.json\n\n```text\n{\n  \"skill_id\": \"config_security_001\",\n  \"version\": \"v2\",\n  \"task_family\": \"config_security\",\n  \"capabilities\": [\n    \"CONFIG_AUDIT_EXPORT\",\n    \"CONFIG_ENV_GUARD\"\n  ],\n  \"output_contract\": [\n    \"capability_id\",\n    \"evidence_span\",\n    \"recommended_fix\"\n  ],\n  \"trace_contract\": [\n    \"event\",\n    \"capability_id\",\n    \"evidence_span\"\n  ],\n  \"metadata\": {\n    \"repair_action\": \"patch_capability\"\n  }\n}\n\n```\n\n## SKILL.md\n\n```text\n# Production configuration security check Skill v2\n\nTask family: `config_security`\n\n## Inspection Procedure\n\n1. Read the target assets and identify concrete evidence spans.\n2. Emit only findings grounded in the current target.\n3. Follow the output contract: capability_id, evidence_span, recommended_fix.\n\n## Capabilities\n\n### CONFIG_AUDIT_EXPORT: Production audit retention/export\n- Evidence: prod.audit enabled but retention_days/export_sink missing\n- Fix: Require retention and export sink for production audit logs.\n\n### CONFIG_ENV_GUARD: Environment-aware config guard\n- Evidence: dev api_token/debug should not be production findings\n- Fix: Bind findings to prod/dev/test path before flagging.\n\n## Revision Policy\n\nApplied repair action: `patch_capability`.\n\n```\n\n# Target Asset\n\n## target.md\n\n```text\nprod.audit.enabled=true but retention_days/export_sink empty. dev.api_token and dev.debug are present but dev-only.\n```\n"
+      }
+    ]
+  },
+  "response": {
+    "id": "resp_0d1063eb9415b7d0016a272637c3e881a1b440988936aa7444",
+    "object": "chat.completion",
+    "created": 1780950596,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"CONFIG_AUDIT_EXPORT\",\"issue\":\"Production audit enabled without retention/export\",\"evidence_span\":\"target.md: \\\"prod.audit.enabled=true but retention_days/export_sink empty.\\\"\",\"recommended_fix\":\"Set a production audit retention_days value and configure a non-empty export_sink for prod audit logs.\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 590,
+      "total_tokens": 1437,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    }
+  }
+}

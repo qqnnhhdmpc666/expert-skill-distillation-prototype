@@ -1,0 +1,29 @@
+{
+    "id": "2cce4905-2e6a-4d4a-8139-1649c213ffa1",
+    "started_at": "2026-06-08T13:55:29.105689",
+    "finished_at": "2026-06-08T13:56:12.400104",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "upload-security-llm-agent__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "real-upload-security-review__2AsmaaG"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,97 @@
+{
+  "skill_id": "secure_code_review",
+  "version": "iterative_contract_c003_auth",
+  "task_family": "secure_code_review",
+  "capabilities": [
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC",
+    "UPLOAD_AUDIT_RETENTION",
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK",
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "runtime_case_id": "task_conditioned_secure_review",
+    "package_role": "installed_runtime",
+    "package_family_scope": "task_conditioned_secure_review",
+    "supported_task_families": [
+      "upload_security",
+      "config_security",
+      "api_or_code_review",
+      "auth_access_control"
+    ],
+    "out_of_scope_group": "out_of_scope_guard",
+    "capability_groups": [
+      {
+        "name": "upload_security",
+        "task_families": [
+          "upload_security"
+        ],
+        "capabilities": [
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_AUDIT_RETENTION"
+        ]
+      },
+      {
+        "name": "config_security",
+        "task_families": [
+          "config_security"
+        ],
+        "capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_ENV_GUARD"
+        ]
+      },
+      {
+        "name": "api_or_code_review",
+        "task_families": [
+          "api_or_code_review"
+        ],
+        "capabilities": [
+          "API_SCHEMA_CONTRACT",
+          "API_OVERBROAD_RISK"
+        ]
+      },
+      {
+        "name": "auth_access_control",
+        "task_families": [
+          "auth_access_control"
+        ],
+        "capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ]
+      },
+      {
+        "name": "out_of_scope_guard",
+        "task_families": [],
+        "capabilities": []
+      }
+    ],
+    "iterative_contract_candidate_id": "c003_auth",
+    "candidate_generation_sources": [
+      "failure report",
+      "verifier feedback",
+      "evidence summary",
+      "normalization trace"
+    ],
+    "verifier_only_oracle_fields_read": false,
+    "scope_expansion_forbidden": true
+  }
+}

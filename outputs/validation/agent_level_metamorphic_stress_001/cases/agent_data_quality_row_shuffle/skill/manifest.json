@@ -1,0 +1,9 @@
+{
+  "skill_id": "agent_data_quality_row_shuffle",
+  "version": "metamorphic",
+  "capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ]
+}

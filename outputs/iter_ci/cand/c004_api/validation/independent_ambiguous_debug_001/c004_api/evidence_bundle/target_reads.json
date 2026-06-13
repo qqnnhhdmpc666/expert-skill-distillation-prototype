@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_ambiguous_debug_001",
+  "target_digest": {
+    "chars": 289,
+    "preview": "Task: Independently authored holdout: ambiguous API note.\n\nSnippet:\ndesign_note.md: debug_path might be logged in a future diagnostics mode, but no route, response schema, production caller, or emitted field is shown.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

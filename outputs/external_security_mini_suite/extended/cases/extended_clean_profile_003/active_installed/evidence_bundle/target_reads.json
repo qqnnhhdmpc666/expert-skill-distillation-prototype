@@ -1,0 +1,7 @@
+{
+  "case_id": "extended_clean_profile_003",
+  "target_digest": {
+    "chars": 342,
+    "preview": "Task: Review this clean profile-formatting function. It is intentionally out of scope.\n\nSnippet:\nprofile.py: format_display_name(first, last) trims whitespace and joins strings; there is no file storage path, token config, invoice object access, or schema report output.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

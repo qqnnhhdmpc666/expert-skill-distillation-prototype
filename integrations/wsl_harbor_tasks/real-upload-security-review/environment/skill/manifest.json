@@ -1,0 +1,8 @@
+{
+  "version": "v2",
+  "capabilities": [
+    "UPLOAD_TYPE_MAGIC",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION"
+  ]
+}

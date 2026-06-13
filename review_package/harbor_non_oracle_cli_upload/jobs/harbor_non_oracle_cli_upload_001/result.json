@@ -1,0 +1,29 @@
+{
+    "id": "c28c98b0-8d0a-408e-962b-77609f9f772c",
+    "started_at": "2026-06-08T12:55:44.702452",
+    "finished_at": "2026-06-08T12:56:02.240130",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "upload-security-heuristic-agent__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "real-upload-security-review__v67vodq"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

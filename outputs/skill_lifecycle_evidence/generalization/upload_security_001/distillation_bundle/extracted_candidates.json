@@ -1,0 +1,41 @@
+[
+  {
+    "candidate_id": "cand_01",
+    "natural_language_capability": "Upload type and content validation",
+    "normalized_capability_id": "UPLOAD_TYPE_MAGIC",
+    "source_span": "Upload review needs content validation",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "content validation"
+    ],
+    "selected_in_v1": false,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_02",
+    "natural_language_capability": "Upload path isolation",
+    "normalized_capability_id": "UPLOAD_PATH_ISOLATION",
+    "source_span": "non-public storage",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "non-public storage",
+      "storage"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_03",
+    "natural_language_capability": "Upload audit retention",
+    "normalized_capability_id": "UPLOAD_AUDIT_RETENTION",
+    "source_span": "audit retention.",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "audit retention",
+      "audit",
+      "retention"
+    ],
+    "selected_in_v1": false,
+    "selected_in_v2": true
+  }
+]

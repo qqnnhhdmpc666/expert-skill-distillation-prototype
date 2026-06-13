@@ -1,0 +1,35 @@
+{
+  "status": "FAIL",
+  "failure_type": "missing_rule",
+  "failure_types": [
+    "missing_rule",
+    "output_contract_error",
+    "evidence_missing"
+  ],
+  "expected_rule_ids": [
+    "R004",
+    "R006",
+    "R007"
+  ],
+  "observed_rule_ids": [],
+  "missing_rule_ids": [
+    "R004",
+    "R006",
+    "R007"
+  ],
+  "contract_errors": [
+    {
+      "finding_id": "N002",
+      "missing_fields": [
+        "rule_id",
+        "evidence_span",
+        "risk_level",
+        "recommended_fix"
+      ]
+    }
+  ],
+  "evidence_missing": [
+    "N002"
+  ],
+  "verifier_stdout": "FAIL: expected=['R004', 'R006', 'R007'] observed=[] missing=['R004', 'R006', 'R007']"
+}

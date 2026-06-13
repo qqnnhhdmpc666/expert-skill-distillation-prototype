@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-09T07:45:13.307955+00:00",
+  "registry_type": "controlled_skill_installation_surface",
+  "skills": [
+    {
+      "case_id": "api_review_001",
+      "task_family": "api_or_code_review",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/api_review_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "auth_access_control_001",
+      "task_family": "auth_access_control",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/auth_access_control_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "config_security_001",
+      "task_family": "config_security",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/config_security_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "data_quality_review_001",
+      "task_family": "data_quality_review",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/data_quality_review_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "upload_security_001",
+      "task_family": "upload_security",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/upload_security_001",
+      "history_events": 3
+    }
+  ],
+  "boundary": "This registry demonstrates install/version/rollback surfaces over controlled lifecycle artifacts. It is not a production package manager."
+}

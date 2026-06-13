@@ -1,0 +1,7 @@
+{
+  "version": "v2",
+  "capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ]
+}

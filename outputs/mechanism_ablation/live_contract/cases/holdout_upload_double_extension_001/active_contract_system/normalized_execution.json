@@ -1,0 +1,28 @@
+{
+  "attempt": "active_contract_system",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validation relies solely on extension, not magic bytes",
+      "evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty.",
+      "recommended_fix": "Use a magic number library (e.g., python-magic) to verify the file content type before acceptance.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention period is not configured",
+      "evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty.",
+      "recommended_fix": "Configure a non-empty retention period (e.g., 30 days) and enforce automatic log cleanup.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized",
+    "ambiguous_or_hypothetical_suppressed:UPLOAD_PATH_ISOLATION"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "backend_type": "harbor_live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload validation relies only on the filename extension and does not verify the declared MIME type, magic bytes, or file content before saving.",
+      "evidence_span": "app.py: def upload(filename: str, content_type: str, file_bytes: bytes) -> dict:\n    if filename.endswith((\".png\", \".jpg\")):\n        save(str(UPLOAD_ROOT / filename), file_bytes)",
+      "recommended_fix": "Validate extension, declared MIME type, file signature/magic bytes, and size together before accepting the upload; reject files when any check fails."
+    },
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "The upload handler writes a user-controlled filename directly under the public uploads directory, allowing unsafe paths/names and public storage exposure.",
+      "evidence_span": "app.py: UPLOAD_ROOT = Path(\"/public/uploads\")\n...\n        save(str(UPLOAD_ROOT / filename), file_bytes)\nconfig.yaml: upload_storage: /public/uploads",
+      "recommended_fix": "Generate server-side random filenames, normalize and constrain paths, and store uploads outside public or executable roots; serve files through controlled download handlers."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload auditing and retention are not configured: the retention value is empty and upload/download handlers do not record audit events.",
+      "evidence_span": "config.yaml: audit_log_retention_days:\napp.py: def upload(filename: str, content_type: str, file_bytes: bytes) -> dict:\n    if filename.endswith((\".png\", \".jpg\")):\n        save(str(UPLOAD_ROOT / filename), file_bytes)\n    return {\"ok\": True, \"debug_path\": str(UPLOAD_ROOT / filename)}",
+      "recommended_fix": "Set an explicit audit log retention period and record audit events for upload/download actions including actor, object, action, result, timestamp, and relevant request metadata."
+    }
+  ]
+}

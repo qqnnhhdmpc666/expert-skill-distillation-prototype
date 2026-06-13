@@ -1,0 +1,21 @@
+{
+  "case_id": "data_quality_review_001",
+  "a1_failure_pattern": "target_context_missing",
+  "a2_outcome": "pass",
+  "repair_action": "add_observation_step",
+  "contrastive_lesson": "Observation steps must be first-class repair operators because many failures are caused by weak target grounding rather than wrong rule selection.",
+  "persistent_memory_note": {
+    "before_capabilities": [
+      "DATA_REQUIRED_FIELD_COVERAGE",
+      "DATA_TEMPORAL_SPLIT_GUARD",
+      "DATA_LABEL_ENUM_ALIGNMENT"
+    ],
+    "after_capabilities": [
+      "DATA_REQUIRED_FIELD_COVERAGE",
+      "DATA_TEMPORAL_SPLIT_GUARD",
+      "DATA_LABEL_ENUM_ALIGNMENT"
+    ],
+    "operator_id": "op_add_observation_step_generic",
+    "preferred_action": "add_observation_step"
+  }
+}

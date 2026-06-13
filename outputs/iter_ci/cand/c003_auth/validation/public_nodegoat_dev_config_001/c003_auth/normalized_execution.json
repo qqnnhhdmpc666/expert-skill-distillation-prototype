@@ -1,0 +1,18 @@
+{
+  "attempt": "c003_auth",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Hardcoded API key in configuration file",
+      "evidence_span": "zapApiKey: \"v9dn0balpqas1pcc281tn5ood1\",",
+      "recommended_fix": "Replace the hardcoded API key with a reference to an environment variable or a secrets manager, e.g., zapApiKey: process.env.ZAP_API_KEY.",
+      "capability_group": "config_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

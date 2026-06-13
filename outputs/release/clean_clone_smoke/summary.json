@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-06-12T14:57:04.482776+00:00",
+  "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main",
+  "worktree": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+  "venv": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv",
+  "overall_status": "pass",
+  "commands": [
+    {
+      "name": "create_venv",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "venv",
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\create_venv.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\create_venv.stderr.log",
+      "status": "pass"
+    },
+    {
+      "name": "upgrade_pip",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\upgrade_pip.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\upgrade_pip.stderr.log",
+      "status": "pass"
+    },
+    {
+      "name": "editable_install",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "-e",
+        ".[dev]"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\editable_install.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\editable_install.stderr.log",
+      "status": "pass"
+    },
+    {
+      "name": "build_codex_skill",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv\\Scripts\\skill-deploy.exe",
+        "build-codex-skill"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\build_codex_skill.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\build_codex_skill.stderr.log",
+      "status": "pass"
+    },
+    {
+      "name": "install_skill",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv\\Scripts\\skill-deploy.exe",
+        "install",
+        "--skill",
+        "outputs/deployable_codex_skill/secure_code_review",
+        "--version",
+        "v2"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\install_skill.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\install_skill.stderr.log",
+      "status": "pass"
+    },
+    {
+      "name": "run_installed_skill",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv\\Scripts\\skill-deploy.exe",
+        "run-skill",
+        "--installed",
+        "secure_code_review",
+        "--case",
+        "upload_security_001",
+        "--backend",
+        "offline_deterministic"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\run_installed_skill.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\run_installed_skill.stderr.log",
+      "status": "pass"
+    },
+    {
+      "name": "validate_review_package",
+      "command": [
+        "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\venv\\Scripts\\skill-deploy.exe",
+        "validate-review-package"
+      ],
+      "cwd": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree",
+      "return_code": 0,
+      "stdout_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\validate_review_package.stdout.log",
+      "stderr_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\release\\clean_clone_smoke\\logs\\validate_review_package.stderr.log",
+      "status": "pass"
+    }
+  ],
+  "keep_artifacts": true
+}

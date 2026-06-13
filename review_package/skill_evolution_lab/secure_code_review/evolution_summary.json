@@ -1,0 +1,248 @@
+{
+  "run_id": "skill_evolution_lab_secure_code_review",
+  "created_at": "2026-06-11T11:22:48.432898+00:00",
+  "suite": "secure_code_review",
+  "gate": "qgse_pareto",
+  "single_trajectory_direct_edit_allowed": false,
+  "trajectory_store": [
+    {
+      "record_id": "marginal::data_quality_review_001",
+      "case_id": "data_quality_review_001",
+      "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\data_quality_review_001",
+      "status": "inconclusive",
+      "evidence_type": "marginal_utility",
+      "v2_over_v1_gain": 0.0,
+      "v2_over_no_skill_gain": 0.0,
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "marginal::upload_security_001",
+      "case_id": "upload_security_001",
+      "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\upload_security_001",
+      "status": "success",
+      "evidence_type": "marginal_utility",
+      "v2_over_v1_gain": 0.1333,
+      "v2_over_no_skill_gain": 0.0,
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_upload_repair_loop",
+      "case_id": "upload_security_001",
+      "source": "outputs/live_llm_repair_loop_upload_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_data_quality_repair_loop",
+      "case_id": "data_quality_review_001",
+      "source": "outputs/live_llm_repair_loop_data_quality_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_config_security_repair_loop",
+      "case_id": "config_security_001",
+      "source": "outputs/live_llm_repair_loop_config_security_001",
+      "status": "failure",
+      "evidence_type": "qualification_card",
+      "decision": "quarantine",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_api_review_repair_loop",
+      "case_id": "api_review_001",
+      "source": "outputs/live_llm_repair_loop_api_review_001",
+      "status": "failure",
+      "evidence_type": "qualification_card",
+      "decision": "reject",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::harbor_llm_upload_repair_loop",
+      "case_id": "real-upload-security-review",
+      "source": "outputs/harbor_llm_repair_loop_upload_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::harbor_llm_config_repair_loop",
+      "case_id": "controlled-config-security-review",
+      "source": "outputs/harbor_llm_repair_loop_config_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    }
+  ],
+  "failure_contrast": [
+    {
+      "case_id": "config_security_001",
+      "artifact": "outputs/live_llm_repair_loop_config_security_001",
+      "a1_failure_pattern": "missing_capability",
+      "a2_success_pattern": "none",
+      "contrastive_lesson": "A2 still misses the same capability set: ['CONFIG_ENV_GUARD'].",
+      "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+      "candidate_patch": "do_not_promote_without_manifest_diff_and_behavior_gain",
+      "patch_risk": "skill_to_execution_gap"
+    },
+    {
+      "case_id": "api_review_001",
+      "artifact": "outputs/live_llm_repair_loop_api_review_001",
+      "a1_failure_pattern": "missing_capability",
+      "a2_success_pattern": "none",
+      "contrastive_lesson": "A2 still misses the same capability set: ['API_OVERBROAD_RISK'].",
+      "text_gradient": "Patch operators must verify a manifest diff before rerun; no-op capability patches must be rejected early.",
+      "candidate_patch": "do_not_promote_without_manifest_diff_and_behavior_gain",
+      "patch_risk": "repair_operator_noop_or_patch_application_failure"
+    }
+  ],
+  "candidate_pool": [
+    {
+      "candidate_id": "candidate_upload_security_001_v2",
+      "case_id": "upload_security_001",
+      "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\upload_security_001",
+      "proposal_type": "bounded_skill_v2_promotion",
+      "edit_budget": 3,
+      "protected_sections": [
+        "Safety Boundary",
+        "Output Contract",
+        "Qualification Scope"
+      ],
+      "marginal_utility": {
+        "v2_over_v1_gain": 0.1333,
+        "v2_over_no_skill_gain": 0.0,
+        "gap_to_upper_bound": 0.0,
+        "cost_delta": 73.0,
+        "false_positive_delta": 0.0,
+        "metamorphic_delta": 0.0
+      },
+      "status": "candidate"
+    }
+  ],
+  "rejected_edit_buffer": [
+    {
+      "rejected_edit_id": "rejected::config_security_001",
+      "case_id": "config_security_001",
+      "reason": "skill_to_execution_gap",
+      "score_delta": -1.0,
+      "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+      "avoid_next": "do_not_promote_without_manifest_diff_and_behavior_gain"
+    },
+    {
+      "rejected_edit_id": "rejected::api_review_001",
+      "case_id": "api_review_001",
+      "reason": "repair_operator_noop_or_patch_application_failure",
+      "score_delta": -1.0,
+      "text_gradient": "Patch operators must verify a manifest diff before rerun; no-op capability patches must be rejected early.",
+      "avoid_next": "do_not_promote_without_manifest_diff_and_behavior_gain"
+    }
+  ],
+  "elite_pool": [
+    {
+      "rank": 1,
+      "candidate_id": "candidate_upload_security_001_v2",
+      "case_id": "upload_security_001",
+      "selection_rule": "strict_positive_marginal_gain_and_no_false_positive_increase",
+      "status": "elite_candidate",
+      "marginal_utility": {
+        "v2_over_v1_gain": 0.1333,
+        "v2_over_no_skill_gain": 0.0,
+        "gap_to_upper_bound": 0.0,
+        "cost_delta": 73.0,
+        "false_positive_delta": 0.0,
+        "metamorphic_delta": 0.0
+      }
+    }
+  ],
+  "retirement_decisions": [
+    {
+      "skill_id": "live_llm_config_security_repair_loop",
+      "case_id": "config_security_001",
+      "action": "quarantine",
+      "trigger": "skill_to_execution_gap",
+      "evidence": "outputs/live_llm_repair_loop_config_security_001",
+      "rejected_edit_count": 1
+    },
+    {
+      "skill_id": "live_llm_api_review_repair_loop",
+      "case_id": "api_review_001",
+      "action": "retire",
+      "trigger": "skill_to_execution_gap",
+      "evidence": "outputs/live_llm_repair_loop_api_review_001",
+      "rejected_edit_count": 1
+    },
+    {
+      "skill_id": "data_quality_review_001_v2",
+      "case_id": "data_quality_review_001",
+      "action": "downgrade",
+      "trigger": "no_positive_marginal_gain_or_false_positive_increase",
+      "evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\data_quality_review_001",
+      "rejected_edit_count": 0
+    }
+  ],
+  "skill_state_registry": {
+    "generated_at": "2026-06-11T11:22:48.432890+00:00",
+    "registry_type": "controlled_skill_evolution_state_overlay",
+    "source_registry": "outputs/installed_skills/registry.json",
+    "skills": [
+      {
+        "case_id": "api_review_001",
+        "task_family": "api_or_code_review",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/api_review_001",
+        "history_events": 1,
+        "evolution_state": "retire",
+        "evolution_reason": "skill_to_execution_gap"
+      },
+      {
+        "case_id": "auth_access_control_001",
+        "task_family": "auth_access_control",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/auth_access_control_001",
+        "history_events": 1,
+        "evolution_state": "installed_controlled",
+        "evolution_reason": "no_new_evolution_decision"
+      },
+      {
+        "case_id": "config_security_001",
+        "task_family": "config_security",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/config_security_001",
+        "history_events": 1,
+        "evolution_state": "quarantine",
+        "evolution_reason": "skill_to_execution_gap"
+      },
+      {
+        "case_id": "data_quality_review_001",
+        "task_family": "data_quality_review",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/data_quality_review_001",
+        "history_events": 1,
+        "evolution_state": "downgrade",
+        "evolution_reason": "no_positive_marginal_gain_or_false_positive_increase"
+      },
+      {
+        "case_id": "upload_security_001",
+        "task_family": "upload_security",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/upload_security_001",
+        "history_events": 3,
+        "evolution_state": "elite_candidate",
+        "evolution_reason": "positive_marginal_utility_candidate"
+      }
+    ],
+    "boundary": "This overlays evolution states on the generated install registry; it is not a production package manager."
+  },
+  "claim_boundary": "minimal controlled Skill evolution lab; not broad autonomous self-improvement evidence"
+}

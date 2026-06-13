@@ -1,0 +1,18 @@
+{
+  "attempt": "c003_auth",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Output missing required evidence_span field",
+      "evidence_span": "review_output.py: report_builder emits prose without evidence_span; debug_path is labeled as a risk without pointing to a target line.",
+      "recommended_fix": "Modify report_builder to include evidence_span in its output, mapping each claim to the exact target lines.",
+      "capability_group": "api_or_code_review",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "User-controlled filename written into upload root",
+      "evidence_span": "target.md: app.py upload() \"writes UPLOAD_ROOT / filename\"",
+      "recommended_fix": "Generate a server-side upload name, ignore path components from the submitted filename, and store uploads outside public/executable roots rather than writing UPLOAD_ROOT / filename."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit retention is not configured",
+      "evidence_span": "target.md: config.yaml: \"audit_log_retention_days is empty\"",
+      "recommended_fix": "Set a concrete audit_log_retention_days value and record upload audit events with actor, object, action, result, and timestamp for that retention period."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload type validation relies on filename suffix",
+      "evidence_span": "target.md: app.py upload() \"checks filename.endswith\"",
+      "recommended_fix": "Validate uploads using MIME type, file signature/magic bytes, file size, and allowed extension together instead of relying on filename.endswith alone."
+    }
+  ],
+  "attempt": "A2_skill_v2",
+  "backend": "live_llm_text"
+}

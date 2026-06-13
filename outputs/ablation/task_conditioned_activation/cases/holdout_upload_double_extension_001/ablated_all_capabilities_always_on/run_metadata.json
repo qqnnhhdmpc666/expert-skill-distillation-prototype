@@ -1,0 +1,28 @@
+{
+  "run_id": "holdout_upload_double_extension_001::offline_deterministic::ablated_all_capabilities_always_on",
+  "case_id": "holdout_upload_double_extension_001",
+  "backend": "offline_deterministic",
+  "variant": "ablated_all_capabilities_always_on",
+  "runtime_source": "ablation_experiment_package",
+  "task_family": "upload_security",
+  "activated_capability_group": "all_capabilities_always_on",
+  "expected_capability_group": "upload_security",
+  "capability_group_correct": false,
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\ablation\\task_conditioned_activation\\variants\\ablated_all_capabilities_always_on",
+  "skill_hash": "42bde45805bfc34db1864377b65cc9400537196dab744bbc9b0f21906af4090d",
+  "manifest_hash": "ae9b71ec4c65ad79f6c91a1a16878353578bff5949b35e61bc391bb06bfaa9b5",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T11:38:15.443320+00:00"
+  },
+  "schema_version": "external_security_mini_suite.run_metadata.v1",
+  "timestamp": "2026-06-12T11:38:59.816241+00:00",
+  "oracle_fields_visible_to_runner": false,
+  "model": "offline_deterministic",
+  "cost": null,
+  "tokens": 209
+}

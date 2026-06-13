@@ -1,0 +1,25 @@
+{
+  "attempt": "c003_auth",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Missing role/scope matrix binding after authentication",
+      "evidence_span": "target.md: \"cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering\"",
+      "recommended_fix": "Add a role, scope, or tenant check after authentication to ensure the caller has the required permission for cancel_invoice."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Invoice loaded without ownership filtering",
+      "evidence_span": "target.md: \"loads invoice by id without tenant_id or owner_id filtering\"",
+      "recommended_fix": "Include tenant_id, owner_id, or equivalent ownership filter when loading the invoice to prevent unauthorized access."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Denial response reveals stable object identifier",
+      "evidence_span": "target.md: \"denial body returns invoice_id\"",
+      "recommended_fix": "Replace invoice_id in the denial body with a neutral request ID to avoid leaking business identifiers."
+    }
+  ],
+  "notes": []
+}

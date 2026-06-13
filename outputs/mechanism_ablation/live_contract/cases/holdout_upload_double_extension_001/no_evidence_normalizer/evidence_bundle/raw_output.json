@@ -1,0 +1,19 @@
+{
+  "attempt": "no_evidence_normalizer",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validation relies solely on extension, allowing double-extension bypass",
+      "evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg')",
+      "recommended_fix": "Implement magic byte (MIME) validation instead of relying only on the file extension; reject files whose magic bytes do not match the expected type."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention days is not configured",
+      "evidence_span": "settings.toml: audit_log_retention_days is empty",
+      "recommended_fix": "Set a non‑empty value for audit_log_retention_days (e.g., 365) to enforce log rotation and compliance requirements."
+    }
+  ],
+  "notes": []
+}

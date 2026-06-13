@@ -1,0 +1,20 @@
+rule_id: R002
+title: "用户输入校验"
+risk: "high"
+source_snippet: "所有用户输入必须有类型、长度和 allowlist 校验。"
+action: "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+evidence_terms:
+  - "q:"
+  - "tenant_id"
+  - "filename"
+  - "user_id"
+required_output_fields:
+  - finding_id
+  - rule_id
+  - evidence_span
+  - risk_level
+  - recommended_fix
+acceptance:
+  - evidence_span must quote target_asset text
+  - recommended_fix must be actionable
+repair_operator: patch_rule

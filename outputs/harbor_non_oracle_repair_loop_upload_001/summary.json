@@ -1,0 +1,60 @@
+﻿{
+    "A1":  {
+               "passed":  false,
+               "reward":  0,
+               "missing":  [
+                               "UPLOAD_AUDIT_RETENTION",
+                               "UPLOAD_TYPE_MAGIC"
+                           ],
+               "artifacts":  [
+                                 "A1/security_report.json",
+                                 "A1/target_reads.json",
+                                 "A1/verifier_report.json",
+                                 "A1/failure_feedback.json",
+                                 "A1/reward.json"
+                             ],
+               "capabilities":  [
+                                    "UPLOAD_PATH_ISOLATION"
+                                ]
+           },
+    "reward_delta":  1,
+    "backend":  "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+    "A2":  {
+               "passed":  true,
+               "reward":  1,
+               "missing":  [
+
+                           ],
+               "artifacts":  [
+                                 "A2/security_report.json",
+                                 "A2/target_reads.json",
+                                 "A2/verifier_report.json",
+                                 "A2/reward.json"
+                             ],
+               "capabilities":  [
+                                    "UPLOAD_PATH_ISOLATION",
+                                    "UPLOAD_TYPE_MAGIC",
+                                    "UPLOAD_AUDIT_RETENTION"
+                                ]
+           },
+    "boundary":  "This is a controlled Harbor repair loop with a deterministic heuristic agent. It is not an LLM autonomous vulnerability-discovery result and not a general scanner.",
+    "llm":  false,
+    "agent":  "upload-security-heuristic-agent",
+    "oracle":  false,
+    "task":  "real-upload-security-review",
+    "revision":  {
+                     "added_capabilities":  [
+                                                "UPLOAD_TYPE_MAGIC",
+                                                "UPLOAD_AUDIT_RETENTION"
+                                            ],
+                     "feedback_type":  "missing_capability",
+                     "repair_action":  "patch_capability",
+                     "artifacts":  [
+                                       "revision/patch_plan.json",
+                                       "revision/gate_decision.json",
+                                       "revision/skill_diff.md"
+                                   ]
+                 },
+    "run_id":  "harbor_non_oracle_repair_loop_upload_001",
+    "agent_type":  "deterministic heuristic CLI-style Harbor custom agent"
+}

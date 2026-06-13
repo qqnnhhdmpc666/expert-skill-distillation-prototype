@@ -1,0 +1,23 @@
+{
+  "normalizer_version": "live_contract_normalizer.v1",
+  "oracle_fields_visible_to_normalizer": false,
+  "out_of_scope": true,
+  "suppressed_findings_count": 1,
+  "finding_traces": [],
+  "failure_taxonomy_counts": {
+    "schema_error": 0,
+    "missing_evidence": 0,
+    "non_exact_span": 0,
+    "unsupported_evidence": 0,
+    "wrong_capability_group": 0,
+    "over_reporting": 1,
+    "under_reporting": 0,
+    "unsupported_scope": 1,
+    "low_confidence_needed": 0,
+    "normalizer_needed": 0,
+    "model_contract_violation": 0
+  },
+  "evidence_exact_match_rate": 1.0,
+  "unsupported_evidence_count_before": null,
+  "unsupported_evidence_count_after": 0
+}

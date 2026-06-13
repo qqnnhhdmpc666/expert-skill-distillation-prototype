@@ -1,0 +1,8 @@
+{
+  "skill_id": "agent_api_injected_risk",
+  "version": "metamorphic",
+  "capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ]
+}

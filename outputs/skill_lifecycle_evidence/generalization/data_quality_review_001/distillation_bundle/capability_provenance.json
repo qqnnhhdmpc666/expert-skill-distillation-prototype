@@ -1,0 +1,67 @@
+[
+  {
+    "capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+    "title": "Required field coverage",
+    "source_span": "Missing-column issues should name the required field",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "missing-column issues",
+      "required field"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "target_context_missing",
+    "repair_action": "add_observation_step",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+      "skill_file": "skills/skill_v2/SKILL.md#DATA_REQUIRED_FIELD_COVERAGE"
+    },
+    "justification": "kept in compact skill_v1"
+  },
+  {
+    "capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+    "title": "Temporal split guard",
+    "source_span": "check temporal split hygiene before training",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "temporal split hygiene"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "target_context_missing",
+    "repair_action": "add_observation_step",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+      "skill_file": "skills/skill_v2/SKILL.md#DATA_TEMPORAL_SPLIT_GUARD"
+    },
+    "justification": "kept in compact skill_v1"
+  },
+  {
+    "capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+    "title": "Label enum alignment",
+    "source_span": "reject label values that drift outside the declared contract",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "label values",
+      "declared contract"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "target_context_missing",
+    "repair_action": "add_observation_step",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+      "skill_file": "skills/skill_v2/SKILL.md#DATA_LABEL_ENUM_ALIGNMENT"
+    },
+    "justification": "kept in compact skill_v1"
+  }
+]

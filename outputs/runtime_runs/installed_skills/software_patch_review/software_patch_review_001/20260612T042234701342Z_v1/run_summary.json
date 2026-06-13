@@ -1,0 +1,17 @@
+{
+  "run_id": "20260612T042234701342Z_v1",
+  "skill_id": "software_patch_review",
+  "case_id": "software_patch_review_001",
+  "backend": "offline_deterministic",
+  "runtime_source": "installed_skill_package",
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\software_patch_review\\versions\\v1",
+  "skill_version": "v1",
+  "manifest_hash": "9b4bbaaaf6e836f196e3aeefc9cd1201f5b16088cf962dcece3aca46faf809cd",
+  "skill_hash": "233f3190d173d7e25f984f532723f3da0c0af07cbf464e00542a906c4b1527a4",
+  "task_family": "software_patch_review",
+  "activated_capability_group": "software_patch_review",
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\runtime_runs\\installed_skills\\software_patch_review\\software_patch_review_001\\20260612T042234701342Z_v1",
+  "pass": true
+}

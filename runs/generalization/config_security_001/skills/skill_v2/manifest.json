@@ -1,0 +1,23 @@
+{
+  "skill_id": "config_security_001",
+  "version": "v2",
+  "task_family": "config_security",
+  "capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "event",
+    "capability_id",
+    "evidence_span"
+  ],
+  "metadata": {
+    "repair_action": "reduce_false_positive_risk",
+    "operator_id": "op_reduce_false_positive_generic"
+  }
+}

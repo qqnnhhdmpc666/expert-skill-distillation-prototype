@@ -1,0 +1,38 @@
+{
+  "skill_name": "custom_external_security_review_skill",
+  "domain": "外部安全审查 / 自定义任务",
+  "version": "v1",
+  "source_materials": "expert_rules + target_asset + verifier_contract",
+  "rules": [
+    {
+      "rule_id": "R002",
+      "title": "用户输入校验",
+      "risk": "high",
+      "action": "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+    },
+    {
+      "rule_id": "R004",
+      "title": "敏感信息泄露",
+      "risk": "medium",
+      "action": "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+    },
+    {
+      "rule_id": "R007",
+      "title": "弱密钥与调试配置",
+      "risk": "high",
+      "action": "检查 debug=true、默认密钥、弱 JWT secret 和过宽 CORS。"
+    }
+  ],
+  "output_contract": [
+    "finding_id",
+    "rule_id",
+    "evidence_span"
+  ],
+  "trace_policy": [],
+  "verifier_contract": "verifier 会根据从专家材料和目标对象推断出的 rule ids 检查覆盖率，并要求 finding_id/rule_id/evidence_span/risk_level/recommended_fix。",
+  "token_cost": 123,
+  "status": "部署失败",
+  "change_log": [
+    "由专家材料蒸馏得到初始检查规则。"
+  ]
+}

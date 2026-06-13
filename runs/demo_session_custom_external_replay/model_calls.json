@@ -1,0 +1,35 @@
+[
+  {
+    "步骤": "Skill v1 生成",
+    "provider": "recorded OpenAI-compatible",
+    "model": "recorded-demo",
+    "latency": "3.8s",
+    "input_tokens": 924,
+    "output_tokens": 312,
+    "status": "replayed",
+    "response_preview": "生成 自定义安全审查任务 的 Skill v1。",
+    "prompt_preview": "录制回放：展示一次保存的 skill generation 形态。"
+  },
+  {
+    "步骤": "Agent 执行",
+    "provider": "recorded OpenAI-compatible",
+    "model": "recorded-demo",
+    "latency": "4.6s",
+    "input_tokens": 1180,
+    "output_tokens": 456,
+    "status": "replayed",
+    "response_preview": "输出 A1 findings，随后 verifier 捕捉失败。",
+    "prompt_preview": "录制回放：展示一次保存的 agent call 形态。"
+  },
+  {
+    "步骤": "Patch Proposal",
+    "provider": "recorded OpenAI-compatible",
+    "model": "recorded-demo",
+    "latency": "2.7s",
+    "input_tokens": 770,
+    "output_tokens": 238,
+    "status": "replayed",
+    "response_preview": "根据后验反馈生成修正方案。",
+    "prompt_preview": "录制回放：展示一次保存的 posterior revision 形态。"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "case_id": "api_review_001",
+  "task_family": "api_or_code_review",
+  "review_readiness": "hold",
+  "recommended_audience": "internal debugging first",
+  "opening_claim": "Controlled expert-skill lifecycle for `api_review_001` with artifact-backed distillation, execution, and revision evidence.",
+  "what_to_show_first": [
+    "outputs/skill_lifecycle_evidence/generalization/api_review_001/distillation_bundle",
+    "outputs/skill_lifecycle_evidence/generalization/api_review_001/trajectory_bundle",
+    "outputs/installed_skills/api_review_001/deployment_record.json"
+  ],
+  "supporting_cards": {
+    "qualification_card_id": "live_llm_api_review_repair_loop",
+    "promotion_level": "L0_NON_PROMOTABLE",
+    "validity_card_id": "live_llm_api_review_repair_loop"
+  },
+  "rubric": {
+    "task_usefulness": {
+      "score": 4,
+      "reason": "A2 passes the controlled verifier and the task-level artifact chain is complete."
+    },
+    "evidence_clarity": {
+      "score": 4,
+      "reason": "Distillation bundle, trajectory bundle, and patch/gate files are all present."
+    },
+    "fix_actionability": {
+      "score": 4,
+      "reason": "Repair action is `rewrite_output_contract` and can be inspected in the revision artifacts."
+    },
+    "scope_honesty": {
+      "score": 5,
+      "reason": "Claim boundary is explicitly controlled and does not present broad autonomous generalization."
+    },
+    "deployment_readiness": {
+      "score": 3,
+      "reason": "A generated install/rollback surface now exists, but it is still a controlled prototype surface rather than a production package manager."
+    }
+  },
+  "boundary": "Reviewer-readiness packet authored from internal artifacts. It is preparation for human/external review, not itself external human validation."
+}

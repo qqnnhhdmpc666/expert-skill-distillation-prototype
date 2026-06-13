@@ -1,0 +1,13 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "User-controlled upload filename written under upload root",
+      "evidence_span": "target.md: \"app.py: upload() checks filename.endswith, writes UPLOAD_ROOT / filename, returns debug_path.\"",
+      "recommended_fix": "Generate a server-side filename rather than using the supplied filename, and store uploads outside public/executable roots; do not return internal debug paths."
+    }
+  ],
+  "attempt": "A1_skill_v1",
+  "backend": "live_llm_text"
+}

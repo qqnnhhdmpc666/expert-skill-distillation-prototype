@@ -1,0 +1,6 @@
+{
+  "decision": "not_promoted",
+  "reason": "strict_rule_not_satisfied",
+  "auto_installed": false,
+  "promotion_rule": "candidate_score > active_installed_score and false_positive_delta <= 0 and schema_error_delta <= 0 and scope_violation=false and negative/unsupported controls not worse"
+}

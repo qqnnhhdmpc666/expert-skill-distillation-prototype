@@ -1,0 +1,92 @@
+[
+  {
+    "序号": 0,
+    "步骤": "Attempt A0 无 Skill baseline",
+    "输入产物": "target_asset/*",
+    "输出产物": "attempts/A0_no_skill_output.json / A0_no_skill_verifier_report.json",
+    "耗时": "0.1s",
+    "tokens": 0,
+    "状态": "FAIL"
+  },
+  {
+    "序号": 1,
+    "步骤": "解析专家材料包 / 抽取规则账本",
+    "输入产物": "source_materials/* + task_spec/*",
+    "输出产物": "skills/skill_v0_source.json / revision/rule_ledger.json",
+    "耗时": "0.2s",
+    "tokens": 0,
+    "状态": "完成"
+  },
+  {
+    "序号": 2,
+    "步骤": "生成 Skill Package v1",
+    "输入产物": "规则账本 + task_spec.json",
+    "输出产物": "skills/skill_v1/manifest.yaml + SKILL.md + rules/*",
+    "耗时": "0.4s",
+    "tokens": 125,
+    "状态": "完成"
+  },
+  {
+    "序号": 3,
+    "步骤": "加载目标资产包",
+    "输入产物": "target_asset/*",
+    "输出产物": "attempts/A1_agent_input.json",
+    "耗时": "0.1s",
+    "tokens": 0,
+    "状态": "完成"
+  },
+  {
+    "序号": 4,
+    "步骤": "Attempt A1 执行检查",
+    "输入产物": "skills/skill_v1/ + target_asset",
+    "输出产物": "attempts/A1_agent_output.json / A1_trace.jsonl",
+    "耗时": "0.5s",
+    "tokens": 125,
+    "状态": "FAIL"
+  },
+  {
+    "序号": 5,
+    "步骤": "验证器计算 missing requirements",
+    "输入产物": "A1_agent_output.json",
+    "输出产物": "attempts/A1_verifier_report.json",
+    "耗时": "0.2s",
+    "tokens": 0,
+    "状态": "output_contract_error"
+  },
+  {
+    "序号": 6,
+    "步骤": "生成后验反馈与修正方案",
+    "输入产物": "A1_verifier_report.json",
+    "输出产物": "revision/patch_proposal.json",
+    "耗时": "0.4s",
+    "tokens": 68,
+    "状态": "完成"
+  },
+  {
+    "序号": 7,
+    "步骤": "门控检查",
+    "输入产物": "patch_proposal.json",
+    "输出产物": "revision/gate_decision.json",
+    "耗时": "0.2s",
+    "tokens": 0,
+    "状态": "完成"
+  },
+  {
+    "序号": 8,
+    "步骤": "生成 Skill v2",
+    "输入产物": "gate_decision.json",
+    "输出产物": "skills/skill_v2/ + revision/skill_directory_diff.md",
+    "耗时": "0.4s",
+    "tokens": 125,
+    "状态": "完成"
+  },
+  {
+    "序号": 9,
+    "步骤": "Attempt A2 重跑",
+    "输入产物": "skills/skill_v2/ + target_asset",
+    "输出产物": "attempts/A2_agent_output.json / A2_trace.jsonl / A2_verifier_report.json",
+    "耗时": "0.5s",
+    "tokens": 125,
+    "状态": "PASS"
+  }
+]

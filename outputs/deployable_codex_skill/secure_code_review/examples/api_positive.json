@@ -1,0 +1,10 @@
+{
+  "case_id": "api_review_001",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "evidence_span": "target.md: prior report used prose without evidence_span",
+      "recommended_fix": "Apply the scoped defensive remediation and rerun validation."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "decision": "accept",
+  "intervention": "soft",
+  "reason": "false_positive_risk -> reduce_false_positive_risk",
+  "scores": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 0.0,
+    "trace_observability_score": 1.0,
+    "cost_budget_score": 1.0,
+    "safety_boundary_score": 1.0
+  },
+  "taxonomy_ref": "revision/feedback_taxonomy.json",
+  "repair_policy_ref": "revision/repair_policy.json",
+  "intervention_scores_ref": "revision/intervention_scores.json",
+  "operator_id": "op_reduce_false_positive_generic"
+}

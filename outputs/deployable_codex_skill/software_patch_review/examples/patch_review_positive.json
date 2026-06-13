@@ -1,0 +1,10 @@
+{
+  "case_id": "software_patch_review_001",
+  "findings": [
+    {
+      "capability_id": "PATCH_MINIMAL_CODE_CHANGE",
+      "evidence_span": "target.md: replace int(amount * rate) with round(amount * rate, 2)",
+      "recommended_fix": "Apply the minimal expression replacement and rerun the targeted test."
+    }
+  ]
+}

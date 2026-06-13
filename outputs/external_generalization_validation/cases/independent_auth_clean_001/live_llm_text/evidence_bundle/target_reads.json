@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_auth_clean_001",
+  "target_digest": {
+    "chars": 265,
+    "preview": "Task: Independently authored holdout: clean auth review.\n\nSnippet:\ncancel_invoice checks required role scope, queries invoice by tenant_id and owner_id, and denial body returns only request_id.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

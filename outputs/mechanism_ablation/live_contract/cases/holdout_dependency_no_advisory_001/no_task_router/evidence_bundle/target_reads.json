@@ -1,0 +1,7 @@
+{
+  "case_id": "holdout_dependency_no_advisory_001",
+  "target_digest": {
+    "chars": 357,
+    "preview": "Task: Review dependency/version risk defensively. This task family is intentionally outside the current secure_code_review package.\n\nSnippet:\nrequirements.txt: old-json-parser==1.2.0 is pinned, but no advisory database, exploitability context, or patch validation evidence is provided.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

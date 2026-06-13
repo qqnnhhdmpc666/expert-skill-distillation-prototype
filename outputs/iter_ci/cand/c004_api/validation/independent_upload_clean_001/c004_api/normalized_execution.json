@@ -1,0 +1,11 @@
+{
+  "attempt": "c004_api",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": [
+    "live_contract_normalized",
+    "positive_observation_suppressed:UPLOAD_PATH_ISOLATION",
+    "positive_observation_suppressed:UPLOAD_TYPE_MAGIC",
+    "positive_observation_suppressed:UPLOAD_AUDIT_RETENTION"
+  ]
+}

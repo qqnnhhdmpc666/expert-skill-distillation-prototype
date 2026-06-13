@@ -1,0 +1,16 @@
+{
+  "expected_findings": [
+    {
+      "capability_id": "PATCH_TEST_FAILURE_REPRO",
+      "required": true
+    },
+    {
+      "capability_id": "PATCH_MINIMAL_CODE_CHANGE",
+      "required": true
+    },
+    {
+      "capability_id": "PATCH_REGRESSION_VALIDATION",
+      "required": true
+    }
+  ]
+}

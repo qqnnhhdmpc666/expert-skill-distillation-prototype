@@ -1,0 +1,31 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "oracle": false,
+  "llm": true,
+  "generated_by": "agents/llm_security_agent.py",
+  "skill_dir": "outputs\\tmp_config_probe_case001\\skill",
+  "target_dir": "outputs\\tmp_config_probe_case001\\target",
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "capabilities": [
+    "CONFIG_HARDCODED_SECRET",
+    "CONFIG_INSECURE_HTTP",
+    "CONFIG_PROD_DEBUG"
+  ],
+  "timestamp": "2026-06-08T06:58:59.310898+00:00",
+  "status": "ok",
+  "finding_count": 3,
+  "usage": {
+    "prompt_tokens": 760,
+    "completion_tokens": 209,
+    "total_tokens": 969,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 16
+    }
+  },
+  "latency_ms": 5938
+}

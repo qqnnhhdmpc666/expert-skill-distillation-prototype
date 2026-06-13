@@ -1,0 +1,7 @@
+{
+  "candidate_id": "live_feedback_c001",
+  "scope_expansion_risk": "medium",
+  "negative_control_required": true,
+  "unsupported_limitation_required": true,
+  "dependency_version_risk_absorbed": false
+}

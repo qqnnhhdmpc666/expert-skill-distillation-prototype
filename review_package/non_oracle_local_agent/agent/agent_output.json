@@ -1,0 +1,23 @@
+{
+  "backend_type": "non_oracle_local_semantic_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Upload path isolation",
+      "evidence_span": "target.md: load() checks filename.endswith, writes UPLOAD_ROOT / filename, returns debug_path. config.yaml: audit_log_retention_days is empty.",
+      "recommended_fix": "Generate server-side names and store files outside public executable roots."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload audit retention",
+      "evidence_span": "target.md: ename, returns debug_path. config.yaml: audit_log_retention_days is empty.",
+      "recommended_fix": "Record actor/object/action/result/timestamp with a retention policy."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload type and content validation",
+      "evidence_span": "target.md: app.py: upload() checks filename.endswith, writes UPLOAD_ROOT / filename, returns debug_path. config.yaml: audit_log_rete",
+      "recommended_fix": "Validate MIME, file signature, size, and extension together."
+    }
+  ]
+}

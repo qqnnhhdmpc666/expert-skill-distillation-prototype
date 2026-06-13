@@ -1,0 +1,53 @@
+{
+  "normalizer_version": "live_contract_normalizer.v1",
+  "oracle_fields_visible_to_normalizer": false,
+  "out_of_scope": false,
+  "suppressed_findings_count": 0,
+  "finding_traces": [
+    {
+      "index": 0,
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "input_evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename.",
+      "action": "suppressed_low_confidence",
+      "normalization_reason": "ambiguous_or_hypothetical_not_a_concrete_finding",
+      "failure_taxonomy": [
+        "over_reporting",
+        "low_confidence_needed",
+        "normalizer_needed"
+      ]
+    },
+    {
+      "index": 1,
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "input_evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg')",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty."
+    },
+    {
+      "index": 2,
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "input_evidence_span": "settings.toml: audit_log_retention_days is empty.",
+      "action": "rewrote_evidence_span",
+      "normalization_reason": "substring_to_complete_line",
+      "failure_taxonomy": [],
+      "output_evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty."
+    }
+  ],
+  "failure_taxonomy_counts": {
+    "schema_error": 0,
+    "missing_evidence": 0,
+    "non_exact_span": 2,
+    "unsupported_evidence": 0,
+    "wrong_capability_group": 0,
+    "over_reporting": 1,
+    "under_reporting": 0,
+    "unsupported_scope": 0,
+    "low_confidence_needed": 1,
+    "normalizer_needed": 3,
+    "model_contract_violation": 0
+  },
+  "evidence_exact_match_rate": 1.0,
+  "normalized_finding_count": 2
+}

@@ -1,0 +1,124 @@
+{
+  "variant": "candidate_package",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "v3_dependency_scope_expansion_candidate",
+    "task_family": "secure_code_review",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC",
+      "UPLOAD_AUDIT_RETENTION",
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK",
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "task_conditioned_secure_review",
+      "package_role": "installed_runtime",
+      "package_family_scope": "task_conditioned_secure_review",
+      "supported_task_families": [
+        "upload_security",
+        "config_security",
+        "api_or_code_review",
+        "auth_access_control"
+      ],
+      "out_of_scope_group": "out_of_scope_guard",
+      "capability_groups": [
+        {
+          "name": "upload_security",
+          "task_families": [
+            "upload_security"
+          ],
+          "capabilities": [
+            "UPLOAD_PATH_ISOLATION",
+            "UPLOAD_TYPE_MAGIC",
+            "UPLOAD_AUDIT_RETENTION"
+          ]
+        },
+        {
+          "name": "config_security",
+          "task_families": [
+            "config_security"
+          ],
+          "capabilities": [
+            "CONFIG_AUDIT_EXPORT",
+            "CONFIG_ENV_GUARD"
+          ]
+        },
+        {
+          "name": "api_or_code_review",
+          "task_families": [
+            "api_or_code_review"
+          ],
+          "capabilities": [
+            "API_SCHEMA_CONTRACT",
+            "API_OVERBROAD_RISK"
+          ]
+        },
+        {
+          "name": "auth_access_control",
+          "task_families": [
+            "auth_access_control"
+          ],
+          "capabilities": [
+            "AUTH_SCOPE_MATRIX",
+            "AUTH_OBJECT_OWNERSHIP",
+            "AUTH_ERROR_ENVELOPE"
+          ]
+        },
+        {
+          "name": "out_of_scope_guard",
+          "task_families": [],
+          "capabilities": []
+        },
+        {
+          "name": "dependency_version_risk",
+          "task_families": [
+            "dependency_version_risk"
+          ],
+          "capabilities": [
+            "API_OVERBROAD_RISK"
+          ]
+        }
+      ],
+      "candidate_id": "dependency_version_risk__v3_candidate_003",
+      "candidate_type": "unsupported_dependency_scope_expansion",
+      "candidate_generation_sources": {
+        "mini_suite_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\mini_suite_summary.json",
+        "limitation_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\limitation_or_rejected_evidence.json",
+        "active_skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "policy": "Candidate generation may read failure reports, verifier feedback, evidence summaries, and limitation summaries; it must not read verifier-only oracle expected findings or spans."
+      },
+      "unsupported_limitation_source_count": 1
+    }
+  },
+  "skill_text_chars": 1527,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v2\n\nThis installed runtime uses task-conditioned capability activation inside the controlled secure-review prototype.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Capability Groups\n\n### upload_security\n- task_families: `upload_security`\n- capabilities:\n  - `UPLOAD_PATH_ISOLATION`\n  - `UPLOAD_TYPE_MAGIC`\n  - `UP",
+  "provenance": {
+    "runtime_source": "candidate_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\dependency_version_risk__v3_candidate_003",
+    "skill_version": "v3_dependency_scope_expansion_candidate",
+    "manifest_hash": "7a56ae03b9d40fcf140c93c784722bf7744267c2d25ff7ed9f4480083b77e124",
+    "skill_hash": "b66ddd54fa9659a20c6e53afd6da2a51371e02200606e74679c8b7f072cd1ce6",
+    "run_id": "mini_dependency_version_risk_001::offline_deterministic::candidate_package",
+    "schema_version": "skill_marginal_utility.v1",
+    "task_family": "dependency_version_risk",
+    "activated_capability_group": "dependency_version_risk",
+    "out_of_scope": false,
+    "unsupported_task_family": null
+  }
+}

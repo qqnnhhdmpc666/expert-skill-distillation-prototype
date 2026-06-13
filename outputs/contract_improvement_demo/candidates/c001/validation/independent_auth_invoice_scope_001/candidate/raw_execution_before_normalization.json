@@ -1,0 +1,25 @@
+{
+  "attempt": "candidate",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Missing role/scope authorization; only authentication is checked",
+      "evidence_span": "target.md: cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Add role or scope authorization checks beyond is_authenticated to ensure the caller has permission to cancel invoices."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "No object ownership filtering; invoice loaded without tenant_id or owner_id",
+      "evidence_span": "target.md: cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Include tenant_id or owner_id filtering when loading invoice to ensure the caller owns the resource."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Denial response leaks invoice_id in error body",
+      "evidence_span": "target.md: cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Remove invoice_id from denial response body to prevent information leakage."
+    }
+  ],
+  "notes": []
+}

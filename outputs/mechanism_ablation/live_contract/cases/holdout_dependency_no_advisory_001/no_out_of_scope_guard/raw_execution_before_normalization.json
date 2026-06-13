@@ -1,0 +1,6 @@
+{
+  "attempt": "no_out_of_scope_guard",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": []
+}

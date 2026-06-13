@@ -21,7 +21,7 @@ from skill_deployment.evidence import false_positive_count, write_json, write_te
 from skill_deployment.install_state import load_active_pointer, read_skill_version, skill_version_dir  # noqa: E402
 
 import scripts.run_defensive_security_mini_suite as mini  # noqa: E402
-from scripts.run_live_contract_validation import selected_cases as live_contract_cases  # noqa: E402
+from scripts.run_live_contract_validation import ambiguous_case, selected_cases as live_contract_cases  # noqa: E402
 
 
 OUTPUT_ROOT = ROOT / "outputs" / "mechanism_ablation" / "live_contract"

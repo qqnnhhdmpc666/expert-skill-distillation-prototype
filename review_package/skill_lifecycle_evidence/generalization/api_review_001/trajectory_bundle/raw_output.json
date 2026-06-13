@@ -1,0 +1,45 @@
+{
+  "A0": {
+    "attempt": "A0_no_skill",
+    "backend": "offline_deterministic",
+    "findings": [],
+    "notes": []
+  },
+  "A1": {
+    "attempt": "A1_skill_v1",
+    "backend": "offline_deterministic",
+    "findings": [
+      {
+        "capability_id": "API_SCHEMA_CONTRACT",
+        "issue": "Strict report schema",
+        "evidence_span": "agent output omits evidence_span or uses free-form prose",
+        "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+      },
+      {
+        "capability_id": "API_OVERBROAD_RISK",
+        "issue": "Overbroad finding control",
+        "evidence_span": "generic security risk without code/config evidence"
+      }
+    ],
+    "notes": []
+  },
+  "A2": {
+    "attempt": "A2_skill_v2",
+    "backend": "offline_deterministic",
+    "findings": [
+      {
+        "capability_id": "API_SCHEMA_CONTRACT",
+        "issue": "Strict report schema",
+        "evidence_span": "agent output omits evidence_span or uses free-form prose",
+        "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+      },
+      {
+        "capability_id": "API_OVERBROAD_RISK",
+        "issue": "Overbroad finding control",
+        "evidence_span": "generic security risk without code/config evidence",
+        "recommended_fix": "Reject findings not grounded in target spans."
+      }
+    ],
+    "notes": []
+  }
+}

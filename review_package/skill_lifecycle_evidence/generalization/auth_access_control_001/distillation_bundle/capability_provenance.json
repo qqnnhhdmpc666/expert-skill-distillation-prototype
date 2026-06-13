@@ -1,0 +1,70 @@
+[
+  {
+    "capability_id": "AUTH_SCOPE_MATRIX",
+    "title": "Role and scope authorization",
+    "source_span": "role/scope authorization",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "role/scope authorization",
+      "role",
+      "scope"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "ownership_boundary_missing",
+    "repair_action": "patch_boundary",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "skill_file": "skills/skill_v2/SKILL.md#AUTH_SCOPE_MATRIX"
+    },
+    "justification": "kept in compact skill_v1"
+  },
+  {
+    "capability_id": "AUTH_OBJECT_OWNERSHIP",
+    "title": "Object ownership boundary",
+    "source_span": "object ownership",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "object ownership",
+      "ownership"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "ownership_boundary_missing",
+    "repair_action": "patch_boundary",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "skill_file": "skills/skill_v2/SKILL.md#AUTH_OBJECT_OWNERSHIP"
+    },
+    "justification": "kept in compact skill_v1"
+  },
+  {
+    "capability_id": "AUTH_ERROR_ENVELOPE",
+    "title": "Non-leaking authorization error",
+    "source_span": "error envelope.",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "error envelope",
+      "error",
+      "envelope"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "ownership_boundary_missing",
+    "repair_action": "patch_boundary",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "skill_file": "skills/skill_v2/SKILL.md#AUTH_ERROR_ENVELOPE"
+    },
+    "justification": "kept in compact skill_v1"
+  }
+]

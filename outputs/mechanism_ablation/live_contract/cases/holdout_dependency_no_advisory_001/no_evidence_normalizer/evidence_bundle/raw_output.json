@@ -1,0 +1,6 @@
+{
+  "attempt": "no_evidence_normalizer",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": []
+}

@@ -1,0 +1,24 @@
+{
+  "variant": "skill_v1",
+  "skill": {
+    "skill_id": "upload_security_001",
+    "version": "v1",
+    "task_family": "upload_security",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {}
+  },
+  "skill_text_chars": 415,
+  "skill_text_preview": "# Defensive Secure Review Skill upload_security_001 v1\n\nSafety boundary: defensive review only. Do not generate exploits, attack chains, or real-target automation.\n\nTask family: `upload_security`\n\n## Capabilities\n\n### UPLOAD_PATH_ISOLATION: Upload path isolation\n- Evidence: UPLOAD_ROOT / filename writes a user name into /public/uploads\n- Fix: Generate server-side names and store outside public executable roots.\n"
+}

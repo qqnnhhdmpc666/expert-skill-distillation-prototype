@@ -1,0 +1,8 @@
+{
+  "case_id": "holdout_clean_tax_math_001",
+  "expected_capability_count": 0,
+  "expected_capability_group": "out_of_scope_guard",
+  "clean_or_negative": true,
+  "unsupported_limitation": false,
+  "note": "Full oracle fields are not written into runner inputs."
+}

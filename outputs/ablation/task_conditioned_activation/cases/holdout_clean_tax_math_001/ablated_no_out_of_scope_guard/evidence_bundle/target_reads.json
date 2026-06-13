@@ -1,0 +1,7 @@
+{
+  "case_id": "holdout_clean_tax_math_001",
+  "target_digest": {
+    "chars": 357,
+    "preview": "Task: Review this clean business-logic snippet. It is intentionally outside secure_code_review scope.\n\nSnippet:\ntax.py: calculate_tax(amount, region) uses a documented table and contains no file upload, environment config, auth object access, API schema report, or debug path behavior.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "feedback_type": "pass",
+  "missing_capabilities": [],
+  "evidence_errors": [],
+  "false_positive_capabilities": [],
+  "coverage": 1.0
+}

@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-06-13T05:58:59.921162+00:00",
+  "manifest_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\review_package\\MANIFEST.json",
+  "artifact_count": 1377,
+  "evidence_type_counts": {
+    "derived_summary": 860,
+    "scaffold": 12,
+    "fresh_run": 503,
+    "infra_blocked": 2
+  },
+  "missing_or_hash_issues": [],
+  "verification_issues": [],
+  "overall_status": "pass"
+}

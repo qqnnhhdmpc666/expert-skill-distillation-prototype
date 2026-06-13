@@ -1,0 +1,161 @@
+{
+  "run_id": "generalization_suite_non_oracle_local_semantic",
+  "created_at": "2026-06-08T18:42:55.819289+00:00",
+  "backend": "non_oracle_local_semantic",
+  "scenario_count": 5,
+  "a2_pass_count": 5,
+  "feedback_types": [
+    "missing_capability",
+    "pass"
+  ],
+  "repair_actions": [
+    "no_op",
+    "patch_capability"
+  ],
+  "results": [
+    {
+      "scenario": "api_review_001",
+      "family": "api_or_code_review",
+      "backend": "non_oracle_local_semantic",
+      "a0_pass": false,
+      "a1_pass": true,
+      "a2_pass": true,
+      "feedback_type": "pass",
+      "repair_action": "no_op",
+      "gate_decision": "accept_no_change",
+      "scores_before": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "scores_after": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "latency_ms": 171,
+      "artifact_dir": "runs\\generalization\\api_review_001"
+    },
+    {
+      "scenario": "auth_access_control_001",
+      "family": "auth_access_control",
+      "backend": "non_oracle_local_semantic",
+      "a0_pass": false,
+      "a1_pass": true,
+      "a2_pass": true,
+      "feedback_type": "pass",
+      "repair_action": "no_op",
+      "gate_decision": "accept_no_change",
+      "scores_before": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "scores_after": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "latency_ms": 178,
+      "artifact_dir": "runs\\generalization\\auth_access_control_001"
+    },
+    {
+      "scenario": "config_security_001",
+      "family": "config_security",
+      "backend": "non_oracle_local_semantic",
+      "a0_pass": false,
+      "a1_pass": true,
+      "a2_pass": true,
+      "feedback_type": "pass",
+      "repair_action": "no_op",
+      "gate_decision": "accept_no_change",
+      "scores_before": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "scores_after": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "latency_ms": 179,
+      "artifact_dir": "runs\\generalization\\config_security_001"
+    },
+    {
+      "scenario": "data_quality_review_001",
+      "family": "data_quality_review",
+      "backend": "non_oracle_local_semantic",
+      "a0_pass": false,
+      "a1_pass": true,
+      "a2_pass": true,
+      "feedback_type": "pass",
+      "repair_action": "no_op",
+      "gate_decision": "accept_no_change",
+      "scores_before": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "scores_after": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "latency_ms": 186,
+      "artifact_dir": "runs\\generalization\\data_quality_review_001"
+    },
+    {
+      "scenario": "upload_security_001",
+      "family": "upload_security",
+      "backend": "non_oracle_local_semantic",
+      "a0_pass": false,
+      "a1_pass": false,
+      "a2_pass": true,
+      "feedback_type": "missing_capability",
+      "repair_action": "patch_capability",
+      "gate_decision": "accept",
+      "scores_before": {
+        "capability_coverage_score": 0.3333,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "scores_after": {
+        "capability_coverage_score": 1.0,
+        "evidence_binding_score": 1.0,
+        "output_contract_score": 1.0,
+        "regression_safety_score": 1.0,
+        "trace_observability_score": 1.0
+      },
+      "latency_ms": 195,
+      "artifact_dir": "runs\\generalization\\upload_security_001"
+    }
+  ],
+  "claim_support": {
+    "same_pipeline_four_tasks": true,
+    "same_pipeline_five_tasks": true,
+    "includes_non_security_family": true,
+    "different_feedback": false,
+    "different_repair_actions": false,
+    "all_a2_pass": true,
+    "artifact_backed": true
+  }
+}

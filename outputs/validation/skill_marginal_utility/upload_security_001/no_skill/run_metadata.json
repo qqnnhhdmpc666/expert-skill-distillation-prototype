@@ -1,0 +1,19 @@
+{
+  "run_id": "upload_security_001::offline_deterministic::no_skill",
+  "case_id": "upload_security_001",
+  "backend": "offline_deterministic",
+  "variant": "no_skill",
+  "target_hash": "dcd23b263b464041352bc1caba03a92d82889b1f75fc82d2d0e27145aa6a8307",
+  "skill_hash": "none",
+  "manifest_hash": "none",
+  "prompt_hash": "none",
+  "model": "offline_deterministic",
+  "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+  "schema_version": "skill_marginal_utility.v1",
+  "timestamp": "2026-06-11T14:50:24.897012+00:00",
+  "cost": null,
+  "tokens": null,
+  "cost_reason": "offline prototype does not compute monetary billing",
+  "tokens_reason": "no token source available",
+  "verifier_feedback_type": "missing_capability"
+}

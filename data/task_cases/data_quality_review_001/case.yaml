@@ -1,0 +1,21 @@
+{
+  "case_id": "data_quality_review_001",
+  "title": "Training dataset quality review",
+  "task_family": "data_quality_review",
+  "expected_capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "v1_capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "typical_feedback": "target_context_missing",
+  "typical_repair": "add_observation_step",
+  "a1_defect": "weak_evidence",
+  "defect_capabilities": [
+    "DATA_TEMPORAL_SPLIT_GUARD"
+  ]
+}

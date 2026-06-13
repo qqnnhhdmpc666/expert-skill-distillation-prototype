@@ -1,0 +1,14 @@
+[
+  {
+    "source": "/artifacts/security_report.json",
+    "destination": "artifacts/security_report.json",
+    "type": "file",
+    "status": "ok"
+  },
+  {
+    "source": "/artifacts/target_reads.json",
+    "destination": "artifacts/target_reads.json",
+    "type": "file",
+    "status": "ok"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "A1": {
+    "backend_type": "live_llm_security_agent",
+    "findings": [
+      {
+        "capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+        "issue": "Required country_code is blank",
+        "evidence_span": "target.md: dataset_contract.yaml requires country_code; train.csv row 1042 has country_code=, label=basic",
+        "recommended_fix": ""
+      },
+      {
+        "capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+        "issue": "Train row event_date is after validation cutoff",
+        "evidence_span": "target.md: validation_cutoff=2025-04-30; train.csv row 9811 has event_date=2025-05-04",
+        "recommended_fix": ""
+      },
+      {
+        "capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+        "issue": "Label outside allowed enum",
+        "evidence_span": "target.md: allowed_labels=[basic,premium,enterprise]; train.csv row 9811 has label=gold_plus",
+        "recommended_fix": ""
+      }
+    ],
+    "attempt": "A1_skill_v1",
+    "backend": "live_llm_text"
+  },
+  "A2": {
+    "backend_type": "live_llm_security_agent",
+    "findings": [
+      {
+        "capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+        "issue": "Required country_code is blank",
+        "evidence_span": "target.md: dataset_contract.yaml requires country_code; train.csv row 1042 has country_code= with user_id=991, event_date=2025-04-11, label=basic",
+        "recommended_fix": "Enforce non-null validation for required_fields and reject or repair train.csv row 1042 by supplying a valid country_code before export/training."
+      },
+      {
+        "capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+        "issue": "Training row is after validation cutoff",
+        "evidence_span": "target.md: validation_cutoff=2025-04-30; train.csv row 9811 has event_date=2025-05-04",
+        "recommended_fix": "Bind train/validation split assignment to the 2025-04-30 cutoff and move or exclude train.csv row 9811 according to the cutoff rule."
+      },
+      {
+        "capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+        "issue": "Label outside allowed enum",
+        "evidence_span": "target.md: allowed_labels=[basic,premium,enterprise]; train.csv row 9811 has label=gold_plus",
+        "recommended_fix": "Validate labels against the allowed_labels contract and correct, map, or reject train.csv row 9811 before training/export."
+      }
+    ],
+    "attempt": "A2_skill_v2",
+    "backend": "live_llm_text"
+  }
+}

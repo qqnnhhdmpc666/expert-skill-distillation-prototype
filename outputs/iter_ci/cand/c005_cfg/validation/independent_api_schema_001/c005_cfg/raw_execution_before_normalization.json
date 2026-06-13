@@ -1,0 +1,13 @@
+{
+  "attempt": "c005_cfg",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Missing evidence_span in review output",
+      "evidence_span": "review_output.py: report_builder emits prose without evidence_span; debug_path is labeled as a risk without pointing to a target line.",
+      "recommended_fix": "Modify report_builder to include a concrete evidence_span that quotes an exact target line for each risk, and ensure debug_path references a specific line number or code snippet."
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "candidate_id": "candidate_upload_security_001_v2",
+    "case_id": "upload_security_001",
+    "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\upload_security_001",
+    "proposal_type": "bounded_skill_v2_promotion",
+    "edit_budget": 3,
+    "protected_sections": [
+      "Safety Boundary",
+      "Output Contract",
+      "Qualification Scope"
+    ],
+    "marginal_utility": {
+      "v2_over_v1_gain": 0.1333,
+      "v2_over_no_skill_gain": 0.0,
+      "gap_to_upper_bound": 0.0,
+      "cost_delta": 73.0,
+      "false_positive_delta": 0.0,
+      "metamorphic_delta": 0.0
+    },
+    "status": "candidate"
+  }
+]

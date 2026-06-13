@@ -1,0 +1,8 @@
+{
+  "run_mode": "离线稳定演示模式",
+  "env_ready": true,
+  "provider": "https://www.right.codes/codex/v1",
+  "model": "gpt-5.5",
+  "api_key_present": true,
+  "live_enabled": false
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "capability_id": "UPLOAD_TYPE_MAGIC",
+    "title": "Upload type and content validation",
+    "source_span": "Upload review needs content validation",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "content validation"
+    ],
+    "skill_v1_included": false,
+    "skill_v2_included": true,
+    "added_by_repair": true,
+    "a1_feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "skill_file": "skills/skill_v2/SKILL.md#UPLOAD_TYPE_MAGIC"
+    },
+    "justification": "promoted into skill_v2 after verifier feedback"
+  },
+  {
+    "capability_id": "UPLOAD_PATH_ISOLATION",
+    "title": "Upload path isolation",
+    "source_span": "non-public storage",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "non-public storage",
+      "storage"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "skill_file": "skills/skill_v2/SKILL.md#UPLOAD_PATH_ISOLATION"
+    },
+    "justification": "kept in compact skill_v1"
+  },
+  {
+    "capability_id": "UPLOAD_AUDIT_RETENTION",
+    "title": "Upload audit retention",
+    "source_span": "audit retention.",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "audit retention",
+      "audit",
+      "retention"
+    ],
+    "skill_v1_included": false,
+    "skill_v2_included": true,
+    "added_by_repair": true,
+    "a1_feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "skill_file": "skills/skill_v2/SKILL.md#UPLOAD_AUDIT_RETENTION"
+    },
+    "justification": "promoted into skill_v2 after verifier feedback"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "feedback_type": "output_contract_error",
+  "missing_capabilities": [],
+  "false_positive_capabilities": [],
+  "schema_errors": [
+    "CONFIG_PROD_DEBUG missing recommended_fix",
+    "CONFIG_INSECURE_HTTP missing recommended_fix",
+    "CONFIG_HARDCODED_SECRET missing recommended_fix"
+  ],
+  "note": "A1 uses a weaker output contract inside Harbor to test whether verifier-driven repair can restore full structured findings."
+}

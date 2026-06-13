@@ -1,0 +1,25 @@
+{
+  "pass": false,
+  "feedback_type": "false_positive_risk",
+  "missing_capabilities": [],
+  "false_positive_capabilities": [
+    "AUTH_ERROR_ENVELOPE",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_SCOPE_MATRIX",
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "schema_errors": [],
+  "weak_evidence_capabilities": [],
+  "unsupported_evidence_capabilities": [],
+  "scores": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 0.0,
+    "trace_observability_score": 1.0
+  }
+}

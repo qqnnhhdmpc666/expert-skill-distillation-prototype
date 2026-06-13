@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-06-12T14:51:51.536651+00:00",
+  "registry_type": "runtime_installed_skill_registry",
+  "skills": [
+    {
+      "case_id": "api_review_001",
+      "task_family": "api_or_code_review",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/api_review_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "auth_access_control_001",
+      "task_family": "auth_access_control",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/auth_access_control_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "config_security_001",
+      "task_family": "config_security",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/config_security_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "data_quality_review_001",
+      "task_family": "data_quality_review",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/data_quality_review_001",
+      "history_events": 1
+    },
+    {
+      "case_id": "upload_security_001",
+      "task_family": "upload_security",
+      "active_version": "v2",
+      "scope_limit": "controlled_offline_generalization",
+      "install_dir": "outputs/installed_skills/upload_security_001",
+      "history_events": 3
+    },
+    {
+      "skill_id": "secure_code_review",
+      "package_source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\deployable_codex_skill\\secure_code_review",
+      "installed_versions": [
+        "v1",
+        "v2"
+      ],
+      "active_version": "v2",
+      "active_skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+      "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8"
+    },
+    {
+      "skill_id": "software_patch_review",
+      "package_source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\deployable_codex_skill\\software_patch_review",
+      "installed_versions": [
+        "v1"
+      ],
+      "active_version": "v1",
+      "active_skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\software_patch_review\\versions\\v1",
+      "skill_hash": "233f3190d173d7e25f984f532723f3da0c0af07cbf464e00542a906c4b1527a4",
+      "manifest_hash": "9b4bbaaaf6e836f196e3aeefc9cd1201f5b16088cf962dcece3aca46faf809cd"
+    }
+  ],
+  "boundary": "Prototype runtime registry read by skill-deploy run-skill; not a production package manager."
+}

@@ -1,0 +1,8 @@
+{
+  "skill_id": "agent_config_clean_target",
+  "version": "metamorphic",
+  "capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ]
+}

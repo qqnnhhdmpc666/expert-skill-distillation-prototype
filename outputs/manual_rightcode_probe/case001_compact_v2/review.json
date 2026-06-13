@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication requirements are underspecified. The spec only says the endpoint requires login, but does not define the authentication method, required roles/scopes, whether users can update only their own profile or admins can update others, or the auth failure behavior.",
+      "severity": "high",
+      "evidence": "Notes: \"The endpoint requires login.\" Path parameter includes user_id, but no authorization rules or 401/403 behavior are documented."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request field constraints are incomplete. Required vs optional fields, defaults, string length limits, phone format, avatar URL validation, and user_id constraints are not specified.",
+      "severity": "medium",
+      "evidence": "Request lists user_id, display_name, phone, and avatar_url with examples only; no required/optional markers, type constraints beyond informal examples, length, range, or format constraints are documented."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error codes are incomplete. The API only documents success and server error, but omits validation errors, authentication failures, permission failures, not found user, and duplicate/conflict handling.",
+      "severity": "high",
+      "evidence": "Error Codes table contains only code 0 for success and 500 for server error."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive data. The response includes a full phone number and an access_token, which should not be returned from a profile update endpoint.",
+      "severity": "high",
+      "evidence": "Response data contains \"phone\": \"13800138000\" and \"access_token\": \"debug-token\"."
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope is not consistently specified for all outcomes. Success response includes code, message, and data, but request_id is missing, and error response envelope examples are not documented.",
+      "severity": "medium",
+      "evidence": "Response example has code/message/data only; no request_id is present. Error Codes table lists meanings but no structured error response body."
+    },
+    {
+      "rule_id": "R006",
+      "issue": "Mutation endpoint does not document idempotency or duplicate submission handling. POST update may be retried by clients, but the spec does not define idempotency keys, retry behavior, or duplicate request semantics.",
+      "severity": "medium",
+      "evidence": "Endpoint is POST /api/v1/users/{user_id}/profile and updates mutable profile fields; no idempotency or duplicate submission notes are provided."
+    }
+  ]
+}

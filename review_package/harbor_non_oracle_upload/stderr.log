@@ -1,0 +1,2 @@
+WSL emitted localhost/NAT encoding warnings.
+Requested artifact download failed best-effort because the nop agent did not create /artifacts/security_report.json or /artifacts/result.json.

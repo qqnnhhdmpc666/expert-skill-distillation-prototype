@@ -1,0 +1,40 @@
+[
+  {
+    "candidate_id": "cand_01",
+    "natural_language_capability": "Required field coverage",
+    "normalized_capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+    "source_span": "Missing-column issues should name the required field",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "missing-column issues",
+      "required field"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_02",
+    "natural_language_capability": "Temporal split guard",
+    "normalized_capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+    "source_span": "check temporal split hygiene before training",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "temporal split hygiene"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_03",
+    "natural_language_capability": "Label enum alignment",
+    "normalized_capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+    "source_span": "reject label values that drift outside the declared contract",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "label values",
+      "declared contract"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  }
+]

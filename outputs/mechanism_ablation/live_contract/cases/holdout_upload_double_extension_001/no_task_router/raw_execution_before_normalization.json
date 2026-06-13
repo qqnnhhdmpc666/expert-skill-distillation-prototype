@@ -1,0 +1,19 @@
+{
+  "attempt": "no_task_router",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Missing magic byte validation; extension-only check allows double-extension bypass",
+      "evidence_span": "upload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg')",
+      "recommended_fix": "Add file content magic byte verification (e.g., using python-magic or a library) instead of relying solely on extension."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention days not configured",
+      "evidence_span": "settings.toml: audit_log_retention_days is empty",
+      "recommended_fix": "Set audit_log_retention_days to a positive integer (e.g., 30) in settings.toml."
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,18 @@
+{
+  "attempt": "active_contract_system",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Missing audit log export sink configuration",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile.",
+      "recommended_fix": "Configure export_sink in the production audit configuration to ensure audit logs are exported to a secure external storage.",
+      "capability_group": "config_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

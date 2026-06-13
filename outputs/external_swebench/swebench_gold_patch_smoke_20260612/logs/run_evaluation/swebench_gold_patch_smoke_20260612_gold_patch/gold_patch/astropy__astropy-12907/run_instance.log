@@ -1,0 +1,24 @@
+2026-06-12 14:23:22,978 - INFO - Environment image sweb.env.py.x86_64.7d2281f8cd4608b2972430:latest found for astropy__astropy-12907
+Building instance image sweb.eval.x86_64.astropy__astropy-12907:latest for astropy__astropy-12907
+2026-06-12 14:39:11,117 - INFO - Traceback (most recent call last):
+  File "/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py", line 148, in build_image
+    raise docker.errors.BuildError(
+docker.errors.BuildError: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/spark/swebench-tools/SWE-bench/swebench/harness/run_evaluation.py", line 152, in run_instance
+    container = build_container(
+                ^^^^^^^^^^^^^^^^
+  File "/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py", line 493, in build_container
+    build_instance_image(test_spec, client, logger, nocache)
+  File "/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py", line 452, in build_instance_image
+    build_image(
+  File "/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py", line 154, in build_image
+    raise BuildImageError(image_name, str(e), logger) from e
+swebench.harness.docker_build.BuildImageError: Error building image sweb.eval.x86_64.astropy__astropy-12907:latest: The command '/bin/sh -c /bin/bash /root/setup_repo.sh' returned a non-zero code: 128
+Check (logs/build_images/instances/sweb.eval.x86_64.astropy__astropy-12907__latest/build_image.log) for more information.
+
+2026-06-12 14:39:11,117 - INFO - Attempting to remove image sweb.eval.x86_64.astropy__astropy-12907:latest...
+2026-06-12 14:39:11,119 - INFO - Image sweb.eval.x86_64.astropy__astropy-12907:latest not found, removing has no effect.

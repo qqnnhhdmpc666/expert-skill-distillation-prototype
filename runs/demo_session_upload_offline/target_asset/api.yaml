@@ -1,0 +1,16 @@
+openapi: 3.0.0
+paths:
+  /upload:
+    post:
+      summary: Upload a user file
+      parameters:
+        - name: filename
+          in: query
+        - name: content_type
+          in: header
+  /download:
+    get:
+      summary: Download a previously uploaded file
+      parameters:
+        - name: filename
+          in: query

@@ -1,0 +1,13 @@
+{
+  "active_score": 0.8792,
+  "candidate_score": 0.925,
+  "score_delta": 0.0458,
+  "false_positive_delta": 0,
+  "schema_error_delta": 0,
+  "unsupported_evidence_delta": 0,
+  "scope_violation": false,
+  "positive_regression_count": 0,
+  "clean_negative_not_worse": true,
+  "unsupported_limitation_preserved": true,
+  "shared_case_count": 8
+}

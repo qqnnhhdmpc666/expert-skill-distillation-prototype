@@ -1,0 +1,6 @@
+Harbor non-oracle baseline completed with agent=nop.
+Trials: 1
+Errors: 0
+Reward: 0.0
+Result: FAIL, expected for nop baseline.
+Verifier feedback: /app/security_report.json was not created.

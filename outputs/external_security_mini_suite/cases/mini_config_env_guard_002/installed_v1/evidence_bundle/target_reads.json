@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_config_env_guard_002",
+  "target_digest": {
+    "chars": 278,
+    "preview": "Task: Review environment-specific security config and avoid overbroad findings.\n\nSnippet:\nprod.audit has retention_days/export_sink empty. dev.api_token and dev.debug are present only in a dev-only profile.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

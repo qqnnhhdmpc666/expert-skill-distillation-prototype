@@ -1,0 +1,19 @@
+﻿{
+    "feedback_type":  "missing_capability",
+    "after_capabilities":  [
+                               "UPLOAD_PATH_ISOLATION",
+                               "UPLOAD_TYPE_MAGIC",
+                               "UPLOAD_AUDIT_RETENTION"
+                           ],
+    "consumes":  "A1/failure_feedback.json",
+    "repair_policy_source":  "revision/repair_policy.json",
+    "before_capabilities":  [
+                                "UPLOAD_PATH_ISOLATION"
+                            ],
+    "added_capabilities":  [
+                               "UPLOAD_TYPE_MAGIC",
+                               "UPLOAD_AUDIT_RETENTION"
+                           ],
+    "produces":  "A2 capability config for Harbor rerun",
+    "repair_action":  "patch_capability"
+}

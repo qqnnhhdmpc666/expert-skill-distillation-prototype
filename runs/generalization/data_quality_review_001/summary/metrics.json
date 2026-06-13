@@ -1,0 +1,27 @@
+{
+  "scenario": "data_quality_review_001",
+  "family": "data_quality_review",
+  "backend": "offline_deterministic",
+  "a0_pass": false,
+  "a1_pass": false,
+  "a2_pass": true,
+  "feedback_type": "target_context_missing",
+  "repair_action": "add_observation_step",
+  "gate_decision": "accept",
+  "scores_before": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 0.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  },
+  "scores_after": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  },
+  "latency_ms": 13,
+  "artifact_dir": "runs\\generalization\\data_quality_review_001"
+}

@@ -1,0 +1,27 @@
+{
+  "attempt": "A1_skill_v1",
+  "task_family": "config_security",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Security audit logs need retention and export sink",
+      "severity": "medium",
+      "evidence_span": "prod.audit.enabled is true but retention_days and export_sink are missing",
+      "recommended_fix": "Require retention_days and export_sink for production audit logs."
+    },
+    {
+      "capability_id": "CONFIG_SECRET_REF",
+      "issue": "Production config must use secret references rather than literals",
+      "severity": "high",
+      "evidence_span": "api_token is a test placeholder in a dev-only block, not production",
+      "recommended_fix": "Gate findings on environment and ignore explicitly dev/test-only placeholders."
+    },
+    {
+      "capability_id": "CONFIG_TLS",
+      "issue": "Production external endpoints must use TLS",
+      "severity": "high",
+      "evidence_span": "prod.external_url uses https, so this should not be flagged",
+      "recommended_fix": "Check scheme only in production endpoints and avoid flagging compliant https values."
+    }
+  ]
+}

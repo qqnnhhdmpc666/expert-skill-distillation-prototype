@@ -1,0 +1,30 @@
+{
+  "run_id": "mini_dependency_version_risk_001::offline_deterministic::active_installed",
+  "case_id": "mini_dependency_version_risk_001",
+  "backend": "offline_deterministic",
+  "variant": "active_installed",
+  "task_family": "dependency_version_risk",
+  "activated_capability_group": "out_of_scope_guard",
+  "out_of_scope": true,
+  "unsupported_task_family": "dependency_version_risk",
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+  "target_hash": "3d173ff256cc517429deb05037e17c8dbc7c6c7825906eef3c22ac6e3566333e",
+  "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+  "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+  "prompt_hash": "none",
+  "model": "offline_deterministic",
+  "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+  "schema_version": "skill_marginal_utility.v1",
+  "timestamp": "2026-06-12T10:29:01.883826+00:00",
+  "cost": null,
+  "tokens": 184,
+  "cost_reason": "offline prototype does not compute monetary billing",
+  "tokens_reason": "estimated from skill text only",
+  "verifier_feedback_type": "pass",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T10:24:22.679142+00:00"
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "id": "92c4a616-22c8-40ad-bdb7-8f66f3ce010d",
+    "started_at": "2026-06-08T08:24:03.623541",
+    "finished_at": "2026-06-08T08:24:20.961734",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "nop__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "real-upload-security-review__YfzBaaN"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

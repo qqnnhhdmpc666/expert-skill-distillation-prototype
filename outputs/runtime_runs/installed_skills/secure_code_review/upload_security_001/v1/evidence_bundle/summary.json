@@ -1,0 +1,27 @@
+{
+  "bundle_id": "upload_security_001_installed_runtime_offline_deterministic",
+  "created_at": "2026-06-11T14:44:45.809151+00:00",
+  "case_id": "upload_security_001",
+  "backend": "offline_deterministic",
+  "variant": "installed_runtime",
+  "status": "completed",
+  "artifacts": [
+    "raw_output.json",
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json",
+    "verifier_feedback.json",
+    "repair_patch.json",
+    "qualification_decision.json"
+  ],
+  "score": 0.4667,
+  "token_cost_estimate": 98,
+  "safety_boundary": "defensive_review_only_no_exploit_generation",
+  "provenance": {
+    "runtime_source": "installed_skill_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+    "skill_version": "v1",
+    "manifest_hash": "7533066d1761226eda43c7528c8ef45d977bec6e15edae928e0cc8e62360410d",
+    "skill_hash": "6aa4603e9f9c457b8ee42bad9ee22ff52aff27051835626f92c30075785e17a5"
+  }
+}

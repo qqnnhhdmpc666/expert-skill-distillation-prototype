@@ -1,0 +1,204 @@
+{
+  "variant": "candidate",
+  "score": 0.6,
+  "pass": false,
+  "feedback_type": "false_positive_risk",
+  "activated_capability_group": "api_or_code_review",
+  "expected_capability_group": "api_or_code_review",
+  "capability_group_correct": true,
+  "finding_detected": true,
+  "evidence_grounded": true,
+  "patch_or_recommendation_valid": true,
+  "schema_valid": true,
+  "false_positive": true,
+  "false_positive_count": 1,
+  "out_of_scope_correct": true,
+  "unsupported_limitation": false,
+  "clean_or_negative": false,
+  "run_metadata": {
+    "run_id": "independent_ambiguous_debug_001::live_llm_text::candidate",
+    "case_id": "independent_ambiguous_debug_001",
+    "backend": "live_llm_text",
+    "variant": "candidate",
+    "runtime_source": "contract_improvement_candidate",
+    "task_family": "api_or_code_review",
+    "activated_capability_group": "api_or_code_review",
+    "expected_capability_group": "api_or_code_review",
+    "capability_group_correct": true,
+    "out_of_scope": false,
+    "unsupported_task_family": null,
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\contract_improvement_demo\\candidates\\c001",
+    "skill_hash": "2f2c8198f12d67ff2a16fd5358522e0f96d92cf596ee7f1385d0e9c194211539",
+    "manifest_hash": "4f135b871f51c1107bf7ca6f28d4898c0d3cdf97d3c4a5a510fcb89d8fc1e519",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T14:51:51.537540+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T16:25:30.182598+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "live_llm_text",
+    "cost": null,
+    "tokens": 713,
+    "evidence_normalizer_enabled": true,
+    "normalizer_version": "live_contract_normalizer.v1",
+    "evidence_exact_match_rate": 1.0,
+    "normalizer_taxonomy_counts": {
+      "schema_error": 0,
+      "missing_evidence": 0,
+      "non_exact_span": 0,
+      "unsupported_evidence": 0,
+      "wrong_capability_group": 0,
+      "over_reporting": 0,
+      "under_reporting": 0,
+      "unsupported_scope": 0,
+      "low_confidence_needed": 0,
+      "normalizer_needed": 0,
+      "model_contract_violation": 0
+    }
+  },
+  "normalization_trace": {
+    "normalizer_version": "live_contract_normalizer.v1",
+    "oracle_fields_visible_to_normalizer": false,
+    "out_of_scope": false,
+    "suppressed_findings_count": 0,
+    "finding_traces": [
+      {
+        "index": 0,
+        "capability_id": "API_OVERBROAD_RISK",
+        "input_evidence_span": "design_note.md: debug_path might be logged in a future diagnostics mode, but no route, response schema, production caller, or emitted field is shown.",
+        "action": "kept",
+        "normalization_reason": "exact",
+        "failure_taxonomy": [],
+        "output_evidence_span": "design_note.md: debug_path might be logged in a future diagnostics mode, but no route, response schema, production caller, or emitted field is shown."
+      }
+    ],
+    "failure_taxonomy_counts": {
+      "schema_error": 0,
+      "missing_evidence": 0,
+      "non_exact_span": 0,
+      "unsupported_evidence": 0,
+      "wrong_capability_group": 0,
+      "over_reporting": 0,
+      "under_reporting": 0,
+      "unsupported_scope": 0,
+      "low_confidence_needed": 0,
+      "normalizer_needed": 0,
+      "model_contract_violation": 0
+    },
+    "evidence_exact_match_rate": 1.0,
+    "normalized_finding_count": 1
+  },
+  "pre_normalization_verifier": {
+    "pass": false,
+    "feedback_type": "false_positive_risk",
+    "missing_capabilities": [],
+    "false_positive_capabilities": [
+      "API_OVERBROAD_RISK"
+    ],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_capabilities": [],
+    "scores": {
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 0.0,
+      "trace_observability_score": 1.0
+    }
+  },
+  "post_normalization_verifier": {
+    "pass": false,
+    "feedback_type": "false_positive_risk",
+    "missing_capabilities": [],
+    "false_positive_capabilities": [
+      "API_OVERBROAD_RISK"
+    ],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_capabilities": [],
+    "scores": {
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 0.0,
+      "trace_observability_score": 1.0
+    }
+  },
+  "pre_normalization_verifier_taxonomy": [
+    "over_reporting"
+  ],
+  "post_normalization_verifier_taxonomy": [
+    "over_reporting"
+  ],
+  "evidence_bundle_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\contract_improvement_demo\\candidates\\c001\\validation\\independent_ambiguous_debug_001\\candidate\\evidence_bundle\\summary.json",
+  "bundle": {
+    "bundle_id": "independent_ambiguous_debug_001_candidate_live_llm_text",
+    "created_at": "2026-06-12T16:25:30.189530+00:00",
+    "case_id": "independent_ambiguous_debug_001",
+    "backend": "live_llm_text",
+    "variant": "candidate",
+    "status": "completed",
+    "verifier_result": "fail",
+    "verifier_feedback_type": "false_positive_risk",
+    "artifacts": [
+      "raw_output.json",
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json",
+      "verifier_feedback.json",
+      "repair_patch.json",
+      "qualification_decision.json"
+    ],
+    "score": 0.6,
+    "token_cost_estimate": 713,
+    "safety_boundary": "defensive_review_only_no_exploit_generation",
+    "provenance": {
+      "run_id": "independent_ambiguous_debug_001::live_llm_text::candidate",
+      "case_id": "independent_ambiguous_debug_001",
+      "backend": "live_llm_text",
+      "variant": "candidate",
+      "runtime_source": "contract_improvement_candidate",
+      "task_family": "api_or_code_review",
+      "activated_capability_group": "api_or_code_review",
+      "expected_capability_group": "api_or_code_review",
+      "capability_group_correct": true,
+      "out_of_scope": false,
+      "unsupported_task_family": null,
+      "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\contract_improvement_demo\\candidates\\c001",
+      "skill_hash": "2f2c8198f12d67ff2a16fd5358522e0f96d92cf596ee7f1385d0e9c194211539",
+      "manifest_hash": "4f135b871f51c1107bf7ca6f28d4898c0d3cdf97d3c4a5a510fcb89d8fc1e519",
+      "active_pointer_snapshot": {
+        "skill_id": "secure_code_review",
+        "active_version": "v2",
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "updated_at": "2026-06-12T14:51:51.537540+00:00"
+      },
+      "schema_version": "external_security_mini_suite.run_metadata.v1",
+      "timestamp": "2026-06-12T16:25:30.182598+00:00",
+      "oracle_fields_visible_to_runner": false,
+      "model": "live_llm_text",
+      "cost": null,
+      "tokens": 713,
+      "evidence_normalizer_enabled": true,
+      "normalizer_version": "live_contract_normalizer.v1",
+      "evidence_exact_match_rate": 1.0,
+      "normalizer_taxonomy_counts": {
+        "schema_error": 0,
+        "missing_evidence": 0,
+        "non_exact_span": 0,
+        "unsupported_evidence": 0,
+        "wrong_capability_group": 0,
+        "over_reporting": 0,
+        "under_reporting": 0,
+        "unsupported_scope": 0,
+        "low_confidence_needed": 0,
+        "normalizer_needed": 0,
+        "model_contract_violation": 0
+      },
+      "safety_boundary": "defensive_review_only_no_exploit_generation"
+    }
+  }
+}

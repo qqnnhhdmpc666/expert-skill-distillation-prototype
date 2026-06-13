@@ -1,0 +1,17 @@
+{
+  "run_id": "20260612T145703756229Z_v2",
+  "skill_id": "secure_code_review",
+  "case_id": "upload_security_001",
+  "backend": "offline_deterministic",
+  "runtime_source": "installed_skill_package",
+  "skill_package_path": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+  "skill_version": "v2",
+  "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+  "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+  "task_family": "upload_security",
+  "activated_capability_group": "upload_security",
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "output_dir": "C:\\Users\\31552\\AppData\\Local\\Temp\\p0m_clean_clone_smoke\\worktree\\outputs\\runtime_runs\\installed_skills\\secure_code_review\\upload_security_001\\20260612T145703756229Z_v2",
+  "pass": true
+}

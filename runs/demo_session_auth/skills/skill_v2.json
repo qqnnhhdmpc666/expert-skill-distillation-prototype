@@ -1,0 +1,57 @@
+{
+  "skill_name": "auth_security_review_skill",
+  "domain": "漏洞挖掘 / 鉴权与访问控制",
+  "version": "v2",
+  "source_materials": "expert_rules + target_asset + verifier_contract",
+  "rules": [
+    {
+      "rule_id": "R001",
+      "title": "权限与租户边界",
+      "risk": "high",
+      "action": "检查登录态、角色权限、租户隔离是否同时成立。"
+    },
+    {
+      "rule_id": "R002",
+      "title": "用户输入校验",
+      "risk": "high",
+      "action": "检查用户可控参数是否有类型、长度、范围和 allowlist。"
+    },
+    {
+      "rule_id": "R003",
+      "title": "SQL 注入",
+      "risk": "high",
+      "action": "检查用户输入是否拼接进入 SQL 查询。"
+    },
+    {
+      "rule_id": "R004",
+      "title": "敏感信息泄露",
+      "risk": "medium",
+      "action": "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+    },
+    {
+      "rule_id": "R006",
+      "title": "审计日志保留",
+      "risk": "medium",
+      "action": "检查关键安全事件是否有审计日志和保留策略。"
+    }
+  ],
+  "output_contract": [
+    "finding_id",
+    "rule_id",
+    "evidence_span",
+    "risk_level",
+    "recommended_fix"
+  ],
+  "trace_policy": [
+    "R001",
+    "R006"
+  ],
+  "verifier_contract": "verifier 比对 admin/user 数据访问规则覆盖率、输出 schema 和 evidence_span 质量。",
+  "token_cost": 259,
+  "status": "验证通过",
+  "change_log": [
+    "根据后验 verifier feedback 补入 failure-critical 规则。",
+    "补强输出契约：risk_level / recommended_fix / evidence_span。",
+    "对 R001, R006 启用 rule_application trace。"
+  ]
+}

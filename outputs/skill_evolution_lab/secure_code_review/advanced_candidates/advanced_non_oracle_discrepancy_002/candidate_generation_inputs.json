@@ -1,0 +1,18 @@
+{
+  "candidate_id": "advanced_non_oracle_discrepancy_002",
+  "allowed_sources": [
+    "failure report",
+    "verifier feedback",
+    "evidence summary",
+    "limitation summary"
+  ],
+  "forbidden_sources": [
+    "verifier-only expected finding",
+    "verifier-only expected evidence span",
+    "verifier-only clean/negative label"
+  ],
+  "source_type": "non_oracle_discrepancy_summary",
+  "source_case_id": "holdout_api_overbroad_schema_001",
+  "failure_or_limitation": "non_oracle_completed_rows=6; preserve schema grounding under non-oracle backend",
+  "verifier_only_oracle_fields_read": false
+}

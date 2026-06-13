@@ -1,0 +1,1 @@
+Authorization review separates authentication, role/scope authorization, object ownership, tenant boundary, and error envelope.

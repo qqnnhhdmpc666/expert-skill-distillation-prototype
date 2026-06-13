@@ -1,0 +1,22 @@
+{
+  "任务场景": "配置安全检查",
+  "场景目标": "让 agent 学会检查生产配置中的 debug、弱密钥、CORS、敏感日志和审计保留策略。",
+  "Skill 产物": "config_security_review_skill / Skill Package v1 -> v2",
+  "报告格式": [
+    "finding_id",
+    "rule_id",
+    "evidence_span",
+    "risk_level",
+    "recommended_fix"
+  ],
+  "验证标准": [
+    "agent 输出的 observed findings 必须能覆盖规则账本中的必要检查项。",
+    "每个 finding 必须满足 output schema，并绑定 evidence_span。",
+    "v2 不能丢失 v1 已覆盖规则，且 token cost 必须在预算内。"
+  ],
+  "禁止行为": [
+    "不连接真实目标，不执行漏洞利用。",
+    "不把 verifier 内部评测集作为 agent 输入。",
+    "证据不足时不能伪造 finding。"
+  ]
+}

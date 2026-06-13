@@ -1,0 +1,13 @@
+{
+  "attempt": "no_out_of_scope_guard",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit export sink not configured",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty.",
+      "recommended_fix": "Set export_sink to a secure storage location (e.g., cloud bucket or syslog) and configure retention_days for audit logs."
+    }
+  ],
+  "notes": []
+}

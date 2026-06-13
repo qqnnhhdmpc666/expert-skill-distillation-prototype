@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-06-12T11:07:55.424667+00:00",
+  "current_supported_claims": [
+    "prototype-level evidence-grounded Skill Evolution Runtime",
+    "controlled installed multi-capability secure_code_review validation",
+    "representative local defensive security mini-suite if leakage audit passes",
+    "small candidate generation/rejection evidence under strict promotion gates",
+    "SWE-bench official harness readiness tracking, currently infra-blocked unless official harness resolves"
+  ],
+  "unsupported_claims": [
+    "production vulnerability scanner",
+    "full SPARK reproduction",
+    "SWE-bench success or agent performance while official harness remains infra_blocked",
+    "real-world security validity based only on offline deterministic mini-suite",
+    "official CyberSecEval/CVE-Bench/AutoPatchBench result",
+    "exploit generation, attack-chain execution, or unauthorized target testing"
+  ],
+  "likely_reviewer_objections": [
+    {
+      "objection": "Mini-suite may leak oracle answers.",
+      "current_answer": "Oracle leakage audit status: pass.",
+      "missing_evidence": "Independent third-party case authoring would be stronger."
+    },
+    {
+      "objection": "Offline deterministic pass may not transfer to real repositories.",
+      "current_answer": "Mini-suite fresh cases=9, false-positive control=pass, unsupported limitation=retained.",
+      "missing_evidence": "Official external defensive benchmark or curated real repository study."
+    },
+    {
+      "objection": "Evolution candidates may be cosmetic.",
+      "current_answer": "Candidate outputs=3; promotion requires strict score gain and no false-positive/schema/scope regression.",
+      "missing_evidence": "Longer multi-round evolution with held-out validation."
+    },
+    {
+      "objection": "SWE-bench is not actually passing.",
+      "current_answer": "SWE-bench status is infra_blocked; not claimed as success.",
+      "missing_evidence": "Official harness gold-patch run reaches resolved/unresolved, then non-oracle patch run."
+    }
+  ],
+  "claim_boundary_rules": {
+    "cannot_claim_production_vulnerability_scanner": true,
+    "cannot_claim_full_spark_reproduction": true,
+    "cannot_claim_swebench_success_unless_official_harness_resolves": true,
+    "cannot_claim_real_world_security_validity_from_offline_deterministic_only": true,
+    "can_claim_prototype_level_evidence_grounded_runtime": true,
+    "can_claim_controlled_installed_multi_capability_secure_code_review_validation": true,
+    "can_claim_representative_local_defensive_security_mini_suite_if_leakage_audit_passes": true
+  }
+}

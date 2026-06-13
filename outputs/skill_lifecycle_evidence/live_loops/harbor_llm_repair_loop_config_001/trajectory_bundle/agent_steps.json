@@ -1,0 +1,98 @@
+{
+  "A1": {
+    "returncode": 0,
+    "job_name": "harbor_llm_repair_loop_config_A1"
+  },
+  "A2": {
+    "returncode": 0,
+    "job_name": "harbor_llm_repair_loop_config_A2"
+  },
+  "model_calls": {
+    "A1": {
+      "status": "ok",
+      "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+      "model": "gpt-5.5",
+      "usage": {
+        "prompt_tokens": 846,
+        "completion_tokens": 134,
+        "total_tokens": 980,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 44
+        }
+      },
+      "response": {
+        "id": "resp_041dd40fac864e63016a26693edeec81979e3b33186661ab60",
+        "object": "chat.completion",
+        "created": 1780902210,
+        "model": "gpt-5.5",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"findings\":[{\"capability_id\":\"CONFIG_PROD_DEBUG\",\"evidence_span\":\"environment: production\\ndebug: true\"},{\"capability_id\":\"CONFIG_INSECURE_HTTP\",\"evidence_span\":\"environment: production\\nexternal_api_url: http://partner.example.com/v1\"},{\"capability_id\":\"CONFIG_HARDCODED_SECRET\",\"evidence_span\":\"payment_token: \\\"sk_live_demo_value\\\"\"}]}"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 846,
+          "completion_tokens": 134,
+          "total_tokens": 980,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 44
+          }
+        }
+      }
+    },
+    "A2": {
+      "status": "ok",
+      "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+      "model": "gpt-5.5",
+      "usage": {
+        "prompt_tokens": 818,
+        "completion_tokens": 176,
+        "total_tokens": 994,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        }
+      },
+      "response": {
+        "id": "resp_0e3b68a5ec147a60016a266960b6148193ad8eec6e4e36da23",
+        "object": "chat.completion",
+        "created": 1780902244,
+        "model": "gpt-5.5",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"findings\":[{\"capability_id\":\"CONFIG_PROD_DEBUG\",\"evidence_span\":\"environment: production\\ndebug: true\",\"recommended_fix\":\"Set debug to false in the production configuration.\"},{\"capability_id\":\"CONFIG_INSECURE_HTTP\",\"evidence_span\":\"environment: production\\nexternal_api_url: http://partner.example.com/v1\",\"recommended_fix\":\"Use an HTTPS endpoint for the production external_api_url, e.g. https://partner.example.com/v1.\"},{\"capability_id\":\"CONFIG_HARDCODED_SECRET\",\"evidence_span\":\"payment_token: \\\"sk_live_demo_value\\\"\",\"recommended_fix\":\"Remove the inline payment_token from production config and reference it from a vault or environment-secret mechanism instead.\"}]}"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 818,
+          "completion_tokens": 176,
+          "total_tokens": 994,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 23
+          }
+        }
+      }
+    }
+  }
+}

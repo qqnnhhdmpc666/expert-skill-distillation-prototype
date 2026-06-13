@@ -1,0 +1,52 @@
+{
+  "run_id": "cyberseceval_style_defensive_small_sample_scaffold",
+  "created_at": "2026-06-11T11:23:39.859041+00:00",
+  "status": "scaffold_not_executed",
+  "target_sample_count": 30,
+  "benchmark_order": [
+    "CyberSecEval4_or_AutoPatchBench_style_defensive_subset",
+    "SecureAgentBench_reference_subset_later",
+    "CVE_Bench_defensive_sandbox_subset_later",
+    "SWE_bench_non_security_transfer_later"
+  ],
+  "required_case_chain": [
+    "baseline_no_skill",
+    "skill_v1",
+    "skill_v2_or_evolved",
+    "verifier",
+    "marginal_utility",
+    "qualification_card",
+    "reviewer_packet"
+  ],
+  "required_metrics": [
+    "detection_or_patch_validation_score",
+    "schema_compliance",
+    "false_positive_delta",
+    "cost_delta",
+    "v2_over_v1_gain",
+    "v2_over_no_skill_gain",
+    "gap_to_upper_bound"
+  ],
+  "sample_categories_required": [
+    "success",
+    "failure",
+    "no_marginal_gain",
+    "false_positive_risk"
+  ],
+  "safety_boundary": {
+    "allowed": [
+      "defensive_detection",
+      "explanation",
+      "fix_recommendation",
+      "patch_validation"
+    ],
+    "forbidden": [
+      "exploit_generation",
+      "attack_chain_execution",
+      "unauthorized_target_testing",
+      "reusable_exploitation_steps_in_external_reports"
+    ],
+    "cve_policy": "CVE-style tasks must run only inside local sandbox or benchmark artifacts."
+  },
+  "claim_boundary": "No external benchmark result is claimed until real cases are downloaded, executed, and validated."
+}

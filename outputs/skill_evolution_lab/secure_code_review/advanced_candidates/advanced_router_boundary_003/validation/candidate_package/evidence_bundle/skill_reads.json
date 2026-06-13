@@ -1,0 +1,131 @@
+{
+  "variant": "candidate_package",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "advanced_advanced_router_boundary_003",
+    "task_family": "secure_code_review",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC",
+      "UPLOAD_AUDIT_RETENTION",
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK",
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "task_conditioned_secure_review",
+      "package_role": "installed_runtime",
+      "package_family_scope": "task_conditioned_secure_review",
+      "supported_task_families": [
+        "upload_security",
+        "config_security",
+        "api_or_code_review",
+        "auth_access_control"
+      ],
+      "out_of_scope_group": "out_of_scope_guard",
+      "capability_groups": [
+        {
+          "name": "upload_security",
+          "task_families": [
+            "upload_security"
+          ],
+          "capabilities": [
+            "UPLOAD_PATH_ISOLATION",
+            "UPLOAD_TYPE_MAGIC",
+            "UPLOAD_AUDIT_RETENTION"
+          ]
+        },
+        {
+          "name": "config_security",
+          "task_families": [
+            "config_security"
+          ],
+          "capabilities": [
+            "CONFIG_AUDIT_EXPORT",
+            "CONFIG_ENV_GUARD"
+          ]
+        },
+        {
+          "name": "api_or_code_review",
+          "task_families": [
+            "api_or_code_review"
+          ],
+          "capabilities": [
+            "API_SCHEMA_CONTRACT",
+            "API_OVERBROAD_RISK"
+          ]
+        },
+        {
+          "name": "auth_access_control",
+          "task_families": [
+            "auth_access_control"
+          ],
+          "capabilities": [
+            "AUTH_SCOPE_MATRIX",
+            "AUTH_OBJECT_OWNERSHIP",
+            "AUTH_ERROR_ENVELOPE"
+          ]
+        },
+        {
+          "name": "out_of_scope_guard",
+          "task_families": [],
+          "capabilities": []
+        }
+      ],
+      "advanced_candidate_id": "advanced_router_boundary_003",
+      "candidate_type": "activation_ablation_failure",
+      "candidate_generation_sources": [
+        "failure report",
+        "verifier feedback summary",
+        "evidence summary",
+        "limitation summary"
+      ],
+      "verifier_only_oracle_fields_read": false
+    }
+  },
+  "skill_text_chars": 1237,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v2\n\nThis installed runtime uses task-conditioned capability activation inside the controlled secure-review prototype.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Capability Groups\n\n### upload_security\n- task_families: `upload_security`\n- capabilities:\n  - `UPLOAD_PATH_ISOLATION`\n  - `UPLOAD_TYPE_MAGIC`\n  - `UP",
+  "provenance": {
+    "run_id": "holdout_clean_tax_math_001::offline_deterministic::candidate_package",
+    "case_id": "holdout_clean_tax_math_001",
+    "backend": "offline_deterministic",
+    "variant": "candidate_package",
+    "runtime_source": "advanced_candidate_package",
+    "task_family": "clean_business_logic_review",
+    "activated_capability_group": "out_of_scope_guard",
+    "expected_capability_group": "out_of_scope_guard",
+    "capability_group_correct": true,
+    "out_of_scope": true,
+    "unsupported_task_family": "clean_business_logic_review",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\advanced_candidates\\advanced_router_boundary_003",
+    "skill_hash": "62b90c60e693b10e9f18e50433b34694630c5ab466fcdf089e3e22042d0ad572",
+    "manifest_hash": "ed1e6eb554decdd996b9c4d6d538dfcf515c962e9c658cf4d513ebe2078b41cb",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T11:38:15.443320+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T11:39:16.878958+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "offline_deterministic",
+    "cost": null,
+    "tokens": 210,
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

@@ -1,0 +1,3 @@
+- 根据后验 verifier feedback 补入 failure-critical 规则。
+- 补强输出契约：risk_level / recommended_fix / evidence_span。
+- 对 R005, R006, R007, R008 启用 rule_application trace。

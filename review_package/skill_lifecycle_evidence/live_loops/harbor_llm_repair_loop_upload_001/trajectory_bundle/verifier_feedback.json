@@ -1,0 +1,49 @@
+{
+  "A1": {
+    "report_exists": true,
+    "expected": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "seen": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "missing": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "schema_errors": [],
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "scores": {
+      "capability_coverage_score": 0.3333,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": null
+    }
+  },
+  "A2": {
+    "report_exists": true,
+    "expected": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "seen": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "missing": [],
+    "schema_errors": [],
+    "pass": true,
+    "feedback_type": "pass",
+    "scores": {
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": null
+    }
+  }
+}

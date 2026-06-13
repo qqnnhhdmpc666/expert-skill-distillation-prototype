@@ -1,0 +1,12 @@
+{
+  "pass": false,
+  "feedback_type": "missing_capability",
+  "missing_capabilities": [
+    "AUTH_ERROR_ENVELOPE",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_SCOPE_MATRIX"
+  ],
+  "evidence_errors": [],
+  "false_positive_capabilities": [],
+  "coverage": 0.0
+}

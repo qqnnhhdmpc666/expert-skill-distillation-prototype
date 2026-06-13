@@ -1,0 +1,6 @@
+{
+  "source": "A1_feedback.json",
+  "patch_type": "skill_contract_repair",
+  "missing": [],
+  "target": "skills/skill_v2.md"
+}

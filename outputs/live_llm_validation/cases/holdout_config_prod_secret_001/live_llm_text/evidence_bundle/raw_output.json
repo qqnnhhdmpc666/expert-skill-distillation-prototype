@@ -1,0 +1,19 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit enabled but retention and export not configured",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty.",
+      "recommended_fix": "Set appropriate retention_days and configure export_sink for audit logs in prod.yaml."
+    },
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Development credentials and debug settings present in config file",
+      "evidence_span": "dev.yaml: dev.api_token and dev.debug are present under a dev-only profile.",
+      "recommended_fix": "Ensure dev.yaml is excluded from production deployments, or use separate config management to prevent dev-only settings from leaking into production."
+    }
+  ],
+  "notes": []
+}

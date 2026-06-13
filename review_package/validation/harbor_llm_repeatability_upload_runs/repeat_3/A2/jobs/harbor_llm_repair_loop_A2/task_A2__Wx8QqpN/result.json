@@ -1,0 +1,105 @@
+{
+    "id": "ee9ed1ca-b674-4f72-8789-50182c0abf34",
+    "task_name": "task_A2",
+    "trial_name": "task_A2__Wx8QqpN",
+    "trial_uri": "file:///mnt/c/Users/31552/Documents/New%20project/expert-skill-distillation-prototype-main/outputs/validation/harbor_llm_repeatability_upload_runs/repeat_3/A2/jobs/harbor_llm_repair_loop_A2/task_A2__Wx8QqpN",
+    "task_id": {
+        "path": "/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/validation/harbor_llm_repeatability_upload_runs/repeat_3/task_A2"
+    },
+    "source": null,
+    "task_checksum": "8b1bcdd2d42c7fc8a1ac57f3f468ae054afed704a8609029b80ef545c221df17",
+    "config": {
+        "task": {
+            "path": "/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/validation/harbor_llm_repeatability_upload_runs/repeat_3/task_A2",
+            "git_url": null,
+            "git_commit_id": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_A2__Wx8QqpN",
+        "trials_dir": "/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/validation/harbor_llm_repeatability_upload_runs/repeat_3/A2/jobs/harbor_llm_repair_loop_A2",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "integrations.wsl_harbor_agents.upload_security_llm_agent:UploadSecurityLLMAgent",
+            "model_name": null,
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {
+                "capabilities": "UPLOAD_PATH_ISOLATION,UPLOAD_AUDIT_RETENTION,UPLOAD_TYPE_MAGIC"
+            },
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": true,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts_json": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [
+            "/artifacts/security_report.json",
+            "/artifacts/target_reads.json",
+            "/artifacts/prompt.md",
+            "/artifacts/raw_response.txt",
+            "/artifacts/model_calls.json",
+            "/artifacts/backend_metadata.json"
+        ],
+        "job_id": "eaaf1178-c9f6-46cc-ac75-70d4545b00d5"
+    },
+    "agent_info": {
+        "name": "upload-security-llm-agent",
+        "version": "0.1.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-06-08T07:07:00.579608Z",
+    "finished_at": "2026-06-08T07:07:32.528538Z",
+    "environment_setup": {
+        "started_at": "2026-06-08T07:07:00.630818Z",
+        "finished_at": "2026-06-08T07:07:02.999751Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-06-08T07:07:02.999780Z",
+        "finished_at": "2026-06-08T07:07:02.999812Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-06-08T07:07:02.999847Z",
+        "finished_at": "2026-06-08T07:07:15.619023Z"
+    },
+    "verifier": {
+        "started_at": "2026-06-08T07:07:15.619247Z",
+        "finished_at": "2026-06-08T07:07:16.537663Z"
+    }
+}

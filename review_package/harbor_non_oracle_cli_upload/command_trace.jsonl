@@ -1,0 +1,4 @@
+{"event":"harbor_custom_agent_run","status":"completed","command":"uv run harbor run --path <real-upload-security-review> --agent-import-path integrations.wsl_harbor_agents.upload_security_heuristic_agent:UploadSecurityHeuristicAgent --env docker --jobs-dir <outputs/harbor_non_oracle_cli_upload_001/jobs> --job-name harbor_non_oracle_cli_upload_001 --n-concurrent 1 --max-retries 0 --artifact /artifacts/security_report.json --artifact /artifacts/target_reads.json"}
+{"event":"target_reads","files":["/app/target/app.py","/app/target/config.yaml"]}
+{"event":"security_report_created","path":"/app/security_report.json","artifact":"/artifacts/security_report.json"}
+{"event":"verifier_reward","reward":1.0,"passed":true}

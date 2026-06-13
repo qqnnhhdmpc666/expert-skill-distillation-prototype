@@ -1,0 +1,2 @@
+{"event": "variant_started", "created_at": "2026-06-12T18:02:32.080386+00:00", "case_id": "independent_upload_clean_001", "backend": "live_llm_text", "variant": "c002_guard", "status": "completed"}
+{"event": "verifier_feedback", "feedback_type": "pass", "passed": true}

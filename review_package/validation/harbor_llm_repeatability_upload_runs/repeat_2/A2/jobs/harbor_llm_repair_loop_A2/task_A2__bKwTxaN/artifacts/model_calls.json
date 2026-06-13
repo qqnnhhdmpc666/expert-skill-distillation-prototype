@@ -1,0 +1,43 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 884,
+    "completion_tokens": 425,
+    "total_tokens": 1309,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 24
+    }
+  },
+  "response": {
+    "id": "resp_0565c0ad6288e506016a2669c4e5b08195bf956bdbce9dbb8f",
+    "object": "chat.completion",
+    "created": 1780902354,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"UPLOAD_TYPE_MAGIC\",\"issue\":\"Upload validation relies only on the filename extension and does not verify the declared MIME type, magic bytes, or file size before saving.\",\"evidence_span\":\"app.py: def upload(filename: str, content_type: str, file_bytes: bytes) -> dict:\\n    if filename.endswith((\\\".png\\\", \\\".jpg\\\")):\\n        save(str(UPLOAD_ROOT / filename), file_bytes)\",\"recommended_fix\":\"Validate extension, declared MIME type, file signature/magic bytes, and size together before accepting the upload; reject files that fail any check.\"},{\"capability_id\":\"UPLOAD_PATH_ISOLATION\",\"issue\":\"The upload handler writes a user-controlled filename directly under a public upload directory, allowing unsafe path construction and lack of server-side object naming.\",\"evidence_span\":\"app.py: UPLOAD_ROOT = Path(\\\"/public/uploads\\\")\\n...\\n        save(str(UPLOAD_ROOT / filename), file_bytes)\\nconfig.yaml: upload_storage: /public/uploads\",\"recommended_fix\":\"Generate server-side random filenames or object IDs, normalize and constrain paths, and store uploads outside public executable roots; serve files through controlled download handlers.\"},{\"capability_id\":\"UPLOAD_AUDIT_RETENTION\",\"issue\":\"Audit retention is unset and the upload/download handlers do not record audit events for upload activity.\",\"evidence_span\":\"config.yaml: audit_log_retention_days:\\napp.py: def upload(filename: str, content_type: str, file_bytes: bytes) -> dict:\\n    if filename.endswith((\\\".png\\\", \\\".jpg\\\")):\\n        save(str(UPLOAD_ROOT / filename), file_bytes)\\n    return {\\\"ok\\\": True, \\\"debug_path\\\": str(UPLOAD_ROOT / filename)}\",\"recommended_fix\":\"Configure a concrete audit log retention period and record audit events containing actor, object, action, result, and timestamp for upload and download operations.\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 884,
+      "completion_tokens": 425,
+      "total_tokens": 1309,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 24
+      }
+    }
+  }
+}

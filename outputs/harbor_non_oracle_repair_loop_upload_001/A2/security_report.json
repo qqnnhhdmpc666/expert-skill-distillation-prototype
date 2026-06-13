@@ -1,0 +1,19 @@
+{
+  "findings": [
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "evidence_span": "config.yaml contains audit_log_retention_days without a usable retention policy",
+      "recommended_fix": "Log upload/download/delete events with actor, object, action, result, timestamp, and retention."
+    },
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "evidence_span": "app.py stores user-controlled filenames under /public/uploads or UPLOAD_ROOT",
+      "recommended_fix": "Generate server-side filenames and store uploads outside public executable roots."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "evidence_span": "app.py uses filename.endswith(...) without MIME or magic-byte validation",
+      "recommended_fix": "Validate MIME type, magic bytes, extension, and file size together before accepting uploads."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "temperature": 0.0,
+  "usage": {
+    "prompt_tokens": 848,
+    "completion_tokens": 213,
+    "total_tokens": 1061,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 124
+    }
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a API and code review agent that returns JSON for a deterministic verifier."
+      },
+      {
+        "role": "user",
+        "content": "You are a non-oracle API and code review agent.\n\nRead the target files and the Skill Package. Produce only a JSON object for the deterministic verifier.\n\nRules:\n- Do not invent findings that are not grounded in the target text.\n- Use only these capability_id values exposed by the Skill Package: API_SCHEMA_CONTRACT, API_OVERBROAD_RISK.\n- Each finding must include capability_id, issue, evidence_span, and recommended_fix.\n- If the Skill Package does not expose a capability, do not report it even if you notice it.\n- Return JSON only. No markdown fences.\n\n\nExpected JSON shape:\n{\n  \"findings\": [\n    {\n      \"capability_id\": \"API_SCHEMA_CONTRACT\",\n      \"issue\": \"short issue title\",\n      \"evidence_span\": \"quote or tightly paraphrase the concrete target span, including file name when possible\",\n      \"recommended_fix\": \"specific fix grounded in the target\"\n    }\n  ]\n}\n\n# Skill Package\n\n## manifest.json\n\n```text\n{\n  \"skill_id\": \"api_review_001\",\n  \"version\": \"v2\",\n  \"task_family\": \"api_or_code_review\",\n  \"capabilities\": [\n    \"API_SCHEMA_CONTRACT\",\n    \"API_OVERBROAD_RISK\"\n  ],\n  \"output_contract\": [\n    \"capability_id\",\n    \"evidence_span\",\n    \"recommended_fix\"\n  ],\n  \"trace_contract\": [\n    \"event\",\n    \"capability_id\",\n    \"evidence_span\"\n  ],\n  \"metadata\": {\n    \"repair_action\": \"patch_capability\"\n  }\n}\n\n```\n\n## SKILL.md\n\n```text\n# API/code review report contract check Skill v2\n\nTask family: `api_or_code_review`\n\n## Inspection Procedure\n\n1. Read the target assets and identify concrete evidence spans.\n2. Emit only findings grounded in the current target.\n3. Follow the output contract: capability_id, evidence_span, recommended_fix.\n\n## Capabilities\n\n### API_SCHEMA_CONTRACT: Strict report schema\n- Evidence: agent output omits evidence_span or uses free-form prose\n- Fix: Emit JSON findings with required evidence and fix fields.\n\n### API_OVERBROAD_RISK: Overbroad finding control\n- Evidence: generic security risk without code/config evidence\n- Fix: Reject findings not grounded in target spans.\n\n## Revision Policy\n\nApplied repair action: `patch_capability`.\n\n```\n\n# Target Asset\n\n## target.md\n\n```text\nOpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span.\n```\n"
+      }
+    ]
+  },
+  "response": {
+    "id": "resp_00856fa4bc9a596c016a27263d6fe4819e8339e333e4824e8c",
+    "object": "chat.completion",
+    "created": 1780950594,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"API_SCHEMA_CONTRACT\",\"issue\":\"Prior report did not include required evidence_span\",\"evidence_span\":\"target.md: \\\"prior report used prose without evidence_span\\\"\",\"recommended_fix\":\"Emit the review as JSON findings that include the required fields capability_id, issue, evidence_span, and recommended_fix, with evidence_span quoting or tightly paraphrasing concrete target text.\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 848,
+      "completion_tokens": 213,
+      "total_tokens": 1061,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 124
+      }
+    }
+  }
+}

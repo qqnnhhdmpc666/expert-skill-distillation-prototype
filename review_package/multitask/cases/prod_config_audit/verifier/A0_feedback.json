@@ -1,0 +1,10 @@
+{
+  "pass": false,
+  "feedback_type": "missing_capability",
+  "missing_capabilities": [
+    "CONFIG_AUDIT_EXPORT"
+  ],
+  "evidence_errors": [],
+  "false_positive_capabilities": [],
+  "coverage": 0.0
+}

@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "score": 1.0,
+  "missing": [],
+  "task_terms_checked": [
+    "文件上传",
+    "扩展名",
+    "mime",
+    "内容魔数",
+    "存储目录",
+    "路径归一化",
+    "公开目录",
+    "随机化存储名",
+    "审计日志",
+    "保留周期",
+    "错误响应",
+    "内部路径"
+  ],
+  "task_terms_covered": [
+    "文件上传",
+    "扩展名",
+    "mime",
+    "内容魔数",
+    "存储目录",
+    "路径归一化",
+    "公开目录",
+    "随机化存储名",
+    "审计日志",
+    "保留周期",
+    "debug_path",
+    "audit_log_retention_days"
+  ],
+  "evidence_count": 4,
+  "improvement_count": 7
+}

@@ -1,0 +1,77 @@
+{
+  "variant": "installed_v1",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "v1",
+    "task_family": "secure_code_review",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "task_conditioned_secure_review",
+      "package_role": "installed_runtime",
+      "package_family_scope": "task_conditioned_secure_review",
+      "supported_task_families": [
+        "upload_security"
+      ],
+      "out_of_scope_group": "out_of_scope_guard",
+      "capability_groups": [
+        {
+          "name": "upload_security",
+          "task_families": [
+            "upload_security"
+          ],
+          "capabilities": [
+            "UPLOAD_PATH_ISOLATION"
+          ]
+        },
+        {
+          "name": "out_of_scope_guard",
+          "task_families": [],
+          "capabilities": []
+        }
+      ]
+    }
+  },
+  "skill_text_chars": 619,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v1\n\nThis installed runtime uses task-conditioned capability activation inside the controlled secure-review prototype.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Capability Groups\n\n### upload_security\n- task_families: `upload_security`\n- capabilities:\n  - `UPLOAD_PATH_ISOLATION`\n\n### out_of_scope_guard\n- task_",
+  "provenance": {
+    "run_id": "holdout_api_overbroad_schema_001::offline_deterministic::installed_v1",
+    "case_id": "holdout_api_overbroad_schema_001",
+    "backend": "offline_deterministic",
+    "variant": "installed_v1",
+    "runtime_source": "installed_variant_package",
+    "task_family": "api_or_code_review",
+    "activated_capability_group": "out_of_scope_guard",
+    "expected_capability_group": "api_or_code_review",
+    "capability_group_correct": false,
+    "out_of_scope": true,
+    "unsupported_task_family": "api_or_code_review",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+    "skill_hash": "9f498c16c81acf64979cfbce106c7615875cbb357441acc83124a1b2811858ca",
+    "manifest_hash": "a11d823e0aca5a800b13ccd7d9a6d692922ffba487e0de02da926122303f7701",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T11:38:15.443320+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T11:38:43.576937+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "offline_deterministic",
+    "cost": null,
+    "tokens": 109,
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "attempt": "c004_api",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing owner or tenant filtering in invoice load",
+      "evidence_span": "cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Add tenant_id or owner_id filtering to ensure users can only access their own invoices.",
+      "capability_group": "auth_access_control",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Sensitive invoice ID leaked in denial response",
+      "evidence_span": "cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Ensure denial responses do not include sensitive identifiers like invoice_id; use a generic error message.",
+      "capability_group": "auth_access_control",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

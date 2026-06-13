@@ -1,0 +1,27 @@
+{
+  "attempt": "installed_v2",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Upload path isolation",
+      "evidence_span": "endswith, writes UPLOAD_ROOT / filename, and returns debug_path",
+      "recommended_fix": "Generate server-side names and store outside public executable roots."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload type and content validation",
+      "evidence_span": "nippet:\napp.py: upload() checks filename.endswith, writes UPLOAD_ROOT / filename, and returns de",
+      "recommended_fix": "Validate MIME, signature, size, and extension together."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload audit retention",
+      "evidence_span": "yaml: audit_log_retention_days is empty",
+      "recommended_fix": "Record actor/object/action/result/timestamp with retention."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:upload_security"
+  ]
+}

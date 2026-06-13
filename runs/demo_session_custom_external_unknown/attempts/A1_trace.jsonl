@@ -1,0 +1,2 @@
+{"step": 1, "event": "规则应用", "rule_id": "R002", "evidence": "save(\"/public/uploads/\" + filename); return {\"api_key\":\"x\"}; audit_log_retention_days: null"}
+{"step": 2, "event": "规则应用", "rule_id": "R004", "evidence": "save(\"/public/uploads/\" + filename); return {\"api_key\":\"x\"}; audit_log_retention_days: null"}

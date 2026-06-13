@@ -1,0 +1,62 @@
+{
+  "card_id": "live_llm_upload_repair_loop_validity_card",
+  "artifact": "outputs/live_llm_repair_loop_upload_001",
+  "scope": "Controlled repair loop for upload_security_001 on backend live_llm_text.",
+  "metrics": {
+    "outcome_delta": {
+      "status": "supported",
+      "note": "A1 pass=False, A2 pass=True, reward_delta=+1.0."
+    },
+    "evidence_grounding": {
+      "status": "supported",
+      "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+    },
+    "repair_attribution": {
+      "status": "supported",
+      "note": "A1 feedback `missing_capability` triggered repair `patch_capability` and gate `accept`."
+    },
+    "regression_safety": {
+      "status": "supported",
+      "note": "After repair: missing=['none'], schema_errors=['none'], weak_evidence=['none']."
+    },
+    "transferability": {
+      "status": "partially_supported",
+      "note": "Single controlled security slice only."
+    },
+    "repeatability": {
+      "status": "not_measured",
+      "note": "Not measured for this single loop artifact."
+    },
+    "cost_budget": {
+      "status": "partially_supported",
+      "note": "Latency and token usage are available in backend metadata/model_calls but not normalized here."
+    },
+    "verifier_robustness": {
+      "status": "partially_supported",
+      "note": "Verifier distinguished A1 vs A2; before repair missing=['UPLOAD_AUDIT_RETENTION', 'UPLOAD_TYPE_MAGIC'], schema_errors=['none'], weak_evidence=['none']."
+    },
+    "human_plausibility": {
+      "status": "manual_review_pending",
+      "note": "No human usefulness review is attached to this loop artifact."
+    }
+  },
+  "summary": {
+    "scenario": "upload_security_001",
+    "backend": "live_llm_text",
+    "a1_pass": false,
+    "a2_pass": true,
+    "reward_delta": 1.0,
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "gate_decision": "accept"
+  },
+  "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled upload task; verifier and gate remain deterministic.",
+  "sources": [
+    "outputs/live_llm_repair_loop_upload_001/A1/verifier_report.json",
+    "outputs/live_llm_repair_loop_upload_001/revision/patch_plan.json",
+    "outputs/live_llm_repair_loop_upload_001/revision/gate_decision.json",
+    "outputs/live_llm_repair_loop_upload_001/A2/verifier_report.json",
+    "outputs/live_llm_repair_loop_upload_001/A1/security_report.json",
+    "outputs/live_llm_repair_loop_upload_001/A2/security_report.json"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "attempt": "active_contract_system",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Overbroad risk classification without evidence_span",
+      "evidence_span": "review_output.py: prior report used prose without evidence_span and classified returns debug_path as a generic security risk without pointing to target evidence.",
+      "recommended_fix": "Require each risk classification to include an evidence_span that references specific target lines, and ensure risk statements are grounded in concrete evidence from the target.",
+      "capability_group": "api_or_code_review",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

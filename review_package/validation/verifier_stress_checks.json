@@ -1,0 +1,63 @@
+{
+  "run_id": "verifier_stress_checks_001",
+  "created_at": "2026-06-08T18:52:08.625395+00:00",
+  "strict_evidence_binding_added_to_shared_verifier": true,
+  "checks": [
+    {
+      "check_id": "upload_live_llm_strict_target_match",
+      "purpose": "A valid upload report should still pass when strict target-text evidence binding is enabled.",
+      "target_case": "upload_security_001",
+      "status": "pass",
+      "report": {
+        "pass": true,
+        "feedback_type": "pass",
+        "missing_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "evidence_binding_score": 1.0
+      }
+    },
+    {
+      "check_id": "upload_report_against_swapped_data_quality_target",
+      "purpose": "The same upload report should fail when evaluated against the wrong target asset.",
+      "target_case": "data_quality_review_001",
+      "status": "pass",
+      "report": {
+        "pass": false,
+        "feedback_type": "unsupported_evidence",
+        "missing_capabilities": [],
+        "unsupported_evidence_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "evidence_binding_score": 0.0
+      }
+    },
+    {
+      "check_id": "synthetic_bad_upload_evidence",
+      "purpose": "A non-empty but non-matching evidence span should be rejected by the shared verifier when strict target binding is enabled.",
+      "target_case": "upload_security_001",
+      "status": "pass",
+      "report": {
+        "pass": false,
+        "feedback_type": "missing_capability",
+        "missing_capabilities": [
+          "UPLOAD_AUDIT_RETENTION",
+          "UPLOAD_PATH_ISOLATION"
+        ],
+        "unsupported_evidence_capabilities": [
+          "UPLOAD_TYPE_MAGIC"
+        ],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "evidence_binding_score": 0.0
+      }
+    }
+  ],
+  "overall_pass": true,
+  "boundary": "Strict target-text evidence binding is available in the shared verifier, but it is not enabled by default across every existing backend artifact path."
+}

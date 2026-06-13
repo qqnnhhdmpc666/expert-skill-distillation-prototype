@@ -1,0 +1,15 @@
+{
+  "run_id": "multitask_closed_loop_001",
+  "created_at": "2026-06-07T22:30:31.473171+00:00",
+  "artifacts": [
+    "summary.json",
+    "summary.md",
+    "manifest.json",
+    "cases/*/inputs/",
+    "cases/*/attempts/",
+    "cases/*/verifier/",
+    "cases/*/revision/",
+    "cases/*/skills/",
+    "cases/*/trajectory.jsonl"
+  ]
+}

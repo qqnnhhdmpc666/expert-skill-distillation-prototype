@@ -1,0 +1,114 @@
+{
+  "A1": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v1",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v1",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v1",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v1",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v1",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v1",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    }
+  ],
+  "A2": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v2",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v2",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v2",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v2",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v2",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\auth_access_control_001\\skills\\skill_v2",
+      "capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ]
+    }
+  ]
+}

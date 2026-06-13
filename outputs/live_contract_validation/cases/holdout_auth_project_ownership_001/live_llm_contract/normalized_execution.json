@@ -1,0 +1,36 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Missing authorization scope check; only authentication is enforced",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Add a scope or permission check (e.g., user.role == 'admin' or a specific permission) after authentication before performing the archive operation.",
+      "capability_group": "auth_access_control",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Object-level access control missing — invoice loaded without tenant/owner filter",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Add a filter by tenant_id or owner_id to ensure the authenticated user owns or has permission to access the invoice before archiving.",
+      "capability_group": "auth_access_control",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Denial error leaks invoice_id in response body",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Remove invoice_id from the error response on denial; return a generic error message such as 'Access denied' or 'Invoice not found' to prevent information disclosure.",
+      "capability_group": "auth_access_control",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

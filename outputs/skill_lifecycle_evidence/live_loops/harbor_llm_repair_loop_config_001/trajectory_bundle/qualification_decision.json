@@ -1,0 +1,14 @@
+{
+  "card_id": "harbor_llm_config_repair_loop",
+  "claim_boundary": "Second-task Harbor LLM evidence, still controlled and narrow.",
+  "summary": {
+    "scenario": "controlled-config-security-review",
+    "backend": "harbor_llm_repair_config_replay",
+    "a1_pass": false,
+    "a2_pass": true,
+    "reward_delta": 1.0,
+    "feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "gate_decision": "accept"
+  }
+}

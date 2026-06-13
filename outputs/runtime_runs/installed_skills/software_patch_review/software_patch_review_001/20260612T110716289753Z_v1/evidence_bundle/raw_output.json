@@ -1,0 +1,27 @@
+{
+  "attempt": "installed_v1",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "PATCH_TEST_FAILURE_REPRO",
+      "issue": "Patch target failure reproduction",
+      "evidence_span": "Issue: test_discount_rounding fails because round_discount uses int(amount * rate), truncating cents",
+      "recommended_fix": "Preserve a failing test or regression assertion that captures the issue."
+    },
+    {
+      "capability_id": "PATCH_MINIMAL_CODE_CHANGE",
+      "issue": "Minimal behavior-preserving patch",
+      "evidence_span": "Candidate patch should replace int(amount * rate) with round(amount * rate, 2)",
+      "recommended_fix": "Apply the smallest source change that fixes the failing behavior without broad rewrites."
+    },
+    {
+      "capability_id": "PATCH_REGRESSION_VALIDATION",
+      "issue": "Regression validation command",
+      "evidence_span": "Issue: test_discount_rounding fails because round_discount uses int(amount * rate), truncating cents",
+      "recommended_fix": "Run the targeted test and record pass/fail evidence for the patch."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:software_patch_review"
+  ]
+}

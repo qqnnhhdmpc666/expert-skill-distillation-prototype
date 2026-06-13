@@ -1,0 +1,27 @@
+{
+  "attempt": "active_installed",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Role and scope authorization",
+      "evidence_span": "delete_invoice(invoice_id, user) checks is_authenticated, loads invoice by id, deletes it, and returns invoice_id",
+      "recommended_fix": "Check required role/scope before mutation."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Object ownership boundary",
+      "evidence_span": "delete_invoice(invoice_id, user) checks is_authenticated, loads invoice by id, deletes it, and returns invoice_id",
+      "recommended_fix": "Bind resource access to tenant and owner."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Non-leaking authorization error",
+      "evidence_span": "delete_invoice(invoice_id, user) checks is_authenticated, loads invoice by id, deletes it, and returns invoice_id",
+      "recommended_fix": "Use consistent 403/404 envelope with request id."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:auth_access_control"
+  ]
+}

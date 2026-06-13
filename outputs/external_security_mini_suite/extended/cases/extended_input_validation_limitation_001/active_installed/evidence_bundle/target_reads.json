@@ -1,0 +1,7 @@
+{
+  "case_id": "extended_input_validation_limitation_001",
+  "target_digest": {
+    "chars": 347,
+    "preview": "Task: Review input validation defensively. This task family is intentionally outside the current secure_code_review package.\n\nSnippet:\nsearch.py: query is interpolated into a filter string, but no database dialect, sanitizer contract, or patch-validation context is provided.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

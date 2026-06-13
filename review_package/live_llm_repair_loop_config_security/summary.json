@@ -1,0 +1,51 @@
+{
+  "run_id": "live_llm_repair_loop_config_security_001",
+  "scenario": "config_security_001",
+  "backend": "live_llm_text",
+  "env_ready": true,
+  "model": "gpt-5.5",
+  "A1": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "coverage": 0.5,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [
+      "CONFIG_ENV_GUARD"
+    ],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_checked": false
+  },
+  "revision": {
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "before_capabilities": [
+      "CONFIG_AUDIT_EXPORT"
+    ],
+    "after_capabilities": [
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD"
+    ],
+    "gate_decision": "accept"
+  },
+  "A2": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "coverage": 0.5,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [
+      "CONFIG_ENV_GUARD"
+    ],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_checked": false
+  },
+  "reward_delta": 0.0,
+  "boundary": "LLM is the non-oracle agent; verifier/gate remain deterministic."
+}

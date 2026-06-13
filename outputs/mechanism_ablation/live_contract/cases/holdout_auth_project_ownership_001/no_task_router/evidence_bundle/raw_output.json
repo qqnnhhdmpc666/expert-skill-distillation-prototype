@@ -1,0 +1,8 @@
+{
+  "attempt": "no_task_router",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": [
+    "out_of_scope_guard_suppressed_findings"
+  ]
+}

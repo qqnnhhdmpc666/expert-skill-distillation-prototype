@@ -1,0 +1,17 @@
+{
+  "feedback_type": "missing_capability",
+  "repair_action": "patch_capability",
+  "before_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "after_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "operator_id": "op_patch_capability_generic",
+  "operator_strategy": "add_missing_expected",
+  "operator_description": "Append missing expected capabilities while keeping the current package compact.",
+  "selection_score": 151,
+  "preferred_action": "patch_capability"
+}

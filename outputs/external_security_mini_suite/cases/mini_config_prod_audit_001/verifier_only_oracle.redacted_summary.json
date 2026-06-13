@@ -1,0 +1,8 @@
+{
+  "case_id": "mini_config_prod_audit_001",
+  "expected_capability_count": 2,
+  "expected_capability_group": "config_security",
+  "clean_or_negative": false,
+  "unsupported_limitation": false,
+  "note": "Full oracle fields are not written into runner inputs."
+}

@@ -1,0 +1,49 @@
+{
+  "run_id": "live_llm_repair_loop_upload_001",
+  "scenario": "upload_security_001",
+  "backend": "live_llm_text",
+  "env_ready": true,
+  "model": "gpt-5.5",
+  "A1": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "coverage": 0.3333,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": []
+  },
+  "revision": {
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "before_capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "after_capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "gate_decision": "accept"
+  },
+  "A2": {
+    "pass": true,
+    "feedback_type": "pass",
+    "coverage": 1.0,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": []
+  },
+  "reward_delta": 1.0,
+  "boundary": "LLM is the non-oracle agent; verifier/gate remain deterministic."
+}

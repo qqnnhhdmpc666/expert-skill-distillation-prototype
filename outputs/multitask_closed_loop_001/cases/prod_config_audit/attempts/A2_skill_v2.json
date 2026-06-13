@@ -1,0 +1,13 @@
+{
+  "attempt": "A2_skill_v2",
+  "task_family": "config_security",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Security audit logs need retention and export sink",
+      "severity": "medium",
+      "evidence_span": "prod.audit.enabled is true but retention_days and export_sink are missing",
+      "recommended_fix": "Require retention_days and export_sink for production audit logs."
+    }
+  ]
+}

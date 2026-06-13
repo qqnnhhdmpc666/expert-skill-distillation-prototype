@@ -1,0 +1,10 @@
+{
+  "attempt": "active_installed",
+  "backend": "offline_deterministic",
+  "findings": [],
+  "notes": [
+    "out_of_scope",
+    "unsupported_task_family:input_validation_review",
+    "activated_capability_group:out_of_scope_guard"
+  ]
+}

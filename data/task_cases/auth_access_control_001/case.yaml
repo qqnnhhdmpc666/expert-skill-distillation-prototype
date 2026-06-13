@@ -1,0 +1,17 @@
+{
+  "case_id": "auth_access_control_001",
+  "title": "Authorization and object access review",
+  "task_family": "auth_access_control",
+  "expected_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "v1_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "typical_feedback": "ownership_boundary_missing",
+  "typical_repair": "patch_boundary"
+}

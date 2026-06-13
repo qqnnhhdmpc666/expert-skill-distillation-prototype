@@ -1,0 +1,40 @@
+{
+  "case_id": "auth_access_control_001",
+  "task_family": "auth_access_control",
+  "review_readiness": "hold",
+  "recommended_audience": "internal debugging first",
+  "opening_claim": "Controlled expert-skill lifecycle for `auth_access_control_001` with artifact-backed distillation, execution, and revision evidence.",
+  "what_to_show_first": [
+    "outputs/skill_lifecycle_evidence/generalization/auth_access_control_001/distillation_bundle",
+    "outputs/skill_lifecycle_evidence/generalization/auth_access_control_001/trajectory_bundle",
+    "outputs/installed_skills/auth_access_control_001/deployment_record.json"
+  ],
+  "supporting_cards": {
+    "qualification_card_id": null,
+    "promotion_level": null,
+    "validity_card_id": null
+  },
+  "rubric": {
+    "task_usefulness": {
+      "score": 4,
+      "reason": "A2 passes the controlled verifier and the task-level artifact chain is complete."
+    },
+    "evidence_clarity": {
+      "score": 4,
+      "reason": "Distillation bundle, trajectory bundle, and patch/gate files are all present."
+    },
+    "fix_actionability": {
+      "score": 4,
+      "reason": "Repair action is `patch_boundary` and can be inspected in the revision artifacts."
+    },
+    "scope_honesty": {
+      "score": 5,
+      "reason": "Claim boundary is explicitly controlled and does not present broad autonomous generalization."
+    },
+    "deployment_readiness": {
+      "score": 3,
+      "reason": "A generated install/rollback surface now exists, but it is still a controlled prototype surface rather than a production package manager."
+    }
+  },
+  "boundary": "Reviewer-readiness packet authored from internal artifacts. It is preparation for human/external review, not itself external human validation."
+}

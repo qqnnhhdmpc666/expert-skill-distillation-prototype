@@ -1,0 +1,128 @@
+{
+  "case_id": "data_quality_review_001",
+  "backend": "offline_deterministic",
+  "variants": [
+    "no_skill",
+    "skill_v1",
+    "skill_v2",
+    "upper_bound"
+  ],
+  "scores": {
+    "no_skill": 0.6,
+    "skill_v1": 0.6,
+    "skill_v2": 0.6,
+    "upper_bound": 0.6
+  },
+  "costs": {
+    "no_skill": 0,
+    "skill_v1": 142,
+    "skill_v2": 142,
+    "upper_bound": 142
+  },
+  "false_positives": {
+    "no_skill": 0,
+    "skill_v1": 0,
+    "skill_v2": 0,
+    "upper_bound": 0
+  },
+  "metrics": {
+    "v2_over_v1_gain": 0.0,
+    "v2_over_no_skill_gain": 0.0,
+    "gap_to_upper_bound": 0.0,
+    "cost_delta": 0.0,
+    "false_positive_delta": 0.0,
+    "metamorphic_delta": 0.0
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\data_quality_review_001",
+  "run_metadata": {
+    "no_skill": {
+      "run_id": "data_quality_review_001::offline_deterministic::no_skill",
+      "case_id": "data_quality_review_001",
+      "backend": "offline_deterministic",
+      "variant": "no_skill",
+      "target_hash": "9a84f552ef6bd57c1d3a41b9690eff0e6d05f3a53028384cca44bc6424ecc74e",
+      "skill_hash": "none",
+      "manifest_hash": "none",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-11T14:50:24.861971+00:00",
+      "cost": null,
+      "tokens": null,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "no token source available",
+      "verifier_feedback_type": "missing_capability"
+    },
+    "skill_v1": {
+      "run_id": "data_quality_review_001::offline_deterministic::skill_v1",
+      "case_id": "data_quality_review_001",
+      "backend": "offline_deterministic",
+      "variant": "skill_v1",
+      "target_hash": "9a84f552ef6bd57c1d3a41b9690eff0e6d05f3a53028384cca44bc6424ecc74e",
+      "skill_hash": "6d56d2f6e1049e94ea2f34d0cd9766c799e5e360ee04576784efc1b68932f58c",
+      "manifest_hash": "91ffbe3a12df3b65ec9287b9a3065fddc9bb4f2188f0226cddb0d233b138d540",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-11T14:50:24.870812+00:00",
+      "cost": null,
+      "tokens": 142,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "estimated from skill text only",
+      "verifier_feedback_type": "target_context_missing"
+    },
+    "skill_v2": {
+      "run_id": "data_quality_review_001::offline_deterministic::skill_v2",
+      "case_id": "data_quality_review_001",
+      "backend": "offline_deterministic",
+      "variant": "skill_v2",
+      "target_hash": "9a84f552ef6bd57c1d3a41b9690eff0e6d05f3a53028384cca44bc6424ecc74e",
+      "skill_hash": "9a0350c4eee04f80edabc09f0a2aa9010b294df675445486e1151f8042e3fd9a",
+      "manifest_hash": "5ad6b3b07cb1b1df978075da3e3c23deb541783424c1a9bd24055a722bd9f748",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-11T14:50:24.880587+00:00",
+      "cost": null,
+      "tokens": 142,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "estimated from skill text only",
+      "verifier_feedback_type": "unsupported_evidence"
+    },
+    "upper_bound": {
+      "run_id": "data_quality_review_001::offline_deterministic::upper_bound",
+      "case_id": "data_quality_review_001",
+      "backend": "offline_deterministic",
+      "variant": "upper_bound",
+      "target_hash": "9a84f552ef6bd57c1d3a41b9690eff0e6d05f3a53028384cca44bc6424ecc74e",
+      "skill_hash": "bb00f39301e9ea8d4c73b1101c7e9739cfbf57283e5354e00d6c07d71bed4034",
+      "manifest_hash": "bbed5a71ad49b84b8907994df451c41fcaee8d72bf6a4f4d96c6e0d932f78734",
+      "prompt_hash": "none",
+      "model": "offline_deterministic",
+      "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+      "schema_version": "skill_marginal_utility.v1",
+      "timestamp": "2026-06-11T14:50:24.887999+00:00",
+      "cost": null,
+      "tokens": 142,
+      "cost_reason": "offline prototype does not compute monetary billing",
+      "tokens_reason": "estimated from skill text only",
+      "verifier_feedback_type": "unsupported_evidence"
+    }
+  },
+  "safety_boundary": {
+    "allowed": [
+      "defensive_detection",
+      "explanation",
+      "fix_recommendation",
+      "patch_validation"
+    ],
+    "forbidden": [
+      "exploit_generation",
+      "attack_chain_execution",
+      "unauthorized_target_testing"
+    ]
+  }
+}

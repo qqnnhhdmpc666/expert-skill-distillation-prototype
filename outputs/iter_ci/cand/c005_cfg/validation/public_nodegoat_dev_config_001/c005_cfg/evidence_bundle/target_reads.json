@@ -1,0 +1,7 @@
+{
+  "case_id": "public_nodegoat_dev_config_001",
+  "target_digest": {
+    "chars": 518,
+    "preview": "Task: Read-only defensive review of a public OWASP NodeGoat development config excerpt. Report only grounded config-security findings.\n\nSnippet:\nzapHostName: \"192.168.56.20\",\n   zapPort: \"8080\",\n   // Required from Zap 2.4.1. This key is set in Zap Options -> API _Api Key.\n   zapApiKey: \"v9dn0balpqas1pcc281tn5ood1\",\n   // Required if debugging security regression tests.\n   zapApiFeedbackSpeed: 5000, // Milliseconds.\n   environmentalScripts: [\n\nRequested output schema: capability_id, evidence_spa"
+  }
+}

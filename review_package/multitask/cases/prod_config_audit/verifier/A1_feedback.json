@@ -1,0 +1,11 @@
+{
+  "pass": false,
+  "feedback_type": "false_positive",
+  "missing_capabilities": [],
+  "evidence_errors": [],
+  "false_positive_capabilities": [
+    "CONFIG_SECRET_REF",
+    "CONFIG_TLS"
+  ],
+  "coverage": 1.0
+}

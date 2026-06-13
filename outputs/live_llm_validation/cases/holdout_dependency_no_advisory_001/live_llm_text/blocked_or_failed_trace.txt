@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "C:\Users\31552\Documents\New project\expert-skill-distillation-prototype-main\scripts\run_live_llm_validation.py", line 107, in run_live_case
+    summary = mini.run_variant(
+        case_payload=case_payload,
+    ...<14 lines>...
+        },
+    )
+  File "C:\Users\31552\Documents\New project\expert-skill-distillation-prototype-main\scripts\run_defensive_security_mini_suite.py", line 200, in run_variant
+    result = runner.run(context)
+  File "C:\Users\31552\Documents\New project\expert-skill-distillation-prototype-main\src\skill_deployment\runner.py", line 358, in run
+    _run_subprocess(command, cwd=self.project_root, stdout_path=stdout_path, stderr_path=stderr_path)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\31552\Documents\New project\expert-skill-distillation-prototype-main\src\skill_deployment\runner.py", line 70, in _run_subprocess
+    completed = subprocess.run(command, cwd=cwd, check=True, capture_output=True, text=True)
+  File "C:\Users\31552\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe', 'C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\agents\\llm_security_agent.py', '--skill', 'C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2', '--target', 'C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_validation\\cases\\holdout_dependency_no_advisory_001\\live_llm_text\\target', '--out', 'C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_validation\\cases\\holdout_dependency_no_advisory_001\\live_llm_text\\agent', '--base-url', 'https://www.right.codes/codex/v1', '--model', 'gpt-5.5', '--temperature', '0.0', '--timeout', '45.0', '--task-label', 'secure_code_review:dependency_version_risk', '--contract-mode', 'strict', '--prompt-addendum', 'Use no exploit steps. Defensive review only. If no active capabilities are allowed, return an empty findings array.', '--active-capabilities', '']' returned non-zero exit status 1.

@@ -1,0 +1,28 @@
+{
+  "run_id": "holdout_config_prod_secret_001::offline_deterministic::ablated_no_out_of_scope_guard",
+  "case_id": "holdout_config_prod_secret_001",
+  "backend": "offline_deterministic",
+  "variant": "ablated_no_out_of_scope_guard",
+  "runtime_source": "ablation_experiment_package",
+  "task_family": "config_security",
+  "activated_capability_group": "config_security",
+  "expected_capability_group": "config_security",
+  "capability_group_correct": true,
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\ablation\\task_conditioned_activation\\variants\\ablated_no_out_of_scope_guard",
+  "skill_hash": "e053598986d5760d4a2b638b9bef9e08edd53bf20597a38ff66f9ccb1ea6f2dd",
+  "manifest_hash": "b0ad9787a5c1bb72f0d458d78ec9f6028ba04dd48fc922fe42a51c5ec60907c9",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T11:38:15.443320+00:00"
+  },
+  "schema_version": "external_security_mini_suite.run_metadata.v1",
+  "timestamp": "2026-06-12T11:38:59.855838+00:00",
+  "oracle_fields_visible_to_runner": false,
+  "model": "offline_deterministic",
+  "cost": null,
+  "tokens": 209
+}

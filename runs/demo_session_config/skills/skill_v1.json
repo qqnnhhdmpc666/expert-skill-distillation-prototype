@@ -1,0 +1,38 @@
+{
+  "skill_name": "config_security_review_skill",
+  "domain": "漏洞挖掘 / 配置安全",
+  "version": "v1",
+  "source_materials": "expert_rules + target_asset + verifier_contract",
+  "rules": [
+    {
+      "rule_id": "R004",
+      "title": "敏感信息泄露",
+      "risk": "medium",
+      "action": "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+    },
+    {
+      "rule_id": "R006",
+      "title": "审计日志保留",
+      "risk": "medium",
+      "action": "检查关键安全事件是否有审计日志和保留策略。"
+    },
+    {
+      "rule_id": "R007",
+      "title": "弱密钥与调试配置",
+      "risk": "high",
+      "action": "检查 debug=true、默认密钥、弱 JWT secret 和过宽 CORS。"
+    }
+  ],
+  "output_contract": [
+    "finding_id",
+    "rule_id",
+    "evidence_span"
+  ],
+  "trace_policy": [],
+  "verifier_contract": "verifier 检查配置风险覆盖、schema 完整性和 evidence_span 是否指向具体配置行。",
+  "token_cost": 125,
+  "status": "部署失败",
+  "change_log": [
+    "由专家材料蒸馏得到初始检查规则。"
+  ]
+}

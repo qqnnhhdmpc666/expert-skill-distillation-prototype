@@ -1,0 +1,36 @@
+{
+  "attempt": "active",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "No path isolation: direct concatenation with user-supplied filename",
+      "evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.",
+      "recommended_fix": "Sanitize the filename to prevent path traversal (e.g., use os.path.basename), store files with a randomly generated name, and ensure the upload directory is isolated from web root.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validation relies only on extension, not magic bytes",
+      "evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.",
+      "recommended_fix": "Validate file content via magic bytes (e.g., using python-magic or PIL) to confirm the file is actually a PNG, not just named with a .png extension.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit retention period is not configured",
+      "evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.",
+      "recommended_fix": "Configure an audit retention policy by setting retention_days to a positive integer (e.g., 90) and ensure logs are rotated or archived accordingly.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

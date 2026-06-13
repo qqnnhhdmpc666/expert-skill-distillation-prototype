@@ -1,0 +1,10 @@
+{
+  "feedback_type": "missing_capability",
+  "missing_capabilities": [
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "schema_errors": [],
+  "unsupported_evidence_checked": false,
+  "note": "Harbor verifier checks presence of expected capability findings and required fields, but does not score false positives."
+}

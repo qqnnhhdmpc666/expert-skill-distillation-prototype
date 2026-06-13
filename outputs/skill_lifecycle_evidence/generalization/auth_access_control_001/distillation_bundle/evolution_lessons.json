@@ -1,0 +1,21 @@
+{
+  "case_id": "auth_access_control_001",
+  "a1_failure_pattern": "ownership_boundary_missing",
+  "a2_outcome": "pass",
+  "repair_action": "patch_boundary",
+  "contrastive_lesson": "Boundary-oriented failures are not fixed by adding more findings alone; the skill must force ownership/tenant checks into evidence collection.",
+  "persistent_memory_note": {
+    "before_capabilities": [
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "after_capabilities": [
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "operator_id": "op_patch_boundary_auth",
+    "preferred_action": "patch_boundary"
+  }
+}

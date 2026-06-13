@@ -1,0 +1,25 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Path traversal via unsanitized filename in upload path",
+      "evidence_span": "stores uploads_dir / file.name",
+      "recommended_fix": "Validate the file name to ensure it does not contain path traversal characters (e.g., '../') and use a secure file naming scheme, such as generating a random filename."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validation relies only on extension",
+      "evidence_span": "trusts file.name.endswith('.png')",
+      "recommended_fix": "Use magic bytes (content-type verification via libraries like python-magic) to verify the actual file type instead of relying solely on file extension."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit retention period not configured",
+      "evidence_span": "audit.retention_days is unset",
+      "recommended_fix": "Configure a retention policy for uploaded file audits, e.g., set audit.retention_days to a positive integer to enable automatic cleanup of old records."
+    }
+  ],
+  "notes": []
+}

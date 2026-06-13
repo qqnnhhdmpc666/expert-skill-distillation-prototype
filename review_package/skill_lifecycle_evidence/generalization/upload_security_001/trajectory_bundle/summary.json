@@ -1,0 +1,13 @@
+{
+  "case_id": "upload_security_001",
+  "task_family": "upload_security",
+  "a0_pass": false,
+  "a1_pass": false,
+  "a2_pass": true,
+  "a0_coverage": 0.0,
+  "a1_coverage": 0.3333,
+  "a2_coverage": 1.0,
+  "feedback_type": "missing_capability",
+  "repair_action": "patch_capability",
+  "boundary": "Controlled generalization-suite evidence. The trajectory bundle is standardized, but it is not a live Harbor or open-world execution trace."
+}

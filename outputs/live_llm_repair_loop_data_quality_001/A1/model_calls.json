@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "temperature": 0.0,
+  "usage": {
+    "prompt_tokens": 1054,
+    "completion_tokens": 242,
+    "total_tokens": 1296,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 78
+    }
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a training dataset quality review agent that returns JSON for a deterministic verifier."
+      },
+      {
+        "role": "user",
+        "content": "You are a non-oracle training dataset quality review agent.\n\nRead the target files and the Skill Package. Produce only a JSON object for the deterministic verifier.\n\nRules:\n- Do not invent findings that are not grounded in the target text.\n- Use only these capability_id values exposed by the Skill Package: DATA_REQUIRED_FIELD_COVERAGE, DATA_TEMPORAL_SPLIT_GUARD, DATA_LABEL_ENUM_ALIGNMENT.\n- Each finding must include capability_id, issue, and evidence_span. recommended_fix is optional in this exploratory run.\n- If the Skill Package does not expose a capability, do not report it even if you notice it.\n- Return JSON only. No markdown fences.\nIn this exploratory v1 run, every finding may omit recommended_fix. Keep findings target-grounded and structured under `findings`.\n\nExpected JSON shape:\n{\n  \"findings\": [\n    {\n      \"capability_id\": \"DATA_REQUIRED_FIELD_COVERAGE\",\n      \"issue\": \"short issue title\",\n      \"evidence_span\": \"quote or tightly paraphrase the concrete target span, including file name when possible\"\n    }\n  ]\n}\n\n# Skill Package\n\n## manifest.json\n\n```text\n{\n  \"skill_id\": \"data_quality_review_001\",\n  \"version\": \"v1\",\n  \"task_family\": \"data_quality_review\",\n  \"capabilities\": [\n    \"DATA_REQUIRED_FIELD_COVERAGE\",\n    \"DATA_TEMPORAL_SPLIT_GUARD\",\n    \"DATA_LABEL_ENUM_ALIGNMENT\"\n  ],\n  \"output_contract\": [\n    \"capability_id\",\n    \"evidence_span\",\n    \"recommended_fix\"\n  ],\n  \"trace_contract\": [\n    \"event\",\n    \"capability_id\",\n    \"evidence_span\"\n  ],\n  \"metadata\": {}\n}\n\n```\n\n## SKILL.md\n\n```text\n# Training dataset quality review Skill v1\n\nTask family: `data_quality_review`\n\n## Inspection Procedure\n\n1. Read the target assets and identify concrete evidence spans.\n2. Emit only findings grounded in the current target.\n3. Follow the output contract: capability_id, evidence_span, recommended_fix.\n\n## Capabilities\n\n### DATA_REQUIRED_FIELD_COVERAGE: Required field coverage\n- Evidence: row 1042 has blank country_code in a required column\n- Fix: Enforce non-null checks and reject rows missing required fields.\n\n### DATA_TEMPORAL_SPLIT_GUARD: Temporal split guard\n- Evidence: train.csv includes row 9811 dated after the validation cutoff\n- Fix: Bind split assignment to cutoff rules and quote offending row ids.\n\n### DATA_LABEL_ENUM_ALIGNMENT: Label enum alignment\n- Evidence: row 9811 uses label gold_plus outside the allowed enum\n- Fix: Validate labels against the contract before training or export.\n\n\n## Attempt Note\n\nExploratory v1: findings may omit recommended_fix so the verifier can test output-contract repair.\n\n```\n\n# Target Asset\n\n## target.md\n\n```text\ndataset_contract.yaml: required_fields=[user_id,event_date,country_code,label]; allowed_labels=[basic,premium,enterprise]; validation_cutoff=2025-04-30.\n\ntrain.csv sample:\n- row 1042: user_id=991, event_date=2025-04-11, country_code=, label=basic\n- row 9811: user_id=112, event_date=2025-05-04, country_code=US, label=gold_plus\n\nvalidation.csv sample:\n- row 120: user_id=556, event_date=2025-05-05, country_code=CN, label=premium\n```\n"
+      }
+    ]
+  },
+  "response": {
+    "id": "resp_0c359809671cc541016a270d5cf94c8193927affceb472ebd7",
+    "object": "chat.completion",
+    "created": 1780944226,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"DATA_REQUIRED_FIELD_COVERAGE\",\"issue\":\"Required country_code is blank\",\"evidence_span\":\"target.md: dataset_contract.yaml requires country_code; train.csv row 1042 has country_code=, label=basic\"},{\"capability_id\":\"DATA_TEMPORAL_SPLIT_GUARD\",\"issue\":\"Train row event_date is after validation cutoff\",\"evidence_span\":\"target.md: validation_cutoff=2025-04-30; train.csv row 9811 has event_date=2025-05-04\"},{\"capability_id\":\"DATA_LABEL_ENUM_ALIGNMENT\",\"issue\":\"Label outside allowed enum\",\"evidence_span\":\"target.md: allowed_labels=[basic,premium,enterprise]; train.csv row 9811 has label=gold_plus\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1054,
+      "completion_tokens": 242,
+      "total_tokens": 1296,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 78
+      }
+    }
+  }
+}

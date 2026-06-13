@@ -1,0 +1,13 @@
+{
+  "instance_id": "astropy__astropy-12907",
+  "repo": "astropy/astropy",
+  "base_commit": "d16bfe05a744909de4b27f5875fe0d4ed41ce607",
+  "problem_statement_hash": "c01334ec1b21a089c650cf2e7b96ab974469076bf1260d23885799e1f0a7551f",
+  "gold_patch_hash": "0f3e44432ed8540e9526edff4f83793948a2f139fc3971b67c30043c1eb7964a",
+  "test_patch_hash": "5ef90b640ffce4590bb61ef2ea0e3256416dddf41b45bf4f2c3610a6e8c53718",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "resolved_dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_source": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+  "official_dataset_json": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_20260612\\official_dataset.json",
+  "prepared_instances_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\prepared\\SWE_bench_SWE_bench_Lite_limit5_seed20260612\\instances.json"
+}

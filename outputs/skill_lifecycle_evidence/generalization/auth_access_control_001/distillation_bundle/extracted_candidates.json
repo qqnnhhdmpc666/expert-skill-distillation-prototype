@@ -1,0 +1,43 @@
+[
+  {
+    "candidate_id": "cand_01",
+    "natural_language_capability": "Role and scope authorization",
+    "normalized_capability_id": "AUTH_SCOPE_MATRIX",
+    "source_span": "role/scope authorization",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "role/scope authorization",
+      "role",
+      "scope"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_02",
+    "natural_language_capability": "Object ownership boundary",
+    "normalized_capability_id": "AUTH_OBJECT_OWNERSHIP",
+    "source_span": "object ownership",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "object ownership",
+      "ownership"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_03",
+    "natural_language_capability": "Non-leaking authorization error",
+    "normalized_capability_id": "AUTH_ERROR_ENVELOPE",
+    "source_span": "error envelope.",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "error envelope",
+      "error",
+      "envelope"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  }
+]

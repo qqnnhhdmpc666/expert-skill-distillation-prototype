@@ -1,0 +1,1 @@
+OpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span.

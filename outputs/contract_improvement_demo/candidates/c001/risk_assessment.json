@@ -1,0 +1,6 @@
+{
+  "scope_violation_risk": "medium",
+  "dependency_version_risk_absorbed": false,
+  "negative_control_required": true,
+  "unsupported_limitation_required": true
+}

@@ -1,0 +1,5 @@
+{
+  "case_id": "data_quality_review_001",
+  "expected_runtime_group": "out_of_scope_guard",
+  "expected_behavior": "emit no upload/config findings and record unsupported_task_family in runtime evidence"
+}

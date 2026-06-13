@@ -1,0 +1,15 @@
+{
+  "patch_operator": "strengthen_evidence_protocol",
+  "feedback_type": "evidence_gap",
+  "before_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "after_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "rationale": "Keep capability coverage but strengthen evidence and fix specificity requirements."
+}

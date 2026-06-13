@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_clean_out_of_scope_001",
+  "target_digest": {
+    "chars": 338,
+    "preview": "Task: Review this clean business-logic snippet. It is intentionally outside secure_code_review scope.\n\nSnippet:\npricing.py: calculate_discount(amount, tier) uses a documented lookup table and no upload, config, API schema, or auth access-control behavior is present.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

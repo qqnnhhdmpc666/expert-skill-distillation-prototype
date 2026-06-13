@@ -1,0 +1,74 @@
+{
+  "run_id": "skill_net_effect_matrix_001",
+  "created_at": "2026-06-09T07:38:50.241572+00:00",
+  "case_count": 5,
+  "rows": [
+    {
+      "case_id": "api_review_001",
+      "task_family": "api_or_code_review",
+      "no_skill_coverage": 0.0,
+      "skill_v1_coverage": 1.0,
+      "skill_v2_coverage": 1.0,
+      "skill_v2_minus_v1": 0.0,
+      "skill_v2_minus_no_skill": 1.0,
+      "feedback_type": "output_contract_error",
+      "repair_action": "rewrite_output_contract",
+      "a2_pass": true
+    },
+    {
+      "case_id": "auth_access_control_001",
+      "task_family": "auth_access_control",
+      "no_skill_coverage": 0.0,
+      "skill_v1_coverage": 1.0,
+      "skill_v2_coverage": 1.0,
+      "skill_v2_minus_v1": 0.0,
+      "skill_v2_minus_no_skill": 1.0,
+      "feedback_type": "ownership_boundary_missing",
+      "repair_action": "patch_boundary",
+      "a2_pass": true
+    },
+    {
+      "case_id": "config_security_001",
+      "task_family": "config_security",
+      "no_skill_coverage": 0.0,
+      "skill_v1_coverage": 1.0,
+      "skill_v2_coverage": 1.0,
+      "skill_v2_minus_v1": 0.0,
+      "skill_v2_minus_no_skill": 1.0,
+      "feedback_type": "false_positive_risk",
+      "repair_action": "reduce_false_positive_risk",
+      "a2_pass": true
+    },
+    {
+      "case_id": "data_quality_review_001",
+      "task_family": "data_quality_review",
+      "no_skill_coverage": 0.0,
+      "skill_v1_coverage": 1.0,
+      "skill_v2_coverage": 1.0,
+      "skill_v2_minus_v1": 0.0,
+      "skill_v2_minus_no_skill": 1.0,
+      "feedback_type": "target_context_missing",
+      "repair_action": "add_observation_step",
+      "a2_pass": true
+    },
+    {
+      "case_id": "upload_security_001",
+      "task_family": "upload_security",
+      "no_skill_coverage": 0.0,
+      "skill_v1_coverage": 0.3333,
+      "skill_v2_coverage": 1.0,
+      "skill_v2_minus_v1": 0.6667,
+      "skill_v2_minus_no_skill": 1.0,
+      "feedback_type": "missing_capability",
+      "repair_action": "patch_capability",
+      "a2_pass": true
+    }
+  ],
+  "summary": {
+    "all_a2_pass": true,
+    "average_v1_to_v2_gain": 0.1333,
+    "average_no_skill_to_v2_gain": 1.0,
+    "promoted_case_count": 5
+  },
+  "boundary": "This is a controlled net-effect matrix over the shared offline suite. It measures verifier-scored improvement, not open-world utility."
+}

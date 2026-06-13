@@ -1,0 +1,37 @@
+[
+  {
+    "finding_id": "F001",
+    "rule_id": "R002",
+    "evidence_span": "def upload(filename, content_type, file_bytes):",
+    "risk_level": "high",
+    "recommended_fix": "对用户可控参数增加类型、长度、范围和 allowlist 校验。"
+  },
+  {
+    "finding_id": "F002",
+    "rule_id": "R004",
+    "evidence_span": "return {\"ok\": True, \"debug_path\": \"/public/uploads/\" + filename}",
+    "risk_level": "medium",
+    "recommended_fix": "统一错误 envelope，并对邮箱、token、密钥、内部错误脱敏。"
+  },
+  {
+    "finding_id": "F003",
+    "rule_id": "R005",
+    "evidence_span": "@app.post(\"/upload\")",
+    "risk_level": "high",
+    "recommended_fix": "同时校验扩展名、MIME、内容魔数，并隔离上传路径。"
+  },
+  {
+    "finding_id": "F004",
+    "rule_id": "R006",
+    "evidence_span": "audit_log_retention_days: null",
+    "risk_level": "medium",
+    "recommended_fix": "设置安全事件审计日志和保留策略。"
+  },
+  {
+    "finding_id": "F006",
+    "rule_id": "R008",
+    "evidence_span": "save(\"/public/uploads/\" + filename, file_bytes)",
+    "risk_level": "high",
+    "recommended_fix": "规范化路径并拒绝 ../ 等目录穿越输入。"
+  }
+]

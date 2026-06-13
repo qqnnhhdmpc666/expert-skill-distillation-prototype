@@ -1,0 +1,16 @@
+{
+  "run_id": "swebench_lite_smoke_20260612",
+  "instance_id": "astropy__astropy-6938",
+  "variant": "skill_llm_patch",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "prediction_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_lite_smoke_20260612\\predictions\\skill_llm_patch.jsonl",
+  "evaluation_status": "blocked_no_model",
+  "skill_provenance": {
+    "installed_skill": "software_patch_review",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\software_patch_review\\versions\\v1",
+    "skill_version": "v1",
+    "skill_hash": "233f3190d173d7e25f984f532723f3da0c0af07cbf464e00542a906c4b1527a4",
+    "manifest_hash": "9b4bbaaaf6e836f196e3aeefc9cd1201f5b16088cf962dcece3aca46faf809cd"
+  },
+  "claim_boundary": "SWE-bench smoke evidence; no external effectiveness claim unless non-oracle patch beats empty_patch."
+}

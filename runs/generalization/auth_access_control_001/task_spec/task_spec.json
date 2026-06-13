@@ -1,0 +1,9 @@
+{
+  "case_id": "auth_access_control_001",
+  "backend": "offline_deterministic",
+  "expected": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ]
+}

@@ -1,0 +1,5 @@
+- finding_id
+- rule_id
+- evidence_span
+- risk_level
+- recommended_fix

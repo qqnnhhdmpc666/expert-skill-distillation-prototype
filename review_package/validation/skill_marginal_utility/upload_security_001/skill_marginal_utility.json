@@ -1,0 +1,50 @@
+{
+  "case_id": "upload_security_001",
+  "backend": "offline_deterministic",
+  "variants": [
+    "no_skill",
+    "skill_v1",
+    "skill_v2",
+    "upper_bound"
+  ],
+  "scores": {
+    "no_skill": 0.6,
+    "skill_v1": 0.4667,
+    "skill_v2": 0.6,
+    "upper_bound": 0.6
+  },
+  "costs": {
+    "no_skill": 0,
+    "skill_v1": 75,
+    "skill_v2": 148,
+    "upper_bound": 148
+  },
+  "false_positives": {
+    "no_skill": 0,
+    "skill_v1": 0,
+    "skill_v2": 0,
+    "upper_bound": 0
+  },
+  "metrics": {
+    "v2_over_v1_gain": 0.1333,
+    "v2_over_no_skill_gain": 0.0,
+    "gap_to_upper_bound": 0.0,
+    "cost_delta": 73.0,
+    "false_positive_delta": 0.0,
+    "metamorphic_delta": 0.0
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\upload_security_001",
+  "safety_boundary": {
+    "allowed": [
+      "defensive_detection",
+      "explanation",
+      "fix_recommendation",
+      "patch_validation"
+    ],
+    "forbidden": [
+      "exploit_generation",
+      "attack_chain_execution",
+      "unauthorized_target_testing"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "candidate_id": "advanced_router_boundary_003",
+  "decision": "not_promoted",
+  "reason": "not_strictly_better_or_scope_safe",
+  "promotion_rule": "candidate_score > active_installed_score and false_positive_delta <= 0 and schema_error_delta <= 0 and scope_violation = false",
+  "qgse_pareto_gate": "reject",
+  "auto_installed": false
+}

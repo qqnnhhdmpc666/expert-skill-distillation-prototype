@@ -1,0 +1,14 @@
+{
+  "case_id": "api_review_001",
+  "active_version": "v2",
+  "available_versions": [
+    "v1",
+    "v2"
+  ],
+  "scope_limit": "controlled_offline_generalization",
+  "rollback_available": true,
+  "history_artifact": "outputs/installed_skills/api_review_001/history/events.json",
+  "source_bundle": "outputs/skill_lifecycle_evidence/generalization/api_review_001/distillation_bundle",
+  "trajectory_bundle": "outputs/skill_lifecycle_evidence/generalization/api_review_001/trajectory_bundle",
+  "notes": "This is a generated installation surface for artifact-backed lifecycle review, not a production package manager."
+}

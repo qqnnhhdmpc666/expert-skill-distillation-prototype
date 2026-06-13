@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_upload_mime_storage_001",
+  "target_digest": {
+    "chars": 265,
+    "preview": "Task: Independently authored holdout: defensive upload review.\n\nSnippet:\nupload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

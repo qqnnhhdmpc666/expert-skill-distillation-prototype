@@ -1,0 +1,116 @@
+{
+  "run_id": "metamorphic_stress_minimal_001",
+  "case_count": 4,
+  "overall_pass": true,
+  "claim_scope": "minimal metamorphic stress for controlled verifier relations",
+  "cases": [
+    {
+      "case_id": "upload_clean_target_removes_findings",
+      "scenario": "upload_security",
+      "transform": "remove upload type/audit weakness",
+      "expected_relation": "Previously appended upload findings should disappear or be rejected.",
+      "expected_pass": false,
+      "actual_pass": false,
+      "control_passed": true,
+      "feedback_type": "false_positive_risk",
+      "verifier_report": {
+        "pass": false,
+        "feedback_type": "false_positive_risk",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [
+          "UPLOAD_TYPE_MAGIC"
+        ],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 0.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "config_clean_production_rejects_false_positive",
+      "scenario": "config_security",
+      "transform": "clean production config",
+      "expected_relation": "Append-style config findings should be rejected.",
+      "expected_pass": false,
+      "actual_pass": false,
+      "control_passed": true,
+      "feedback_type": "false_positive_risk",
+      "verifier_report": {
+        "pass": false,
+        "feedback_type": "false_positive_risk",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [
+          "CONFIG_ENV_GUARD"
+        ],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 0.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "data_quality_row_shuffle_preserves_findings",
+      "scenario": "data_quality",
+      "transform": "shuffle row/order presentation",
+      "expected_relation": "The same grounded data-quality findings should remain valid.",
+      "expected_pass": true,
+      "actual_pass": true,
+      "control_passed": true,
+      "feedback_type": "pass",
+      "verifier_report": {
+        "pass": true,
+        "feedback_type": "pass",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "api_injected_overbroad_risk_appears",
+      "scenario": "api_review",
+      "transform": "inject overbroad endpoint risk",
+      "expected_relation": "API_OVERBROAD_RISK should be accepted when target evidence exists.",
+      "expected_pass": true,
+      "actual_pass": true,
+      "control_passed": true,
+      "feedback_type": "pass",
+      "verifier_report": {
+        "pass": true,
+        "feedback_type": "pass",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    }
+  ]
+}

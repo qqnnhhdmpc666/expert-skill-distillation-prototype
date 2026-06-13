@@ -1,0 +1,35 @@
+{
+  "skill_id": "secure_code_review",
+  "version": "live_ablation_no_task_router",
+  "task_family": "secure_code_review",
+  "capabilities": [
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC",
+    "UPLOAD_AUDIT_RETENTION",
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK",
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "runtime_case_id": "task_conditioned_secure_review",
+    "package_role": "installed_runtime",
+    "package_family_scope": "task_conditioned_secure_review",
+    "supported_task_families": [],
+    "out_of_scope_group": "out_of_scope_guard",
+    "capability_groups": []
+  }
+}

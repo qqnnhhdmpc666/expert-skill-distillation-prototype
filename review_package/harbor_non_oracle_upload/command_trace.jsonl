@@ -1,0 +1,3 @@
+{"event":"harbor_cli_help","status":"ok","command":"cd /opt/spark/harbor-src-locked && uv run harbor --help"}
+{"event":"harbor_non_oracle_run","status":"completed","command":"uv run harbor run --path <real-upload-security-review> --agent nop --env docker --jobs-dir <outputs/harbor_non_oracle_upload_001/jobs> --job-name harbor_non_oracle_upload_001 --n-concurrent 1 --max-retries 0 --artifact /artifacts/security_report.json --artifact /artifacts/result.json"}
+{"event":"verifier_feedback","reward":0.0,"message":"/app/security_report.json was not created"}

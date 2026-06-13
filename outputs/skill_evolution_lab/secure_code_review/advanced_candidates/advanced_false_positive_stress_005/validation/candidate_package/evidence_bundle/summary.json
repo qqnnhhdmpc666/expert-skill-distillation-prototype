@@ -1,0 +1,51 @@
+{
+  "bundle_id": "holdout_clean_tax_math_001_candidate_package_offline_deterministic",
+  "created_at": "2026-06-12T11:39:16.946329+00:00",
+  "case_id": "holdout_clean_tax_math_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_package",
+  "status": "completed",
+  "verifier_result": "fail",
+  "verifier_feedback_type": "false_positive_risk",
+  "artifacts": [
+    "raw_output.json",
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json",
+    "verifier_feedback.json",
+    "repair_patch.json",
+    "qualification_decision.json"
+  ],
+  "score": 0.6,
+  "token_cost_estimate": 212,
+  "safety_boundary": "defensive_review_only_no_exploit_generation",
+  "provenance": {
+    "run_id": "holdout_clean_tax_math_001::offline_deterministic::candidate_package",
+    "case_id": "holdout_clean_tax_math_001",
+    "backend": "offline_deterministic",
+    "variant": "candidate_package",
+    "runtime_source": "advanced_candidate_package",
+    "task_family": "clean_business_logic_review",
+    "activated_capability_group": "upload_security",
+    "expected_capability_group": "out_of_scope_guard",
+    "capability_group_correct": false,
+    "out_of_scope": false,
+    "unsupported_task_family": null,
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\advanced_candidates\\advanced_false_positive_stress_005",
+    "skill_hash": "ebc9100d6b56f8f6262f16eb77352057c577cbfdb8554c645d535d041628c977",
+    "manifest_hash": "3fb81c206f3afbcbbee759e7fb5c78cb81c8ee0a933a1a3dae99894f7c6d778f",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T11:38:15.443320+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T11:39:16.937778+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "offline_deterministic",
+    "cost": null,
+    "tokens": 212,
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

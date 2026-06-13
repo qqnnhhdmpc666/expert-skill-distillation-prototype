@@ -1,0 +1,6 @@
+scenario_id: "config"
+asset_type: "YAML 配置 + 环境变量"
+success_criteria:
+  - verifier_status == PASS
+  - no missing_rule_ids
+  - output_schema_fields_present

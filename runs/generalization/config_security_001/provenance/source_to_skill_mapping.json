@@ -1,0 +1,12 @@
+[
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "CONFIG_AUDIT_EXPORT",
+    "skill_file": "skills/skill_v2/SKILL.md#CONFIG_AUDIT_EXPORT"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "CONFIG_ENV_GUARD",
+    "skill_file": "skills/skill_v2/SKILL.md#CONFIG_ENV_GUARD"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "feedback_types": {
+    "missing_capability": {"severity": "hard", "description": "A required capability is absent from the attempt output."},
+    "weak_evidence": {"severity": "soft", "description": "The finding exists but evidence_span is missing or too vague."},
+    "output_contract_error": {"severity": "hard", "description": "The output violates the required schema or required fields."},
+    "false_positive_risk": {"severity": "soft", "description": "The output flags unsupported or environment-mismatched findings."},
+    "unsafe_action_risk": {"severity": "hard", "description": "The attempt proposes or executes unsafe actions outside the task boundary."},
+    "regression_observed": {"severity": "hard", "description": "A repair breaks a previously passing capability or contract."},
+    "high_cost_low_gain": {"severity": "soft", "description": "The repair spends budget without improving verifier-observed quality."},
+    "trace_missing": {"severity": "soft", "description": "Required source/execution/feedback/revision trace is incomplete."},
+    "target_context_missing": {"severity": "soft", "description": "The target lacks context needed to make a grounded decision."},
+    "ownership_boundary_missing": {"severity": "hard", "description": "Access-control output fails to bind object owner, tenant, role, or scope."},
+    "config_path_missing": {"severity": "soft", "description": "The output does not bind a finding to a concrete config path/environment."},
+    "overbroad_finding": {"severity": "soft", "description": "The finding is generic and not tied to target evidence."}
+  }
+}

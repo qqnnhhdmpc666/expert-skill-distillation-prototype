@@ -1,0 +1,13 @@
+{
+  "feedback_type": "missing_capability",
+  "repair_action": "patch_capability",
+  "before_capabilities": [
+    "UPLOAD_PATH_ISOLATION"
+  ],
+  "after_capabilities": [
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "consumes": "A1/failure_feedback.json"
+}

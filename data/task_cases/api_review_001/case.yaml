@@ -1,0 +1,15 @@
+{
+  "case_id": "api_review_001",
+  "title": "API/code review report contract check",
+  "task_family": "api_or_code_review",
+  "expected_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "v1_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "typical_feedback": "output_contract_error",
+  "typical_repair": "rewrite_output_contract"
+}

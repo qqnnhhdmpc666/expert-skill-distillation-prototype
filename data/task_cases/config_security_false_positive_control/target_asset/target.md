@@ -1,0 +1,1 @@
+config.yaml: prod.debug=false; prod.audit.enabled=true; prod.audit.retention_days=90; prod.audit.export_sink=siem; prod.secret_ref=vault://prod/api-token.

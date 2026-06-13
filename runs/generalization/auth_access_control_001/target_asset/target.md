@@ -1,0 +1,1 @@
+delete_invoice(invoice_id, user) checks is_authenticated, loads invoice by id, deletes it, and returns invoice_id.

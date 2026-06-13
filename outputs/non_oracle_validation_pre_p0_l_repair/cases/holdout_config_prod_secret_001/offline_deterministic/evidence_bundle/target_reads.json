@@ -1,0 +1,7 @@
+{
+  "case_id": "holdout_config_prod_secret_001",
+  "target_digest": {
+    "chars": 322,
+    "preview": "Task: Review this configuration defensively and keep production and dev-only findings separate.\n\nSnippet:\nprod.yaml: audit.enabled=true with retention_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "swebench_gold_patch_smoke_requests_20260612",
+  "instance_id": "psf__requests-1963",
+  "generated_at": "2026-06-12T11:45:02.099992+00:00",
+  "max_retries": 2,
+  "retry_attempts": [
+    {
+      "attempt_index": 1,
+      "result": {
+        "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+        "return_code": 0,
+        "stdout": "Base image sweb.base.py.x86_64:latest already exists, skipping build.\nBase images built successfully.\nNo environment images need to be built.\nFound 1 existing instance images. Will reuse them.\nRunning 1 instances...\nError building image psf__requests-1963: 409 Client Error for http+docker://localhost/v1.52/containers/create?name=sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch&platform=linux%2Fx86_64: Conflict (\"Conflict. The container name \"/sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch\" is already in use by container \"6ad7425805993a672ac5e1370fd87f5e3c8a9e50a71bd2c10cca3b3652fb221c\". You have to remove (or rename) that container to be able to reuse that name.\")\nCheck (logs/run_evaluation/swebench_gold_patch_smoke_requests_20260612_gold_patch/gold_patch/psf__requests-1963/run_instance.log) for more information.\nAll instances run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 0\nInstances with errors: 1\nUnstopped containers: 1\nUnremoved images: 1\nReport written to gold_patch.swebench_gold_patch_smoke_requests_20260612_gold_patch.json\n",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\n\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  7.54it/s, ✓=0, ✖=0, error=1]\n",
+        "ok": true,
+        "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+        "retry_wall_timeout_seconds": 180,
+        "official_timeout_seconds": 180,
+        "timestamp": "2026-06-12T11:44:45.953540+00:00"
+      },
+      "status_after": "infra_blocked"
+    },
+    {
+      "attempt_index": 2,
+      "result": {
+        "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+        "return_code": 0,
+        "stdout": "Base image sweb.base.py.x86_64:latest already exists, skipping build.\nBase images built successfully.\nNo environment images need to be built.\nFound 1 existing instance images. Will reuse them.\nRunning 1 instances...\nError building image psf__requests-1963: 409 Client Error for http+docker://localhost/v1.52/containers/create?name=sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch&platform=linux%2Fx86_64: Conflict (\"Conflict. The container name \"/sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch\" is already in use by container \"6ad7425805993a672ac5e1370fd87f5e3c8a9e50a71bd2c10cca3b3652fb221c\". You have to remove (or rename) that container to be able to reuse that name.\")\nCheck (logs/run_evaluation/swebench_gold_patch_smoke_requests_20260612_gold_patch/gold_patch/psf__requests-1963/run_instance.log) for more information.\nAll instances run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 0\nInstances with errors: 1\nUnstopped containers: 1\nUnremoved images: 1\nReport written to gold_patch.swebench_gold_patch_smoke_requests_20260612_gold_patch.json\n",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\n\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  9.33it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  9.20it/s, ✓=0, ✖=0, error=1]\n",
+        "ok": true,
+        "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+        "retry_wall_timeout_seconds": 180,
+        "official_timeout_seconds": 180,
+        "timestamp": "2026-06-12T11:45:02.098995+00:00"
+      },
+      "status_after": "infra_blocked"
+    }
+  ],
+  "diagnostics_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\infra_unblock\\diagnostics.json",
+  "diagnostic_summary": {
+    "docker_pull_ubuntu_22_04": "return_code_1",
+    "curl_repo_anaconda": "ok",
+    "curl_failed_conda_package": "ok"
+  },
+  "summary_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\summary.json",
+  "final_status": "infra_blocked",
+  "blocked_reason": "Official harness environment-image build failed during conda package download from repo.anaconda.com: Content-Length mismatch after network timeout.",
+  "evaluation_logic_changed": false,
+  "dependency_fetch_mirror_changed": false,
+  "skill_llm_patch_attempted": false,
+  "claim_boundary": "SWE-bench harness readiness only; not secure_code_review evidence."
+}

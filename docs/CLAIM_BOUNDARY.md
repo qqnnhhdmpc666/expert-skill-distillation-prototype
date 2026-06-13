@@ -1,309 +1,47 @@
 # Claim Boundary
 
-This file defines safe wording for demos, reports, and discussions.
+## Safe Claim
 
-## Current Safe Positioning
+This project is a controlled deployable prototype for an Evidence-Grounded Skill Evolution Runtime.
 
-Use one of these:
+It demonstrates:
 
-```text
-risk-budgeted traceable skill deployment prototype
-```
+- prototype-level evidence-grounded Skill Evolution Runtime
+- controlled installed multi-capability secure_code_review validation
+- representative local defensive security mini-suite if leakage audit passes
+- small candidate generation/rejection evidence under strict promotion gates
+- SWE-bench official harness readiness tracking, currently infra-blocked unless official harness resolves
 
-or:
+## Unsafe Claims
 
-```text
-correctness-constrained expert skill deployment optimization
-```
+Do not claim:
 
-Current method framing:
+- production vulnerability scanner
+- full SPARK reproduction
+- SWE-bench success or agent performance while official harness remains infra_blocked
+- real-world security validity based only on offline deterministic mini-suite
+- official CyberSecEval/CVE-Bench/AutoPatchBench result
+- exploit generation, attack-chain execution, or unauthorized target testing
 
-```text
-constrained post-execution skill revision
-```
+## Evidence Lanes
 
-Latest method hypothesis:
+- Runtime-general evidence supports the runtime mechanism.
+- Secure-code-review evidence supports bounded defensive review behavior under controlled installed runtime.
+- Software-patch-review evidence supports only internal smoke and official harness readiness until non-oracle SWE-bench evaluation succeeds.
+- External-security evidence is local representative evidence unless an official benchmark is actually run.
 
-```text
-posterior skill revision
-```
+## SWE-bench Boundary
 
-Meaning:
+SWE-bench official harness results must not be used to support `secure_code_review`.
 
-```text
-The system does not merely check whether a patch fits a token budget. It attributes post-execution feedback, proposes targeted repairs, rejects regressions, checks semantic/trace evidence, and allocates verification cost to high-risk rules.
-```
+If SWE-bench is `infra_blocked`, report it as infrastructure blocked. Do not call it benchmark success, model failure, or Skill failure.
 
-Avoid presenting the work as a mature universal compiler, benchmark, or replacement for SPARK.
+## Red-Team Boundary Rules
 
-## Relationship To SPARK-PDI And COLLEAGUE.SKILL
-
-Safe wording:
-
-```text
-We build on COLLEAGUE.SKILL's inspectable skill artifact idea and SPARK-PDI's execution-evidence orientation. Our scoped exploration is correctness-constrained deployment in a controlled API-review family: budgeted compact skill generation, verifier-driven patching, validation gates, rule-application trace, and risk-budgeted selective trace.
-```
-
-Do not say:
-
-```text
-We comprehensively outperform SPARK-PDI or COLLEAGUE.SKILL.
-```
-
-Do not say:
-
-```text
-Every module in the prototype is original.
-```
-
-Do not say:
-
-```text
-The current prototype is already a mature open-source skill platform.
-```
-
-Repository maturity wording:
-
-```text
-The current repository is a reproducible, artifact-rich demo prototype. It has meaningful implementation depth, but compared with SPARK-PDI and COLLEAGUE.SKILL it is still weaker in package structure, formal tests, schema enforcement, dependency management, CI, and stable CLI/API design.
-```
-
-## What We Can Say
-
-We can say:
-
-- The prototype runs an end-to-end controlled API-review vertical loop.
-- Expert materials are converted into full skill, evidence map, rule ledger, and compact skill artifacts.
-- Compact skill content affects mock agent and RightCode `gpt-5.5` outputs in the controlled matrix.
-- Harbor/verifier feedback can be converted into execution reports and rule-level patch proposals.
-- `missing_rule` failures can patch domain rules such as R005/R006 into compact v2.
-- `output_format_error` failures can patch output-contract constraints instead of domain rules.
-- Validation gate can reject patches that introduce regression or exceed budget.
-- Compressed compact wording can preserve executable semantics in the current toy audit.
-- Trace verifier can distinguish rule-id shortcut from rule-application evidence in the toy protocol slice.
-- Controlled holdout evidence shows patched compact improves coverage over compact_v1:
-
-```text
-compact_v1 avg coverage: 0.58
-patched_compact avg coverage: 1.00
-```
-
-- Selective trace reduces overhead while preserving traceability for failure-critical rules in the toy slice:
-
-```text
-full_trace: 300 / 237, rejected
-selective_trace R005/R006: 183 / 237, accepted and blocks shortcut
-```
-
-- Risk-based selective trace has a same-size random baseline in the toy slice:
-
-```text
-random_selective_trace R002/R003: 183 / 237, failure-critical trace coverage 0.00
-risk_based_selective_trace R005/R006: 183 / 237, failure-critical trace coverage 1.00
-```
-
-Safe interpretation:
-
-```text
-Risk signals can guide trace budget allocation to failure-critical rules in this toy slice.
-```
-
-- Risk trace robustness has been checked by enumerating all size=2 trace allocations:
-
-```text
-all size=2 combinations: 15
-only R005/R006 covers both failure-critical rules
-risk_based_selective_trace selects R005/R006
-```
-
-- Direct-summary miss analysis identifies the residual miss:
-
-```text
-failed case: case004_validation_sensitive_idempotency
-missed rule: R006 idempotency
-```
-
-- Adversarial trace sanity check rejects obvious fake or weak trace evidence:
-
-```text
-valid control: pass
-fake_evidence_span: reject
-generic_trigger: reject
-mismatched_finding_id: reject
-rule_id_only_trace: reject
-```
-
-- Revision decision matrix consolidates the nontrivial decision chain:
-
-```text
-missing_rule -> patch_rule
-output_format_error -> rewrite_output_contract
-regression_observed -> reject_and_rollback
-semantic_compressed -> semantic_preservation_audit
-rule_id_shortcut -> require_trace_contract
-fake_trace_evidence -> strengthen_trace_verifier
-trace_budget_pressure -> risk_based_selective_trace
-```
-
-- Component attribution now includes a direct-summary baseline:
-
-```text
-direct_summary_skill avg coverage: 0.92
-patched_compact avg coverage: 1.00
-```
-
-Safe interpretation:
-
-```text
-Plain summarization can be strong for obvious rules in the controlled API-review family. The current structured loop is best claimed as recovering missed long-tail/failure-critical rules and controlling deployment risk, not as proof that summaries are generally weak.
-```
-
-- Posterior revision signal audit connects the existing slices into a method hypothesis:
-
-```text
-posterior_recovery_gain_over_compact_v1: 0.4166
-posterior_recovery_gain_over_direct_summary: 0.0833
-missing_rule_type_specificity_margin: 1
-output_format_type_specificity_margin: 1
-```
-
-Safe interpretation:
-
-```text
-Post-execution evidence can be audited as a revision signal that changes patch, gate, and trace decisions in the current controlled family.
-```
-
-- Naive revision ablation pressure-tests simple alternatives:
-
-```text
-always_append_domain_rules: fixes missing_rule, fails output_format_error
-always_rewrite_output_contract: fixes output_format_error, fails missing_rule
-always_regenerate_full_skill: fixes tested failures but costs 1429.75 avg tokens
-accept_if_current_failure_fixed: unsafe under rollback_gate_001
-always_full_trace: blocks shortcut but is 300/237 over budget
-type_specific_operator_plus_gate_and_selective_trace: best-supported narrow combination in current toy slices
-```
-
-- A second-domain config-security probe now exists:
-
-```text
-direct_summary_skill: 0.825 coverage, 2 / 4 pass, residual C006 audit-retention miss
-always_append_domain_rules: 1.0 coverage, but output-contract errors remain
-always_rewrite_output_contract: valid contract, but C006 remains missing
-accept_if_current_failure_fixed: rejected for C003 regression
-always_full_trace: 629 / 260, rejected over budget
-always_regenerate_full_skill: 289 / 260, strong high-cost upper bound
-type_specific_operator_plus_gate_and_selective_trace: 4 / 4 pass, accepted at 166 / 260
-```
-
-## What We Cannot Say
-
-Do not say:
-
-- We have proven general correctness.
-- We have proven superiority over related work.
-- The 4-case holdout is a benchmark.
-- This is a mature skill compiler.
-- This is a general self-evolving skill framework.
-- `rule_ledger` alone is a strong new method.
-- The trace protocol applies to all agents or tasks.
-- RightCode GPT small-sample results prove model stability.
-- Cost optimization is fully solved.
-- We comprehensively beat SPARK-PDI or COLLEAGUE.SKILL.
-- Every component is original.
-- This is already a mature open-source platform.
-- The current repository has the same engineering maturity as SPARK-PDI or COLLEAGUE.SKILL.
-- Direct summarization is always a weak baseline.
-- The prototype has broadly defeated direct-summary skill generation.
-- Risk-based selective trace has been statistically validated.
-- One direct-summary miss proves a general long-tail failure pattern.
-- The current risk policy will work beyond the current rule pool.
-- The trace verifier is a deep semantic judge.
-- Adversarial trace sanity checks prove robustness against sophisticated fake evidence.
-- The contribution is simply a token-budget if/else check.
-- The current revision decision matrix proves a mature revision algorithm.
-- Posterior revision utility is already a mature PDI-like metric.
-- The current API-review probe proves the method transfers across domains.
-- Typed posterior revision is proven novel against all reflection, prompt repair, program repair, or memory-update work.
-- Always-regenerate baselines are weak; in the current slice they are actually a strong high-cost upper bound.
-- The second-domain config-security probe is a benchmark or cross-domain proof.
-- The typed revision mechanism is no longer hand-constructed.
-
-## Safe Main Claim
-
-Use:
-
-```text
-The prototype demonstrates a risk-budgeted traceable skill deployment loop in a controlled API-review family: expert materials become evidence-grounded skills, verifier feedback drives patch proposals, validation gates prevent regression or over-budget deployment, and selective trace focuses rule-application evidence on high-risk rules.
-```
-
-## Unsafe Wording
-
-Avoid:
-
-```text
-We propose a general expert skill compiler.
-```
-
-Avoid:
-
-```text
-Our method outperforms SPARK or COLLEAGUE.SKILL.
-```
-
-Avoid:
-
-```text
-The holdout set proves real-world generalization.
-```
-
-## Current Research Opening
-
-The most promising research question is not whether we can log more fields. It is:
-
-```text
-Given material evidence, execution feedback, risk, and budget, how should a system decide which rules to keep, patch, compress, trace, accept, reject, or roll back?
-```
-
-Method-level opening:
-
-```text
-How much of a deployed skill's later success is explained by posterior evidence-grounded revision, rather than by prior material summarization or generic model capability?
-```
-
-Novelty pressure wording:
-
-```text
-Posterior feedback itself is not novel. The current possible delta is narrower: mapping posterior feedback to typed revision operators over a deployable expert-skill package, then promoting revisions only through deployment gates for regression, budget, semantics, and traceability.
-```
-
-Second-domain wording:
-
-```text
-The config-security slice is a second-domain probe that reduces API-review overfitting concern, but it is still deterministic and hand-constructed. It supports method plausibility, not generalization.
-```
-
-Operator-transfer wording:
-
-```text
-The second domain reuses the frozen typed-revision skeleton for the tested feedback types. The transferred object is the operator/gate/trace-policy structure, while rule semantics and field names remain domain-specific.
-```
-
-Prior/posterior wording:
-
-```text
-Prior signals are enough to build many useful initial skill rules. Posterior signals matter when the deployment run reveals residual missing rules, wrong repair type, regression, or trace-budget pressure.
-```
-
-## Baseline Attribution Boundary
-
-Use component baselines to explain contribution sources:
-
-- `direct_summary_skill`: tests whether structured rules help beyond direct summarization.
-- `full_skill_no_compiler`: tests full-context upper-bound behavior and cost.
-- `compact_no_feedback`: tests compacting without execution feedback.
-- `patched_no_gate`: tests the value of validation gate.
-- `patched_no_trace`: tests behavior without trace observability.
-- `patched_selective_trace`: tests risk-budgeted trace allocation.
-
-Do not call this a benchmark unless it is expanded into a larger, independently specified evaluation set.
+- `cannot_claim_production_vulnerability_scanner`: `True`
+- `cannot_claim_full_spark_reproduction`: `True`
+- `cannot_claim_swebench_success_unless_official_harness_resolves`: `True`
+- `cannot_claim_real_world_security_validity_from_offline_deterministic_only`: `True`
+- `can_claim_prototype_level_evidence_grounded_runtime`: `True`
+- `can_claim_controlled_installed_multi_capability_secure_code_review_validation`: `True`
+- `can_claim_representative_local_defensive_security_mini_suite_if_leakage_audit_passes`: `True`

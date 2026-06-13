@@ -1,0 +1,19 @@
+{
+  "pass": false,
+  "feedback_type": "missing_capability",
+  "missing_capabilities": [
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "false_positive_capabilities": [],
+  "schema_errors": [],
+  "weak_evidence_capabilities": [],
+  "unsupported_evidence_capabilities": [],
+  "scores": {
+    "capability_coverage_score": 0.3333,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  }
+}

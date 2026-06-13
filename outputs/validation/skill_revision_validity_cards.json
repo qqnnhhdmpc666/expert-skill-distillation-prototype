@@ -1,0 +1,626 @@
+{
+  "generated_at": "2026-06-09T06:34:16.339837+00:00",
+  "card_count": 11,
+  "status_vocab": [
+    "supported",
+    "partially_supported",
+    "not_measured",
+    "manual_review_pending"
+  ],
+  "cards": [
+    {
+      "card_id": "live_llm_upload_repair_loop",
+      "artifact": "outputs/live_llm_repair_loop_upload_001",
+      "scope": "Controlled repair loop for upload_security_001 on backend live_llm_text.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "A1 pass=False, A2 pass=True, reward_delta=+1.0."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "A1 feedback `missing_capability` triggered repair `patch_capability` and gate `accept`."
+        },
+        "regression_safety": {
+          "status": "supported",
+          "note": "After repair: missing=['none'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Single controlled security slice only."
+        },
+        "repeatability": {
+          "status": "not_measured",
+          "note": "Not measured for this single loop artifact."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Latency and token usage are available in backend metadata/model_calls but not normalized here."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier distinguished A1 vs A2; before repair missing=['UPLOAD_AUDIT_RETENTION', 'UPLOAD_TYPE_MAGIC'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human usefulness review is attached to this loop artifact."
+        }
+      },
+      "summary": {
+        "scenario": "upload_security_001",
+        "backend": "live_llm_text",
+        "a1_pass": false,
+        "a2_pass": true,
+        "reward_delta": 1.0,
+        "feedback_type": "missing_capability",
+        "repair_action": "patch_capability",
+        "gate_decision": "accept"
+      },
+      "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled upload task; verifier and gate remain deterministic.",
+      "sources": [
+        "outputs/live_llm_repair_loop_upload_001/A1/verifier_report.json",
+        "outputs/live_llm_repair_loop_upload_001/revision/patch_plan.json",
+        "outputs/live_llm_repair_loop_upload_001/revision/gate_decision.json",
+        "outputs/live_llm_repair_loop_upload_001/A2/verifier_report.json",
+        "outputs/live_llm_repair_loop_upload_001/A1/security_report.json",
+        "outputs/live_llm_repair_loop_upload_001/A2/security_report.json"
+      ]
+    },
+    {
+      "card_id": "live_llm_data_quality_repair_loop",
+      "artifact": "outputs/live_llm_repair_loop_data_quality_001",
+      "scope": "Controlled repair loop for data_quality_review_001 on backend live_llm_text.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "A1 pass=False, A2 pass=True, reward_delta=+1.0."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "A1 feedback `output_contract_error` triggered repair `rewrite_output_contract` and gate `accept`."
+        },
+        "regression_safety": {
+          "status": "supported",
+          "note": "After repair: missing=['none'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "One controlled non-security slice only; not broad multi-domain generalization."
+        },
+        "repeatability": {
+          "status": "not_measured",
+          "note": "Not measured for this single loop artifact."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Latency and token usage are available in backend metadata/model_calls but not normalized here."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier distinguished A1 vs A2; before repair missing=['none'], schema_errors=['DATA_REQUIRED_FIELD_COVERAGE.recommended_fix', 'DATA_TEMPORAL_SPLIT_GUARD.recommended_fix', 'DATA_LABEL_ENUM_ALIGNMENT.recommended_fix'], weak_evidence=['none']."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human usefulness review is attached to this loop artifact."
+        }
+      },
+      "summary": {
+        "scenario": "data_quality_review_001",
+        "backend": "live_llm_text",
+        "a1_pass": false,
+        "a2_pass": true,
+        "reward_delta": 1.0,
+        "feedback_type": "output_contract_error",
+        "repair_action": "rewrite_output_contract",
+        "gate_decision": "accept"
+      },
+      "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled non-security data-quality task; verifier and gate remain deterministic.",
+      "sources": [
+        "outputs/live_llm_repair_loop_data_quality_001/A1/verifier_report.json",
+        "outputs/live_llm_repair_loop_data_quality_001/revision/patch_plan.json",
+        "outputs/live_llm_repair_loop_data_quality_001/revision/gate_decision.json",
+        "outputs/live_llm_repair_loop_data_quality_001/A2/verifier_report.json",
+        "outputs/live_llm_repair_loop_data_quality_001/A1/security_report.json",
+        "outputs/live_llm_repair_loop_data_quality_001/A2/security_report.json"
+      ]
+    },
+    {
+      "card_id": "live_llm_config_security_repair_loop",
+      "artifact": "outputs/live_llm_repair_loop_config_security_001",
+      "scope": "Controlled repair loop for config_security_001 on backend live_llm_text.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "partially_supported",
+          "note": "A1 pass=False, A2 pass=False, reward_delta=+0.0."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "A1 feedback `missing_capability` triggered repair `patch_capability` and gate `accept`."
+        },
+        "regression_safety": {
+          "status": "partially_supported",
+          "note": "After repair: missing=['CONFIG_ENV_GUARD'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Second local controlled security slice only; not broad live-LLM security-task generalization."
+        },
+        "repeatability": {
+          "status": "not_measured",
+          "note": "Not measured for this single loop artifact."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Latency and token usage are available in backend metadata/model_calls but not normalized here."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier distinguished A1 vs A2; before repair missing=['CONFIG_ENV_GUARD'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human usefulness review is attached to this loop artifact."
+        }
+      },
+      "summary": {
+        "scenario": "config_security_001",
+        "backend": "live_llm_text",
+        "a1_pass": false,
+        "a2_pass": false,
+        "reward_delta": 0.0,
+        "feedback_type": "missing_capability",
+        "repair_action": "patch_capability",
+        "gate_decision": "accept"
+      },
+      "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled configuration-security task; verifier and gate remain deterministic.",
+      "sources": [
+        "outputs/live_llm_repair_loop_config_security_001/A1/verifier_report.json",
+        "outputs/live_llm_repair_loop_config_security_001/revision/patch_plan.json",
+        "outputs/live_llm_repair_loop_config_security_001/revision/gate_decision.json",
+        "outputs/live_llm_repair_loop_config_security_001/A2/verifier_report.json",
+        "outputs/live_llm_repair_loop_config_security_001/A1/security_report.json",
+        "outputs/live_llm_repair_loop_config_security_001/A2/security_report.json"
+      ]
+    },
+    {
+      "card_id": "live_llm_api_review_repair_loop",
+      "artifact": "outputs/live_llm_repair_loop_api_review_001",
+      "scope": "Controlled repair loop for api_review_001 on backend live_llm_text.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "partially_supported",
+          "note": "A1 pass=False, A2 pass=False, reward_delta=+0.0."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "A1 feedback `missing_capability` triggered repair `patch_capability` and gate `accept`."
+        },
+        "regression_safety": {
+          "status": "partially_supported",
+          "note": "After repair: missing=['API_OVERBROAD_RISK'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Third local controlled slice only; not broad live-LLM task generalization."
+        },
+        "repeatability": {
+          "status": "not_measured",
+          "note": "Not measured for this single loop artifact."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Latency and token usage are available in backend metadata/model_calls but not normalized here."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier distinguished A1 vs A2; before repair missing=['API_OVERBROAD_RISK'], schema_errors=['API_SCHEMA_CONTRACT.recommended_fix'], weak_evidence=['none']."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human usefulness review is attached to this loop artifact."
+        }
+      },
+      "summary": {
+        "scenario": "api_review_001",
+        "backend": "live_llm_text",
+        "a1_pass": false,
+        "a2_pass": false,
+        "reward_delta": 0.0,
+        "feedback_type": "missing_capability",
+        "repair_action": "patch_capability",
+        "gate_decision": "accept"
+      },
+      "claim_boundary": "Single local live-LLM repair-loop evidence on one controlled API/code-review task; verifier and gate remain deterministic.",
+      "sources": [
+        "outputs/live_llm_repair_loop_api_review_001/A1/verifier_report.json",
+        "outputs/live_llm_repair_loop_api_review_001/revision/patch_plan.json",
+        "outputs/live_llm_repair_loop_api_review_001/revision/gate_decision.json",
+        "outputs/live_llm_repair_loop_api_review_001/A2/verifier_report.json",
+        "outputs/live_llm_repair_loop_api_review_001/A1/security_report.json",
+        "outputs/live_llm_repair_loop_api_review_001/A2/security_report.json"
+      ]
+    },
+    {
+      "card_id": "offline_generalization_suite",
+      "artifact": "outputs/validation/generalization_suite.json",
+      "scope": "Five controlled task families through one offline_deterministic lifecycle.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "A2 passes 5/5 controlled tasks."
+        },
+        "evidence_grounding": {
+          "status": "partially_supported",
+          "note": "Verifier checks evidence fields, but the offline agent path still emits deterministic capability/evidence hints rather than target-grounded reads."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "Each scenario records A1 feedback type and a distinct repair action before A2."
+        },
+        "regression_safety": {
+          "status": "partially_supported",
+          "note": "Regression is measured by verifier score and strengthened by separate negative controls, not by a broad held-out clean-target suite."
+        },
+        "transferability": {
+          "status": "supported",
+          "note": "The same offline suite spans upload, auth, config, API review, and one non-security data-quality task."
+        },
+        "repeatability": {
+          "status": "supported",
+          "note": "The offline path is deterministic and artifact-backed; reruns should be stable modulo timestamps."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Per-scenario summaries include latency; cost_budget_score is synthetic rather than measured from real model/token usage."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Robustness is supported only indirectly here; explicit unsupported-evidence/false-positive checks live in negative_controls.json."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No systematic human rating is stored for whether A2 reports are materially more useful than A1."
+        }
+      },
+      "claim_boundary": "Strong controlled lifecycle evidence, not open-world semantic quality evidence.",
+      "sources": [
+        "outputs/validation/generalization_suite.json",
+        "runs/generalization/*/verifier/A1_report.json",
+        "runs/generalization/*/revision/repair_decision.json"
+      ]
+    },
+    {
+      "card_id": "non_oracle_local_semantic_suite",
+      "artifact": "outputs/validation/non_oracle_local_suite.json",
+      "scope": "Deterministic non-oracle local semantic backend over five controlled task families.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "partially_supported",
+          "note": "A2 passes 5/5, but only upload shows a repair loop; four tasks already pass at A1."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "The backend reads target text, emits trace.jsonl read events, and grounds findings with detector hits."
+        },
+        "repair_attribution": {
+          "status": "partially_supported",
+          "note": "Only upload currently demonstrates verifier-triggered capability repair on this backend."
+        },
+        "regression_safety": {
+          "status": "partially_supported",
+          "note": "No dedicated clean-target local-semantic regression suite is stored yet."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "The interface spans five families, but feedback diversity is low: only pass/no_op and one missing_capability case."
+        },
+        "repeatability": {
+          "status": "supported",
+          "note": "This path is deterministic heuristic code with stable target reads."
+        },
+        "cost_budget": {
+          "status": "supported",
+          "note": "Latency is small and there is no external token cost."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier remains deterministic; robustness against semantic-but-wrong heuristics is only lightly tested."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No manual review card exists for whether the heuristic reports are meaningfully useful beyond contract compliance."
+        }
+      },
+      "claim_boundary": "Backend-interface and target-grounding evidence, not proof of autonomous semantic reasoning.",
+      "sources": [
+        "outputs/validation/non_oracle_local_suite.json",
+        "agents/non_oracle_local_security_agent.py"
+      ]
+    },
+    {
+      "card_id": "negative_controls",
+      "artifact": "outputs/validation/negative_controls.json",
+      "scope": "Controlled checks for unsupported evidence and false-positive rejection.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "not_measured",
+          "note": "This slice is about verifier refusal behavior, not task improvement."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Unsupported evidence is explicitly rejected when evidence_span is absent from the target."
+        },
+        "repair_attribution": {
+          "status": "partially_supported",
+          "note": "The clean-config control demonstrates gate behavior after a false-positive style repair, but not a full A1/A2 loop."
+        },
+        "regression_safety": {
+          "status": "supported",
+          "note": "Always-append findings are rejected on a clean config; empty typed output can pass when expected issue set is empty."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Only two negative controls exist so far."
+        },
+        "repeatability": {
+          "status": "supported",
+          "note": "These controls are deterministic and should be exactly reproducible."
+        },
+        "cost_budget": {
+          "status": "supported",
+          "note": "No external model cost is involved."
+        },
+        "verifier_robustness": {
+          "status": "supported",
+          "note": "This is the strongest direct evidence that verifier/gate can reject unsupported evidence and false positives."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human audit artifacts accompany the negative controls."
+        }
+      },
+      "claim_boundary": "Narrow robustness evidence for two adversarial patterns, not a broad adversarial verification benchmark.",
+      "sources": [
+        "outputs/validation/negative_controls.json"
+      ]
+    },
+    {
+      "card_id": "ablation_summary",
+      "artifact": "outputs/validation/ablation_summary.json",
+      "scope": "Controlled strategy comparison across upload and config tasks.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "Typed repair plus gate reaches PASS on both scenarios; naive strategies fail or incur regressions on config."
+        },
+        "evidence_grounding": {
+          "status": "partially_supported",
+          "note": "Ablation reuses the same controlled verifier path; it does not independently validate semantic grounding."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "Different repair choices produce measurably different outcomes under the same inputs."
+        },
+        "regression_safety": {
+          "status": "supported",
+          "note": "Always-append and naive-regenerate show regression_count > 0 on config; gate rejects those paths."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Only two scenarios are included in the executable ablation."
+        },
+        "repeatability": {
+          "status": "supported",
+          "note": "The ablation is deterministic."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Synthetic cost_budget_score differentiates strategies, but it is not calibrated to true runtime or token spend."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "The verifier distinguishes regressions here, but broader adversarial checks remain outside this table."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human comparison of strategy outputs is recorded."
+        }
+      },
+      "claim_boundary": "Useful controlled attribution evidence, not a benchmark-scale ablation.",
+      "sources": [
+        "outputs/validation/ablation_summary.json"
+      ]
+    },
+    {
+      "card_id": "harbor_llm_upload_repair_loop",
+      "artifact": "outputs/harbor_llm_repair_loop_upload_001",
+      "scope": "Controlled repair loop for real-upload-security-review on backend harbor_llm_repair_upload_replay.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "A1 pass=False, A2 pass=True, reward_delta=+1.0."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "A1 feedback `missing_capability` triggered repair `patch_capability` and gate `accept`."
+        },
+        "regression_safety": {
+          "status": "supported",
+          "note": "After repair: missing=['none'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Single Harbor upload slice only; cross-task transfer is evidenced separately and remains narrow."
+        },
+        "repeatability": {
+          "status": "not_measured",
+          "note": "Supported by the separate three-run upload repeatability smoke."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Prompt, response, usage, and Harbor job artifacts are stored, but no normalized cost table is computed here."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier distinguished A1 vs A2; before repair missing=['UPLOAD_AUDIT_RETENTION', 'UPLOAD_TYPE_MAGIC'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human usefulness review is attached to this loop artifact."
+        }
+      },
+      "summary": {
+        "scenario": "real-upload-security-review",
+        "backend": "harbor_llm_repair_upload_replay",
+        "a1_pass": false,
+        "a2_pass": true,
+        "reward_delta": 1.0,
+        "feedback_type": "missing_capability",
+        "repair_action": "patch_capability",
+        "gate_decision": "accept"
+      },
+      "claim_boundary": "Controlled single-scenario Harbor LLM repair-loop evidence, not general Harbor LLM security capability.",
+      "sources": [
+        "outputs/harbor_llm_repair_loop_upload_001/A1/verifier_report.json",
+        "outputs/harbor_llm_repair_loop_upload_001/revision/patch_plan.json",
+        "outputs/harbor_llm_repair_loop_upload_001/revision/gate_decision.json",
+        "outputs/harbor_llm_repair_loop_upload_001/A2/verifier_report.json",
+        "outputs/harbor_llm_repair_loop_upload_001/A1/security_report.json",
+        "outputs/harbor_llm_repair_loop_upload_001/A2/security_report.json",
+        "outputs/harbor_llm_repair_loop_upload_001/A1/target_reads.json",
+        "outputs/harbor_llm_repair_loop_upload_001/A2/target_reads.json"
+      ]
+    },
+    {
+      "card_id": "harbor_llm_config_repair_loop",
+      "artifact": "outputs/harbor_llm_repair_loop_config_001",
+      "scope": "Controlled repair loop for controlled-config-security-review on backend harbor_llm_repair_config_replay.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "A1 pass=False, A2 pass=True, reward_delta=+1.0."
+        },
+        "evidence_grounding": {
+          "status": "supported",
+          "note": "Agent artifacts show prompt/report/model-call landing and deterministic verifier reads them."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "A1 feedback `output_contract_error` triggered repair `rewrite_output_contract` and gate `accept`."
+        },
+        "regression_safety": {
+          "status": "supported",
+          "note": "After repair: missing=['none'], schema_errors=['none'], weak_evidence=['none']."
+        },
+        "transferability": {
+          "status": "partially_supported",
+          "note": "Second distinct Harbor task family, but still narrow controlled evidence."
+        },
+        "repeatability": {
+          "status": "not_measured",
+          "note": "Not measured for this single loop artifact."
+        },
+        "cost_budget": {
+          "status": "partially_supported",
+          "note": "Harbor prompt/response/job artifacts exist, but no normalized cost table is computed here."
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Verifier distinguished A1 vs A2; before repair missing=['none'], schema_errors=['CONFIG_PROD_DEBUG missing recommended_fix', 'CONFIG_INSECURE_HTTP missing recommended_fix', 'CONFIG_HARDCODED_SECRET missing recommended_fix'], weak_evidence=['none']."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No human usefulness review is attached to this loop artifact."
+        }
+      },
+      "summary": {
+        "scenario": "controlled-config-security-review",
+        "backend": "harbor_llm_repair_config_replay",
+        "a1_pass": false,
+        "a2_pass": true,
+        "reward_delta": 1.0,
+        "feedback_type": "output_contract_error",
+        "repair_action": "rewrite_output_contract",
+        "gate_decision": "accept"
+      },
+      "claim_boundary": "Second-task Harbor LLM evidence, still controlled and narrow.",
+      "sources": [
+        "outputs/harbor_llm_repair_loop_config_001/A1/verifier_report.json",
+        "outputs/harbor_llm_repair_loop_config_001/revision/patch_plan.json",
+        "outputs/harbor_llm_repair_loop_config_001/revision/gate_decision.json",
+        "outputs/harbor_llm_repair_loop_config_001/A2/verifier_report.json",
+        "outputs/harbor_llm_repair_loop_config_001/A1/security_report.json",
+        "outputs/harbor_llm_repair_loop_config_001/A2/security_report.json",
+        "outputs/harbor_llm_repair_loop_config_001/A1/target_reads.json",
+        "outputs/harbor_llm_repair_loop_config_001/A2/target_reads.json"
+      ]
+    },
+    {
+      "card_id": "harbor_llm_upload_repeatability",
+      "artifact": "outputs/validation/harbor_llm_repeatability_upload.json",
+      "scope": "Three-run repeatability smoke for the Harbor upload LLM repair loop.",
+      "metrics": {
+        "outcome_delta": {
+          "status": "supported",
+          "note": "All three runs show A1 fail and A2 pass with reward delta +1.0."
+        },
+        "evidence_grounding": {
+          "status": "partially_supported",
+          "note": "Repeatability summarizes verifier outcomes and model usage; grounding remains delegated to the underlying run artifacts."
+        },
+        "repair_attribution": {
+          "status": "supported",
+          "note": "Failure reason and missing-capability set are stable across repeats."
+        },
+        "regression_safety": {
+          "status": "partially_supported",
+          "note": "This slice checks stability of the same loop, not regression on unrelated clean tasks."
+        },
+        "transferability": {
+          "status": "not_measured",
+          "note": "Repeatability is measured only on upload."
+        },
+        "repeatability": {
+          "status": "supported",
+          "note": "A1 all fail, A2 all pass, reward stable, failure reason stable across three runs."
+        },
+        "cost_budget": {
+          "status": "supported",
+          "note": "average total tokens per loop=2191.33, average combined latency ms per loop=24702.33"
+        },
+        "verifier_robustness": {
+          "status": "partially_supported",
+          "note": "Stable failure types reduce the chance of arbitrary verifier drift, but do not exhaust robustness concerns."
+        },
+        "human_plausibility": {
+          "status": "manual_review_pending",
+          "note": "No repeated human evaluation accompanies the loop repeats."
+        }
+      },
+      "claim_boundary": "Small repeatability smoke for one Harbor upload loop, not a broad prompt-sensitivity study.",
+      "sources": [
+        "outputs/validation/harbor_llm_repeatability_upload.json"
+      ]
+    }
+  ]
+}

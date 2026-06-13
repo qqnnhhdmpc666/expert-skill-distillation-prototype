@@ -1,0 +1,30 @@
+{
+  "run_id": "wsl_harbor_real_upload_001",
+  "backend": "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+  "task": "real-upload-security-review",
+  "agent": "oracle",
+  "environment": "docker",
+  "reward": 1.0,
+  "passed": true,
+  "expected_capabilities": [
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "seen_capabilities": [
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "missing": [],
+  "schema_errors": [],
+  "evidence": {
+    "job_result": "result.json",
+    "trial_result": "real-upload-security-review__dCxSUn5/result.json",
+    "agent_log": "real-upload-security-review__dCxSUn5/agent/oracle.txt",
+    "security_report": "real-upload-security-review__dCxSUn5/artifacts/security_report.json",
+    "verifier_result": "real-upload-security-review__dCxSUn5/artifacts/result.json",
+    "verifier_stdout": "real-upload-security-review__dCxSUn5/verifier/test-stdout.txt"
+  },
+  "boundary": "This is a real WSL2/Docker/Harbor task with target files, agent execution, artifact download, and verifier reward. The agent is Harbor oracle, so it proves sandbox/verifier plumbing and task realism, not yet open-world CLI-agent autonomy."
+}

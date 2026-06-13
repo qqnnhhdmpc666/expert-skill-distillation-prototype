@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_dependency_version_risk_001",
+  "target_digest": {
+    "chars": 327,
+    "preview": "Task: Review dependency/version risk defensively. This task family is intentionally outside the current secure_code_review package.\n\nSnippet:\nrequirements.txt: legacy-lib==0.9.1 is pinned, but no advisory database or patch validation context is available.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

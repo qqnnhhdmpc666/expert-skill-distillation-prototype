@@ -1,0 +1,1 @@
+prod.audit.enabled=true retention_days=90 export_sink=s3://audit-logs. prod.debug=false. prod.api_token is loaded from ENV.

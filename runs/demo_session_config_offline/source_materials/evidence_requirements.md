@@ -1,0 +1,3 @@
+- 每个 finding 必须绑定 target asset 中的 evidence_span。
+- 没有证据时必须省略或标记 evidence_missing，不能直接下结论。
+- 高风险规则需要在 trace 中记录 rule_application -> evidence_span -> finding_id。

@@ -1,0 +1,15 @@
+{
+  "attempt": "installed_v1",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Upload path isolation",
+      "evidence_span": "jpg'), then writes UPLOAD_ROOT / filename",
+      "recommended_fix": "Generate server-side names and store outside public executable roots."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:upload_security"
+  ]
+}

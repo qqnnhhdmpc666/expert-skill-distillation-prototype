@@ -1,0 +1,8 @@
+{
+  "cases": [
+    {
+      "case_id": "software_patch_review_001",
+      "command": "skill-deploy run-skill --installed software_patch_review --case software_patch_review_001 --backend offline_deterministic"
+    }
+  ]
+}

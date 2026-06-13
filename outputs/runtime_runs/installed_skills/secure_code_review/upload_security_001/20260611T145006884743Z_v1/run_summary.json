@@ -1,0 +1,13 @@
+{
+  "run_id": "20260611T145006884743Z_v1",
+  "skill_id": "secure_code_review",
+  "case_id": "upload_security_001",
+  "backend": "offline_deterministic",
+  "runtime_source": "installed_skill_package",
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+  "skill_version": "v1",
+  "manifest_hash": "7533066d1761226eda43c7528c8ef45d977bec6e15edae928e0cc8e62360410d",
+  "skill_hash": "6aa4603e9f9c457b8ee42bad9ee22ff52aff27051835626f92c30075785e17a5",
+  "output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\runtime_runs\\installed_skills\\secure_code_review\\upload_security_001\\20260611T145006884743Z_v1",
+  "pass": false
+}

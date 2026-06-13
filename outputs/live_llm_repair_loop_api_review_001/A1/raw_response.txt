@@ -1,0 +1,1 @@
+{"findings":[{"capability_id":"API_SCHEMA_CONTRACT","issue":"Prior report omitted required evidence_span and used prose","evidence_span":"target.md: \"OpenAPI endpoint accepts q/user_id and returns debug_path; prior report used prose without evidence_span.\""}]}

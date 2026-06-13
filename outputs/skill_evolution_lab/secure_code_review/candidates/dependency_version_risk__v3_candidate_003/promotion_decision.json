@@ -1,0 +1,10 @@
+{
+  "candidate_id": "dependency_version_risk__v3_candidate_003",
+  "decision": "not_promoted",
+  "reason": "candidate_not_strictly_better_or_scope_safe",
+  "score_delta": -0.4,
+  "false_positive_delta": 1.0,
+  "schema_error_delta": 0.0,
+  "scope_violation": true,
+  "promotion_rule": "candidate_score > active_score and no false-positive/schema/scope regression"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "finding_id": "F001",
+    "rule_id": "R001",
+    "evidence_span": "require_login()",
+    "risk_level": "high",
+    "recommended_fix": "补充角色校验、租户边界校验和越权回归测试。"
+  },
+  {
+    "finding_id": "F002",
+    "rule_id": "R002",
+    "evidence_span": "def list_users(tenant_id: str):",
+    "risk_level": "high",
+    "recommended_fix": "对用户可控参数增加类型、长度、范围和 allowlist 校验。"
+  },
+  {
+    "finding_id": "F003",
+    "rule_id": "R003",
+    "evidence_span": "return db.query(\"select * from users where tenant_id=\" + tenant_id)",
+    "risk_level": "high",
+    "recommended_fix": "改用参数化查询，禁止字符串拼接进入 SQL sink。"
+  },
+  {
+    "finding_id": "F004",
+    "rule_id": "R004",
+    "evidence_span": "return {\"message\": \"SQL syntax error near user_email=alice@example.com\"}",
+    "risk_level": "medium",
+    "recommended_fix": "统一错误 envelope，并对邮箱、token、密钥、内部错误脱敏。"
+  },
+  {
+    "finding_id": "F005",
+    "rule_id": "R006",
+    "evidence_span": "audit_log_retention_days: null",
+    "risk_level": "medium",
+    "recommended_fix": "设置安全事件审计日志和保留策略。"
+  }
+]

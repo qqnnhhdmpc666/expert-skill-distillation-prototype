@@ -1,0 +1,19 @@
+UploadSecurityHeuristicAgent ran inside Harbor non-oracle path.
+Instruction preview: Review the target upload service in `/app/target`.
+
+Create `/app/security_report.json` with this exact JSON shape:
+
+```json
+{
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "evidence_span": "...",
+      "recommended_fix": "..."
+    }
+  ]
+}
+```
+
+The task is solved only if the
+Capabilities: ['UPLOAD_AUDIT_RETENTION', 'UPLOAD_PATH_ISOLATION', 'UPLOAD_TYPE_MAGIC']

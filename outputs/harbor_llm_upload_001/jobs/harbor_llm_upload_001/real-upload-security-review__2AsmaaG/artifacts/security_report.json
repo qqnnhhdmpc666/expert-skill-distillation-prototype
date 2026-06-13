@@ -1,0 +1,23 @@
+{
+  "backend_type": "harbor_live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload validation relies only on the filename extension; the handler accepts any bytes for names ending in .png or .jpg and does not inspect MIME type, magic bytes, size, or content.",
+      "evidence_span": "app.py:10-12: `def upload(filename: str, content_type: str, file_bytes: bytes) -> dict:` / `if filename.endswith((\".png\", \".jpg\")):` / `save(str(UPLOAD_ROOT / filename), file_bytes)`",
+      "recommended_fix": "Validate uploads by checking MIME type and file magic bytes, enforce size limits, and verify the parsed content matches the declared image format before saving."
+    },
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "User-controlled filenames are concatenated directly into the public upload root, and the API returns the internal path, which exposes the filesystem layout and enables path manipulation risks.",
+      "evidence_span": "app.py:3-12: `UPLOAD_ROOT = Path(\"/public/uploads\")` / `save(str(UPLOAD_ROOT / filename), file_bytes)` / `return {\"ok\": True, \"debug_path\": str(UPLOAD_ROOT / filename)}`",
+      "recommended_fix": "Sanitize and canonicalize filenames, reject path separators and traversal segments, store uploads under non-public isolated storage, and return opaque identifiers instead of internal paths."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "There is no audit logging for upload/download actions, and the retention policy is unset because `audit_log_retention_days` is empty in config.",
+      "evidence_span": "config.yaml:2-3: `debug: true` / `audit_log_retention_days:`; app.py:8-14 contains `upload(...)` and `download(...)` handlers with no logging calls",
+      "recommended_fix": "Add audit events for upload, download, and delete operations, and set a non-empty retention period for audit logs with enforcement in the logging pipeline."
+    }
+  ]
+}

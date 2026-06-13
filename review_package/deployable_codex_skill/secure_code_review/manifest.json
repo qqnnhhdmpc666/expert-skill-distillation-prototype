@@ -1,0 +1,47 @@
+{
+  "skill_id": "secure_code_review",
+  "version": "0.1.0-p0",
+  "name": "Secure Code Review Skill",
+  "created_at": "2026-06-11T11:23:40.260339+00:00",
+  "deployment_shape": "codex_skill_plus_cli",
+  "entrypoints": {
+    "health": "skill-deploy health",
+    "run_suite": "skill-deploy run-suite",
+    "run_skill": "skill-deploy run-skill --case upload_security_001 --backend offline_deterministic",
+    "qualify": "skill-deploy qualify",
+    "compare_variants": "skill-deploy compare-variants --cases upload,data_quality",
+    "evolve": "skill-deploy evolve --suite secure_code_review --budget 3 --gate qgse_pareto"
+  },
+  "capability_scope": [
+    "upload_security",
+    "config_security",
+    "api_or_code_review",
+    "data_quality_review"
+  ],
+  "promotion_boundary": "controlled deployable prototype with bounded secure-code-review evidence",
+  "safety_boundary": {
+    "allowed": [
+      "defensive_detection",
+      "explanation",
+      "fix_recommendation",
+      "patch_validation"
+    ],
+    "forbidden": [
+      "exploit_generation",
+      "attack_chain_execution",
+      "unauthorized_target_testing"
+    ]
+  },
+  "required_evidence_bundle_files": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json",
+    "verifier_feedback.json",
+    "repair_patch.json",
+    "qualification_decision.json"
+  ],
+  "rollback": {
+    "registry": "outputs/installed_skills/registry.json",
+    "policy": "rollback or retire if marginal utility is non-positive or false positives increase"
+  }
+}

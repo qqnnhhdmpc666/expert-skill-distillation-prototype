@@ -1,0 +1,8 @@
+{
+  "expected_capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "forbidden_capabilities": []
+}

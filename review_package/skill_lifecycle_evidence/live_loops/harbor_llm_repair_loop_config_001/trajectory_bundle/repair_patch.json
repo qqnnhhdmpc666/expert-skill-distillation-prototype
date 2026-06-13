@@ -1,0 +1,33 @@
+{
+  "patch_plan": {
+    "feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "before_capabilities": [
+      "CONFIG_HARDCODED_SECRET",
+      "CONFIG_INSECURE_HTTP",
+      "CONFIG_PROD_DEBUG"
+    ],
+    "after_capabilities": [
+      "CONFIG_HARDCODED_SECRET",
+      "CONFIG_INSECURE_HTTP",
+      "CONFIG_PROD_DEBUG"
+    ],
+    "before_contract": "relaxed",
+    "after_contract": "strict",
+    "consumes": "A1/failure_feedback.json"
+  },
+  "gate_decision": {
+    "decision": "accept",
+    "reason": "Config A1 failed because the verifier required recommended_fix fields; the repair tightens only the output contract while keeping the same target and verifier.",
+    "checks": {
+      "same_target": true,
+      "same_verifier_logic": true,
+      "same_capabilities": true,
+      "schema_errors": [
+        "CONFIG_PROD_DEBUG missing recommended_fix",
+        "CONFIG_INSECURE_HTTP missing recommended_fix",
+        "CONFIG_HARDCODED_SECRET missing recommended_fix"
+      ]
+    }
+  }
+}

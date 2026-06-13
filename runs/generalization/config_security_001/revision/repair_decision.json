@@ -1,0 +1,18 @@
+{
+  "feedback_type": "false_positive_risk",
+  "repair_action": "reduce_false_positive_risk",
+  "before_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "after_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "operator_id": "op_reduce_false_positive_generic",
+  "operator_strategy": "remove_unsupported",
+  "operator_description": "Remove unsupported findings and shrink the package back to grounded capabilities.",
+  "selection_score": 151,
+  "preferred_action": "reduce_false_positive_risk"
+}

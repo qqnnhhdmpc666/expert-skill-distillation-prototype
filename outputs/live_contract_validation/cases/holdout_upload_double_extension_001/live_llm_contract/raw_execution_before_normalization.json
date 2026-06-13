@@ -1,0 +1,25 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Missing path validation in save_upload()",
+      "evidence_span": "writes UPLOAD_ROOT / filename",
+      "recommended_fix": "Validate filename to prevent path traversal by rejecting characters like '..' or '/' and use a safe base path."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validation based only on extension",
+      "evidence_span": "accepts report.pdf.jpg when filename.endswith('.jpg')",
+      "recommended_fix": "Implement magic byte verification alongside extension check to ensure actual file type matches expected type."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention not configured",
+      "evidence_span": "settings.toml: audit_log_retention_days is empty",
+      "recommended_fix": "Set audit_log_retention_days to a positive integer in settings.toml to enable log retention policy."
+    }
+  ],
+  "notes": []
+}

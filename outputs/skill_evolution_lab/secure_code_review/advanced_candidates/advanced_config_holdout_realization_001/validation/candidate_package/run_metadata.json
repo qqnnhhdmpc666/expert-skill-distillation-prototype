@@ -1,0 +1,28 @@
+{
+  "run_id": "holdout_config_prod_secret_001::offline_deterministic::candidate_package",
+  "case_id": "holdout_config_prod_secret_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_package",
+  "runtime_source": "advanced_candidate_package",
+  "task_family": "config_security",
+  "activated_capability_group": "config_security",
+  "expected_capability_group": "config_security",
+  "capability_group_correct": true,
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\advanced_candidates\\advanced_config_holdout_realization_001",
+  "skill_hash": "fdc1efb765cfad0e25d7296839fb669c3aa88c3d05b6c60ed717cb509382a9bc",
+  "manifest_hash": "de803598e4d04b9a7f5b2337593396cab9819f0f464dc4c3432fbe0b7cc93485",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T11:38:15.443320+00:00"
+  },
+  "schema_version": "external_security_mini_suite.run_metadata.v1",
+  "timestamp": "2026-06-12T11:39:16.809578+00:00",
+  "oracle_fields_visible_to_runner": false,
+  "model": "offline_deterministic",
+  "cost": null,
+  "tokens": 210
+}

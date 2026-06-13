@@ -1,0 +1,28 @@
+{
+  "run_id": "non_oracle_local_agent_upload_001",
+  "backend": "non_oracle_local_semantic_agent",
+  "oracle": false,
+  "llm": false,
+  "pass": true,
+  "finding_count": 3,
+  "agent_output": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_local_agent_upload_001\\agent\\agent_output.json",
+  "trace": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_local_agent_upload_001\\agent\\trace.jsonl",
+  "stdout": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_local_agent_upload_001\\agent\\stdout.log",
+  "metadata": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_local_agent_upload_001\\agent\\backend_metadata.json",
+  "verifier_report": {
+    "pass": true,
+    "feedback_type": "pass",
+    "missing_capabilities": [],
+    "false_positive_capabilities": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "scores": {
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0
+    }
+  },
+  "boundary": "Deterministic non-oracle local semantic smoke; not Harbor and not LLM autonomy."
+}

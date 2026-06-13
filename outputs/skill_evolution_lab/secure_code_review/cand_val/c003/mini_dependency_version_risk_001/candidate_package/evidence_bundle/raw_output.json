@@ -1,0 +1,15 @@
+{
+  "attempt": "candidate_package",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Overbroad finding control",
+      "evidence_span": "generic security risk without code/config evidence",
+      "recommended_fix": "Reject findings not grounded in target spans."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:dependency_version_risk"
+  ]
+}

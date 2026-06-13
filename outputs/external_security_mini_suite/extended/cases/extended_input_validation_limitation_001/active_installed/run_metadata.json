@@ -1,0 +1,28 @@
+{
+  "run_id": "extended_input_validation_limitation_001::offline_deterministic::active_installed",
+  "case_id": "extended_input_validation_limitation_001",
+  "backend": "offline_deterministic",
+  "variant": "active_installed",
+  "runtime_source": "active_installed_package",
+  "task_family": "input_validation_review",
+  "activated_capability_group": "out_of_scope_guard",
+  "expected_capability_group": "out_of_scope_guard",
+  "capability_group_correct": true,
+  "out_of_scope": true,
+  "unsupported_task_family": "input_validation_review",
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+  "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+  "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T11:38:15.443320+00:00"
+  },
+  "schema_version": "external_security_mini_suite.run_metadata.v1",
+  "timestamp": "2026-06-12T11:40:16.023834+00:00",
+  "oracle_fields_visible_to_runner": false,
+  "model": "offline_deterministic",
+  "cost": null,
+  "tokens": 184
+}

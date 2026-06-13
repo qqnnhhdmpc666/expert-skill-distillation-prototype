@@ -1,0 +1,23 @@
+{
+  "backend_type": "harbor_live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload validation only checks the filename extension and does not verify the declared content type, file signature/magic bytes, or size before saving.",
+      "evidence_span": "def upload(filename: str, content_type: str, file_bytes: bytes) -> dict:\n    if filename.endswith((\".png\", \".jpg\")):\n        save(str(UPLOAD_ROOT / filename), file_bytes)",
+      "recommended_fix": "Validate MIME type, magic-byte signature, file size, and allowed extension together before accepting or storing the upload."
+    },
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "The upload path is built by joining a user-controlled filename directly under a public uploads directory, allowing untrusted names to determine the storage path.",
+      "evidence_span": "UPLOAD_ROOT = Path(\"/public/uploads\")\n...\n        save(str(UPLOAD_ROOT / filename), file_bytes)",
+      "recommended_fix": "Generate server-side filenames or object IDs, normalize and constrain paths, and store uploads outside public executable roots with controlled serving logic."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit retention is unset and the upload/download handlers do not record audit events for upload activity.",
+      "evidence_span": "audit_log_retention_days:\n...\ndef upload(filename: str, content_type: str, file_bytes: bytes) -> dict:\n    if filename.endswith((\".png\", \".jpg\")):\n        save(str(UPLOAD_ROOT / filename), file_bytes)\n    return {\"ok\": True, \"debug_path\": str(UPLOAD_ROOT / filename)}",
+      "recommended_fix": "Configure a concrete audit log retention period and record actor, object, action, result, and timestamp for upload and download operations."
+    }
+  ]
+}

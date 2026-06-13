@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-06-12T11:06:56.002253+00:00",
+  "rerun_id": "20260612T110655960119Z",
+  "output_root": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\rerun_stability\\20260612T110655960119Z",
+  "unavailable_variants": [],
+  "selected_cases": [
+    "mini_upload_magic_path_001",
+    "mini_config_prod_audit_001",
+    "mini_clean_out_of_scope_001",
+    "mini_dependency_version_risk_001"
+  ],
+  "rows": [
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "original_status": "pass",
+      "rerun_status": "pass",
+      "stable": true,
+      "activated_capability_group": "upload_security",
+      "expected_capability_group": "upload_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\rerun_stability\\20260612T110655960119Z\\cases\\mini_upload_magic_path_001\\active_installed",
+      "note": "ok"
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "original_status": "pass",
+      "rerun_status": "pass",
+      "stable": true,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\rerun_stability\\20260612T110655960119Z\\cases\\mini_config_prod_audit_001\\active_installed",
+      "note": "ok"
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "original_status": "false_positive_control_pass",
+      "rerun_status": "false_positive_control_pass",
+      "stable": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\rerun_stability\\20260612T110655960119Z\\cases\\mini_clean_out_of_scope_001\\active_installed",
+      "note": "ok"
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "original_status": "unsupported_limitation",
+      "rerun_status": "unsupported_limitation",
+      "stable": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\rerun_stability\\20260612T110655960119Z\\cases\\mini_dependency_version_risk_001\\active_installed",
+      "note": "ok"
+    }
+  ],
+  "clean_negative_status": "pass",
+  "unsupported_limitation_status": "retained",
+  "overall_status": "pass"
+}

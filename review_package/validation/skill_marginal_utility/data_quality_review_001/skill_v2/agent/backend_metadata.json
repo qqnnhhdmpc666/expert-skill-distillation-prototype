@@ -1,0 +1,6 @@
+{
+  "backend_type": "offline_deterministic",
+  "attempt_id": "skill_v2",
+  "task_case": "data_quality_review_001",
+  "generated_by": "src/skill_deployment/runner.py::OfflineDeterministicRunner"
+}

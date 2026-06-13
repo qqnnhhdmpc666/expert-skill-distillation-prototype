@@ -1,0 +1,249 @@
+{
+  "generated_at": "2026-06-12T12:43:19.650719+00:00",
+  "pre_repair_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation_pre_p0_l_repair\\non_oracle_validation_summary.json",
+  "post_repair_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\non_oracle_validation_summary.json",
+  "case_count": 6,
+  "post_repair_pass_count": 6,
+  "post_repair_behavior": "pass",
+  "oracle_policy": {
+    "verifier_only_oracle_read_for_analysis": false,
+    "verifier_relaxed": false,
+    "secure_code_review_scope_expanded": false,
+    "dependency_version_risk_absorbed": false
+  },
+  "case_analyses": [
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "task_family": "api_or_code_review",
+      "pre_repair_verifier_result": "fail",
+      "pre_repair_feedback_type": "unsupported_evidence",
+      "pre_repair_false_positive_count": 0,
+      "post_repair_verifier_result": "pass",
+      "post_repair_feedback_type": "pass",
+      "post_repair_false_positive_count": 0,
+      "post_repair_discrepancy": "none",
+      "classification": {
+        "failure_categories": [
+          "evidence_span_formatting_issue"
+        ],
+        "normalization_repair_candidate": [
+          "normalize evidence spans to exact target lines"
+        ],
+        "backend_too_weak": false,
+        "schema_issue": false,
+        "evidence_span_issue": true,
+        "false_positive_issue": false,
+        "false_positive_capabilities": [],
+        "unsupported_evidence_capabilities": [
+          "API_OVERBROAD_RISK"
+        ],
+        "schema_errors": [],
+        "missing_capabilities": []
+      },
+      "repair_attempted": [
+        "task-conditioned active capability filtering",
+        "exact-line evidence span normalization",
+        "out_of_scope_guard false-positive suppression via empty active capability set"
+      ],
+      "verifier_relaxed": false,
+      "verifier_only_oracle_read": false,
+      "pre_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_api_overbroad_schema_001\\non_oracle_local_semantic",
+      "post_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_api_overbroad_schema_001\\non_oracle_local_semantic"
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "task_family": "auth_access_control",
+      "pre_repair_verifier_result": "fail",
+      "pre_repair_feedback_type": "false_positive_risk",
+      "pre_repair_false_positive_count": 1,
+      "post_repair_verifier_result": "pass",
+      "post_repair_feedback_type": "pass",
+      "post_repair_false_positive_count": 0,
+      "post_repair_discrepancy": "none",
+      "classification": {
+        "failure_categories": [
+          "capability_activation_or_false_positive_issue"
+        ],
+        "normalization_repair_candidate": [
+          "filter non-oracle scanning to task-conditioned active capabilities"
+        ],
+        "backend_too_weak": false,
+        "schema_issue": false,
+        "evidence_span_issue": false,
+        "false_positive_issue": true,
+        "false_positive_capabilities": [
+          "API_SCHEMA_CONTRACT"
+        ],
+        "unsupported_evidence_capabilities": [],
+        "schema_errors": [],
+        "missing_capabilities": []
+      },
+      "repair_attempted": [
+        "task-conditioned active capability filtering",
+        "exact-line evidence span normalization",
+        "out_of_scope_guard false-positive suppression via empty active capability set"
+      ],
+      "verifier_relaxed": false,
+      "verifier_only_oracle_read": false,
+      "pre_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_auth_project_ownership_001\\non_oracle_local_semantic",
+      "post_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_auth_project_ownership_001\\non_oracle_local_semantic"
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "task_family": "clean_business_logic_review",
+      "pre_repair_verifier_result": "fail",
+      "pre_repair_feedback_type": "false_positive_risk",
+      "pre_repair_false_positive_count": 1,
+      "post_repair_verifier_result": "pass",
+      "post_repair_feedback_type": "pass",
+      "post_repair_false_positive_count": 0,
+      "post_repair_discrepancy": "none",
+      "classification": {
+        "failure_categories": [
+          "capability_activation_or_false_positive_issue"
+        ],
+        "normalization_repair_candidate": [
+          "filter non-oracle scanning to task-conditioned active capabilities"
+        ],
+        "backend_too_weak": false,
+        "schema_issue": false,
+        "evidence_span_issue": false,
+        "false_positive_issue": true,
+        "false_positive_capabilities": [
+          "API_SCHEMA_CONTRACT"
+        ],
+        "unsupported_evidence_capabilities": [],
+        "schema_errors": [],
+        "missing_capabilities": []
+      },
+      "repair_attempted": [
+        "task-conditioned active capability filtering",
+        "exact-line evidence span normalization",
+        "out_of_scope_guard false-positive suppression via empty active capability set"
+      ],
+      "verifier_relaxed": false,
+      "verifier_only_oracle_read": false,
+      "pre_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_clean_tax_math_001\\non_oracle_local_semantic",
+      "post_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_clean_tax_math_001\\non_oracle_local_semantic"
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "task_family": "config_security",
+      "pre_repair_verifier_result": "fail",
+      "pre_repair_feedback_type": "unsupported_evidence",
+      "pre_repair_false_positive_count": 1,
+      "post_repair_verifier_result": "pass",
+      "post_repair_feedback_type": "pass",
+      "post_repair_false_positive_count": 0,
+      "post_repair_discrepancy": "none",
+      "classification": {
+        "failure_categories": [
+          "capability_activation_or_false_positive_issue",
+          "evidence_span_formatting_issue"
+        ],
+        "normalization_repair_candidate": [
+          "filter non-oracle scanning to task-conditioned active capabilities",
+          "normalize evidence spans to exact target lines"
+        ],
+        "backend_too_weak": false,
+        "schema_issue": false,
+        "evidence_span_issue": true,
+        "false_positive_issue": true,
+        "false_positive_capabilities": [
+          "API_SCHEMA_CONTRACT"
+        ],
+        "unsupported_evidence_capabilities": [
+          "CONFIG_AUDIT_EXPORT"
+        ],
+        "schema_errors": [],
+        "missing_capabilities": []
+      },
+      "repair_attempted": [
+        "task-conditioned active capability filtering",
+        "exact-line evidence span normalization",
+        "out_of_scope_guard false-positive suppression via empty active capability set"
+      ],
+      "verifier_relaxed": false,
+      "verifier_only_oracle_read": false,
+      "pre_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_config_prod_secret_001\\non_oracle_local_semantic",
+      "post_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_config_prod_secret_001\\non_oracle_local_semantic"
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "task_family": "dependency_version_risk",
+      "pre_repair_verifier_result": "fail",
+      "pre_repair_feedback_type": "false_positive_risk",
+      "pre_repair_false_positive_count": 1,
+      "post_repair_verifier_result": "pass",
+      "post_repair_feedback_type": "pass",
+      "post_repair_false_positive_count": 0,
+      "post_repair_discrepancy": "none",
+      "classification": {
+        "failure_categories": [
+          "capability_activation_or_false_positive_issue"
+        ],
+        "normalization_repair_candidate": [
+          "filter non-oracle scanning to task-conditioned active capabilities"
+        ],
+        "backend_too_weak": false,
+        "schema_issue": false,
+        "evidence_span_issue": false,
+        "false_positive_issue": true,
+        "false_positive_capabilities": [
+          "API_SCHEMA_CONTRACT"
+        ],
+        "unsupported_evidence_capabilities": [],
+        "schema_errors": [],
+        "missing_capabilities": []
+      },
+      "repair_attempted": [
+        "task-conditioned active capability filtering",
+        "exact-line evidence span normalization",
+        "out_of_scope_guard false-positive suppression via empty active capability set"
+      ],
+      "verifier_relaxed": false,
+      "verifier_only_oracle_read": false,
+      "pre_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_dependency_no_advisory_001\\non_oracle_local_semantic",
+      "post_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_dependency_no_advisory_001\\non_oracle_local_semantic"
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "task_family": "upload_security",
+      "pre_repair_verifier_result": "fail",
+      "pre_repair_feedback_type": "false_positive_risk",
+      "pre_repair_false_positive_count": 2,
+      "post_repair_verifier_result": "pass",
+      "post_repair_feedback_type": "pass",
+      "post_repair_false_positive_count": 0,
+      "post_repair_discrepancy": "none",
+      "classification": {
+        "failure_categories": [
+          "capability_activation_or_false_positive_issue"
+        ],
+        "normalization_repair_candidate": [
+          "filter non-oracle scanning to task-conditioned active capabilities"
+        ],
+        "backend_too_weak": false,
+        "schema_issue": false,
+        "evidence_span_issue": false,
+        "false_positive_issue": true,
+        "false_positive_capabilities": [
+          "API_SCHEMA_CONTRACT",
+          "CONFIG_AUDIT_EXPORT"
+        ],
+        "unsupported_evidence_capabilities": [],
+        "schema_errors": [],
+        "missing_capabilities": []
+      },
+      "repair_attempted": [
+        "task-conditioned active capability filtering",
+        "exact-line evidence span normalization",
+        "out_of_scope_guard false-positive suppression via empty active capability set"
+      ],
+      "verifier_relaxed": false,
+      "verifier_only_oracle_read": false,
+      "pre_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_upload_double_extension_001\\non_oracle_local_semantic",
+      "post_repair_artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\non_oracle_validation\\cases\\holdout_upload_double_extension_001\\non_oracle_local_semantic"
+    }
+  ]
+}

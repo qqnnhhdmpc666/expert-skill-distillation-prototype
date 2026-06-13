@@ -1,0 +1,1 @@
+FAIL: /app/security_report.json was not created

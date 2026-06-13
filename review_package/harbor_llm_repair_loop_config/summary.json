@@ -1,0 +1,61 @@
+{
+  "run_id": "harbor_llm_repair_loop_config_001",
+  "backend": "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+  "task": "controlled-config-security-review",
+  "agent": "controlled-security-llm-agent",
+  "oracle": false,
+  "llm": true,
+  "model": "gpt-5.5",
+  "A1": {
+    "pass": false,
+    "feedback_type": "output_contract_error",
+    "coverage": 1.0,
+    "evidence_binding": 0.0,
+    "schema_correctness": 0.0,
+    "missing_capabilities": [],
+    "false_positive_capabilities": [],
+    "schema_errors": [
+      "CONFIG_PROD_DEBUG missing recommended_fix",
+      "CONFIG_INSECURE_HTTP missing recommended_fix",
+      "CONFIG_HARDCODED_SECRET missing recommended_fix"
+    ],
+    "reward": 0.0,
+    "artifacts": [
+      "A1/security_report.json",
+      "A1/target_reads.json",
+      "A1/verifier_report.json",
+      "A1/failure_feedback.json",
+      "A1/skill_manifest.json"
+    ]
+  },
+  "revision": {
+    "feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "before_contract": "relaxed",
+    "after_contract": "strict",
+    "artifacts": [
+      "revision/patch_plan.json",
+      "revision/gate_decision.json",
+      "revision/skill_diff.md"
+    ]
+  },
+  "A2": {
+    "pass": true,
+    "feedback_type": "pass",
+    "coverage": 1.0,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "missing_capabilities": [],
+    "false_positive_capabilities": [],
+    "schema_errors": [],
+    "reward": 1.0,
+    "artifacts": [
+      "A2/security_report.json",
+      "A2/target_reads.json",
+      "A2/verifier_report.json",
+      "A2/skill_manifest.json"
+    ]
+  },
+  "reward_delta": 1.0,
+  "boundary": "This is one controlled Harbor LLM repair loop for a configuration-security task. The repair tightens the output contract; it does not prove broad Harbor LLM multi-task generalization."
+}

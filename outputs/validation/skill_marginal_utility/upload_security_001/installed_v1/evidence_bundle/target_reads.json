@@ -1,0 +1,7 @@
+{
+  "case_id": "upload_security_001",
+  "target_digest": {
+    "chars": 141,
+    "preview": "app.py: upload() checks filename.endswith, writes UPLOAD_ROOT / filename, returns debug_path. config.yaml: audit_log_retention_days is empty."
+  }
+}

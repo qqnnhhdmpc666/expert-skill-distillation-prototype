@@ -1,0 +1,4 @@
+{"event": "read_target", "path": "target.md", "chars": 116}
+{"event": "read_skill", "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_api_injected_risk\\skill", "capabilities": ["API_SCHEMA_CONTRACT", "API_OVERBROAD_RISK"]}
+{"event": "finding", "capability_id": "API_SCHEMA_CONTRACT", "issue": "Strict report schema", "evidence_span": "target.md: rns debug_path. The report must include evidence_span.", "recommended_fix": "Emit JSON findings with required evidence and fix fields."}
+{"event": "finding", "capability_id": "API_OVERBROAD_RISK", "issue": "Overbroad finding control", "evidence_span": "target.md: accepts user_id without role check and returns debug_path. The report must include evidence_span.", "recommended_fix": "Reject findings not grounded in target spans."}

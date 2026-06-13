@@ -1,0 +1,8 @@
+{
+  "version": "v1",
+  "capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "UPLOAD_TYPE_MAGIC"
+  ]
+}

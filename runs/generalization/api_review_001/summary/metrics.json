@@ -1,0 +1,27 @@
+{
+  "scenario": "api_review_001",
+  "family": "api_or_code_review",
+  "backend": "offline_deterministic",
+  "a0_pass": false,
+  "a1_pass": false,
+  "a2_pass": true,
+  "feedback_type": "output_contract_error",
+  "repair_action": "rewrite_output_contract",
+  "gate_decision": "accept",
+  "scores_before": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 0.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  },
+  "scores_after": {
+    "capability_coverage_score": 1.0,
+    "evidence_binding_score": 1.0,
+    "output_contract_score": 1.0,
+    "regression_safety_score": 1.0,
+    "trace_observability_score": 1.0
+  },
+  "latency_ms": 18,
+  "artifact_dir": "runs\\generalization\\api_review_001"
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "rule_id": "R002",
+    "title": "用户输入校验",
+    "risk": "high",
+    "tokens": 40,
+    "source_evidence": "def upload(filename, content_type, file_bytes):",
+    "selected_in_v1": "yes",
+    "selected_in_v2": "yes",
+    "prior_decision": "保留到 compact v1",
+    "posterior_signal": "keep",
+    "operator": "keep"
+  },
+  {
+    "rule_id": "R004",
+    "title": "敏感信息泄露",
+    "risk": "medium",
+    "tokens": 39,
+    "source_evidence": "return {\"ok\": True, \"debug_path\": \"/public/uploads/\" + filename}",
+    "selected_in_v1": "yes",
+    "selected_in_v2": "yes",
+    "prior_decision": "保留到 compact v1",
+    "posterior_signal": "keep",
+    "operator": "keep"
+  },
+  {
+    "rule_id": "R005",
+    "title": "文件上传安全",
+    "risk": "high",
+    "tokens": 47,
+    "source_evidence": "@app.post(\"/upload\")",
+    "selected_in_v1": "no",
+    "selected_in_v2": "yes",
+    "prior_decision": "v1 压缩阶段被省略",
+    "posterior_signal": "missing_rule",
+    "operator": "patch_rule + add_trace_requirement"
+  },
+  {
+    "rule_id": "R006",
+    "title": "审计日志保留",
+    "risk": "medium",
+    "tokens": 42,
+    "source_evidence": "audit_log_retention_days: null",
+    "selected_in_v1": "no",
+    "selected_in_v2": "yes",
+    "prior_decision": "v1 压缩阶段被省略",
+    "posterior_signal": "missing_rule",
+    "operator": "patch_rule + add_trace_requirement"
+  },
+  {
+    "rule_id": "R007",
+    "title": "弱密钥与调试配置",
+    "risk": "high",
+    "tokens": 44,
+    "source_evidence": "未在目标资产中命中显式证据",
+    "selected_in_v1": "yes",
+    "selected_in_v2": "yes",
+    "prior_decision": "保留到 compact v1",
+    "posterior_signal": "missing_rule",
+    "operator": "patch_rule + add_trace_requirement"
+  },
+  {
+    "rule_id": "R008",
+    "title": "路径穿越",
+    "risk": "high",
+    "tokens": 43,
+    "source_evidence": "save(\"/public/uploads/\" + filename, file_bytes)",
+    "selected_in_v1": "no",
+    "selected_in_v2": "yes",
+    "prior_decision": "v1 压缩阶段被省略",
+    "posterior_signal": "missing_rule",
+    "operator": "patch_rule + add_trace_requirement"
+  }
+]

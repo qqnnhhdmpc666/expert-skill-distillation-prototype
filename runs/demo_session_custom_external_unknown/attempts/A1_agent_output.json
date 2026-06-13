@@ -1,0 +1,12 @@
+[
+  {
+    "finding_id": "F001",
+    "rule_id": "R002",
+    "evidence_span": "save(\"/public/uploads/\" + filename); return {\"api_key\":\"x\"}; audit_log_retention_days: null"
+  },
+  {
+    "finding_id": "F002",
+    "rule_id": "R004",
+    "evidence_span": "save(\"/public/uploads/\" + filename); return {\"api_key\":\"x\"}; audit_log_retention_days: null"
+  }
+]

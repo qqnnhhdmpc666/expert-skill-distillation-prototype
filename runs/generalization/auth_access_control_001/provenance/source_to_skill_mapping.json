@@ -1,0 +1,17 @@
+[
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "AUTH_SCOPE_MATRIX",
+    "skill_file": "skills/skill_v2/SKILL.md#AUTH_SCOPE_MATRIX"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "AUTH_OBJECT_OWNERSHIP",
+    "skill_file": "skills/skill_v2/SKILL.md#AUTH_OBJECT_OWNERSHIP"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "AUTH_ERROR_ENVELOPE",
+    "skill_file": "skills/skill_v2/SKILL.md#AUTH_ERROR_ENVELOPE"
+  }
+]

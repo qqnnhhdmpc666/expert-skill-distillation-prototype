@@ -1,0 +1,36 @@
+{
+  "attempt": "c003_auth",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "No path isolation on uploaded file name",
+      "evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.",
+      "recommended_fix": "Use a sanitized unique filename and restrict upload directory to prevent path traversal.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "File type validated only by extension",
+      "evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.",
+      "recommended_fix": "Validate file content using magic bytes instead of relying solely on extension.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit retention period not configured",
+      "evidence_span": "upload.py: accept() trusts file.name.endswith('.png') and stores uploads_dir / file.name. audit.retention_days is unset.",
+      "recommended_fix": "Configure audit retention period (e.g., audit.retention_days = 90) to comply with data retention policies.",
+      "capability_group": "upload_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

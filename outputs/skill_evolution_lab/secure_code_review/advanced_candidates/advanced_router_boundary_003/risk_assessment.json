@@ -1,0 +1,7 @@
+{
+  "candidate_id": "advanced_router_boundary_003",
+  "scope_expansion_risk": "medium",
+  "risk_case_id": "holdout_clean_tax_math_001",
+  "may_affect_out_of_scope_guard": true,
+  "requires_negative_control": true
+}

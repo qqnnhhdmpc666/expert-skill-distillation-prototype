@@ -1,0 +1,25 @@
+{
+  "attempt": "no_out_of_scope_guard",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Missing tenant or scope filter when loading invoice",
+      "evidence_span": "loads invoice by id without tenant_id or owner_id filtering",
+      "recommended_fix": "Add tenant_id or owner_id filtering when loading the invoice to enforce scope boundaries."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing ownership check on invoice load",
+      "evidence_span": "loads invoice by id without tenant_id or owner_id filtering",
+      "recommended_fix": "Verify that the current user owns or is authorized for the invoice before loading, using an owner_id filter."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Error response leaks invoice_id",
+      "evidence_span": "The denial path returns invoice_id in the error body",
+      "recommended_fix": "Return a generic error message (e.g., 'access denied') without including the invoice_id."
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "finding_id": "F001",
+    "rule_id": "R002",
+    "evidence_span": "def upload(filename, content_type, file_bytes):"
+  },
+  {
+    "finding_id": "F002",
+    "rule_id": "R004",
+    "evidence_span": "return {\"ok\": True, \"debug_path\": \"/public/uploads/\" + filename}"
+  },
+  {
+    "finding_id": "F003",
+    "rule_id": "R008",
+    "evidence_span": "save(\"/public/uploads/\" + filename, file_bytes)"
+  }
+]

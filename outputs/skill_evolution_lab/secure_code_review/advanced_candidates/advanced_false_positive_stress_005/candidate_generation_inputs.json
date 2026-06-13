@@ -1,0 +1,18 @@
+{
+  "candidate_id": "advanced_false_positive_stress_005",
+  "allowed_sources": [
+    "failure report",
+    "verifier feedback",
+    "evidence summary",
+    "limitation summary"
+  ],
+  "forbidden_sources": [
+    "verifier-only expected finding",
+    "verifier-only expected evidence span",
+    "verifier-only clean/negative label"
+  ],
+  "source_type": "ablation_negative_control_stress",
+  "source_case_id": "holdout_clean_tax_math_001",
+  "failure_or_limitation": "clean negative must not be routed into upload_security",
+  "verifier_only_oracle_fields_read": false
+}

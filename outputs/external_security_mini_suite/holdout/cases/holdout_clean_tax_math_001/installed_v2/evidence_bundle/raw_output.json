@@ -1,0 +1,10 @@
+{
+  "attempt": "installed_v2",
+  "backend": "offline_deterministic",
+  "findings": [],
+  "notes": [
+    "out_of_scope",
+    "unsupported_task_family:clean_business_logic_review",
+    "activated_capability_group:out_of_scope_guard"
+  ]
+}

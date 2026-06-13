@@ -1,0 +1,9 @@
+{
+  "case_id": "data_quality_review_001",
+  "backend": "offline_deterministic",
+  "expected": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "run_id": "agent_level_metamorphic_stress_001",
+  "backend": "non_oracle_local_semantic_agent",
+  "case_count": 4,
+  "overall_pass": false,
+  "boundary": "Agent-level deterministic stress; not live LLM or Harbor metamorphic evidence. Failures are retained as behavior-limit evidence rather than hidden.",
+  "cases": [
+    {
+      "case_id": "agent_upload_clean_target",
+      "scenario": "upload_security",
+      "transform": "clean target removes upload weaknesses",
+      "expected_relation": "Agent should emit no upload findings on the clean transformed target.",
+      "expected_pass": true,
+      "actual_pass": false,
+      "control_passed": false,
+      "finding_count": 1,
+      "feedback_type": "false_positive_risk",
+      "agent_output": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_upload_clean_target\\agent\\agent_output.json",
+      "trace": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_upload_clean_target\\agent\\trace.jsonl",
+      "verifier_report": {
+        "pass": false,
+        "feedback_type": "false_positive_risk",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 0.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "agent_config_clean_target",
+      "scenario": "config_security",
+      "transform": "clean production config",
+      "expected_relation": "Agent should emit no config findings on the clean production config.",
+      "expected_pass": true,
+      "actual_pass": false,
+      "control_passed": false,
+      "finding_count": 1,
+      "feedback_type": "false_positive_risk",
+      "agent_output": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_config_clean_target\\agent\\agent_output.json",
+      "trace": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_config_clean_target\\agent\\trace.jsonl",
+      "verifier_report": {
+        "pass": false,
+        "feedback_type": "false_positive_risk",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [
+          "CONFIG_AUDIT_EXPORT"
+        ],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 0.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "agent_data_quality_row_shuffle",
+      "scenario": "data_quality",
+      "transform": "row/order presentation shuffle",
+      "expected_relation": "Agent should still find the three data-quality issues after row order changes.",
+      "expected_pass": true,
+      "actual_pass": false,
+      "control_passed": false,
+      "finding_count": 3,
+      "feedback_type": "unsupported_evidence",
+      "agent_output": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_data_quality_row_shuffle\\agent\\agent_output.json",
+      "trace": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_data_quality_row_shuffle\\agent\\trace.jsonl",
+      "verifier_report": {
+        "pass": false,
+        "feedback_type": "unsupported_evidence",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [
+          "DATA_TEMPORAL_SPLIT_GUARD",
+          "DATA_LABEL_ENUM_ALIGNMENT"
+        ],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 0.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "agent_api_injected_risk",
+      "scenario": "api_review",
+      "transform": "inject overbroad endpoint risk",
+      "expected_relation": "Agent should emit API schema and overbroad-risk findings when target evidence exists.",
+      "expected_pass": true,
+      "actual_pass": true,
+      "control_passed": true,
+      "finding_count": 2,
+      "feedback_type": "pass",
+      "agent_output": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_api_injected_risk\\agent\\agent_output.json",
+      "trace": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\agent_level_metamorphic_stress_001\\cases\\agent_api_injected_risk\\agent\\trace.jsonl",
+      "verifier_report": {
+        "pass": true,
+        "feedback_type": "pass",
+        "missing_capabilities": [],
+        "false_positive_capabilities": [],
+        "schema_errors": [],
+        "weak_evidence_capabilities": [],
+        "unsupported_evidence_capabilities": [],
+        "scores": {
+          "capability_coverage_score": 1.0,
+          "evidence_binding_score": 1.0,
+          "output_contract_score": 1.0,
+          "regression_safety_score": 1.0,
+          "trace_observability_score": 1.0
+        }
+      }
+    }
+  ]
+}

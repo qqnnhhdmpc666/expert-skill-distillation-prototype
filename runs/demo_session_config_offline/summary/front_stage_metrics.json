@@ -1,0 +1,22 @@
+{
+  "status_chain": "A0 FAIL -> A1 FAIL -> A2 PASS",
+  "capability_coverage": {
+    "A1": "3/3",
+    "A2": "3/3",
+    "delta": 0
+  },
+  "report_quality": {
+    "added_findings": 0,
+    "A2_schema_pass": true,
+    "A2_gate": "accept"
+  },
+  "cost": {
+    "A1_skill_plus_run_tokens": 250,
+    "A2_skill_plus_run_tokens": 250,
+    "token_budget": 420
+  },
+  "verifier": {
+    "A1_missing_capabilities": "-",
+    "A2_missing_capabilities": "-"
+  }
+}

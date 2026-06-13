@@ -1,0 +1,7 @@
+{
+  "case_id": "data_quality_review_001",
+  "target_digest": {
+    "chars": 429,
+    "preview": "dataset_contract.yaml: required_fields=[user_id,event_date,country_code,label]; allowed_labels=[basic,premium,enterprise]; validation_cutoff=2025-04-30.\n\ntrain.csv sample:\n- row 1042: user_id=991, event_date=2025-04-11, country_code=, label=basic\n- row 9811: user_id=112, event_date=2025-05-04, country_code=US, label=gold_plus\n\nvalidation.csv sample:\n- row 120: user_id=556, event_date=2025-05-05, country_code=CN, label=premium"
+  }
+}

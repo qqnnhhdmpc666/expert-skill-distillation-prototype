@@ -1,0 +1,19 @@
+{
+  "run_id": "config_security_001::offline_deterministic::candidate_v3",
+  "case_id": "config_security_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_v3",
+  "target_hash": "4d46c17635719853fefd42070e8a8717c6bd76e1b4980e1d5675defdf7a577c6",
+  "skill_hash": "81fddca0a605d64d880eb9abed381b48dbbebfd3b503423bf0cf7aaad25b2c20",
+  "manifest_hash": "e906644829ef26b95eb5631e9115880a591049f77dbebee5f363beb72103815d",
+  "prompt_hash": "none",
+  "model": "offline_deterministic",
+  "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+  "schema_version": "skill_marginal_utility.v1",
+  "timestamp": "2026-06-11T14:50:25.048872+00:00",
+  "cost": null,
+  "tokens": 125,
+  "cost_reason": "offline prototype does not compute monetary billing",
+  "tokens_reason": "estimated from skill text only",
+  "verifier_feedback_type": "unsupported_evidence"
+}

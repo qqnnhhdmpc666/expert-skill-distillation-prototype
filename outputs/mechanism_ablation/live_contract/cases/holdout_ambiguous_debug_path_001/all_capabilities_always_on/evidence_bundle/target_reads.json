@@ -1,0 +1,7 @@
+{
+  "case_id": "holdout_ambiguous_debug_path_001",
+  "target_digest": {
+    "chars": 384,
+    "preview": "Task: Review this ambiguous API/code-review note. Report only findings grounded in exact target lines; otherwise return no findings with low confidence notes.\n\nSnippet:\nreview_note.md: staging notes mention debug_path might appear in logs, but no route, response schema, caller, or production code path is shown.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "variant": "ablated_no_out_of_scope_guard",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "ablation_ablated_no_out_of_scope_guard",
+    "task_family": "secure_code_review",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC",
+      "UPLOAD_AUDIT_RETENTION",
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK",
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "task_conditioned_secure_review",
+      "package_role": "installed_runtime",
+      "package_family_scope": "task_conditioned_secure_review",
+      "supported_task_families": [
+        "upload_security",
+        "config_security",
+        "api_or_code_review",
+        "auth_access_control"
+      ],
+      "out_of_scope_group": "disabled_out_of_scope_guard",
+      "capability_groups": [
+        {
+          "name": "upload_security",
+          "task_families": [
+            "clean_business_logic_review",
+            "dependency_version_risk",
+            "upload_security"
+          ],
+          "capabilities": [
+            "UPLOAD_PATH_ISOLATION",
+            "UPLOAD_TYPE_MAGIC",
+            "UPLOAD_AUDIT_RETENTION"
+          ]
+        },
+        {
+          "name": "config_security",
+          "task_families": [
+            "config_security"
+          ],
+          "capabilities": [
+            "CONFIG_AUDIT_EXPORT",
+            "CONFIG_ENV_GUARD"
+          ]
+        },
+        {
+          "name": "api_or_code_review",
+          "task_families": [
+            "api_or_code_review"
+          ],
+          "capabilities": [
+            "API_SCHEMA_CONTRACT",
+            "API_OVERBROAD_RISK"
+          ]
+        },
+        {
+          "name": "auth_access_control",
+          "task_families": [
+            "auth_access_control"
+          ],
+          "capabilities": [
+            "AUTH_SCOPE_MATRIX",
+            "AUTH_OBJECT_OWNERSHIP",
+            "AUTH_ERROR_ENVELOPE"
+          ]
+        },
+        {
+          "name": "out_of_scope_guard",
+          "task_families": [],
+          "capabilities": []
+        }
+      ]
+    }
+  },
+  "skill_text_chars": 1227,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v2\n\nThis installed runtime uses task-conditioned capability activation inside the controlled secure-review prototype.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Capability Groups\n\n### upload_security\n- task_families: `upload_security`\n- capabilities:\n  - `UPLOAD_PATH_ISOLATION`\n  - `UPLOAD_TYPE_MAGIC`\n  - `UP",
+  "provenance": {
+    "run_id": "holdout_auth_project_ownership_001::offline_deterministic::ablated_no_out_of_scope_guard",
+    "case_id": "holdout_auth_project_ownership_001",
+    "backend": "offline_deterministic",
+    "variant": "ablated_no_out_of_scope_guard",
+    "runtime_source": "ablation_experiment_package",
+    "task_family": "auth_access_control",
+    "activated_capability_group": "auth_access_control",
+    "expected_capability_group": "auth_access_control",
+    "capability_group_correct": true,
+    "out_of_scope": false,
+    "unsupported_task_family": null,
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\ablation\\task_conditioned_activation\\variants\\ablated_no_out_of_scope_guard",
+    "skill_hash": "e053598986d5760d4a2b638b9bef9e08edd53bf20597a38ff66f9ccb1ea6f2dd",
+    "manifest_hash": "b0ad9787a5c1bb72f0d458d78ec9f6028ba04dd48fc922fe42a51c5ec60907c9",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T11:38:15.443320+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T11:38:59.911104+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "offline_deterministic",
+    "cost": null,
+    "tokens": 209,
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

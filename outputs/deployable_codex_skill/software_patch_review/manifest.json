@@ -1,0 +1,22 @@
+{
+  "skill_id": "software_patch_review",
+  "package_type": "codex_skill_runtime_bundle",
+  "created_at": "2026-06-12T10:24:06.064609+00:00",
+  "name": "Software Patch Review Skill Package",
+  "deployment_shape": "codex_skill_plus_cli",
+  "available_versions": [
+    "v1"
+  ],
+  "default_version": "v1",
+  "runtime_case_scope": [
+    "software_patch_review_001"
+  ],
+  "external_smoke_scope": [
+    "SWE-bench/SWE-bench_Lite"
+  ],
+  "entrypoints": {
+    "install_v1": "skill-deploy install --skill outputs/deployable_codex_skill/software_patch_review --version v1",
+    "run_installed": "skill-deploy run-skill --installed software_patch_review --case software_patch_review_001 --backend offline_deterministic"
+  },
+  "claim_boundary": "Patch-review package used for local controlled smoke and external adapter provenance, not a SWE-bench effectiveness claim by itself."
+}

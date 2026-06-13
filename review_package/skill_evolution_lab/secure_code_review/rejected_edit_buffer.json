@@ -1,0 +1,18 @@
+[
+  {
+    "rejected_edit_id": "rejected::config_security_001",
+    "case_id": "config_security_001",
+    "reason": "skill_to_execution_gap",
+    "score_delta": -1.0,
+    "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+    "avoid_next": "do_not_promote_without_manifest_diff_and_behavior_gain"
+  },
+  {
+    "rejected_edit_id": "rejected::api_review_001",
+    "case_id": "api_review_001",
+    "reason": "repair_operator_noop_or_patch_application_failure",
+    "score_delta": -1.0,
+    "text_gradient": "Patch operators must verify a manifest diff before rerun; no-op capability patches must be rejected early.",
+    "avoid_next": "do_not_promote_without_manifest_diff_and_behavior_gain"
+  }
+]

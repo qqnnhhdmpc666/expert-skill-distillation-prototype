@@ -1,0 +1,10 @@
+{
+  "run_id": "harbor_llm_repair_loop_upload_001",
+  "kind": "harbor_llm_repair_loop",
+  "source_artifact": "outputs/harbor_llm_repair_loop_upload_001",
+  "a1_pass": false,
+  "a2_pass": true,
+  "feedback_type": "missing_capability",
+  "repair_action": "patch_capability",
+  "boundary": "This is one controlled Harbor LLM A1/A2 repair loop for upload security. It is not multi-task Harbor LLM generalization or broad autonomous vulnerability discovery."
+}

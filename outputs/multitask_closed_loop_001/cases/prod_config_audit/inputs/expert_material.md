@@ -1,0 +1,1 @@
+Configuration review must separate production from dev/test blocks, avoid false positives, and verify secrets, TLS, least privilege, debug state, audit retention, and export sinks.

@@ -1,0 +1,19 @@
+{
+  "attempt": "no_task_router",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing owner/tenant filter on invoice retrieval",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering.",
+      "recommended_fix": "Add a filter to ensure the invoice belongs to the current user or tenant, e.g., by including owner_id or tenant_id in the query."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Information disclosure in denial response",
+      "evidence_span": "The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Remove the invoice_id from the error response to prevent information leakage; use a generic error message."
+    }
+  ],
+  "notes": []
+}

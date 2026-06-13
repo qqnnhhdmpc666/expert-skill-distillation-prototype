@@ -1,0 +1,6 @@
+{
+  "expected_capabilities": [
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "negative_control": true
+}

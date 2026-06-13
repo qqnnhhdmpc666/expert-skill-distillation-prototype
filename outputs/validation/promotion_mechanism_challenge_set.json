@@ -1,0 +1,933 @@
+{
+  "run_id": "promotion_mechanism_challenge_set_001",
+  "case_count": 10,
+  "mechanisms": [
+    {
+      "mechanism": "reward_delta_only",
+      "false_promotion_count": 6,
+      "false_rejection_count": 0,
+      "scope_error_count": 2,
+      "risk_score_lower_is_better": 36,
+      "rows": [
+        {
+          "case_id": "true_improvement",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "no_op_repair",
+          "expected": "reject",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "behavior_gap",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "fake_evidence",
+          "expected": "reject",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "verifier_relaxation",
+          "expected": "reject",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "support_card_only",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "scope_overclaim",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "robustness_fail",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "cost_regression",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "human_usefulness_fail",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        }
+      ]
+    },
+    {
+      "mechanism": "gate_only",
+      "false_promotion_count": 7,
+      "false_rejection_count": 0,
+      "scope_error_count": 2,
+      "risk_score_lower_is_better": 41,
+      "rows": [
+        {
+          "case_id": "true_improvement",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "no_op_repair",
+          "expected": "reject",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "behavior_gap",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "fake_evidence",
+          "expected": "reject",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "verifier_relaxation",
+          "expected": "reject",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "support_card_only",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "scope_overclaim",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "robustness_fail",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "cost_regression",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "human_usefulness_fail",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        }
+      ]
+    },
+    {
+      "mechanism": "weighted_validity_score",
+      "false_promotion_count": 2,
+      "false_rejection_count": 0,
+      "scope_error_count": 2,
+      "risk_score_lower_is_better": 16,
+      "rows": [
+        {
+          "case_id": "true_improvement",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "no_op_repair",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "behavior_gap",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "fake_evidence",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "verifier_relaxation",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "support_card_only",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "scope_overclaim",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "robustness_fail",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "cost_regression",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "human_usefulness_fail",
+          "expected": "quarantine",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        }
+      ]
+    },
+    {
+      "mechanism": "pareto_conservative",
+      "false_promotion_count": 0,
+      "false_rejection_count": 0,
+      "scope_error_count": 2,
+      "risk_score_lower_is_better": 6,
+      "rows": [
+        {
+          "case_id": "true_improvement",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "no_op_repair",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "behavior_gap",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "fake_evidence",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "verifier_relaxation",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "support_card_only",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "scope_overclaim",
+          "expected": "promote_scoped",
+          "actual": "promote_unscoped",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": true
+        },
+        {
+          "case_id": "robustness_fail",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "cost_regression",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "human_usefulness_fail",
+          "expected": "quarantine",
+          "actual": "reject",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        }
+      ]
+    },
+    {
+      "mechanism": "qgse_protocol",
+      "false_promotion_count": 2,
+      "false_rejection_count": 0,
+      "scope_error_count": 0,
+      "risk_score_lower_is_better": 10,
+      "rows": [
+        {
+          "case_id": "true_improvement",
+          "expected": "promote_scoped",
+          "actual": "promote_scoped",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "no_op_repair",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "behavior_gap",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "fake_evidence",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "verifier_relaxation",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "support_card_only",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "scope_overclaim",
+          "expected": "promote_scoped",
+          "actual": "promote_scoped",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "robustness_fail",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "cost_regression",
+          "expected": "quarantine",
+          "actual": "promote_scoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "human_usefulness_fail",
+          "expected": "quarantine",
+          "actual": "promote_scoped",
+          "match": false,
+          "false_promotion": true,
+          "false_rejection": false,
+          "scope_error": false
+        }
+      ]
+    },
+    {
+      "mechanism": "qgse_pareto_protocol",
+      "false_promotion_count": 0,
+      "false_rejection_count": 0,
+      "scope_error_count": 0,
+      "risk_score_lower_is_better": 0,
+      "rows": [
+        {
+          "case_id": "true_improvement",
+          "expected": "promote_scoped",
+          "actual": "promote_scoped",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "no_op_repair",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "behavior_gap",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "fake_evidence",
+          "expected": "reject",
+          "actual": "quarantine",
+          "match": false,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "verifier_relaxation",
+          "expected": "reject",
+          "actual": "reject",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "support_card_only",
+          "expected": "support_only",
+          "actual": "support_only",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "scope_overclaim",
+          "expected": "promote_scoped",
+          "actual": "promote_scoped",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "robustness_fail",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "cost_regression",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        },
+        {
+          "case_id": "human_usefulness_fail",
+          "expected": "quarantine",
+          "actual": "quarantine",
+          "match": true,
+          "false_promotion": false,
+          "false_rejection": false,
+          "scope_error": false
+        }
+      ]
+    }
+  ],
+  "best_on_challenge_set": "qgse_pareto_protocol",
+  "boundary": "Synthetic challenge set for promotion-mechanism evaluation; not external human validation.",
+  "cases": [
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "true_improvement",
+      "description": "A1 fails, patch lands, A2 behavior improves.",
+      "expected_decision": "promote_scoped",
+      "qualification_decision": "promote_with_scope_limit",
+      "promotion_level": "L2_PROMOTE_LOCAL_WITH_SCOPE_LIMIT",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "A1 fails, patch lands, A2 behavior improves."
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "A1 fails, patch lands, A2 behavior improves."
+        },
+        "robustness_gate": {
+          "status": "partial",
+          "evidence": "A1 fails, patch lands, A2 behavior improves."
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "no_op_repair",
+      "description": "Patch selected but Skill v2 is unchanged.",
+      "expected_decision": "reject",
+      "qualification_decision": "reject",
+      "promotion_level": "L0_NON_PROMOTABLE",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [],
+      "gates": {
+        "integrity_gate": {
+          "status": "fail",
+          "evidence": "Patch selected but Skill v2 is unchanged.",
+          "failure_origin": "repair_operator_noop_or_patch_application_failure"
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "Patch selected but Skill v2 is unchanged."
+        },
+        "robustness_gate": {
+          "status": "partial",
+          "evidence": "Patch selected but Skill v2 is unchanged."
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "behavior_gap",
+      "description": "Skill v2 changed but agent ignored the new instruction.",
+      "expected_decision": "quarantine",
+      "qualification_decision": "quarantine",
+      "promotion_level": "L0_NON_PROMOTABLE",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "Skill v2 changed but agent ignored the new instruction."
+        },
+        "behavior_gate": {
+          "status": "fail",
+          "evidence": "Skill v2 changed but agent ignored the new instruction.",
+          "failure_origin": "skill_to_execution_gap"
+        },
+        "robustness_gate": {
+          "status": "not_measured",
+          "evidence": "Skill v2 changed but agent ignored the new instruction."
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": false,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "fake_evidence",
+      "description": "A2 looks complete but evidence is not present in the target.",
+      "expected_decision": "reject",
+      "qualification_decision": "reject",
+      "promotion_level": "L0_NON_PROMOTABLE",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [
+        "evidence_binding"
+      ],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "A2 looks complete but evidence is not present in the target."
+        },
+        "behavior_gate": {
+          "status": "fail",
+          "evidence": "A2 looks complete but evidence is not present in the target.",
+          "failure_origin": "evidence_grounding_failure"
+        },
+        "robustness_gate": {
+          "status": "fail",
+          "evidence": "A2 looks complete but evidence is not present in the target.",
+          "failure_origin": "evidence_grounding_failure"
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "verifier_relaxation",
+      "description": "A2 passes because verifier/contract was relaxed.",
+      "expected_decision": "reject",
+      "qualification_decision": "reject",
+      "promotion_level": "L0_NON_PROMOTABLE",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [],
+      "gates": {
+        "integrity_gate": {
+          "status": "fail",
+          "evidence": "A2 passes because verifier/contract was relaxed.",
+          "failure_origin": "verifier_relaxation"
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "A2 passes because verifier/contract was relaxed."
+        },
+        "robustness_gate": {
+          "status": "fail",
+          "evidence": "A2 passes because verifier/contract was relaxed.",
+          "failure_origin": "verifier_relaxation"
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "EvidenceSupportCard",
+      "card_id": "support_card_only",
+      "description": "Negative controls support robustness but cannot promote a Skill by themselves.",
+      "expected_decision": "support_only",
+      "qualification_decision": "supporting_evidence",
+      "support_level": "supports_L3_PROMOTE_CONTROLLED",
+      "claim_scope": "supporting evidence only",
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "Negative controls support robustness but cannot promote a Skill by themselves."
+        },
+        "behavior_gate": {
+          "status": "partial",
+          "evidence": "Negative controls support robustness but cannot promote a Skill by themselves."
+        },
+        "robustness_gate": {
+          "status": "partial",
+          "evidence": "Negative controls support robustness but cannot promote a Skill by themselves."
+        }
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "scope_overclaim",
+      "description": "Local pass is useful but must not become sandbox/global promotion.",
+      "expected_decision": "promote_scoped",
+      "qualification_decision": "promote_with_scope_limit",
+      "promotion_level": "L2_PROMOTE_LOCAL_WITH_SCOPE_LIMIT",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "Local pass is useful but must not become sandbox/global promotion."
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "Local pass is useful but must not become sandbox/global promotion."
+        },
+        "robustness_gate": {
+          "status": "partial",
+          "evidence": "Local pass is useful but must not become sandbox/global promotion."
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "robustness_fail",
+      "description": "Case passes but metamorphic relation fails.",
+      "expected_decision": "quarantine",
+      "qualification_decision": "quarantine",
+      "promotion_level": "L0_NON_PROMOTABLE",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [
+        "metamorphic"
+      ],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "Case passes but metamorphic relation fails."
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "Case passes but metamorphic relation fails."
+        },
+        "robustness_gate": {
+          "status": "fail",
+          "evidence": "Case passes but metamorphic relation fails.",
+          "failure_origin": "metamorphic_robustness_failure"
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "cost_regression",
+      "description": "Outcome improves, but cost exceeds the budget.",
+      "expected_decision": "quarantine",
+      "qualification_decision": "promote_with_scope_limit",
+      "promotion_level": "L2_PROMOTE_LOCAL_WITH_SCOPE_LIMIT",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [
+        "cost_budget"
+      ],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "Outcome improves, but cost exceeds the budget."
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "Outcome improves, but cost exceeds the budget."
+        },
+        "robustness_gate": {
+          "status": "partial",
+          "evidence": "Outcome improves, but cost exceeds the budget."
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    },
+    {
+      "card_type": "RevisionQualificationCard",
+      "card_id": "human_usefulness_fail",
+      "description": "Verifier passes, but human review says the output is not useful.",
+      "expected_decision": "quarantine",
+      "qualification_decision": "promote_with_scope_limit",
+      "promotion_level": "L2_PROMOTE_LOCAL_WITH_SCOPE_LIMIT",
+      "claim_scope": "controlled challenge-set scope only",
+      "dominance_regressions": [
+        "human_usefulness"
+      ],
+      "gates": {
+        "integrity_gate": {
+          "status": "pass",
+          "evidence": "Verifier passes, but human review says the output is not useful."
+        },
+        "behavior_gate": {
+          "status": "pass",
+          "evidence": "Verifier passes, but human review says the output is not useful."
+        },
+        "robustness_gate": {
+          "status": "partial",
+          "evidence": "Verifier passes, but human review says the output is not useful."
+        }
+      },
+      "observed_delta": {
+        "a1_pass": false,
+        "a2_pass": true,
+        "gate_decision": "accept"
+      },
+      "sources": [
+        "synthetic_promotion_mechanism_challenge_set"
+      ]
+    }
+  ]
+}

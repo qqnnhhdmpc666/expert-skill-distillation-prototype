@@ -1,0 +1,27 @@
+{
+  "skill_id": "upload_security_001",
+  "version": "v2",
+  "task_family": "upload_security",
+  "capabilities": [
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "event",
+    "capability_id",
+    "evidence_span"
+  ],
+  "metadata": {
+    "repair_action": "patch_capability",
+    "operator_id": "op_patch_capability_generic"
+  },
+  "installed_from": "outputs/skill_lifecycle_evidence/generalization/upload_security_001/distillation_bundle",
+  "case_id": "upload_security_001",
+  "version_label": "v2"
+}

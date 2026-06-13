@@ -1,0 +1,21 @@
+{
+  "skill_id": "auth_access_control_001",
+  "version": "v1",
+  "task_family": "auth_access_control",
+  "capabilities": [
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "event",
+    "capability_id",
+    "evidence_span"
+  ],
+  "metadata": {}
+}

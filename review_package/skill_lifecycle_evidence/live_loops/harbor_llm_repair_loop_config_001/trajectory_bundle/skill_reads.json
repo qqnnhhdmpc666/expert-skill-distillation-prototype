@@ -1,0 +1,18 @@
+{
+  "A1": {
+    "version": "generated",
+    "capabilities": [
+      "CONFIG_HARDCODED_SECRET",
+      "CONFIG_INSECURE_HTTP",
+      "CONFIG_PROD_DEBUG"
+    ]
+  },
+  "A2": {
+    "version": "generated",
+    "capabilities": [
+      "CONFIG_HARDCODED_SECRET",
+      "CONFIG_INSECURE_HTTP",
+      "CONFIG_PROD_DEBUG"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "id": "76958871-0769-4b87-949c-363f465324c2",
+    "started_at": "2026-06-08T01:27:14.894763",
+    "finished_at": "2026-06-08T01:27:33.550109",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "oracle__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "real-upload-security-review__dCxSUn5"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

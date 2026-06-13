@@ -1,0 +1,40 @@
+{
+  "attempt": "A1",
+  "summary": "4 structured findings with evidence and fixes.",
+  "findings": [
+    {
+      "finding_id": "A1-F01",
+      "capability": "输入校验",
+      "capability_id": "input_validation",
+      "evidence_span": "filename, user_id, q 等用户可控字段直接进入处理流程。",
+      "risk_level": "medium",
+      "recommended_fix": "补充类型、长度、白名单与拒绝策略。"
+    },
+    {
+      "finding_id": "A1-F02",
+      "capability": "敏感信息泄露",
+      "capability_id": "sensitive_leak",
+      "evidence_span": "debug_path, stacktrace, token, api_key 暴露在返回或日志中。",
+      "risk_level": "medium",
+      "recommended_fix": "统一错误响应，并对路径、邮箱、token 和内部错误脱敏。"
+    },
+    {
+      "finding_id": "A1-F03",
+      "capability": "路径穿越",
+      "capability_id": "path_traversal",
+      "evidence_span": "save(\"/public/uploads/\" + filename, file_bytes)",
+      "risk_level": "high",
+      "recommended_fix": "使用安全文件名、路径归一化和随机化存储名。"
+    },
+    {
+      "finding_id": "A1-F04",
+      "capability": "弱密钥与调试配置",
+      "capability_id": "weak_config",
+      "evidence_span": "debug: true, SECRET_KEY: changeme。",
+      "risk_level": "high",
+      "recommended_fix": "关闭生产 debug，替换强密钥，并限制敏感配置暴露。"
+    }
+  ],
+  "token_cost": 296,
+  "latency_ms": 1620
+}

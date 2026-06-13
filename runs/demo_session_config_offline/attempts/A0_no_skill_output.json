@@ -1,0 +1,7 @@
+[
+  {
+    "finding_id": "N002",
+    "summary": "可能存在调试信息或敏感信息泄露。",
+    "evidence_hint": "error_template: \"stacktrace=${stacktrace}, api_key=${api_key}\""
+  }
+]

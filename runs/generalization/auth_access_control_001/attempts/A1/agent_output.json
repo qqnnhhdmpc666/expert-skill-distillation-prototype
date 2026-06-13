@@ -1,0 +1,25 @@
+{
+  "attempt": "A1_skill_v1",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Role and scope authorization",
+      "evidence_span": "delete_invoice checks only is_authenticated",
+      "recommended_fix": "Check required role/scope before mutation."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Object ownership boundary",
+      "evidence_span": "",
+      "recommended_fix": "Bind resource access to tenant and owner."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Non-leaking authorization error",
+      "evidence_span": "permission errors reveal object existence",
+      "recommended_fix": "Use consistent 403/404 envelope with request id."
+    }
+  ],
+  "notes": []
+}

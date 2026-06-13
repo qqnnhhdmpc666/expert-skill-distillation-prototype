@@ -1,0 +1,21 @@
+{
+  "attempt": "A2_skill_v2",
+  "answer": "发现高危上传/下载缺陷：路径穿越、公开目录直存、校验不足、调试与默认密钥、审计缺失，需优先修复。",
+  "evidence": [
+    "高危：save(\"/public/uploads/\" + filename) 直接拼接用户文件名，可../穿越覆盖/写入任意路径。",
+    "高危：download 使用 send_file(\"/public/uploads/\" + filename)，未归一化和根目录限制，可任意文件读取。",
+    "中危：仅 filename.endswith((\".png\", \".jpg\"))，未校验MIME、内容魔数、大小和图片重编码。",
+    "中危：返回 debug_path 暴露内部存储路径；配置 debug: true、SECRET_KEY: changeme。",
+    "中危：audit_log_retention_days: null，代码未见上传/下载审计日志与保留周期。"
+  ],
+  "improvements": [
+    "使用安全根目录+realpath归一化，拒绝../、绝对路径、控制字符；下载按文件ID映射。",
+    "存储名改为UUID/哈希随机名，原文件名仅作元数据；不要直接写入/public/uploads。",
+    "增加白名单MIME、魔数检测、大小上限；图片用解码后重编码剥离恶意载荷。",
+    "上传目录移出Web公开可执行目录，设置无执行权限；下载经鉴权的代理接口返回。",
+    "关闭生产debug，移除debug_path，使用强随机SECRET_KEY；记录用户/IP/文件ID/结果并设保留期。"
+  ],
+  "limits": [
+    "仅审查给定代码与配置，未验证实际Web服务器执行权限和鉴权中间件。"
+  ]
+}

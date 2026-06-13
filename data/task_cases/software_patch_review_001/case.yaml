@@ -1,0 +1,15 @@
+{
+  "case_id": "software_patch_review_001",
+  "title": "Software patch review smoke case",
+  "task_family": "software_patch_review",
+  "expected_capabilities": [
+    "PATCH_TEST_FAILURE_REPRO",
+    "PATCH_MINIMAL_CODE_CHANGE",
+    "PATCH_REGRESSION_VALIDATION"
+  ],
+  "v1_capabilities": [
+    "PATCH_TEST_FAILURE_REPRO"
+  ],
+  "typical_feedback": "missing_capability",
+  "typical_repair": "patch_capability"
+}

@@ -1,0 +1,13 @@
+{
+  "read_files": [
+    "/app/target/app.py",
+    "/app/target/config.yaml"
+  ],
+  "skill_files": [
+    "/app/skill/SKILL.md",
+    "/app/skill/manifest.json"
+  ],
+  "enabled_capabilities": [
+    "UPLOAD_PATH_ISOLATION"
+  ]
+}

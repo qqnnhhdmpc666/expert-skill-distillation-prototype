@@ -1,0 +1,30 @@
+{
+  "run_id": "mini_clean_out_of_scope_001::offline_deterministic::candidate_package",
+  "case_id": "mini_clean_out_of_scope_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_package",
+  "task_family": "clean_business_logic_review",
+  "activated_capability_group": "upload_security",
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002",
+  "target_hash": "362a045e574f550234081c85f3989d8ff74adcb7ef0222b12a16fd0286e57354",
+  "skill_hash": "c84b51e1a709c5f3ffa9f60b60e595c94923db6a53fbc298786222e15a3434bd",
+  "manifest_hash": "708d538cd28d22f09efe6c6cba72718f64015de1c4387a80447188c784fea806",
+  "prompt_hash": "none",
+  "model": "offline_deterministic",
+  "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+  "schema_version": "skill_marginal_utility.v1",
+  "timestamp": "2026-06-12T10:29:01.872254+00:00",
+  "cost": null,
+  "tokens": 266,
+  "cost_reason": "offline prototype does not compute monetary billing",
+  "tokens_reason": "estimated from skill text only",
+  "verifier_feedback_type": "false_positive_risk",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T10:24:22.679142+00:00"
+  }
+}

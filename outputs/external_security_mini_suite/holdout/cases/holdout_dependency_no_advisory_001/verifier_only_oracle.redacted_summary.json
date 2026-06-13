@@ -1,0 +1,8 @@
+{
+  "case_id": "holdout_dependency_no_advisory_001",
+  "expected_capability_count": 0,
+  "expected_capability_group": "out_of_scope_guard",
+  "clean_or_negative": false,
+  "unsupported_limitation": true,
+  "note": "Full oracle fields are not written into runner inputs."
+}

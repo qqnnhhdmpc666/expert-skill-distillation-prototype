@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expert Skill Distillation Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Risk-budgeted Traceable Skill Deployment</p>
+            <h1>专家知识蒸馏原型工作台</h1>
+          </div>
+          <div class="status-pill" id="runStatus">Ready</div>
+        </header>
+
+        <section class="control-grid">
+          <div class="input-pane">
+            <div class="pane-head">
+              <div>
+                <h2>专家材料</h2>
+                <p>输入规则、审计经验或漏洞挖掘检查要点。</p>
+              </div>
+              <select id="scenarioSelect" aria-label="选择演示场景">
+                <option value="vuln">漏洞挖掘技能</option>
+                <option value="api">API Review 技能</option>
+                <option value="config">配置安全技能</option>
+              </select>
+            </div>
+            <textarea id="materialInput" spellcheck="false"></textarea>
+            <div class="button-row">
+              <button id="runButton" type="button">运行蒸馏闭环</button>
+              <button id="resetButton" type="button" class="secondary">重置材料</button>
+            </div>
+          </div>
+
+          <div class="metrics-pane">
+            <h2>部署指标</h2>
+            <div class="metric-list">
+              <div class="metric-card">
+                <span>Compact v1 覆盖</span>
+                <strong id="coverageV1">-</strong>
+              </div>
+              <div class="metric-card">
+                <span>Patched 覆盖</span>
+                <strong id="coverageV2">-</strong>
+              </div>
+              <div class="metric-card">
+                <span>Trace 成本</span>
+                <strong id="traceCost">-</strong>
+              </div>
+              <div class="metric-card">
+                <span>Gate 决策</span>
+                <strong id="gateDecision">-</strong>
+              </div>
+            </div>
+            <div class="safe-claim">
+              <b>演示边界</b>
+              <p>当前展示的是受控原型：后验执行反馈被归因到规则补丁、输出契约修复、回滚或选择性 trace，而不是宣称通用自动正确。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="timeline" aria-label="蒸馏流程">
+          <div class="step active" data-step="0">1. 生成 Skill</div>
+          <div class="step" data-step="1">2. 执行验证</div>
+          <div class="step" data-step="2">3. 归因修复</div>
+          <div class="step" data-step="3">4. Gate 发布</div>
+        </section>
+
+        <section class="result-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <h2>初始 Compact Skill</h2>
+              <span id="initialBadge">pending</span>
+            </div>
+            <pre id="initialSkill"></pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>执行反馈</h2>
+              <span id="feedbackBadge">pending</span>
+            </div>
+            <pre id="executionFeedback"></pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>类型化修复</h2>
+              <span id="patchBadge">pending</span>
+            </div>
+            <pre id="patchPlan"></pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>优化后 Skill</h2>
+              <span id="finalBadge">pending</span>
+            </div>
+            <pre id="finalSkill"></pre>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "skill_id": "data_quality_review_001",
+  "version": "v1",
+  "task_family": "data_quality_review",
+  "capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "event",
+    "capability_id",
+    "evidence_span"
+  ],
+  "metadata": {},
+  "installed_from": "outputs/skill_lifecycle_evidence/generalization/data_quality_review_001/distillation_bundle",
+  "case_id": "data_quality_review_001",
+  "version_label": "v1"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "API_SCHEMA_CONTRACT",
+    "skill_file": "skills/skill_v2/SKILL.md#API_SCHEMA_CONTRACT"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "API_OVERBROAD_RISK",
+    "skill_file": "skills/skill_v2/SKILL.md#API_OVERBROAD_RISK"
+  }
+]

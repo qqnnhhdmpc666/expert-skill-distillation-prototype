@@ -1,0 +1,29 @@
+[
+  {
+    "stage": "A0 no skill",
+    "status": "FAIL",
+    "capability_coverage": 0.0,
+    "evidence_grounding": 0.15,
+    "plan_stagnation_risk": 0.8,
+    "token_cost": 64,
+    "visible_result": "泛泛发现，证据和修复建议不足"
+  },
+  {
+    "stage": "A1 skill v1",
+    "status": "FAIL",
+    "capability_coverage": 1.0,
+    "evidence_grounding": 0.55,
+    "plan_stagnation_risk": 0.42,
+    "token_cost": 250,
+    "visible_result": "结构更好，但仍漏掉 failure-critical 能力"
+  },
+  {
+    "stage": "A2 skill v2",
+    "status": "PASS",
+    "capability_coverage": 1.0,
+    "evidence_grounding": 0.92,
+    "plan_stagnation_risk": 0.08,
+    "token_cost": 250,
+    "visible_result": "补齐证据、修复建议和验证契约后通过"
+  }
+]

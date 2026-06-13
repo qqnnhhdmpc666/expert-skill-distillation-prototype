@@ -1,0 +1,30 @@
+{
+  "run_id": "live_llm_upload_001",
+  "scenario": "upload_security_001",
+  "backend": "live_llm_text",
+  "env_ready": true,
+  "model": "gpt-5.5",
+  "agent_status": "ok",
+  "failure_reason": null,
+  "verifier": {
+    "pass": true,
+    "feedback_type": "pass",
+    "coverage": 1.0,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": []
+  },
+  "artifacts": {
+    "prompt": "prompt.md",
+    "raw_response": "raw_response.txt",
+    "security_report": "security_report.json",
+    "verifier_report": "verifier_report.json",
+    "model_calls": "model_calls.json",
+    "backend_metadata": "backend_metadata.json"
+  },
+  "boundary": "LLM is the agent only; deterministic verifier/gate decides success."
+}

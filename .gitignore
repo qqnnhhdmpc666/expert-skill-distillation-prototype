@@ -2,8 +2,13 @@
 external_repos/
 .venv/
 venv/
+swebench-venv/
+SWE-bench/
+.uv-cache/
+.uv-python/
 __pycache__/
 *.py[cod]
+*.egg-info/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -23,6 +28,7 @@ outputs/**/agent/
 outputs/**/verifier/
 outputs/**/config.json
 outputs/**/result.json
+outputs/external_swebench/**/image_build_dir
 
 # Keep lightweight smoke-test evidence committed
 !outputs/harbor-smoke/**

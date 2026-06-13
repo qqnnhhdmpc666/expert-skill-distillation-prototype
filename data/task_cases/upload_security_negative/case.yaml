@@ -1,0 +1,15 @@
+{
+  "case_id": "upload_security_negative",
+  "title": "Upload negative control with missing evidence",
+  "task_family": "negative_control",
+  "expected_capabilities": [
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "v1_capabilities": [
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "typical_feedback": "unsupported_evidence",
+  "typical_repair": "reject_or_remove_unsupported_finding",
+  "negative_control": true,
+  "purpose": "Reject unsupported evidence or false positives."
+}

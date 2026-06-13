@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-06-12T11:09:10.174126+00:00",
+  "allowed_evidence_types": [
+    "derived_summary",
+    "external_official_harness",
+    "fresh_run",
+    "infra_blocked",
+    "replay",
+    "scaffold"
+  ],
+  "matrix_rows": [
+    {
+      "claim": "Installed package registry drives runtime execution",
+      "lane": "Runtime-general",
+      "skill_package": "secure_code_review",
+      "evidence_type": "fresh_run",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\registry.json"
+    },
+    {
+      "claim": "Installed package variants support marginal utility comparison",
+      "lane": "Runtime-general",
+      "skill_package": "secure_code_review",
+      "evidence_type": "fresh_run",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\installed_package_marginal_utility.json"
+    },
+    {
+      "claim": "Small candidate evolution records promotion/rejection evidence",
+      "lane": "Runtime-general",
+      "skill_package": "secure_code_review",
+      "evidence_type": "fresh_run",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\evolution_summary.json"
+    },
+    {
+      "claim": "Installed secure_code_review covers controlled upload/config/API/auth families",
+      "lane": "Secure-code-review",
+      "skill_package": "secure_code_review",
+      "evidence_type": "derived_summary",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\MULTI_CAPABILITY_GENERALIZATION_STATUS.md"
+    },
+    {
+      "claim": "Local defensive mini-suite provides bounded representative security evidence",
+      "lane": "Secure-code-review",
+      "skill_package": "secure_code_review",
+      "evidence_type": "fresh_run",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\mini_suite_summary.json"
+    },
+    {
+      "claim": "software_patch_review has internal smoke only",
+      "lane": "Software-patch-review",
+      "skill_package": "software_patch_review",
+      "evidence_type": "fresh_run",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\active_skill_pointers\\software_patch_review.json"
+    },
+    {
+      "claim": "SWE-bench official harness readiness is tracked honestly",
+      "lane": "Software-patch-review",
+      "skill_package": "software_patch_review",
+      "evidence_type": "infra_blocked",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\SWEBENCH_OFFICIAL_HARNESS_INFRA_UNBLOCK_STATUS.md"
+    },
+    {
+      "claim": "Official external security benchmarks are not claimed",
+      "lane": "External-security",
+      "skill_package": "secure_code_review",
+      "evidence_type": "fresh_run",
+      "allowed": true,
+      "current_evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\DEFENSIVE_SECURITY_MINI_SUITE_STATUS.md"
+    }
+  ],
+  "report_rows": [
+    {
+      "report": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\REPRESENTATIVE_VALIDATION_MATRIX.md",
+      "exists": true,
+      "allowed_evidence_mentions": [
+        "derived_summary",
+        "fresh_run",
+        "infra_blocked",
+        "replay",
+        "scaffold"
+      ],
+      "legacy_or_disallowed_mentions": []
+    },
+    {
+      "report": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\FRAMEWORK_MATURITY_EVIDENCE_LEDGER.md",
+      "exists": true,
+      "allowed_evidence_mentions": [
+        "derived_summary",
+        "fresh_run",
+        "infra_blocked"
+      ],
+      "legacy_or_disallowed_mentions": []
+    },
+    {
+      "report": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\DEFENSIVE_SECURITY_MINI_SUITE_STATUS.md",
+      "exists": true,
+      "allowed_evidence_mentions": [],
+      "legacy_or_disallowed_mentions": []
+    },
+    {
+      "report": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\SMALL_CANDIDATE_EVOLUTION_STATUS.md",
+      "exists": true,
+      "allowed_evidence_mentions": [],
+      "legacy_or_disallowed_mentions": []
+    },
+    {
+      "report": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\SWEBENCH_OFFICIAL_HARNESS_INFRA_UNBLOCK_STATUS.md",
+      "exists": true,
+      "allowed_evidence_mentions": [
+        "infra_blocked"
+      ],
+      "legacy_or_disallowed_mentions": []
+    },
+    {
+      "report": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\reports\\RAPID_ADVANCEMENT_SPRINT_STATUS.md",
+      "exists": true,
+      "allowed_evidence_mentions": [
+        "infra_blocked"
+      ],
+      "legacy_or_disallowed_mentions": []
+    }
+  ],
+  "boundary_checks": {
+    "infra_blocked_not_pass": true,
+    "scaffold_not_fresh_run": true,
+    "swebench_not_used_for_secure_code_review": true,
+    "internal_deterministic_not_real_world_validity": true,
+    "local_mini_suite_not_official_benchmark": true
+  },
+  "issues": [],
+  "overall_status": "pass"
+}

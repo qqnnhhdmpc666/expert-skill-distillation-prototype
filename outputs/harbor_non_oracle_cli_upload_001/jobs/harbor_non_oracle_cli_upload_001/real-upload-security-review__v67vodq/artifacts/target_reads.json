@@ -1,0 +1,8 @@
+{
+  "read_files": [
+    "/app/target/app.py",
+    "/app/target/config.yaml"
+  ],
+  "app_chars": 465,
+  "config_chars": 70
+}

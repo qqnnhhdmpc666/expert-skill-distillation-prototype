@@ -1,0 +1,10 @@
+{
+  "run_id": "live_llm_repair_loop_data_quality_001",
+  "kind": "local_live_llm_repair_loop",
+  "source_artifact": "outputs/live_llm_repair_loop_data_quality_001",
+  "a1_pass": false,
+  "a2_pass": true,
+  "feedback_type": "output_contract_error",
+  "repair_action": "rewrite_output_contract",
+  "boundary": "LLM is the non-oracle agent; verifier/gate remain deterministic."
+}

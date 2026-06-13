@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "score": 1.0,
+  "missing": [],
+  "task_terms_checked": [
+    "文件上传",
+    "扩展名",
+    "mime",
+    "内容魔数",
+    "审计日志",
+    "保留周期",
+    "错误响应",
+    "内部路径",
+    "token",
+    "api_key",
+    "stacktrace",
+    "debug_path"
+  ],
+  "task_terms_covered": [
+    "文件上传",
+    "扩展名",
+    "mime",
+    "内容魔数",
+    "审计日志",
+    "保留周期",
+    "错误响应",
+    "内部路径",
+    "token",
+    "api_key",
+    "debug_path",
+    "audit_log_retention_days"
+  ],
+  "evidence_count": 4,
+  "improvement_count": 7
+}

@@ -1,0 +1,9 @@
+{
+  "source_type": "verifier_feedback_and_evidence_summary",
+  "case_id": "config_security_001",
+  "failure_or_limitation": "configuration realization can regress to capability presence without explicit evidence realization",
+  "capability_group_changed": "config_security",
+  "scope_expansion_risk": "low",
+  "risk_case_id": "mini_clean_out_of_scope_001",
+  "verifier_only_oracle_fields_read": false
+}

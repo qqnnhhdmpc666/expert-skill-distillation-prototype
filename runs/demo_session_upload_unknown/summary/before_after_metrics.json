@@ -1,0 +1,27 @@
+[
+  {
+    "对比项": "覆盖规则",
+    "Skill v1": "R002, R004, R008",
+    "Skill v2": "R002, R004, R005, R006, R008"
+  },
+  {
+    "对比项": "漏检规则",
+    "Skill v1": "R005, R006",
+    "Skill v2": "无"
+  },
+  {
+    "对比项": "证据链",
+    "Skill v1": "部分缺少完整字段",
+    "Skill v2": "包含 evidence_span / risk / fix"
+  },
+  {
+    "对比项": "输出契约",
+    "Skill v1": "不完整",
+    "Skill v2": "满足 verifier contract"
+  },
+  {
+    "对比项": "验证结果",
+    "Skill v1": "FAIL",
+    "Skill v2": "PASS"
+  }
+]

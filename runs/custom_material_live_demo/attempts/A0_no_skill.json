@@ -1,0 +1,13 @@
+{
+  "attempt": "A0_no_skill",
+  "answer": "已给出初步回答，但结构和证据仍不稳定。",
+  "evidence": [
+    "上传逻辑只检查 filename.endswith，并把用户文件名拼接到 /public/uploads。"
+  ],
+  "improvements": [
+    "补充可验证证据片段。"
+  ],
+  "limits": [
+    "这是本地 fallback 输出；配置 LLM 后会记录真实模型响应。"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "findings": [
+    {
+      "capability_id": "DATA_REQUIRED_FIELD_COVERAGE",
+      "issue": "Required country_code is blank",
+      "evidence_span": "target.md: dataset_contract.yaml requires country_code; train.csv row 1042 has country_code=, label=basic",
+      "recommended_fix": ""
+    },
+    {
+      "capability_id": "DATA_TEMPORAL_SPLIT_GUARD",
+      "issue": "Train row event_date is after validation cutoff",
+      "evidence_span": "target.md: validation_cutoff=2025-04-30; train.csv row 9811 has event_date=2025-05-04",
+      "recommended_fix": ""
+    },
+    {
+      "capability_id": "DATA_LABEL_ENUM_ALIGNMENT",
+      "issue": "Label outside allowed enum",
+      "evidence_span": "target.md: allowed_labels=[basic,premium,enterprise]; train.csv row 9811 has label=gold_plus",
+      "recommended_fix": ""
+    }
+  ],
+  "attempt": "A1_skill_v1",
+  "backend": "live_llm_text"
+}

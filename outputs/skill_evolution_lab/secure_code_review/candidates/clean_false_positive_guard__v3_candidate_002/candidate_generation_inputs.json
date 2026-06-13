@@ -1,0 +1,9 @@
+{
+  "source_type": "negative_control_evidence_summary",
+  "case_id": "mini_clean_out_of_scope_001",
+  "failure_or_limitation": "false-positive control must remain zero on clean out-of-scope tasks",
+  "capability_group_changed": "upload_security",
+  "scope_expansion_risk": "high",
+  "risk_case_id": "mini_clean_out_of_scope_001",
+  "verifier_only_oracle_fields_read": false
+}

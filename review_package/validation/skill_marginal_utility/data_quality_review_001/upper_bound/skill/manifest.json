@@ -1,0 +1,23 @@
+{
+  "skill_id": "data_quality_review_001",
+  "version": "upper_bound",
+  "task_family": "data_quality_review",
+  "capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "upper_bound": true
+  }
+}

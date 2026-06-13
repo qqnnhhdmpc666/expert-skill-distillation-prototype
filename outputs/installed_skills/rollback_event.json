@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-06-11T14:49:52.648179+00:00",
+  "event": "rollback",
+  "skill_id": "secure_code_review",
+  "from_version": "v2",
+  "to_version": "v1",
+  "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+  "skill_hash": "6aa4603e9f9c457b8ee42bad9ee22ff52aff27051835626f92c30075785e17a5",
+  "manifest_hash": "7533066d1761226eda43c7528c8ef45d977bec6e15edae928e0cc8e62360410d"
+}

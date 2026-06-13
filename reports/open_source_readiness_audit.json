@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-06-12T15:02:16.280017+00:00",
+  "checks": [
+    {
+      "check": "doc_exists:README_PROTOTYPE.md",
+      "status": "pass",
+      "detail": "README_PROTOTYPE.md"
+    },
+    {
+      "check": "doc_exists:docs/QUICKSTART.md",
+      "status": "pass",
+      "detail": "docs/QUICKSTART.md"
+    },
+    {
+      "check": "doc_exists:docs/CLAIM_BOUNDARY.md",
+      "status": "pass",
+      "detail": "docs/CLAIM_BOUNDARY.md"
+    },
+    {
+      "check": "doc_exists:docs/ARTIFACT_TYPES.md",
+      "status": "pass",
+      "detail": "docs/ARTIFACT_TYPES.md"
+    },
+    {
+      "check": "doc_exists:docs/ADDING_A_NEW_SKILL.md",
+      "status": "pass",
+      "detail": "docs/ADDING_A_NEW_SKILL.md"
+    },
+    {
+      "check": "doc_exists:docs/RUNNING_VALIDATION.md",
+      "status": "pass",
+      "detail": "docs/RUNNING_VALIDATION.md"
+    },
+    {
+      "check": "doc_exists:docs/TROUBLESHOOTING.md",
+      "status": "pass",
+      "detail": "docs/TROUBLESHOOTING.md"
+    },
+    {
+      "check": "doc_exists:docs/RELEASE.md",
+      "status": "pass",
+      "detail": "docs/RELEASE.md"
+    },
+    {
+      "check": "doc_exists:docs/CLEAN_CLONE_SMOKE.md",
+      "status": "pass",
+      "detail": "docs/CLEAN_CLONE_SMOKE.md"
+    },
+    {
+      "check": "review_package_manifest_exists",
+      "status": "pass",
+      "detail": "review_package/MANIFEST.json"
+    },
+    {
+      "check": "command_documented:skill-deploy build-codex-skill",
+      "status": "pass",
+      "detail": "skill-deploy build-codex-skill"
+    },
+    {
+      "check": "command_documented:skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2",
+      "status": "pass",
+      "detail": "skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2"
+    },
+    {
+      "check": "command_documented:skill-deploy run-skill --installed secure_code_review",
+      "status": "pass",
+      "detail": "skill-deploy run-skill --installed secure_code_review"
+    },
+    {
+      "check": "command_documented:skill-deploy compare-variants",
+      "status": "pass",
+      "detail": "skill-deploy compare-variants"
+    },
+    {
+      "check": "command_documented:skill-deploy defensive-security-mini-suite",
+      "status": "pass",
+      "detail": "skill-deploy defensive-security-mini-suite"
+    },
+    {
+      "check": "command_documented:skill-deploy holdout-security-mini-suite",
+      "status": "pass",
+      "detail": "skill-deploy holdout-security-mini-suite"
+    },
+    {
+      "check": "command_documented:skill-deploy non-oracle-validation",
+      "status": "pass",
+      "detail": "skill-deploy non-oracle-validation"
+    },
+    {
+      "check": "command_documented:skill-deploy activation-ablation",
+      "status": "pass",
+      "detail": "skill-deploy activation-ablation"
+    },
+    {
+      "check": "command_documented:skill-deploy advanced-evolve",
+      "status": "pass",
+      "detail": "skill-deploy advanced-evolve"
+    },
+    {
+      "check": "command_documented:skill-deploy live-llm-validation",
+      "status": "pass",
+      "detail": "skill-deploy live-llm-validation"
+    },
+    {
+      "check": "command_documented:skill-deploy improvement-demo",
+      "status": "pass",
+      "detail": "skill-deploy improvement-demo"
+    },
+    {
+      "check": "no_forbidden_overclaim_in_docs",
+      "status": "pass",
+      "detail": "unsafe_hits=0"
+    }
+  ],
+  "overclaim_rows": [
+    {
+      "doc": "README_PROTOTYPE.md",
+      "line": 15,
+      "match": "production vulnerability scanner",
+      "negated_or_boundary_context": true
+    },
+    {
+      "doc": "README_PROTOTYPE.md",
+      "line": 31,
+      "match": "real-world security effectiveness",
+      "negated_or_boundary_context": true
+    },
+    {
+      "doc": "docs/CLAIM_BOUNDARY.md",
+      "line": 19,
+      "match": "production vulnerability scanner",
+      "negated_or_boundary_context": true
+    },
+    {
+      "doc": "docs/CLAIM_BOUNDARY.md",
+      "line": 21,
+      "match": "SWE-bench success",
+      "negated_or_boundary_context": true
+    },
+    {
+      "doc": "docs/TROUBLESHOOTING.md",
+      "line": 59,
+      "match": "production vulnerability scanner",
+      "negated_or_boundary_context": true
+    },
+    {
+      "doc": "docs/RELEASE.md",
+      "line": 3,
+      "match": "production vulnerability scanner",
+      "negated_or_boundary_context": true
+    },
+    {
+      "doc": "docs/CLEAN_CLONE_SMOKE.md",
+      "line": 26,
+      "match": "real-world security effectiveness",
+      "negated_or_boundary_context": true
+    }
+  ],
+  "unsafe_overclaim_rows": [],
+  "open_source_prototype_readiness": "pass",
+  "public_release_readiness": "partial",
+  "public_release_gaps": [
+    "clean-environment smoke has not been run from a fresh clone",
+    "dependency/requirements lock has not been reviewed as a release artifact",
+    "license and repository metadata are not yet release-complete",
+    "one-command demo is not yet guaranteed in a clean environment"
+  ],
+  "overall_status": "pass"
+}

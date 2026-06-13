@@ -1,0 +1,21 @@
+{
+  "attempt": "active_installed",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "py: prior report used prose without evidence_span and classified returns debug_path as a generic security risk without pointing to target evidence",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    },
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Overbroad finding control",
+      "evidence_span": "py: prior report used prose without evidence_span and classified returns debug_path as a generic security risk without pointing to target evidence",
+      "recommended_fix": "Reject findings not grounded in target spans."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:api_or_code_review"
+  ]
+}

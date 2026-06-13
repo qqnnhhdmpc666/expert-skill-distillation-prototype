@@ -1,0 +1,56 @@
+{
+  "skill_id": "secure_code_review",
+  "package_type": "codex_skill_runtime_bundle",
+  "created_at": "2026-06-12T14:51:51.273468+00:00",
+  "name": "Secure Code Review Skill Package",
+  "deployment_shape": "codex_skill_plus_cli",
+  "available_versions": [
+    "v1",
+    "v2"
+  ],
+  "default_version": "v2",
+  "runtime_case_scope": [
+    "upload_security_001",
+    "config_security_001",
+    "api_review_001",
+    "auth_access_control_001"
+  ],
+  "safety_boundary": {
+    "allowed": [
+      "defensive_detection",
+      "explanation",
+      "fix_recommendation",
+      "patch_validation"
+    ],
+    "forbidden": [
+      "exploit_generation",
+      "attack_chain_execution",
+      "unauthorized_target_testing"
+    ]
+  },
+  "task_conditioning": {
+    "capability_groups": [
+      "upload_security",
+      "config_security",
+      "api_or_code_review",
+      "auth_access_control",
+      "out_of_scope_guard"
+    ],
+    "supported_task_families": [
+      "upload_security",
+      "config_security",
+      "api_or_code_review",
+      "auth_access_control"
+    ],
+    "guard_behavior": "emit out_of_scope metadata and avoid unrelated findings"
+  },
+  "entrypoints": {
+    "install_v1": "skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v1",
+    "install_v2": "skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2",
+    "run_installed": "skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic",
+    "run_config": "skill-deploy run-skill --installed secure_code_review --case config_security_001 --backend offline_deterministic",
+    "run_api": "skill-deploy run-skill --installed secure_code_review --case api_review_001 --backend offline_deterministic",
+    "run_auth": "skill-deploy run-skill --installed secure_code_review --case auth_access_control_001 --backend offline_deterministic",
+    "rollback": "skill-deploy rollback --installed secure_code_review --to-version v1"
+  }
+}

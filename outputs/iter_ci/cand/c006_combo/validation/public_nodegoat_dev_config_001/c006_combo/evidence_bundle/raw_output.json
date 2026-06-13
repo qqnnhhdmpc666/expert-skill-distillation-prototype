@@ -1,0 +1,18 @@
+{
+  "attempt": "c006_combo",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Hardcoded API key in development config",
+      "evidence_span": "zapApiKey: \"v9dn0balpqas1pcc281tn5ood1\",",
+      "recommended_fix": "Remove the hardcoded ZAP API key and load it from an environment variable or a secure secrets manager to prevent exposure in version control and production deployments.",
+      "capability_group": "config_security",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

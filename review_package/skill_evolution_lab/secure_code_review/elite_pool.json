@@ -1,0 +1,17 @@
+[
+  {
+    "rank": 1,
+    "candidate_id": "candidate_upload_security_001_v2",
+    "case_id": "upload_security_001",
+    "selection_rule": "strict_positive_marginal_gain_and_no_false_positive_increase",
+    "status": "elite_candidate",
+    "marginal_utility": {
+      "v2_over_v1_gain": 0.1333,
+      "v2_over_no_skill_gain": 0.0,
+      "gap_to_upper_bound": 0.0,
+      "cost_delta": 73.0,
+      "false_positive_delta": 0.0,
+      "metamorphic_delta": 0.0
+    }
+  }
+]

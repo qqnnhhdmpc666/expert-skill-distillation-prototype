@@ -1,0 +1,1 @@
+Authorization review must distinguish authentication, role/scope authorization, object ownership, tenant boundary, and non-leaking error behavior.

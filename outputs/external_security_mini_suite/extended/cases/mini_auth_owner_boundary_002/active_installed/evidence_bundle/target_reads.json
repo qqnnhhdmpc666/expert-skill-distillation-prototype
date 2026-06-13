@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_auth_owner_boundary_002",
+  "target_digest": {
+    "chars": 250,
+    "preview": "Task: Review this object-access path defensively.\n\nSnippet:\nupdate_invoice checks is_authenticated and loads invoice by id. The response returns invoice_id when access is denied.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "generated_at": "2026-06-12T10:24:50.480457+00:00",
+  "version_integrity": {
+    "installed_skill": "secure_code_review",
+    "versions": {
+      "v1": {
+        "available": true,
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v1",
+        "skill_hash": "9f498c16c81acf64979cfbce106c7615875cbb357441acc83124a1b2811858ca",
+        "manifest_hash": "a11d823e0aca5a800b13ccd7d9a6d692922ffba487e0de02da926122303f7701"
+      },
+      "v2": {
+        "available": true,
+        "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+        "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8"
+      }
+    },
+    "version_content_identical": false
+  },
+  "case_count": 9,
+  "average_installed_v2_over_installed_v1_gain": 0.2963,
+  "version_gain_claim_allowed": true,
+  "rows": [
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "task_family": "upload_security",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6667,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.3333,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.3333
+      }
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "task_family": "upload_security",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6667,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.3333,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.3333
+      }
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "task_family": "config_security",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.4,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.4
+      }
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "task_family": "config_security",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.4,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.4
+      }
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "task_family": "auth_access_control",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.4,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.4
+      }
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "task_family": "auth_access_control",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.4,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.4
+      }
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "task_family": "api_or_code_review",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 0.6,
+        "installed_v1": 0.6,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.4,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.4
+      }
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "task_family": "dependency_version_risk",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 1.0,
+        "installed_v1": 1.0,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.0,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.0
+      }
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "task_family": "clean_business_logic_review",
+      "version_content_identical": false,
+      "scores": {
+        "no_skill": 1.0,
+        "installed_v1": 1.0,
+        "installed_v2": 1.0,
+        "active_installed": 1.0
+      },
+      "false_positive_counts": {
+        "no_skill": 0,
+        "installed_v1": 0,
+        "installed_v2": 0,
+        "active_installed": 0
+      },
+      "metrics": {
+        "installed_v2_over_installed_v1_gain": 0.0,
+        "installed_v2_false_positive_delta": 0,
+        "active_over_installed_v1_gain": 0.0
+      }
+    }
+  ]
+}

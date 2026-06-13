@@ -1,0 +1,6 @@
+{
+  "decision": "not_promoted",
+  "reason": "P0 Harbor skeleton records environment readiness and evidence schema only.",
+  "live_ready": false,
+  "boundary": "not a successful Harbor LLM repair loop"
+}

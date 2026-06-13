@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_config_clean_001",
+  "target_digest": {
+    "chars": 260,
+    "preview": "Task: Independently authored holdout: clean config review.\n\nSnippet:\nprod.yml: audit.enabled=true, retention_days=90, export_sink='siem'. dev.api_token appears only under dev-only profile.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

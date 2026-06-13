@@ -1,0 +1,1403 @@
+{
+  "generated_at": "2026-06-12T11:46:25.698371+00:00",
+  "overall_status": "pass",
+  "case_rows": [
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding",
+        "unsupported_limitation"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\holdout_cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\holdout_cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\holdout_cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\holdout_cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\holdout_cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\holdout_cases.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding",
+        "unsupported_limitation"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding",
+        "unsupported_limitation"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding",
+        "unsupported_limitation"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "extended_upload_public_exec_003",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "extended_input_validation_limitation_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding",
+        "unsupported_limitation"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "extended_clean_reporting_002",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "extended_clean_profile_003",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    },
+    {
+      "case_id": "extended_ambiguous_low_confidence_001",
+      "suite": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\external_security_mini_suite\\cases_extended.json",
+      "agent_visible_fields": [
+        "requested_output_schema",
+        "snippet",
+        "task_family",
+        "task_text"
+      ],
+      "verifier_only_fields": [
+        "ambiguous",
+        "clean_or_negative",
+        "expected_capabilities",
+        "expected_capability_group",
+        "expected_evidence_span",
+        "expected_security_finding"
+      ],
+      "leakage_found": false,
+      "direct_key_leaks": [],
+      "oracle_value_leaks": [],
+      "affected_artifact": [],
+      "decision": "valid",
+      "note": "task_family may equal the expected capability group; this is task conditioning, not verifier-only field leakage."
+    }
+  ],
+  "candidate_generation_rows": [
+    {
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002\\candidate_generation_inputs.json",
+      "forbidden_key_mentions": [],
+      "oracle_value_hits": [],
+      "leakage_found": false
+    },
+    {
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001\\candidate_generation_inputs.json",
+      "forbidden_key_mentions": [],
+      "oracle_value_hits": [],
+      "leakage_found": false
+    },
+    {
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\dependency_version_risk__v3_candidate_003\\candidate_generation_inputs.json",
+      "forbidden_key_mentions": [],
+      "oracle_value_hits": [],
+      "leakage_found": false
+    }
+  ],
+  "evidence_bundle_rows": [
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_api_schema_grounding_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_api_schema_grounding_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_api_schema_grounding_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_api_schema_grounding_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_invoice_scope_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_invoice_scope_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_invoice_scope_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_invoice_scope_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_owner_boundary_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_owner_boundary_002\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_owner_boundary_002\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_auth_owner_boundary_002\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_clean_out_of_scope_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_clean_out_of_scope_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_clean_out_of_scope_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_clean_out_of_scope_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_env_guard_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_env_guard_002\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_env_guard_002\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_env_guard_002\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_prod_audit_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_prod_audit_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_prod_audit_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_config_prod_audit_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_dependency_version_risk_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_dependency_version_risk_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_dependency_version_risk_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_dependency_version_risk_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_magic_path_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_magic_path_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_magic_path_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_magic_path_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_public_storage_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_public_storage_002\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_public_storage_002\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\cases\\mini_upload_public_storage_002\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_api_overbroad_schema_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_api_overbroad_schema_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_api_overbroad_schema_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_api_overbroad_schema_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_auth_project_ownership_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_auth_project_ownership_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_auth_project_ownership_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_auth_project_ownership_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_clean_tax_math_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_clean_tax_math_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_clean_tax_math_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_clean_tax_math_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_config_prod_secret_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_config_prod_secret_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_config_prod_secret_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_config_prod_secret_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_dependency_no_advisory_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_dependency_no_advisory_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_dependency_no_advisory_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_dependency_no_advisory_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_upload_double_extension_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_upload_double_extension_001\\installed_v1\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_upload_double_extension_001\\installed_v2\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "installed_variant_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\holdout\\cases\\holdout_upload_double_extension_001\\no_skill\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "no_skill",
+      "decision": "valid"
+    },
+    {
+      "case_id": "extended_ambiguous_low_confidence_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\extended_ambiguous_low_confidence_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "extended_clean_profile_003",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\extended_clean_profile_003\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "extended_clean_reporting_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\extended_clean_reporting_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "extended_input_validation_limitation_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\extended_input_validation_limitation_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "extended_upload_public_exec_003",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\extended_upload_public_exec_003\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_api_overbroad_schema_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\holdout_api_overbroad_schema_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_auth_project_ownership_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\holdout_auth_project_ownership_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_clean_tax_math_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\holdout_clean_tax_math_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_config_prod_secret_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\holdout_config_prod_secret_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_dependency_no_advisory_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\holdout_dependency_no_advisory_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "holdout_upload_double_extension_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\holdout_upload_double_extension_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_api_schema_grounding_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_api_schema_grounding_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_invoice_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_auth_invoice_scope_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_auth_owner_boundary_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_auth_owner_boundary_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_clean_out_of_scope_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_clean_out_of_scope_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_env_guard_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_config_env_guard_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_config_prod_audit_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_config_prod_audit_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_dependency_version_risk_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_dependency_version_risk_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_magic_path_001",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_upload_magic_path_001\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    },
+    {
+      "case_id": "mini_upload_public_storage_002",
+      "artifact": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_security_mini_suite\\extended\\cases\\mini_upload_public_storage_002\\active_installed\\evidence_bundle\\summary.json",
+      "oracle_fields_visible_to_runner": false,
+      "runtime_source": "active_installed_package",
+      "decision": "valid"
+    }
+  ],
+  "any_case_leakage": false,
+  "any_candidate_generation_leakage": false,
+  "any_evidence_runtime_leakage": false,
+  "claim_boundary": "The audit checks oracle-field leakage into runner-visible artifacts; verifier reports may contain post-run verifier feedback."
+}

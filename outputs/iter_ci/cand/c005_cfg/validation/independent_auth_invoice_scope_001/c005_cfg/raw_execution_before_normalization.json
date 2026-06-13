@@ -1,0 +1,19 @@
+{
+  "attempt": "c005_cfg",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing object ownership filter on invoice lookup",
+      "evidence_span": "target.md: cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Add tenant_id or owner_id filtering when loading the invoice to ensure the authenticated user owns the invoice before returning it."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Denial response leaks invoice_id",
+      "evidence_span": "target.md: cancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.",
+      "recommended_fix": "Return a generic error message in the denial body instead of including the invoice_id to prevent information disclosure."
+    }
+  ],
+  "notes": []
+}

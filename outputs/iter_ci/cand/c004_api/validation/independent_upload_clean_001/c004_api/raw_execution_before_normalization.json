@@ -1,0 +1,25 @@
+{
+  "attempt": "c004_api",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Server-side filename generation for path isolation",
+      "evidence_span": "target.md: upload.py: content signature and extension are both checked; server_filename is generated; audit_log_retention_days is 90.",
+      "recommended_fix": "Ensure server_filename continues to be generated using a secure, isolated directory path to prevent path traversal."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Content signature and extension validation present",
+      "evidence_span": "target.md: upload.py: content signature and extension are both checked; server_filename is generated; audit_log_retention_days is 90.",
+      "recommended_fix": "Maintain both content signature (magic bytes) and extension checks to prevent type spoofing and ensure file type integrity."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Audit log retention configured to 90 days",
+      "evidence_span": "target.md: upload.py: content signature and extension are both checked; server_filename is generated; audit_log_retention_days is 90.",
+      "recommended_fix": "Verify that audit logs are retained for the specified period (90 days) and that retention duration meets compliance requirements."
+    }
+  ],
+  "notes": []
+}

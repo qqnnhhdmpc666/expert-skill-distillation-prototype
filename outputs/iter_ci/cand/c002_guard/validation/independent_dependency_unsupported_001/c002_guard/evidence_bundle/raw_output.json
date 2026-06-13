@@ -1,0 +1,8 @@
+{
+  "attempt": "c002_guard",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

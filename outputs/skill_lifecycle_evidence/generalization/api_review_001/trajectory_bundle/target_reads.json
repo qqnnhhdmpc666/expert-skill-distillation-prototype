@@ -1,0 +1,66 @@
+{
+  "A1": [
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    }
+  ],
+  "A2": [
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    },
+    {
+      "event": "read_target",
+      "path": "target.md",
+      "chars": 105
+    }
+  ]
+}

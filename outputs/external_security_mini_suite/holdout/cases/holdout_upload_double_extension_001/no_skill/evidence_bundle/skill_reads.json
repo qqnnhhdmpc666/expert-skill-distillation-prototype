@@ -1,0 +1,35 @@
+{
+  "variant": "no_skill",
+  "skill": null,
+  "skill_text_chars": 0,
+  "skill_text_preview": "",
+  "provenance": {
+    "run_id": "holdout_upload_double_extension_001::offline_deterministic::no_skill",
+    "case_id": "holdout_upload_double_extension_001",
+    "backend": "offline_deterministic",
+    "variant": "no_skill",
+    "runtime_source": "no_skill",
+    "task_family": "upload_security",
+    "activated_capability_group": "no_skill",
+    "expected_capability_group": "upload_security",
+    "capability_group_correct": true,
+    "out_of_scope": false,
+    "unsupported_task_family": null,
+    "skill_package_path": "none",
+    "skill_hash": "none",
+    "manifest_hash": "none",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T11:38:15.443320+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T11:38:43.403528+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "offline_deterministic",
+    "cost": null,
+    "tokens": null,
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

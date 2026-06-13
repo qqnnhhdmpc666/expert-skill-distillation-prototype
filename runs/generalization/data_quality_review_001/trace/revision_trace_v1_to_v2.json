@@ -1,0 +1,39 @@
+{
+  "patch": {
+    "feedback_type": "target_context_missing",
+    "repair_action": "add_observation_step",
+    "before_capabilities": [
+      "DATA_REQUIRED_FIELD_COVERAGE",
+      "DATA_TEMPORAL_SPLIT_GUARD",
+      "DATA_LABEL_ENUM_ALIGNMENT"
+    ],
+    "after_capabilities": [
+      "DATA_REQUIRED_FIELD_COVERAGE",
+      "DATA_TEMPORAL_SPLIT_GUARD",
+      "DATA_LABEL_ENUM_ALIGNMENT"
+    ],
+    "operator_id": "op_add_observation_step_generic",
+    "operator_strategy": "observation_only",
+    "operator_description": "Preserve capabilities and add explicit observation steps so evidence binds to the target.",
+    "selection_score": 156,
+    "preferred_action": "add_observation_step"
+  },
+  "gate": {
+    "decision": "accept",
+    "intervention": "soft",
+    "reason": "target_context_missing -> add_observation_step",
+    "scores": {
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 0.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 1.0,
+      "safety_boundary_score": 1.0
+    },
+    "taxonomy_ref": "revision/feedback_taxonomy.json",
+    "repair_policy_ref": "revision/repair_policy.json",
+    "intervention_scores_ref": "revision/intervention_scores.json",
+    "operator_id": "op_add_observation_step_generic"
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "run_id": "swebench_gold_patch_smoke_requests_20260612",
+  "created_at": "2026-06-12T06:52:09.192823+00:00",
+  "instance_metadata": {
+    "instance_id": "psf__requests-1963",
+    "repo": "psf/requests",
+    "base_commit": "110048f9837f8441ea536804115e80b69f400277",
+    "problem_statement_hash": "ab31a283ce6fd03aff660d11dda4d5773faa92984ecdd44e97d65c1f8774098c",
+    "gold_patch_hash": "deb8b9018ea0271b2b9dc2d883bf5fb0ca9a721ecc9a93718065926fbec4ed74",
+    "test_patch_hash": "d54962cb131f871dcfb26c9d5b4518da0c701fd998915837bec0b3d80d9492a0",
+    "dataset": "SWE-bench/SWE-bench_Lite",
+    "resolved_dataset": "SWE-bench/SWE-bench_Lite",
+    "dataset_source": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+    "official_dataset_json": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\official_dataset.json",
+    "prepared_instances_path": null
+  },
+  "docker_status": {
+    "wsl_distro": "Ubuntu-24.04-Codex",
+    "created_at": "2026-06-12T06:42:01.412823+00:00",
+    "docker_version": {
+      "command": "docker version --format '{{json .}}'",
+      "return_code": 0,
+      "stdout": "{\"Client\":{\"Version\":\"29.1.3\",\"ApiVersion\":\"1.52\",\"DefaultAPIVersion\":\"1.52\",\"GitCommit\":\"29.1.3-0ubuntu3~24.04.2\",\"GoVersion\":\"go1.24.4\",\"Os\":\"linux\",\"Arch\":\"amd64\",\"BuildTime\":\"Wed Apr 29 16:41:06 2026\",\"Context\":\"default\"},\"Server\":{\"Platform\":{\"Name\":\"\"},\"Version\":\"29.1.3\",\"ApiVersion\":\"1.52\",\"MinAPIVersion\":\"1.44\",\"Os\":\"linux\",\"Arch\":\"amd64\",\"Components\":[{\"Name\":\"Engine\",\"Version\":\"29.1.3\",\"Details\":{\"ApiVersion\":\"1.52\",\"Arch\":\"amd64\",\"BuildTime\":\"Wed Apr 29 16:41:06 2026\",\"Experimental\":\"false\",\"GitCommit\":\"29.1.3-0ubuntu3~24.04.2\",\"GoVersion\":\"go1.24.4\",\"KernelVersion\":\"6.6.114.1-microsoft-standard-WSL2\",\"MinAPIVersion\":\"1.44\",\"Os\":\"linux\"}},{\"Name\":\"containerd\",\"Version\":\"2.2.1\",\"Details\":{\"GitCommit\":\"\"}},{\"Name\":\"runc\",\"Version\":\"1.3.4-0ubuntu1~24.04.1\",\"Details\":{\"GitCommit\":\"\"}},{\"Name\":\"docker-init\",\"Version\":\"0.19.0\",\"Details\":{\"GitCommit\":\"\"}}],\"GitCommit\":\"29.1.3-0ubuntu3~24.04.2\",\"GoVersion\":\"go1.24.4\",\"KernelVersion\":\"6.6.114.1-microsoft-standard-WSL2\",\"BuildTime\":\"2026-04-29T16:41:06.000000000+00:00\"}}\n",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+      "ok": true
+    },
+    "docker_info": {
+      "command": "docker info --format '{{json .RegistryConfig.Mirrors}}'",
+      "return_code": 0,
+      "stdout": "[]\n",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+      "ok": true
+    },
+    "docker_hub_v2": {
+      "command": "curl -I --max-time 20 https://registry-1.docker.io/v2/ || true",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:11 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:12 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:13 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:14 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:15 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:16 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:17 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:18 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:19 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:20 --:--:--     0\ncurl: (28) Connection timed out after 20002 milliseconds\n",
+      "ok": true
+    },
+    "existing_ubuntu_22_04": {
+      "command": "docker image inspect ubuntu:22.04 >/dev/null 2>&1",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+      "ok": true
+    },
+    "pull_attempts": [],
+    "ubuntu_22_04_ready": true,
+    "ubuntu_22_04_source": "existing_local_image"
+  },
+  "docker_status_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\docker_status.json",
+  "empty_patch": {
+    "variant": "empty_patch",
+    "status": "empty_patch_skipped_by_official_harness",
+    "recorded_result": "empty_patch_skipped_by_official_harness",
+    "official_harness": true,
+    "official_harness_call_path": "/opt/spark/swebench-tools/swebench-venv/bin/python -m swebench.harness.run_evaluation",
+    "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/empty_patch.jsonl' --max_workers 1 --timeout 1800 --run_id 'swebench_gold_patch_smoke_requests_20260612_empty_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/empty_patch/official_reports' --namespace none",
+    "command_result": {
+      "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/empty_patch.jsonl' --max_workers 1 --timeout 1800 --run_id 'swebench_gold_patch_smoke_requests_20260612_empty_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/empty_patch/official_reports' --namespace none",
+      "return_code": 0,
+      "stdout": "No instances to run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 1\nInstances with errors: 0\nUnstopped containers: 0\nUnremoved images: 0\nReport written to empty_patch.swebench_gold_patch_smoke_requests_20260612_empty_patch.json\n",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\n",
+      "ok": true
+    },
+    "official_report": {
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\empty_patch.swebench_gold_patch_smoke_requests_20260612_empty_patch.json",
+      "payload": {
+        "total_instances": 1,
+        "submitted_instances": 1,
+        "completed_instances": 0,
+        "resolved_instances": 0,
+        "unresolved_instances": 0,
+        "empty_patch_instances": 1,
+        "error_instances": 0,
+        "completed_ids": [],
+        "incomplete_ids": [],
+        "empty_patch_ids": [
+          "psf__requests-1963"
+        ],
+        "submitted_ids": [
+          "psf__requests-1963"
+        ],
+        "resolved_ids": [],
+        "unresolved_ids": [],
+        "error_ids": [],
+        "schema_version": 2
+      }
+    },
+    "resolved_count": 0,
+    "completed_instances": 0,
+    "error_instances": 0,
+    "empty_patch_instances": 1,
+    "prediction_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\predictions\\empty_patch.jsonl",
+    "environment": {
+      "wsl_distro": "Ubuntu-24.04-Codex",
+      "python": "/opt/spark/swebench-tools/swebench-venv/bin/python",
+      "docker": {
+        "command": "docker --version",
+        "return_code": 0,
+        "stdout": "Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2\n",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+        "ok": true
+      },
+      "swebench_python_package": {
+        "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -c \"import importlib.util; raise SystemExit(0 if importlib.util.find_spec('swebench') else 3)\"",
+        "return_code": 0,
+        "stdout": "",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+        "ok": true
+      },
+      "docker_available": true,
+      "official_harness_available": true
+    },
+    "blocked_reason": null,
+    "infra_error": null
+  },
+  "gold_patch": {
+    "variant": "gold_patch",
+    "status": "official_harness_infra_failed",
+    "recorded_result": "infra_failed",
+    "official_harness": true,
+    "official_harness_call_path": "/opt/spark/swebench-tools/swebench-venv/bin/python -m swebench.harness.run_evaluation",
+    "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 1800 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+    "command_result": {
+      "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 1800 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+      "return_code": 0,
+      "stdout": "Base image sweb.base.py.x86_64:latest already exists, skipping build.\nBase images built successfully.\nTotal environment images to build: 1\n<class 'swebench.harness.docker_build.BuildImageError'>: Error building image sweb.env.py.x86_64.1f92e6d7cef88badc4f744:latest: The command '/bin/sh -c /bin/bash -c \"source ~/.bashrc && /root/setup_env.sh\"' returned a non-zero code: 1\nCheck (logs/build_images/env/sweb.env.py.x86_64.1f92e6d7cef88badc4f744__latest/build_image.log) for more information.\n1 environment images failed to build.\nRunning 1 instances...\nError building image psf__requests-1963: Environment image sweb.env.py.x86_64.1f92e6d7cef88badc4f744:latest not found for psf__requests-1963\nCheck (logs/run_evaluation/swebench_gold_patch_smoke_requests_20260612_gold_patch/gold_patch/psf__requests-1963/run_instance.log) for more information.\nAll instances run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 0\nInstances with errors: 1\nUnstopped containers: 0\nUnremoved images: 0\nReport written to gold_patch.swebench_gold_patch_smoke_requests_20260612_gold_patch.json\n",
+      "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\nTraceback (most recent call last):\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py\", line 148, in build_image\n    raise docker.errors.BuildError(\ndocker.errors.BuildError: The command '/bin/sh -c /bin/bash -c \"source ~/.bashrc && /root/setup_env.sh\"' returned a non-zero code: 1\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/utils.py\", line 102, in run_threadpool\n    future.result()\n  File \"/usr/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/usr/lib/python3.12/concurrent/futures/thread.py\", line 58, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/spark/swebench-tools/SWE-bench/swebench/harness/docker_build.py\", line 154, in build_image\n    raise BuildImageError(image_name, str(e), logger) from e\nswebench.harness.docker_build.BuildImageError: Error building image sweb.env.py.x86_64.1f92e6d7cef88badc4f744:latest: The command '/bin/sh -c /bin/bash -c \"source ~/.bashrc && /root/setup_env.sh\"' returned a non-zero code: 1\nCheck (logs/build_images/env/sweb.env.py.x86_64.1f92e6d7cef88badc4f744__latest/build_image.log) for more information.\n\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00, 23.61it/s, ✓=0, ✖=0, error=1]\n",
+      "ok": true
+    },
+    "official_report": {
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\gold_patch.swebench_gold_patch_smoke_requests_20260612_gold_patch.json",
+      "payload": {
+        "total_instances": 1,
+        "submitted_instances": 1,
+        "completed_instances": 0,
+        "resolved_instances": 0,
+        "unresolved_instances": 0,
+        "empty_patch_instances": 0,
+        "error_instances": 1,
+        "completed_ids": [],
+        "incomplete_ids": [],
+        "empty_patch_ids": [],
+        "submitted_ids": [
+          "psf__requests-1963"
+        ],
+        "resolved_ids": [],
+        "unresolved_ids": [],
+        "error_ids": [
+          "psf__requests-1963"
+        ],
+        "schema_version": 2
+      }
+    },
+    "resolved_count": 0,
+    "completed_instances": 0,
+    "error_instances": 1,
+    "empty_patch_instances": 0,
+    "prediction_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\predictions\\gold_patch.jsonl",
+    "environment": {
+      "wsl_distro": "Ubuntu-24.04-Codex",
+      "python": "/opt/spark/swebench-tools/swebench-venv/bin/python",
+      "docker": {
+        "command": "docker --version",
+        "return_code": 0,
+        "stdout": "Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2\n",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+        "ok": true
+      },
+      "swebench_python_package": {
+        "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -c \"import importlib.util; raise SystemExit(0 if importlib.util.find_spec('swebench') else 3)\"",
+        "return_code": 0,
+        "stdout": "",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000",
+        "ok": true
+      },
+      "docker_available": true,
+      "official_harness_available": true
+    },
+    "blocked_reason": "Official harness environment-image build failed during conda package download from repo.anaconda.com: Content-Length mismatch after network timeout.",
+    "infra_error": {
+      "reason": "Official harness environment-image build failed during conda package download from repo.anaconda.com: Content-Length mismatch after network timeout.",
+      "run_instance_log": null,
+      "build_image_log": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\logs\\build_images\\env\\sweb.env.py.x86_64.1f92e6d7cef88badc4f744__latest\\build_image.log",
+      "run_instance_tail": null,
+      "build_image_tail": ".0.8                |       h5eee18b_6         262 KB\n    ca-certificates-2026.5.14  |       h06a4308_0         107 KB\n    exceptiongroup-1.3.0       |   py39h06a4308_0          40 KB\n    expat-2.8.1                |       h7354ed3_0          24 KB\n    iniconfig-2.1.0            |   py39h06a4308_0          19 KB\n    ld_impl_linux-64-2.44      |       h9e0c5a2_3         725 KB\n    libexpat-2.8.1             |       h7354ed3_0         123 KB\n    libffi-3.4.8               |       hc5d346e_2         136 KB\n    libgcc-15.2.0              |       h69a1729_8         803 KB\n    libgcc-ng-15.2.0           |       h166f726_8          28 KB\n    libnsl-2.0.0               |       h5eee18b_0          31 KB\n    libstdcxx-15.2.0           |       h39759b7_8         3.7 MB\n    libxcb-1.17.0              |       h9b100fa_0         430 KB\n    libzlib-1.3.2              |       h47b2149_0          60 KB\n    ncurses-6.5                |       h7934f7d_0         1.1 MB\n    openssl-3.5.7              |       h1b28b03_0         5.5 MB\n    packaging-25.0             |   py39h06a4308_1         160 KB\n    pip-26.0.1                 |     pyhc872135_1         1.1 MB\n    pluggy-1.5.0               |   py39h06a4308_0          37 KB\n    pthread-stubs-0.3          |       h0ce48e5_1           5 KB\n    pygments-2.19.1            |   py39h06a4308_0         1.9 MB\n    pytest-8.4.2               |   py39h06a4308_0         1.0 MB\n    python-3.9.25              |       h0dcde21_1        23.0 MB\n    readline-8.3               |       hc2a1206_0         471 KB\n    setuptools-80.9.0          |   py39h06a4308_0         1.4 MB\n    sqlite-3.53.2              |       h795bf6d_0         1.2 MB\n    tk-8.6.15                  |       h54e0aa7_0         3.4 MB\n    tomli-2.2.1                |   py39h06a4308_0          29 KB\n    typing-extensions-4.15.0   |   py39h06a4308_0          11 KB\n    typing_extensions-4.15.0   |   py39h06a4308_0          79 KB\n    tzdata-2026b               |       he532380_0         118 KB\n    wheel-0.45.1               |   py39h06a4308_0         114 KB\n    xorg-libx11-1.8.12         |       h9b100fa_1         895 KB\n    xorg-libxau-1.0.12         |       h9b100fa_0          13 KB\n    xorg-libxdmcp-1.1.5        |       h9b100fa_0          19 KB\n    xorg-xorgproto-2024.1      |       h5eee18b_1         580 KB\n    xz-5.8.2                   |       h448239c_0         621 KB\n    zlib-1.3.2                 |       h47b2149_0          92 KB\n    ------------------------------------------------------------\n                                           Total:        49.3 MB\n\nThe following NEW packages will be INSTALLED:\n\n  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main \n  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-52_gnu \n  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 \n  ca-certificates    pkgs/main/linux-64::ca-certificates-2026.5.14-h06a4308_0 \n  exceptiongroup     pkgs/main/linux-64::exceptiongroup-1.3.0-py39h06a4308_0 \n  expat              pkgs/main/linux-64::expat-2.8.1-h7354ed3_0 \n  iniconfig          pkgs/main/linux-64::iniconfig-2.1.0-py39h06a4308_0 \n  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 \n  libexpat           pkgs/main/linux-64::libexpat-2.8.1-h7354ed3_0 \n  libffi             pkgs/main/linux-64::libffi-3.4.8-hc5d346e_2 \n  libgcc             pkgs/main/linux-64::libgcc-15.2.0-h69a1729_8 \n  libgcc-ng          pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_8 \n  libnsl             pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0 \n  libstdcxx          pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_8 \n  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 \n  libxcb             pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 \n  libzlib            pkgs/main/linux-64::libzlib-1.3.2-h47b2149_0 \n  ncurses            pkgs/main/linux-64::ncurses-6.5-h7934f7d_0 \n  openssl            pkgs/main/linux-64::openssl-3.5.7-h1b28b03_0 \n  packaging          pkgs/main/linux-64::packaging-25.0-py39h06a4308_1 \n  pip                pkgs/main/noarch::pip-26.0.1-pyhc872135_1 \n  pluggy             pkgs/main/linux-64::pluggy-1.5.0-py39h06a4308_0 \n  pthread-stubs      pkgs/main/linux-64::pthread-stubs-0.3-h0ce48e5_1 \n  pygments           pkgs/main/linux-64::pygments-2.19.1-py39h06a4308_0 \n  pytest             pkgs/main/linux-64::pytest-8.4.2-py39h06a4308_0 \n  python             pkgs/main/linux-64::python-3.9.25-h0dcde21_1 \n  readline           pkgs/main/linux-64::readline-8.3-hc2a1206_0 \n  setuptools         pkgs/main/linux-64::setuptools-80.9.0-py39h06a4308_0 \n  sqlite             pkgs/main/linux-64::sqlite-3.53.2-h795bf6d_0 \n  tk                 pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 \n  tomli              pkgs/main/linux-64::tomli-2.2.1-py39h06a4308_0 \n  typing-extensions  pkgs/main/linux-64::typing-extensions-4.15.0-py39h06a4308_0 \n  typing_extensions  pkgs/main/linux-64::typing_extensions-4.15.0-py39h06a4308_0 \n  tzdata             pkgs/main/noarch::tzdata-2026b-he532380_0 \n  wheel              pkgs/main/linux-64::wheel-0.45.1-py39h06a4308_0 \n  xorg-libx11        pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1 \n  xorg-libxau        pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 \n  xorg-libxdmcp      pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 \n  xorg-xorgproto     pkgs/main/linux-64::xorg-xorgproto-2024.1-h5eee18b_1 \n  xz                 pkgs/main/linux-64::xz-5.8.2-h448239c_0 \n  zlib               pkgs/main/linux-64::zlib-1.3.2-h47b2149_0 \n\n\n\nDownloading and Extracting Packages: ...working... done\n2026-06-12 14:52:05,913 - INFO - ---> Removed intermediate container 17fcaaa21bf0\n2026-06-12 14:52:05,917 - ERROR - Error: The command '/bin/sh -c /bin/bash -c \"source ~/.bashrc && /root/setup_env.sh\"' returned a non-zero code: 1\n2026-06-12 14:52:05,918 - ERROR - docker.errors.BuildError during sweb.env.py.x86_64.1f92e6d7cef88badc4f744:latest: The command '/bin/sh -c /bin/bash -c \"source ~/.bashrc && /root/setup_env.sh\"' returned a non-zero code: 1\n"
+    }
+  },
+  "skill_llm_patch": {
+    "variant": "skill_llm_patch",
+    "status": "blocked_by_missing_model_env",
+    "blocked_reason": "MODEL or OPENAI_MODEL is not configured for a non-oracle SWE-bench patch attempt."
+  },
+  "gold_result_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\evaluation\\gold_patch\\results.json",
+  "official_harness_gold_patch_smoke": "infra_blocked",
+  "attempt_mirrors": true,
+  "boundary": "P0-H one-instance official SWE-bench gold-patch smoke; no custom evaluator and no external effectiveness claim.",
+  "infra_unblock": {
+    "run_id": "swebench_gold_patch_smoke_requests_20260612",
+    "instance_id": "psf__requests-1963",
+    "generated_at": "2026-06-12T11:45:02.099992+00:00",
+    "max_retries": 2,
+    "retry_attempts": [
+      {
+        "attempt_index": 1,
+        "result": {
+          "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+          "return_code": 0,
+          "stdout": "Base image sweb.base.py.x86_64:latest already exists, skipping build.\nBase images built successfully.\nNo environment images need to be built.\nFound 1 existing instance images. Will reuse them.\nRunning 1 instances...\nError building image psf__requests-1963: 409 Client Error for http+docker://localhost/v1.52/containers/create?name=sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch&platform=linux%2Fx86_64: Conflict (\"Conflict. The container name \"/sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch\" is already in use by container \"6ad7425805993a672ac5e1370fd87f5e3c8a9e50a71bd2c10cca3b3652fb221c\". You have to remove (or rename) that container to be able to reuse that name.\")\nCheck (logs/run_evaluation/swebench_gold_patch_smoke_requests_20260612_gold_patch/gold_patch/psf__requests-1963/run_instance.log) for more information.\nAll instances run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 0\nInstances with errors: 1\nUnstopped containers: 1\nUnremoved images: 1\nReport written to gold_patch.swebench_gold_patch_smoke_requests_20260612_gold_patch.json\n",
+          "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\n\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  7.54it/s, ✓=0, ✖=0, error=1]\n",
+          "ok": true,
+          "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+          "retry_wall_timeout_seconds": 180,
+          "official_timeout_seconds": 180,
+          "timestamp": "2026-06-12T11:44:45.953540+00:00"
+        },
+        "status_after": "infra_blocked"
+      },
+      {
+        "attempt_index": 2,
+        "result": {
+          "command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+          "return_code": 0,
+          "stdout": "Base image sweb.base.py.x86_64:latest already exists, skipping build.\nBase images built successfully.\nNo environment images need to be built.\nFound 1 existing instance images. Will reuse them.\nRunning 1 instances...\nError building image psf__requests-1963: 409 Client Error for http+docker://localhost/v1.52/containers/create?name=sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch&platform=linux%2Fx86_64: Conflict (\"Conflict. The container name \"/sweb.eval.psf__requests-1963.swebench_gold_patch_smoke_requests_20260612_gold_patch\" is already in use by container \"6ad7425805993a672ac5e1370fd87f5e3c8a9e50a71bd2c10cca3b3652fb221c\". You have to remove (or rename) that container to be able to reuse that name.\")\nCheck (logs/run_evaluation/swebench_gold_patch_smoke_requests_20260612_gold_patch/gold_patch/psf__requests-1963/run_instance.log) for more information.\nAll instances run.\nCleaning cached images...\nRemoved 0 images.\nTotal instances: 1\nInstances submitted: 1\nInstances completed: 0\nInstances incomplete: 0\nInstances resolved: 0\nInstances unresolved: 0\nInstances with empty patches: 0\nInstances with errors: 1\nUnstopped containers: 1\nUnremoved images: 1\nReport written to gold_patch.swebench_gold_patch_smoke_requests_20260612_gold_patch.json\n",
+          "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\nN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\n\u0000\n\u0000<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour\n\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]\nEvaluation:   0%|          | 0/1 [00:00<?, ?it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  9.33it/s, ✓=0, ✖=0, error=1]\nEvaluation: 100%|██████████| 1/1 [00:00<00:00,  9.20it/s, ✓=0, ✖=0, error=1]\n",
+          "ok": true,
+          "official_command": "'/opt/spark/swebench-tools/swebench-venv/bin/python' -m swebench.harness.run_evaluation --dataset_name '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/official_dataset.json' --split test --instance_ids 'psf__requests-1963' --predictions_path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/predictions/gold_patch.jsonl' --max_workers 1 --timeout 180 --run_id 'swebench_gold_patch_smoke_requests_20260612_gold_patch' --report_dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/external_swebench/swebench_gold_patch_smoke_requests_20260612/evaluation/gold_patch/official_reports' --namespace none",
+          "retry_wall_timeout_seconds": 180,
+          "official_timeout_seconds": 180,
+          "timestamp": "2026-06-12T11:45:02.098995+00:00"
+        },
+        "status_after": "infra_blocked"
+      }
+    ],
+    "diagnostics_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\infra_unblock\\diagnostics.json",
+    "diagnostic_summary": {
+      "docker_pull_ubuntu_22_04": "return_code_1",
+      "curl_repo_anaconda": "ok",
+      "curl_failed_conda_package": "ok"
+    },
+    "summary_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\summary.json",
+    "final_status": "infra_blocked",
+    "blocked_reason": "Official harness environment-image build failed during conda package download from repo.anaconda.com: Content-Length mismatch after network timeout.",
+    "evaluation_logic_changed": false,
+    "dependency_fetch_mirror_changed": false,
+    "skill_llm_patch_attempted": false,
+    "claim_boundary": "SWE-bench harness readiness only; not secure_code_review evidence."
+  }
+}

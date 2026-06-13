@@ -1,0 +1,38 @@
+{
+  "case_id": "data_quality_review_001",
+  "task_family": "data_quality_review",
+  "method": "controlled keyword projection from expert material into normalized capability registry",
+  "boundary": "This is provenance for a controlled task family. It is artifact-backed, but it is not a claim of open-world expert-material induction.",
+  "steps": [
+    {
+      "stage": "ingest_expert_material",
+      "artifact": "runs/generalization/data_quality_review_001/source_materials/expert_material.md",
+      "note": "Scenario-conditioned expert note is loaded as the source of distillation."
+    },
+    {
+      "stage": "project_natural_language_candidates",
+      "artifact": "extracted_candidates.json",
+      "note": "Candidate capabilities are projected from expert clauses before normalization."
+    },
+    {
+      "stage": "normalize_to_capability_registry",
+      "artifact": "capability_provenance.json",
+      "note": "Candidates are normalized to shared capability ids reused by execution, verifier, and repair."
+    },
+    {
+      "stage": "compile_skill_v1",
+      "artifact": "runs/generalization/data_quality_review_001/skills/skill_v1/manifest.json",
+      "note": "Compact v1 selects a subset of capabilities for the first execution attempt."
+    },
+    {
+      "stage": "verifier_feedback",
+      "artifact": "runs/generalization/data_quality_review_001/verifier/A1_report.json",
+      "note": "Posterior feedback determines whether evolution is needed."
+    },
+    {
+      "stage": "compile_skill_v2",
+      "artifact": "runs/generalization/data_quality_review_001/skills/skill_v2/manifest.json",
+      "note": "Typed repair updates capability coverage, boundary logic, or output contract."
+    }
+  ]
+}

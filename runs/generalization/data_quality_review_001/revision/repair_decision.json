@@ -1,0 +1,19 @@
+{
+  "feedback_type": "target_context_missing",
+  "repair_action": "add_observation_step",
+  "before_capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "after_capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "operator_id": "op_add_observation_step_generic",
+  "operator_strategy": "observation_only",
+  "operator_description": "Preserve capabilities and add explicit observation steps so evidence binds to the target.",
+  "selection_score": 156,
+  "preferred_action": "add_observation_step"
+}

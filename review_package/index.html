@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>专家知识蒸馏 Demo 评审包</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #f6f7f8; color: #18202a; }
+    main { max-width: 1120px; margin: auto; padding: 32px 24px 56px; }
+    header { margin-bottom: 20px; }
+    section { background: white; border: 1px solid #dde3e8; border-radius: 8px; padding: 18px 20px; margin: 16px 0; }
+    .lead { font-size: 1.08rem; line-height: 1.7; color: #334155; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .card { border: 1px solid #dde3e8; border-radius: 8px; padding: 12px; background: #fbfcfd; }
+    .card strong { display: block; font-size: 1.35rem; margin-top: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+    th, td { border: 1px solid #dde3e8; padding: 8px 10px; vertical-align: top; }
+    th { background: #eef3f6; text-align: left; }
+    code { background: #eef3f6; padding: 2px 4px; border-radius: 4px; }
+    a { color: #0f766e; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>专家知识蒸馏与 Skill 优化 Demo</h1>
+    <p class="lead">用户提供任务场景、专家材料和目标资产后，系统生成可执行 Skill，并用 A0 无 Skill、A1 初始 Skill、A2 修正后 Skill 的对比证明它是否真的帮助解决任务。</p>
+    <p>生成时间：2026-06-11 19:26:09</p>
+  </header>
+
+  <section>
+    <h2>先看有没有用</h2>
+    <div class="grid">
+      <div class="card">主任务闭环<strong>A0 FAIL -&gt; A1 FAIL -&gt; A2 PASS</strong></div>
+      <div class="card">成功率提升<strong>67% -> 100%</strong></div>
+      <div class="card">跨任务验证<strong>3 / 3 A2 PASS</strong></div>
+      <div class="card">WSL2 真实安全任务<strong>reward 1.0</strong></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>系统回答的五个问题</h2>
+    <table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody><tr><td>同一套 pipeline 能不能跨多个任务工作</td><td>Yes: 3 tasks / 3 task families</td></tr><tr><td>不同任务能不能触发不同反馈</td><td>Yes: evidence_gap, false_positive, missing_capability</td></tr><tr><td>反馈能不能变成不同修正</td><td>Yes: add_environment_negative_guard, add_missing_capability_modules, strengthen_evidence_protocol</td></tr><tr><td>修正后能不能通过验证</td><td>Yes: A2 pass 3 / 3</td></tr><tr><td>过程能不能记录、比较、复现、展示</td><td>Yes: each case has inputs, attempts, verifier feedback, patch plan, skills, trajectory</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>多任务闭环结果</h2>
+    <table><thead><tr><th>Task</th><th>Family</th><th>A1 feedback</th><th>Repair</th><th>A2 pass</th><th>Coverage A0/A1/A2</th></tr></thead><tbody><tr><td>upload_api_vulnerability</td><td>api_security</td><td>missing_capability</td><td>add_missing_capability_modules</td><td>True</td><td>0.00/0.33/1.00</td></tr><tr><td>auth_object_access</td><td>access_control</td><td>evidence_gap</td><td>strengthen_evidence_protocol</td><td>True</td><td>0.00/1.00/1.00</td></tr><tr><td>prod_config_audit</td><td>config_security</td><td>false_positive</td><td>add_environment_negative_guard</td><td>True</td><td>0.00/1.00/1.00</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>生成的 Skill</h2>
+    <p>Skill manifest: <code>upload_external_review_skill</code>, version <code>v2</code></p>
+    <p>Included capabilities: input_validation, sensitive_leak, upload_storage, audit_logging, path_traversal, weak_config</p>
+    <table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Closed-loop result</td><td>A0 FAIL -&gt; A1 FAIL -&gt; A2 PASS</td></tr><tr><td>Task success</td><td>67% -&gt; 100%</td></tr><tr><td>New useful findings</td><td>2</td></tr><tr><td>Token budget</td><td>412 / 800</td></tr><tr><td>Multi-task A2 pass</td><td>3 / 3</td></tr><tr><td>WSL2 Harbor security task</td><td>reward 1.0</td></tr><tr><td>Harbor non-oracle repair loop</td><td>A1 0 -&gt; A2 1</td></tr><tr><td>Local live LLM upload</td><td>PASS</td></tr><tr><td>Harbor live LLM upload</td><td>reward 1</td></tr><tr><td>Harbor live LLM repair loop</td><td>A1 0.0 -&gt; A2 1.0</td></tr><tr><td>Harbor live LLM config repair loop</td><td>A1 0.0 -&gt; A2 1.0</td></tr><tr><td>Harbor LLM upload repeatability</td><td>3 runs, A1 all fail=True, A2 all pass=True</td></tr><tr><td>Local live LLM data-quality loop</td><td>A1 output_contract_error -&gt; A2 pass</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>最终输出摘要</h2>
+    <table><thead><tr><th>Finding</th><th>Evidence</th><th>Fix</th></tr></thead><tbody><tr><td>输入校验</td><td>filename, user_id, q 等用户可控字段直接进入处理流程。</td><td>补充类型、长度、白名单与拒绝策略。</td></tr><tr><td>敏感信息泄露</td><td>debug_path, stacktrace, token, api_key 暴露在返回或日志中。</td><td>统一错误响应，并对路径、邮箱、token 和内部错误脱敏。</td></tr><tr><td>上传类型与存储隔离</td><td>filename.endswith(...) 且写入 /public/uploads/。</td><td>联合检查 MIME、magic number、大小并使用非公开存储目录。</td></tr><tr><td>审计日志保留</td><td>audit_log_retention_days: null。</td><td>记录 actor/object/action/result/timestamp 并配置保留周期。</td></tr><tr><td>路径穿越</td><td>save(&quot;/public/uploads/&quot; + filename, file_bytes)</td><td>使用安全文件名、路径归一化和随机化存储名。</td></tr><tr><td>弱密钥与调试配置</td><td>debug: true, SECRET_KEY: changeme。</td><td>关闭生产 debug，替换强密钥，并限制敏感配置暴露。</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>评审入口</h2>
+    <ul><li><a href="artifacts/reports/final_report.md">Final user-facing report</a></li>
+<li><a href="artifacts/reports/correction_report.md">Correction report</a></li>
+<li><a href="artifacts/artifacts/skill_package_v2_manifest.json">Skill manifest</a></li>
+<li><a href="multitask/summary.md">Multi-task closed-loop summary</a></li>
+<li><a href="multitask/summary.json">Multi-task machine-readable summary</a></li>
+<li><a href="wsl_real_task/summary.md">WSL2 Harbor real security task summary</a></li>
+<li><a href="wsl_real_task/summary.json">WSL2 Harbor real security task JSON</a></li>
+<li><a href="wsl_real_task/real-upload-security-review__dCxSUn5/artifacts/security_report.json">WSL2 Harbor security report</a></li>
+<li><a href="wsl_real_task/real-upload-security-review__dCxSUn5/artifacts/result.json">WSL2 Harbor verifier result</a></li>
+<li><a href="non_oracle_local_agent/summary.md">Non-oracle local agent smoke</a></li>
+<li><a href="non_oracle_local_agent/summary.json">Non-oracle local agent JSON</a></li>
+<li><a href="validation/non_oracle_local_suite.md">Non-oracle local suite</a></li>
+<li><a href="live_llm_upload/summary.md">Local live LLM upload smoke</a></li>
+<li><a href="live_llm_upload/verifier_report.json">Local live LLM upload verifier</a></li>
+<li><a href="live_llm_repair_loop/summary.md">Local live LLM A1/A2 loop</a></li>
+<li><a href="live_llm_repair_loop/A1/verifier_report.json">Local live LLM A1 verifier</a></li>
+<li><a href="live_llm_repair_loop/A2/verifier_report.json">Local live LLM A2 verifier</a></li>
+<li><a href="live_llm_repair_loop_data_quality/summary.md">Local live LLM data-quality A1/A2 loop</a></li>
+<li><a href="live_llm_repair_loop_data_quality/validity_card.json">Local live LLM data-quality validity card</a></li>
+<li><a href="live_llm_config_security/summary.md">Local live LLM config smoke</a></li>
+<li><a href="live_llm_repair_loop_config_security/summary.md">Local live LLM config A1/A2 loop</a></li>
+<li><a href="live_llm_repair_loop_config_security/validity_card.json">Local live LLM config validity card</a></li>
+<li><a href="live_llm_api_review/summary.md">Local live LLM API-review smoke</a></li>
+<li><a href="live_llm_repair_loop_api_review/summary.md">Local live LLM API-review A1/A2 loop</a></li>
+<li><a href="live_llm_repair_loop_api_review/validity_card.json">Local live LLM API-review validity card</a></li>
+<li><a href="harbor_non_oracle_upload/summary.md">Harbor non-oracle upload smoke</a></li>
+<li><a href="harbor_non_oracle_upload/summary.json">Harbor non-oracle JSON</a></li>
+<li><a href="harbor_non_oracle_cli_upload/summary.md">Harbor non-oracle CLI upload attempt</a></li>
+<li><a href="harbor_non_oracle_cli_upload/security_report.json">Harbor non-oracle CLI security report</a></li>
+<li><a href="harbor_non_oracle_cli_upload/verifier_report.json">Harbor non-oracle CLI verifier report</a></li>
+<li><a href="harbor_non_oracle_repair_loop_upload/summary.md">Harbor non-oracle A1/A2 repair loop</a></li>
+<li><a href="harbor_non_oracle_repair_loop_upload/A1/failure_feedback.json">Harbor repair loop A1 feedback</a></li>
+<li><a href="harbor_non_oracle_repair_loop_upload/revision/patch_plan.json">Harbor repair loop patch plan</a></li>
+<li><a href="harbor_non_oracle_repair_loop_upload/A2/verifier_report.json">Harbor repair loop A2 verifier</a></li>
+<li><a href="harbor_llm_upload/summary.md">Harbor live LLM upload</a></li>
+<li><a href="harbor_llm_upload/verifier_report.json">Harbor live LLM verifier</a></li>
+<li><a href="harbor_llm_upload/target_reads.json">Harbor live LLM target reads</a></li>
+<li><a href="harbor_llm_repair_loop_upload/summary.md">Harbor live LLM A1/A2 loop</a></li>
+<li><a href="harbor_llm_repair_loop_upload/A1/verifier_report.json">Harbor live LLM A1 verifier</a></li>
+<li><a href="harbor_llm_repair_loop_upload/revision/patch_plan.json">Harbor live LLM patch plan</a></li>
+<li><a href="harbor_llm_repair_loop_upload/A2/verifier_report.json">Harbor live LLM A2 verifier</a></li>
+<li><a href="harbor_llm_repair_loop_config/summary.md">Harbor live LLM config A1/A2 loop</a></li>
+<li><a href="harbor_llm_repair_loop_config/A1/verifier_report.json">Harbor live LLM config A1 verifier</a></li>
+<li><a href="harbor_llm_repair_loop_config/revision/patch_plan.json">Harbor live LLM config patch plan</a></li>
+<li><a href="harbor_llm_repair_loop_config/A2/verifier_report.json">Harbor live LLM config A2 verifier</a></li>
+<li><a href="system_acceptance/summary.md">Project system acceptance report</a></li>
+<li><a href="system_acceptance/summary.json">Project system acceptance JSON</a></li>
+<li><a href="validation/generalization_suite.md">Generalization suite</a></li>
+<li><a href="validation/negative_controls.json">Negative controls JSON</a></li>
+<li><a href="validation/verifier_stress_checks.json">Verifier stress checks JSON</a></li>
+<li><a href="validation/repair_policy_alignment.json">Repair policy alignment JSON</a></li>
+<li><a href="validation/ablation_summary.md">Ablation summary</a></li>
+<li><a href="validation/harbor_llm_repeatability_upload.json">Harbor LLM upload repeatability JSON</a></li>
+<li><a href="validation/skill_qualification_cards.json">Skill qualification cards JSON</a></li>
+<li><a href="validation/promotion_mechanism_comparison.json">Promotion mechanism comparison JSON</a></li>
+<li><a href="validation/promotion_mechanism_challenge_set.json">Promotion mechanism challenge set JSON</a></li>
+<li><a href="validation/artifact_backed_promotion_challenge_set.json">Artifact-backed promotion challenge set JSON</a></li>
+<li><a href="validation/promotion_mechanism_fairness_audit.json">Promotion mechanism fairness audit JSON</a></li>
+<li><a href="validation/metamorphic_stress_minimal.json">Minimal metamorphic stress JSON</a></li>
+<li><a href="validation/agent_level_metamorphic_stress_001/summary.json">Agent-level metamorphic stress JSON</a></li>
+<li><a href="validation/live_llm_agent_level_metamorphic_stress_001/summary.json">Live LLM agent-level metamorphic stress JSON</a></li>
+<li><a href="skill_lifecycle_evidence/index.json">Skill lifecycle evidence index</a></li>
+<li><a href="installed_skills/registry.json">Installed skills registry</a></li>
+<li><a href="reviewer_readiness/reviewer_assessment.json">Reviewer readiness assessment</a></li>
+<li><a href="validation/skill_net_effect_matrix.json">Skill net-effect matrix</a></li>
+<li><a href="validation/skill_marginal_utility/skill_marginal_utility.json">ReSkill-style marginal utility</a></li>
+<li><a href="deployable_codex_skill/secure_code_review/manifest.json">Deployable Codex Skill manifest</a></li>
+<li><a href="skill_evolution_lab/secure_code_review/evolution_summary.json">Skill Evolution Lab summary</a></li>
+<li><a href="skill_evolution_lab/secure_code_review/rejected_edit_buffer.json">Rejected edit buffer</a></li>
+<li><a href="skill_evolution_lab/secure_code_review/retirement_decisions.json">Retirement decisions</a></li>
+<li><a href="harbor_live_skeleton_upload/summary.json">Harbor live skeleton</a></li>
+<li><a href="external_security_validation/cyberseceval_style_small_sample_scaffold.json">External security scaffold</a></li>
+<li><a href="reports/SKILL_QUALIFICATION_CARD_STATUS.md">Skill qualification card status</a></li>
+<li><a href="reports/PROMOTION_MECHANISM_EXPLORATION.md">Promotion mechanism exploration</a></li>
+<li><a href="reports/PROMOTION_MECHANISM_CHALLENGE_SET_STATUS.md">Promotion mechanism challenge set status</a></li>
+<li><a href="reports/ARTIFACT_BACKED_PROMOTION_CHALLENGE_SET_STATUS.md">Artifact-backed promotion challenge set status</a></li>
+<li><a href="reports/PROMOTION_MECHANISM_FAIRNESS_AUDIT.md">Promotion mechanism fairness audit</a></li>
+<li><a href="reports/QUALIFICATION_GUIDED_SKILL_EVOLUTION.md">Qualification-Guided Skill Evolution</a></li>
+<li><a href="reports/SKILL_QUALIFICATION_CARD_SCHEMA.md">Skill qualification schema</a></li>
+<li><a href="reports/FAILURE_ORIGIN_TAXONOMY.md">Failure origin taxonomy</a></li>
+<li><a href="reports/QGSE_FAILURE_CASE_STUDY_CONFIG_API.md">QGSE failure case study</a></li>
+<li><a href="reports/METAMORPHIC_VERIFIER_STRESS_PLAN.md">Metamorphic verifier stress plan</a></li>
+<li><a href="reports/METAMORPHIC_STRESS_STATUS.md">Minimal metamorphic stress status</a></li>
+<li><a href="reports/AGENT_LEVEL_METAMORPHIC_STRESS_STATUS.md">Agent-level metamorphic stress status</a></li>
+<li><a href="reports/LIVE_LLM_AGENT_LEVEL_METAMORPHIC_STRESS_STATUS.md">Live LLM agent-level metamorphic stress status</a></li>
+<li><a href="reports/MORNING_STATUS_0800.md">Morning status</a></li>
+<li><a href="reports/GENERALIZATION_AUDIT.md">Generalization audit</a></li>
+<li><a href="reports/NEGATIVE_CONTROL_STATUS.md">Negative control status</a></li>
+<li><a href="reports/VERIFIER_STRESS_STATUS.md">Verifier stress status</a></li>
+<li><a href="reports/REPAIR_POLICY_OPERATOR_ALIGNMENT_STATUS.md">Repair policy alignment status</a></li>
+<li><a href="reports/LOCAL_AGENT_AUDIT.md">Local agent audit</a></li>
+<li><a href="reports/ABLATION_AUDIT.md">Ablation audit</a></li>
+<li><a href="reports/NON_ORACLE_LOCAL_AGENT_STATUS.md">Non-oracle local agent status</a></li>
+<li><a href="reports/HARBOR_NON_ORACLE_STATUS.md">Harbor non-oracle status</a></li>
+<li><a href="reports/HARBOR_LLM_REPAIR_LOOP_AUDIT.md">Harbor LLM repair loop audit</a></li>
+<li><a href="reports/HARBOR_LLM_REPEATABILITY_STATUS.md">Harbor LLM repeatability status</a></li>
+<li><a href="reports/LLM_BACKEND_STATUS.md">LLM backend status</a></li>
+<li><a href="reports/SKILL_LIFECYCLE_EVIDENCE_STATUS.md">Skill lifecycle evidence status</a></li>
+<li><a href="reports/SKILL_INSTALLATION_STATUS.md">Skill installation status</a></li>
+<li><a href="reports/REVIEWER_READINESS_STATUS.md">Reviewer readiness status</a></li>
+<li><a href="reports/SPARK_COLLEAGUE_SKILLGEN_SKILLGRAD_GAP_LEDGER.md">SPARK / COLLEAGUE / SkillGen / SkillGrad gap ledger</a></li>
+<li><a href="reports/REMAINING_HARDCODE_STATUS.md">Remaining hard-code status</a></li>
+<li><a href="reports/DEPLOYABLE_SKILL_EVOLUTION_STATUS.md">Deployable Skill Evolution status</a></li>
+<li><a href="docs/WSL2_SPARK_BACKEND.md">WSL2/SPARK backend note</a></li>
+<li><a href="docs/CLAIM_BOUNDARY.md">Claim boundary</a></li>
+<li><a href="docs/PROJECT_STRUCTURE.md">Project structure</a></li>
+<li><a href="docs/REVIEWER_GUIDE.md">Reviewer guide</a></li>
+<li><a href="docs/implementation_borrowing_from_spark_colleague.md">Implementation borrowing note</a></li>
+<li><a href="real_agent/run_summary.json">Real agent run summary</a></li>
+<li><a href="real_agent/trajectory.jsonl">Real agent trajectory</a></li>
+<li><a href="real_agent/attempts/A2_skill_v2.json">Real agent A2 output</a></li></ul>
+    <p>页面只放结论和入口；完整证据链在 artifact 文件中，包括输入、A0/A1/A2 输出、verifier feedback、patch plan、Skill v1/v2 和 trajectory。</p>
+  </section>
+</main>
+</body>
+</html>

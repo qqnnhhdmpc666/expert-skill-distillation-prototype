@@ -1,0 +1,15 @@
+{
+  "run_id": "swebench_lite_smoke_20260612",
+  "generated_at": "2026-06-12T05:18:47.935448+00:00",
+  "instance_count": 5,
+  "resolved_count": {
+    "empty_patch": 0,
+    "gold_patch": null,
+    "skill_llm_patch": null
+  },
+  "skill_llm_patch_over_empty_patch": null,
+  "adapter_maturity_supported": false,
+  "official_gold_plumbing_supported": false,
+  "framework_effectiveness_supported": false,
+  "boundary": "Gold patch is plumbing upper bound only and is excluded from framework effectiveness."
+}

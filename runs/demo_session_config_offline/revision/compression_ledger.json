@@ -1,0 +1,29 @@
+[
+  {
+    "candidate_rule": "R004",
+    "title": "敏感信息泄露",
+    "risk": "medium",
+    "token_cost": 39,
+    "v1_decision": "kept",
+    "compact_rationale": "保留：高显著证据 + compact budget 内",
+    "posterior_signal": "A1 中未触发 missing_rule"
+  },
+  {
+    "candidate_rule": "R006",
+    "title": "审计日志保留",
+    "risk": "medium",
+    "token_cost": 42,
+    "v1_decision": "kept",
+    "compact_rationale": "保留：高显著证据 + compact budget 内",
+    "posterior_signal": "A1 中未触发 missing_rule"
+  },
+  {
+    "candidate_rule": "R007",
+    "title": "弱密钥与调试配置",
+    "risk": "high",
+    "token_cost": 44,
+    "v1_decision": "kept",
+    "compact_rationale": "保留：高显著证据 + compact budget 内",
+    "posterior_signal": "A1 中未触发 missing_rule"
+  }
+]

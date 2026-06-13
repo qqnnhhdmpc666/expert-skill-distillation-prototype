@@ -1,0 +1,29 @@
+{
+    "id": "76702e31-9114-4ab8-b064-108188063abf",
+    "started_at": "2026-06-08T15:05:36.959427",
+    "finished_at": "2026-06-08T15:06:12.056298",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "upload-security-llm-agent__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "task_A2__bKwTxaN"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

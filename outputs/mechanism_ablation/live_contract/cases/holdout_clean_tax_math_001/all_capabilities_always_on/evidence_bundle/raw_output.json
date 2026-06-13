@@ -1,0 +1,8 @@
+{
+  "attempt": "all_capabilities_always_on",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

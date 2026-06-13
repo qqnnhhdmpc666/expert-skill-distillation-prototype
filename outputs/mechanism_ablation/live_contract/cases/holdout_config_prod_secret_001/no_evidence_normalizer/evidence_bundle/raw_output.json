@@ -1,0 +1,13 @@
+{
+  "attempt": "no_evidence_normalizer",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit export configuration is incomplete",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty.",
+      "recommended_fix": "Set retention_days to a positive integer and specify an export_sink URL or path in prod.yaml."
+    }
+  ],
+  "notes": []
+}

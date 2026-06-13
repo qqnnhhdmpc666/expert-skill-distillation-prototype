@@ -1,0 +1,1 @@
+app.py: upload() delegates storage to storage_service.save_secure(file). The local fixture intentionally omits filename.endswith and audit fields.

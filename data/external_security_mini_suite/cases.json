@@ -22,11 +22,19 @@
         "task_family": "upload_security",
         "task_text": "Review this upload handler defensively and return JSON findings only.",
         "snippet": "app.py: upload() checks filename.endswith, writes UPLOAD_ROOT / filename, and returns debug_path. config.yaml: audit_log_retention_days is empty.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "upload_security",
-        "expected_capabilities": ["UPLOAD_TYPE_MAGIC", "UPLOAD_PATH_ISOLATION", "UPLOAD_AUDIT_RETENTION"],
+        "expected_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
         "expected_security_finding": "Upload handler relies on extension checks, unsafe path composition, and missing audit retention.",
         "expected_evidence_span": "filename.endswith; UPLOAD_ROOT / filename; audit_log_retention_days is empty",
         "clean_or_negative": false
@@ -40,11 +48,19 @@
         "task_family": "upload_security",
         "task_text": "Review this upload endpoint for defensive file-handling risks.",
         "snippet": "handler.py: validate_upload() allows filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename into /public/uploads. settings.py: audit_log_retention_days is empty.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "upload_security",
-        "expected_capabilities": ["UPLOAD_TYPE_MAGIC", "UPLOAD_PATH_ISOLATION", "UPLOAD_AUDIT_RETENTION"],
+        "expected_capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
         "expected_security_finding": "Public upload storage is not isolated and validation is extension-only.",
         "expected_evidence_span": "filename.endswith('.jpg'); UPLOAD_ROOT / filename; /public/uploads; audit_log_retention_days is empty",
         "clean_or_negative": false
@@ -58,11 +74,18 @@
         "task_family": "config_security",
         "task_text": "Review this config defensively and separate production findings from dev-only settings.",
         "snippet": "prod.yaml: audit.enabled=true but retention_days/export_sink empty. dev.yaml: dev.api_token is set and dev.debug=true; these are marked dev-only.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "config_security",
-        "expected_capabilities": ["CONFIG_AUDIT_EXPORT", "CONFIG_ENV_GUARD"],
+        "expected_capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_ENV_GUARD"
+        ],
         "expected_security_finding": "Production audit logging lacks retention/export while dev-only token/debug settings should not be production findings.",
         "expected_evidence_span": "retention_days/export_sink empty; dev.api_token; dev.debug; dev-only",
         "clean_or_negative": false
@@ -76,11 +99,18 @@
         "task_family": "config_security",
         "task_text": "Review environment-specific security config and avoid overbroad findings.",
         "snippet": "prod.audit has retention_days/export_sink empty. dev.api_token and dev.debug are present only in a dev-only profile.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "config_security",
-        "expected_capabilities": ["CONFIG_AUDIT_EXPORT", "CONFIG_ENV_GUARD"],
+        "expected_capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_ENV_GUARD"
+        ],
         "expected_security_finding": "The production audit config is incomplete and dev settings require environment-aware handling.",
         "expected_evidence_span": "retention_days/export_sink empty; dev.api_token; dev.debug; dev-only",
         "clean_or_negative": false
@@ -94,11 +124,19 @@
         "task_family": "auth_access_control",
         "task_text": "Review this authorization handler defensively.",
         "snippet": "delete_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id, and returns invoice_id in permission errors.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "auth_access_control",
-        "expected_capabilities": ["AUTH_SCOPE_MATRIX", "AUTH_OBJECT_OWNERSHIP", "AUTH_ERROR_ENVELOPE"],
+        "expected_capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
         "expected_security_finding": "Authorization checks omit role/scope, object ownership, and non-leaking error envelope.",
         "expected_evidence_span": "checks is_authenticated; loads invoice by id; returns invoice_id",
         "clean_or_negative": false
@@ -112,11 +150,19 @@
         "task_family": "auth_access_control",
         "task_text": "Review this object-access path defensively.",
         "snippet": "update_invoice checks is_authenticated and loads invoice by id. The response returns invoice_id when access is denied.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "auth_access_control",
-        "expected_capabilities": ["AUTH_SCOPE_MATRIX", "AUTH_OBJECT_OWNERSHIP", "AUTH_ERROR_ENVELOPE"],
+        "expected_capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
         "expected_security_finding": "The handler needs scoped authorization, object ownership enforcement, and a non-leaking error envelope.",
         "expected_evidence_span": "checks is_authenticated; loads invoice by id; returns invoice_id",
         "clean_or_negative": false
@@ -130,11 +176,18 @@
         "task_family": "api_or_code_review",
         "task_text": "Review this API/code-review output path for schema and overbroad findings.",
         "snippet": "review_api.py: prior report used prose without evidence_span and returns debug_path as a generic security risk without grounding.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "api_or_code_review",
-        "expected_capabilities": ["API_SCHEMA_CONTRACT", "API_OVERBROAD_RISK"],
+        "expected_capabilities": [
+          "API_SCHEMA_CONTRACT",
+          "API_OVERBROAD_RISK"
+        ],
         "expected_security_finding": "The output must preserve schema and reject overbroad ungrounded findings.",
         "expected_evidence_span": "prior report used prose without evidence_span; returns debug_path",
         "clean_or_negative": false
@@ -148,7 +201,11 @@
         "task_family": "dependency_version_risk",
         "task_text": "Review dependency/version risk defensively. This task family is intentionally outside the current secure_code_review package.",
         "snippet": "requirements.txt: legacy-lib==0.9.1 is pinned, but no advisory database or patch validation context is available.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "out_of_scope_guard",
@@ -167,7 +224,11 @@
         "task_family": "clean_business_logic_review",
         "task_text": "Review this clean business-logic snippet. It is intentionally outside secure_code_review scope.",
         "snippet": "pricing.py: calculate_discount(amount, tier) uses a documented lookup table and no upload, config, API schema, or auth access-control behavior is present.",
-        "requested_output_schema": ["capability_id", "evidence_span", "recommended_fix"]
+        "requested_output_schema": [
+          "capability_id",
+          "evidence_span",
+          "recommended_fix"
+        ]
       },
       "verifier_only": {
         "expected_capability_group": "out_of_scope_guard",

@@ -1,0 +1,25 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit retention/export",
+      "evidence_span": "target.md: pet: prod.yaml: audit.enabled=true with retention_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile. R",
+      "recommended_fix": "Require retention and export sink for production audit logs."
+    },
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Environment-aware config guard",
+      "evidence_span": "target.md: ntion_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile. Requested output schema: c",
+      "recommended_fix": "Bind findings to prod/dev/test path before flagging."
+    },
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "target.md: Requested output schema: capability_id, evidence_span, recommended_fix",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    }
+  ],
+  "notes": []
+}

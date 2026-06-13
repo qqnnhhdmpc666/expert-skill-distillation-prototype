@@ -1,0 +1,20 @@
+{
+  "case_id": "config_security_001",
+  "a1_failure_pattern": "false_positive_risk",
+  "a2_outcome": "pass",
+  "repair_action": "reduce_false_positive_risk",
+  "contrastive_lesson": "Skills need negative guidance as well as positive guidance so repaired versions avoid widening scope and hallucinating findings.",
+  "persistent_memory_note": {
+    "before_capabilities": [
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "after_capabilities": [
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD"
+    ],
+    "operator_id": "op_reduce_false_positive_generic",
+    "preferred_action": "reduce_false_positive_risk"
+  }
+}

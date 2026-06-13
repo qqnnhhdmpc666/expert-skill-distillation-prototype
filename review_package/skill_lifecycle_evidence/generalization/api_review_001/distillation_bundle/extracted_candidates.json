@@ -1,0 +1,29 @@
+[
+  {
+    "candidate_id": "cand_01",
+    "natural_language_capability": "Strict report schema",
+    "normalized_capability_id": "API_SCHEMA_CONTRACT",
+    "source_span": "API review needs strict JSON report contract",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "strict json report contract",
+      "json report contract"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  },
+  {
+    "candidate_id": "cand_02",
+    "natural_language_capability": "Overbroad finding control",
+    "normalized_capability_id": "API_OVERBROAD_RISK",
+    "source_span": "rejection of overbroad generic findings.",
+    "projection_method": "clause_keyword_match",
+    "keyword_hits": [
+      "overbroad generic findings",
+      "overbroad",
+      "generic findings"
+    ],
+    "selected_in_v1": true,
+    "selected_in_v2": true
+  }
+]

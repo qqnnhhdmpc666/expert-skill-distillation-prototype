@@ -152,6 +152,36 @@ commit_sha=7ef6f57108d1f9443ad36a99ac34ef881931753c
 
 src/skill_deployment/harbor_adapter.py
 commit_sha=c5288bc7450b0bce578e0a359030f915356ca2ee
+
+data/task_cases/upload_security_001/case.yaml
+commit_sha=01c205cf8b6f0939c4716bb59ebd41b8d78be97f
+
+data/task_cases/upload_security_001/expected_behavior.yaml
+commit_sha=ba40c942cfddebe5e01f2dc04eef61715abe1c3e
+
+data/task_cases/upload_security_001/verifier_contract.yaml
+commit_sha=f0f7bd7ac5774e542c816ddf9f074b2f0cf9df24
+
+data/task_cases/upload_security_001/source_materials/expert_material.md
+commit_sha=ec123a84e2be2d09966ef0d8b1a0d35855c06fd6
+
+data/task_cases/upload_security_001/target_asset/target.md
+commit_sha=19cbeb49dbc4499f39e2e76abb3e6c8d4aa3a565
+
+data/task_cases/config_security_001/case.yaml
+commit_sha=51825d500674d4ae682b52fe017206786cc9430c
+
+data/task_cases/config_security_001/expected_behavior.yaml
+commit_sha=234284d056ff60fecbdd3ca7aaf6681c4d5399e6
+
+data/task_cases/config_security_001/verifier_contract.yaml
+commit_sha=a901eec43d113263f6b895b42466b314589e6fd5
+
+data/task_cases/config_security_001/source_materials/expert_material.md
+commit_sha=1784e1aff3c65d87ce98937cc5767cc87dcfddda
+
+data/task_cases/config_security_001/target_asset/target.md
+commit_sha=dc91374adb74ca594f14ca36eb89995607dfdb2b
 ```
 
 This is still not a full worktree push, but the core contract normalizer, CLI entrypoint, iterative improvement runner, installed-skill state helpers, runner chain, repair/gate logic, qualification/validity builders, and main user-facing docs are now present at normal repository paths.
@@ -162,7 +192,7 @@ This was not a full worktree push. The local directory is not currently a git re
 
 The full `review_package/MANIFEST.json` was rebuilt locally and validated, but it contains 1377 artifact entries and was not uploaded through the text-only GitHub connector. The uploaded integrity report records its pass status and evidence-type counts.
 
-`data/external_security_mini_suite/cases_extended.json`, the full `data/task_cases/**` directory, and many generated output artifacts remain local-only in this connector-based upload pass. The normal GitHub paths now contain the core runtime, CLI, live/external/evolution runners, installed-runtime state modules, release docs, package metadata, and base/holdout mini-suite data, but this is still not a repository tree push.
+`data/external_security_mini_suite/cases_extended.json`, the remaining `data/task_cases/**` cases outside `upload_security_001` and `config_security_001`, and many generated output artifacts remain local-only in this connector-based upload pass. The normal GitHub paths now contain the core runtime, CLI, live/external/evolution runners, installed-runtime state modules, release docs, package metadata, base/holdout mini-suite data, and two representative controlled task-case directories, but this is still not a repository tree push.
 
 ## Current Local Validation
 

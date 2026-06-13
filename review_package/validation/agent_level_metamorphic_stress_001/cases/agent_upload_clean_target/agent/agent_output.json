@@ -1,0 +1,11 @@
+{
+  "backend_type": "non_oracle_local_semantic_agent",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload audit retention",
+      "evidence_span": "target.md: and returns only file_id. config.yaml: audit_log_retention_days=90.",
+      "recommended_fix": "Record actor/object/action/result/timestamp with retention."
+    }
+  ]
+}

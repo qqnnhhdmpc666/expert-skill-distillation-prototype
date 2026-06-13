@@ -1,0 +1,7 @@
+{
+  "case_id": "public_nodegoat_eval_unsupported_001",
+  "target_digest": {
+    "chars": 441,
+    "preview": "Task: Read-only defensive review of a public OWASP NodeGoat code excerpt. This task family is outside the current secure_code_review capability set.\n\nSnippet:\n/*jslint evil: true */\n        // Insecure use of eval() to parse inputs\n        const preTax = eval(req.body.preTax);\n        const afterTax = eval(req.body.afterTax);\n        const roth = eval(req.body.roth);\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

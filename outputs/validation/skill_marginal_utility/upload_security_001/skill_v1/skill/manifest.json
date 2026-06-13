@@ -1,0 +1,19 @@
+{
+  "skill_id": "upload_security_001",
+  "version": "v1",
+  "task_family": "upload_security",
+  "capabilities": [
+    "UPLOAD_PATH_ISOLATION"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {}
+}

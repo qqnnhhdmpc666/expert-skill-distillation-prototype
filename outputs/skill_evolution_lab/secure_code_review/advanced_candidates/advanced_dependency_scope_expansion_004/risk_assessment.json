@@ -1,0 +1,7 @@
+{
+  "candidate_id": "advanced_dependency_scope_expansion_004",
+  "scope_expansion_risk": "high",
+  "risk_case_id": "holdout_dependency_no_advisory_001",
+  "may_affect_out_of_scope_guard": false,
+  "requires_negative_control": true
+}

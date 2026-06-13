@@ -1,0 +1,1 @@
+{"findings":[{"capability_id":"CONFIG_AUDIT_EXPORT","issue":"Production audit export/retention missing","evidence_span":"target.md: \"prod.audit.enabled=true but retention_days/export_sink empty\"","recommended_fix":"Set production audit log retention_days and configure a non-empty export_sink when prod.audit.enabled=true."}]}

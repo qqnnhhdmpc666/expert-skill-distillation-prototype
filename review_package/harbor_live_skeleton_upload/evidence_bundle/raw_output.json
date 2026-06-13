@@ -1,0 +1,9 @@
+{
+  "attempt": "harbor_live_skeleton",
+  "backend": "harbor_live_skeleton",
+  "findings": [],
+  "notes": [
+    "P0 skeleton only; this does not replace replay evidence.",
+    "Live Harbor run is ready only if Docker/Harbor task launcher is available."
+  ]
+}

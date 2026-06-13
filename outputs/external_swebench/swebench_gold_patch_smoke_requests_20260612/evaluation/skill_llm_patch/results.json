@@ -1,0 +1,5 @@
+{
+  "variant": "skill_llm_patch",
+  "status": "blocked_by_missing_model_env",
+  "blocked_reason": "MODEL or OPENAI_MODEL is not configured for a non-oracle SWE-bench patch attempt."
+}

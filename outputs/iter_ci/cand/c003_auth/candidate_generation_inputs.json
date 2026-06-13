@@ -1,0 +1,54 @@
+{
+  "candidate_id": "c003_auth",
+  "title": "Auth Scope Matrix Precision",
+  "allowed_sources": [
+    "failure report",
+    "verifier feedback",
+    "evidence summary",
+    "normalization trace"
+  ],
+  "forbidden_sources": [
+    "verifier-only expected finding",
+    "verifier-only expected evidence span",
+    "verifier-only clean/negative answer label"
+  ],
+  "verifier_only_oracle_fields_read": false,
+  "failure_rows": [
+    {
+      "source": "external_generalization",
+      "case_id": "independent_config_prod_audit_001",
+      "task_family": "config_security",
+      "activated_capability_group": "config_security",
+      "feedback_type": "missing_capability",
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_generalization_validation\\cases\\independent_config_prod_audit_001\\live_llm_text"
+    },
+    {
+      "source": "external_generalization",
+      "case_id": "independent_auth_invoice_scope_001",
+      "task_family": "auth_access_control",
+      "activated_capability_group": "auth_access_control",
+      "feedback_type": "missing_capability",
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_generalization_validation\\cases\\independent_auth_invoice_scope_001\\live_llm_text"
+    },
+    {
+      "source": "external_generalization",
+      "case_id": "independent_api_schema_001",
+      "task_family": "api_or_code_review",
+      "activated_capability_group": "api_or_code_review",
+      "feedback_type": "missing_capability",
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_generalization_validation\\cases\\independent_api_schema_001\\live_llm_text"
+    },
+    {
+      "source": "live_contract_validation",
+      "case_id": "holdout_auth_project_ownership_001",
+      "task_family": "auth_access_control",
+      "activated_capability_group": "auth_access_control",
+      "feedback_type": "missing_capability",
+      "false_positive_count": 0,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_contract_validation\\cases\\holdout_auth_project_ownership_001\\live_llm_contract"
+    }
+  ]
+}

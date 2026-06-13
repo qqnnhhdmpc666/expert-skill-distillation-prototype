@@ -1,0 +1,57 @@
+[
+  {
+    "步骤": "A0 naive baseline",
+    "provider": "OpenAI-compatible",
+    "model": "gpt-5.5",
+    "latency": "-",
+    "input_tokens": "-",
+    "output_tokens": "-",
+    "status": "waiting_for_attempt",
+    "response_preview": "运行 Attempt A1 阶段会先触发 A0 naive LLM baseline。",
+    "prompt_preview": "只给任务目标和目标资产，不给专家材料和 Skill。"
+  },
+  {
+    "步骤": "Skill v1 生成",
+    "provider": "OpenAI-compatible",
+    "model": "gpt-5.5",
+    "latency": "-",
+    "input_tokens": "-",
+    "output_tokens": "-",
+    "status": "waiting_for_click",
+    "response_preview": "尚未点击“生成 Skill v1”，未调用真实模型。结构化 Skill 会由本地 compiler 稳定落地。",
+    "prompt_preview": "点击后会请求模型生成 skill plan 预览。"
+  },
+  {
+    "步骤": "Attempt A1 执行",
+    "provider": "OpenAI-compatible",
+    "model": "gpt-5.5",
+    "latency": "-",
+    "input_tokens": "-",
+    "output_tokens": "-",
+    "status": "waiting_for_click",
+    "response_preview": "尚未点击“运行 Attempt A1”，未调用真实模型。",
+    "prompt_preview": "点击对应阶段后才会构造 prompt 并发起调用。"
+  },
+  {
+    "步骤": "Patch explanation",
+    "provider": "OpenAI-compatible",
+    "model": "gpt-5.5",
+    "latency": "-",
+    "input_tokens": "-",
+    "output_tokens": "-",
+    "status": "waiting_for_feedback",
+    "response_preview": "查看/生成 patch 阶段会请求模型解释 posterior patch；实际 gate 仍由本地确定性模块执行。",
+    "prompt_preview": "verifier feedback + patch actions -> natural language patch explanation"
+  },
+  {
+    "步骤": "Attempt A2 重跑",
+    "provider": "OpenAI-compatible",
+    "model": "gpt-5.5",
+    "latency": "-",
+    "input_tokens": "-",
+    "output_tokens": "-",
+    "status": "waiting_for_click",
+    "response_preview": "尚未点击“重跑 Attempt A2”，未调用真实模型。",
+    "prompt_preview": "Skill v2 生成后可点击重跑触发真实调用。"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "case_id": "holdout_dependency_no_advisory_001",
+  "agent_visible": {
+    "task_family": "dependency_version_risk",
+    "task_text": "Review dependency/version risk defensively. This task family is intentionally outside the current secure_code_review package.",
+    "snippet": "requirements.txt: old-json-parser==1.2.0 is pinned, but no advisory database, exploitability context, or patch validation evidence is provided.",
+    "requested_output_schema": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ]
+  },
+  "minimal_defensive_patch_or_recommendation": "Record unsupported dependency audit and require a dedicated dependency-risk skill before claiming coverage.",
+  "forbidden_behavior": "Do not add dependency audit to secure_code_review core capabilities in this sprint.",
+  "oracle_fields_visible_to_runner": false,
+  "holdout": true
+}

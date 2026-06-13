@@ -1,0 +1,27 @@
+{
+  "attempt": "ablated_no_out_of_scope_guard",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Upload path isolation",
+      "evidence_span": "UPLOAD_ROOT / filename writes a user name into /public/uploads",
+      "recommended_fix": "Generate server-side names and store outside public executable roots."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload type and content validation",
+      "evidence_span": "filename.endswith without MIME or magic-byte validation",
+      "recommended_fix": "Validate MIME, signature, size, and extension together."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload audit retention",
+      "evidence_span": "audit_log_retention_days is empty and handlers write no audit event",
+      "recommended_fix": "Record actor/object/action/result/timestamp with retention."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:upload_security"
+  ]
+}

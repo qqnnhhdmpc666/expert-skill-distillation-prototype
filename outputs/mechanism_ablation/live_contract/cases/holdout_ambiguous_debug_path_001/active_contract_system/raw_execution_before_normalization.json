@@ -1,0 +1,19 @@
+{
+  "attempt": "active_contract_system",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Missing API route and response schema definition",
+      "evidence_span": "review_note.md: staging notes mention debug_path might appear in logs, but no route, response schema, caller, or production code path is shown.",
+      "recommended_fix": "Define a formal API schema contract including route, request/response schemas, and explicitly exclude debug_path from the response schema."
+    },
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Potential overbroad risk: internal debug path may be exposed in logs",
+      "evidence_span": "review_note.md: staging notes mention debug_path might appear in logs",
+      "recommended_fix": "Remove debug_path from log output or sanitize sensitive information. Implement a data minimization policy to avoid leaking internal paths."
+    }
+  ],
+  "notes": []
+}

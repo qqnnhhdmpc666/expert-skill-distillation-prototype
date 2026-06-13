@@ -1,0 +1,9 @@
+{
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "evidence_span": "app.py stores user-controlled filenames under /public/uploads or UPLOAD_ROOT",
+      "recommended_fix": "Generate server-side filenames and store uploads outside public executable roots."
+    }
+  ]
+}

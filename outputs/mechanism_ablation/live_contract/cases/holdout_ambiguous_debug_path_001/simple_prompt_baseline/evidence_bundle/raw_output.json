@@ -1,0 +1,6 @@
+{
+  "attempt": "simple_prompt_baseline",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": []
+}

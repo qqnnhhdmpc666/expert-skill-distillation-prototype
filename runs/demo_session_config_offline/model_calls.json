@@ -1,0 +1,24 @@
+[
+  {
+    "步骤": "Skill v1 生成",
+    "provider": "本地确定性模块",
+    "model": "未调用真实模型",
+    "latency": "0.4s replay",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "status": "offline",
+    "response_preview": "根据抽取规则账本生成可复现 Skill v1。",
+    "prompt_preview": "基于专家材料包、任务规格、资产证据和 token budget 生成结构化 skill。"
+  },
+  {
+    "步骤": "Patch Proposal",
+    "provider": "本地确定性模块",
+    "model": "未调用真实模型",
+    "latency": "0.4s replay",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "status": "offline",
+    "response_preview": "根据 verifier feedback 生成 typed patch。",
+    "prompt_preview": "missing_rule -> patch_rule; output_contract_error -> rewrite_output_contract"
+  }
+]

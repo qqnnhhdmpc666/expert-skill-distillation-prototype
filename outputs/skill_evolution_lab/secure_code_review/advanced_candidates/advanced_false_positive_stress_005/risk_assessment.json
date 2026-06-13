@@ -1,0 +1,7 @@
+{
+  "candidate_id": "advanced_false_positive_stress_005",
+  "scope_expansion_risk": "high",
+  "risk_case_id": "holdout_clean_tax_math_001",
+  "may_affect_out_of_scope_guard": false,
+  "requires_negative_control": true
+}

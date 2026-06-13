@@ -1,0 +1,2 @@
+{"step": 1, "event": "naive_scan", "rule_id": "-", "evidence": "def upload(filename, content_type, file_bytes):"}
+{"step": 2, "event": "naive_scan", "rule_id": "-", "evidence": "return {\"ok\": True, \"debug_path\": \"/public/uploads/\" + filename}"}

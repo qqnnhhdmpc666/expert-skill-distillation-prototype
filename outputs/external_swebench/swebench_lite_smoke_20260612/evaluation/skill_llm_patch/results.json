@@ -1,0 +1,8 @@
+{
+  "status": "blocked_no_model",
+  "variant": "skill_llm_patch",
+  "official_harness": false,
+  "resolved_count": null,
+  "total_instances": 5,
+  "reason": "OPENAI_API_KEY plus MODEL or OPENAI_MODEL is required for non-oracle patch generation."
+}

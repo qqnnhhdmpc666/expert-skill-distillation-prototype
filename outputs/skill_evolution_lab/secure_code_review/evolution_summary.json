@@ -1,0 +1,614 @@
+{
+  "run_id": "skill_evolution_lab_secure_code_review",
+  "created_at": "2026-06-12T10:29:01.898795+00:00",
+  "suite": "secure_code_review",
+  "gate": "qgse_pareto",
+  "single_trajectory_direct_edit_allowed": false,
+  "trajectory_store": [
+    {
+      "record_id": "marginal::data_quality_review_001",
+      "case_id": "data_quality_review_001",
+      "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\data_quality_review_001",
+      "status": "inconclusive",
+      "evidence_type": "marginal_utility",
+      "v2_over_v1_gain": 0.0,
+      "v2_over_no_skill_gain": 0.0,
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "marginal::upload_security_001",
+      "case_id": "upload_security_001",
+      "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\upload_security_001",
+      "status": "success",
+      "evidence_type": "marginal_utility",
+      "v2_over_v1_gain": 0.1333,
+      "v2_over_no_skill_gain": 0.0,
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_upload_repair_loop",
+      "case_id": "upload_security_001",
+      "source": "outputs/live_llm_repair_loop_upload_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_data_quality_repair_loop",
+      "case_id": "data_quality_review_001",
+      "source": "outputs/live_llm_repair_loop_data_quality_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_config_security_repair_loop",
+      "case_id": "config_security_001",
+      "source": "outputs/live_llm_repair_loop_config_security_001",
+      "status": "failure",
+      "evidence_type": "qualification_card",
+      "decision": "quarantine",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::live_llm_api_review_repair_loop",
+      "case_id": "api_review_001",
+      "source": "outputs/live_llm_repair_loop_api_review_001",
+      "status": "failure",
+      "evidence_type": "qualification_card",
+      "decision": "reject",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::harbor_llm_upload_repair_loop",
+      "case_id": "real-upload-security-review",
+      "source": "outputs/harbor_llm_repair_loop_upload_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    },
+    {
+      "record_id": "qualification::harbor_llm_config_repair_loop",
+      "case_id": "controlled-config-security-review",
+      "source": "outputs/harbor_llm_repair_loop_config_001",
+      "status": "success",
+      "evidence_type": "qualification_card",
+      "decision": "promote_with_scope_limit",
+      "single_trajectory_can_patch_skill": false
+    }
+  ],
+  "failure_contrast": [
+    {
+      "case_id": "config_security_001",
+      "artifact": "outputs/live_llm_repair_loop_config_security_001",
+      "a1_failure_pattern": "missing_capability",
+      "a2_success_pattern": "none",
+      "contrastive_lesson": "A2 still misses the same capability set: ['CONFIG_ENV_GUARD'].",
+      "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+      "candidate_patch": "do_not_promote_without_manifest_diff_and_behavior_gain",
+      "patch_risk": "skill_to_execution_gap"
+    },
+    {
+      "case_id": "api_review_001",
+      "artifact": "outputs/live_llm_repair_loop_api_review_001",
+      "a1_failure_pattern": "missing_capability",
+      "a2_success_pattern": "none",
+      "contrastive_lesson": "A2 still misses the same capability set: ['API_OVERBROAD_RISK'].",
+      "text_gradient": "Patch operators must verify a manifest diff before rerun; no-op capability patches must be rejected early.",
+      "candidate_patch": "do_not_promote_without_manifest_diff_and_behavior_gain",
+      "patch_risk": "repair_operator_noop_or_patch_application_failure"
+    }
+  ],
+  "candidate_pool": [
+    {
+      "candidate_id": "candidate_upload_security_001_v2",
+      "case_id": "upload_security_001",
+      "source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\upload_security_001",
+      "proposal_type": "bounded_skill_v2_promotion",
+      "edit_budget": 3,
+      "protected_sections": [
+        "Safety Boundary",
+        "Output Contract",
+        "Qualification Scope"
+      ],
+      "marginal_utility": {
+        "v2_over_v1_gain": 0.1333,
+        "v2_over_no_skill_gain": 0.0,
+        "gap_to_upper_bound": 0.0,
+        "cost_delta": 73.0,
+        "false_positive_delta": 0.0,
+        "metamorphic_delta": 0.0
+      },
+      "status": "candidate"
+    }
+  ],
+  "candidate_outputs": [
+    {
+      "candidate_id": "config_security_001__v3_candidate_001",
+      "candidate_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001",
+      "validation_result": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001\\validation_result.json",
+      "promotion_decision": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001\\promotion_decision.json",
+      "validation_result_payload": {
+        "case_id": "config_security_001",
+        "backend": "offline_deterministic",
+        "baseline_variant": "active_installed",
+        "candidate_variant": "candidate_package",
+        "baseline_score": 1.0,
+        "candidate_score": 1.0,
+        "score_delta": 0.0,
+        "baseline_cost_tokens": 184,
+        "candidate_cost_tokens": 261,
+        "false_positive_delta": 0.0,
+        "schema_error_delta": 0.0,
+        "artifacts": {
+          "active_installed": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\cand_val\\c001\\config_security_001\\active_installed",
+          "candidate_package": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\cand_val\\c001\\config_security_001\\candidate_package"
+        },
+        "run_metadata": {
+          "active_installed": {
+            "run_id": "config_security_001::offline_deterministic::active_installed",
+            "case_id": "config_security_001",
+            "backend": "offline_deterministic",
+            "variant": "active_installed",
+            "task_family": "config_security",
+            "activated_capability_group": "config_security",
+            "out_of_scope": false,
+            "unsupported_task_family": null,
+            "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+            "target_hash": "4d46c17635719853fefd42070e8a8717c6bd76e1b4980e1d5675defdf7a577c6",
+            "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+            "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+            "prompt_hash": "none",
+            "model": "offline_deterministic",
+            "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+            "schema_version": "skill_marginal_utility.v1",
+            "timestamp": "2026-06-12T10:29:01.847290+00:00",
+            "cost": null,
+            "tokens": 184,
+            "cost_reason": "offline prototype does not compute monetary billing",
+            "tokens_reason": "estimated from skill text only",
+            "verifier_feedback_type": "pass",
+            "active_pointer_snapshot": {
+              "skill_id": "secure_code_review",
+              "active_version": "v2",
+              "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+              "updated_at": "2026-06-12T10:24:22.679142+00:00"
+            }
+          },
+          "candidate_package": {
+            "run_id": "config_security_001::offline_deterministic::candidate_package",
+            "case_id": "config_security_001",
+            "backend": "offline_deterministic",
+            "variant": "candidate_package",
+            "task_family": "config_security",
+            "activated_capability_group": "config_security",
+            "out_of_scope": false,
+            "unsupported_task_family": null,
+            "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001",
+            "target_hash": "4d46c17635719853fefd42070e8a8717c6bd76e1b4980e1d5675defdf7a577c6",
+            "skill_hash": "363a21ba832a6b1032536cfd9ca540f64829398c8b6f523b87c0f25f7d7403b6",
+            "manifest_hash": "898b465398ec21c942f925b9266194cda640f05d1b4616673e7cd0a590bed210",
+            "prompt_hash": "none",
+            "model": "offline_deterministic",
+            "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+            "schema_version": "skill_marginal_utility.v1",
+            "timestamp": "2026-06-12T10:29:01.855456+00:00",
+            "cost": null,
+            "tokens": 261,
+            "cost_reason": "offline prototype does not compute monetary billing",
+            "tokens_reason": "estimated from skill text only",
+            "verifier_feedback_type": "pass",
+            "active_pointer_snapshot": {
+              "skill_id": "secure_code_review",
+              "active_version": "v2",
+              "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+              "updated_at": "2026-06-12T10:24:22.679142+00:00"
+            }
+          }
+        }
+      },
+      "promotion_decision_payload": {
+        "candidate_id": "config_security_001__v3_candidate_001",
+        "decision": "not_promoted",
+        "reason": "candidate_not_strictly_better_or_scope_safe",
+        "score_delta": 0.0,
+        "false_positive_delta": 0.0,
+        "schema_error_delta": 0.0,
+        "scope_violation": false,
+        "promotion_rule": "candidate_score > active_score and no false-positive/schema/scope regression"
+      },
+      "oracle_fields_read_for_generation": false
+    },
+    {
+      "candidate_id": "clean_false_positive_guard__v3_candidate_002",
+      "candidate_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002",
+      "validation_result": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002\\validation_result.json",
+      "promotion_decision": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002\\promotion_decision.json",
+      "validation_result_payload": {
+        "case_id": "mini_clean_out_of_scope_001",
+        "backend": "offline_deterministic",
+        "baseline_variant": "active_installed",
+        "candidate_variant": "candidate_package",
+        "baseline_score": 1.0,
+        "candidate_score": 0.6,
+        "score_delta": -0.4,
+        "baseline_cost_tokens": 184,
+        "candidate_cost_tokens": 266,
+        "false_positive_delta": 3.0,
+        "schema_error_delta": 0.0,
+        "artifacts": {
+          "active_installed": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\cand_val\\c002\\mini_clean_out_of_scope_001\\active_installed",
+          "candidate_package": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\cand_val\\c002\\mini_clean_out_of_scope_001\\candidate_package"
+        },
+        "run_metadata": {
+          "active_installed": {
+            "run_id": "mini_clean_out_of_scope_001::offline_deterministic::active_installed",
+            "case_id": "mini_clean_out_of_scope_001",
+            "backend": "offline_deterministic",
+            "variant": "active_installed",
+            "task_family": "clean_business_logic_review",
+            "activated_capability_group": "out_of_scope_guard",
+            "out_of_scope": true,
+            "unsupported_task_family": "clean_business_logic_review",
+            "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+            "target_hash": "362a045e574f550234081c85f3989d8ff74adcb7ef0222b12a16fd0286e57354",
+            "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+            "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+            "prompt_hash": "none",
+            "model": "offline_deterministic",
+            "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+            "schema_version": "skill_marginal_utility.v1",
+            "timestamp": "2026-06-12T10:29:01.865604+00:00",
+            "cost": null,
+            "tokens": 184,
+            "cost_reason": "offline prototype does not compute monetary billing",
+            "tokens_reason": "estimated from skill text only",
+            "verifier_feedback_type": "pass",
+            "active_pointer_snapshot": {
+              "skill_id": "secure_code_review",
+              "active_version": "v2",
+              "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+              "updated_at": "2026-06-12T10:24:22.679142+00:00"
+            }
+          },
+          "candidate_package": {
+            "run_id": "mini_clean_out_of_scope_001::offline_deterministic::candidate_package",
+            "case_id": "mini_clean_out_of_scope_001",
+            "backend": "offline_deterministic",
+            "variant": "candidate_package",
+            "task_family": "clean_business_logic_review",
+            "activated_capability_group": "upload_security",
+            "out_of_scope": false,
+            "unsupported_task_family": null,
+            "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002",
+            "target_hash": "362a045e574f550234081c85f3989d8ff74adcb7ef0222b12a16fd0286e57354",
+            "skill_hash": "c84b51e1a709c5f3ffa9f60b60e595c94923db6a53fbc298786222e15a3434bd",
+            "manifest_hash": "708d538cd28d22f09efe6c6cba72718f64015de1c4387a80447188c784fea806",
+            "prompt_hash": "none",
+            "model": "offline_deterministic",
+            "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+            "schema_version": "skill_marginal_utility.v1",
+            "timestamp": "2026-06-12T10:29:01.872254+00:00",
+            "cost": null,
+            "tokens": 266,
+            "cost_reason": "offline prototype does not compute monetary billing",
+            "tokens_reason": "estimated from skill text only",
+            "verifier_feedback_type": "false_positive_risk",
+            "active_pointer_snapshot": {
+              "skill_id": "secure_code_review",
+              "active_version": "v2",
+              "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+              "updated_at": "2026-06-12T10:24:22.679142+00:00"
+            }
+          }
+        }
+      },
+      "promotion_decision_payload": {
+        "candidate_id": "clean_false_positive_guard__v3_candidate_002",
+        "decision": "not_promoted",
+        "reason": "candidate_not_strictly_better_or_scope_safe",
+        "score_delta": -0.4,
+        "false_positive_delta": 3.0,
+        "schema_error_delta": 0.0,
+        "scope_violation": true,
+        "promotion_rule": "candidate_score > active_score and no false-positive/schema/scope regression"
+      },
+      "oracle_fields_read_for_generation": false
+    },
+    {
+      "candidate_id": "dependency_version_risk__v3_candidate_003",
+      "candidate_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\dependency_version_risk__v3_candidate_003",
+      "validation_result": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\dependency_version_risk__v3_candidate_003\\validation_result.json",
+      "promotion_decision": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\dependency_version_risk__v3_candidate_003\\promotion_decision.json",
+      "validation_result_payload": {
+        "case_id": "mini_dependency_version_risk_001",
+        "backend": "offline_deterministic",
+        "baseline_variant": "active_installed",
+        "candidate_variant": "candidate_package",
+        "baseline_score": 1.0,
+        "candidate_score": 0.6,
+        "score_delta": -0.4,
+        "baseline_cost_tokens": 184,
+        "candidate_cost_tokens": 263,
+        "false_positive_delta": 1.0,
+        "schema_error_delta": 0.0,
+        "artifacts": {
+          "active_installed": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\cand_val\\c003\\mini_dependency_version_risk_001\\active_installed",
+          "candidate_package": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\cand_val\\c003\\mini_dependency_version_risk_001\\candidate_package"
+        },
+        "run_metadata": {
+          "active_installed": {
+            "run_id": "mini_dependency_version_risk_001::offline_deterministic::active_installed",
+            "case_id": "mini_dependency_version_risk_001",
+            "backend": "offline_deterministic",
+            "variant": "active_installed",
+            "task_family": "dependency_version_risk",
+            "activated_capability_group": "out_of_scope_guard",
+            "out_of_scope": true,
+            "unsupported_task_family": "dependency_version_risk",
+            "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+            "target_hash": "3d173ff256cc517429deb05037e17c8dbc7c6c7825906eef3c22ac6e3566333e",
+            "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+            "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+            "prompt_hash": "none",
+            "model": "offline_deterministic",
+            "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+            "schema_version": "skill_marginal_utility.v1",
+            "timestamp": "2026-06-12T10:29:01.883826+00:00",
+            "cost": null,
+            "tokens": 184,
+            "cost_reason": "offline prototype does not compute monetary billing",
+            "tokens_reason": "estimated from skill text only",
+            "verifier_feedback_type": "pass",
+            "active_pointer_snapshot": {
+              "skill_id": "secure_code_review",
+              "active_version": "v2",
+              "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+              "updated_at": "2026-06-12T10:24:22.679142+00:00"
+            }
+          },
+          "candidate_package": {
+            "run_id": "mini_dependency_version_risk_001::offline_deterministic::candidate_package",
+            "case_id": "mini_dependency_version_risk_001",
+            "backend": "offline_deterministic",
+            "variant": "candidate_package",
+            "task_family": "dependency_version_risk",
+            "activated_capability_group": "dependency_version_risk",
+            "out_of_scope": false,
+            "unsupported_task_family": null,
+            "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\dependency_version_risk__v3_candidate_003",
+            "target_hash": "3d173ff256cc517429deb05037e17c8dbc7c6c7825906eef3c22ac6e3566333e",
+            "skill_hash": "b66ddd54fa9659a20c6e53afd6da2a51371e02200606e74679c8b7f072cd1ce6",
+            "manifest_hash": "7a56ae03b9d40fcf140c93c784722bf7744267c2d25ff7ed9f4480083b77e124",
+            "prompt_hash": "none",
+            "model": "offline_deterministic",
+            "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+            "schema_version": "skill_marginal_utility.v1",
+            "timestamp": "2026-06-12T10:29:01.892245+00:00",
+            "cost": null,
+            "tokens": 263,
+            "cost_reason": "offline prototype does not compute monetary billing",
+            "tokens_reason": "estimated from skill text only",
+            "verifier_feedback_type": "false_positive_risk",
+            "active_pointer_snapshot": {
+              "skill_id": "secure_code_review",
+              "active_version": "v2",
+              "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+              "updated_at": "2026-06-12T10:24:22.679142+00:00"
+            }
+          }
+        }
+      },
+      "promotion_decision_payload": {
+        "candidate_id": "dependency_version_risk__v3_candidate_003",
+        "decision": "not_promoted",
+        "reason": "candidate_not_strictly_better_or_scope_safe",
+        "score_delta": -0.4,
+        "false_positive_delta": 1.0,
+        "schema_error_delta": 0.0,
+        "scope_violation": true,
+        "promotion_rule": "candidate_score > active_score and no false-positive/schema/scope regression"
+      },
+      "oracle_fields_read_for_generation": false
+    }
+  ],
+  "rejected_edit_buffer": [
+    {
+      "rejected_edit_id": "rejected::config_security_001",
+      "case_id": "config_security_001",
+      "reason": "skill_to_execution_gap",
+      "score_delta": -1.0,
+      "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+      "avoid_next": "do_not_promote_without_manifest_diff_and_behavior_gain"
+    },
+    {
+      "rejected_edit_id": "rejected::api_review_001",
+      "case_id": "api_review_001",
+      "reason": "repair_operator_noop_or_patch_application_failure",
+      "score_delta": -1.0,
+      "text_gradient": "Patch operators must verify a manifest diff before rerun; no-op capability patches must be rejected early.",
+      "avoid_next": "do_not_promote_without_manifest_diff_and_behavior_gain"
+    },
+    {
+      "rejected_edit_id": "rejected::config_security_001__v3_candidate_001",
+      "case_id": "config_security_001",
+      "reason": "candidate_not_strictly_better_or_scope_safe",
+      "score_delta": 0.0,
+      "false_positive_delta": 0.0,
+      "scope_violation": false,
+      "text_gradient": "configuration realization can regress to capability presence without explicit evidence realization",
+      "avoid_next": "do_not_promote_without_strict_gain_and_scope_safety",
+      "oracle_fields_read_for_generation": false
+    },
+    {
+      "rejected_edit_id": "rejected::clean_false_positive_guard__v3_candidate_002",
+      "case_id": "mini_clean_out_of_scope_001",
+      "reason": "candidate_not_strictly_better_or_scope_safe",
+      "score_delta": -0.4,
+      "false_positive_delta": 3.0,
+      "scope_violation": true,
+      "text_gradient": "false-positive control must remain zero on clean out-of-scope tasks",
+      "avoid_next": "do_not_promote_without_strict_gain_and_scope_safety",
+      "oracle_fields_read_for_generation": false
+    },
+    {
+      "rejected_edit_id": "rejected::dependency_version_risk__v3_candidate_003",
+      "case_id": "mini_dependency_version_risk_001",
+      "reason": "candidate_not_strictly_better_or_scope_safe",
+      "score_delta": -0.4,
+      "false_positive_delta": 1.0,
+      "scope_violation": true,
+      "text_gradient": "dependency/version risk is unsupported and must remain outside secure_code_review core capability",
+      "avoid_next": "do_not_promote_without_strict_gain_and_scope_safety",
+      "oracle_fields_read_for_generation": false
+    }
+  ],
+  "elite_pool": [
+    {
+      "rank": 1,
+      "candidate_id": "candidate_upload_security_001_v2",
+      "case_id": "upload_security_001",
+      "selection_rule": "strict_positive_marginal_gain_and_no_false_positive_increase",
+      "status": "elite_candidate",
+      "marginal_utility": {
+        "v2_over_v1_gain": 0.1333,
+        "v2_over_no_skill_gain": 0.0,
+        "gap_to_upper_bound": 0.0,
+        "cost_delta": 73.0,
+        "false_positive_delta": 0.0,
+        "metamorphic_delta": 0.0
+      }
+    }
+  ],
+  "retirement_decisions": [
+    {
+      "skill_id": "live_llm_config_security_repair_loop",
+      "case_id": "config_security_001",
+      "action": "quarantine",
+      "trigger": "skill_to_execution_gap",
+      "evidence": "outputs/live_llm_repair_loop_config_security_001",
+      "rejected_edit_count": 1
+    },
+    {
+      "skill_id": "live_llm_api_review_repair_loop",
+      "case_id": "api_review_001",
+      "action": "retire",
+      "trigger": "skill_to_execution_gap",
+      "evidence": "outputs/live_llm_repair_loop_api_review_001",
+      "rejected_edit_count": 1
+    },
+    {
+      "skill_id": "data_quality_review_001_v2",
+      "case_id": "data_quality_review_001",
+      "action": "downgrade",
+      "trigger": "no_positive_marginal_gain_or_false_positive_increase",
+      "evidence": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\skill_marginal_utility\\data_quality_review_001",
+      "rejected_edit_count": 0
+    }
+  ],
+  "skill_state_registry": {
+    "generated_at": "2026-06-12T10:29:01.840324+00:00",
+    "registry_type": "controlled_skill_evolution_state_overlay",
+    "source_registry": "outputs/installed_skills/registry.json",
+    "skills": [
+      {
+        "case_id": "api_review_001",
+        "task_family": "api_or_code_review",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/api_review_001",
+        "history_events": 1,
+        "evolution_state": "retire",
+        "evolution_reason": "skill_to_execution_gap"
+      },
+      {
+        "case_id": "auth_access_control_001",
+        "task_family": "auth_access_control",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/auth_access_control_001",
+        "history_events": 1,
+        "evolution_state": "installed_controlled",
+        "evolution_reason": "no_new_evolution_decision"
+      },
+      {
+        "case_id": "config_security_001",
+        "task_family": "config_security",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/config_security_001",
+        "history_events": 1,
+        "evolution_state": "quarantine",
+        "evolution_reason": "skill_to_execution_gap"
+      },
+      {
+        "case_id": "data_quality_review_001",
+        "task_family": "data_quality_review",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/data_quality_review_001",
+        "history_events": 1,
+        "evolution_state": "downgrade",
+        "evolution_reason": "no_positive_marginal_gain_or_false_positive_increase"
+      },
+      {
+        "case_id": "upload_security_001",
+        "task_family": "upload_security",
+        "active_version": "v2",
+        "scope_limit": "controlled_offline_generalization",
+        "install_dir": "outputs/installed_skills/upload_security_001",
+        "history_events": 3,
+        "evolution_state": "elite_candidate",
+        "evolution_reason": "positive_marginal_utility_candidate"
+      },
+      {
+        "skill_id": "secure_code_review",
+        "package_source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\deployable_codex_skill\\secure_code_review",
+        "installed_versions": [
+          "v1",
+          "v2"
+        ],
+        "active_version": "v2",
+        "active_skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+        "skill_hash": "8e83be948f84f564e80b7f5554605e742ae17879088ef904337f11884b56d8d6",
+        "manifest_hash": "1349cc35c9a1ad4b391c18ac4aaf4da85440cb0d2ba730c0eed50b97e50c5de8",
+        "evolution_state": "installed_controlled",
+        "evolution_reason": "no_new_evolution_decision"
+      },
+      {
+        "skill_id": "software_patch_review",
+        "package_source": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\deployable_codex_skill\\software_patch_review",
+        "installed_versions": [
+          "v1"
+        ],
+        "active_version": "v1",
+        "active_skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\software_patch_review\\versions\\v1",
+        "skill_hash": "233f3190d173d7e25f984f532723f3da0c0af07cbf464e00542a906c4b1527a4",
+        "manifest_hash": "9b4bbaaaf6e836f196e3aeefc9cd1201f5b16088cf962dcece3aca46faf809cd",
+        "evolution_state": "installed_controlled",
+        "evolution_reason": "no_new_evolution_decision"
+      }
+    ],
+    "boundary": "This overlays evolution states on the generated install registry; it is not a production package manager."
+  },
+  "blocked_reason": null,
+  "rejected_edit_buffer_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\rejected_edit_buffer.json",
+  "candidate_generation_policy": {
+    "allowed_sources": [
+      "failure report",
+      "verifier feedback",
+      "evidence summary",
+      "limitation summary"
+    ],
+    "forbidden_sources": [
+      "verifier-only expected finding",
+      "verifier-only expected evidence span",
+      "verifier-only clean/negative answer label"
+    ],
+    "oracle_fields_read_for_generation": false
+  },
+  "claim_boundary": "minimal controlled Skill evolution lab; not broad autonomous self-improvement evidence"
+}

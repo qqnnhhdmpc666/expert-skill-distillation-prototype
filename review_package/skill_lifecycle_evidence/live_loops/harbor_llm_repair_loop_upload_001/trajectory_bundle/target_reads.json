@@ -1,0 +1,30 @@
+{
+  "A1": {
+    "read_files": [
+      "/app/target/app.py",
+      "/app/target/config.yaml"
+    ],
+    "skill_files": [
+      "/app/skill/SKILL.md",
+      "/app/skill/manifest.json"
+    ],
+    "enabled_capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ]
+  },
+  "A2": {
+    "read_files": [
+      "/app/target/app.py",
+      "/app/target/config.yaml"
+    ],
+    "skill_files": [
+      "/app/skill/SKILL.md",
+      "/app/skill/manifest.json"
+    ],
+    "enabled_capabilities": [
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC"
+    ]
+  }
+}

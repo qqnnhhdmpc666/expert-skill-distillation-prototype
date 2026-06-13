@@ -1,0 +1,13 @@
+{
+  "attempt": "simple_prompt_baseline",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit export sink and retention not configured",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty.",
+      "recommended_fix": "Set retention_days to a positive integer and export_sink to a valid destination (e.g., S3, syslog) in prod.yaml."
+    }
+  ],
+  "notes": []
+}

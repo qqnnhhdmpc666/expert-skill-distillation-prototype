@@ -1,0 +1,25 @@
+{
+  "attempt": "c002_guard",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Missing authorization scope/permission matrix",
+      "evidence_span": "target.md: \"cancel_invoice checks is_authenticated\"",
+      "recommended_fix": "Add a scope or permission check (e.g., required role or action) after authentication to enforce fine-grained authorization instead of relying solely on is_authenticated."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing tenant/owner filter on invoice load",
+      "evidence_span": "target.md: \"loads invoice by id without tenant_id or owner_id filtering\"",
+      "recommended_fix": "Add a tenant_id or owner_id filter when loading the invoice to ensure the authenticated user can only access invoices they own or are authorized to see."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Information leak in denial response body",
+      "evidence_span": "target.md: \"the denial body returns invoice_id\"",
+      "recommended_fix": "Return only a generic error message (e.g., 'access denied') in the denial envelope and avoid exposing internal identifiers like invoice_id."
+    }
+  ],
+  "notes": []
+}

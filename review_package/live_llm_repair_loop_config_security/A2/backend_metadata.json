@@ -1,0 +1,32 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "oracle": false,
+  "llm": true,
+  "generated_by": "agents/llm_security_agent.py",
+  "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_repair_loop_config_security_001\\skills\\skill_v2",
+  "target_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\live_llm_repair_loop_config_security_001\\target_asset",
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "task_label": "configuration security review",
+  "contract_mode": "strict",
+  "timestamp": "2026-06-08T20:29:42.717703+00:00",
+  "status": "ok",
+  "finding_count": 1,
+  "usage": {
+    "prompt_tokens": 847,
+    "completion_tokens": 590,
+    "total_tokens": 1437,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 516
+    }
+  },
+  "latency_ms": 13713
+}

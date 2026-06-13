@@ -1,0 +1,11 @@
+name: "custom_external_security_review_skill"
+version: "v2"
+domain: "外部安全审查 / 自定义任务"
+package_type: deployable_skill_package
+lifecycle: source_material -> skill_v1 -> attempt -> verifier -> patch -> skill_v2
+inspired_by:
+  - COLLEAGUE.SKILL: versioned and inspectable skill lifecycle
+  - SPARK-PDI: evidence-first trajectory verification
+rule_count: 6
+token_cost: 343
+status: "验证通过"

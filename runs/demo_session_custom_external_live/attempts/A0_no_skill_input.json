@@ -1,0 +1,5 @@
+{
+  "skill_version": "no_skill",
+  "target_asset": "custom_external",
+  "mode": "naive_task_goal_only"
+}

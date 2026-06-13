@@ -1,0 +1,35 @@
+{
+  "bundle_id": "config_security_001_candidate_v3_package_offline_deterministic",
+  "created_at": "2026-06-12T11:38:30.855974+00:00",
+  "case_id": "config_security_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_v3_package",
+  "status": "completed",
+  "verifier_result": "pass",
+  "verifier_feedback_type": "pass",
+  "artifacts": [
+    "raw_output.json",
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json",
+    "verifier_feedback.json",
+    "repair_patch.json",
+    "qualification_decision.json"
+  ],
+  "score": 1.0,
+  "token_cost_estimate": 261,
+  "safety_boundary": "defensive_review_only_no_exploit_generation",
+  "provenance": {
+    "runtime_source": "candidate_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001",
+    "skill_version": "v3_config_realization_candidate",
+    "manifest_hash": "898b465398ec21c942f925b9266194cda640f05d1b4616673e7cd0a590bed210",
+    "skill_hash": "363a21ba832a6b1032536cfd9ca540f64829398c8b6f523b87c0f25f7d7403b6",
+    "run_id": "config_security_001::offline_deterministic::candidate_v3_package",
+    "schema_version": "skill_marginal_utility.v1",
+    "task_family": "config_security",
+    "activated_capability_group": "config_security",
+    "out_of_scope": false,
+    "unsupported_task_family": null
+  }
+}

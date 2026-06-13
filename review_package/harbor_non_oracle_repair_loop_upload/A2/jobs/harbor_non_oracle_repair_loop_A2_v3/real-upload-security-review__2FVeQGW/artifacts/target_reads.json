@@ -1,0 +1,6 @@
+{
+  "read_files": ["/app/target/app.py", "/app/target/config.yaml"],
+  "app_chars": 465,
+  "config_chars": 70,
+  "enabled_capabilities": ["UPLOAD_AUDIT_RETENTION", "UPLOAD_PATH_ISOLATION", "UPLOAD_TYPE_MAGIC"]
+}

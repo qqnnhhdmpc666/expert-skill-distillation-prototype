@@ -1,0 +1,1 @@
+OpenAPI GET /users accepts user_id without role check and returns debug_path. The report must include evidence_span.

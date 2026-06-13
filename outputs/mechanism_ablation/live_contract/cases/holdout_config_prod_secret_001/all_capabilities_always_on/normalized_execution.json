@@ -1,0 +1,18 @@
+{
+  "attempt": "all_capabilities_always_on",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Audit export sink is empty, audit logs are not being exported",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile.",
+      "recommended_fix": "Set export_sink to a valid external destination (e.g., S3 bucket, syslog server) to ensure audit logs are exported for long-term retention and compliance.",
+      "capability_group": "all_capabilities_always_on",
+      "evidence_match": "exact_target_line",
+      "confidence": "high"
+    }
+  ],
+  "notes": [
+    "live_contract_normalized"
+  ]
+}

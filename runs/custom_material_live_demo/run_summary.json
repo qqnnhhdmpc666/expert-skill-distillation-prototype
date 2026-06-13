@@ -1,0 +1,29 @@
+{
+  "run_id": "custom_material_live_demo",
+  "started_at": "2026-06-08T09:30:53.038124+00:00",
+  "finished_at": "2026-06-08T09:30:53.045184+00:00",
+  "mode": "local_fallback_not_configured",
+  "env_ready": false,
+  "model": null,
+  "status_chain": "A0 -> A1 PASS -> A2 PASS",
+  "scores": {
+    "A1": 0.958,
+    "A2": 1.0
+  },
+  "passed": true,
+  "improved": true,
+  "artifacts": [
+    "inputs/task.md",
+    "trajectory.jsonl",
+    "model_calls.json",
+    "skills/skill_v1.md",
+    "skills/skill_v2.md",
+    "attempts/A0_no_skill.json",
+    "attempts/A1_skill_v1.json",
+    "attempts/A2_skill_v2.json",
+    "verifier/A1_feedback.json",
+    "verifier/A2_feedback.json",
+    "revision/patch_plan.json",
+    "reports/correction_report.md"
+  ]
+}

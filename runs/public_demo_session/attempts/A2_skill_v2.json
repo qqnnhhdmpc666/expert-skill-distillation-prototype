@@ -1,0 +1,56 @@
+{
+  "attempt": "A2",
+  "summary": "6 structured findings with evidence and fixes.",
+  "findings": [
+    {
+      "finding_id": "A2-F01",
+      "capability": "输入校验",
+      "capability_id": "input_validation",
+      "evidence_span": "filename, user_id, q 等用户可控字段直接进入处理流程。",
+      "risk_level": "medium",
+      "recommended_fix": "补充类型、长度、白名单与拒绝策略。"
+    },
+    {
+      "finding_id": "A2-F02",
+      "capability": "敏感信息泄露",
+      "capability_id": "sensitive_leak",
+      "evidence_span": "debug_path, stacktrace, token, api_key 暴露在返回或日志中。",
+      "risk_level": "medium",
+      "recommended_fix": "统一错误响应，并对路径、邮箱、token 和内部错误脱敏。"
+    },
+    {
+      "finding_id": "A2-F03",
+      "capability": "上传类型与存储隔离",
+      "capability_id": "upload_storage",
+      "evidence_span": "filename.endswith(...) 且写入 /public/uploads/。",
+      "risk_level": "high",
+      "recommended_fix": "联合检查 MIME、magic number、大小并使用非公开存储目录。"
+    },
+    {
+      "finding_id": "A2-F04",
+      "capability": "审计日志保留",
+      "capability_id": "audit_logging",
+      "evidence_span": "audit_log_retention_days: null。",
+      "risk_level": "medium",
+      "recommended_fix": "记录 actor/object/action/result/timestamp 并配置保留周期。"
+    },
+    {
+      "finding_id": "A2-F05",
+      "capability": "路径穿越",
+      "capability_id": "path_traversal",
+      "evidence_span": "save(\"/public/uploads/\" + filename, file_bytes)",
+      "risk_level": "high",
+      "recommended_fix": "使用安全文件名、路径归一化和随机化存储名。"
+    },
+    {
+      "finding_id": "A2-F06",
+      "capability": "弱密钥与调试配置",
+      "capability_id": "weak_config",
+      "evidence_span": "debug: true, SECRET_KEY: changeme。",
+      "risk_level": "high",
+      "recommended_fix": "关闭生产 debug，替换强密钥，并限制敏感配置暴露。"
+    }
+  ],
+  "token_cost": 412,
+  "latency_ms": 1980
+}

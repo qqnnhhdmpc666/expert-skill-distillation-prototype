@@ -1,0 +1,7 @@
+{
+  "case_id": "holdout_upload_double_extension_001",
+  "target_digest": {
+    "chars": 328,
+    "preview": "Task: Review this upload path defensively and return JSON findings only.\n\nSnippet:\nupload_service.py: save_upload() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. settings.toml: audit_log_retention_days is empty.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "case_id": "upload_security_001",
+  "a1_failure_pattern": "missing_capability",
+  "a2_outcome": "pass",
+  "repair_action": "patch_capability",
+  "contrastive_lesson": "Capability coverage can be compact in v1, but missing critical capability ids must become explicit repair targets.",
+  "persistent_memory_note": {
+    "before_capabilities": [
+      "UPLOAD_PATH_ISOLATION"
+    ],
+    "after_capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_AUDIT_RETENTION",
+      "UPLOAD_TYPE_MAGIC"
+    ],
+    "operator_id": "op_patch_capability_generic",
+    "preferred_action": "patch_capability"
+  }
+}

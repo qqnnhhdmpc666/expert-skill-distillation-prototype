@@ -1,0 +1,47 @@
+[
+  {
+    "capability_id": "API_SCHEMA_CONTRACT",
+    "title": "Strict report schema",
+    "source_span": "API review needs strict JSON report contract",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "strict json report contract",
+      "json report contract"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "skill_file": "skills/skill_v2/SKILL.md#API_SCHEMA_CONTRACT"
+    },
+    "justification": "kept in compact skill_v1"
+  },
+  {
+    "capability_id": "API_OVERBROAD_RISK",
+    "title": "Overbroad finding control",
+    "source_span": "rejection of overbroad generic findings.",
+    "source_span_resolution": "clause_keyword_match",
+    "keyword_hits": [
+      "overbroad generic findings",
+      "overbroad",
+      "generic findings"
+    ],
+    "skill_v1_included": true,
+    "skill_v2_included": true,
+    "added_by_repair": false,
+    "a1_feedback_type": "output_contract_error",
+    "repair_action": "rewrite_output_contract",
+    "gate_decision": "accept",
+    "mapping_artifact": {
+      "source": "source_materials/expert_material.md",
+      "capability_id": "API_OVERBROAD_RISK",
+      "skill_file": "skills/skill_v2/SKILL.md#API_OVERBROAD_RISK"
+    },
+    "justification": "kept in compact skill_v1"
+  }
+]

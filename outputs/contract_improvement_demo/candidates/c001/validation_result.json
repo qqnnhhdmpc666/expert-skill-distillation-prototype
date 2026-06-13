@@ -1,0 +1,11 @@
+{
+  "active_score": 0.8389,
+  "candidate_score": 0.8333,
+  "score_delta": -0.0055,
+  "false_positive_delta": 1,
+  "schema_error_delta": 0,
+  "unsupported_evidence_delta": 0,
+  "scope_violation": false,
+  "clean_negative_not_worse": false,
+  "unsupported_limitation_preserved": true
+}

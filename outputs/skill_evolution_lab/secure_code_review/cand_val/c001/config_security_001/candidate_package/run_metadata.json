@@ -1,0 +1,30 @@
+{
+  "run_id": "config_security_001::offline_deterministic::candidate_package",
+  "case_id": "config_security_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_package",
+  "task_family": "config_security",
+  "activated_capability_group": "config_security",
+  "out_of_scope": false,
+  "unsupported_task_family": null,
+  "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001",
+  "target_hash": "4d46c17635719853fefd42070e8a8717c6bd76e1b4980e1d5675defdf7a577c6",
+  "skill_hash": "363a21ba832a6b1032536cfd9ca540f64829398c8b6f523b87c0f25f7d7403b6",
+  "manifest_hash": "898b465398ec21c942f925b9266194cda640f05d1b4616673e7cd0a590bed210",
+  "prompt_hash": "none",
+  "model": "offline_deterministic",
+  "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+  "schema_version": "skill_marginal_utility.v1",
+  "timestamp": "2026-06-12T10:29:01.855456+00:00",
+  "cost": null,
+  "tokens": 261,
+  "cost_reason": "offline prototype does not compute monetary billing",
+  "tokens_reason": "estimated from skill text only",
+  "verifier_feedback_type": "pass",
+  "active_pointer_snapshot": {
+    "skill_id": "secure_code_review",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+    "updated_at": "2026-06-12T10:24:22.679142+00:00"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authentication is underspecified: the spec only says login is required and does not define the authentication method, required roles/scopes, or behavior on authentication failure.",
+      "severity": "high",
+      "evidence": "Notes: The endpoint requires login."
+    },
+    {
+      "rule_id": "R002",
+      "issue": "Request field constraints are incomplete: required vs optional fields, defaults, string length limits, phone format, avatar_url URL validation, and user_id constraints are not specified.",
+      "severity": "medium",
+      "evidence": "Path parameter: user_id: string; Body: { \"display_name\": \"Alice\", \"phone\": \"13800138000\", \"avatar_url\": \"https://example.com/a.png\" }"
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error codes are incomplete: only success and server error are defined, with no validation, authentication, permission, not found, or duplicate/conflict error codes.",
+      "severity": "medium",
+      "evidence": "Error Codes table includes only: 0 success; 500 server error."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive data: full phone number and an access_token are returned in the profile update response.",
+      "severity": "high",
+      "evidence": "Response data includes \"phone\": \"13800138000\" and \"access_token\": \"debug-token\"."
+    }
+  ]
+}

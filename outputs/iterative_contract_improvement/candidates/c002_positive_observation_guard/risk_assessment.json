@@ -1,0 +1,7 @@
+{
+  "scope_violation_risk": "low",
+  "dependency_version_risk_absorbed": false,
+  "negative_control_required": true,
+  "unsupported_limitation_required": true,
+  "possible_regression": "over-reporting on ambiguous/clean rows"
+}

@@ -1,0 +1,23 @@
+{
+  "skill_id": "upload_security_001",
+  "version": "upper_bound",
+  "task_family": "upload_security",
+  "capabilities": [
+    "UPLOAD_TYPE_MAGIC",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "upper_bound": true
+  }
+}

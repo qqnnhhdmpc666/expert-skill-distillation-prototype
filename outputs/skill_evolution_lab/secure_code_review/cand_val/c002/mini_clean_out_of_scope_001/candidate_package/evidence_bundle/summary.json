@@ -1,0 +1,35 @@
+{
+  "bundle_id": "mini_clean_out_of_scope_001_candidate_package_offline_deterministic",
+  "created_at": "2026-06-12T10:29:01.878239+00:00",
+  "case_id": "mini_clean_out_of_scope_001",
+  "backend": "offline_deterministic",
+  "variant": "candidate_package",
+  "status": "completed",
+  "verifier_result": "fail",
+  "verifier_feedback_type": "false_positive_risk",
+  "artifacts": [
+    "raw_output.json",
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json",
+    "verifier_feedback.json",
+    "repair_patch.json",
+    "qualification_decision.json"
+  ],
+  "score": 0.6,
+  "token_cost_estimate": 266,
+  "safety_boundary": "defensive_review_only_no_exploit_generation",
+  "provenance": {
+    "runtime_source": "candidate_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\clean_false_positive_guard__v3_candidate_002",
+    "skill_version": "v3_false_positive_stress_candidate",
+    "manifest_hash": "708d538cd28d22f09efe6c6cba72718f64015de1c4387a80447188c784fea806",
+    "skill_hash": "c84b51e1a709c5f3ffa9f60b60e595c94923db6a53fbc298786222e15a3434bd",
+    "run_id": "mini_clean_out_of_scope_001::offline_deterministic::candidate_package",
+    "schema_version": "skill_marginal_utility.v1",
+    "task_family": "clean_business_logic_review",
+    "activated_capability_group": "upload_security",
+    "out_of_scope": false,
+    "unsupported_task_family": null
+  }
+}

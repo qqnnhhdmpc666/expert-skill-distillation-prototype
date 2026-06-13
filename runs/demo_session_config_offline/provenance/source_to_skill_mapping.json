@@ -1,0 +1,26 @@
+[
+  {
+    "source_file": "source_materials/security_review_guide.md",
+    "source_span": "错误响应不能泄露内部路径、邮箱、token、api_key 或 stacktrace。",
+    "rule_id": "R004",
+    "rule_title": "敏感信息泄露",
+    "rule_file": "skills/skill_v2/rules/R004_sensitive_information_leak.yaml",
+    "reason": "included in Skill v1 from deterministic extractor"
+  },
+  {
+    "source_file": "source_materials/security_review_guide.md",
+    "source_span": "上传、下载、删除等高风险文件操作必须写入审计日志，并定义保留策略。",
+    "rule_id": "R006",
+    "rule_title": "审计日志保留",
+    "rule_file": "skills/skill_v2/rules/R006_audit_logging_retention.yaml",
+    "reason": "included in Skill v1 from deterministic extractor"
+  },
+  {
+    "source_file": "source_materials/security_review_guide.md",
+    "source_span": "生产配置不得开启 debug，不能使用默认 secret 或开放 CORS。",
+    "rule_id": "R007",
+    "rule_title": "弱密钥与调试配置",
+    "rule_file": "skills/skill_v2/rules/R007_weak_secret_debug_config.yaml",
+    "reason": "included in Skill v1 from deterministic extractor"
+  }
+]

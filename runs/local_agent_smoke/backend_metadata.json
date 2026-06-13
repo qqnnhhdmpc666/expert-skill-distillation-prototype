@@ -1,0 +1,19 @@
+{
+  "backend_type": "local_real_agent",
+  "generated_by": "agents/local_security_review_agent.py",
+  "input_files": {
+    "target": [
+      "target.md"
+    ],
+    "skill_dir": "runs\\generalization\\upload_security_001\\skills\\skill_v1"
+  },
+  "output_files": [
+    "runs\\local_agent_smoke\\agent_output.json",
+    "runs\\local_agent_smoke\\trace.jsonl",
+    "runs\\local_agent_smoke\\stdout.log",
+    "runs\\local_agent_smoke\\backend_metadata.json"
+  ],
+  "timestamp": "2026-06-07T20:02:16.306043+00:00",
+  "model_name": null,
+  "latency_ms": 4
+}

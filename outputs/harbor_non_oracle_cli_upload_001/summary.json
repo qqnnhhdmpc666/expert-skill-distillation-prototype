@@ -1,0 +1,31 @@
+{
+  "run_id": "harbor_non_oracle_cli_upload_001",
+  "backend": "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+  "task": "real-upload-security-review",
+  "agent": "upload-security-heuristic-agent",
+  "agent_import_path": "integrations.wsl_harbor_agents.upload_security_heuristic_agent:UploadSecurityHeuristicAgent",
+  "oracle": false,
+  "llm": false,
+  "agent_type": "deterministic heuristic CLI-style Harbor custom agent",
+  "environment": "docker",
+  "entered_harbor": true,
+  "entered_container_task": true,
+  "agent_read_target_files": true,
+  "agent_generated_report": true,
+  "verifier_ran": true,
+  "reward": 1.0,
+  "passed": true,
+  "target_reads": "target_reads.json",
+  "security_report": "security_report.json",
+  "verifier_report": "verifier_report.json",
+  "artifacts": {
+    "job_result": "jobs/harbor_non_oracle_cli_upload_001/result.json",
+    "trial_result": "jobs/harbor_non_oracle_cli_upload_001/real-upload-security-review__v67vodq/result.json",
+    "agent_marker": "jobs/harbor_non_oracle_cli_upload_001/real-upload-security-review__v67vodq/agent/UPLOAD_SECURITY_HEURISTIC_AGENT_RAN.txt",
+    "security_report": "jobs/harbor_non_oracle_cli_upload_001/real-upload-security-review__v67vodq/artifacts/security_report.json",
+    "target_reads": "jobs/harbor_non_oracle_cli_upload_001/real-upload-security-review__v67vodq/artifacts/target_reads.json",
+    "verifier_result": "jobs/harbor_non_oracle_cli_upload_001/real-upload-security-review__v67vodq/verifier/result.json",
+    "verifier_stdout": "jobs/harbor_non_oracle_cli_upload_001/real-upload-security-review__v67vodq/verifier/test-stdout.txt"
+  },
+  "boundary": "This is a non-oracle deterministic heuristic solving attempt in Harbor. It is not an LLM agent and not broad vulnerability discovery."
+}

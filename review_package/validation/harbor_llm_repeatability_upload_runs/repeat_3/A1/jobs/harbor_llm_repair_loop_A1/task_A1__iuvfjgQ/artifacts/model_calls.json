@@ -1,0 +1,43 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 466,
+    "completion_tokens": 211,
+    "total_tokens": 677,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 69
+    }
+  },
+  "response": {
+    "id": "resp_064a6852b0448a38016a2669ef8b4c8199ad59639480342a08",
+    "object": "chat.completion",
+    "created": 1780902393,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"UPLOAD_PATH_ISOLATION\",\"issue\":\"Uploaded files are saved under a public upload root using the user-supplied filename, allowing user-controlled paths/names in a public directory.\",\"evidence_span\":\"app.py: UPLOAD_ROOT = Path(\\\"/public/uploads\\\"); upload(filename: str, ...): save(str(UPLOAD_ROOT / filename), file_bytes); config.yaml: upload_storage: /public/uploads\",\"recommended_fix\":\"Generate a server-side random filename or object key instead of using the supplied filename, normalize and validate any retained extension, and store uploads outside public/executable roots; serve downloads through an access-controlled handler.\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 466,
+      "completion_tokens": 211,
+      "total_tokens": 677,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 69
+      }
+    }
+  }
+}

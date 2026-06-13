@@ -1,0 +1,6 @@
+{
+  "output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\harbor_llm_repeatability_upload_runs\\repeat_3",
+  "model": "gpt-5.5",
+  "a1_pass": false,
+  "a2_pass": true
+}

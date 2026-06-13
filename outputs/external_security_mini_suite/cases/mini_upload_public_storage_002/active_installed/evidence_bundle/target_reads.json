@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_upload_public_storage_002",
+  "target_digest": {
+    "chars": 319,
+    "preview": "Task: Review this upload endpoint for defensive file-handling risks.\n\nSnippet:\nhandler.py: validate_upload() allows filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename into /public/uploads. settings.py: audit_log_retention_days is empty.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

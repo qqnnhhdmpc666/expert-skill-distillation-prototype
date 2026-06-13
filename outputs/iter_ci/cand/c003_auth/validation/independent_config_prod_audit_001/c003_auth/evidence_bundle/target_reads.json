@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_config_prod_audit_001",
+  "target_digest": {
+    "chars": 254,
+    "preview": "Task: Independently authored holdout: defensive config review.\n\nSnippet:\nprod.yml: audit.enabled=true but retention_days/export_sink empty. dev.yml: dev.api_token is marked dev-only.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "UPLOAD_TYPE_MAGIC",
+    "skill_file": "skills/skill_v2/SKILL.md#UPLOAD_TYPE_MAGIC"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "UPLOAD_PATH_ISOLATION",
+    "skill_file": "skills/skill_v2/SKILL.md#UPLOAD_PATH_ISOLATION"
+  },
+  {
+    "source": "source_materials/expert_material.md",
+    "capability_id": "UPLOAD_AUDIT_RETENTION",
+    "skill_file": "skills/skill_v2/SKILL.md#UPLOAD_AUDIT_RETENTION"
+  }
+]

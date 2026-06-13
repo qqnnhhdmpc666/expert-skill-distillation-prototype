@@ -1,0 +1,43 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "usage": {
+    "prompt_tokens": 762,
+    "completion_tokens": 200,
+    "total_tokens": 962,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    }
+  },
+  "response": {
+    "id": "resp_0f537f478cb53c2c016a2661e2b6108196ac53a3a86c7d91eb",
+    "object": "chat.completion",
+    "created": 1780900332,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"UPLOAD_PATH_ISOLATION\",\"issue\":\"Uploaded files are saved under a public uploads directory using the user-supplied filename, which can allow path traversal or unsafe placement of attacker-controlled content in a public root.\",\"evidence_span\":\"app.py: UPLOAD_ROOT = Path(\\\"/public/uploads\\\"); upload(filename: str, content_type: str, file_bytes: bytes): if filename.endswith((\\\".png\\\", \\\".jpg\\\")): save(str(UPLOAD_ROOT / filename), file_bytes); config.yaml: upload_storage: /public/uploads\",\"recommended_fix\":\"Generate server-side random filenames, normalize and reject path components in user input, and store uploads outside public executable/static roots. Serve files through controlled application endpoints with authorization and safe content handling.\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 762,
+      "completion_tokens": 200,
+      "total_tokens": 962,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 34
+      }
+    }
+  }
+}

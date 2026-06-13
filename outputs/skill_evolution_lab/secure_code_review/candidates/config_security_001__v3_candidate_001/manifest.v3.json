@@ -1,0 +1,25 @@
+{
+  "skill_id": "config_security_001",
+  "version": "v3",
+  "task_family": "config_security",
+  "capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "candidate_id": "config_security_001__v3_candidate_001",
+    "contrast_case_id": "config_security_001",
+    "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+    "patch_risk": "skill_to_execution_gap"
+  }
+}

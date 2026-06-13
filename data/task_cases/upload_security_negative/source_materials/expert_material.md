@@ -1,0 +1,1 @@
+Negative controls test whether the verifier rejects unsupported evidence and false positives.

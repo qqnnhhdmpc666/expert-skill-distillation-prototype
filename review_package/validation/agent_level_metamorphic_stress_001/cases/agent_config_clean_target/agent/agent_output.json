@@ -1,0 +1,11 @@
+{
+  "backend_type": "non_oracle_local_semantic_agent",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit retention/export",
+      "evidence_span": "target.md: prod.audit.enabled=true retention_days=90 export_sink=s3://audit-logs. prod.debug=false. prod.api_token is loaded from",
+      "recommended_fix": "Require retention and export sink for production audit logs."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "variant": "no_task_router",
+  "skill": {
+    "skill_id": "secure_code_review",
+    "version": "live_ablation_no_task_router",
+    "task_family": "secure_code_review",
+    "capabilities": [
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_TYPE_MAGIC",
+      "UPLOAD_AUDIT_RETENTION",
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK",
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "runtime_case_id": "task_conditioned_secure_review",
+      "package_role": "installed_runtime",
+      "package_family_scope": "task_conditioned_secure_review",
+      "supported_task_families": [],
+      "out_of_scope_group": "out_of_scope_guard",
+      "capability_groups": []
+    }
+  },
+  "skill_text_chars": 1204,
+  "skill_text_preview": "# Secure Code Review Installed Runtime v2\n\nThis installed runtime uses task-conditioned capability activation inside the controlled secure-review prototype.\n\n## Safety Boundary\n\n- Allowed: defensive detection, explanation, fix recommendation, patch validation.\n- Forbidden: exploit generation, attack-chain execution, unauthorized target testing.\n\n## Capability Groups\n\n### upload_security\n- task_families: `upload_security`\n- capabilities:\n  - `UPLOAD_PATH_ISOLATION`\n  - `UPLOAD_TYPE_MAGIC`\n  - `UP",
+  "provenance": {
+    "run_id": "holdout_ambiguous_debug_path_001::live_llm_text::no_task_router",
+    "case_id": "holdout_ambiguous_debug_path_001",
+    "backend": "live_llm_text",
+    "variant": "no_task_router",
+    "runtime_source": "live_ablation_package",
+    "task_family": "api_or_code_review",
+    "activated_capability_group": "out_of_scope_guard",
+    "expected_capability_group": "api_or_code_review",
+    "capability_group_correct": false,
+    "out_of_scope": true,
+    "unsupported_task_family": "api_or_code_review",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\mechanism_ablation\\live_contract\\variant_packages\\no_task_router",
+    "skill_hash": "fce3ad67d093e63bc495d3b671b1d0389fc8889cfcd7ed97356d41161e6d2cc6",
+    "manifest_hash": "d9c21bc203a6aa04c0e5b146a07c99f428df825d6304104c315f341b43c5fa0f",
+    "active_pointer_snapshot": {
+      "skill_id": "secure_code_review",
+      "active_version": "v2",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review\\versions\\v2",
+      "updated_at": "2026-06-12T14:51:51.537540+00:00"
+    },
+    "schema_version": "external_security_mini_suite.run_metadata.v1",
+    "timestamp": "2026-06-12T18:19:08.119946+00:00",
+    "oracle_fields_visible_to_runner": false,
+    "model": "live_llm_text",
+    "cost": null,
+    "tokens": 206,
+    "evidence_normalizer_enabled": true,
+    "normalizer_version": "live_contract_normalizer.v1",
+    "evidence_exact_match_rate": 1.0,
+    "normalizer_taxonomy_counts": {
+      "schema_error": 0,
+      "missing_evidence": 0,
+      "non_exact_span": 0,
+      "unsupported_evidence": 0,
+      "wrong_capability_group": 0,
+      "over_reporting": 0,
+      "under_reporting": 0,
+      "unsupported_scope": 0,
+      "low_confidence_needed": 0,
+      "normalizer_needed": 0,
+      "model_contract_violation": 0
+    },
+    "safety_boundary": "defensive_review_only_no_exploit_generation"
+  }
+}

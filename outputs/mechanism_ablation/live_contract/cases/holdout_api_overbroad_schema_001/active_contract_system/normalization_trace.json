@@ -1,0 +1,32 @@
+{
+  "normalizer_version": "live_contract_normalizer.v1",
+  "oracle_fields_visible_to_normalizer": false,
+  "out_of_scope": false,
+  "suppressed_findings_count": 0,
+  "finding_traces": [
+    {
+      "index": 0,
+      "capability_id": "API_OVERBROAD_RISK",
+      "input_evidence_span": "review_output.py: prior report used prose without evidence_span and classified returns debug_path as a generic security risk without pointing to target evidence.",
+      "action": "kept",
+      "normalization_reason": "exact",
+      "failure_taxonomy": [],
+      "output_evidence_span": "review_output.py: prior report used prose without evidence_span and classified returns debug_path as a generic security risk without pointing to target evidence."
+    }
+  ],
+  "failure_taxonomy_counts": {
+    "schema_error": 0,
+    "missing_evidence": 0,
+    "non_exact_span": 0,
+    "unsupported_evidence": 0,
+    "wrong_capability_group": 0,
+    "over_reporting": 0,
+    "under_reporting": 0,
+    "unsupported_scope": 0,
+    "low_confidence_needed": 0,
+    "normalizer_needed": 0,
+    "model_contract_violation": 0
+  },
+  "evidence_exact_match_rate": 1.0,
+  "normalized_finding_count": 1
+}

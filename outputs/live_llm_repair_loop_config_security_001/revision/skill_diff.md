@@ -1,0 +1,7 @@
+# Live LLM Skill Diff
+
+```diff
+-UPLOAD_TYPE_MAGIC
+ CONFIG_AUDIT_EXPORT
+ CONFIG_ENV_GUARD
+```

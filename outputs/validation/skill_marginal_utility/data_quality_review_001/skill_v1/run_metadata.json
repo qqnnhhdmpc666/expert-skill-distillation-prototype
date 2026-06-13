@@ -1,0 +1,19 @@
+{
+  "run_id": "data_quality_review_001::offline_deterministic::skill_v1",
+  "case_id": "data_quality_review_001",
+  "backend": "offline_deterministic",
+  "variant": "skill_v1",
+  "target_hash": "9a84f552ef6bd57c1d3a41b9690eff0e6d05f3a53028384cca44bc6424ecc74e",
+  "skill_hash": "6d56d2f6e1049e94ea2f34d0cd9766c799e5e360ee04576784efc1b68932f58c",
+  "manifest_hash": "91ffbe3a12df3b65ec9287b9a3065fddc9bb4f2188f0226cddb0d233b138d540",
+  "prompt_hash": "none",
+  "model": "offline_deterministic",
+  "verifier_hash": "5cb55962a9396988e7966f1e6ad38562d6a90027fa16622ae899bf8f0a7fb07d",
+  "schema_version": "skill_marginal_utility.v1",
+  "timestamp": "2026-06-11T14:50:24.870812+00:00",
+  "cost": null,
+  "tokens": 142,
+  "cost_reason": "offline prototype does not compute monetary billing",
+  "tokens_reason": "estimated from skill text only",
+  "verifier_feedback_type": "target_context_missing"
+}

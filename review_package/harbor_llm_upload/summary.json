@@ -1,0 +1,38 @@
+﻿{
+    "oracle":  false,
+    "boundary":  "This is a single controlled Harbor LLM non-oracle upload task, not multi-task Harbor LLM generalization or autonomous vulnerability discovery.",
+    "usage":  {
+                  "prompt_tokens":  885,
+                  "completion_tokens":  569,
+                  "total_tokens":  1454,
+                  "prompt_tokens_details":  {
+                                                "cached_tokens":  0
+                                            },
+                  "completion_tokens_details":  {
+                                                    "reasoning_tokens":  158
+                                                }
+              },
+    "run_id":  "harbor_llm_upload_001",
+    "passed":  true,
+    "read_target_files":  true,
+    "backend":  "WSL2 Ubuntu-24.04-Codex + Docker + Harbor",
+    "model":  "gpt-5.5",
+    "read_skill_package":  true,
+    "task":  "real-upload-security-review",
+    "reward":  1,
+    "entered_harbor":  true,
+    "generated_report":  true,
+    "llm":  true,
+    "verifier_ran":  true,
+    "artifacts":  [
+                      "prompt.md",
+                      "raw_response.txt",
+                      "security_report.json",
+                      "verifier_report.json",
+                      "model_calls.json",
+                      "backend_metadata.json",
+                      "target_reads.json",
+                      "reward.json"
+                  ],
+    "agent":  "upload-security-llm-agent"
+}

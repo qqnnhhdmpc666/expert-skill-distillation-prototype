@@ -1,0 +1,13 @@
+{
+  "instance_id": "psf__requests-1963",
+  "repo": "psf/requests",
+  "base_commit": "110048f9837f8441ea536804115e80b69f400277",
+  "problem_statement_hash": "ab31a283ce6fd03aff660d11dda4d5773faa92984ecdd44e97d65c1f8774098c",
+  "gold_patch_hash": "deb8b9018ea0271b2b9dc2d883bf5fb0ca9a721ecc9a93718065926fbec4ed74",
+  "test_patch_hash": "d54962cb131f871dcfb26c9d5b4518da0c701fd998915837bec0b3d80d9492a0",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "resolved_dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_source": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+  "official_dataset_json": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\external_swebench\\swebench_gold_patch_smoke_requests_20260612\\official_dataset.json",
+  "prepared_instances_path": null
+}

@@ -1,0 +1,102 @@
+{
+  "A1": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v1",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    }
+  ],
+  "A2": [
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    },
+    {
+      "event": "read_skill",
+      "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\runs\\generalization\\api_review_001\\skills\\skill_v2",
+      "capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "candidate_id": "advanced_router_boundary_003",
+  "allowed_sources": [
+    "failure report",
+    "verifier feedback",
+    "evidence summary",
+    "limitation summary"
+  ],
+  "forbidden_sources": [
+    "verifier-only expected finding",
+    "verifier-only expected evidence span",
+    "verifier-only clean/negative label"
+  ],
+  "source_type": "activation_ablation_failure",
+  "source_case_id": "holdout_clean_tax_math_001",
+  "failure_or_limitation": "ablation mechanism_status=supports_mechanism; guard out-of-scope routing against always-on capability variants",
+  "verifier_only_oracle_fields_read": false
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "finding_id": "N001",
+    "summary": "可能存在文件名或上传输入校验不足。",
+    "evidence_hint": "def upload(filename, content_type, file_bytes):"
+  },
+  {
+    "finding_id": "N002",
+    "summary": "可能存在调试信息或敏感信息泄露。",
+    "evidence_hint": "return {\"ok\": True, \"debug_path\": \"/public/uploads/\" + filename}"
+  }
+]

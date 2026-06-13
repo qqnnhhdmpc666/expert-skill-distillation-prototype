@@ -1,0 +1,12 @@
+{
+  "decision": "reject_and_rollback",
+  "accepted": false,
+  "token_cost": 343,
+  "token_budget": 420,
+  "lost_previous_rules": [],
+  "reasons": [
+    "v2 verifier 仍失败。",
+    "未丢失 v1 已覆盖规则。",
+    "token 成本在预算内。"
+  ]
+}

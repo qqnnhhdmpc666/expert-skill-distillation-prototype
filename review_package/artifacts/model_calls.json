@@ -1,0 +1,8 @@
+[
+  {
+    "step": "compat_demo_run",
+    "status": "replayed",
+    "provider": "local deterministic",
+    "total_tokens": 0
+  }
+]

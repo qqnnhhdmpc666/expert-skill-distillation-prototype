@@ -1,0 +1,17 @@
+{
+  "backend_type": "non_oracle_local_semantic_agent",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Strict report schema",
+      "evidence_span": "target.md: rns debug_path. The report must include evidence_span.",
+      "recommended_fix": "Emit JSON findings with required evidence and fix fields."
+    },
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Overbroad finding control",
+      "evidence_span": "target.md: accepts user_id without role check and returns debug_path. The report must include evidence_span.",
+      "recommended_fix": "Reject findings not grounded in target spans."
+    }
+  ]
+}

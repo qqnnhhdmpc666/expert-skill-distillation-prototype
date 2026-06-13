@@ -1,0 +1,14 @@
+{
+  "decision": "accept",
+  "reason": "Config A1 failed because the verifier required recommended_fix fields; the repair tightens only the output contract while keeping the same target and verifier.",
+  "checks": {
+    "same_target": true,
+    "same_verifier_logic": true,
+    "same_capabilities": true,
+    "schema_errors": [
+      "CONFIG_PROD_DEBUG missing recommended_fix",
+      "CONFIG_INSECURE_HTTP missing recommended_fix",
+      "CONFIG_HARDCODED_SECRET missing recommended_fix"
+    ]
+  }
+}

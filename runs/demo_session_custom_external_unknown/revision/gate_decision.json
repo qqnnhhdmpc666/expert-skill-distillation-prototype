@@ -1,0 +1,12 @@
+{
+  "decision": "accept",
+  "accepted": true,
+  "token_cost": 277,
+  "token_budget": 420,
+  "lost_previous_rules": [],
+  "reasons": [
+    "v2 verifier 通过。",
+    "未丢失 v1 已覆盖规则。",
+    "token 成本在预算内。"
+  ]
+}

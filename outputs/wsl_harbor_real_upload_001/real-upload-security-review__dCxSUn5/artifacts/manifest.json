@@ -1,0 +1,14 @@
+[
+  {
+    "source": "/app/security_report.json",
+    "destination": "artifacts/security_report.json",
+    "type": "file",
+    "status": "ok"
+  },
+  {
+    "source": "/logs/verifier/result.json",
+    "destination": "artifacts/result.json",
+    "type": "file",
+    "status": "ok"
+  }
+]

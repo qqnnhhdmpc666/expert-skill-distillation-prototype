@@ -1,0 +1,39 @@
+{
+  "variant": "candidate_v3",
+  "skill": {
+    "skill_id": "config_security_001",
+    "version": "v3",
+    "task_family": "config_security",
+    "capabilities": [
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "candidate_id": "config_security_001__v3_candidate_001",
+      "contrast_case_id": "config_security_001",
+      "text_gradient": "Capability presence is insufficient; output templates must force realization in the generated finding.",
+      "patch_risk": "skill_to_execution_gap"
+    }
+  },
+  "skill_text_chars": 703,
+  "skill_text_preview": "# Defensive Secure Review Skill config_security_001 v2\n\nSafety boundary: defensive review only. Do not generate exploits, attack chains, or real-target automation.\n\nTask family: `config_security`\n\n## Capabilities\n\n### CONFIG_AUDIT_EXPORT: Production audit retention/export\n- Evidence: prod.audit enabled but retention_days/export_sink missing\n- Fix: Require retention and export sink for production audit logs.\n\n### CONFIG_ENV_GUARD: Environment-aware config guard\n- Evidence: dev api_token/debug sho",
+  "provenance": {
+    "runtime_source": "variant_skill_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidates\\config_security_001__v3_candidate_001",
+    "skill_version": "v3",
+    "manifest_hash": "e906644829ef26b95eb5631e9115880a591049f77dbebee5f363beb72103815d",
+    "skill_hash": "81fddca0a605d64d880eb9abed381b48dbbebfd3b503423bf0cf7aaad25b2c20",
+    "run_id": "config_security_001::offline_deterministic::candidate_v3",
+    "schema_version": "skill_marginal_utility.v1"
+  }
+}

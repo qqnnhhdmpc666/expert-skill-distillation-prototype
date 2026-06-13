@@ -1,0 +1,22 @@
+[
+  {
+    "步骤": "Skill v1 生成",
+    "provider": "local deterministic",
+    "model": "未调用真实模型",
+    "latency": "0.4s replay",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "status": "offline",
+    "response_preview": "根据规则账本生成可复现 Skill v1。"
+  },
+  {
+    "步骤": "Patch Proposal",
+    "provider": "local deterministic",
+    "model": "未调用真实模型",
+    "latency": "0.4s replay",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "status": "offline",
+    "response_preview": "根据 verifier feedback 生成 typed patch。"
+  }
+]

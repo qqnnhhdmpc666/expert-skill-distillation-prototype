@@ -1,0 +1,54 @@
+{
+  "run_id": "live_llm_repair_loop_api_review_001",
+  "scenario": "api_review_001",
+  "backend": "live_llm_text",
+  "env_ready": true,
+  "model": "gpt-5.5",
+  "A1": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "coverage": 0.5,
+    "evidence_binding": 1.0,
+    "schema_correctness": 0.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [
+      "API_OVERBROAD_RISK"
+    ],
+    "unsupported_evidence": [],
+    "schema_errors": [
+      "API_SCHEMA_CONTRACT.recommended_fix"
+    ],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_checked": false
+  },
+  "revision": {
+    "feedback_type": "missing_capability",
+    "repair_action": "patch_capability",
+    "before_capabilities": [
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK"
+    ],
+    "after_capabilities": [
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK"
+    ],
+    "gate_decision": "accept"
+  },
+  "A2": {
+    "pass": false,
+    "feedback_type": "missing_capability",
+    "coverage": 0.5,
+    "evidence_binding": 1.0,
+    "schema_correctness": 1.0,
+    "regression_safety": 1.0,
+    "missing_capabilities": [
+      "API_OVERBROAD_RISK"
+    ],
+    "unsupported_evidence": [],
+    "schema_errors": [],
+    "weak_evidence_capabilities": [],
+    "unsupported_evidence_checked": false
+  },
+  "reward_delta": 0.0,
+  "boundary": "LLM is the non-oracle agent; verifier/gate remain deterministic."
+}

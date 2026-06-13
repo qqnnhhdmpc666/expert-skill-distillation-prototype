@@ -1,0 +1,57 @@
+[
+  {
+    "rejected_edit_id": "advanced::advanced_config_holdout_realization_001",
+    "candidate_id": "advanced_config_holdout_realization_001",
+    "case_id": "holdout_config_prod_secret_001",
+    "rejected_reason": "not_strictly_better_or_scope_safe",
+    "score_delta": 0.0,
+    "false_positive_delta": 0,
+    "schema_error_delta": 0,
+    "scope_violation": false,
+    "avoid_next": "do_not_repeat_without_strict_marginal_gain_and_scope_safety"
+  },
+  {
+    "rejected_edit_id": "advanced::advanced_non_oracle_discrepancy_002",
+    "candidate_id": "advanced_non_oracle_discrepancy_002",
+    "case_id": "holdout_api_overbroad_schema_001",
+    "rejected_reason": "not_strictly_better_or_scope_safe",
+    "score_delta": 0.0,
+    "false_positive_delta": 0,
+    "schema_error_delta": 0,
+    "scope_violation": false,
+    "avoid_next": "do_not_repeat_without_strict_marginal_gain_and_scope_safety"
+  },
+  {
+    "rejected_edit_id": "advanced::advanced_router_boundary_003",
+    "candidate_id": "advanced_router_boundary_003",
+    "case_id": "holdout_clean_tax_math_001",
+    "rejected_reason": "not_strictly_better_or_scope_safe",
+    "score_delta": 0.0,
+    "false_positive_delta": 0,
+    "schema_error_delta": 0,
+    "scope_violation": false,
+    "avoid_next": "do_not_repeat_without_strict_marginal_gain_and_scope_safety"
+  },
+  {
+    "rejected_edit_id": "advanced::advanced_dependency_scope_expansion_004",
+    "candidate_id": "advanced_dependency_scope_expansion_004",
+    "case_id": "holdout_dependency_no_advisory_001",
+    "rejected_reason": "not_strictly_better_or_scope_safe",
+    "score_delta": -0.2,
+    "false_positive_delta": 1,
+    "schema_error_delta": 0,
+    "scope_violation": true,
+    "avoid_next": "do_not_repeat_without_strict_marginal_gain_and_scope_safety"
+  },
+  {
+    "rejected_edit_id": "advanced::advanced_false_positive_stress_005",
+    "candidate_id": "advanced_false_positive_stress_005",
+    "case_id": "holdout_clean_tax_math_001",
+    "rejected_reason": "not_strictly_better_or_scope_safe",
+    "score_delta": -0.2,
+    "false_positive_delta": 3,
+    "schema_error_delta": 0,
+    "scope_violation": true,
+    "avoid_next": "do_not_repeat_without_strict_marginal_gain_and_scope_safety"
+  }
+]

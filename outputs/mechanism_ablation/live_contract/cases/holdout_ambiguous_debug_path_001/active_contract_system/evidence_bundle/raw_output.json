@@ -1,0 +1,10 @@
+{
+  "attempt": "active_contract_system",
+  "backend": "live_llm_text",
+  "findings": [],
+  "notes": [
+    "live_contract_normalized",
+    "ambiguous_or_hypothetical_suppressed:API_SCHEMA_CONTRACT",
+    "ambiguous_or_hypothetical_suppressed:API_OVERBROAD_RISK"
+  ]
+}

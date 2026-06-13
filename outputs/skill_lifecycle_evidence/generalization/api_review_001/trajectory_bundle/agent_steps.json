@@ -1,0 +1,13 @@
+{
+  "A0": {
+    "stdout_path": "runs/generalization/api_review_001/attempts/A0/stdout.log"
+  },
+  "A1": {
+    "stdout_path": "runs/generalization/api_review_001/attempts/A1/stdout.log",
+    "stderr_path": "runs/generalization/api_review_001/attempts/A1/stderr.log"
+  },
+  "A2": {
+    "stdout_path": "runs/generalization/api_review_001/attempts/A2/stdout.log",
+    "stderr_path": "runs/generalization/api_review_001/attempts/A2/stderr.log"
+  }
+}

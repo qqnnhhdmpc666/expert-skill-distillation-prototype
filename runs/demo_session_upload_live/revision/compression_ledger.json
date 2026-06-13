@@ -1,0 +1,47 @@
+[
+  {
+    "candidate_rule": "R002",
+    "title": "用户输入校验",
+    "risk": "high",
+    "token_cost": 40,
+    "v1_decision": "kept",
+    "compact_rationale": "保留：高显著证据 + compact budget 内",
+    "posterior_signal": "A1 中未触发 missing_rule"
+  },
+  {
+    "candidate_rule": "R004",
+    "title": "敏感信息泄露",
+    "risk": "medium",
+    "token_cost": 39,
+    "v1_decision": "kept",
+    "compact_rationale": "保留：高显著证据 + compact budget 内",
+    "posterior_signal": "A1 中未触发 missing_rule"
+  },
+  {
+    "candidate_rule": "R005",
+    "title": "文件上传安全",
+    "risk": "high",
+    "token_cost": 47,
+    "v1_decision": "omitted",
+    "compact_rationale": "省略：compact v1 优先保留更显著规则，预算阶段暂未纳入",
+    "posterior_signal": "A1 后被证明为 failure-critical，需要补回 v2 并加强 trace"
+  },
+  {
+    "candidate_rule": "R006",
+    "title": "审计日志保留",
+    "risk": "medium",
+    "token_cost": 42,
+    "v1_decision": "omitted",
+    "compact_rationale": "省略：compact v1 优先保留更显著规则，预算阶段暂未纳入",
+    "posterior_signal": "A1 后被证明为 failure-critical，需要补回 v2 并加强 trace"
+  },
+  {
+    "candidate_rule": "R008",
+    "title": "路径穿越",
+    "risk": "high",
+    "token_cost": 43,
+    "v1_decision": "kept",
+    "compact_rationale": "保留：高显著证据 + compact budget 内",
+    "posterior_signal": "A1 中未触发 missing_rule"
+  }
+]

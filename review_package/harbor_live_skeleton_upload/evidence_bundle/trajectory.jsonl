@@ -1,0 +1,2 @@
+{"event": "variant_started", "created_at": "2026-06-11T11:20:31.960759+00:00", "case_id": "upload_security_001", "backend": "harbor_live_skeleton", "variant": "harbor_live_skeleton", "status": "environment_unavailable"}
+{"event": "verifier_feedback", "feedback_type": "missing_capability", "passed": false}

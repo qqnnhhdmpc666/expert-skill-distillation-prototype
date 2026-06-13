@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.3.0",
+  "id": "scenario-skill.upload.v2",
+  "kind": "scenario-conditioned-security-skill",
+  "slug": "upload",
+  "display_name": "文件上传漏洞检查",
+  "version": "v2",
+  "domain": "漏洞挖掘 / 文件上传安全",
+  "source_context": {
+    "expert_materials": "source_materials/*",
+    "target_asset": "target_asset/*",
+    "task_spec": "task_spec/task_spec.json",
+    "normalization_boundary": "controlled_security_review_template"
+  },
+  "artifacts": {
+    "entrypoint": "SKILL.md",
+    "manifest": "manifest.yaml",
+    "output_schema": "contracts/output_schema.json",
+    "verifier_contract": "contracts/verifier_contract.yaml",
+    "trace_policy": "trace_policy.yaml"
+  },
+  "generation": {
+    "engine": "expert-skill-distillation-prototype",
+    "created_from": [
+      "expert_materials",
+      "target_asset",
+      "task_spec"
+    ],
+    "corrections_count": 2,
+    "inspired_by": [
+      "COLLEAGUE.SKILL lifecycle metadata",
+      "SPARK-PDI evidence-first verification"
+    ]
+  },
+  "lifecycle": {
+    "status": "active",
+    "version": "v2",
+    "previous_version": "v1",
+    "rollback_available": true
+  },
+  "quality_gate": {
+    "token_cost": 255,
+    "required_output_fields": [
+      "finding_id",
+      "rule_id",
+      "evidence_span",
+      "risk_level",
+      "recommended_fix"
+    ],
+    "trace_policy_count": 2
+  }
+}

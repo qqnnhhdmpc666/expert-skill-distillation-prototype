@@ -1,0 +1,7 @@
+{
+  "case_id": "extended_ambiguous_low_confidence_001",
+  "target_digest": {
+    "chars": 381,
+    "preview": "Task: Review this ambiguous snippet defensively. Evidence is insufficient; prefer low-confidence or needs-review over forced findings.\n\nSnippet:\nadapter.py: external_id is passed to a helper named resolve(), but there is no code for the helper, no auth boundary, no storage path, and no configuration context.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

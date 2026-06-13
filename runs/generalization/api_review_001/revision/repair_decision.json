@@ -1,0 +1,17 @@
+{
+  "feedback_type": "output_contract_error",
+  "repair_action": "rewrite_output_contract",
+  "before_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "after_capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK"
+  ],
+  "operator_id": "op_rewrite_output_contract_generic",
+  "operator_strategy": "replace_with_expected",
+  "operator_description": "Restore the structured report contract so outputs remain machine-verifiable.",
+  "selection_score": 155,
+  "preferred_action": "rewrite_output_contract"
+}

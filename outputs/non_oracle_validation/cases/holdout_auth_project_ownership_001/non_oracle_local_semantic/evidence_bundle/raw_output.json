@@ -1,0 +1,28 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [
+    {
+      "capability_id": "AUTH_SCOPE_MATRIX",
+      "issue": "Role and scope authorization",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Check required role/scope before mutation."
+    },
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Object ownership boundary",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Bind resource access to tenant and owner."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Non-leaking authorization error",
+      "evidence_span": "archive_invoice checks is_authenticated, then loads invoice by id without tenant_id or owner_id filtering. The denial path returns invoice_id in the error body.",
+      "recommended_fix": "Use consistent 403/404 envelope with request id."
+    }
+  ],
+  "notes": [
+    "task_conditioned_active_capabilities_applied",
+    "active_capabilities:AUTH_SCOPE_MATRIX,AUTH_OBJECT_OWNERSHIP,AUTH_ERROR_ENVELOPE"
+  ]
+}

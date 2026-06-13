@@ -1,0 +1,1 @@
+{"findings":[{"capability_id":"API_SCHEMA_CONTRACT","issue":"Prior report omitted required evidence_span","evidence_span":"target.md: \"prior report used prose without evidence_span\"","recommended_fix":"Emit JSON findings that include the required fields, including evidence_span and recommended_fix, rather than free-form prose."}]}

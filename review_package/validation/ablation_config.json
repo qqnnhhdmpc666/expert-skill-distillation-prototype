@@ -1,0 +1,137 @@
+{
+  "rows": [
+    {
+      "scenario": "config_security",
+      "strategy": "A0_naive_baseline",
+      "task_pass": false,
+      "capability_coverage_score": 0.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 1.0,
+      "finding_count": 0,
+      "missing_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "repaired_capabilities": [],
+      "regression_count": 0,
+      "gate_decision": "n/a",
+      "feedback_type": "missing_capability"
+    },
+    {
+      "scenario": "config_security",
+      "strategy": "Skill_v1",
+      "task_pass": false,
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 0.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 1.0,
+      "finding_count": 3,
+      "missing_capabilities": [],
+      "repaired_capabilities": [],
+      "regression_count": 1,
+      "gate_decision": "fail",
+      "feedback_type": "false_positive_risk"
+    },
+    {
+      "scenario": "config_security",
+      "strategy": "Skill_v1_plus_naive_regenerate",
+      "task_pass": false,
+      "capability_coverage_score": 0.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 0.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 0.4,
+      "finding_count": 2,
+      "missing_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "repaired_capabilities": [
+        "UPLOAD_PATH_ISOLATION"
+      ],
+      "regression_count": 2,
+      "gate_decision": "reject",
+      "feedback_type": "missing_capability"
+    },
+    {
+      "scenario": "config_security",
+      "strategy": "Skill_v1_plus_always_append",
+      "task_pass": false,
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 0.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 0.7,
+      "finding_count": 3,
+      "missing_capabilities": [],
+      "repaired_capabilities": [],
+      "regression_count": 1,
+      "gate_decision": "reject",
+      "feedback_type": "false_positive_risk"
+    },
+    {
+      "scenario": "config_security",
+      "strategy": "Skill_v1_plus_typed_repair_only",
+      "task_pass": true,
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 0.9,
+      "finding_count": 2,
+      "missing_capabilities": [],
+      "repaired_capabilities": [],
+      "regression_count": 0,
+      "gate_decision": "not_applied",
+      "feedback_type": "pass"
+    },
+    {
+      "scenario": "config_security",
+      "strategy": "Skill_v1_plus_typed_repair_plus_gate",
+      "task_pass": true,
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 0.9,
+      "finding_count": 2,
+      "missing_capabilities": [],
+      "repaired_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "regression_count": 0,
+      "gate_decision": "accept",
+      "feedback_type": "pass"
+    },
+    {
+      "scenario": "config_security",
+      "strategy": "Skill_v2_final",
+      "task_pass": true,
+      "capability_coverage_score": 1.0,
+      "evidence_binding_score": 1.0,
+      "output_contract_score": 1.0,
+      "regression_safety_score": 1.0,
+      "trace_observability_score": 1.0,
+      "cost_budget_score": 0.9,
+      "finding_count": 2,
+      "missing_capabilities": [],
+      "repaired_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "regression_count": 0,
+      "gate_decision": "accept",
+      "feedback_type": "pass"
+    }
+  ]
+}

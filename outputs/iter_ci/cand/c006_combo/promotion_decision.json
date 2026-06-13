@@ -1,0 +1,6 @@
+{
+  "decision": "staged_promotion_proposal",
+  "reason": "strict_iterative_contract_rule_satisfied",
+  "auto_installed": false,
+  "promotion_rule": "candidate_score > active_score and false_positive_delta<=0 and schema_error_delta<=0 and unsupported_evidence_delta<=0 and positive_regression_count==0 and clean negative not worse and scope_violation=false"
+}

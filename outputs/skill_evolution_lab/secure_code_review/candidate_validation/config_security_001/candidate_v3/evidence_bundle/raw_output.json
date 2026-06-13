@@ -1,0 +1,19 @@
+{
+  "attempt": "candidate_v3",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit retention/export",
+      "evidence_span": "prod.audit enabled but retention_days/export_sink missing",
+      "recommended_fix": "Require retention and export sink for production audit logs."
+    },
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Environment-aware config guard",
+      "evidence_span": "dev api_token/debug should not be production findings",
+      "recommended_fix": "Bind findings to prod/dev/test path before flagging."
+    }
+  ],
+  "notes": []
+}

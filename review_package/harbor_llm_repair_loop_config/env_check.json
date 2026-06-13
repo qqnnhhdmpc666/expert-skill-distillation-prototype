@@ -1,0 +1,5 @@
+{
+  "OPENAI_BASE_URL": true,
+  "OPENAI_API_KEY": true,
+  "MODEL": "gpt-5.5"
+}

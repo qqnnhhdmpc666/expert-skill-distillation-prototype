@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "endpoint": "https://www.right.codes/codex/v1/chat/completions",
+  "model": "gpt-5.5",
+  "temperature": 0.0,
+  "usage": {
+    "prompt_tokens": 760,
+    "completion_tokens": 209,
+    "total_tokens": 969,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 16
+    }
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a security-review agent that returns strict JSON for a deterministic verifier."
+      },
+      {
+        "role": "user",
+        "content": "You are a non-oracle security-review agent.\n\nRead the target files and the Skill Package. Produce only a JSON object for the deterministic verifier.\n\nRules:\n- Do not invent findings that are not grounded in the target text.\n- Use only these capability_id values exposed by the Skill Package: CONFIG_HARDCODED_SECRET, CONFIG_INSECURE_HTTP, CONFIG_PROD_DEBUG.\n- Each finding must include capability_id, issue, evidence_span, and recommended_fix.\n- If the Skill Package does not expose a capability, do not report it even if you notice it.\n- Return JSON only. No markdown fences.\n\nExpected JSON shape:\n{\n  \"findings\": [\n    {\n      \"capability_id\": \"CONFIG_HARDCODED_SECRET\",\n      \"issue\": \"short issue title\",\n      \"evidence_span\": \"quote or tightly paraphrase the concrete target span, including file name when possible\",\n      \"recommended_fix\": \"specific fix grounded in the target\"\n    }\n  ]\n}\n\n# Skill Package\n\n## manifest.json\n\n```text\n﻿{\"version\":\"v2\",\"capabilities\":[\"CONFIG_HARDCODED_SECRET\",\"CONFIG_INSECURE_HTTP\",\"CONFIG_PROD_DEBUG\"]}\n\n```\n\n## SKILL.md\n\n```text\n﻿# Production Config Security Skill\n\n## Capabilities\n\n### CONFIG_HARDCODED_SECRET\n- Evidence: payment_token, api_key, secret, or password is stored directly in the config.\n- Fix: Replace inline secrets with vault or environment-secret references.\n\n### CONFIG_INSECURE_HTTP\n- Evidence: production external_api_url uses http:// instead of https://.\n- Fix: Require TLS/https for production external endpoints.\n\n### CONFIG_PROD_DEBUG\n- Evidence: production config sets debug: true.\n- Fix: Disable debug in production.\n\n```\n\n# Target Asset\n\n## config.md\n\n```text\nservice: billing-worker\nenvironment: production\ndebug: true\nexternal_api_url: http://partner.example.com/v1\npayment_token: \"sk_live_demo_value\"\nservice_account:\n  name: billing-admin\n  roles:\n    - admin\naudit:\n  enabled: false\n  retention_days:\n\n```\n"
+      }
+    ]
+  },
+  "response": {
+    "id": "resp_04896b126df931ac016a266834da6c8193801ef667df968e7a",
+    "object": "chat.completion",
+    "created": 1780901945,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"findings\":[{\"capability_id\":\"CONFIG_HARDCODED_SECRET\",\"issue\":\"Hardcoded payment token in production config\",\"evidence_span\":\"config.md: payment_token: \\\"sk_live_demo_value\\\"\",\"recommended_fix\":\"Replace the inline payment_token with a vault or environment-secret reference in the production configuration.\"},{\"capability_id\":\"CONFIG_INSECURE_HTTP\",\"issue\":\"Production external API URL uses insecure HTTP\",\"evidence_span\":\"config.md: environment: production; external_api_url: http://partner.example.com/v1\",\"recommended_fix\":\"Change the production external_api_url to use TLS, e.g. https://partner.example.com/v1, and require HTTPS for production external endpoints.\"},{\"capability_id\":\"CONFIG_PROD_DEBUG\",\"issue\":\"Debug mode enabled in production\",\"evidence_span\":\"config.md: environment: production; debug: true\",\"recommended_fix\":\"Set debug to false in the production configuration.\"}]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 209,
+      "total_tokens": 969,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 16
+      }
+    }
+  }
+}

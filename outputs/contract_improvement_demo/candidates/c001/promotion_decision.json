@@ -1,0 +1,6 @@
+{
+  "decision": "not_promoted",
+  "reason": "strict_contract_improvement_rule_not_satisfied",
+  "auto_installed": false,
+  "promotion_rule": "candidate_score > active_score and false_positive_delta<=0 and schema_error_delta<=0 and unsupported_evidence_delta<=0 and clean negative not worse and scope_violation=false"
+}

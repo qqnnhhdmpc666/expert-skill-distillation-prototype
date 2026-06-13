@@ -1,0 +1,18 @@
+{
+  "candidate_id": "advanced_config_holdout_realization_001",
+  "allowed_sources": [
+    "failure report",
+    "verifier feedback",
+    "evidence summary",
+    "limitation summary"
+  ],
+  "forbidden_sources": [
+    "verifier-only expected finding",
+    "verifier-only expected evidence span",
+    "verifier-only clean/negative label"
+  ],
+  "source_type": "holdout_evidence_summary",
+  "source_case_id": "holdout_config_prod_secret_001",
+  "failure_or_limitation": "config realization must stay environment-aware on holdout cases",
+  "verifier_only_oracle_fields_read": false
+}

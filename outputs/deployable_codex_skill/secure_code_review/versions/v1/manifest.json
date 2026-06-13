@@ -1,0 +1,43 @@
+{
+  "skill_id": "secure_code_review",
+  "version": "v1",
+  "task_family": "secure_code_review",
+  "capabilities": [
+    "UPLOAD_PATH_ISOLATION"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "runtime_case_id": "task_conditioned_secure_review",
+    "package_role": "installed_runtime",
+    "package_family_scope": "task_conditioned_secure_review",
+    "supported_task_families": [
+      "upload_security"
+    ],
+    "out_of_scope_group": "out_of_scope_guard",
+    "capability_groups": [
+      {
+        "name": "upload_security",
+        "task_families": [
+          "upload_security"
+        ],
+        "capabilities": [
+          "UPLOAD_PATH_ISOLATION"
+        ]
+      },
+      {
+        "name": "out_of_scope_guard",
+        "task_families": [],
+        "capabilities": []
+      }
+    ]
+  }
+}

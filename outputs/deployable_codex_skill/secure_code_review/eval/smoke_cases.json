@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "case_id": "upload_security_001",
+      "command": "skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2"
+    },
+    {
+      "case_id": "upload_security_001",
+      "command": "skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "config_security_001",
+      "command": "skill-deploy run-skill --installed secure_code_review --case config_security_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "api_review_001",
+      "command": "skill-deploy run-skill --installed secure_code_review --case api_review_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "auth_access_control_001",
+      "command": "skill-deploy run-skill --installed secure_code_review --case auth_access_control_001 --backend offline_deterministic"
+    }
+  ]
+}

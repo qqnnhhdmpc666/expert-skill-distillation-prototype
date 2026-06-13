@@ -1,0 +1,1 @@
+{"step": 1, "event": "naive_scan", "rule_id": "-", "evidence": "error_template: \"stacktrace=${stacktrace}, api_key=${api_key}\""}

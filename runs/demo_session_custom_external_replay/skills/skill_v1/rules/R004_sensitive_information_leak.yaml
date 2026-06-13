@@ -1,0 +1,11 @@
+rule_id: R004
+title: "敏感信息泄露"
+risk: "medium"
+action: "检查错误响应和日志是否暴露邮箱、token、密钥或内部错误。"
+evidence_terms:
+  - "alice@example.com"
+  - "SQL syntax error"
+  - "api_key"
+  - "stacktrace"
+  - "debug_path"
+repair_operator: patch_rule

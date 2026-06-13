@@ -1,0 +1,107 @@
+{
+  "run_id": "harbor_llm_repeatability_upload_001",
+  "run_count": 3,
+  "runs": [
+    {
+      "label": "repeat_1",
+      "origin": "existing_baseline",
+      "path": "outputs\\validation\\harbor_llm_repeatability_upload_runs\\repeat_1_baseline_existing",
+      "a1_pass": false,
+      "a2_pass": true,
+      "a1_reward": 0.0,
+      "a2_reward": 1.0,
+      "reward_delta": 1.0,
+      "a1_feedback_type": "missing_capability",
+      "a2_feedback_type": "pass",
+      "a1_missing_capabilities": [
+        "UPLOAD_AUDIT_RETENTION",
+        "UPLOAD_TYPE_MAGIC"
+      ],
+      "a2_missing_capabilities": [],
+      "a1_schema_errors": [],
+      "a2_schema_errors": [],
+      "a1_usage": {
+        "prompt_tokens": 762,
+        "completion_tokens": 200,
+        "total_tokens": 962,
+        "latency_ms": 10903
+      },
+      "a2_usage": {
+        "prompt_tokens": 884,
+        "completion_tokens": 393,
+        "total_tokens": 1277,
+        "latency_ms": 15372
+      }
+    },
+    {
+      "label": "repeat_2",
+      "origin": "fresh_rerun",
+      "path": "outputs\\validation\\harbor_llm_repeatability_upload_runs\\repeat_2",
+      "a1_pass": false,
+      "a2_pass": true,
+      "a1_reward": 0.0,
+      "a2_reward": 1.0,
+      "reward_delta": 1.0,
+      "a1_feedback_type": "missing_capability",
+      "a2_feedback_type": "pass",
+      "a1_missing_capabilities": [
+        "UPLOAD_AUDIT_RETENTION",
+        "UPLOAD_TYPE_MAGIC"
+      ],
+      "a2_missing_capabilities": [],
+      "a1_schema_errors": [],
+      "a2_schema_errors": [],
+      "a1_usage": {
+        "prompt_tokens": 762,
+        "completion_tokens": 244,
+        "total_tokens": 1006,
+        "latency_ms": 6640
+      },
+      "a2_usage": {
+        "prompt_tokens": 884,
+        "completion_tokens": 425,
+        "total_tokens": 1309,
+        "latency_ms": 15132
+      }
+    },
+    {
+      "label": "repeat_3",
+      "origin": "fresh_rerun",
+      "path": "outputs\\validation\\harbor_llm_repeatability_upload_runs\\repeat_3",
+      "a1_pass": false,
+      "a2_pass": true,
+      "a1_reward": 0.0,
+      "a2_reward": 1.0,
+      "reward_delta": 1.0,
+      "a1_feedback_type": "missing_capability",
+      "a2_feedback_type": "pass",
+      "a1_missing_capabilities": [
+        "UPLOAD_AUDIT_RETENTION",
+        "UPLOAD_TYPE_MAGIC"
+      ],
+      "a2_missing_capabilities": [],
+      "a1_schema_errors": [],
+      "a2_schema_errors": [],
+      "a1_usage": {
+        "prompt_tokens": 466,
+        "completion_tokens": 211,
+        "total_tokens": 677,
+        "latency_ms": 13779
+      },
+      "a2_usage": {
+        "prompt_tokens": 884,
+        "completion_tokens": 459,
+        "total_tokens": 1343,
+        "latency_ms": 12281
+      }
+    }
+  ],
+  "a1_all_fail": true,
+  "a2_all_pass": true,
+  "reward_stable": true,
+  "failure_reason_stable": true,
+  "failure_reason_summary": "feedback_types=['missing_capability'], missing_sets=[('UPLOAD_AUDIT_RETENTION', 'UPLOAD_TYPE_MAGIC')]",
+  "prompt_sensitivity_risk": "low_in_this_slice",
+  "token_latency_assessment": "average total tokens per loop=2191.33, average combined latency ms per loop=24702.33",
+  "boundary": "Repeatability evaluated only for the controlled Harbor LLM upload A1/A2 repair loop."
+}

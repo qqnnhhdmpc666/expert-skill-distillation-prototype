@@ -1,0 +1,7 @@
+{
+  "case_id": "mini_api_schema_grounding_001",
+  "target_digest": {
+    "chars": 292,
+    "preview": "Task: Review this API/code-review output path for schema and overbroad findings.\n\nSnippet:\nreview_api.py: prior report used prose without evidence_span and returns debug_path as a generic security risk without grounding.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

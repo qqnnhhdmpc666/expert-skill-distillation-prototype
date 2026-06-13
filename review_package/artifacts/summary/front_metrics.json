@@ -1,0 +1,11 @@
+{
+  "scenario": "文件上传服务安全审查",
+  "mode": "offline",
+  "success_rate_before": 67,
+  "success_rate_after": 100,
+  "coverage_delta": 0.3333,
+  "added_findings": 2,
+  "token_total": 412,
+  "token_budget": 800,
+  "status_chain": "A0 FAIL -> A1 FAIL -> A2 PASS"
+}

@@ -1,0 +1,24 @@
+{
+  "backend_type": "live_llm_security_agent",
+  "oracle": false,
+  "llm": true,
+  "generated_by": "agents/llm_security_agent.py",
+  "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\live_llm_agent_level_metamorphic_stress_001\\skill",
+  "target_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\validation\\live_llm_agent_level_metamorphic_stress_001\\target",
+  "base_url_present": true,
+  "api_key_present": true,
+  "model": "gpt-5.5",
+  "capabilities": [
+    "DATA_REQUIRED_FIELD_COVERAGE",
+    "DATA_TEMPORAL_SPLIT_GUARD",
+    "DATA_LABEL_ENUM_ALIGNMENT"
+  ],
+  "task_label": "training dataset quality review",
+  "contract_mode": "strict",
+  "timestamp": "2026-06-09T07:17:01.992219+00:00",
+  "status": "error",
+  "failure_reason": "api_error",
+  "http_status": 403,
+  "error": "HTTP Error 403: Forbidden",
+  "latency_ms": 199
+}

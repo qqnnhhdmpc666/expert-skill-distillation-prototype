@@ -1,0 +1,10 @@
+{
+  "case_id": "upload_security_001",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "evidence_span": "target.md: upload handler stores files without magic-byte validation",
+      "recommended_fix": "Apply the scoped defensive remediation and rerun validation."
+    }
+  ]
+}

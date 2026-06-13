@@ -1,0 +1,36 @@
+{
+  "variant": "skill_v2",
+  "skill": {
+    "skill_id": "config_security_001",
+    "version": "v2",
+    "task_family": "config_security",
+    "capabilities": [
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "source": "offline_expected_capability_baseline"
+    }
+  },
+  "skill_text_chars": 591,
+  "skill_text_preview": "# Defensive Secure Review Skill config_security_001 v2\n\nSafety boundary: defensive review only. Do not generate exploits, attack chains, or real-target automation.\n\nTask family: `config_security`\n\n## Capabilities\n\n### CONFIG_AUDIT_EXPORT: Production audit retention/export\n- Evidence: prod.audit enabled but retention_days/export_sink missing\n- Fix: Require retention and export sink for production audit logs.\n\n### CONFIG_ENV_GUARD: Environment-aware config guard\n- Evidence: dev api_token/debug sho",
+  "provenance": {
+    "runtime_source": "variant_skill_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\skill_evolution_lab\\secure_code_review\\candidate_validation\\config_security_001\\skill_v2\\skill",
+    "skill_version": "v2",
+    "manifest_hash": "5a9fab52270fe1f72638c4cb4bb0af5e0915c24b69c1f3af8c110c9d232c192e",
+    "skill_hash": "d01297d924669668b9ae3c017f2fd447bec8037f5c7e7a4fe1b57489cca3e5ed",
+    "run_id": "config_security_001::offline_deterministic::skill_v2",
+    "schema_version": "skill_marginal_utility.v1"
+  }
+}

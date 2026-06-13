@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "required": [
+    "findings"
+  ],
+  "properties": {
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_id",
+          "rule_id",
+          "evidence_span",
+          "risk_level",
+          "recommended_fix"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "evidence_span": {
+            "type": "string"
+          },
+          "risk_level": {
+            "type": "string"
+          },
+          "recommended_fix": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

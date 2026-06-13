@@ -1,0 +1,7 @@
+{
+  "case_id": "independent_auth_invoice_scope_001",
+  "target_digest": {
+    "chars": 283,
+    "preview": "Task: Independently authored holdout: defensive auth review.\n\nSnippet:\ncancel_invoice checks is_authenticated, loads invoice by id without tenant_id or owner_id filtering, and the denial body returns invoice_id.\n\nRequested output schema: capability_id, evidence_span, recommended_fix"
+  }
+}

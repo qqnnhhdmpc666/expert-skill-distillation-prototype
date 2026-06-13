@@ -1,0 +1,27 @@
+{
+  "attempt": "installed_v2",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "UPLOAD_PATH_ISOLATION",
+      "issue": "Upload path isolation",
+      "evidence_span": "jpg'), then writes UPLOAD_ROOT / filename",
+      "recommended_fix": "Generate server-side names and store outside public executable roots."
+    },
+    {
+      "capability_id": "UPLOAD_TYPE_MAGIC",
+      "issue": "Upload type and content validation",
+      "evidence_span": "d() accepts report.pdf.jpg when filename.endswith('.jpg'), then writes UPLOAD_ROOT / filename. s",
+      "recommended_fix": "Validate MIME, signature, size, and extension together."
+    },
+    {
+      "capability_id": "UPLOAD_AUDIT_RETENTION",
+      "issue": "Upload audit retention",
+      "evidence_span": "toml: audit_log_retention_days is empty",
+      "recommended_fix": "Record actor/object/action/result/timestamp with retention."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:upload_security"
+  ]
+}

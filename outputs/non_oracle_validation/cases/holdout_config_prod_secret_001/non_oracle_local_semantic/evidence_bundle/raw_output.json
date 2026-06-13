@@ -1,0 +1,22 @@
+{
+  "attempt": "active_installed",
+  "backend": "non_oracle_local_semantic",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit retention/export",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile.",
+      "recommended_fix": "Require retention and export sink for production audit logs."
+    },
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Environment-aware config guard",
+      "evidence_span": "prod.yaml: audit.enabled=true with retention_days/export_sink empty. dev.yaml: dev.api_token and dev.debug are present under a dev-only profile.",
+      "recommended_fix": "Bind findings to prod/dev/test path before flagging."
+    }
+  ],
+  "notes": [
+    "task_conditioned_active_capabilities_applied",
+    "active_capabilities:CONFIG_AUDIT_EXPORT,CONFIG_ENV_GUARD"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "read_files": [
+    "/app/target/config.md"
+  ],
+  "skill_files": [
+    "/app/skill/SKILL.md",
+    "/app/skill/manifest.json"
+  ],
+  "enabled_capabilities": [
+    "CONFIG_HARDCODED_SECRET",
+    "CONFIG_INSECURE_HTTP",
+    "CONFIG_PROD_DEBUG"
+  ],
+  "relaxed_contract": true
+}

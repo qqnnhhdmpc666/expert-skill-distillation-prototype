@@ -1,0 +1,19 @@
+{
+  "attempt": "c004_api",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "API_SCHEMA_CONTRACT",
+      "issue": "Report builder emits prose without evidence_span",
+      "evidence_span": "review_output.py: report_builder emits prose without evidence_span",
+      "recommended_fix": "Modify the report builder to output the structured evidence_span field as required by the output contract."
+    },
+    {
+      "capability_id": "API_OVERBROAD_RISK",
+      "issue": "Risk label debug_path asserted without concrete target line",
+      "evidence_span": "debug_path is labeled as a risk without pointing to a target line",
+      "recommended_fix": "Ensure that any risk label like debug_path is accompanied by a concrete target line, route, or evidence span for justification."
+    }
+  ],
+  "notes": []
+}

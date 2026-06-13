@@ -1,0 +1,19 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "AUTH_OBJECT_OWNERSHIP",
+      "issue": "Missing object ownership check on invoice resource",
+      "evidence_span": "target.md: 'loads invoice by id without tenant_id or owner_id filtering'",
+      "recommended_fix": "Add a filter that ensures the invoice belongs to the authenticated user (owner_id) or the same tenant (tenant_id) before returning the invoice object."
+    },
+    {
+      "capability_id": "AUTH_ERROR_ENVELOPE",
+      "issue": "Information leakage in denial response body",
+      "evidence_span": "target.md: 'denial body returns invoice_id'",
+      "recommended_fix": "Do not include the invoice_id in the denial response; return a generic error message instead."
+    }
+  ],
+  "notes": []
+}

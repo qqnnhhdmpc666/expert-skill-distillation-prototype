@@ -1,0 +1,13 @@
+{
+  "attempt": "active_installed",
+  "backend": "live_llm_text",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Missing audit export configuration",
+      "evidence_span": "prod.yml: audit.enabled=true but retention_days/export_sink empty.",
+      "recommended_fix": "Configure retention_days and export_sink for audit logging to ensure logs are retained and exported properly."
+    }
+  ],
+  "notes": []
+}
