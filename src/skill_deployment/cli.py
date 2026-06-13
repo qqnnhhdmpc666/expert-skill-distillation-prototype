@@ -23,6 +23,12 @@ def main(argv: list[str] | None = None) -> int:
     subparsers.add_parser("validate-review-package", help="Validate exported review-package integrity.")
     subparsers.add_parser("build-codex-skill", help="Build the deployable Codex Skill package.")
     subparsers.add_parser("build-software-patch-skill", help="Build the deployable Software Patch Review Skill package.")
+    distill = subparsers.add_parser("distill-skill", help="Distill expert materials into an installable Skill package.")
+    distill.add_argument("--cases", required=True)
+    distill.add_argument("--skill-id", required=True)
+    distill.add_argument("--version", default="v1")
+    distill.add_argument("--output-dir", default=None)
+    distill.add_argument("--title", default=None)
     install = subparsers.add_parser("install", help="Install one deployable Skill package into the runtime registry.")
     install.add_argument("--skill", required=True)
     install.add_argument("--version", default=None)
@@ -172,6 +178,21 @@ def main(argv: list[str] | None = None) -> int:
         return run_script(["scripts/build_deployable_codex_skill.py"])
     if args.command == "build-software-patch-skill":
         return run_script(["scripts/build_software_patch_review_skill.py"])
+    if args.command == "distill-skill":
+        command = [
+            "scripts/distill_skill_package.py",
+            "--cases",
+            args.cases,
+            "--skill-id",
+            args.skill_id,
+            "--version",
+            args.version,
+        ]
+        if args.output_dir:
+            command.extend(["--output-dir", args.output_dir])
+        if args.title:
+            command.extend(["--title", args.title])
+        return run_script(command)
     if args.command == "install":
         command = ["scripts/install_skill_package.py", "--skill", args.skill]
         if args.version:

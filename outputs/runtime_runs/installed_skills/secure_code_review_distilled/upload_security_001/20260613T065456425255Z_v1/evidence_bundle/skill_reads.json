@@ -1,0 +1,129 @@
+{
+  "variant": "installed_runtime",
+  "skill": {
+    "skill_id": "secure_code_review_distilled",
+    "version": "v1",
+    "task_family": "multi_task_expert_distilled",
+    "capabilities": [
+      "API_SCHEMA_CONTRACT",
+      "API_OVERBROAD_RISK",
+      "AUTH_SCOPE_MATRIX",
+      "AUTH_OBJECT_OWNERSHIP",
+      "AUTH_ERROR_ENVELOPE",
+      "CONFIG_AUDIT_EXPORT",
+      "CONFIG_ENV_GUARD",
+      "UPLOAD_TYPE_MAGIC",
+      "UPLOAD_PATH_ISOLATION",
+      "UPLOAD_AUDIT_RETENTION"
+    ],
+    "output_contract": [
+      "capability_id",
+      "evidence_span",
+      "recommended_fix"
+    ],
+    "trace_contract": [
+      "trajectory.jsonl",
+      "target_reads.json",
+      "skill_reads.json"
+    ],
+    "metadata": {
+      "package_role": "expert_distilled_runtime",
+      "distillation_method": "keyword_projection_from_expert_materials",
+      "supported_task_families": [
+        "api_or_code_review",
+        "auth_access_control",
+        "config_security",
+        "upload_security"
+      ],
+      "capability_groups": [
+        {
+          "name": "api_or_code_review",
+          "task_families": [
+            "api_or_code_review"
+          ],
+          "capabilities": [
+            "API_SCHEMA_CONTRACT",
+            "API_OVERBROAD_RISK"
+          ],
+          "source_cases": [
+            "api_review_001"
+          ]
+        },
+        {
+          "name": "auth_access_control",
+          "task_families": [
+            "auth_access_control"
+          ],
+          "capabilities": [
+            "AUTH_SCOPE_MATRIX",
+            "AUTH_OBJECT_OWNERSHIP",
+            "AUTH_ERROR_ENVELOPE"
+          ],
+          "source_cases": [
+            "auth_access_control_001"
+          ]
+        },
+        {
+          "name": "config_security",
+          "task_families": [
+            "config_security"
+          ],
+          "capabilities": [
+            "CONFIG_AUDIT_EXPORT",
+            "CONFIG_ENV_GUARD"
+          ],
+          "source_cases": [
+            "config_security_001"
+          ]
+        },
+        {
+          "name": "upload_security",
+          "task_families": [
+            "upload_security"
+          ],
+          "capabilities": [
+            "UPLOAD_TYPE_MAGIC",
+            "UPLOAD_PATH_ISOLATION",
+            "UPLOAD_AUDIT_RETENTION"
+          ],
+          "source_cases": [
+            "upload_security_001"
+          ]
+        },
+        {
+          "name": "out_of_scope_guard",
+          "task_families": [],
+          "capabilities": [],
+          "source_cases": []
+        }
+      ],
+      "source_cases": [
+        "api_review_001",
+        "auth_access_control_001",
+        "config_security_001",
+        "upload_security_001"
+      ],
+      "out_of_scope_group": "out_of_scope_guard",
+      "distillation_provenance_dir": "provenance"
+    }
+  },
+  "skill_text_chars": 1727,
+  "skill_text_preview": "# secure_code_review_distilled Installed Runtime v1\n\nThis installed runtime was distilled from expert materials, not manually written as a one-off prompt.\n\n## Distillation Metadata\n\n- distillation_method: `keyword_projection_from_expert_materials`\n- runtime_task_family: `multi_task_expert_distilled`\n- source_cases: `api_review_001`, `auth_access_control_001`, `config_security_001`, `upload_security_001`\n\n## Capability Groups\n\n### api_or_code_review\n- task_families: `api_or_code_review`\n- distill",
+  "provenance": {
+    "runtime_source": "installed_skill_package",
+    "skill_package_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review_distilled\\versions\\v1",
+    "skill_version": "v1",
+    "manifest_hash": "03279207a3a4c78d81dfb2fe3056ddcae7622e6d1a54e38d153fe43a7a73db69",
+    "skill_hash": "51c5b8b1217e123b524d42c94ada0b7af45e9f25bd3c484f1150532c838a2b03",
+    "task_family": "upload_security",
+    "activated_capability_group": "upload_security",
+    "supported_task_families": [
+      "api_or_code_review",
+      "auth_access_control",
+      "config_security",
+      "upload_security"
+    ],
+    "out_of_scope": false,
+    "unsupported_task_family": null
+  }
+}

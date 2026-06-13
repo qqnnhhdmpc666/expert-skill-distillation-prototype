@@ -1,0 +1,137 @@
+[
+  {
+    "capability_id": "API_SCHEMA_CONTRACT",
+    "title": "Strict report schema",
+    "task_family": "api_or_code_review",
+    "source_case_id": "api_review_001",
+    "source_span": "API review needs strict JSON report contract",
+    "matched_keywords": [
+      "strict json report contract",
+      "json report contract"
+    ],
+    "projection_score": 2,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "API_OVERBROAD_RISK",
+    "title": "Overbroad finding control",
+    "task_family": "api_or_code_review",
+    "source_case_id": "api_review_001",
+    "source_span": "and rejection of overbroad generic findings",
+    "matched_keywords": [
+      "overbroad generic findings",
+      "overbroad",
+      "generic findings"
+    ],
+    "projection_score": 3,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "AUTH_SCOPE_MATRIX",
+    "title": "Role and scope authorization",
+    "task_family": "auth_access_control",
+    "source_case_id": "auth_access_control_001",
+    "source_span": "role/scope authorization",
+    "matched_keywords": [
+      "role/scope authorization",
+      "role",
+      "scope",
+      "authorization"
+    ],
+    "projection_score": 4,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "AUTH_OBJECT_OWNERSHIP",
+    "title": "Object ownership boundary",
+    "task_family": "auth_access_control",
+    "source_case_id": "auth_access_control_001",
+    "source_span": "object ownership",
+    "matched_keywords": [
+      "object ownership",
+      "ownership"
+    ],
+    "projection_score": 2,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "AUTH_ERROR_ENVELOPE",
+    "title": "Non-leaking authorization error",
+    "task_family": "auth_access_control",
+    "source_case_id": "auth_access_control_001",
+    "source_span": "and error envelope",
+    "matched_keywords": [
+      "error envelope",
+      "error",
+      "envelope"
+    ],
+    "projection_score": 3,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "CONFIG_AUDIT_EXPORT",
+    "title": "Production audit retention/export",
+    "task_family": "config_security",
+    "source_case_id": "config_security_001",
+    "source_span": "audit retention",
+    "matched_keywords": [
+      "audit retention",
+      "audit"
+    ],
+    "projection_score": 2,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "CONFIG_ENV_GUARD",
+    "title": "Environment-aware config guard",
+    "task_family": "config_security",
+    "source_case_id": "config_security_001",
+    "source_span": "Config review must separate prod from dev/test and verify secrets",
+    "matched_keywords": [
+      "separate prod from dev/test",
+      "prod",
+      "dev/test"
+    ],
+    "projection_score": 3,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "UPLOAD_TYPE_MAGIC",
+    "title": "Upload type and content validation",
+    "task_family": "upload_security",
+    "source_case_id": "upload_security_001",
+    "source_span": "Upload review needs content validation",
+    "matched_keywords": [
+      "content validation"
+    ],
+    "projection_score": 1,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "UPLOAD_PATH_ISOLATION",
+    "title": "Upload path isolation",
+    "task_family": "upload_security",
+    "source_case_id": "upload_security_001",
+    "source_span": "non-public storage",
+    "matched_keywords": [
+      "non-public storage",
+      "storage"
+    ],
+    "projection_score": 2,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "UPLOAD_AUDIT_RETENTION",
+    "title": "Upload audit retention",
+    "task_family": "upload_security",
+    "source_case_id": "upload_security_001",
+    "source_span": "and audit retention",
+    "matched_keywords": [
+      "audit retention",
+      "audit",
+      "retention"
+    ],
+    "projection_score": 3,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "case_id": "api_review_001",
+    "task_family": "api_or_code_review",
+    "capability_id": "API_SCHEMA_CONTRACT",
+    "title": "Strict report schema",
+    "source_span": "API review needs strict JSON report contract",
+    "matched_keywords": [
+      "strict json report contract",
+      "json report contract"
+    ],
+    "score": 2,
+    "selected": true
+  },
+  {
+    "case_id": "api_review_001",
+    "task_family": "api_or_code_review",
+    "capability_id": "API_OVERBROAD_RISK",
+    "title": "Overbroad finding control",
+    "source_span": "and rejection of overbroad generic findings",
+    "matched_keywords": [
+      "overbroad generic findings",
+      "overbroad",
+      "generic findings"
+    ],
+    "score": 3,
+    "selected": true
+  },
+  {
+    "case_id": "auth_access_control_001",
+    "task_family": "auth_access_control",
+    "capability_id": "AUTH_SCOPE_MATRIX",
+    "title": "Role and scope authorization",
+    "source_span": "role/scope authorization",
+    "matched_keywords": [
+      "role/scope authorization",
+      "role",
+      "scope",
+      "authorization"
+    ],
+    "score": 4,
+    "selected": true
+  },
+  {
+    "case_id": "auth_access_control_001",
+    "task_family": "auth_access_control",
+    "capability_id": "AUTH_OBJECT_OWNERSHIP",
+    "title": "Object ownership boundary",
+    "source_span": "object ownership",
+    "matched_keywords": [
+      "object ownership",
+      "ownership"
+    ],
+    "score": 2,
+    "selected": true
+  },
+  {
+    "case_id": "auth_access_control_001",
+    "task_family": "auth_access_control",
+    "capability_id": "AUTH_ERROR_ENVELOPE",
+    "title": "Non-leaking authorization error",
+    "source_span": "and error envelope",
+    "matched_keywords": [
+      "error envelope",
+      "error",
+      "envelope"
+    ],
+    "score": 3,
+    "selected": true
+  },
+  {
+    "case_id": "config_security_001",
+    "task_family": "config_security",
+    "capability_id": "CONFIG_AUDIT_EXPORT",
+    "title": "Production audit retention/export",
+    "source_span": "audit retention",
+    "matched_keywords": [
+      "audit retention",
+      "audit"
+    ],
+    "score": 2,
+    "selected": true
+  },
+  {
+    "case_id": "config_security_001",
+    "task_family": "config_security",
+    "capability_id": "CONFIG_ENV_GUARD",
+    "title": "Environment-aware config guard",
+    "source_span": "Config review must separate prod from dev/test and verify secrets",
+    "matched_keywords": [
+      "separate prod from dev/test",
+      "prod",
+      "dev/test"
+    ],
+    "score": 3,
+    "selected": true
+  },
+  {
+    "case_id": "upload_security_001",
+    "task_family": "upload_security",
+    "capability_id": "UPLOAD_TYPE_MAGIC",
+    "title": "Upload type and content validation",
+    "source_span": "Upload review needs content validation",
+    "matched_keywords": [
+      "content validation"
+    ],
+    "score": 1,
+    "selected": true
+  },
+  {
+    "case_id": "upload_security_001",
+    "task_family": "upload_security",
+    "capability_id": "UPLOAD_PATH_ISOLATION",
+    "title": "Upload path isolation",
+    "source_span": "non-public storage",
+    "matched_keywords": [
+      "non-public storage",
+      "storage"
+    ],
+    "score": 2,
+    "selected": true
+  },
+  {
+    "case_id": "upload_security_001",
+    "task_family": "upload_security",
+    "capability_id": "UPLOAD_AUDIT_RETENTION",
+    "title": "Upload audit retention",
+    "source_span": "and audit retention",
+    "matched_keywords": [
+      "audit retention",
+      "audit",
+      "retention"
+    ],
+    "score": 3,
+    "selected": true
+  }
+]

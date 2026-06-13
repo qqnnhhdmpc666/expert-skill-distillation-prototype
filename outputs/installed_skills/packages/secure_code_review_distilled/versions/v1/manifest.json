@@ -1,0 +1,107 @@
+{
+  "skill_id": "secure_code_review_distilled",
+  "version": "v1",
+  "task_family": "multi_task_expert_distilled",
+  "capabilities": [
+    "API_SCHEMA_CONTRACT",
+    "API_OVERBROAD_RISK",
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE",
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "UPLOAD_TYPE_MAGIC",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "package_role": "expert_distilled_runtime",
+    "distillation_method": "keyword_projection_from_expert_materials",
+    "supported_task_families": [
+      "api_or_code_review",
+      "auth_access_control",
+      "config_security",
+      "upload_security"
+    ],
+    "capability_groups": [
+      {
+        "name": "api_or_code_review",
+        "task_families": [
+          "api_or_code_review"
+        ],
+        "capabilities": [
+          "API_SCHEMA_CONTRACT",
+          "API_OVERBROAD_RISK"
+        ],
+        "source_cases": [
+          "api_review_001"
+        ]
+      },
+      {
+        "name": "auth_access_control",
+        "task_families": [
+          "auth_access_control"
+        ],
+        "capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
+        "source_cases": [
+          "auth_access_control_001"
+        ]
+      },
+      {
+        "name": "config_security",
+        "task_families": [
+          "config_security"
+        ],
+        "capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_ENV_GUARD"
+        ],
+        "source_cases": [
+          "config_security_001"
+        ]
+      },
+      {
+        "name": "upload_security",
+        "task_families": [
+          "upload_security"
+        ],
+        "capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "source_cases": [
+          "upload_security_001"
+        ]
+      },
+      {
+        "name": "out_of_scope_guard",
+        "task_families": [],
+        "capabilities": [],
+        "source_cases": []
+      }
+    ],
+    "source_cases": [
+      "api_review_001",
+      "auth_access_control_001",
+      "config_security_001",
+      "upload_security_001"
+    ],
+    "out_of_scope_group": "out_of_scope_guard",
+    "distillation_provenance_dir": "provenance"
+  }
+}

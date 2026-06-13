@@ -1,0 +1,7 @@
+{
+  "case_id": "auth_access_control_001",
+  "target_digest": {
+    "chars": 114,
+    "preview": "delete_invoice(invoice_id, user) checks is_authenticated, loads invoice by id, deletes it, and returns invoice_id."
+  }
+}

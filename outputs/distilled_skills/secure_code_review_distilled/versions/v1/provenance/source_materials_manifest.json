@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "case_id": "api_review_001",
+      "title": "API/code review report contract check",
+      "task_family": "api_or_code_review",
+      "source_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\task_cases\\api_review_001",
+      "selected_capabilities": [
+        "API_SCHEMA_CONTRACT",
+        "API_OVERBROAD_RISK"
+      ],
+      "expert_material_preview": "API review needs strict JSON report contract, evidence spans, fix specificity, and rejection of overbroad generic findings."
+    },
+    {
+      "case_id": "auth_access_control_001",
+      "title": "Authorization and object access review",
+      "task_family": "auth_access_control",
+      "source_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\task_cases\\auth_access_control_001",
+      "selected_capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ],
+      "expert_material_preview": "Authorization review separates authentication, role/scope authorization, object ownership, tenant boundary, and error envelope."
+    },
+    {
+      "case_id": "config_security_001",
+      "title": "Production configuration security check",
+      "task_family": "config_security",
+      "source_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\task_cases\\config_security_001",
+      "selected_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "expert_material_preview": "Config review must separate prod from dev/test and verify secrets, TLS, debug state, audit retention, and export sinks."
+    },
+    {
+      "case_id": "upload_security_001",
+      "title": "File upload security review",
+      "task_family": "upload_security",
+      "source_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\task_cases\\upload_security_001",
+      "selected_capabilities": [
+        "UPLOAD_TYPE_MAGIC",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_AUDIT_RETENTION"
+      ],
+      "expert_material_preview": "Upload review needs content validation, path isolation, non-public storage, and audit retention."
+    }
+  ],
+  "source_case_count": 4,
+  "supported_task_families": [
+    "api_or_code_review",
+    "auth_access_control",
+    "config_security",
+    "upload_security"
+  ]
+}

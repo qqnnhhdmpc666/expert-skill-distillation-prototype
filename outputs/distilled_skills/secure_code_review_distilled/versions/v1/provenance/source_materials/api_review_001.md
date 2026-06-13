@@ -1,0 +1,1 @@
+API review needs strict JSON report contract, evidence spans, fix specificity, and rejection of overbroad generic findings.

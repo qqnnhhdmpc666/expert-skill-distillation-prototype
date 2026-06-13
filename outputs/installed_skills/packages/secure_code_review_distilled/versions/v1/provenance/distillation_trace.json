@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-06-13T06:54:30.030518+00:00",
+  "skill_id": "secure_code_review_distilled",
+  "version": "v1",
+  "method": "keyword_projection_from_expert_materials",
+  "boundary": "This is a real distillation path for controlled expert materials. It is not an open-world semantic induction claim.",
+  "steps": [
+    {
+      "stage": "load_source_materials",
+      "artifact": "provenance/source_materials_manifest.json"
+    },
+    {
+      "stage": "project_capabilities",
+      "artifact": "provenance/extracted_candidates.json"
+    },
+    {
+      "stage": "compile_runtime_manifest",
+      "artifact": "manifest.json"
+    },
+    {
+      "stage": "render_skill_text",
+      "artifact": "SKILL.md"
+    }
+  ]
+}

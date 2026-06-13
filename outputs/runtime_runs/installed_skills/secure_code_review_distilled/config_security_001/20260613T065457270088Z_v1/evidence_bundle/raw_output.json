@@ -1,0 +1,21 @@
+{
+  "attempt": "installed_v1",
+  "backend": "offline_deterministic",
+  "findings": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "issue": "Production audit retention/export",
+      "evidence_span": "enabled=true but retention_days/export_sink empty",
+      "recommended_fix": "Require retention and export sink for production audit logs."
+    },
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "issue": "Environment-aware config guard",
+      "evidence_span": "debug are present but dev-only",
+      "recommended_fix": "Bind findings to prod/dev/test path before flagging."
+    }
+  ],
+  "notes": [
+    "activated_capability_group:config_security"
+  ]
+}

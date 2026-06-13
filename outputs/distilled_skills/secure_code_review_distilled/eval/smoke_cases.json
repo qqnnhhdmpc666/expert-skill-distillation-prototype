@@ -1,0 +1,22 @@
+{
+  "distilled_skill_id": "secure_code_review_distilled",
+  "version": "v1",
+  "cases": [
+    {
+      "case_id": "api_review_001",
+      "command": "skill-deploy run-skill --installed secure_code_review_distilled --case api_review_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "auth_access_control_001",
+      "command": "skill-deploy run-skill --installed secure_code_review_distilled --case auth_access_control_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "config_security_001",
+      "command": "skill-deploy run-skill --installed secure_code_review_distilled --case config_security_001 --backend offline_deterministic"
+    },
+    {
+      "case_id": "upload_security_001",
+      "command": "skill-deploy run-skill --installed secure_code_review_distilled --case upload_security_001 --backend offline_deterministic"
+    }
+  ]
+}
