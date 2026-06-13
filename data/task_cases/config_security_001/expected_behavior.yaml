@@ -1,0 +1,7 @@
+{
+  "expected_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "forbidden_capabilities": []
+}
