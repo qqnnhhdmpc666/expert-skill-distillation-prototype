@@ -1,0 +1,16 @@
+{
+  "case_id": "config_security_001",
+  "title": "Production configuration security check",
+  "task_family": "config_security",
+  "expected_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "v1_capabilities": [
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "typical_feedback": "false_positive_risk",
+  "typical_repair": "reduce_false_positive_risk"
+}
