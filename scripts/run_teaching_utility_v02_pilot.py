@@ -168,6 +168,7 @@ def run_case_agent(
 
 
 def render_report(payload: dict[str, Any]) -> str:
+    split_integrity = payload.get("split_integrity", {})
     lines = [
         "# Teaching Utility v0.2 Pilot Status",
         "",
@@ -188,7 +189,9 @@ def render_report(payload: dict[str, Any]) -> str:
         f"- methods: `{', '.join(payload['methods'])}`",
         "- domains: `api_review`, `config_security`",
         "- split per repeat: `source_generation`, `active_query_pool`, `promotion_validation`, `sealed_hidden_test`",
+        "- sealed hidden cases are fixed globally and excluded from generation/query/validation roles",
         f"- active budget: `{payload['query_budget']} query trajectories per method per repeat`",
+        f"- split integrity: `hidden_reused_outside_hidden={split_integrity.get('hidden_reused_outside_hidden', 'unknown')}`",
         "",
         "## Method Summary",
         "",
@@ -208,6 +211,10 @@ def render_report(payload: dict[str, Any]) -> str:
             f"- `task_utility_vs_teaching_utility`: `{payload['task_utility_vs_teaching_utility']}`",
             f"- `active_selection_hypothesis`: `{payload['active_selection_hypothesis']}`",
             f"- `best_method_by_hidden_delta`: `{payload['best_method_by_hidden_delta']}`",
+            f"- `active_hidden_delta_minus_contrast`: `{payload.get('active_hidden_delta_minus_contrast', 'unknown')}`",
+            f"- `active_hidden_delta_minus_diversity`: `{payload.get('active_hidden_delta_minus_diversity', 'unknown')}`",
+            f"- `global_sealed_hidden_cases`: `{', '.join(payload.get('global_sealed_hidden_cases', []))}`",
+            f"- `interpretation`: `{payload.get('interpretation', 'not_available')}`",
             "",
             "## Boundary",
             "",
@@ -245,6 +252,15 @@ def main(argv: list[str] | None = None) -> int:
 
     OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
     repeat_plans = build_repeat_plans(ROOT, repeats=args.repeats)
+    global_hidden_ids = sorted({case.case_id for plan in repeat_plans for case in plan.hidden_cases})
+    non_hidden_role_ids = sorted(
+        {
+            case.case_id
+            for plan in repeat_plans
+            for case in (*plan.generation_cases, *plan.query_cases, *plan.validation_cases)
+        }
+    )
+    hidden_reused_outside_hidden = bool(set(global_hidden_ids) & set(non_hidden_role_ids))
     base_skill_text = render_cross_domain_base_skill(ROOT)
     base_skill_path = OUTPUT_ROOT / "base_skill.md"
     write_text(base_skill_path, base_skill_text)
@@ -500,11 +516,19 @@ def main(argv: list[str] | None = None) -> int:
         active_hypothesis = "hypothesis_not_supported"
     else:
         active_hypothesis = "inconclusive"
-    task_vs_teaching = (
-        "divergent_signal_detected"
-        if best_method != "top_reward_success_only" and active["mean_query_score"] <= next(row for row in method_summary if row["method"] == "top_reward_success_only")["mean_query_score"]
-        else "rough_alignment"
-    )
+    query_scores = [float(row["mean_query_score"]) for row in method_summary]
+    hidden_deltas = [float(row["mean_hidden_delta"]) for row in method_summary]
+    if round(max(hidden_deltas) - min(hidden_deltas), 4) == 0.0 and round(max(query_scores) - min(query_scores), 4) > 0.0:
+        task_vs_teaching = "task_utility_not_predictive_in_this_sealed_run"
+        interpretation = "query/task scores differ, but sealed hidden teaching utility is flat across methods"
+    elif best_method != "top_reward_success_only" and active["mean_query_score"] <= next(row for row in method_summary if row["method"] == "top_reward_success_only")["mean_query_score"]:
+        task_vs_teaching = "divergent_signal_detected"
+        interpretation = "the hidden-best method is not explained by immediate top-reward task utility"
+    else:
+        task_vs_teaching = "rough_alignment"
+        interpretation = "hidden signal does not contradict immediate task utility under this bounded pilot"
+    active_minus_contrast = round(float(active["mean_hidden_delta"]) - float(contrast["mean_hidden_delta"]), 4)
+    active_minus_diversity = round(float(active["mean_hidden_delta"]) - float(diversity["mean_hidden_delta"]), 4)
     payload = {
         "generated_at": utc_now(),
         "repeat_count": args.repeats,
@@ -513,12 +537,21 @@ def main(argv: list[str] | None = None) -> int:
         "base_url": args.base_url,
         "model": args.model,
         "task_count": len({case.case_id for case in repeat_plans[0].generation_cases + repeat_plans[0].query_cases + repeat_plans[0].validation_cases + repeat_plans[0].hidden_cases}),
+        "global_sealed_hidden_cases": global_hidden_ids,
+        "split_integrity": {
+            "hidden_reused_outside_hidden": hidden_reused_outside_hidden,
+            "non_hidden_role_case_ids": non_hidden_role_ids,
+            "boundary": "candidate generation and query selection use generation/query/validation roles only; sealed hidden ids are fixed globally.",
+        },
         "repeats": repeats_output,
         "method_rows": method_rows,
         "method_summary": method_summary,
         "task_utility_vs_teaching_utility": task_vs_teaching,
         "active_selection_hypothesis": active_hypothesis,
         "best_method_by_hidden_delta": best_method,
+        "active_hidden_delta_minus_contrast": active_minus_contrast,
+        "active_hidden_delta_minus_diversity": active_minus_diversity,
+        "interpretation": interpretation,
     }
     write_json(SUMMARY_PATH, payload)
     write_text(REPORT, render_report(payload))

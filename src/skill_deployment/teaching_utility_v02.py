@@ -203,12 +203,14 @@ def build_repeat_plans(root: Path, repeats: int = 3) -> list[RepeatPlan]:
         raise ValueError("teaching-utility pilot requires at least 5 api and 5 config cases")
 
     def rotated_split(cases: list[PilotCase], offset: int) -> DomainSplit:
-        ordered = [cases[(offset + index) % len(cases)] for index in range(len(cases))]
+        hidden = cases[-1]
+        teachable_cases = cases[:-1]
+        ordered = [teachable_cases[(offset + index) % len(teachable_cases)] for index in range(len(teachable_cases))]
         return DomainSplit(
             generation=ordered[0],
             query_pool=(ordered[1], ordered[2]),
             validation=ordered[3],
-            hidden=ordered[4],
+            hidden=hidden,
         )
 
     plans: list[RepeatPlan] = []

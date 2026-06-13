@@ -11,13 +11,25 @@ from skill_deployment.teaching_utility_v02 import (
 )
 
 
-def test_build_repeat_plans_rotates_roles() -> None:
+def test_build_repeat_plans_rotates_teachable_roles_but_keeps_hidden_sealed() -> None:
     plans = build_repeat_plans(Path("."))
     assert len(plans) == 3
     assert plans[0].api_review.generation.case_id != plans[1].api_review.generation.case_id
-    assert plans[0].config_security.hidden.case_id != plans[1].config_security.hidden.case_id
+    assert plans[0].api_review.hidden.case_id == plans[1].api_review.hidden.case_id
+    assert plans[0].config_security.hidden.case_id == plans[1].config_security.hidden.case_id
     assert len(plans[0].api_review.query_pool) == 2
     assert len(plans[0].config_security.query_pool) == 2
+    for plan in plans:
+        teachable_ids = {
+            plan.api_review.generation.case_id,
+            *(case.case_id for case in plan.api_review.query_pool),
+            plan.api_review.validation.case_id,
+            plan.config_security.generation.case_id,
+            *(case.case_id for case in plan.config_security.query_pool),
+            plan.config_security.validation.case_id,
+        }
+        assert plan.api_review.hidden.case_id not in teachable_ids
+        assert plan.config_security.hidden.case_id not in teachable_ids
 
 
 def test_evaluate_review_clean_control_requires_no_findings() -> None:
