@@ -1,157 +1,194 @@
 # Expert Skill Distillation Prototype
 
-这是一个面向研究验证的 **证据驱动 Skill Evolution Runtime 原型系统**。
+一个面向 Agent 的 **Skill 安装、执行、验证、比较、演化** 原型系统。
 
-它的目标不是做一个“什么都能干”的 Agent，也不是直接做成生产级漏洞扫描器，而是把下面这条链条真正跑通并留下可检查证据：
+这个项目想解决的不是“再写一个 prompt”，而是把 Agent Skill 做成一种 **可安装、可回滚、可验证、可演化** 的对象。  
+我们希望回答一个更工程化的问题：
+
+> 一个 Skill 被修改之后，究竟是真的变强了，还是只是对某几个 case 过拟合了？
+
+为此，这个仓库实现了一条完整链路：
 
 ```text
-Skill 安装 -> 任务执行 -> 证据采集 -> Verifier 判定 -> 版本比较 -> 候选生成 -> 拒绝 / 晋升 / 回滚
+Skill package -> installed runtime -> task-conditioned activation
+-> evidence bundle -> verifier -> variant comparison
+-> candidate generation -> rejection / staged promotion / rollback
 ```
 
-当前仓库的第一条主线是 `secure_code_review`，也就是防御性的安全代码审计 / 修复建议 Skill；第二条辅助主线是 `software_patch_review`，用于软件补丁评审和外部软件工程场景衔接。
+## 它能做什么
 
-## 这个项目现在能做什么
-
-目前原型已经支持：
+目前这个仓库已经可以：
 
 - 把 Skill 打包成可安装目录，包含 `SKILL.md` 和 `manifest.json`
-- 用 `skill-deploy` CLI 安装、运行、比较、回滚 Skill
-- 根据任务类型做 **task-conditioned capability activation**
-- 为每次运行写出统一的 `evidence_bundle`
-- 对 `no_skill / v1 / v2 / active_installed` 做边际效用比较
-- 用 verifier 反馈驱动候选 Skill 生成，并执行严格的拒绝 / 晋升门控
-- 支持本地 deterministic、non-oracle local semantic、live LLM 等多条后端路径
-- 输出较完整的报告、审计材料和 review package
+- 用 CLI 安装、切换、回滚不同版本的 Skill
+- 在不同任务类型下激活不同能力组，而不是把所有规则一股脑打开
+- 运行受控任务并自动写出 evidence bundle
+- 比较 `no_skill / v1 / v2 / active_installed` 的边际收益
+- 用 verifier 反馈驱动候选 Skill 生成
+- 对候选做严格门控：允许拒绝、隔离、暂缓晋升，而不是默认“越改越好”
+- 支持多种运行后端，包括：
+  - `offline_deterministic`
+  - `non_oracle_local_semantic`
+  - `live_llm_text`
 
-一句话说，这个仓库现在更像一个“**可验证的 Skill 运行与演化实验平台**”，而不是一份单纯的 prompt 集合。
+## 当前重点场景
 
-## 当前效果
+### 1. `secure_code_review`
 
-按仓库中最新的状态文档，当前最稳妥的结论是：
+这是当前最成熟的一条主线，面向 **防御性安全代码审计 / 修复建议**。
 
-- `controlled_internal`: `pass`
-- `security_depth`: `pass_local_bounded`
-- `live_contract_effectiveness`: `pass`
-- `external_generalization`: `partial`
-- `mechanism_ablation`: `supports_mechanism`
-- `evolution_improvement`: `demonstrated as staged promotion proposal`
-- `external_harness`: `infra_blocked`
-- `public_release_readiness`: `pass`
-- `academic_claim_readiness`: `strong_candidate_with_external_gap`
+当前已覆盖的代表性任务包括：
 
-更直白一点解释：
+- 文件上传安全审计
+- 配置安全检查
+- API / code review
+- 权限与访问控制检查
+- out-of-scope 保护与 false positive 控制
 
-- 本地受控运行链已经打通，而且不是“只会跑一个 case”。
-- `secure_code_review` 在本地有比较强的 **bounded security evidence**，但这还不是官方外部 benchmark 结论。
-- live contract 路径已经能工作，说明我们不只是靠 deterministic 假跑。
-- 外部 / 半外部泛化已经有一部分证据，但还没有到“广泛真实世界有效”这个级别。
-- 候选改进已经能产生 **staged promotion proposal**，但不是自动上线，也不是无限自进化。
-- SWE-bench 官方 harness 这条线目前还是 `infra_blocked`，不能拿它假装成外部成功。
+### 2. `software_patch_review`
 
-## 这不是什麽
+这是辅助主线，用于软件补丁评审和外部软件工程任务衔接。  
+它的作用不是替代 `secure_code_review`，而是为后续更广的软件修复任务和外部 harness 对接打基础。
 
-为了避免误解，这里明确说清楚：
+## 为什么这个项目不只是一个 prompt demo
 
-- 它不是生产级漏洞扫描器
-- 它不是 exploit 自动化工具
-- 它不是完整的 SPARK 复现
-- 它不是官方 CyberSecEval / AutoPatchBench / CVE-Bench 结果
-- 它不是已经证明“Skill 会自动越进化越强”的系统
+普通 prompt 或经验总结很容易遇到两个问题：
+
+1. 改完以后不知道是不是只对一个 case 有效
+2. 越积越多，最后变成难以维护的规则堆
+
+这个仓库尝试把 Skill 变成一个真正可管理的运行单元：
+
+- 有版本
+- 有安装态
+- 有激活条件
+- 有证据记录
+- 有 verifier 反馈
+- 有对照比较
+- 有拒绝与回滚
+
+换句话说，我们更关心的是：
+
+> Skill 的新增、修改、拒绝、晋升和回滚，能不能都由同一套证据链驱动。
 
 ## 快速开始
 
-### 1. 安装
+### 安装
 
 ```powershell
 python -m pip install -e .[dev]
 ```
 
-### 2. 构建并安装安全审计 Skill
+### 构建并安装安全审计 Skill
 
 ```powershell
 skill-deploy build-codex-skill
 skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2
 ```
 
-### 3. 跑一个最小示例
+### 跑一个最小示例
 
 ```powershell
 skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic
 ```
 
-### 4. 比较不同版本 / 变体
+### 比较不同版本
 
 ```powershell
 skill-deploy compare-variants --cases upload,config --backend offline_deterministic --source installed
 ```
 
-### 5. 检查 review package
+### 检查 review package
 
 ```powershell
 skill-deploy validate-review-package
 ```
 
-## 如果你要跑 live LLM
+## Live LLM 用法
 
-当前仓库支持 OpenAI-compatible 接口。不要把 API key 写进仓库文件，只在当前进程环境里设置。
-
-示例：
+如果你想跑 live LLM 路径，可以使用 OpenAI-compatible 接口。  
+不要把 API key 写入仓库文件，只在当前进程环境中设置。
 
 ```powershell
 $env:OPENAI_API_KEY = "<your key>"
 skill-deploy live-contract-validation --installed secure_code_review --base-url https://api.deepseek.com --model deepseek-v4-flash
 ```
 
-## 当前仓库里的“代表性验证”包括什么
+## 你可以直接拿它来做什么
 
-当前比较值得看的几条验证线：
+这个仓库现在适合拿来做几类事情：
 
-1. **Installed Skill Runtime**
-   - Skill 可以被安装、运行、比较、回滚
+- 验证一个安全审计 Skill 在多个任务上的表现
+- 研究 task-conditioned capability activation 是否真的减少误触发
+- 比较不同 Skill 版本是否带来真实净收益
+- 研究 verifier 驱动的 Skill 演化机制
+- 构建一套可审计、可回放、可导出的 Agent Skill 实验流程
 
-2. **Local Defensive Security Validation**
-   - upload / config / auth / API 等安全类 case
-   - negative control
-   - out-of-scope guard
+如果你在做下面这些方向，这个仓库会比较对路：
 
-3. **Live Contract Validation**
-   - live LLM 输出经过 contract-safe normalization
-   - verifier 不会因为“看起来像对”就直接放过
+- Agent Skill engineering
+- Skill distillation
+- Evidence-grounded agent runtime
+- Defensive security review
+- Verifier-guided candidate evolution
 
-4. **Mechanism Ablation**
-   - 验证 task router / out_of_scope_guard / normalizer 这些机制不是摆设
+## 当前仓库状态
 
-5. **Candidate Evolution**
-   - 候选 Skill 会被比较、拒绝、保留
-   - 当前最强结论是：已经出现 staged promotion proposal，但并非自动晋升
+这个项目已经是 **可运行的研究原型**，不是纯设计稿。
 
-## 你第一次进入这个仓库，建议按这个顺序看
+当前最稳定的能力包括：
 
-1. `docs/CODEX_CONTEXT_HANDOFF.md`
-2. `docs/USER_GUIDE.md`
-3. `docs/ARCHITECTURE_AND_DESIGN.md`
-4. `docs/QUICKSTART.md`
-5. `reports/REPRESENTATIVE_VALIDATION_MATRIX.md`
-6. `reports/GRAND_AUTONOMOUS_SPRINT_STATUS.md`
-7. `reports/ITERATIVE_CONTRACT_IMPROVEMENT_STATUS.md`
+- installed Skill runtime
+- 任务条件化能力激活
+- 本地受控安全审计验证
+- live contract 路径
+- 候选 Skill 的严格比较与门控
+- review package 导出与校验
 
-## 目录结构
+当前还没有做成或不应过度宣称的部分包括：
+
+- 生产级漏洞扫描器
+- exploit 自动化
+- 官方外部 benchmark 成绩
+- 已经证明“自进化一定稳定变强”
+
+所以更准确的定位是：
+
+> 这是一个面向 Agent Skill 的研究级 runtime prototype，强调安装、执行、证据采集、版本比较、候选生成与门控，而不是一个现成的生产安全产品。
+
+## 仓库结构
 
 ```text
 src/skill_deployment/   核心 runtime、runner、verifier、install state、normalizer
 agents/                 本地 / live agent 包装器
-scripts/                运行验证、生成报告、构建技能包的脚本
+scripts/                验证、构建、比较、导出脚本
 data/                   受控 task cases 和本地代表性样本
-outputs/                所有运行产物、evidence bundles、validation outputs
-reports/                人类可读的状态报告、审计报告、成熟度总结
-docs/                   使用说明、结构说明、边界说明、复现实验说明
-review_package/         用于审阅和归档的证据打包结果
-skill_packages/         历史 / 示例 Skill 包
+outputs/                运行产物、evidence bundles、验证输出
+reports/                状态报告、分析报告、成熟度总结
+docs/                   用户文档、结构说明、边界说明、复现说明
+review_package/         审阅与归档材料
+skill_packages/         示例与历史 Skill 包
 ```
 
-## 目前仓库级别的最小健康状态
+## 建议阅读顺序
 
-当前本地最小验证命令是：
+如果你是第一次进入这个仓库，建议按下面顺序看：
+
+1. `docs/USER_GUIDE.md`
+2. `docs/ARCHITECTURE_AND_DESIGN.md`
+3. `docs/QUICKSTART.md`
+4. `docs/CLAIM_BOUNDARY.md`
+5. `reports/REPRESENTATIVE_VALIDATION_MATRIX.md`
+
+如果你是从新设备、新会话或新的 Codex 线程接手，先看：
+
+```text
+docs/CODEX_CONTEXT_HANDOFF.md
+```
+
+## 最小健康检查
+
+当前最基本的本地验证命令：
 
 ```powershell
 python -m pytest -q
@@ -159,39 +196,31 @@ python scripts\validate_task_cases.py
 skill-deploy validate-review-package
 ```
 
-最近一次我在本地跑到的结果是：
+## 安全边界
 
-- `46 passed`
-- `case_count=8`
-- `validate-review-package: 0 errors`
+当前安全方向只做 **防御性工作**：
 
-## 适合谁看
+- 检测
+- 解释
+- 修复建议
+- patch / contract validation
 
-这个仓库比较适合下面几类人：
+不做：
 
-- 想研究 Agent Skill 如何被“证据化、版本化、可回滚化”的人
-- 想看一个较完整的 Skill runtime 原型而不是单个 prompt demo 的人
-- 想做安全审计 Skill、任务条件路由、候选晋升门控的人
-- 想把“经验总结”从玄学 prompt 调整变成可验证工程流程的人
+- exploit 生成
+- 攻击链执行
+- 未授权目标利用
 
-## 边界提醒
+## 相关文档
 
-请不要用这个仓库当前结果直接宣称：
+- `README_PROTOTYPE.md`
+- `PROJECT_OVERVIEW_FOR_GITHUB.md`
+- `docs/QUICKSTART.md`
+- `docs/TROUBLESHOOTING.md`
+- `docs/ARTIFACT_TYPES.md`
+- `docs/CLAIM_BOUNDARY.md`
 
-- 广泛真实世界安全有效
-- 官方 benchmark 已通过
-- 已经证明自进化稳定优于人工设计
-- 已经达到生产部署标准
+## License
 
-更稳妥的说法是：
-
-> 这是一个研究级、可运行、可安装、可验证、可审计的 Skill Evolution Runtime 原型；它已经在本地受控条件下形成了较强证据，但外部官方 benchmark 和更强真实世界泛化仍需继续补证。
-
-## 补充文档
-
-- `README_PROTOTYPE.md`：简洁版原型定位
-- `PROJECT_OVERVIEW_FOR_GITHUB.md`：GitHub 面向外部读者的项目概览
-- `docs/CLAIM_BOUNDARY.md`：哪些能说，哪些不能说
-- `docs/ARTIFACT_TYPES.md`：不同证据类型怎么区分
-- `docs/TROUBLESHOOTING.md`：常见问题
+MIT
 
