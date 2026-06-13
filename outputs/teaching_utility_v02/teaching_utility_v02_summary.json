@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T16:32:17.892826+00:00",
+  "generated_at": "2026-06-13T16:40:03.014975+00:00",
   "repeat_count": 3,
   "query_budget": 2,
   "methods": [
@@ -11,6 +11,8 @@
   ],
   "base_url": "https://api.deepseek.com",
   "model": "deepseek-v4-flash",
+  "hidden_evaluation_mode": "deferred_independent_script",
+  "freeze_manifest": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\frozen_method_manifest.json",
   "task_count": 10,
   "global_sealed_hidden_cases": [
     "case005_transport_and_scope",
@@ -179,7 +181,9 @@
         }
       ],
       "baseline_validation_score": 0.5,
-      "baseline_hidden_score": 0.0,
+      "baseline_hidden_score": null,
+      "baseline_seed_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\seed_skill.md",
+      "baseline_seed_skill_hash": "f085e122040b168acf2c5a4c623b7df89435f3fed1d16d60ffaa5b34983f831b",
       "methods": [
         {
           "method": "random",
@@ -411,74 +415,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\validation\\case004_secret_and_resource\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.5,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "dffdd104cc5952a5a692e4a514e37f534b564782f8cb697129568c501d437319",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -729,74 +674,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\validation\\case004_secret_and_resource\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.5,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "8cc8985449cef515a47b8a4a1c441ae9246c5398f879ea338047c1a319e3f2d6",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -1047,74 +933,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\success_failure_contrast\\validation\\case004_secret_and_resource\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\success_failure_contrast\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\success_failure_contrast\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\success_failure_contrast\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\success_failure_contrast\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.5,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "8cc8985449cef515a47b8a4a1c441ae9246c5398f879ea338047c1a319e3f2d6",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -1391,74 +1218,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\validation\\case004_secret_and_resource\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\diversity\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.5,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "71df08f4fefe6abd1c5c8efd07244d59d6c0c59d098ac9e129f78350a5056696",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -2488,74 +2256,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\validation\\case004_secret_and_resource\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.5,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "cd3d61c2fdd02f918f9600c71caaae6b31a902d88c6ae6badb3779a26de48f4a",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": [
             {
               "candidate_id": "h0_base_conservative",
@@ -2840,7 +2549,9 @@
         }
       ],
       "baseline_validation_score": 0.0,
-      "baseline_hidden_score": 0.0,
+      "baseline_hidden_score": null,
+      "baseline_seed_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\seed_skill.md",
+      "baseline_seed_skill_hash": "81362fa6c62b0b18e572324bd626ce43c49ba30792cbf1dd485e609e4a97b358",
       "methods": [
         {
           "method": "random",
@@ -3067,74 +2778,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\random\\validation\\case001_prod_config_security\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\random\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\random\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\random\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\random\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "674825dda7467b7748212e7f91ef6a4463192fce1f5df90fed48a7ac8ab78696",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -3374,74 +3026,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\top_reward_success_only\\validation\\case001_prod_config_security\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\top_reward_success_only\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\top_reward_success_only\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\top_reward_success_only\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\top_reward_success_only\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "73e50156ffb68c6098f44fa7ba9e1889be97fb775a283bbd396c86b87d1127d3",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -3681,74 +3274,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\validation\\case001_prod_config_security\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\success_failure_contrast\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "73e50156ffb68c6098f44fa7ba9e1889be97fb775a283bbd396c86b87d1127d3",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -4025,74 +3559,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\diversity\\validation\\case001_prod_config_security\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\diversity\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\diversity\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\diversity\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\diversity\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "3af91d1ded5bb7bb8f3a3f39b0e868c45518851d1a06aae547b9412407f5b4b7",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -5157,74 +4632,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\validation\\case001_prod_config_security\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "2bca306e331559bed0eef35188723b028696545470fb1cfbb62ff0ff46886338",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": [
             {
               "candidate_id": "h0_base_conservative",
@@ -5491,7 +4907,9 @@
         }
       ],
       "baseline_validation_score": 0.0,
-      "baseline_hidden_score": 0.0,
+      "baseline_hidden_score": null,
+      "baseline_seed_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+      "baseline_seed_skill_hash": "d801f0c99e7de1dd9e33f5f501e7cd9e156832ccd763d311ff7ecd404b9714d0",
       "methods": [
         {
           "method": "random",
@@ -5770,74 +5188,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\validation\\case002_resource_and_audit\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "535cf280df18f14090c9c8a2e193f13a8bad2582f651e518e2befe223d002b49",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -6077,74 +5436,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\validation\\case002_resource_and_audit\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\top_reward_success_only\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "fa124add52d351f535c89c4e433755cad924fb668033604776e74ab5c87534e9",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -6390,74 +5690,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\validation\\case002_resource_and_audit\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\success_failure_contrast\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "a64c2717b8f891bb57c8194a1627c4be68ecc5668215736009352b30412d8b37",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -6763,74 +6004,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\validation\\case002_resource_and_audit\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "ceb356b8606b0ed8ce2c324b1c23f3a1cd9bbe5bb512e6dbd1387b3a0be9e9af",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": []
         },
         {
@@ -7884,74 +7066,15 @@
               "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\validation\\case002_resource_and_audit\\attempt_02"
             }
           ],
-          "hidden_runs": [
-            {
-              "attempt_index": 2,
-              "case_id": "case007_auth_sensitive_session",
-              "domain": "api_review",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "critical_missed_rule_ids": [
-                  "R001",
-                  "R004"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\hidden\\case007_auth_sensitive_session\\attempt_02"
-            },
-            {
-              "attempt_index": 2,
-              "case_id": "case005_transport_and_scope",
-              "domain": "config_security",
-              "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
-              "returncode": 0,
-              "review": {
-                "findings": [],
-                "summary": "api_blocked",
-                "status": "blocked_http_error"
-              },
-              "evaluation": {
-                "pass_at_1": false,
-                "coverage": 0.0,
-                "score": 0.0,
-                "missing_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "critical_missed_rule_ids": [
-                  "C002",
-                  "C003"
-                ],
-                "false_positive_rule_ids": [],
-                "format_errors": [],
-                "seen_rule_ids": [],
-                "clean_control_pass": false
-              },
-              "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\hidden\\case005_transport_and_scope\\attempt_02"
-            }
-          ],
+          "hidden_runs": [],
           "validation_score": 0.0,
-          "hidden_score": 0.0,
+          "hidden_score": null,
           "validation_delta": 0.0,
-          "hidden_delta": 0.0,
+          "hidden_delta": null,
           "hidden_pass_count": 0,
-          "hidden_row_count": 2,
+          "hidden_row_count": 0,
+          "final_skill_hash": "e59d8bc08cbe34bc8640d0917354640fa69a203975df5bb73be0c20a95a794f1",
+          "hidden_evaluation_status": "deferred",
           "final_candidate_state": [
             {
               "candidate_id": "h0_base_conservative",
@@ -8105,7 +7228,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case002_resource_and_audit"
     },
@@ -8115,7 +7238,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_clean_control"
     },
@@ -8125,7 +7248,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case004_validation_sensitive_idempotency"
     },
@@ -8135,7 +7258,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case005_response_contract_schema"
     },
@@ -8145,7 +7268,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case004_validation_sensitive_idempotency"
     },
@@ -8155,7 +7278,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case005_response_contract_schema"
     },
@@ -8165,7 +7288,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case002_resource_and_audit"
     },
@@ -8175,7 +7298,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case005_response_contract_schema"
     },
@@ -8185,7 +7308,7 @@
       "round_index": 1,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_clean_control"
     },
@@ -8195,7 +7318,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case004_validation_sensitive_idempotency"
     },
@@ -8205,7 +7328,7 @@
       "round_index": 1,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_clean_control"
     },
@@ -8215,7 +7338,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case006_clean_false_positive_control"
     },
@@ -8225,7 +7348,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case005_response_contract_schema"
     },
@@ -8235,7 +7358,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case006_clean_false_positive_control"
     },
@@ -8245,7 +7368,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case005_response_contract_schema"
     },
@@ -8255,7 +7378,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case006_clean_false_positive_control"
     },
@@ -8265,7 +7388,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case004_secret_and_resource"
     },
@@ -8275,7 +7398,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_clean_control"
     },
@@ -8285,7 +7408,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case005_response_contract_schema"
     },
@@ -8295,7 +7418,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_clean_control"
     },
@@ -8305,7 +7428,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case001_prod_config_security"
     },
@@ -8315,7 +7438,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_auth_error_envelope"
     },
@@ -8325,7 +7448,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case004_secret_and_resource"
     },
@@ -8335,7 +7458,7 @@
       "round_index": 2,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case006_clean_false_positive_control"
     },
@@ -8345,7 +7468,7 @@
       "round_index": 1,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case006_clean_false_positive_control"
     },
@@ -8355,7 +7478,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case003_auth_error_envelope"
     },
@@ -8365,7 +7488,7 @@
       "round_index": 1,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case001_prod_config_security"
     },
@@ -8375,7 +7498,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case004_secret_and_resource"
     },
@@ -8385,7 +7508,7 @@
       "round_index": 1,
       "query_score": 1.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case006_clean_false_positive_control"
     },
@@ -8395,7 +7518,7 @@
       "round_index": 2,
       "query_score": 0.0,
       "validation_delta": 0.0,
-      "hidden_delta": 0.0,
+      "hidden_delta": null,
       "hidden_pass_count": 0,
       "selected_case_id": "case001_prod_config_security"
     }
@@ -8408,7 +7531,7 @@
       "mean_validation_delta": 0.0,
       "mean_hidden_delta": 0.0,
       "hidden_pass_count": 0,
-      "hidden_row_count": 6
+      "hidden_row_count": 0
     },
     {
       "method": "top_reward_success_only",
@@ -8417,7 +7540,7 @@
       "mean_validation_delta": 0.0,
       "mean_hidden_delta": 0.0,
       "hidden_pass_count": 0,
-      "hidden_row_count": 6
+      "hidden_row_count": 0
     },
     {
       "method": "success_failure_contrast",
@@ -8426,7 +7549,7 @@
       "mean_validation_delta": 0.0,
       "mean_hidden_delta": 0.0,
       "hidden_pass_count": 0,
-      "hidden_row_count": 6
+      "hidden_row_count": 0
     },
     {
       "method": "diversity",
@@ -8435,7 +7558,7 @@
       "mean_validation_delta": 0.0,
       "mean_hidden_delta": 0.0,
       "hidden_pass_count": 0,
-      "hidden_row_count": 6
+      "hidden_row_count": 0
     },
     {
       "method": "active_discriminative_evidence",
@@ -8444,13 +7567,13 @@
       "mean_validation_delta": 0.0,
       "mean_hidden_delta": 0.0,
       "hidden_pass_count": 0,
-      "hidden_row_count": 6
+      "hidden_row_count": 0
     }
   ],
-  "task_utility_vs_teaching_utility": "task_utility_not_predictive_in_this_sealed_run",
-  "active_selection_hypothesis": "inconclusive",
-  "best_method_by_hidden_delta": "random",
+  "task_utility_vs_teaching_utility": "pending_independent_hidden_eval",
+  "active_selection_hypothesis": "pending_independent_hidden_eval",
+  "best_method_by_hidden_delta": "pending_independent_hidden_eval",
   "active_hidden_delta_minus_contrast": 0.0,
   "active_hidden_delta_minus_diversity": 0.0,
-  "interpretation": "query/task scores differ, but sealed hidden teaching utility is flat across methods"
+  "interpretation": "method skills are frozen; run the independent sealed-hidden evaluator once"
 }

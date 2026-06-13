@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -34,6 +35,7 @@ from skill_deployment.teaching_utility_v02 import (  # noqa: E402
 OUTPUT_ROOT = ROOT / "outputs" / "teaching_utility_v02"
 REPORT = ROOT / "reports" / "TEACHING_UTILITY_V02_STATUS.md"
 SUMMARY_PATH = OUTPUT_ROOT / "teaching_utility_v02_summary.json"
+FREEZE_MANIFEST_PATH = OUTPUT_ROOT / "frozen_method_manifest.json"
 METHODS = (
     "random",
     "top_reward_success_only",
@@ -61,6 +63,10 @@ def read_json(path: Path, default: Any = None) -> Any:
     if not path.exists():
         return default
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def sha256_text(path: Path) -> str:
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
 
 
 def mean(values: list[float]) -> float:
@@ -190,6 +196,7 @@ def render_report(payload: dict[str, Any]) -> str:
         "- domains: `api_review`, `config_security`",
         "- split per repeat: `source_generation`, `active_query_pool`, `promotion_validation`, `sealed_hidden_test`",
         "- sealed hidden cases are fixed globally and excluded from generation/query/validation roles",
+        f"- hidden evaluation mode: `{payload.get('hidden_evaluation_mode', 'inline')}`",
         f"- active budget: `{payload['query_budget']} query trajectories per method per repeat`",
         f"- split integrity: `hidden_reused_outside_hidden={split_integrity.get('hidden_reused_outside_hidden', 'unknown')}`",
         "",
@@ -234,6 +241,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
     parser.add_argument("--max-steps", type=int, default=4)
     parser.add_argument("--query-budget", type=int, default=2)
+    parser.add_argument(
+        "--defer-hidden",
+        action="store_true",
+        help="Freeze final method skills and skip sealed-hidden evaluation; run scripts/run_teaching_utility_v02_hidden_eval.py once afterward.",
+    )
     args = parser.parse_args(argv)
 
     api_key = os.environ.get("OPENAI_API_KEY") or ""
@@ -267,6 +279,7 @@ def main(argv: list[str] | None = None) -> int:
 
     repeats_output: list[dict[str, Any]] = []
     method_rows: list[dict[str, Any]] = []
+    frozen_methods: list[dict[str, Any]] = []
     for plan in repeat_plans:
         repeat_dir = OUTPUT_ROOT / f"repeat_{plan.repeat_index:02d}"
         repeat_dir.mkdir(parents=True, exist_ok=True)
@@ -304,7 +317,6 @@ def main(argv: list[str] | None = None) -> int:
         write_json(repeat_dir / "split_manifest.json", split_manifest)
 
         baseline_validation = []
-        baseline_hidden = []
         for case in plan.validation_cases:
             baseline_validation.append(
                 run_case_agent(
@@ -318,19 +330,21 @@ def main(argv: list[str] | None = None) -> int:
                     api_key=api_key,
                 )
             )
-        for case in plan.hidden_cases:
-            baseline_hidden.append(
-                run_case_agent(
-                    case=case,
-                    skill_path=seed_skill_path,
-                    run_dir=repeat_dir / "baseline_hidden" / case.case_id,
-                    base_url=args.base_url,
-                    model=args.model,
-                    timeout_seconds=args.timeout_seconds,
-                    max_steps=args.max_steps,
-                    api_key=api_key,
+        baseline_hidden = []
+        if not args.defer_hidden:
+            for case in plan.hidden_cases:
+                baseline_hidden.append(
+                    run_case_agent(
+                        case=case,
+                        skill_path=seed_skill_path,
+                        run_dir=repeat_dir / "baseline_hidden" / case.case_id,
+                        base_url=args.base_url,
+                        model=args.model,
+                        timeout_seconds=args.timeout_seconds,
+                        max_steps=args.max_steps,
+                        api_key=api_key,
+                    )
                 )
-            )
         baseline_validation_score = mean([float(item["evaluation"]["score"]) for item in baseline_validation])
         baseline_hidden_score = mean([float(item["evaluation"]["score"]) for item in baseline_hidden])
         repeat_payload = {
@@ -342,7 +356,9 @@ def main(argv: list[str] | None = None) -> int:
             "source_runs": source_runs,
             "source_lessons": source_lessons,
             "baseline_validation_score": baseline_validation_score,
-            "baseline_hidden_score": baseline_hidden_score,
+            "baseline_hidden_score": baseline_hidden_score if baseline_hidden else None,
+            "baseline_seed_skill_path": str(seed_skill_path),
+            "baseline_seed_skill_hash": sha256_text(seed_skill_path),
             "methods": [],
         }
 
@@ -432,24 +448,26 @@ def main(argv: list[str] | None = None) -> int:
                         api_key=api_key,
                     )
                 )
-            split_manifest["hidden_first_accessed_at"] = split_manifest["hidden_first_accessed_at"] or utc_now()
-            write_json(repeat_dir / "split_manifest.json", split_manifest)
-            for case in plan.hidden_cases:
-                hidden_runs.append(
-                    run_case_agent(
-                        case=case,
-                        skill_path=final_skill_path,
-                        run_dir=repeat_dir / method_name / "hidden" / case.case_id,
-                        base_url=args.base_url,
-                        model=args.model,
-                        timeout_seconds=args.timeout_seconds,
-                        max_steps=args.max_steps,
-                        api_key=api_key,
+            if not args.defer_hidden:
+                split_manifest["hidden_first_accessed_at"] = split_manifest["hidden_first_accessed_at"] or utc_now()
+                write_json(repeat_dir / "split_manifest.json", split_manifest)
+                for case in plan.hidden_cases:
+                    hidden_runs.append(
+                        run_case_agent(
+                            case=case,
+                            skill_path=final_skill_path,
+                            run_dir=repeat_dir / method_name / "hidden" / case.case_id,
+                            base_url=args.base_url,
+                            model=args.model,
+                            timeout_seconds=args.timeout_seconds,
+                            max_steps=args.max_steps,
+                            api_key=api_key,
+                        )
                     )
-                )
 
             validation_score = mean([float(item["evaluation"]["score"]) for item in validation_runs])
             hidden_score = mean([float(item["evaluation"]["score"]) for item in hidden_runs])
+            final_skill_hash = sha256_text(final_skill_path)
             method_payload = {
                 "method": method_name,
                 "query_rounds": query_rounds,
@@ -460,14 +478,28 @@ def main(argv: list[str] | None = None) -> int:
                 "validation_runs": validation_runs,
                 "hidden_runs": hidden_runs,
                 "validation_score": validation_score,
-                "hidden_score": hidden_score,
+                "hidden_score": hidden_score if hidden_runs else None,
                 "validation_delta": round(validation_score - baseline_validation_score, 4),
-                "hidden_delta": round(hidden_score - baseline_hidden_score, 4),
+                "hidden_delta": round(hidden_score - baseline_hidden_score, 4) if hidden_runs and baseline_hidden else None,
                 "hidden_pass_count": sum(1 for item in hidden_runs if item["evaluation"]["pass_at_1"]),
                 "hidden_row_count": len(hidden_runs),
+                "final_skill_hash": final_skill_hash,
+                "hidden_evaluation_status": "deferred" if args.defer_hidden else "inline_complete",
                 "final_candidate_state": prior_candidates if method_name == "active_discriminative_evidence" else [],
             }
             write_json(repeat_dir / method_name / "method_summary.json", method_payload)
+            frozen_methods.append(
+                {
+                    "repeat_index": plan.repeat_index,
+                    "method": method_name,
+                    "final_skill_path": str(final_skill_path),
+                    "final_skill_hash": final_skill_hash,
+                    "validation_score": validation_score,
+                    "validation_delta": method_payload["validation_delta"],
+                    "selected_query_case_ids": method_payload["selected_query_case_ids"],
+                    "sealed_hidden_cases": [case.case_id for case in plan.hidden_cases],
+                }
+            )
             repeat_payload["methods"].append(method_payload)
             for round_payload in query_rounds:
                 method_rows.append(
@@ -500,7 +532,7 @@ def main(argv: list[str] | None = None) -> int:
                 "repeat_count": len(repeat_subset),
                 "mean_query_score": mean([float(row["mean_query_score"]) for row in repeat_subset]),
                 "mean_validation_delta": mean([float(row["validation_delta"]) for row in repeat_subset]),
-                "mean_hidden_delta": mean([float(row["hidden_delta"]) for row in repeat_subset]),
+                "mean_hidden_delta": mean([float(row["hidden_delta"]) for row in repeat_subset if row["hidden_delta"] is not None]),
                 "hidden_pass_count": sum(int(row["hidden_pass_count"]) for row in repeat_subset),
                 "hidden_row_count": sum(int(row["hidden_row_count"]) for row in repeat_subset),
             }
@@ -518,7 +550,12 @@ def main(argv: list[str] | None = None) -> int:
         active_hypothesis = "inconclusive"
     query_scores = [float(row["mean_query_score"]) for row in method_summary]
     hidden_deltas = [float(row["mean_hidden_delta"]) for row in method_summary]
-    if round(max(hidden_deltas) - min(hidden_deltas), 4) == 0.0 and round(max(query_scores) - min(query_scores), 4) > 0.0:
+    if args.defer_hidden:
+        task_vs_teaching = "pending_independent_hidden_eval"
+        active_hypothesis = "pending_independent_hidden_eval"
+        best_method = "pending_independent_hidden_eval"
+        interpretation = "method skills are frozen; run the independent sealed-hidden evaluator once"
+    elif round(max(hidden_deltas) - min(hidden_deltas), 4) == 0.0 and round(max(query_scores) - min(query_scores), 4) > 0.0:
         task_vs_teaching = "task_utility_not_predictive_in_this_sealed_run"
         interpretation = "query/task scores differ, but sealed hidden teaching utility is flat across methods"
     elif best_method != "top_reward_success_only" and active["mean_query_score"] <= next(row for row in method_summary if row["method"] == "top_reward_success_only")["mean_query_score"]:
@@ -529,6 +566,31 @@ def main(argv: list[str] | None = None) -> int:
         interpretation = "hidden signal does not contradict immediate task utility under this bounded pilot"
     active_minus_contrast = round(float(active["mean_hidden_delta"]) - float(contrast["mean_hidden_delta"]), 4)
     active_minus_diversity = round(float(active["mean_hidden_delta"]) - float(diversity["mean_hidden_delta"]), 4)
+    freeze_manifest = {
+        "generated_at": utc_now(),
+        "status": "frozen_pending_independent_hidden_eval" if args.defer_hidden else "inline_hidden_eval_also_present",
+        "base_url": args.base_url,
+        "model": args.model,
+        "repeat_count": args.repeats,
+        "query_budget": args.query_budget,
+        "global_sealed_hidden_cases": global_hidden_ids,
+        "split_integrity": {
+            "hidden_reused_outside_hidden": hidden_reused_outside_hidden,
+            "non_hidden_role_case_ids": non_hidden_role_ids,
+        },
+        "baseline_seed_skills": [
+            {
+                "repeat_index": repeat_payload["repeat_index"],
+                "skill_path": repeat_payload["baseline_seed_skill_path"],
+                "skill_hash": repeat_payload["baseline_seed_skill_hash"],
+                "sealed_hidden_cases": repeat_payload["hidden_cases"],
+            }
+            for repeat_payload in repeats_output
+        ],
+        "methods": frozen_methods,
+        "hidden_eval_command": "skill-deploy teaching-utility-v02-hidden-eval --manifest outputs/teaching_utility_v02/frozen_method_manifest.json",
+    }
+    write_json(FREEZE_MANIFEST_PATH, freeze_manifest)
     payload = {
         "generated_at": utc_now(),
         "repeat_count": args.repeats,
@@ -536,6 +598,8 @@ def main(argv: list[str] | None = None) -> int:
         "methods": list(METHODS),
         "base_url": args.base_url,
         "model": args.model,
+        "hidden_evaluation_mode": "deferred_independent_script" if args.defer_hidden else "inline",
+        "freeze_manifest": str(FREEZE_MANIFEST_PATH),
         "task_count": len({case.case_id for case in repeat_plans[0].generation_cases + repeat_plans[0].query_cases + repeat_plans[0].validation_cases + repeat_plans[0].hidden_cases}),
         "global_sealed_hidden_cases": global_hidden_ids,
         "split_integrity": {

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -144,6 +145,14 @@ def main(argv: list[str] | None = None) -> int:
     teaching_utility.add_argument("--timeout-seconds", default="60")
     teaching_utility.add_argument("--max-steps", default="4")
     teaching_utility.add_argument("--query-budget", default="2")
+    teaching_utility.add_argument("--defer-hidden", action="store_true")
+    teaching_hidden = subparsers.add_parser("teaching-utility-v02-hidden-eval", help="Run the independent sealed-hidden evaluation for frozen v0.2 methods.")
+    teaching_hidden.add_argument("--manifest", default="outputs/teaching_utility_v02/frozen_method_manifest.json")
+    teaching_hidden.add_argument("--base-url", default=os.environ.get("OPENAI_BASE_URL") or "https://api.deepseek.com")
+    teaching_hidden.add_argument("--model", default=os.environ.get("MODEL") or os.environ.get("OPENAI_MODEL") or "deepseek-v4-flash")
+    teaching_hidden.add_argument("--timeout-seconds", default="60")
+    teaching_hidden.add_argument("--max-steps", default="4")
+    teaching_hidden.add_argument("--force", action="store_true")
     subparsers.add_parser("open-source-readiness", help="Audit open-source prototype readiness.")
     subparsers.add_parser("public-release-readiness", help="Audit strict public release readiness.")
     subparsers.add_parser("swebench-infra-final", help="Finalize SWE-bench infra status from bounded official harness attempts.")
@@ -493,23 +502,41 @@ def main(argv: list[str] | None = None) -> int:
             ]
         )
     if args.command == "teaching-utility-v02":
-        return run_script(
-            [
-                "scripts/run_teaching_utility_v02_pilot.py",
-                "--repeats",
-                args.repeats,
-                "--base-url",
-                args.base_url,
-                "--model",
-                args.model,
-                "--timeout-seconds",
-                args.timeout_seconds,
-                "--max-steps",
-                args.max_steps,
-                "--query-budget",
-                args.query_budget,
-            ]
-        )
+        command = [
+            "scripts/run_teaching_utility_v02_pilot.py",
+            "--repeats",
+            args.repeats,
+            "--base-url",
+            args.base_url,
+            "--model",
+            args.model,
+            "--timeout-seconds",
+            args.timeout_seconds,
+            "--max-steps",
+            args.max_steps,
+            "--query-budget",
+            args.query_budget,
+        ]
+        if args.defer_hidden:
+            command.append("--defer-hidden")
+        return run_script(command)
+    if args.command == "teaching-utility-v02-hidden-eval":
+        command = [
+            "scripts/run_teaching_utility_v02_hidden_eval.py",
+            "--manifest",
+            args.manifest,
+            "--base-url",
+            args.base_url,
+            "--model",
+            args.model,
+            "--timeout-seconds",
+            args.timeout_seconds,
+            "--max-steps",
+            args.max_steps,
+        ]
+        if args.force:
+            command.append("--force")
+        return run_script(command)
     if args.command == "open-source-readiness":
         return run_script(["scripts/check_open_source_readiness.py"])
     if args.command == "public-release-readiness":
