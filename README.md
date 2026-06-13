@@ -1,260 +1,180 @@
 # Expert Skill Distillation Prototype
 
-一个面向 Agent 的研究级原型：把专家知识或公开材料蒸馏成可安装的 Skill，再用执行证据和 verifier 反馈推动 Skill 进化。
+一个面向 Agent 的研究级原型：把专家知识、用户规则或公开材料自动蒸馏成可安装的 Skill，再让这个 Skill 在 evidence 和 verifier 约束下持续进化。
 
-它想解决的不是“某个 prompt 多过几个 case”，而是更底层的问题：
+它真正想解决的不是“再写一个 prompt 仓库”，而是两件更底层的事：
 
-> 能不能把知识蒸馏、安装运行、证据收集、候选修正、晋升/拒绝/回滚，做成一条真实可执行的闭环？
+1. 能不能把材料自动蒸馏成真正可运行的 Skill package？
+2. 能不能让 Skill 的升级、拒绝、回滚都由同一条证据链驱动？
 
-## 我们真正要做什么
+## 我们真正做的是什么
 
-这个仓库的主线一直只有两段，而且现在已经都落到了代码和 fresh evidence 上：
+这个仓库的核心一直是一个闭环：
+
+- **专家知识系统蒸馏**：把材料变成 Skill
+- **基于执行反馈的 Skill 进化**：让 Skill 在任务和证据里升级，而不是手工改 prompt
 
 ```mermaid
 flowchart LR
     A["专家知识 / 用户材料 / 公开材料"] --> B["自动蒸馏为 Skill Package"]
     B --> C["安装到 Runtime"]
     C --> D["在任务中执行"]
-    D --> E["收集 evidence + verifier feedback"]
-    E --> F["生成候选 Skill 修订"]
-    F --> G["门控决定 promote / reject / rollback"]
-    G --> C
+    D --> E["留下 Evidence Bundle"]
+    E --> F["Verifier 给出 pass/fail/缺失/误报反馈"]
+    F --> G["生成 Candidate Skill"]
+    G --> H["Promote / Reject / Rollback Gate"]
+    H --> C
 ```
 
-换句话说，这不是一个单纯的安全审计 prompt 仓库，而是一个：
+换句话说，这里研究的是：
 
-**Evidence-Grounded Skill Evolution Runtime**
+> Skill 能不能像一个被安装、执行、验证、修订、门控的运行对象那样持续进化。
 
-## 当前最前沿的问题
+## 当前最强的证据
 
-我们现在最关心的已经不是“这个 Skill 又多过了几个 case”，而是两个更本质的问题：
+### 1. Runtime 主闭环已经成型
 
-1. 从专家知识、用户材料、公开材料里自动蒸馏出来的 Skill，能不能真的迁移到新任务？
-2. 一条执行轨迹对当前任务有用，不等于它对“教会下一个 Skill”有用。那什么样的轨迹才有 teaching utility？
+仓库现在已经具备真实可运行的主链：
 
-这也是这个仓库最近新增 `v0.2` 试验线的原因：
+```text
+材料 -> 蒸馏为 Skill package -> install 到 runtime
+-> 在任务中执行 -> evidence bundle + verifier feedback
+-> candidate Skill -> promote / reject / rollback gate
+```
 
-- 用一个真实 live tool-agent 去跑任务，而不是只做静态比表
-- 把 `task utility` 和 `teaching utility` 分开测
-- 比较 `random / success-only / contrast / diversity / active discriminative` 这 5 种轨迹选择策略
+这意味着 Skill 在这里已经不只是静态 prompt，而是一个可安装、可调用、可比较、可回滚的运行对象。
 
-## 现在已经做到什么
+### 2. bounded open-world 自动蒸馏已经有支持性证据
 
-下面这些能力目前都已经有代码入口，而且不是只停留在报告表面：
+我们新增了 `hybrid_semantic` 蒸馏路径：
 
-### 1. 把材料蒸馏成 Skill
+- 先用 LLM 在公开材料上做 capability 语义选择
+- 如果某条材料上模型保守 abstain，再显式记录 provenance 后退回 keyword projection
+- 整个过程都保留 fallback 证据，不伪装成纯语义成功
 
-- 从内置专家材料蒸馏：`skill-deploy distill-skill`
-- 从用户/公开材料蒸馏：`skill-deploy distill-open-materials`
-- 生成的结果是可安装的 Skill package，而不是一段散乱提示词
+当前这条线最值得看的两条结果是：
 
-Skill package 至少包含：
+- 一次 fresh run：`8 / 10` effective pass，对比 baseline `7 / 10`
+- 最新 fresh rerun：`8 / 10` effective pass，与 baseline `8 / 10` 持平
 
-- `SKILL.md`
-- `manifest.json`
-- `examples/`
-- `eval/`
-- `versions/<version>/provenance/`
-
-### 2. 把 Skill 当成运行时对象管理
-
-- 安装：`skill-deploy install`
-- 运行：`skill-deploy run-skill`
-- 对比版本收益：`skill-deploy compare-variants`
-- 候选修订：`skill-deploy evolve` / `skill-deploy open-world-closed-loop`
-- 回滚：`skill-deploy rollback`
-
-### 3. 用统一证据链约束进化
-
-系统不是“看到一个 badcase 就直接改 Skill”，而是要求：
-
-- 运行留下 evidence bundle
-- verifier 明确反馈 pass/fail/missing capability/false positive
-- 候选 Skill 必须和 active skill 直接对比
-- 不满足严格条件就 reject，不自动 promote
-
-## 当前最强的新证据
-
-### A. 有界 open-world 自动蒸馏已经得到支持
-
-我们现在已经有一条真实跑通的路径：
-
-- 输入：公开安全材料（当前验证用 OWASP 公开文档）
-- 过程：自动投影出 capability group，编译成 installable Skill
-- 输出：`secure_code_review_open_world_distilled`
-
-当前最新有界验证结果：
-
-- bounded public-material validation：`8 / 10` effective pass
-- baseline installed skill：`5 / 10` effective pass
-- false positives：`0`
-- clean negative controls：`3`
-- unsupported limitations retained：`3`
+这说明在当前有界公开材料场景里，系统已经能**自动蒸馏出接近现有安装版基线、并且一度超过基线**的 Skill。
 
 对应报告：
 
-- `reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md`
+- [reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md](reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md)
 
-### B. 有界 evolution 稳定产出更优 Skill 已经得到一条闭环证据
+### 3. bounded evolution 已经拿到更真实的改进证据
 
-在上面的 open-world distilled skill 基础上，我们又做了一个窄闭环：
+我们不再只做“模板追加段落”，而是让 `live_semantic` candidate 直接改写 capability section 本体，再和 base skill 做严格比较。
 
-- 从真实失败模式出发生成 candidate
-- candidate 与 base skill 做直接比较
-- 不自动覆盖 active 版本
-- 连续 3 次 fresh rerun 都满足严格晋升条件
+当前最强的两层证据是：
 
-当前结果：
+- 一次 fresh generated-candidate run：`3 / 3` strict promotion proposals
+- 一次 frozen-candidate repeatability run：`4 / 5` strict promotion proposals，平均分差 `+0.0333`
 
-- base score：`0.93`
-- candidate score：`0.97`
-- delta：`+0.04`
-- repeats：`3 / 3`
-- false-positive delta：`0`
-- positive regressions：`0`
+这个 frozen candidate 是把一次成功的 live semantic candidate 冻结下来，再做多轮 live 重复验证。它没有做到“每一轮都严格更优”，但已经给出更强的 bounded repeatability 证据：
 
-对应报告：
-
-- `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
-
-这说明：
-
-> 在当前“公开材料蒸馏 -> 安装运行 -> 基于真实失败修订”的有界场景里，我们已经拿到了一条稳定 improvement 证据。
-
-### C. v0.2 teaching-utility pilot 已经跑通，而且保留了负结果
-
-这是当前最新、也最像研究问题本体的一条证据线：
-
-- 2 个 domain：`api_review`、`config_security`
-- 8 个本地任务，按 repeat 旋转成 `source_generation / active_query_pool / promotion_validation / sealed_hidden_test`
-- 1 个真实 live tool-agent
-- 5 种轨迹选择方法
-- 3 次 repeat
-
-当前 fresh 结果：
-
-- `top_reward_success_only` 平均 hidden delta：`0.2222`
-- `diversity` 平均 hidden delta：`0.2000`
-- `active_discriminative_evidence` 平均 hidden delta：`0.0000`
-- 当前 `active` 假设结论：`hypothesis_not_supported`
-
-这条结果很重要，因为它说明：
-
-> “更会做当前任务” 和 “更会教出下一个 Skill” 不是一回事；  
-> 而且我们当前写的 active 选择器，还没有赢过更朴素的选择策略。
+- `promotion_count = 4 / 5`
+- `base_mean_score = 0.9167`
+- `candidate_mean_score = 0.95`
+- `mean_score_delta = +0.0333`
+- `false_positive_delta = 0`
 
 对应报告：
 
-- `reports/TEACHING_UTILITY_V02_STATUS.md`
+- [reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md](reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md)
 
-## 这不意味着什么
+### 4. teaching-utility v0.2 保留了负结果
 
-我们刻意不把它说大。当前还**不能**声称：
+这条线问的不是“哪条轨迹能让当前任务分数更高”，而是：
 
-- 生产级漏洞扫描器
-- 通用 exploit 生成或攻击链执行
-- 任意 open-world 材料上都能稳定自动蒸馏
-- evolution 已经在任意任务上稳定搜索出更优 Skill
-- 已经证明 open-world teaching-utility active selection 普遍成立
-- 官方 CyberSecEval / AutoPatchBench / CVE-Bench / SWE-bench 成绩
+> 哪条轨迹更适合教出下一个更好的 Skill？
 
-当前最准确的说法是：
+当前更严格的 matched-budget live pilot 里：
 
-> 这是一个已经具备“专家/公开材料蒸馏 -> Skill 安装运行 -> verifier/evidence 反馈 -> 候选修订与门控”的研究级原型；  
-> 它已经拿到有界 open-world 自动蒸馏和有界稳定改进证据，  
-> 但在更强的 teaching-utility v0.2 试验里，当前 active 轨迹选择策略还没有被证明优于朴素基线。
+- `active_discriminative_evidence` 还没有赢过更朴素的 `top_reward_success_only`
+- 当前结论仍然是 `active_selection_hypothesis = hypothesis_not_supported`
 
-## 最短上手路径
+这条负结果没有被硬拗成成功，反而说明这个仓库会保留真实失败，而不是只堆好看的数字。
 
-### 1. 安装
+对应报告：
+
+- [reports/TEACHING_UTILITY_V02_STATUS.md](reports/TEACHING_UTILITY_V02_STATUS.md)
+
+## 你可以直接用它做什么
+
+### 路径 A：直接跑仓库内置 Skill
 
 ```powershell
 python -m pip install -e .[dev]
-```
-
-### 2. 直接使用仓库内置 Skill
-
-```powershell
 skill-deploy build-codex-skill
 skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2
 skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic
 ```
 
-### 3. 从你自己的材料蒸馏一个 Skill
-
-仓库自带了一个最小示例：
+### 路径 B：从你自己的材料蒸馏一个 Skill
 
 ```powershell
-skill-deploy distill-open-materials --materials demo/open_materials_example.json --skill-id my_distilled_skill --version v1
+skill-deploy distill-open-materials --materials demo/open_materials_example.json --skill-id my_distilled_skill --version v1 --projection-mode hybrid_semantic --base-url https://api.deepseek.com --model deepseek-v4-flash
 skill-deploy install --skill outputs/distilled_open_materials/my_distilled_skill --version v1
 skill-deploy run-skill --installed my_distilled_skill --case upload_security_001 --backend offline_deterministic
 ```
 
-### 4. 对比版本收益
+### 路径 C：比较 Skill 版本是否真的带来净收益
 
 ```powershell
 skill-deploy compare-variants --cases upload,config --backend offline_deterministic --source installed --installed-skill secure_code_review
 ```
 
-### 5. 跑公开材料自动蒸馏验证
+### 路径 D：跑 bounded open-world 蒸馏 + 演化
 
 ```powershell
 $env:OPENAI_API_KEY = "<your key>"
-skill-deploy open-world-distill-validation --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash
+skill-deploy open-world-distill-validation --skill-id secure_code_review_open_world_hybrid_distilled --version v1 --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash --projection-mode hybrid_semantic
+skill-deploy open-world-closed-loop --installed secure_code_review_open_world_hybrid_distilled --repeats 5 --base-url https://api.deepseek.com --model deepseek-v4-flash --candidate-mode live_semantic --reuse-candidate-dir outputs/open_world_closed_loop/frozen_candidate_config_guard_v1
 ```
 
-### 6. 跑 open-world 闭环改进验证
+## 如果你第一次进仓库
 
-```powershell
-$env:OPENAI_API_KEY = "<your key>"
-skill-deploy open-world-closed-loop --installed secure_code_review_open_world_distilled --repeats 3 --base-url https://api.deepseek.com --model deepseek-v4-flash
-```
-
-### 7. 跑 v0.2 teaching-utility pilot
-
-```powershell
-$env:OPENAI_API_KEY = "<your key>"
-skill-deploy teaching-utility-v02 --repeats 3 --base-url https://api.deepseek.com --model deepseek-v4-flash
-```
-
-这条命令会真的调用 live tool-agent，比较不同轨迹选择策略对 hidden test 的教学收益。
-
-## 这个仓库里最值得看的文件
-
-如果你第一次来，不用把所有文件夹都翻一遍。建议只看下面这些：
+建议只先看这几个文件，不需要一口气翻完整个目录：
 
 1. `README.md`
-2. `docs/USER_MANUAL_ZH.md`
-3. `docs/CLAIM_BOUNDARY.md`
-4. `reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md`
-5. `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
-6. `reports/TEACHING_UTILITY_V02_STATUS.md`
-7. `reports/TEACHER_PROGRESS_BRIEF_20260613.md`
+2. [docs/USER_MANUAL_ZH.md](docs/USER_MANUAL_ZH.md)
+3. [docs/PROJECT_GUIDE_ZH.md](docs/PROJECT_GUIDE_ZH.md)
+4. [docs/CLAIM_BOUNDARY.md](docs/CLAIM_BOUNDARY.md)
+5. [reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md](reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md)
+6. [reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md](reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md)
+7. [reports/TEACHER_PROGRESS_BRIEF_20260613.md](reports/TEACHER_PROGRESS_BRIEF_20260613.md)
 
-## 关键目录
+## 目录导览
 
 ```text
-src/skill_deployment/   核心 runtime / install state / distillation / verifier / CLI
-agents/                 本地与 live agent runner
-scripts/                蒸馏、验证、比较、演化脚本
-data/                   controlled task cases 与本地代表样本
+src/skill_deployment/   runtime、distillation、install state、verifier、CLI
+agents/                 live / local agent 执行器
+scripts/                入口脚本、实验脚本、导出脚本
+data/                   controlled cases、holdout、公开材料验证样本
 demo/                   最小材料示例
-outputs/                蒸馏产物、installed skills、运行 evidence、候选 skill
-reports/                结果报告、claim 校准、阶段性结论
-docs/                   使用说明、边界说明、复现说明
-review_package/         对外审阅材料
+outputs/                distilled skills、installed skills、runtime evidence、pilot 结果
+reports/                阶段报告、claim 校准、实验结论
+docs/                   用户说明、项目说明、边界说明
+review_package/         对外评审材料
 ```
 
-## 给谁用
+## 当前不能声称什么
 
-这个仓库适合下面这些方向的人直接拿去改或复用：
+这个仓库现在**不能**诚实声称：
 
-- Agent Skill engineering
-- Expert knowledge distillation
-- Evidence-grounded runtime / verifier loop
-- Skill evolution / repair gating
-- Defensive security review
-- Software patch review
+- 生产级漏洞扫描器
+- exploit 生成或攻击链执行工具
+- 任意 open-world 材料上都能稳定自动蒸馏
+- evolution 已经在广泛任务上稳定产出更优 Skill
+- 官方 CyberSecEval / AutoPatchBench / CVE-Bench / SWE-bench 成绩
+
+当前最准确的说法是：
+
+> 这是一个 Evidence-Grounded Skill Evolution Runtime 的研究级原型。  
+> 它已经拿到 bounded open-world 自动蒸馏和 bounded evolution improvement 的支持性证据，  
+> 但这些证据仍然是有界、本地、可审计的，不等于官方外部 benchmark 或通用真实世界能力。
 
 ## 基础校验
 

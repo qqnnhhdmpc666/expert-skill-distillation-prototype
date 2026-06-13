@@ -21,6 +21,7 @@ if str(SRC_ROOT) not in sys.path:
 from skill_deployment import resolve_installed_skill, score_from_verifier  # noqa: E402
 from skill_deployment.evidence import false_positive_count, write_json, write_text  # noqa: E402
 from skill_deployment.install_state import load_active_pointer  # noqa: E402
+from skill_deployment.openai_compat import call_chat_completion_json  # noqa: E402
 from skill_deployment.schemas import SkillPackage  # noqa: E402
 
 import scripts.run_defensive_security_mini_suite as mini  # noqa: E402
@@ -48,9 +49,33 @@ def read_json(path: Path, default: Any = None) -> Any:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
+def read_text(path: Path, default: str = "") -> str:
+    if not path.exists():
+        return default
+    return path.read_text(encoding="utf-8-sig")
+
+
+def excerpt(text: str, *, limit: int = 1200) -> str:
+    compact = " ".join(text.split())
+    if len(compact) <= limit:
+        return compact
+    return compact[: limit - 3].rstrip() + "..."
+
+
 def source_failure_rows() -> list[dict[str, Any]]:
     summary = read_json(OPEN_WORLD_SUMMARY, {})
     return [row for row in summary.get("distilled_rows", []) if not row.get("effective_pass")]
+
+
+def source_guard_rows() -> list[dict[str, Any]]:
+    summary = read_json(OPEN_WORLD_SUMMARY, {})
+    return [
+        row
+        for row in summary.get("distilled_rows", [])
+        if row.get("effective_pass")
+        and row.get("clean_or_negative")
+        and row.get("task_family") == "config_security"
+    ]
 
 
 def load_cases() -> list[dict[str, Any]]:
@@ -72,6 +97,177 @@ def clone_package(base: SkillPackage, *, version: str) -> SkillPackage:
         trace_contract=base.trace_contract,
         metadata=metadata,
     )
+
+
+def summarized_failure_feedback(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    for row in rows:
+        artifact_dir = Path(str(row.get("artifact_dir") or ""))
+        verifier = read_json(artifact_dir / "verifier_report.json", {})
+        summary = read_json(artifact_dir / "variant_summary.json", {})
+        normalized = read_json(artifact_dir / "normalized_execution.json", {})
+        target_excerpt = excerpt(read_text(artifact_dir / "target" / "target.md"))
+        prior_findings = [
+            {
+                "capability_id": finding.get("capability_id"),
+                "issue": finding.get("issue"),
+                "evidence_span": finding.get("evidence_span"),
+            }
+            for finding in normalized.get("findings", [])
+            if isinstance(finding, dict)
+        ]
+        result.append(
+            {
+                "case_id": row.get("case_id"),
+                "task_family": row.get("task_family"),
+                "feedback_type": row.get("feedback_type"),
+                "missing_capabilities": verifier.get("missing_capabilities", []),
+                "false_positive_capabilities": verifier.get("false_positive_capabilities", []),
+                "activated_capability_group": summary.get("activated_capability_group"),
+                "summary_score": summary.get("score"),
+                "target_excerpt": target_excerpt,
+                "prior_findings": prior_findings,
+                "normalizer_taxonomy": summary.get("post_normalization_verifier_taxonomy", []),
+            }
+        )
+    return result
+
+
+def summarized_guard_feedback(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    for row in rows:
+        artifact_dir = Path(str(row.get("artifact_dir") or ""))
+        normalized = read_json(artifact_dir / "normalized_execution.json", {})
+        result.append(
+            {
+                "case_id": row.get("case_id"),
+                "task_family": row.get("task_family"),
+                "target_excerpt": excerpt(read_text(artifact_dir / "target" / "target.md")),
+                "observed_findings": normalized.get("findings", []),
+                "expected_behavior": "keep_no_findings_or_do_not_get_worse",
+            }
+        )
+    return result
+
+
+def apply_capability_edits(base_text: str, edits: list[dict[str, Any]]) -> str:
+    lines = base_text.splitlines()
+    for edit in edits:
+        capability_id = str(edit.get("capability_id") or "").strip()
+        replacement_review_rule = str(edit.get("replacement_review_rule") or "").strip()
+        replacement_evidence_pattern = str(edit.get("replacement_evidence_pattern") or "").strip()
+        replacement_fix_shape = str(edit.get("replacement_fix_shape") or "").strip()
+        additional_lessons = [str(item).strip() for item in edit.get("additional_lessons", []) if str(item).strip()]
+        if not capability_id or not replacement_review_rule:
+            continue
+        capability_index = next((i for i, line in enumerate(lines) if line.startswith(f"  - `{capability_id}`:")), None)
+        if capability_index is None:
+            continue
+        section_end = len(lines)
+        for i in range(capability_index + 1, len(lines)):
+            if lines[i].startswith("  - `") or lines[i].startswith("### ") or lines[i].startswith("## "):
+                section_end = i
+                break
+        review_index = next((i for i in range(capability_index + 1, section_end) if lines[i].startswith("    - review_rule:")), None)
+        if review_index is not None:
+            lines[review_index] = f"    - review_rule: {replacement_review_rule}"
+        evidence_index = next((i for i in range(capability_index + 1, section_end) if lines[i].startswith("    - evidence_pattern:")), None)
+        if evidence_index is not None and replacement_evidence_pattern:
+            lines[evidence_index] = f"    - evidence_pattern: `{replacement_evidence_pattern}`"
+        fix_index = next((i for i in range(capability_index + 1, section_end) if lines[i].startswith("    - fix_shape:")), None)
+        if fix_index is not None and replacement_fix_shape:
+            lines[fix_index] = f"    - fix_shape: {replacement_fix_shape}"
+        insert_after = next((i for i in range(capability_index + 1, section_end) if lines[i].startswith("    - fix_shape:")), section_end - 1)
+        lesson_lines = [f'    - distilled_public_lesson: "{lesson}"' for lesson in additional_lessons if lesson]
+        if lesson_lines:
+            insert_at = insert_after + 1
+            while insert_at < len(lines) and lines[insert_at].startswith("    - distilled_public_lesson:"):
+                insert_at += 1
+            lines[insert_at:insert_at] = lesson_lines
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def relevant_capability_ids(feedback_rows: list[dict[str, Any]]) -> list[str]:
+    capability_ids: set[str] = set()
+    for row in feedback_rows:
+        for capability_id in row.get("missing_capabilities", []):
+            if capability_id:
+                capability_ids.add(str(capability_id))
+        for finding in row.get("prior_findings", []):
+            capability_id = str(finding.get("capability_id") or "").strip()
+            if capability_id:
+                capability_ids.add(capability_id)
+    return sorted(capability_ids)
+
+
+def skill_excerpt_for_capabilities(base_text: str, capability_ids: list[str]) -> str:
+    if not capability_ids:
+        return base_text[:4000]
+    lines = base_text.splitlines()
+    segments: list[str] = []
+
+    review_start = next((i for i, line in enumerate(lines) if line.startswith("## Review Protocol")), None)
+    if review_start is not None:
+        review_end = next((i for i in range(review_start + 1, len(lines)) if lines[i].startswith("## ") and i > review_start), len(lines))
+        segments.extend(lines[review_start:review_end])
+        segments.append("")
+
+    group_starts = [i for i, line in enumerate(lines) if line.startswith("### ")]
+    for group_index, start in enumerate(group_starts):
+        end = group_starts[group_index + 1] if group_index + 1 < len(group_starts) else next(
+            (i for i in range(start + 1, len(lines)) if lines[i].startswith("## ") and not lines[i].startswith("### ")),
+            len(lines),
+        )
+        group_lines = lines[start:end]
+        if any(f"`{capability_id}`" in line for capability_id in capability_ids for line in group_lines):
+            segments.extend(group_lines)
+            segments.append("")
+
+    excerpt_text = "\n".join(segments).strip()
+    return excerpt_text if excerpt_text else base_text[:4000]
+
+
+def refine_capability_edits(
+    edits: list[dict[str, Any]],
+    *,
+    feedback_rows: list[dict[str, Any]],
+    guard_rows: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    refined: list[dict[str, Any]] = []
+    refinement_notes: list[str] = []
+    saw_combo_failure = any(
+        any(str(finding.get("capability_id") or "").strip() == "CONFIG_AUDIT_EXPORT" for finding in row.get("prior_findings", []))
+        for row in feedback_rows
+    )
+    for original in edits:
+        edit = json.loads(json.dumps(original))
+        capability_id = str(edit.get("capability_id") or "").strip()
+        if capability_id == "CONFIG_ENV_GUARD":
+            review_rule = str(edit.get("replacement_review_rule") or "").strip()
+            evidence_pattern = str(edit.get("replacement_evidence_pattern") or "").strip()
+            fix_shape = str(edit.get("replacement_fix_shape") or "").strip()
+            lessons = [str(item).strip() for item in edit.get("additional_lessons", []) if str(item).strip()]
+            if "comments, file names, or debugging notes alone do not count as explicit isolation" not in review_rule.lower():
+                review_rule = review_rule.rstrip(".") + ". Comments, file names, or debugging notes alone do not count as explicit isolation."
+                refinement_notes.append("config_env_guard_explicit_isolation_clause_added")
+            if "explicit dev-only profile or environment gate" not in review_rule.lower():
+                review_rule = review_rule.rstrip(".") + ". Only an explicit dev-only profile or environment gate can suppress this finding."
+                refinement_notes.append("config_env_guard_dev_only_guard_clause_added")
+            if "comments or file naming" not in evidence_pattern.lower():
+                evidence_pattern = evidence_pattern.rstrip(".") + "; comments or file naming without explicit gating still count as in-scope evidence"
+                refinement_notes.append("config_env_guard_evidence_pattern_tightened")
+            if "local dev-only override" not in fix_shape.lower():
+                fix_shape = fix_shape.rstrip(".") + " Prefer local dev-only overrides or environment variables for non-production secrets."
+                refinement_notes.append("config_env_guard_fix_shape_refined")
+            if saw_combo_failure and not any("same target span can justify both" in lesson.lower() for lesson in lessons):
+                lessons.append("The same target span can justify both CONFIG_AUDIT_EXPORT and CONFIG_ENV_GUARD when audit gaps and unisolated secrets appear together.")
+                refinement_notes.append("config_env_guard_combo_lesson_added")
+            edit["replacement_review_rule"] = review_rule
+            edit["replacement_evidence_pattern"] = evidence_pattern
+            edit["replacement_fix_shape"] = fix_shape
+            edit["additional_lessons"] = lessons
+        refined.append(edit)
+    return refined, refinement_notes
 
 
 def candidate_addition(rows: list[dict[str, Any]]) -> str:
@@ -120,10 +316,168 @@ def candidate_addition(rows: list[dict[str, Any]]) -> str:
         )
     return "\n".join(sections).strip()
 
+def semantic_candidate_patch(
+    *,
+    base: SkillPackage,
+    base_text: str,
+    source_rows: list[dict[str, Any]],
+    guard_rows: list[dict[str, Any]],
+    base_url: str,
+    api_key: str,
+    model: str,
+    timeout_seconds: float,
+) -> dict[str, Any]:
+    feedback_rows = summarized_failure_feedback(source_rows)
+    negative_guard_rows = summarized_guard_feedback(guard_rows)
+    capability_ids = relevant_capability_ids(feedback_rows)
+    focused_skill_excerpt = skill_excerpt_for_capabilities(base_text, capability_ids)
+    schema = {
+        "candidate_id": "semantic_candidate_001",
+        "capability_edits": [
+            {
+                "capability_id": base.capabilities[0] if base.capabilities else "CONFIG_ENV_GUARD",
+                "replacement_review_rule": "Concrete replacement review_rule text for one existing capability section.",
+                "replacement_evidence_pattern": "Concrete evidence pattern text grounded in the failure family.",
+                "replacement_fix_shape": "Concrete fix shape text grounded in the failure family.",
+                "additional_lessons": ["One short public-material lesson to insert under the same capability."],
+            }
+        ],
+        "targeted_capabilities": [base.capabilities[0] if base.capabilities else "CONFIG_ENV_GUARD"],
+        "why_this_should_help": "Short explanation of why the edit addresses the observed missing capability without expanding scope.",
+        "risk_note": "Short note about false-positive or over-scope risk to watch.",
+    }
+    prompt = "\n\n".join(
+        [
+            "You are generating one conservative Skill patch from real open-world failure feedback.",
+            "Only strengthen or clarify existing capabilities already present in the active Skill package.",
+            "Do not add dependency/version-risk, regex DoS, server-side JS execution review, or any new task family.",
+            "Use only the failure summaries below. Do not assume verifier-only oracle labels beyond the provided summaries.",
+            "Every capability_edit must include a non-empty replacement_review_rule, replacement_evidence_pattern, and replacement_fix_shape.",
+            "Produce capability_edits that replace existing review_rule, evidence_pattern, and fix_shape lines and optionally add short distilled_public_lesson lines inside existing capability sections.",
+            "If a failure row already emitted one config capability but still missed another, explicitly allow two separate findings to share the same exact target span when both defects are grounded there.",
+            "If a committed development or test configuration contains a hardcoded secret, do not suppress it merely because the file is labeled development; require explicit isolation in the rule and fix shape.",
+            "Preserve the clean negative guard rows below: do not broaden the rule so far that an explicitly dev-only isolated profile becomes a false positive.",
+            "Prefer concrete detection language over policy prose so the runtime is more likely to trigger the right capability on the next live run.",
+            "Return exactly one JSON object.",
+            f"Existing capabilities: {json.dumps(list(base.capabilities), ensure_ascii=False)}",
+            f"Focused capability ids: {json.dumps(capability_ids, ensure_ascii=False)}",
+            f"Failure summaries: {json.dumps(feedback_rows, ensure_ascii=False, indent=2)}",
+            f"Clean negative guard rows: {json.dumps(negative_guard_rows, ensure_ascii=False, indent=2)}",
+            "Focused skill excerpt:",
+            focused_skill_excerpt[:6000],
+            "JSON schema:",
+            json.dumps(schema, ensure_ascii=False, indent=2),
+        ]
+    )
+    last_error: Exception | None = None
+    payload: dict[str, Any] | None = None
+    meta: dict[str, Any] = {}
+    for attempt_index in range(1, 4):
+        attempt_messages = [
+            {"role": "system", "content": "You are a strict defensive Skill evolution assistant. Return JSON only."},
+            {"role": "user", "content": prompt},
+        ]
+        if attempt_index > 1:
+            attempt_messages.insert(
+                1,
+                {
+                    "role": "system",
+                    "content": "The previous attempt was invalid because it did not return one parseable JSON object. Return exactly one JSON object and nothing else.",
+                },
+            )
+        try:
+            payload, meta = call_chat_completion_json(
+                base_url=base_url,
+                api_key=api_key,
+                model=model,
+                messages=attempt_messages,
+                temperature=0.0,
+                max_tokens=2800,
+                timeout=timeout_seconds,
+            )
+            break
+        except Exception as exc:
+            last_error = exc
+    if payload is None:
+        raise RuntimeError(f"semantic candidate generation failed after retries: {last_error}") from last_error
+    targeted = [str(item).strip() for item in payload.get("targeted_capabilities", []) if str(item).strip() in set(base.capabilities)]
+    if not targeted:
+        raise ValueError("semantic candidate did not target any existing capability")
+    capability_edits = payload.get("capability_edits", [])
+    if not isinstance(capability_edits, list) or not capability_edits:
+        raise ValueError("semantic candidate did not return capability_edits")
+    for edit in capability_edits:
+        missing_fields = [
+            field
+            for field in ("capability_id", "replacement_review_rule", "replacement_evidence_pattern", "replacement_fix_shape")
+            if not str(edit.get(field) or "").strip()
+        ]
+        if missing_fields:
+            raise ValueError(f"semantic candidate returned incomplete capability_edit fields: {', '.join(missing_fields)}")
+    capability_edits, refinement_notes = refine_capability_edits(
+        capability_edits,
+        feedback_rows=feedback_rows,
+        guard_rows=negative_guard_rows,
+    )
+    candidate_id = str(payload.get("candidate_id") or "semantic_candidate_001").strip().replace(" ", "_")
+    return {
+        "candidate_id": candidate_id,
+        "capability_edits": capability_edits,
+        "targeted_capabilities": targeted,
+        "why_this_should_help": str(payload.get("why_this_should_help") or "").strip(),
+        "risk_note": str(payload.get("risk_note") or "").strip(),
+        "generation_meta": {
+            "model": meta.get("model") or model,
+            "latency_ms": meta.get("latency_ms"),
+            "usage": meta.get("usage"),
+            "raw_content": meta.get("raw_content"),
+            "feedback_rows": feedback_rows,
+            "negative_guard_rows": negative_guard_rows,
+            "focused_capability_ids": capability_ids,
+            "focused_skill_excerpt": focused_skill_excerpt,
+            "auto_refinement_notes": refinement_notes,
+        },
+    }
 
-def write_candidate(base: SkillPackage, base_text: str, candidate_dir: Path, source_rows: list[dict[str, Any]]) -> tuple[SkillPackage, str]:
-    package = clone_package(base, version="v3_candidate_auth_scope")
-    candidate_text = base_text.rstrip() + "\n\n" + candidate_addition(source_rows) + "\n"
+
+def write_candidate(
+    base: SkillPackage,
+    base_text: str,
+    candidate_dir: Path,
+    source_rows: list[dict[str, Any]],
+    guard_rows: list[dict[str, Any]],
+    *,
+    candidate_mode: str,
+    base_url: str,
+    api_key: str,
+    model: str,
+    timeout_seconds: float,
+) -> tuple[SkillPackage, str]:
+    generation_details: dict[str, Any]
+    if candidate_mode == "live_semantic":
+        generation_details = semantic_candidate_patch(
+            base=base,
+            base_text=base_text,
+            source_rows=source_rows,
+            guard_rows=guard_rows,
+            base_url=base_url,
+            api_key=api_key,
+            model=model,
+            timeout_seconds=timeout_seconds,
+        )
+        package = clone_package(base, version=f"v3_{generation_details['candidate_id']}")
+        candidate_text = apply_capability_edits(base_text, generation_details["capability_edits"])
+    else:
+        generation_details = {
+            "candidate_id": "template_candidate_auth_scope",
+            "patch_markdown": candidate_addition(source_rows),
+            "targeted_capabilities": [],
+            "why_this_should_help": "Template patch derived from remaining bounded failure families.",
+            "risk_note": "May remain too broad or too generic if the failure pattern is narrower than the family-level lesson.",
+            "generation_meta": {"feedback_rows": summarized_failure_feedback(source_rows)},
+        }
+        package = clone_package(base, version="v3_candidate_auth_scope")
+        candidate_text = base_text.rstrip() + "\n\n" + candidate_addition(source_rows) + "\n"
     write_text(candidate_dir / "SKILL.md", candidate_text)
     write_json(candidate_dir / "manifest.json", package.to_dict())
     diff = "\n".join(
@@ -144,9 +498,22 @@ def write_candidate(base: SkillPackage, base_text: str, candidate_dir: Path, sou
             "verifier_only_oracle_fields_read": False,
             "source_summary": str(OPEN_WORLD_SUMMARY),
             "source_failure_rows": source_rows,
+            "source_guard_rows": guard_rows,
+            "candidate_mode": candidate_mode,
+            "generation_details": generation_details,
         },
     )
     return package, candidate_text
+
+
+def load_candidate_from_dir(candidate_dir: Path) -> tuple[SkillPackage, str]:
+    manifest = read_json(candidate_dir / "manifest.json", {})
+    if not manifest:
+        raise FileNotFoundError(f"candidate manifest not found under {candidate_dir}")
+    skill_text = read_text(candidate_dir / "SKILL.md")
+    if not skill_text.strip():
+        raise FileNotFoundError(f"candidate SKILL.md not found under {candidate_dir}")
+    return SkillPackage.from_dict(manifest), skill_text
 
 
 def run_variant(
@@ -267,18 +634,21 @@ def decide(base_rows: list[dict[str, Any]], candidate_rows: list[dict[str, Any]]
 
 
 def render_report(payload: dict[str, Any]) -> str:
+    command_tail = f"--candidate-mode {payload.get('candidate_mode', 'template')}"
+    if payload.get("candidate_mode") == "reused_candidate" and payload.get("candidate_dir"):
+        command_tail += f" --reuse-candidate-dir {payload['candidate_dir']}"
     lines = [
         "# Open-World Closed-Loop Status",
         "",
         f"Generated at: `{payload['generated_at']}`",
         "",
-        "This run continues the bounded open-world story one step further: public-material distillation first, then a narrow auth-scope repair candidate generated from the remaining live failure pattern.",
+        "This run continues the bounded open-world story one step further: public-material distillation first, then a narrow structured repair candidate generated from the remaining live failure pattern.",
         "",
         "## Fresh Commands",
         "",
         "```powershell",
-        "skill-deploy open-world-distill-validation --version v2 --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash",
-        "skill-deploy open-world-closed-loop --installed secure_code_review_open_world_distilled --repeats 3 --base-url https://api.deepseek.com --model deepseek-v4-flash",
+        f"skill-deploy open-world-distill-validation --skill-id {payload['installed_skill']} --version {payload['base_version']} --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash --projection-mode {payload.get('projection_mode', 'keyword')}",
+        f"skill-deploy open-world-closed-loop --installed {payload['installed_skill']} --repeats {payload['repeat_count']} --base-url https://api.deepseek.com --model deepseek-v4-flash {command_tail}",
         "```",
         "",
         "## Summary",
@@ -286,8 +656,14 @@ def render_report(payload: dict[str, Any]) -> str:
         f"- Base installed skill: `{payload['installed_skill']}`",
         f"- Base version: `{payload['base_version']}`",
         f"- Repeat count: `{payload['repeat_count']}`",
+        f"- Candidate mode: `{payload.get('candidate_mode', 'template')}`",
+        f"- Candidate dir: `{payload.get('candidate_dir', '')}`",
         f"- Promotion count: `{payload['promotion_count']}` / `{payload['repeat_count']}`",
         f"- Stable improvement: `{payload['stable_open_world_evolution']}`",
+        f"- Base mean score: `{payload.get('base_mean_score')}`",
+        f"- Candidate mean score: `{payload.get('candidate_mean_score')}`",
+        f"- Mean score delta: `{payload.get('mean_score_delta')}`",
+        f"- Strict positive repeats: `{payload.get('strict_positive_repeats')}` / `{payload['repeat_count']}`",
         "",
         "## Repeat Decisions",
         "",
@@ -303,6 +679,12 @@ def render_report(payload: dict[str, Any]) -> str:
         )
     lines.extend(
         [
+            "",
+            "## Interpretation",
+            "",
+            "- `staged_promotion_proposal` means the candidate beat the active installed skill on that repeat under the strict gate.",
+            "- `reused_candidate` means the validation froze one previously generated candidate and reran it, instead of regenerating a new candidate each time.",
+            "- Positive mean delta is supportive bounded evidence even when one repeat remains tied or negative; it is not the same as universal strict stability.",
             "",
             "## Boundary",
             "",
@@ -321,6 +703,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--base-url", default=os.environ.get("OPENAI_BASE_URL") or "https://api.deepseek.com")
     parser.add_argument("--model", default=os.environ.get("MODEL") or os.environ.get("OPENAI_MODEL") or "deepseek-v4-flash")
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
+    parser.add_argument("--candidate-mode", choices=["template", "live_semantic"], default="template")
+    parser.add_argument("--reuse-candidate-dir", default="")
     args = parser.parse_args(argv)
 
     base_resolved = resolve_installed_skill(ROOT, args.installed)
@@ -328,8 +712,31 @@ def main(argv: list[str] | None = None) -> int:
     base_spec = mini.VariantSpec("open_world_v2", base_resolved["skill_package"], base_resolved["skill_text"], base_resolved["skill_dir"], "open_world_distilled_package")
     candidate_dir = OUTPUT_ROOT / "candidate_auth_scope"
     failures = source_failure_rows()
-    candidate_package, candidate_text = write_candidate(base_resolved["skill_package"], base_resolved["skill_text"], candidate_dir, failures)
-    candidate_spec = mini.VariantSpec("open_world_v3_candidate", candidate_package, candidate_text, candidate_dir, "open_world_closed_loop_candidate")
+    guard_rows = source_guard_rows()
+    api_key = os.environ.get("OPENAI_API_KEY") or ""
+    if args.reuse_candidate_dir:
+        candidate_dir = Path(args.reuse_candidate_dir).resolve()
+        candidate_package, candidate_text = load_candidate_from_dir(candidate_dir)
+        candidate_runtime_source = "open_world_closed_loop_reused_candidate"
+        candidate_mode = "reused_candidate"
+    else:
+        if args.candidate_mode == "live_semantic" and not api_key:
+            raise RuntimeError("OPENAI_API_KEY is required for live_semantic candidate generation")
+        candidate_package, candidate_text = write_candidate(
+            base_resolved["skill_package"],
+            base_resolved["skill_text"],
+            candidate_dir,
+            failures,
+            guard_rows,
+            candidate_mode=args.candidate_mode,
+            base_url=args.base_url,
+            api_key=api_key,
+            model=args.model,
+            timeout_seconds=args.timeout_seconds,
+        )
+        candidate_runtime_source = "open_world_closed_loop_candidate"
+        candidate_mode = args.candidate_mode
+    candidate_spec = mini.VariantSpec("open_world_v3_candidate", candidate_package, candidate_text, candidate_dir, candidate_runtime_source)
     cases = load_cases()
 
     repeat_outputs: list[dict[str, Any]] = []
@@ -374,6 +781,9 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     stable = promotion_count == args.repeats and all(item["validation_result"]["score_delta"] > 0 for item in repeat_outputs)
+    base_scores = [float(item["validation_result"]["base_score"]) for item in repeat_outputs]
+    candidate_scores = [float(item["validation_result"]["candidate_score"]) for item in repeat_outputs]
+    deltas = [float(item["validation_result"]["score_delta"]) for item in repeat_outputs]
     payload = {
         "generated_at": utc_now(),
         "installed_skill": args.installed,
@@ -381,8 +791,14 @@ def main(argv: list[str] | None = None) -> int:
         "repeat_count": args.repeats,
         "api_key_present": api_key_present(),
         "candidate_dir": str(candidate_dir),
+        "candidate_mode": candidate_mode,
+        "projection_mode": read_json(OPEN_WORLD_SUMMARY, {}).get("projection_mode", "keyword"),
         "promotion_count": promotion_count,
         "stable_open_world_evolution": "pass" if stable else "partial",
+        "base_mean_score": round(sum(base_scores) / len(base_scores), 4),
+        "candidate_mean_score": round(sum(candidate_scores) / len(candidate_scores), 4),
+        "mean_score_delta": round(sum(deltas) / len(deltas), 4),
+        "strict_positive_repeats": sum(1 for value in deltas if value > 0),
         "repeats": repeat_outputs,
     }
     write_json(SUMMARY_PATH, payload)

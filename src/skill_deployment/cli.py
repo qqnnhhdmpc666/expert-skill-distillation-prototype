@@ -35,6 +35,10 @@ def main(argv: list[str] | None = None) -> int:
     distill_open.add_argument("--version", default="v1")
     distill_open.add_argument("--output-dir", default=None)
     distill_open.add_argument("--title", default=None)
+    distill_open.add_argument("--projection-mode", default="keyword")
+    distill_open.add_argument("--base-url", default="https://api.deepseek.com")
+    distill_open.add_argument("--model", default="deepseek-v4-flash")
+    distill_open.add_argument("--timeout-seconds", default="60")
     install = subparsers.add_parser("install", help="Install one deployable Skill package into the runtime registry.")
     install.add_argument("--skill", required=True)
     install.add_argument("--version", default=None)
@@ -125,18 +129,21 @@ def main(argv: list[str] | None = None) -> int:
     open_world.add_argument("--base-url", default="https://api.deepseek.com")
     open_world.add_argument("--model", default="deepseek-v4-flash")
     open_world.add_argument("--timeout-seconds", default="60")
+    open_world.add_argument("--projection-mode", default="keyword")
     open_world_closed_loop = subparsers.add_parser("open-world-closed-loop", help="Run a bounded evolution step on top of the open-world distilled skill.")
     open_world_closed_loop.add_argument("--installed", default="secure_code_review_open_world_distilled")
     open_world_closed_loop.add_argument("--repeats", default="3")
     open_world_closed_loop.add_argument("--base-url", default="https://api.deepseek.com")
     open_world_closed_loop.add_argument("--model", default="deepseek-v4-flash")
     open_world_closed_loop.add_argument("--timeout-seconds", default="60")
+    open_world_closed_loop.add_argument("--candidate-mode", default="template")
     teaching_utility = subparsers.add_parser("teaching-utility-v02", help="Run the v0.2 task-utility vs teaching-utility pilot.")
     teaching_utility.add_argument("--repeats", default="3")
     teaching_utility.add_argument("--base-url", default="https://api.deepseek.com")
     teaching_utility.add_argument("--model", default="deepseek-v4-flash")
     teaching_utility.add_argument("--timeout-seconds", default="60")
     teaching_utility.add_argument("--max-steps", default="4")
+    teaching_utility.add_argument("--query-budget", default="2")
     subparsers.add_parser("open-source-readiness", help="Audit open-source prototype readiness.")
     subparsers.add_parser("public-release-readiness", help="Audit strict public release readiness.")
     subparsers.add_parser("swebench-infra-final", help="Finalize SWE-bench infra status from bounded official harness attempts.")
@@ -234,6 +241,14 @@ def main(argv: list[str] | None = None) -> int:
             args.skill_id,
             "--version",
             args.version,
+            "--projection-mode",
+            args.projection_mode,
+            "--base-url",
+            args.base_url,
+            "--model",
+            args.model,
+            "--timeout-seconds",
+            args.timeout_seconds,
         ]
         if args.output_dir:
             command.extend(["--output-dir", args.output_dir])
@@ -455,6 +470,8 @@ def main(argv: list[str] | None = None) -> int:
                 args.model,
                 "--timeout-seconds",
                 args.timeout_seconds,
+                "--projection-mode",
+                args.projection_mode,
             ]
         )
     if args.command == "open-world-closed-loop":
@@ -471,6 +488,8 @@ def main(argv: list[str] | None = None) -> int:
                 args.model,
                 "--timeout-seconds",
                 args.timeout_seconds,
+                "--candidate-mode",
+                args.candidate_mode,
             ]
         )
     if args.command == "teaching-utility-v02":
@@ -487,6 +506,8 @@ def main(argv: list[str] | None = None) -> int:
                 args.timeout_seconds,
                 "--max-steps",
                 args.max_steps,
+                "--query-budget",
+                args.query_budget,
             ]
         )
     if args.command == "open-source-readiness":

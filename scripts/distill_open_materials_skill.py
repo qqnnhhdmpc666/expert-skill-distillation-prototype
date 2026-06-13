@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -76,6 +77,10 @@ def main() -> int:
     parser.add_argument("--version", default="v1")
     parser.add_argument("--output-dir", default=None)
     parser.add_argument("--title", default=None)
+    parser.add_argument("--projection-mode", choices=["keyword", "live_semantic", "hybrid_semantic"], default="keyword")
+    parser.add_argument("--base-url", default=os.environ.get("OPENAI_BASE_URL") or "https://api.deepseek.com")
+    parser.add_argument("--model", default=os.environ.get("MODEL") or os.environ.get("OPENAI_MODEL") or "deepseek-v4-flash")
+    parser.add_argument("--timeout-seconds", type=float, default=60.0)
     args = parser.parse_args()
 
     materials_path = Path(args.materials)
@@ -90,8 +95,19 @@ def main() -> int:
         materials=materials,
         output_dir=output_dir,
         title=args.title,
-        distillation_method="keyword_projection_from_user_or_public_materials",
+        distillation_method=(
+            "live_semantic_projection_from_user_or_public_materials"
+            if args.projection_mode == "live_semantic"
+            else "hybrid_semantic_projection_from_user_or_public_materials"
+            if args.projection_mode == "hybrid_semantic"
+            else "keyword_projection_from_user_or_public_materials"
+        ),
         package_role="user_material_distilled_runtime",
+        projection_mode=args.projection_mode,
+        base_url=args.base_url,
+        api_key=os.environ.get("OPENAI_API_KEY"),
+        model=args.model,
+        timeout_seconds=args.timeout_seconds,
     )
     print(json.dumps(summary, indent=2))
     return 0

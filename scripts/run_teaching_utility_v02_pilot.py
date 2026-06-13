@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -26,6 +27,7 @@ from skill_deployment.teaching_utility_v02 import (  # noqa: E402
     render_distilled_skill,
     select_query_case,
     trajectory_lesson_from_run,
+    update_active_candidates,
 )
 
 
@@ -90,81 +92,79 @@ def run_case_agent(
     timeout_seconds: float,
     max_steps: int,
     api_key: str,
+    infra_retries: int = 1,
 ) -> dict[str, Any]:
-    workspace = run_dir / "visible_case"
-    materialize_visible_case(case, workspace)
-    agent_dir = run_dir / "agent_run"
-    allowed_from_skill = [
-        rule_id
-        for rule_id in extract_rule_ids(skill_path.read_text(encoding="utf-8"))
-        if rule_id.startswith("R" if case.domain == "api_review" else "C")
-    ]
-    command = [
-        sys.executable,
-        str(ROOT / "agents" / "live_tool_case_agent.py"),
-        "--domain",
-        case.domain,
-        "--case-root",
-        str(workspace),
-        "--skill",
-        str(skill_path),
-        "--out",
-        str(agent_dir),
-        "--allowed-rule-ids",
-        ",".join(allowed_from_skill),
-        "--base-url",
-        base_url,
-        "--model",
-        model,
-        "--timeout-seconds",
-        str(timeout_seconds),
-        "--max-steps",
-        str(max_steps),
-    ]
-    env = dict(os.environ)
-    env["OPENAI_API_KEY"] = api_key
-    completed = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, env=env, check=False)
-    write_text(run_dir / "stdout.log", completed.stdout)
-    write_text(run_dir / "stderr.log", completed.stderr)
-    review = read_json(agent_dir / "review.json", {"findings": [], "summary": "missing_review", "status": "failed"})
-    evaluation = evaluate_review(case, review)
-    summary = {
-        "case_id": case.case_id,
-        "domain": case.domain,
-        "skill_path": str(skill_path),
-        "returncode": completed.returncode,
-        "review": review,
-        "evaluation": evaluation,
-        "artifact_dir": str(run_dir),
-    }
-    write_json(run_dir / "summary.json", summary)
-    return summary
-
-
-def active_candidate_updates(selection_payload: dict[str, Any], query_run: dict[str, Any]) -> list[dict[str, Any]]:
-    updates: list[dict[str, Any]] = []
-    actual = set(query_run["evaluation"]["seen_rule_ids"])
-    for candidate in selection_payload.get("candidates", []):
-        predicted = set()
-        for row in selection_payload.get("disagreement_matrix", []):
-            if row["case_id"] != query_run["case_id"]:
-                continue
-            for item in row.get("predictions", []):
-                if item.get("candidate_id") == candidate["candidate_id"]:
-                    predicted = set(item.get("predicted_rule_ids", []))
-                    break
-        union = predicted | actual
-        agreement = len(predicted & actual) / len(union) if union else 1.0
-        updates.append(
+    if run_dir.exists():
+        shutil.rmtree(run_dir)
+    attempts: list[dict[str, Any]] = []
+    final_summary: dict[str, Any] | None = None
+    for attempt_index in range(1, infra_retries + 2):
+        attempt_dir = run_dir / f"attempt_{attempt_index:02d}"
+        workspace = attempt_dir / "visible_case"
+        materialize_visible_case(case, workspace)
+        agent_dir = attempt_dir / "agent_run"
+        allowed_from_skill = [
+            rule_id
+            for rule_id in extract_rule_ids(skill_path.read_text(encoding="utf-8"))
+            if rule_id.startswith("R" if case.domain == "api_review" else "C")
+        ]
+        command = [
+            sys.executable,
+            str(ROOT / "agents" / "live_tool_case_agent.py"),
+            "--domain",
+            case.domain,
+            "--case-root",
+            str(workspace),
+            "--skill",
+            str(skill_path),
+            "--out",
+            str(agent_dir),
+            "--allowed-rule-ids",
+            ",".join(allowed_from_skill),
+            "--base-url",
+            base_url,
+            "--model",
+            model,
+            "--timeout-seconds",
+            str(timeout_seconds),
+            "--max-steps",
+            str(max_steps),
+        ]
+        env = dict(os.environ)
+        env["OPENAI_API_KEY"] = api_key
+        completed = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, env=env, check=False)
+        write_text(attempt_dir / "stdout.log", completed.stdout)
+        write_text(attempt_dir / "stderr.log", completed.stderr)
+        review = read_json(agent_dir / "review.json", {"findings": [], "summary": "missing_review", "status": "failed"})
+        evaluation = evaluate_review(case, review)
+        status = str(review.get("status") or "")
+        attempt_summary = {
+            "attempt_index": attempt_index,
+            "case_id": case.case_id,
+            "domain": case.domain,
+            "skill_path": str(skill_path),
+            "returncode": completed.returncode,
+            "review": review,
+            "evaluation": evaluation,
+            "artifact_dir": str(attempt_dir),
+        }
+        write_json(attempt_dir / "summary.json", attempt_summary)
+        attempts.append(
             {
-                "candidate_id": candidate["candidate_id"],
-                "predicted_rule_ids": sorted(predicted),
-                "actual_rule_ids": sorted(actual),
-                "agreement": round(agreement, 4),
-                "status": "kept" if agreement >= 0.5 else "downweighted",
+                "attempt_index": attempt_index,
+                "status": status,
+                "artifact_dir": str(attempt_dir),
             }
         )
-    return updates
+        final_summary = attempt_summary
+        infra_blocked = status in {"blocked:URLError", "blocked_http_error", "blocked:HTTPError", "blocked:TimeoutError"}
+        if infra_blocked and attempt_index <= infra_retries:
+            continue
+        break
+    assert final_summary is not None
+    write_json(run_dir / "attempts.json", attempts)
+    write_json(run_dir / "summary.json", final_summary)
+    return final_summary
 
 
 def render_report(payload: dict[str, Any]) -> str:
@@ -188,7 +188,7 @@ def render_report(payload: dict[str, Any]) -> str:
         f"- methods: `{', '.join(payload['methods'])}`",
         "- domains: `api_review`, `config_security`",
         "- split per repeat: `source_generation`, `active_query_pool`, `promotion_validation`, `sealed_hidden_test`",
-        "- active budget: `1 query trajectory per method per repeat`",
+        f"- active budget: `{payload['query_budget']} query trajectories per method per repeat`",
         "",
         "## Method Summary",
         "",
@@ -198,7 +198,7 @@ def render_report(payload: dict[str, Any]) -> str:
     for row in payload["method_summary"]:
         lines.append(
             f"| {row['method']} | {row['mean_query_score']} | {row['mean_validation_delta']} | "
-            f"{row['mean_hidden_delta']} | {row['hidden_pass_count']} / {row['repeat_count']} |"
+            f"{row['mean_hidden_delta']} | {row['hidden_pass_count']} / {row['hidden_row_count']} |"
         )
     lines.extend(
         [
@@ -211,7 +211,7 @@ def render_report(payload: dict[str, Any]) -> str:
             "",
             "## Boundary",
             "",
-            "- Query selection is budgeted and repeat-rotated across 8 local tasks over 2 domains.",
+            f"- Query selection is budgeted and repeat-rotated across {payload['task_count']} local tasks over 2 domains.",
             "- Hidden-test evaluation uses the live tool agent; validation remains local and bounded.",
             "- If active discriminative selection does not beat contrast/diversity, the hypothesis is recorded as not supported or inconclusive.",
         ]
@@ -226,6 +226,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--model", default=os.environ.get("MODEL") or os.environ.get("OPENAI_MODEL") or "deepseek-v4-flash")
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
     parser.add_argument("--max-steps", type=int, default=4)
+    parser.add_argument("--query-budget", type=int, default=2)
     args = parser.parse_args(argv)
 
     api_key = os.environ.get("OPENAI_API_KEY") or ""
@@ -234,6 +235,7 @@ def main(argv: list[str] | None = None) -> int:
             "generated_at": utc_now(),
             "status": "blocked_missing_openai_api_key",
             "repeat_count": args.repeats,
+            "query_budget": args.query_budget,
             "methods": list(METHODS),
         }
         write_json(SUMMARY_PATH, payload)
@@ -271,10 +273,19 @@ def main(argv: list[str] | None = None) -> int:
             method_name="seed_material_plus_generation",
             repeat_index=plan.repeat_index,
             source_lessons=source_lessons,
-            selected_query_lesson=None,
+            selected_query_lessons=[],
         )
         seed_skill_path = repeat_dir / "seed_skill.md"
         write_text(seed_skill_path, seed_skill_text)
+        split_manifest = {
+            "repeat_index": plan.repeat_index,
+            "generation_cases": [case.case_id for case in plan.generation_cases],
+            "active_query_pool": [case.case_id for case in plan.query_cases],
+            "validation_cases": [case.case_id for case in plan.validation_cases],
+            "sealed_hidden_cases": [case.case_id for case in plan.hidden_cases],
+            "hidden_first_accessed_at": None,
+        }
+        write_json(repeat_dir / "split_manifest.json", split_manifest)
 
         baseline_validation = []
         baseline_hidden = []
@@ -320,31 +331,72 @@ def main(argv: list[str] | None = None) -> int:
         }
 
         for method_index, method_name in enumerate(METHODS, start=1):
-            selection = select_query_case(
-                method_name,
-                query_cases=plan.query_cases,
-                generation_cases=plan.generation_cases,
-                source_lessons=source_lessons,
-                seed=plan.repeat_index * 100 + method_index,
-            )
-            selected_case = next(case for case in plan.query_cases if case.case_id == selection["selected_case_id"])
-            query_run = run_case_agent(
-                case=selected_case,
-                skill_path=seed_skill_path,
-                run_dir=repeat_dir / method_name / "query" / selected_case.case_id,
-                base_url=args.base_url,
-                model=args.model,
-                timeout_seconds=args.timeout_seconds,
-                max_steps=args.max_steps,
-                api_key=api_key,
-            )
-            query_lesson = trajectory_lesson_from_run(selected_case, query_run["evaluation"], query_run["review"])
+            selected_query_lessons: list[dict[str, Any]] = []
+            selected_query_cases: list[PilotCase] = []
+            prior_candidates: list[dict[str, Any]] | None = None
+            query_rounds: list[dict[str, Any]] = []
+            current_skill_path = seed_skill_path
+            remaining_query_cases = list(plan.query_cases)
+
+            for round_index in range(1, min(args.query_budget, len(remaining_query_cases)) + 1):
+                selection = select_query_case(
+                    method_name,
+                    query_cases=tuple(remaining_query_cases),
+                    generation_cases=plan.generation_cases,
+                    source_lessons=source_lessons,
+                    selected_query_lessons=selected_query_lessons,
+                    seed=(plan.repeat_index * 1000) + (method_index * 100) + round_index,
+                    prior_candidates=prior_candidates,
+                    observed_cases=plan.generation_cases + tuple(selected_query_cases),
+                )
+                selected_case = next(case for case in remaining_query_cases if case.case_id == selection["selected_case_id"])
+                query_run = run_case_agent(
+                    case=selected_case,
+                    skill_path=current_skill_path,
+                    run_dir=repeat_dir / method_name / f"round_{round_index:02d}" / "query" / selected_case.case_id,
+                    base_url=args.base_url,
+                    model=args.model,
+                    timeout_seconds=args.timeout_seconds,
+                    max_steps=args.max_steps,
+                    api_key=api_key,
+                )
+                query_lesson = trajectory_lesson_from_run(selected_case, query_run["evaluation"], query_run["review"])
+                selected_query_lessons.append(query_lesson)
+                selected_query_cases.append(selected_case)
+                if method_name == "active_discriminative_evidence":
+                    prior_candidates = update_active_candidates(
+                        candidates=[dict(candidate) for candidate in selection.get("candidates", [])],
+                        case=selected_case,
+                        query_run=query_run,
+                    )
+                round_skill_text = render_distilled_skill(
+                    ROOT,
+                    method_name=method_name,
+                    repeat_index=plan.repeat_index,
+                    source_lessons=source_lessons,
+                    selected_query_lessons=selected_query_lessons,
+                )
+                current_skill_path = repeat_dir / method_name / f"round_{round_index:02d}" / "distilled_skill.md"
+                write_text(current_skill_path, round_skill_text)
+                round_payload = {
+                    "round_index": round_index,
+                    "selection": selection,
+                    "selected_case_id": selected_case.case_id,
+                    "query_run": query_run,
+                    "query_lesson": query_lesson,
+                    "candidate_updates": prior_candidates if method_name == "active_discriminative_evidence" else [],
+                    "skill_path_after_round": str(current_skill_path),
+                }
+                write_json(repeat_dir / method_name / f"round_{round_index:02d}" / "round_summary.json", round_payload)
+                query_rounds.append(round_payload)
+                remaining_query_cases = [case for case in remaining_query_cases if case.case_id != selected_case.case_id]
+
             final_skill_text = render_distilled_skill(
                 ROOT,
                 method_name=method_name,
                 repeat_index=plan.repeat_index,
                 source_lessons=source_lessons,
-                selected_query_lesson=query_lesson,
+                selected_query_lessons=selected_query_lessons,
             )
             final_skill_path = repeat_dir / method_name / "distilled_skill.md"
             write_text(final_skill_path, final_skill_text)
@@ -364,6 +416,8 @@ def main(argv: list[str] | None = None) -> int:
                         api_key=api_key,
                     )
                 )
+            split_manifest["hidden_first_accessed_at"] = split_manifest["hidden_first_accessed_at"] or utc_now()
+            write_json(repeat_dir / "split_manifest.json", split_manifest)
             for case in plan.hidden_cases:
                 hidden_runs.append(
                     run_case_agent(
@@ -380,13 +434,12 @@ def main(argv: list[str] | None = None) -> int:
 
             validation_score = mean([float(item["evaluation"]["score"]) for item in validation_runs])
             hidden_score = mean([float(item["evaluation"]["score"]) for item in hidden_runs])
-            candidate_updates = active_candidate_updates(selection, query_run) if method_name == "active_discriminative_evidence" else []
             method_payload = {
                 "method": method_name,
-                "selection": selection,
-                "query_case": selected_case.case_id,
-                "query_run": query_run,
-                "query_lesson": query_lesson,
+                "query_rounds": query_rounds,
+                "selected_query_case_ids": [row["selected_case_id"] for row in query_rounds],
+                "selected_query_lessons": selected_query_lessons,
+                "mean_query_score": mean([float(row["query_run"]["evaluation"]["score"]) for row in query_rounds]),
                 "final_skill_path": str(final_skill_path),
                 "validation_runs": validation_runs,
                 "hidden_runs": hidden_runs,
@@ -395,38 +448,45 @@ def main(argv: list[str] | None = None) -> int:
                 "validation_delta": round(validation_score - baseline_validation_score, 4),
                 "hidden_delta": round(hidden_score - baseline_hidden_score, 4),
                 "hidden_pass_count": sum(1 for item in hidden_runs if item["evaluation"]["pass_at_1"]),
-                "candidate_updates": candidate_updates,
+                "hidden_row_count": len(hidden_runs),
+                "final_candidate_state": prior_candidates if method_name == "active_discriminative_evidence" else [],
             }
-            if method_name == "active_discriminative_evidence":
-                write_json(repeat_dir / method_name / "candidate_updates.json", candidate_updates)
             write_json(repeat_dir / method_name / "method_summary.json", method_payload)
             repeat_payload["methods"].append(method_payload)
-            method_rows.append(
-                {
-                    "repeat_index": plan.repeat_index,
-                    "method": method_name,
-                    "query_score": round(float(query_run["evaluation"]["score"]), 4),
-                    "validation_delta": method_payload["validation_delta"],
-                    "hidden_delta": method_payload["hidden_delta"],
-                    "hidden_pass_count": method_payload["hidden_pass_count"],
-                    "selected_case_id": selected_case.case_id,
-                }
-            )
+            for round_payload in query_rounds:
+                method_rows.append(
+                    {
+                        "repeat_index": plan.repeat_index,
+                        "method": method_name,
+                        "round_index": round_payload["round_index"],
+                        "query_score": round(float(round_payload["query_run"]["evaluation"]["score"]), 4),
+                        "validation_delta": method_payload["validation_delta"],
+                        "hidden_delta": method_payload["hidden_delta"],
+                        "hidden_pass_count": method_payload["hidden_pass_count"],
+                        "selected_case_id": round_payload["selected_case_id"],
+                    }
+                )
 
         write_json(repeat_dir / "repeat_summary.json", repeat_payload)
         repeats_output.append(repeat_payload)
 
     method_summary = []
     for method_name in METHODS:
-        subset = [row for row in method_rows if row["method"] == method_name]
+        repeat_subset = [
+            method_payload
+            for repeat_payload in repeats_output
+            for method_payload in repeat_payload["methods"]
+            if method_payload["method"] == method_name
+        ]
         method_summary.append(
             {
                 "method": method_name,
-                "repeat_count": len(subset),
-                "mean_query_score": mean([float(row["query_score"]) for row in subset]),
-                "mean_validation_delta": mean([float(row["validation_delta"]) for row in subset]),
-                "mean_hidden_delta": mean([float(row["hidden_delta"]) for row in subset]),
-                "hidden_pass_count": sum(int(row["hidden_pass_count"]) for row in subset),
+                "repeat_count": len(repeat_subset),
+                "mean_query_score": mean([float(row["mean_query_score"]) for row in repeat_subset]),
+                "mean_validation_delta": mean([float(row["validation_delta"]) for row in repeat_subset]),
+                "mean_hidden_delta": mean([float(row["hidden_delta"]) for row in repeat_subset]),
+                "hidden_pass_count": sum(int(row["hidden_pass_count"]) for row in repeat_subset),
+                "hidden_row_count": sum(int(row["hidden_row_count"]) for row in repeat_subset),
             }
         )
 
@@ -448,9 +508,11 @@ def main(argv: list[str] | None = None) -> int:
     payload = {
         "generated_at": utc_now(),
         "repeat_count": args.repeats,
+        "query_budget": args.query_budget,
         "methods": list(METHODS),
         "base_url": args.base_url,
         "model": args.model,
+        "task_count": len({case.case_id for case in repeat_plans[0].generation_cases + repeat_plans[0].query_cases + repeat_plans[0].validation_cases + repeat_plans[0].hidden_cases}),
         "repeats": repeats_output,
         "method_rows": method_rows,
         "method_summary": method_summary,

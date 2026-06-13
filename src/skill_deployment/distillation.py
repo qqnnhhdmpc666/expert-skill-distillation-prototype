@@ -7,6 +7,7 @@ from typing import Any, Iterable, Sequence
 
 from .capability_registry import CAPABILITY_SPECS
 from .evidence import write_json, write_text
+from .openai_compat import call_chat_completion_json
 from .schemas import SkillPackage
 from .task_cases import ControlledTaskCase
 
@@ -172,6 +173,167 @@ def project_material_capabilities(material: MaterialSource, allowed_capabilities
     if selected:
         return selected
     raise ValueError(f"no capabilities were distilled from material `{material.source_id}`")
+
+
+def _matched_hint_keywords(text: str, capability_id: str) -> tuple[str, ...]:
+    lowered = text.lower()
+    return tuple(keyword for keyword in hint_keywords(capability_id) if keyword.lower() in lowered)
+
+
+def semantic_material_excerpt(material_text: str, universe: Sequence[str], *, max_segments: int = 12) -> list[str]:
+    ranked: list[tuple[tuple[int, int, int], str]] = []
+    for segment in material_segments(material_text):
+        lowered = segment.lower()
+        hits = {keyword for capability_id in universe for keyword in hint_keywords(capability_id) if keyword.lower() in lowered}
+        score = (len(hits), sum(len(hit) for hit in hits), -len(segment))
+        if score[0] > 0:
+            ranked.append((score, segment))
+    ranked.sort(reverse=True)
+    selected = [segment for _score, segment in ranked[:max_segments]]
+    if selected:
+        return selected
+    fallback = material_segments(material_text)
+    return fallback[: min(max_segments, len(fallback))]
+
+
+def _semantic_projection_messages(material: MaterialSource, universe: Sequence[str]) -> list[dict[str, str]]:
+    excerpt_segments = semantic_material_excerpt(material.material_text, universe)
+    capability_briefs = []
+    for capability_id in universe:
+        spec = CAPABILITY_SPECS[capability_id]
+        capability_briefs.append(
+            {
+                "capability_id": capability_id,
+                "title": spec.title,
+                "review_rule": capability_review_rule(capability_id),
+            }
+        )
+    schema = {
+        "selected_capabilities": [
+            {
+                "capability_id": universe[0] if universe else "CAPABILITY_ID",
+                "evidence_span": "Exact short quote copied from the material.",
+                "rationale": "Why this material supports the capability.",
+                "confidence": "high",
+            }
+        ],
+        "rejected_capabilities": [
+            {
+                "capability_id": universe[-1] if universe else "CAPABILITY_ID",
+                "reason": "Why the material does not justify selecting it.",
+            }
+        ],
+        "distillation_notes": "Short note about coverage limits and out-of-scope material.",
+    }
+    prompt = "\n\n".join(
+        [
+            "You are distilling a reusable Skill capability set from one material source.",
+            "Select only capabilities that are directly supported by the material text.",
+            "Do not invent new capabilities and do not broaden scope beyond the allowed capability list.",
+            "Every selected capability must include a short exact quote copied from the material as evidence_span.",
+            "If a capability is not clearly justified by the material, leave it out and explain it in rejected_capabilities.",
+            "The material excerpt below is a relevant-segment retrieval over the source text, provided to stay within context budget.",
+            f"Task family: {material.task_family}",
+            f"Source title: {material.title}",
+            "Allowed capabilities:",
+            json_like(capability_briefs),
+            "Return exactly one JSON object matching this schema:",
+            json_like(schema),
+            "Material excerpt:",
+            "\n\n".join(f"- {segment}" for segment in excerpt_segments),
+        ]
+    )
+    return [
+        {"role": "system", "content": "You are a careful Skill distillation assistant. Return JSON only."},
+        {"role": "user", "content": prompt},
+    ]
+
+
+def json_like(payload: Any) -> str:
+    import json
+
+    return json.dumps(payload, ensure_ascii=False, indent=2)
+
+
+def live_semantic_project_material_capabilities(
+    material: MaterialSource,
+    allowed_capabilities: Sequence[str] | None = None,
+    *,
+    base_url: str,
+    api_key: str,
+    model: str,
+    timeout_seconds: float = 60.0,
+) -> tuple[list[CapabilityProjection], dict[str, Any]]:
+    universe = tuple(allowed_capabilities or TASK_FAMILY_CAPABILITIES.get(material.task_family, ()))
+    if not universe:
+        raise ValueError(f"no capability universe registered for task_family `{material.task_family}`")
+    excerpt_segments = semantic_material_excerpt(material.material_text, universe)
+    payload, meta = call_chat_completion_json(
+        base_url=base_url,
+        api_key=api_key,
+        model=model,
+        messages=_semantic_projection_messages(material, universe),
+        temperature=0.0,
+        max_tokens=1600,
+        timeout=timeout_seconds,
+    )
+    selected_rows = payload.get("selected_capabilities", [])
+    if not isinstance(selected_rows, list):
+        raise ValueError("selected_capabilities must be a list")
+    projections: list[CapabilityProjection] = []
+    selector_rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for raw in selected_rows:
+        if not isinstance(raw, dict):
+            continue
+        capability_id = str(raw.get("capability_id") or "").strip()
+        if capability_id not in universe or capability_id in seen:
+            continue
+        evidence_span = str(raw.get("evidence_span") or "").strip()
+        rationale = str(raw.get("rationale") or "").strip()
+        confidence = str(raw.get("confidence") or "medium").strip().lower()
+        if not evidence_span:
+            continue
+        matched = _matched_hint_keywords(" ".join([evidence_span, rationale]), capability_id)
+        score = {"high": 3, "medium": 2, "low": 1}.get(confidence, 1)
+        projections.append(
+            CapabilityProjection(
+                capability_id=capability_id,
+                title=CAPABILITY_SPECS[capability_id].title,
+                source_span=evidence_span,
+                matched_keywords=matched,
+                score=score,
+                selected=True,
+                source_case_id=material.source_id,
+                task_family=material.task_family,
+            )
+        )
+        selector_rows.append(
+            {
+                "capability_id": capability_id,
+                "evidence_span": evidence_span,
+                "rationale": rationale,
+                "confidence": confidence,
+                "matched_keywords": list(matched),
+            }
+        )
+        seen.add(capability_id)
+    if not projections:
+        raise ValueError(f"semantic distillation selected no capabilities for material `{material.source_id}`")
+    trace = {
+        "material_id": material.source_id,
+        "task_family": material.task_family,
+        "projection_mode": "live_semantic",
+        "model": meta.get("model") or model,
+        "latency_ms": meta.get("latency_ms"),
+        "usage": meta.get("usage"),
+        "selected_capabilities": selector_rows,
+        "rejected_capabilities": payload.get("rejected_capabilities", []),
+        "distillation_notes": payload.get("distillation_notes"),
+        "raw_content": meta.get("raw_content"),
+        "excerpt_segments": excerpt_segments,
+    }
+    return projections, trace
 
 
 def normalize_group_payload(name: str, task_family: str, capabilities: Iterable[str], source_cases: Iterable[str]) -> dict[str, Any]:
@@ -572,6 +734,11 @@ def distill_material_skill_bundle(
     title: str | None = None,
     distillation_method: str = "keyword_projection_from_open_materials",
     package_role: str = "open_material_distilled_runtime",
+    projection_mode: str = "keyword",
+    base_url: str | None = None,
+    api_key: str | None = None,
+    model: str | None = None,
+    timeout_seconds: float = 60.0,
 ) -> dict[str, Any]:
     if not materials:
         raise ValueError("at least one material source is required for open-material distillation")
@@ -584,10 +751,43 @@ def distill_material_skill_bundle(
     capability_groups: list[dict[str, Any]] = []
     source_manifest: list[dict[str, Any]] = []
     supported_families: list[str] = []
-    for material in materials:
-        material_projections = project_material_capabilities(material)
+    semantic_selector_outputs: list[dict[str, Any]] = []
+    stored_source_files: list[tuple[MaterialSource, str]] = []
+    for index, material in enumerate(materials, start=1):
+        if projection_mode in {"live_semantic", "hybrid_semantic"}:
+            if not base_url or not api_key or not model:
+                raise ValueError(f"{projection_mode} projection requires base_url, api_key, and model")
+            try:
+                material_projections, selector_trace = live_semantic_project_material_capabilities(
+                    material,
+                    base_url=base_url,
+                    api_key=api_key,
+                    model=model,
+                    timeout_seconds=timeout_seconds,
+                )
+                selector_trace["status"] = "semantic_selected"
+                semantic_selector_outputs.append(selector_trace)
+            except Exception as exc:  # noqa: BLE001 - explicit fallback path is part of the method.
+                if projection_mode != "hybrid_semantic":
+                    raise
+                material_projections = project_material_capabilities(material)
+                semantic_selector_outputs.append(
+                    {
+                        "material_id": material.source_id,
+                        "task_family": material.task_family,
+                        "projection_mode": projection_mode,
+                        "status": "semantic_abstained_fallback_keyword_projection",
+                        "fallback_reason": str(exc),
+                        "fallback_selected_capabilities": [item.capability_id for item in material_projections],
+                    }
+                )
+        elif projection_mode == "keyword":
+            material_projections = project_material_capabilities(material)
+        else:
+            raise ValueError(f"unsupported projection_mode `{projection_mode}`")
         projections.extend(material_projections)
         selected_capabilities = [item.capability_id for item in material_projections]
+        stored_material_path = f"src/m{index:02d}_{material.task_family}.md"
         capability_groups.append(normalize_group_payload(material.task_family, material.task_family, selected_capabilities, [material.source_id]))
         source_manifest.append(
             {
@@ -599,8 +799,11 @@ def distill_material_skill_bundle(
                 "selected_capabilities": selected_capabilities,
                 "material_preview": material.material_text[:240],
                 "metadata": dict(material.metadata or {}),
+                "projection_mode": projection_mode,
+                "stored_material_path": stored_material_path,
             }
         )
+        stored_source_files.append((material, stored_material_path))
         if material.task_family not in supported_families:
             supported_families.append(material.task_family)
     capability_groups = merge_capability_groups(capability_groups)
@@ -658,7 +861,13 @@ def distill_material_skill_bundle(
             "source_span": item.source_span,
             "matched_keywords": list(item.matched_keywords),
             "projection_score": item.score,
-            "selection_rule": "selected_when_keyword_projection_score_gt_zero",
+            "selection_rule": (
+                "selected_by_live_semantic_material_projection"
+                if projection_mode == "live_semantic"
+                else "selected_by_hybrid_semantic_or_keyword_fallback"
+                if projection_mode == "hybrid_semantic"
+                else "selected_when_keyword_projection_score_gt_zero"
+            ),
         }
         for item in projections
     ]
@@ -667,10 +876,12 @@ def distill_material_skill_bundle(
         "skill_id": skill_id,
         "version": version,
         "method": distillation_method,
+        "projection_mode": projection_mode,
         "boundary": "This is bounded open-material distillation evidence over public or independent materials. It is not a claim of universal open-world semantic induction.",
         "steps": [
             {"stage": "load_source_materials", "artifact": "provenance/source_materials_manifest.json"},
             {"stage": "project_capabilities", "artifact": "provenance/extracted_candidates.json"},
+            *([{"stage": "semantic_selector", "artifact": "provenance/semantic_selector_outputs.json"}] if projection_mode in {"live_semantic", "hybrid_semantic"} else []),
             {"stage": "compile_runtime_manifest", "artifact": "manifest.json"},
             {"stage": "render_skill_text", "artifact": "SKILL.md"},
         ],
@@ -705,10 +916,20 @@ def distill_material_skill_bundle(
             "distillation_scope": "bounded_open_materials",
         },
     )
-    for material in materials:
-        write_text(provenance_dir / "source_materials" / f"{material.source_id}.md", material.material_text + "\n")
+    for material, stored_material_path in stored_source_files:
+        write_text(provenance_dir / stored_material_path, material.material_text + "\n")
     write_json(provenance_dir / "extracted_candidates.json", extracted_candidates)
     write_json(provenance_dir / "capability_provenance.json", capability_provenance)
+    if projection_mode in {"live_semantic", "hybrid_semantic"}:
+        write_json(
+            provenance_dir / "semantic_selector_outputs.json",
+            {
+                "projection_mode": projection_mode,
+                "model": model,
+                "base_url_present": bool(base_url),
+                "selector_rows": semantic_selector_outputs,
+            },
+        )
     write_json(provenance_dir / "distillation_trace.json", distillation_trace)
     write_json(
         output_dir / "examples" / "distillation_summary.json",
@@ -719,6 +940,7 @@ def distill_material_skill_bundle(
             "selected_capability_count": len({item.capability_id for item in projections}),
             "supported_task_families": supported_families,
             "distillation_scope": "bounded_open_materials",
+            "projection_mode": projection_mode,
         },
     )
     return {
@@ -730,4 +952,5 @@ def distill_material_skill_bundle(
         "selected_capabilities": sorted({item.capability_id for item in projections}),
         "source_ids": [material.source_id for material in materials],
         "distillation_method": distillation_method,
+        "projection_mode": projection_mode,
     }

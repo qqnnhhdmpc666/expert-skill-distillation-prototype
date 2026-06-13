@@ -136,9 +136,9 @@ def render_skill_block(skill_text: str) -> str:
 
 
 def render_visible_files(case_root: Path) -> str:
-    chunks = ["## Visible Case Files"]
-    for path in sorted(item for item in case_root.iterdir() if item.is_file()):
-        chunks.append(f"\n### {path.name}\n\n```text\n{read_text(path)[:8000]}\n```")
+    chunks = ["## Visible Case Files", "", "You know only the file names at the start. You must use `read_file` before making findings."]
+    for path in sorted(item for item in case_root.iterdir() if item.is_file() and item.name != "agent_visible_manifest.json"):
+        chunks.append(f"- {path.name}")
     return "\n".join(chunks)
 
 
@@ -160,8 +160,9 @@ def build_messages(*, domain: str, case_root: Path, skill_text: str, allowed_rul
             "You are a cautious tool-using review agent.",
             "Use only visible case files. Never assume hidden labels or verifier data.",
             f"Allowed rule ids: {', '.join(allowed_rule_ids) if allowed_rule_ids else '(none)'}",
+            "You must read every non-manifest visible case file with `read_file` before you are allowed to `finish`.",
+            "Do not infer findings from filenames alone.",
             "You may use these actions:",
-            "- list_files: inspect which visible files exist",
             "- read_file: read one visible file",
             "- finish: return final findings",
             "Return one JSON action object only. No markdown fences. No extra commentary.",
@@ -207,6 +208,11 @@ def run_agent(
     skill_text = read_text(skill_path)
     messages = build_messages(domain=domain, case_root=case_root, skill_text=skill_text, allowed_rule_ids=allowed_rule_ids)
     reviewed_files: list[str] = []
+    required_case_files = [
+        path.name
+        for path in sorted(item for item in case_root.iterdir() if item.is_file())
+        if path.name != "agent_visible_manifest.json"
+    ]
     final_review = {"findings": [], "summary": "", "status": "incomplete"}
     model_calls: list[dict[str, Any]] = []
     append_jsonl(out_dir / "trajectory.jsonl", {"event": "start", "timestamp": utc_now(), "domain": domain, "model": model})
@@ -269,10 +275,27 @@ def run_agent(
         )
 
         if action["action"] == "list_files":
-            files = tool_list_files(case_root)
+            files = [path.name for path in sorted(item for item in case_root.iterdir() if item.is_file() and item.name != "agent_visible_manifest.json")]
+            append_jsonl(
+                out_dir / "trajectory.jsonl",
+                {
+                    "event": "policy_repair",
+                    "step_index": step_index,
+                    "timestamp": utc_now(),
+                    "reason": "list_files_not_required",
+                    "visible_files": files,
+                },
+            )
             messages.append({"role": "assistant", "content": json.dumps(action, ensure_ascii=False)})
-            messages.append({"role": "user", "content": f"Tool result: visible files = {json.dumps(files, ensure_ascii=False)}"})
-            append_jsonl(out_dir / "trajectory.jsonl", {"event": "tool_result", "step_index": step_index, "tool": "list_files", "files": files})
+            messages.append(
+                {
+                    "role": "user",
+                    "content": (
+                        "Policy repair: list_files is unnecessary for this case. "
+                        f"Directly read one of these visible files with read_file: {json.dumps(files, ensure_ascii=False)}"
+                    ),
+                }
+            )
             continue
 
         if action["action"] == "read_file":
@@ -286,6 +309,29 @@ def run_agent(
             continue
 
         if action["action"] == "finish":
+            unread = [name for name in required_case_files if name not in reviewed_files]
+            if unread:
+                append_jsonl(
+                    out_dir / "trajectory.jsonl",
+                    {
+                        "event": "policy_repair",
+                        "step_index": step_index,
+                        "timestamp": utc_now(),
+                        "reason": "finish_before_reading_required_files",
+                        "unread_files": unread,
+                    },
+                )
+                messages.append({"role": "assistant", "content": json.dumps(action, ensure_ascii=False)})
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": (
+                            "Policy repair: you must call read_file on every visible case file before finish. "
+                            f"Unread files: {json.dumps(unread, ensure_ascii=False)}"
+                        ),
+                    }
+                )
+                continue
             final_review = {
                 "findings": normalize_findings(domain, action.get("findings")),
                 "summary": str(action.get("summary") or ""),
@@ -306,6 +352,7 @@ def run_agent(
             "skill_path": str(skill_path),
             "allowed_rule_ids": allowed_rule_ids,
             "reviewed_files": reviewed_files,
+            "required_case_files": required_case_files,
             "model": model,
             "base_url_present": bool(base_url),
             "api_key_present": bool(api_key),

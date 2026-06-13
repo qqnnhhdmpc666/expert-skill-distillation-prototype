@@ -42,6 +42,11 @@ PUBLIC_MATERIAL_URLS = {
         "title": "OWASP Authorization Cheat Sheet",
         "url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Authorization_Cheat_Sheet.md",
     },
+    "auth_error_handling_cheatsheet": {
+        "task_family": "auth_access_control",
+        "title": "OWASP Error Handling Cheat Sheet",
+        "url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Error_Handling_Cheat_Sheet.md",
+    },
     "config_logging_cheatsheet": {
         "task_family": "config_security",
         "title": "OWASP Logging Cheat Sheet",
@@ -117,19 +122,9 @@ def source_text(status: dict[str, Any], fallback: str) -> str:
 def material_sources(status: dict[str, dict[str, Any]]) -> list[MaterialSource]:
     upload = status["upload_file_upload_cheatsheet"]
     auth = status["auth_authorization_cheatsheet"]
+    auth_errors = status["auth_error_handling_cheatsheet"]
     logging = status["config_logging_cheatsheet"]
     secrets = status["config_secrets_cheatsheet"]
-    config_text = "\n\n".join(
-        [
-            "# Logging Cheat Sheet",
-            source_text(logging, "Logging should preserve sufficient detail, protect integrity, and support incident review."),
-            "",
-            "# Secrets Management Cheat Sheet",
-            source_text(secrets, "Secrets should not be exposed across environments and should be separated from development defaults."),
-        ]
-    )
-    config_urls = [item["source_url"] for item in (logging, secrets) if item.get("source_url")]
-    config_hashes = [item["sha256"] for item in (logging, secrets) if item.get("sha256")]
     return [
         MaterialSource(
             source_id="public_upload_material_001",
@@ -159,13 +154,31 @@ def material_sources(status: dict[str, dict[str, Any]]) -> list[MaterialSource]:
             metadata={"sha256": auth.get("sha256"), "material_scope": "public_cheatsheet"},
         ),
         MaterialSource(
-            source_id="public_config_material_001",
+            source_id="public_auth_error_material_001",
+            task_family="auth_access_control",
+            title="OWASP Error Handling Cheat Sheet",
+            material_text=source_text(auth_errors, "Error handling should fail safely and avoid leaking sensitive internal details or business identifiers."),
+            source_url=auth_errors.get("source_url"),
+            source_path=auth_errors.get("path"),
+            metadata={"sha256": auth_errors.get("sha256"), "material_scope": "public_cheatsheet"},
+        ),
+        MaterialSource(
+            source_id="public_config_logging_material_001",
             task_family="config_security",
-            title="OWASP Logging + Secrets Management Cheat Sheets",
-            material_text=config_text,
-            source_url=", ".join(config_urls) if config_urls else None,
-            source_path=", ".join(str(item.get("path")) for item in (logging, secrets) if item.get("path")) or None,
-            metadata={"sha256": config_hashes, "material_scope": "public_cheatsheet_combo"},
+            title="OWASP Logging Cheat Sheet",
+            material_text=source_text(logging, "Logging should preserve sufficient detail, protect integrity, and support incident review."),
+            source_url=logging.get("source_url"),
+            source_path=logging.get("path"),
+            metadata={"sha256": logging.get("sha256"), "material_scope": "public_cheatsheet"},
+        ),
+        MaterialSource(
+            source_id="public_config_secrets_material_001",
+            task_family="config_security",
+            title="OWASP Secrets Management Cheat Sheet",
+            material_text=source_text(secrets, "Secrets should not be exposed across environments and should be separated from development defaults."),
+            source_url=secrets.get("source_url"),
+            source_path=secrets.get("path"),
+            metadata={"sha256": secrets.get("sha256"), "material_scope": "public_cheatsheet"},
         ),
     ]
 
@@ -292,13 +305,14 @@ def render_report(payload: dict[str, Any]) -> str:
         "## Fresh Commands",
         "",
         "```powershell",
-        "skill-deploy open-world-distill-validation --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash",
+        f"skill-deploy open-world-distill-validation --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash --projection-mode {payload['projection_mode']}",
         "```",
         "",
         "## Distillation",
         "",
         f"- Installed skill id: `{payload['distilled_skill_id']}`",
         f"- Distillation method: `{payload['distillation_method']}`",
+        f"- Projection mode: `{payload['projection_mode']}`",
         f"- Supported families: `{', '.join(payload['supported_task_families'])}`",
         f"- Selected capabilities: `{', '.join(payload['selected_capabilities'])}`",
         "",
@@ -355,6 +369,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--base-url", default=os.environ.get("OPENAI_BASE_URL") or "https://api.deepseek.com")
     parser.add_argument("--model", default=os.environ.get("MODEL") or os.environ.get("OPENAI_MODEL") or "deepseek-v4-flash")
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
+    parser.add_argument("--projection-mode", choices=["keyword", "live_semantic", "hybrid_semantic"], default="keyword")
     args = parser.parse_args(argv)
 
     output_root = Path(args.output_dir)
@@ -367,6 +382,18 @@ def main(argv: list[str] | None = None) -> int:
         materials=materials,
         output_dir=distilled_output_dir,
         title="Open-Material Distilled Secure Code Review",
+        distillation_method=(
+            "live_semantic_projection_from_open_materials"
+            if args.projection_mode == "live_semantic"
+            else "hybrid_semantic_projection_from_open_materials"
+            if args.projection_mode == "hybrid_semantic"
+            else "keyword_projection_from_open_materials"
+        ),
+        projection_mode=args.projection_mode,
+        base_url=args.base_url,
+        api_key=os.environ.get("OPENAI_API_KEY"),
+        model=args.model,
+        timeout_seconds=args.timeout_seconds,
     )
     install_summary = install_skill_package(ROOT, distilled_output_dir, requested_version=args.version)
     distilled_resolved = resolve_installed_skill(ROOT, args.skill_id)
@@ -425,6 +452,7 @@ def main(argv: list[str] | None = None) -> int:
         "distilled_skill_id": args.skill_id,
         "baseline_skill_id": args.baseline_skill,
         "distillation_method": distill_summary["distillation_method"],
+        "projection_mode": distill_summary["projection_mode"],
         "supported_task_families": distill_summary["supported_task_families"],
         "selected_capabilities": distill_summary["selected_capabilities"],
         "material_status": material_status,

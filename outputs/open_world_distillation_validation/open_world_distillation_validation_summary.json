@@ -1,12 +1,13 @@
 {
   "run_id": "open_world_distillation_validation",
-  "generated_at": "2026-06-13T08:04:54.092103+00:00",
+  "generated_at": "2026-06-13T16:12:48.053713+00:00",
   "backend": "live_llm_text",
   "model": "deepseek-v4-flash",
   "api_key_present": true,
-  "distilled_skill_id": "secure_code_review_open_world_distilled",
+  "distilled_skill_id": "secure_code_review_open_world_hybrid_distilled",
   "baseline_skill_id": "secure_code_review",
-  "distillation_method": "keyword_projection_from_open_materials",
+  "distillation_method": "hybrid_semantic_projection_from_open_materials",
+  "projection_mode": "hybrid_semantic",
   "supported_task_families": [
     "upload_security",
     "auth_access_control",
@@ -17,7 +18,6 @@
     "AUTH_OBJECT_OWNERSHIP",
     "AUTH_SCOPE_MATRIX",
     "CONFIG_AUDIT_EXPORT",
-    "CONFIG_ENV_GUARD",
     "UPLOAD_AUDIT_RETENTION",
     "UPLOAD_PATH_ISOLATION",
     "UPLOAD_TYPE_MAGIC"
@@ -41,6 +41,16 @@
       "sha256": "3292a02e4c3c8424e2f33b79585eb79320d4c1c48725e5564860c07d503ff88a",
       "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\auth_authorization_cheatsheet_3292a02e4c3c.md",
       "chars": 32226,
+      "error": null
+    },
+    "auth_error_handling_cheatsheet": {
+      "status": "downloaded",
+      "task_family": "auth_access_control",
+      "title": "OWASP Error Handling Cheat Sheet",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Error_Handling_Cheat_Sheet.md",
+      "sha256": "97a57eb94a0355cf7e74646c1026ad60296e75eb076fe9fc365db4884d5f3691",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\auth_error_handling_cheatsheet_97a57eb94a03.md",
+      "chars": 18059,
       "error": null
     },
     "config_logging_cheatsheet": {
@@ -90,14 +100,14 @@
       "error": null
     }
   },
-  "distillation_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\distilled_skill\\secure_code_review_open_world_distilled",
+  "distillation_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\distilled_skill\\secure_code_review_open_world_hybrid_distilled",
   "install_summary": {
-    "skill_id": "secure_code_review_open_world_distilled",
-    "active_version": "v2",
-    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review_open_world_distilled\\versions\\v2",
+    "skill_id": "secure_code_review_open_world_hybrid_distilled",
+    "active_version": "v1",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review_open_world_hybrid_distilled\\versions\\v1",
     "manifest": {
-      "skill_id": "secure_code_review_open_world_distilled",
-      "version": "v2",
+      "skill_id": "secure_code_review_open_world_hybrid_distilled",
+      "version": "v1",
       "task_family": "multi_task_open_material_distilled",
       "capabilities": [
         "UPLOAD_TYPE_MAGIC",
@@ -106,8 +116,7 @@
         "AUTH_SCOPE_MATRIX",
         "AUTH_OBJECT_OWNERSHIP",
         "AUTH_ERROR_ENVELOPE",
-        "CONFIG_AUDIT_EXPORT",
-        "CONFIG_ENV_GUARD"
+        "CONFIG_AUDIT_EXPORT"
       ],
       "output_contract": [
         "capability_id",
@@ -121,7 +130,7 @@
       ],
       "metadata": {
         "package_role": "open_material_distilled_runtime",
-        "distillation_method": "keyword_projection_from_open_materials",
+        "distillation_method": "hybrid_semantic_projection_from_open_materials",
         "supported_task_families": [
           "upload_security",
           "auth_access_control",
@@ -154,7 +163,8 @@
               "AUTH_ERROR_ENVELOPE"
             ],
             "source_cases": [
-              "public_auth_material_001"
+              "public_auth_material_001",
+              "public_auth_error_material_001"
             ]
           },
           {
@@ -163,11 +173,11 @@
               "config_security"
             ],
             "capabilities": [
-              "CONFIG_AUDIT_EXPORT",
-              "CONFIG_ENV_GUARD"
+              "CONFIG_AUDIT_EXPORT"
             ],
             "source_cases": [
-              "public_config_material_001"
+              "public_config_logging_material_001",
+              "public_config_secrets_material_001"
             ]
           },
           {
@@ -181,13 +191,15 @@
           "public_upload_material_001",
           "public_upload_logging_material_001",
           "public_auth_material_001",
-          "public_config_material_001"
+          "public_auth_error_material_001",
+          "public_config_logging_material_001",
+          "public_config_secrets_material_001"
         ],
         "out_of_scope_group": "out_of_scope_guard",
         "distillation_provenance_dir": "provenance"
       }
     },
-    "skill_text_chars": 7503
+    "skill_text_chars": 5772
   },
   "distilled_rows": [
     {
@@ -367,13 +379,13 @@
       "task_family": "auth_access_control",
       "variant": "baseline_active",
       "status": "completed",
-      "verifier_result": "fail",
-      "feedback_type": "false_positive_risk",
-      "effective_pass": false,
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
       "activated_capability_group": "auth_access_control",
       "expected_capability_group": "auth_access_control",
       "capability_group_correct": true,
-      "false_positive_count": 1,
+      "false_positive_count": 0,
       "out_of_scope_correct": true,
       "clean_or_negative": true,
       "unsupported_limitation": false,
@@ -452,13 +464,13 @@
       "task_family": "upload_security",
       "variant": "baseline_active",
       "status": "completed",
-      "verifier_result": "fail",
-      "feedback_type": "false_positive_risk",
-      "effective_pass": false,
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
       "activated_capability_group": "upload_security",
       "expected_capability_group": "upload_security",
       "capability_group_correct": true,
-      "false_positive_count": 1,
+      "false_positive_count": 0,
       "out_of_scope_correct": true,
       "clean_or_negative": true,
       "unsupported_limitation": false,
@@ -486,9 +498,9 @@
       "task_family": "config_security",
       "variant": "baseline_active",
       "status": "completed",
-      "verifier_result": "fail",
-      "feedback_type": "missing_capability",
-      "effective_pass": false,
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
       "activated_capability_group": "config_security",
       "expected_capability_group": "config_security",
       "capability_group_correct": true,
@@ -537,9 +549,9 @@
   "distilled_completed_count": 10,
   "baseline_completed_count": 10,
   "distilled_effective_pass_count": 8,
-  "baseline_effective_pass_count": 5,
+  "baseline_effective_pass_count": 8,
   "distilled_false_positive_count": 0,
-  "baseline_false_positive_count": 2,
+  "baseline_false_positive_count": 0,
   "distilled_clean_negative_pass_count": 3,
   "distilled_unsupported_preserved_count": 3
 }

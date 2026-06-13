@@ -2,18 +2,19 @@
 
 ## 一句话概括
 
-目前项目已经不是“一个安全审计 prompt”，而是一个围绕 **专家知识蒸馏 + 证据驱动 Skill 进化** 的研究级运行时原型。
+项目现在已经不是“一个安全审计 prompt”，而是一个围绕 **材料蒸馏 + 证据驱动 Skill 进化** 的研究级运行时原型。
 
-它的核心闭环现在已经具备可执行工程载体：
+它当前最值得关注的，不是某个单点 case，而是下面这条完整主链已经基本成立：
 
 ```text
-专家/用户/公开材料
--> 自动蒸馏成 Skill package
+材料
+-> 蒸馏为 Skill package
 -> install 到 runtime
--> 在任务中执行并留下 evidence
--> verifier 给出 pass/fail/误报/缺失反馈
+-> 在任务中执行
+-> 留下 evidence bundle
+-> verifier 给出反馈
 -> 生成 candidate Skill
--> promotion / rejection / rollback gate
+-> promote / reject / rollback gate
 ```
 
 ## 当前项目定位
@@ -25,137 +26,99 @@
 它不是：
 
 - 生产级漏洞扫描器
-- exploit 生成工具
-- 完整 SPARK 复现
-- 已经拿到官方外部 benchmark 结论的成熟系统
+- exploit 生成或攻击链执行工具
+- 官方外部 benchmark 已完成的成熟系统
+- 已经证明广泛 open-world 自主进化的通用 Agent
 
-## 当前已经拿到的三条主要证据线
+## 目前已经拿到的关键证据
 
 ### 1. Runtime 主闭环已经成型
 
-这条线现在已经有真实代码入口和 artifact：
+当前仓库已经具备真实 install state、runtime 调用、evidence bundle、verifier feedback、candidate proposal、promotion / rejection / rollback 的代码入口和产物。
 
-- Skill package 构建、安装、运行、版本切换
-- evidence bundle 与 marginal utility 比较
-- candidate generation 与 rejection buffer
-- staged promotion / rollback gate
-- task-conditioned activation
+这意味着 Skill 在这里不再只是静态 prompt，而是一个可以被安装、执行、比较、修订和门控的运行对象。
 
-这说明“Skill 作为一个被安装、执行、比较、修订、门控的运行对象”已经成立。
+### 2. bounded open-world 自动蒸馏已经有支持性证据
 
-### 2. 有界 open-world 自动蒸馏与有界稳定改进已经得到支持
+这一轮把公开材料蒸馏推进到了 `hybrid_semantic` 路径：
 
-我们已经补上了两条更贴主命题的证据：
+- 先做 LLM capability 语义选择
+- 对保守 abstain 的材料显式 fallback 到 keyword projection
+- 所有 fallback 都写 provenance
 
-#### A. 有界 open-world 自动蒸馏
+当前最稳的说法不是“已经普遍优于基线”，而是：
 
-- 输入：公开安全材料（当前主要用 OWASP）
-- 输出：可安装的 `secure_code_review_open_world_distilled`
-- 当前结果：
-  - distilled effective pass：`8 / 10`
-  - baseline effective pass：`5 / 10`
-  - false positives：`0`
-  - clean negative controls：`3`
-  - unsupported limitations retained：`3`
+- 更早一次 fresh run：distilled `8 / 10`，baseline `7 / 10`
+- 最新 fresh rerun：distilled `8 / 10`，baseline `8 / 10`
 
 这支持的是：
 
-> 在有界公开材料场景中，系统已经能把外部材料自动蒸馏成有实际收益的 Skill。
+> 在当前有界公开材料场景里，系统已经能自动蒸馏出至少达到当前安装版基线水平、并曾在 fresh run 中严格超过基线的 Skill。
 
-#### B. 有界稳定改进
+### 3. bounded evolution improvement 已经拿到更真实的证据
 
-在 open-world distilled skill 之上，我们又跑通了一条窄闭环改进链：
+这条线现在不再只是“模板追加段落”，而是：
 
-- 从真实失败模式出发生成 candidate
-- candidate 与 base skill 直接比较
-- 连续 fresh rerun 满足严格 gate
+- 从 open-world failure feedback、verifier feedback、evidence summary、distilled Skill text 中生成 candidate
+- 直接改写 capability section 本体
+- 用严格 gate 判断 candidate 是否能晋升
 
-已存在的有界结果表明：
+当前两层最关键的结果：
 
-> 至少在当前一条窄闭环上，系统已经出现了可重复的改进证据。
+#### generated-candidate fresh run
 
-### 3. v0.2 teaching-utility pilot 已经跑通，而且保留了负结果
+- `3 / 3` strict promotion proposals
 
-这是当前最值得看的新增结果，因为它更直接对应研究问题本身：
+#### frozen-candidate repeatability run
 
-> 一条轨迹对当前任务有用，不等于它对“教会下一个 Skill”有用。
+- `4 / 5` strict promotion proposals
+- `base_mean_score = 0.9167`
+- `candidate_mean_score = 0.95`
+- `mean_score_delta = +0.0333`
+- `false_positive_delta = 0`
 
-我们新加了一个 live pilot：
+这说明：
 
-- 2 个 domain：`api_review`、`config_security`
-- 8 个本地任务
-- 1 个真实 live tool-agent
-- 5 种轨迹选择策略：
-  - `random`
-  - `top_reward_success_only`
-  - `success_failure_contrast`
-  - `diversity`
-  - `active_discriminative_evidence`
-- 3 次 repeat
-- 物理拆分：
-  - `source_generation`
-  - `active_query_pool`
-  - `promotion_validation`
-  - `sealed_hidden_test`
+> 在当前 bounded open-world 线上，系统已经不只是“偶尔改对一次”，而是拿到了冻结 candidate 后仍有正均值收益、且大多数 repeats 严格胜出的重复验证证据。
 
-当前 fresh 结果：
+同时也需要保留边界：
 
-| Method | Mean query score | Mean hidden delta |
-|---|---:|---:|
-| random | 0.3889 | 0.1722 |
-| top_reward_success_only | 0.3167 | 0.2222 |
-| success_failure_contrast | 0.8222 | 0.0333 |
-| diversity | 0.6500 | 0.2000 |
-| active_discriminative_evidence | 0.8222 | 0.0000 |
+- 这还不是“每一轮都严格更优”
+- 仍然不能宣称 broad stable autonomous evolution
 
-当前结论：
+### 4. teaching-utility v0.2 保留了真实负结果
 
-- `active_selection_hypothesis = hypothesis_not_supported`
-- `best_method_by_hidden_delta = top_reward_success_only`
+当前更严格的 matched-budget live pilot 里：
 
-这条结果的意义非常大，因为它不是“漂亮成功”，而是一个可信的研究判断：
+- `active_discriminative_evidence` 还没有赢过 `top_reward_success_only`
+- 当前仍然是 `active_selection_hypothesis = hypothesis_not_supported`
 
-> 当前我们写的 active discriminative 选择器，还没有在 teaching utility 上赢过更朴素的选择策略。  
-> 也就是说，轨迹选择确实是研究问题，但当前 active 设计还不够好。
+这条负结果被完整保留下来，没有被包装成成功。
 
-## 现在可以合理声称的内容
+## 当前可以合理对外声称的内容
 
-当前比较稳妥的说法是：
-
-1. 项目已经形成一个研究级原型，核心机制链完整。
-2. “材料蒸馏 -> 安装运行 -> evidence/verifier -> candidate/gate” 这条主链已成立。
-3. 有界 open-world 自动蒸馏已经拿到支持性证据。
-4. 有界稳定改进已经拿到支持性证据。
-5. 更强的 teaching-utility v0.2 pilot 已经跑通，但当前 active 轨迹选择策略没有被证明优于朴素基线。
+1. 项目已经形成研究级原型，核心机制链完整。
+2. bounded open-world 自动蒸馏已经有支持性 fresh evidence。
+3. bounded evolution improvement 已经有更真实的 fresh evidence。
+4. teaching-utility 这条线目前并未证明 active 选择优于朴素基线。
 
 ## 当前还不能声称的内容
 
-当前还不能说：
-
-1. 任意 open-world 自动蒸馏都已经成立。
+1. 任意 open-world 材料上都能稳定自动蒸馏。
 2. evolution 已经在广泛任务上稳定产出更优 Skill。
-3. active evidence selection 已经被证明是最优 teaching-utility 策略。
-4. 已经拿到官方外部安全 benchmark 结论。
-5. 系统已经是可直接部署的真实安全产品。
+3. 已经拿到官方 CyberSecEval / AutoPatchBench / CVE-Bench / SWE-bench 结果。
+4. 系统已经是可以直接部署的真实安全产品。
 
-## 下一步建议
+## 当前最稳的总体判断
 
-当前最有价值的下一步不是继续堆 case，而是：
+如果需要一句更适合阶段汇报的话：
 
-1. 重新设计 active evidence selection，使它更贴 teaching utility，而不是只看表面分歧。
-2. 在更真实但仍可控的任务池里复验 v0.2 结果，看 `top_reward/diversity` 是否稳定领先。
-3. 把“公开材料蒸馏”与“trajectory teaching utility”两条线合并，验证公开材料 + 轨迹选择是否比任一单线更强。
-4. 在不越界的前提下，逐步补更强 external evidence，但继续保留失败和 blocked。
+> 目前我们已经完成了一个 evidence-grounded Skill Evolution Runtime 的研究级原型。系统不只是一个安全 Skill，而是支持 Skill 蒸馏、安装、执行、证据收集、候选生成、严格门控、拒绝与回滚的完整闭环；并且在 bounded open-world 自动蒸馏与 bounded evolution improvement 上已经形成支持性 fresh evidence。但这些证据仍然是有界、本地、可审计的，还不是官方外部 benchmark 或通用真实世界能力证明。
 
 ## 建议优先看的文件
-
-如果老师只想快速把握现在的阶段，建议先看这 4 个文件：
 
 1. `README.md`
 2. `reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md`
 3. `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
 4. `reports/TEACHING_UTILITY_V02_STATUS.md`
-
-如果要看边界，再补：
-
 5. `docs/CLAIM_BOUNDARY.md`

@@ -1,0 +1,11 @@
+{
+  "case_id": "case005_transport_and_scope",
+  "expected_rule_ids": ["C002", "C003"],
+  "negative_rule_ids": ["C001", "C004", "C005", "C006"],
+  "critical_rule_ids": ["C002", "C003"],
+  "metadata": {
+    "scenario": "insecure_transport_and_overbroad_service_scope",
+    "domain": "config_security",
+    "control_type": "focused_rule"
+  }
+}

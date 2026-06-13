@@ -120,7 +120,7 @@ class PilotCase:
 @dataclass(frozen=True)
 class DomainSplit:
     generation: PilotCase
-    query: PilotCase
+    query_pool: tuple[PilotCase, ...]
     validation: PilotCase
     hidden: PilotCase
 
@@ -137,7 +137,7 @@ class RepeatPlan:
 
     @property
     def query_cases(self) -> tuple[PilotCase, ...]:
-        return (self.api_review.query, self.config_security.query)
+        return self.api_review.query_pool + self.config_security.query_pool
 
     @property
     def validation_cases(self) -> tuple[PilotCase, ...]:
@@ -199,16 +199,16 @@ def load_config_pilot_cases(root: Path) -> list[PilotCase]:
 def build_repeat_plans(root: Path, repeats: int = 3) -> list[RepeatPlan]:
     api_cases = load_api_pilot_cases(root)
     config_cases = load_config_pilot_cases(root)
-    if len(api_cases) < 4 or len(config_cases) < 4:
-        raise ValueError("teaching-utility pilot requires at least 4 api and 4 config cases")
+    if len(api_cases) < 5 or len(config_cases) < 5:
+        raise ValueError("teaching-utility pilot requires at least 5 api and 5 config cases")
 
     def rotated_split(cases: list[PilotCase], offset: int) -> DomainSplit:
         ordered = [cases[(offset + index) % len(cases)] for index in range(len(cases))]
         return DomainSplit(
             generation=ordered[0],
-            query=ordered[1],
-            validation=ordered[2],
-            hidden=ordered[3],
+            query_pool=(ordered[1], ordered[2]),
+            validation=ordered[3],
+            hidden=ordered[4],
         )
 
     plans: list[RepeatPlan] = []
@@ -422,13 +422,13 @@ def render_distilled_skill(
     method_name: str,
     repeat_index: int,
     source_lessons: list[dict[str, Any]],
-    selected_query_lesson: dict[str, Any] | None,
+    selected_query_lessons: list[dict[str, Any]],
 ) -> str:
     selected_rules_by_domain = {domain: set(BASE_RULE_BUDGETS[domain]) for domain in ("api_review", "config_security")}
     for lesson in source_lessons:
         selected_rules_by_domain[lesson["domain"]].update(str(item) for item in lesson["focus_rules"])
-    if selected_query_lesson:
-        selected_rules_by_domain[selected_query_lesson["domain"]].update(str(item) for item in selected_query_lesson["focus_rules"])
+    for lesson in selected_query_lessons:
+        selected_rules_by_domain[lesson["domain"]].update(str(item) for item in lesson["focus_rules"])
     lines = [
         "# v0.2 Distilled Skill",
         "",
@@ -454,8 +454,8 @@ def render_distilled_skill(
     )
     for lesson in source_lessons:
         lines.append(f"- seed::{lesson['case_id']}: {lesson['lesson']}")
-    if selected_query_lesson:
-        lines.append(f"- query::{selected_query_lesson['case_id']}: {selected_query_lesson['lesson']}")
+    for lesson in selected_query_lessons:
+        lines.append(f"- query::{lesson['case_id']}: {lesson['lesson']}")
     lines.extend(
         [
             "",
@@ -520,8 +520,8 @@ def select_success_failure_contrast(
     }
 
 
-def select_diversity(query_cases: tuple[PilotCase, ...], generation_cases: tuple[PilotCase, ...]) -> dict[str, Any]:
-    generation_text = "\n\n".join(case.joined_text for case in generation_cases)
+def select_diversity(query_cases: tuple[PilotCase, ...], observed_cases: tuple[PilotCase, ...]) -> dict[str, Any]:
+    generation_text = "\n\n".join(case.joined_text for case in observed_cases)
     scored = [
         (jaccard_distance(generation_text, case.joined_text), case)
         for case in query_cases
@@ -536,43 +536,136 @@ def select_diversity(query_cases: tuple[PilotCase, ...], generation_cases: tuple
     }
 
 
-def _candidate_hypotheses(source_lessons: list[dict[str, Any]], query_cases: tuple[PilotCase, ...]) -> list[dict[str, Any]]:
-    domain_scores = {lesson["domain"]: float(lesson["score"]) for lesson in source_lessons}
+def _mean_domain_score(lessons: list[dict[str, Any]], domain: str) -> float:
+    domain_lessons = [float(item["score"]) for item in lessons if item["domain"] == domain]
+    if not domain_lessons:
+        return 0.0
+    return sum(domain_lessons) / len(domain_lessons)
+
+
+def _observed_lessons(
+    source_lessons: list[dict[str, Any]],
+    selected_query_lessons: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    return [*source_lessons, *selected_query_lessons]
+
+
+def _residual_rules_by_domain(observed_lessons: list[dict[str, Any]]) -> dict[str, set[str]]:
+    residual: dict[str, set[str]] = {"api_review": set(), "config_security": set()}
+    for lesson in observed_lessons:
+        focus = {str(item) for item in lesson.get("focus_rules", [])}
+        if not lesson.get("pass_at_1"):
+            residual[lesson["domain"]].update(focus)
+            continue
+        if lesson.get("review_summary", {}).get("false_positive_rule_ids"):
+            residual[lesson["domain"]].update(str(item) for item in lesson["review_summary"]["false_positive_rule_ids"])
+        if lesson.get("review_summary", {}).get("missing_rule_ids"):
+            residual[lesson["domain"]].update(str(item) for item in lesson["review_summary"]["missing_rule_ids"])
+    return residual
+
+
+def _candidate_hypotheses(
+    observed_lessons: list[dict[str, Any]],
+    query_cases: tuple[PilotCase, ...],
+    *,
+    prior_candidates: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    if prior_candidates:
+        return [dict(candidate) for candidate in prior_candidates]
+
+    domain_scores = {
+        domain: _mean_domain_score(observed_lessons, domain)
+        for domain in ("api_review", "config_security")
+    }
     low_domain = min(domain_scores.items(), key=lambda item: item[1])[0]
     high_domain = max(domain_scores.items(), key=lambda item: item[1])[0]
-    broad_rules = sorted({rule for lesson in source_lessons for rule in lesson["focus_rules"]})
+    broad_rules = sorted({str(rule) for lesson in observed_lessons for rule in lesson.get("focus_rules", [])})
+    high_domain_rules = sorted(
+        {
+            str(rule)
+            for lesson in observed_lessons
+            if lesson["domain"] == high_domain
+            for rule in lesson.get("focus_rules", [])
+        }
+        | set(BASE_RULE_BUDGETS[high_domain])
+    )
+    low_domain_rules = sorted(
+        {
+            str(rule)
+            for lesson in observed_lessons
+            if lesson["domain"] == low_domain
+            for rule in lesson.get("focus_rules", [])
+        }
+        | set(BASE_RULE_BUDGETS[low_domain])
+        | {str(rule) for case in query_cases if case.domain == low_domain for rule in case.all_rule_ids}
+    )
+    precision_guard_rules = sorted(
+        {
+            str(rule)
+            for lesson in observed_lessons
+            if lesson.get("pass_at_1")
+            for rule in lesson.get("focus_rules", [])
+        }
+    ) or sorted({rule for domain_rules in BASE_RULE_BUDGETS.values() for rule in domain_rules})
     candidates = [
         {
             "candidate_id": "h0_base_conservative",
             "focus_domain": high_domain,
-            "allowed_rules": broad_rules,
+            "allowed_rules": high_domain_rules,
             "assumption": "Preserve currently successful domain behavior and avoid speculative expansion.",
+            "status": "active",
+            "weight": 1.0,
+            "update_notes": [],
         },
         {
             "candidate_id": "h1_low_score_repair",
             "focus_domain": low_domain,
-            "allowed_rules": broad_rules + list(query_cases[0].all_rule_ids if query_cases[0].domain == low_domain else query_cases[1].all_rule_ids),
+            "allowed_rules": low_domain_rules,
             "assumption": "Repair the weakest current domain by adding missing rule reminders.",
+            "status": "active",
+            "weight": 1.0,
+            "update_notes": [],
         },
         {
-            "candidate_id": "h2_broad_union",
+            "candidate_id": "h2_precision_guard",
+            "focus_domain": "cross_domain",
+            "allowed_rules": precision_guard_rules,
+            "assumption": "Prefer rules that previously stayed precise, even if that sacrifices broader coverage.",
+            "status": "active",
+            "weight": 1.0,
+            "update_notes": [],
+        },
+        {
+            "candidate_id": "h3_broad_union",
             "focus_domain": "cross_domain",
             "allowed_rules": sorted({rule for case in query_cases for rule in case.all_rule_ids}),
             "assumption": "Prefer wider teaching coverage even if immediate seed reward was lower.",
+            "status": "active",
+            "weight": 1.0,
+            "update_notes": [],
         },
     ]
     return candidates
 
 
+def _predict_candidate_rules(candidate: dict[str, Any], case: PilotCase) -> tuple[str, ...]:
+    if candidate.get("status") == "eliminated":
+        return ()
+    focus_domain = candidate.get("focus_domain")
+    if focus_domain not in (case.domain, "cross_domain"):
+        return ()
+    return predict_rules_from_visible_text(case.domain, case.joined_text, tuple(candidate.get("allowed_rules", ())))
+
+
 def select_active_discriminative(
     query_cases: tuple[PilotCase, ...],
     source_lessons: list[dict[str, Any]],
+    selected_query_lessons: list[dict[str, Any]],
+    prior_candidates: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    candidates = _candidate_hypotheses(source_lessons, query_cases)
-    residual_rules_by_domain = {
-        lesson["domain"]: set(str(item) for item in lesson["focus_rules"])
-        for lesson in source_lessons
-    }
+    observed_lessons = _observed_lessons(source_lessons, selected_query_lessons)
+    candidates = _candidate_hypotheses(observed_lessons, query_cases, prior_candidates=prior_candidates)
+    residual_rules_by_domain = _residual_rules_by_domain(observed_lessons)
     disagreement_rows: list[dict[str, Any]] = []
     scored: list[tuple[int, float, PilotCase]] = []
     for case in query_cases:
@@ -580,7 +673,7 @@ def select_active_discriminative(
         rule_sets = []
         union_predicted: set[str] = set()
         for candidate in candidates:
-            predicted = predict_rules_from_visible_text(case.domain, case.joined_text, tuple(candidate["allowed_rules"]))
+            predicted = _predict_candidate_rules(candidate, case)
             rule_sets.append(set(predicted))
             union_predicted.update(predicted)
             predictions.append(
@@ -588,6 +681,8 @@ def select_active_discriminative(
                     "candidate_id": candidate["candidate_id"],
                     "predicted_rule_ids": list(predicted),
                     "focus_domain": candidate["focus_domain"],
+                    "status": candidate.get("status", "active"),
+                    "weight": round(float(candidate.get("weight", 1.0)), 4),
                 }
             )
         disagreement = 0.0
@@ -623,22 +718,89 @@ def select_active_discriminative(
     }
 
 
+def update_active_candidates(
+    *,
+    candidates: list[dict[str, Any]],
+    case: PilotCase,
+    query_run: dict[str, Any],
+) -> list[dict[str, Any]]:
+    actual_rule_ids = set(str(item) for item in query_run["evaluation"].get("seen_rule_ids", []))
+    updated: list[dict[str, Any]] = []
+    for candidate in candidates:
+        next_candidate = dict(candidate)
+        notes = list(candidate.get("update_notes", []))
+        predicted_rule_ids = set(_predict_candidate_rules(candidate, case))
+        focus_domain = str(candidate.get("focus_domain", "cross_domain"))
+        out_of_scope = focus_domain not in (case.domain, "cross_domain")
+        if out_of_scope or candidate.get("status") == "eliminated":
+            notes.append(f"{case.case_id}: no update (candidate out of scope or already eliminated).")
+            next_candidate["update_notes"] = notes
+            updated.append(next_candidate)
+            continue
+
+        false_positive_rules = sorted(predicted_rule_ids - actual_rule_ids)
+        missed_rules = sorted(actual_rule_ids - predicted_rule_ids)
+        union = predicted_rule_ids | actual_rule_ids
+        agreement = len(predicted_rule_ids & actual_rule_ids) / len(union) if union else 1.0
+        revised_rules = set(str(item) for item in candidate.get("allowed_rules", []))
+        revised_rules.update(actual_rule_ids)
+        if case.clean_control:
+            revised_rules.difference_update(predicted_rule_ids)
+        else:
+            revised_rules.difference_update(false_positive_rules)
+
+        next_weight = float(candidate.get("weight", 1.0))
+        if agreement < 0.25 and (false_positive_rules or missed_rules):
+            next_candidate["status"] = "eliminated"
+            next_weight *= 0.2
+            notes.append(
+                f"{case.case_id}: eliminated after low agreement={round(agreement, 4)}; missed={missed_rules}, false_positive={false_positive_rules}."
+            )
+        elif agreement < 0.6 or false_positive_rules or missed_rules:
+            next_candidate["status"] = "downweighted"
+            next_weight *= 0.6
+            notes.append(
+                f"{case.case_id}: downweighted after agreement={round(agreement, 4)}; missed={missed_rules}, false_positive={false_positive_rules}."
+            )
+        else:
+            next_candidate["status"] = "active"
+            next_weight *= 1.05
+            notes.append(f"{case.case_id}: reinforced after agreement={round(agreement, 4)}.")
+
+        next_candidate["weight"] = round(next_weight, 4)
+        next_candidate["allowed_rules"] = sorted(revised_rules)
+        next_candidate["last_observation"] = {
+            "case_id": case.case_id,
+            "predicted_rule_ids": sorted(predicted_rule_ids),
+            "actual_rule_ids": sorted(actual_rule_ids),
+            "agreement": round(agreement, 4),
+            "missed_rule_ids": missed_rules,
+            "false_positive_rule_ids": false_positive_rules,
+        }
+        next_candidate["update_notes"] = notes
+        updated.append(next_candidate)
+    return updated
+
+
 def select_query_case(
     method_name: str,
     *,
     query_cases: tuple[PilotCase, ...],
     generation_cases: tuple[PilotCase, ...],
     source_lessons: list[dict[str, Any]],
+    selected_query_lessons: list[dict[str, Any]],
     seed: int,
+    prior_candidates: list[dict[str, Any]] | None = None,
+    observed_cases: tuple[PilotCase, ...] | None = None,
 ) -> dict[str, Any]:
     if method_name == "random":
         return select_random_query(query_cases, seed=seed)
     if method_name == "top_reward_success_only":
-        return select_top_reward_success_only(query_cases, source_lessons)
+        return select_top_reward_success_only(query_cases, _observed_lessons(source_lessons, selected_query_lessons))
     if method_name == "success_failure_contrast":
-        return select_success_failure_contrast(query_cases, source_lessons)
+        return select_success_failure_contrast(query_cases, _observed_lessons(source_lessons, selected_query_lessons))
     if method_name == "diversity":
-        return select_diversity(query_cases, generation_cases)
+        return select_diversity(query_cases, observed_cases or generation_cases)
     if method_name == "active_discriminative_evidence":
-        return select_active_discriminative(query_cases, source_lessons)
+        return select_active_discriminative(query_cases, source_lessons, selected_query_lessons, prior_candidates=prior_candidates)
     raise ValueError(f"unknown method: {method_name}")
