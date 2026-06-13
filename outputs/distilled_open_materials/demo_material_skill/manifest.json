@@ -1,0 +1,30 @@
+{
+  "skill_id": "demo_material_skill",
+  "package_type": "distilled_codex_skill_bundle",
+  "created_at": "2026-06-13T08:31:18.162404+00:00",
+  "name": "demo_material_skill Open-Material Distilled Skill",
+  "default_version": "v1",
+  "available_versions": [
+    "v1"
+  ],
+  "supported_task_families": [
+    "upload_security",
+    "auth_access_control",
+    "config_security"
+  ],
+  "distillation_method": "keyword_projection_from_user_or_public_materials",
+  "deployment_shape": "codex_skill_plus_cli",
+  "safety_boundary": {
+    "allowed": [
+      "defensive_detection",
+      "explanation",
+      "fix_recommendation",
+      "patch_validation"
+    ],
+    "forbidden": [
+      "exploit_generation",
+      "attack_chain_execution",
+      "unauthorized_target_testing"
+    ]
+  }
+}

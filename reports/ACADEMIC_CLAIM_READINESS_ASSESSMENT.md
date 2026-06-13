@@ -1,12 +1,22 @@
 # Academic Claim Readiness Assessment
 
-Generated at: `2026-06-12T18:23:48.294011+00:00`
+Generated at: `2026-06-13T09:30:00+00:00`
 
-Overall academic claim readiness: `strong_candidate_with_external_gap`
+Overall academic claim readiness: `moderate_high_with_caveat`
 
-## Caveat
+## Why not higher
 
-The readiness rating is capped by explicit gaps. `strong_candidate_with_external_gap` is allowed only if live LLM validation passes and a live-feedback candidate earns a staged promotion proposal; it still is not an official external benchmark claim. `moderate_high_with_caveat` is used when local bounded evidence is strong but live/evolution/external gaps remain.
+The project now has stronger bounded evidence than a pure controlled-runtime prototype, including:
+
+- bounded public-material open-world automatic distillation support
+- bounded stable closed-loop improvement on top of that distilled Skill
+
+But the rating remains capped because the current evidence is still bounded and local:
+
+- no official external security benchmark result
+- no official SWE-bench success
+- live LLM effectiveness remains mixed outside the bounded closed-loop slice
+- stable improvement is demonstrated on one bounded open-world line, not yet across broad task families
 
 ## Supported Claims
 
@@ -14,20 +24,29 @@ The readiness rating is capped by explicit gaps. `strong_candidate_with_external
 - Controlled installed multi-capability secure_code_review validation.
 - Local defensive representative mini-suite evidence with holdout and rerun checks.
 - Non-oracle local semantic execution and effectiveness evidence are reported separately.
-- Live LLM execution and effectiveness evidence are reported separately when configured.
+- Bounded public-material automatic distillation into an installable Skill package.
+- Bounded stable closed-loop improvement on top of the open-world distilled Skill.
 - QGSE-Pareto/marginal utility/task-conditioned activation/rejected-buffer mechanism as a coherent promotion-control story.
-- Candidate generation and safety-gate rejection evidence are supported; candidate improvement is supported only if a candidate is promoted with evidence.
+
+## Supported But Bounded
+
+- `open_world_distillation`: supported only for bounded public-material validation, not arbitrary open-world materials.
+- `stable_evolution_improvement`: supported only for the current bounded open-world closed-loop slice.
+- `security_depth`: local bounded defensive-review evidence, not official benchmark evidence.
 
 ## Still Unsupported
 
 - Production vulnerability scanning.
-- Official external security benchmark performance.
-- SWE-bench software patch effectiveness while official harness remains infra-blocked.
+- Official CyberSecEval / AutoPatchBench / CVE-Bench claims.
 - Broad real-world security validity.
-- Strong external benchmark readiness while SWE-bench remains infra-blocked.
+- Full SPARK reproduction.
+- SWE-bench software patch effectiveness while official harness remains infra-blocked.
+- Universal autonomous Skill induction from arbitrary public materials.
+- Broad stable autonomous evolution across arbitrary tasks.
 
 ## Highest-Value Next Evidence
 
-- Resolve SWE-bench official harness infrastructure for gold-patch smoke.
-- Add independent third-party case authoring or external defensive benchmark subset.
-- Run live LLM validation when model/API environment is available.
+- Add a second independent open-world failure family with a stable promoted candidate.
+- Expand bounded open-world validation with more independent authoring while preserving leakage controls.
+- Resolve official external harness infrastructure or add a separate official benchmark result.
+- Strengthen clean-environment public-release reproducibility.

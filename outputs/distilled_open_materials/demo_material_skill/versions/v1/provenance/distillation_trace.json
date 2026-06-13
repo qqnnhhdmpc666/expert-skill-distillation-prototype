@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-06-13T08:31:18.162422+00:00",
+  "skill_id": "demo_material_skill",
+  "version": "v1",
+  "method": "keyword_projection_from_user_or_public_materials",
+  "boundary": "This is bounded open-material distillation evidence over public or independent materials. It is not a claim of universal open-world semantic induction.",
+  "steps": [
+    {
+      "stage": "load_source_materials",
+      "artifact": "provenance/source_materials_manifest.json"
+    },
+    {
+      "stage": "project_capabilities",
+      "artifact": "provenance/extracted_candidates.json"
+    },
+    {
+      "stage": "compile_runtime_manifest",
+      "artifact": "manifest.json"
+    },
+    {
+      "stage": "render_skill_text",
+      "artifact": "SKILL.md"
+    }
+  ]
+}

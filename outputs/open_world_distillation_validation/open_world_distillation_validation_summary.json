@@ -1,0 +1,545 @@
+{
+  "run_id": "open_world_distillation_validation",
+  "generated_at": "2026-06-13T08:04:54.092103+00:00",
+  "backend": "live_llm_text",
+  "model": "deepseek-v4-flash",
+  "api_key_present": true,
+  "distilled_skill_id": "secure_code_review_open_world_distilled",
+  "baseline_skill_id": "secure_code_review",
+  "distillation_method": "keyword_projection_from_open_materials",
+  "supported_task_families": [
+    "upload_security",
+    "auth_access_control",
+    "config_security"
+  ],
+  "selected_capabilities": [
+    "AUTH_ERROR_ENVELOPE",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_SCOPE_MATRIX",
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD",
+    "UPLOAD_AUDIT_RETENTION",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_TYPE_MAGIC"
+  ],
+  "material_status": {
+    "upload_file_upload_cheatsheet": {
+      "status": "downloaded",
+      "task_family": "upload_security",
+      "title": "OWASP File Upload Cheat Sheet",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/File_Upload_Cheat_Sheet.md",
+      "sha256": "0f527b1636adb44e305c97657b5cf84c0b5b60895ee5091f4b26baee0e271b6d",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\upload_file_upload_cheatsheet_0f527b1636ad.md",
+      "chars": 12000,
+      "error": null
+    },
+    "auth_authorization_cheatsheet": {
+      "status": "downloaded",
+      "task_family": "auth_access_control",
+      "title": "OWASP Authorization Cheat Sheet",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Authorization_Cheat_Sheet.md",
+      "sha256": "3292a02e4c3c8424e2f33b79585eb79320d4c1c48725e5564860c07d503ff88a",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\auth_authorization_cheatsheet_3292a02e4c3c.md",
+      "chars": 32226,
+      "error": null
+    },
+    "config_logging_cheatsheet": {
+      "status": "downloaded",
+      "task_family": "config_security",
+      "title": "OWASP Logging Cheat Sheet",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Logging_Cheat_Sheet.md",
+      "sha256": "342a2e9161f004a4aebe217da8476344e1b117f579f6252969e3b9054253eca7",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\config_logging_cheatsheet_342a2e9161f0.md",
+      "chars": 28975,
+      "error": null
+    },
+    "config_secrets_cheatsheet": {
+      "status": "downloaded",
+      "task_family": "config_security",
+      "title": "OWASP Secrets Management Cheat Sheet",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Secrets_Management_Cheat_Sheet.md",
+      "sha256": "098b2e35ca5b9846bb35cb80fa9eef59aa97d76e10a12a5ff25b121f2c5770bd",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\config_secrets_cheatsheet_098b2e35ca5b.md",
+      "chars": 64687,
+      "error": null
+    }
+  },
+  "validation_source_status": {
+    "nodegoat_contributions": {
+      "status": "downloaded",
+      "source_url": "https://raw.githubusercontent.com/OWASP/NodeGoat/master/app/routes/contributions.js",
+      "sha256": "196bdeaa22da4cfe8a851b1b932710b2fcedd21f14ed75d70b739ba759a01003",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\validation_sources\\source_downloads\\nodegoat_contributions_196bdeaa22da.txt",
+      "chars": 2485,
+      "error": null
+    },
+    "nodegoat_profile": {
+      "status": "downloaded",
+      "source_url": "https://raw.githubusercontent.com/OWASP/NodeGoat/master/app/routes/profile.js",
+      "sha256": "18575bf3d3710906e57e09e6036e40fd3986bdcca436ed0e2a2875b41f0f2aca",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\validation_sources\\source_downloads\\nodegoat_profile_18575bf3d371.txt",
+      "chars": 3633,
+      "error": null
+    },
+    "nodegoat_development_config": {
+      "status": "downloaded",
+      "source_url": "https://raw.githubusercontent.com/OWASP/NodeGoat/master/config/env/development.js",
+      "sha256": "1829bc509dcc6a6eb58b0eee49901df530b9cceafa2ed37e855beacec4971f08",
+      "path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\validation_sources\\source_downloads\\nodegoat_development_config_1829bc509dcc.txt",
+      "chars": 636,
+      "error": null
+    }
+  },
+  "distillation_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\distilled_skill\\secure_code_review_open_world_distilled",
+  "install_summary": {
+    "skill_id": "secure_code_review_open_world_distilled",
+    "active_version": "v2",
+    "skill_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\installed_skills\\packages\\secure_code_review_open_world_distilled\\versions\\v2",
+    "manifest": {
+      "skill_id": "secure_code_review_open_world_distilled",
+      "version": "v2",
+      "task_family": "multi_task_open_material_distilled",
+      "capabilities": [
+        "UPLOAD_TYPE_MAGIC",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_AUDIT_RETENTION",
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE",
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "output_contract": [
+        "capability_id",
+        "evidence_span",
+        "recommended_fix"
+      ],
+      "trace_contract": [
+        "trajectory.jsonl",
+        "target_reads.json",
+        "skill_reads.json"
+      ],
+      "metadata": {
+        "package_role": "open_material_distilled_runtime",
+        "distillation_method": "keyword_projection_from_open_materials",
+        "supported_task_families": [
+          "upload_security",
+          "auth_access_control",
+          "config_security"
+        ],
+        "capability_groups": [
+          {
+            "name": "upload_security",
+            "task_families": [
+              "upload_security"
+            ],
+            "capabilities": [
+              "UPLOAD_TYPE_MAGIC",
+              "UPLOAD_PATH_ISOLATION",
+              "UPLOAD_AUDIT_RETENTION"
+            ],
+            "source_cases": [
+              "public_upload_material_001",
+              "public_upload_logging_material_001"
+            ]
+          },
+          {
+            "name": "auth_access_control",
+            "task_families": [
+              "auth_access_control"
+            ],
+            "capabilities": [
+              "AUTH_SCOPE_MATRIX",
+              "AUTH_OBJECT_OWNERSHIP",
+              "AUTH_ERROR_ENVELOPE"
+            ],
+            "source_cases": [
+              "public_auth_material_001"
+            ]
+          },
+          {
+            "name": "config_security",
+            "task_families": [
+              "config_security"
+            ],
+            "capabilities": [
+              "CONFIG_AUDIT_EXPORT",
+              "CONFIG_ENV_GUARD"
+            ],
+            "source_cases": [
+              "public_config_material_001"
+            ]
+          },
+          {
+            "name": "out_of_scope_guard",
+            "task_families": [],
+            "capabilities": [],
+            "source_cases": []
+          }
+        ],
+        "source_cases": [
+          "public_upload_material_001",
+          "public_upload_logging_material_001",
+          "public_auth_material_001",
+          "public_config_material_001"
+        ],
+        "out_of_scope_group": "out_of_scope_guard",
+        "distillation_provenance_dir": "provenance"
+      }
+    },
+    "skill_text_chars": 7503
+  },
+  "distilled_rows": [
+    {
+      "case_id": "independent_auth_clean_001",
+      "task_family": "auth_access_control",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "auth_access_control",
+      "expected_capability_group": "auth_access_control",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": true,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_auth_clean_001\\open_world_distilled"
+    },
+    {
+      "case_id": "independent_auth_invoice_scope_001",
+      "task_family": "auth_access_control",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "auth_access_control",
+      "expected_capability_group": "auth_access_control",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_auth_invoice_scope_001\\open_world_distilled"
+    },
+    {
+      "case_id": "independent_config_clean_001",
+      "task_family": "config_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": true,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_config_clean_001\\open_world_distilled"
+    },
+    {
+      "case_id": "independent_config_prod_audit_001",
+      "task_family": "config_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_config_prod_audit_001\\open_world_distilled"
+    },
+    {
+      "case_id": "independent_dependency_unsupported_001",
+      "task_family": "dependency_version_risk",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": true,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_dependency_unsupported_001\\open_world_distilled"
+    },
+    {
+      "case_id": "independent_upload_clean_001",
+      "task_family": "upload_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "upload_security",
+      "expected_capability_group": "upload_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": true,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_upload_clean_001\\open_world_distilled"
+    },
+    {
+      "case_id": "independent_upload_mime_storage_001",
+      "task_family": "upload_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "upload_security",
+      "expected_capability_group": "upload_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_upload_mime_storage_001\\open_world_distilled"
+    },
+    {
+      "case_id": "public_nodegoat_dev_config_001",
+      "task_family": "config_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\public_nodegoat_dev_config_001\\open_world_distilled"
+    },
+    {
+      "case_id": "public_nodegoat_eval_unsupported_001",
+      "task_family": "server_side_js_injection_review",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": true,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\public_nodegoat_eval_unsupported_001\\open_world_distilled"
+    },
+    {
+      "case_id": "public_nodegoat_regex_unsupported_001",
+      "task_family": "regex_dos_review",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": true,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\public_nodegoat_regex_unsupported_001\\open_world_distilled"
+    }
+  ],
+  "baseline_rows": [
+    {
+      "case_id": "independent_auth_clean_001",
+      "task_family": "auth_access_control",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "false_positive_risk",
+      "effective_pass": false,
+      "activated_capability_group": "auth_access_control",
+      "expected_capability_group": "auth_access_control",
+      "capability_group_correct": true,
+      "false_positive_count": 1,
+      "out_of_scope_correct": true,
+      "clean_or_negative": true,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_auth_clean_001\\baseline_active"
+    },
+    {
+      "case_id": "independent_auth_invoice_scope_001",
+      "task_family": "auth_access_control",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "auth_access_control",
+      "expected_capability_group": "auth_access_control",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_auth_invoice_scope_001\\baseline_active"
+    },
+    {
+      "case_id": "independent_config_clean_001",
+      "task_family": "config_security",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": true,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_config_clean_001\\baseline_active"
+    },
+    {
+      "case_id": "independent_config_prod_audit_001",
+      "task_family": "config_security",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_config_prod_audit_001\\baseline_active"
+    },
+    {
+      "case_id": "independent_dependency_unsupported_001",
+      "task_family": "dependency_version_risk",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": true,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_dependency_unsupported_001\\baseline_active"
+    },
+    {
+      "case_id": "independent_upload_clean_001",
+      "task_family": "upload_security",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "false_positive_risk",
+      "effective_pass": false,
+      "activated_capability_group": "upload_security",
+      "expected_capability_group": "upload_security",
+      "capability_group_correct": true,
+      "false_positive_count": 1,
+      "out_of_scope_correct": true,
+      "clean_or_negative": true,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_upload_clean_001\\baseline_active"
+    },
+    {
+      "case_id": "independent_upload_mime_storage_001",
+      "task_family": "upload_security",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "upload_security",
+      "expected_capability_group": "upload_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\independent_upload_mime_storage_001\\baseline_active"
+    },
+    {
+      "case_id": "public_nodegoat_dev_config_001",
+      "task_family": "config_security",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\public_nodegoat_dev_config_001\\baseline_active"
+    },
+    {
+      "case_id": "public_nodegoat_eval_unsupported_001",
+      "task_family": "server_side_js_injection_review",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": true,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\public_nodegoat_eval_unsupported_001\\baseline_active"
+    },
+    {
+      "case_id": "public_nodegoat_regex_unsupported_001",
+      "task_family": "regex_dos_review",
+      "variant": "baseline_active",
+      "status": "completed",
+      "verifier_result": "pass",
+      "feedback_type": "pass",
+      "effective_pass": true,
+      "activated_capability_group": "out_of_scope_guard",
+      "expected_capability_group": "out_of_scope_guard",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": true,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\baseline\\public_nodegoat_regex_unsupported_001\\baseline_active"
+    }
+  ],
+  "distilled_case_count": 10,
+  "distilled_completed_count": 10,
+  "baseline_completed_count": 10,
+  "distilled_effective_pass_count": 8,
+  "baseline_effective_pass_count": 5,
+  "distilled_false_positive_count": 0,
+  "baseline_false_positive_count": 2,
+  "distilled_clean_negative_pass_count": 3,
+  "distilled_unsupported_preserved_count": 3
+}

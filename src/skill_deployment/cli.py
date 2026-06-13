@@ -29,6 +29,12 @@ def main(argv: list[str] | None = None) -> int:
     distill.add_argument("--version", default="v1")
     distill.add_argument("--output-dir", default=None)
     distill.add_argument("--title", default=None)
+    distill_open = subparsers.add_parser("distill-open-materials", help="Distill user/public materials into an installable Skill package.")
+    distill_open.add_argument("--materials", required=True)
+    distill_open.add_argument("--skill-id", required=True)
+    distill_open.add_argument("--version", default="v1")
+    distill_open.add_argument("--output-dir", default=None)
+    distill_open.add_argument("--title", default=None)
     install = subparsers.add_parser("install", help="Install one deployable Skill package into the runtime registry.")
     install.add_argument("--skill", required=True)
     install.add_argument("--version", default=None)
@@ -85,6 +91,12 @@ def main(argv: list[str] | None = None) -> int:
     iterative_improvement.add_argument("--model", default="deepseek-v4-flash")
     iterative_improvement.add_argument("--timeout-seconds", default="60")
     iterative_improvement.add_argument("--budget", default="5")
+    evolution_repeatability = subparsers.add_parser("evolution-repeatability", help="Rerun promoted live-feedback candidates and measure proposal stability.")
+    evolution_repeatability.add_argument("--installed", default="secure_code_review")
+    evolution_repeatability.add_argument("--repeats", default="3")
+    evolution_repeatability.add_argument("--base-url", default="https://api.deepseek.com")
+    evolution_repeatability.add_argument("--model", default="deepseek-v4-flash")
+    evolution_repeatability.add_argument("--timeout-seconds", default="60")
     ablation = subparsers.add_parser("activation-ablation", help="Run task-conditioned activation ablations.")
     ablation.add_argument("--installed", default="secure_code_review")
     ablation.add_argument("--backend", default="offline_deterministic")
@@ -105,6 +117,20 @@ def main(argv: list[str] | None = None) -> int:
     external_gen.add_argument("--base-url", default="https://api.deepseek.com")
     external_gen.add_argument("--model", default="deepseek-v4-flash")
     external_gen.add_argument("--timeout-seconds", default="60")
+    open_world = subparsers.add_parser("open-world-distill-validation", help="Distill a Skill from public materials and validate it on bounded external/independent cases.")
+    open_world.add_argument("--skill-id", default="secure_code_review_open_world_distilled")
+    open_world.add_argument("--version", default="v1")
+    open_world.add_argument("--backend", default="live_llm_text")
+    open_world.add_argument("--baseline-skill", default="secure_code_review")
+    open_world.add_argument("--base-url", default="https://api.deepseek.com")
+    open_world.add_argument("--model", default="deepseek-v4-flash")
+    open_world.add_argument("--timeout-seconds", default="60")
+    open_world_closed_loop = subparsers.add_parser("open-world-closed-loop", help="Run a bounded evolution step on top of the open-world distilled skill.")
+    open_world_closed_loop.add_argument("--installed", default="secure_code_review_open_world_distilled")
+    open_world_closed_loop.add_argument("--repeats", default="3")
+    open_world_closed_loop.add_argument("--base-url", default="https://api.deepseek.com")
+    open_world_closed_loop.add_argument("--model", default="deepseek-v4-flash")
+    open_world_closed_loop.add_argument("--timeout-seconds", default="60")
     subparsers.add_parser("open-source-readiness", help="Audit open-source prototype readiness.")
     subparsers.add_parser("public-release-readiness", help="Audit strict public release readiness.")
     subparsers.add_parser("swebench-infra-final", help="Finalize SWE-bench infra status from bounded official harness attempts.")
@@ -183,6 +209,21 @@ def main(argv: list[str] | None = None) -> int:
             "scripts/distill_skill_package.py",
             "--cases",
             args.cases,
+            "--skill-id",
+            args.skill_id,
+            "--version",
+            args.version,
+        ]
+        if args.output_dir:
+            command.extend(["--output-dir", args.output_dir])
+        if args.title:
+            command.extend(["--title", args.title])
+        return run_script(command)
+    if args.command == "distill-open-materials":
+        command = [
+            "scripts/distill_open_materials_skill.py",
+            "--materials",
+            args.materials,
             "--skill-id",
             args.skill_id,
             "--version",
@@ -338,6 +379,22 @@ def main(argv: list[str] | None = None) -> int:
                 args.budget,
             ]
         )
+    if args.command == "evolution-repeatability":
+        return run_script(
+            [
+                "scripts/run_evolution_improvement_repeatability.py",
+                "--installed",
+                args.installed,
+                "--repeats",
+                args.repeats,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
     if args.command == "activation-ablation":
         return run_script(["scripts/run_task_conditioned_activation_ablation.py", "--installed", args.installed, "--backend", args.backend])
     if args.command == "live-mechanism-ablation":
@@ -366,6 +423,42 @@ def main(argv: list[str] | None = None) -> int:
                 args.installed,
                 "--backend",
                 args.backend,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
+    if args.command == "open-world-distill-validation":
+        return run_script(
+            [
+                "scripts/run_open_world_distillation_validation.py",
+                "--skill-id",
+                args.skill_id,
+                "--version",
+                args.version,
+                "--backend",
+                args.backend,
+                "--baseline-skill",
+                args.baseline_skill,
+                "--base-url",
+                args.base_url,
+                "--model",
+                args.model,
+                "--timeout-seconds",
+                args.timeout_seconds,
+            ]
+        )
+    if args.command == "open-world-closed-loop":
+        return run_script(
+            [
+                "scripts/run_open_world_closed_loop.py",
+                "--installed",
+                args.installed,
+                "--repeats",
+                args.repeats,
                 "--base-url",
                 args.base_url,
                 "--model",

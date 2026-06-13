@@ -1,0 +1,22 @@
+{
+  "materials": [
+    {
+      "source_id": "upload_guidance_demo",
+      "task_family": "upload_security",
+      "title": "Upload review guidance",
+      "material_text": "Validate file type with signature or magic-byte checks, do not trust extension alone, store uploads outside the web root, and keep attributable audit logs for upload actions."
+    },
+    {
+      "source_id": "auth_guidance_demo",
+      "task_family": "auth_access_control",
+      "title": "Authorization review guidance",
+      "material_text": "Enforce authorization on every protected request, bind objects to owner or tenant scope, and avoid denial responses that leak object identifiers or sensitive debug detail."
+    },
+    {
+      "source_id": "config_guidance_demo",
+      "task_family": "config_security",
+      "title": "Configuration review guidance",
+      "material_text": "Production-facing configuration should not include hardcoded secrets or dev/test assumptions, and audit exports should preserve enough detail for incident review."
+    }
+  ]
+}

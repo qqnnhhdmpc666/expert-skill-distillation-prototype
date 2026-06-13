@@ -1,16 +1,13 @@
 # Grand Autonomous Sprint Status
 
-Generated at: `2026-06-12T18:23:48.294011+00:00`
+Generated at: `2026-06-13T09:30:00+00:00`
 
-## What Changed
+## What became stronger after the original sprint
 
-- Added holdout defensive security validation.
-- Added non-oracle local semantic backend validation with live LLM blocked handling.
-- Added task-conditioned activation ablation.
-- Added advanced evidence-driven candidate evolution and mechanism report.
-- Extended the local defensive security mini-suite.
-- Added open-source usability docs and readiness audit.
-- Preserved SWE-bench as bounded infrastructure readiness only.
+- Added bounded public-material open-world automatic distillation validation.
+- Added bounded open-world closed-loop evolution validation with repeated comparisons.
+- Tightened runtime prompting so installed Skills read runtime-relevant files instead of broad provenance dumps.
+- Added a direct user-facing `distill-open-materials` CLI so the distillation story is not just a code-level helper.
 
 ## Evidence Summary
 
@@ -22,9 +19,9 @@ Generated at: `2026-06-12T18:23:48.294011+00:00`
 - Holdout fresh cases: `6`
 - Mechanism ablation status: `supports_mechanism`
 - Advanced candidates: `5`
-- Improvement demo decision: `2 iterative proposal(s); contract demo decision `not_promoted`
-- Evolution generation/safety/improvement: `pass` / `pass` / `demonstrated`
-- Extended suite cases: `20`
+- Evolution repeatability on the original secure_code_review line: `partial`
+- Open-world distillation: `8` effective passes vs baseline `5`
+- Open-world closed-loop stable improvement: `3 / 3` staged promotion proposals
 - SWE-bench final: `infra_blocked`
 
 ## Final Judgment
@@ -44,13 +41,26 @@ Generated at: `2026-06-12T18:23:48.294011+00:00`
 - `mechanism_ablation`: `supports_mechanism`
 - `candidate_generation`: `pass`
 - `evolution_safety_gate`: `pass`
-- `evolution_improvement`: `demonstrated`
-- `evolution_maturity`: `improvement_demonstrated`
+- `evolution_repeatability_on_existing_line`: `partial`
+- `open_world_distillation`: `pass_bounded_public_materials`
+- `stable_open_world_evolution`: `pass_bounded_closed_loop`
+- `evolution_improvement`: `demonstrated_bounded_open_world`
+- `evolution_maturity`: `bounded_improvement_demonstrated`
 - `external_harness`: `infra_blocked`
 - `open_source_prototype_readiness`: `pass`
-- `public_release_readiness`: `pass`
+- `public_release_readiness`: `partial`
 - `open_source_readiness`: `prototype_pass`
-- `academic_claim_readiness`: `strong_candidate_with_external_gap`
+- `academic_claim_readiness`: `moderate_high_with_caveat`
+
+## Interpretation
+
+The project is now stronger than a pure internal runtime prototype:
+
+- it can distill a Skill from bounded public materials
+- it can validate that distilled Skill against independent/public cases
+- it can generate and repeatedly revalidate one narrow improvement candidate on top of that open-world-distilled line
+
+But it is still not honest to claim universal open-world induction or broad stable autonomous improvement.
 
 ## Non-Claims
 
@@ -58,6 +68,6 @@ Generated at: `2026-06-12T18:23:48.294011+00:00`
 - Not an official CyberSecEval/AutoPatchBench/CVE-Bench result.
 - Not a full SPARK reproduction.
 - Not SWE-bench agent success while official harness remains infra-blocked.
-- Not proof that candidate evolution already produces a superior Skill unless `evolution_improvement` is demonstrated.
-- Not proof that live LLM behavior is effective unless verifier pass and discrepancy checks pass.
+- Not proof of arbitrary public-material Skill induction.
+- Not proof of broad stable autonomous evolution across arbitrary tasks.
 - Not exploit generation or attack-chain execution.

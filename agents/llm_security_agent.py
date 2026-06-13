@@ -48,6 +48,23 @@ def read_all_texts(path: Path) -> dict[str, str]:
     }
 
 
+def read_runtime_skill_texts(skill_dir: Path) -> dict[str, str]:
+    if skill_dir.is_file():
+        return read_all_texts(skill_dir)
+    prioritized = [
+        Path("SKILL.md"),
+        Path("manifest.json"),
+        Path("README.md"),
+        Path("examples") / "distillation_summary.json",
+    ]
+    texts: dict[str, str] = {}
+    for relative_path in prioritized:
+        path = skill_dir / relative_path
+        if path.exists() and path.is_file():
+            texts[str(relative_path).replace("\\", "/")] = path.read_text(encoding="utf-8", errors="replace")
+    return texts or read_all_texts(skill_dir)
+
+
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
@@ -93,7 +110,7 @@ def build_prompt(
     contract_mode: str,
     prompt_addendum: str,
 ) -> tuple[str, list[dict[str, str]]]:
-    skill_texts = read_all_texts(skill_dir)
+    skill_texts = read_runtime_skill_texts(skill_dir)
     target_texts = read_all_texts(target_dir)
     required_fields = CONTRACT_MODE_REQUIRED_FIELDS.get(contract_mode, STRICT_REQUIRED_FIELDS)
     contract = {
@@ -260,7 +277,7 @@ def run_agent(
     active_capabilities: str | None,
 ) -> int:
     start = time.perf_counter()
-    skill_texts = read_all_texts(skill_dir)
+    skill_texts = read_runtime_skill_texts(skill_dir)
     available_capabilities = read_capabilities(skill_dir, skill_texts)
     capabilities = parse_active_capabilities(active_capabilities, available_capabilities)
     prompt, messages = build_prompt(
@@ -279,6 +296,7 @@ def run_agent(
         "generated_by": "agents/llm_security_agent.py",
         "skill_dir": str(skill_dir),
         "target_dir": str(target_dir),
+        "skill_runtime_files": sorted(skill_texts),
         "base_url_present": bool(base_url),
         "api_key_present": bool(api_key),
         "model": model,

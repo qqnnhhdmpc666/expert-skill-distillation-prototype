@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-06-13T07:17:04.632140+00:00",
+  "skill_id": "secure_code_review_open_world_distilled",
+  "version": "v1",
+  "method": "keyword_projection_from_open_materials",
+  "boundary": "This is bounded open-material distillation evidence over public or independent materials. It is not a claim of universal open-world semantic induction.",
+  "steps": [
+    {
+      "stage": "load_source_materials",
+      "artifact": "provenance/source_materials_manifest.json"
+    },
+    {
+      "stage": "project_capabilities",
+      "artifact": "provenance/extracted_candidates.json"
+    },
+    {
+      "stage": "compile_runtime_manifest",
+      "artifact": "manifest.json"
+    },
+    {
+      "stage": "render_skill_text",
+      "artifact": "SKILL.md"
+    }
+  ]
+}
