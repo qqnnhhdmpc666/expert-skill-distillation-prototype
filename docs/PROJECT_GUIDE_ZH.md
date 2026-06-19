@@ -1,8 +1,8 @@
 # 项目说明书（30 分钟接手版）
 
-如果你刚打开这个仓库，不要先被目录数量吓到。它的主线其实很简单：
+如果你刚打开这个仓库，不要先被目录数量吓到。它的主线其实很简单，但不是“只做 Skill”：
 
-> 把材料蒸馏成 Skill，再让 Skill 在 evidence 和 verifier 约束下进化。
+> 把材料拆成知识库 / RAG、可固化 Skill 和执行轨迹三层，再让它们在 evidence 和 verifier 约束下互相更新。
 
 ## 1. 先看什么
 
@@ -11,14 +11,26 @@
 1. `README.md`
 2. `docs/USER_MANUAL_ZH.md`
 3. `docs/CLAIM_BOUNDARY.md`
-4. `reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md`
-5. `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
-6. `reports/TEACHING_UTILITY_V02_STATUS.md`
-7. `reports/TEACHER_PROGRESS_BRIEF_20260613.md`
+4. `docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md`
+5. `reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md`
+6. `reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md`
+7. `reports/TEACHING_UTILITY_V02_STATUS.md`
+8. `reports/TEACHER_PROGRESS_BRIEF_20260616.md`
 
-## 2. 这个仓库真正的两个核心
+## 2. 这个仓库真正的三个核心
 
-### 核心 A：材料蒸馏
+### 核心 A：Knowledge Base / RAG
+
+知识库保存不适合固化为 Skill 的内容：
+
+- 会变化的事实，例如版本、依赖、API 行为、漏洞公告；
+- 大量案例，例如历史漏洞、失败日志、真实修复记录；
+- 背景材料，例如论文、标准、设计文档、团队经验；
+- 具体异常处理经验。
+
+它不是 Skill 的竞争方案，而是 Skill 执行时的动态上下文来源。
+
+### 核心 B：材料蒸馏为 Skill
 
 输入可以是：
 
@@ -31,7 +43,9 @@
 - 可安装的 Skill package
 - 可追溯的 distillation provenance
 
-### 核心 B：Skill 进化
+Skill 只固化稳定、可迁移、可复用的 how-to 流程，不把所有案例都塞进去。
+
+### 核心 C：轨迹驱动的 Skill / RAG 更新
 
 Skill 安装进 runtime 后：
 
@@ -40,15 +54,24 @@ Skill 安装进 runtime 后：
 - verifier 给出 pass / fail / missing capability / false positive / scope violation
 - 系统再生成 candidate Skill
 - 通过 promote / reject / rollback gate 决定是否晋升
+- 轨迹也可以进入知识库，成为后续 RAG 检索的案例
 
 ## 3. 当前最重要的结论
 
 ### 已经成立的
 
 - Skill 作为 installable runtime object 这条机制链已经成立
+- 项目方向已经明确为 Knowledge Base + Skill + Trajectory 的混合结构
 - bounded open-world 自动蒸馏已经有支持性 fresh evidence
 - bounded evolution improvement 已经有更真实的 fresh evidence
 - teaching-utility 这条线保留了真实负结果
+
+### 新的研究判断
+
+- 固定流程适合蒸馏为 Skill；
+- 动态事实、具体案例和异常处理仍需要 RAG / 知识库；
+- 轨迹不是简单的“成功样本”，而是同时用于验证 Skill、更新 Skill、补充知识库的经验数据；
+- benchmark 需要同时比较 RAG-only、Skill-only、RAG+Skill、trajectory feedback 的贡献。
 
 ### 目前最强的 open-world 证据
 

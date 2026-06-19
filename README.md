@@ -1,34 +1,42 @@
 # Expert Skill Distillation Prototype
 
-一个面向 Agent 的研究级原型：把专家知识、用户规则或公开材料自动蒸馏成可安装的 Skill，再让这个 Skill 在 evidence 和 verifier 约束下持续进化。
+一个面向 Agent 的研究级原型：把专家知识、用户规则或公开材料组织成 **知识库 / RAG + 可安装 Skill + 执行轨迹** 的混合系统。固定、可迁移的流程被蒸馏成 Skill；动态、长尾、案例型内容保留在知识库中检索；真实执行轨迹再反过来验证、修订和补充这两层。
 
-它真正想解决的不是“再写一个 prompt 仓库”，而是两件更底层的事：
+它真正想解决的不是“再写一个 prompt 仓库”，也不是让 Skill 替代 RAG，而是三件更底层的事：
 
-1. 能不能把材料自动蒸馏成真正可运行的 Skill package？
-2. 能不能让 Skill 的升级、拒绝、回滚都由同一条证据链驱动？
+1. 能不能区分哪些知识适合固化为 Skill，哪些知识仍应动态检索？
+2. 能不能把可固化材料自动蒸馏成真正可运行的 Skill package？
+3. 能不能让 Skill 的升级、拒绝、回滚都由同一条 evidence / trajectory 证据链驱动？
 
 ## 我们真正做的是什么
 
-这个仓库的核心一直是一个闭环：
+这个仓库的核心已经从单一路线升级为一个三层闭环：
 
-- **专家知识系统蒸馏**：把材料变成 Skill
-- **基于执行反馈的 Skill 进化**：让 Skill 在任务和证据里升级，而不是手工改 prompt
+- **Knowledge Base / RAG**：保存动态事实、长尾案例、背景材料和具体异常处理经验
+- **Skill**：固化稳定、可迁移、可复用的 how-to 流程
+- **Trajectory**：记录 Agent 的真实执行、工具调用、失败和修复结果，用来验证 Skill，也反哺知识库
 
 ```mermaid
 flowchart LR
-    A["专家知识 / 用户材料 / 公开材料"] --> B["自动蒸馏为 Skill Package"]
-    B --> C["安装到 Runtime"]
-    C --> D["在任务中执行"]
-    D --> E["留下 Evidence Bundle"]
-    E --> F["Verifier 给出 pass/fail/缺失/误报反馈"]
-    F --> G["生成 Candidate Skill"]
-    G --> H["Promote / Reject / Rollback Gate"]
-    H --> C
+    A["专家知识 / 用户材料 / 公开材料"] --> B["Knowledge Base / RAG"]
+    A --> C["Skill Distillation"]
+    B --> C
+    C --> D["Installable Skill"]
+    D --> E["Agent Execution"]
+    B --> E
+    E --> F["Trajectory + Evidence Bundle"]
+    F --> G["Verifier / Environment Result"]
+    G --> H["Candidate Skill / Knowledge Update"]
+    H --> B
+    H --> I["Promote / Reject / Rollback Gate"]
+    I --> D
 ```
 
 换句话说，这里研究的是：
 
-> Skill 能不能像一个被安装、执行、验证、修订、门控的运行对象那样持续进化。
+> 哪些知识应该被固化为 Skill，哪些知识应该留在 RAG 中动态检索，以及轨迹能不能把两者持续连成一个可验证的学习闭环。
+
+更完整的方向说明见：[docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md](docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md)。
 
 ## 当前最强的证据
 
@@ -90,12 +98,13 @@ flowchart LR
 
 > 哪条轨迹更适合教出下一个更好的 Skill？
 
-当前更严格的 matched-budget live pilot 里：
+当前更严格的 matched-budget live pilot 里，sealed hidden test 已经被拆到独立脚本中，在方法和 Skill hash 冻结后首次访问：
 
-- `active_discriminative_evidence` 还没有赢过更朴素的 `top_reward_success_only`
-- 当前结论仍然是 `active_selection_hypothesis = hypothesis_not_supported`
+- `active_discriminative_evidence` 仍未严格赢过 contrast / diversity
+- 当前独立 sealed hidden 结论是 `active_selection_hypothesis = inconclusive`
+- hidden teaching utility 暂时是 flat signal
 
-这条负结果没有被硬拗成成功，反而说明这个仓库会保留真实失败，而不是只堆好看的数字。
+这条负/不确定结果没有被硬拗成成功，反而说明这个仓库会保留真实失败，而不是只堆好看的数字。
 
 对应报告：
 
@@ -142,9 +151,11 @@ skill-deploy open-world-closed-loop --installed secure_code_review_open_world_hy
 2. [docs/USER_MANUAL_ZH.md](docs/USER_MANUAL_ZH.md)
 3. [docs/PROJECT_GUIDE_ZH.md](docs/PROJECT_GUIDE_ZH.md)
 4. [docs/CLAIM_BOUNDARY.md](docs/CLAIM_BOUNDARY.md)
-5. [reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md](reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md)
-6. [reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md](reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md)
-7. [reports/TEACHER_PROGRESS_BRIEF_20260613.md](reports/TEACHER_PROGRESS_BRIEF_20260613.md)
+5. [docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md](docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md)
+6. [reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md](reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md)
+7. [reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md](reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md)
+8. [reports/TEACHING_UTILITY_V02_SEALED_HIDDEN_STATUS.md](reports/TEACHING_UTILITY_V02_SEALED_HIDDEN_STATUS.md)
+9. [reports/TEACHER_PROGRESS_BRIEF_20260616.md](reports/TEACHER_PROGRESS_BRIEF_20260616.md)
 
 ## 目录导览
 
@@ -168,6 +179,8 @@ review_package/         对外评审材料
 - exploit 生成或攻击链执行工具
 - 任意 open-world 材料上都能稳定自动蒸馏
 - evolution 已经在广泛任务上稳定产出更优 Skill
+- Skill-only 已经证明优于 RAG-only
+- Skill + RAG + trajectory 混合结构已经拿到官方 benchmark 结论
 - 官方 CyberSecEval / AutoPatchBench / CVE-Bench / SWE-bench 成绩
 
 当前最准确的说法是：
