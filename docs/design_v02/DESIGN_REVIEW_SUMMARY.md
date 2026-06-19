@@ -1,5 +1,7 @@
 # v0.2 Design Review Summary
 
+> 历史说明：本文件记录 2026-06-19 的架构预研结论。规范性冻结设计已迁移至 [`../design_v03/SYSTEM_ARCHITECTURE_FREEZE_V1.md`](../design_v03/SYSTEM_ARCHITECTURE_FREEZE_V1.md)。当两者冲突时，以 Freeze v1 为准。
+
 更新日期：2026-06-19
 结论状态：`architecture_research_complete / implementation_not_started / design_freeze_pending`
 
