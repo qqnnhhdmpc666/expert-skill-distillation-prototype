@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
-from .compiler import DirectToSkillIRBuilder, KnowledgeCompiler
+from .compiler import DirectToSkillIRBuilder, KnowledgeCompiler, OpenAICompatibleJudge
 from .compiler.models import CompilerBuild
 from .core.models import SourceRef, SourceSnapshot
 from .core.schema_catalog import export_schemas
@@ -98,7 +99,19 @@ def cmd_build(args: argparse.Namespace) -> int:
         build = DirectToSkillIRBuilder(workspace).build(expert_snapshot=expert)
         _print({"status": "baseline_built", "build": build.to_dict(), "bundle_digest": None})
         return 0
-    build = KnowledgeCompiler(workspace).build(expert_snapshot=expert, structured_snapshots=(osv,))
+    judge = None
+    if args.judge_base_url or args.judge_model or args.require_judge:
+        api_key = os.environ.get("DEEPSEEK_API_KEY") or os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise RuntimeError("formal judge requested but DEEPSEEK_API_KEY/OPENAI_API_KEY is absent")
+        judge = OpenAICompatibleJudge(
+            base_url=args.judge_base_url or "https://api.deepseek.com",
+            model=args.judge_model or "deepseek-chat",
+            api_key=api_key,
+        )
+    build = KnowledgeCompiler(workspace, judge=judge, require_judge=args.require_judge).build(
+        expert_snapshot=expert, structured_snapshots=(osv,)
+    )
     bundle = BundleBuilder(workspace).build(build)
     workspace.metadata.add_build_record(
         build_id=build.build_id,
@@ -287,6 +300,9 @@ def build_parser() -> argparse.ArgumentParser:
     build.add_argument("domain", choices=["python-advisory"])
     build.add_argument("--profile", default="compiler-v1", choices=["compiler-v1", "direct-to-skill-ir"])
     build.add_argument("--examples")
+    build.add_argument("--judge-base-url")
+    build.add_argument("--judge-model")
+    build.add_argument("--require-judge", action="store_true")
     build.set_defaults(func=cmd_build)
 
     validate = sub.add_parser("validate")

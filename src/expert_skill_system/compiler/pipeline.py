@@ -9,6 +9,7 @@ from ..core.canonical import sha256_json
 from ..core.models import ArtifactRef, EvidenceUnit, SourceSnapshot, StageResult
 from ..registry.workspace import Workspace
 from ..sources.adapters import SourceIngestionService
+from .judge import IndependentJudge
 from .models import CompilerBuild, KnowledgeIR, KnowledgeNode, KnowledgeProjection, SkillIR
 from .validation import SourceGroundedValidator
 
@@ -20,9 +21,11 @@ UNSUPPORTED_PATTERN = re.compile(r"\[UNSUPPORTED\]\s*(.+)", re.IGNORECASE)
 
 
 class KnowledgeCompiler:
-    def __init__(self, workspace: Workspace) -> None:
+    def __init__(
+        self, workspace: Workspace, *, judge: IndependentJudge | None = None, require_judge: bool = False
+    ) -> None:
         self.workspace = workspace
-        self.validator = SourceGroundedValidator()
+        self.validator = SourceGroundedValidator(judge=judge, require_judge=require_judge)
 
     def build(
         self,

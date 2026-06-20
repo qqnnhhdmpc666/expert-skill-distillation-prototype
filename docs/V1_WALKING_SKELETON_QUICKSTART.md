@@ -36,6 +36,20 @@ eskill --state-dir .eskill inspect session <session-id>
 
 `.eskill/metadata.sqlite` 是状态真相源；`outputs/` 中的历史文件不参与 V1 active runtime。
 
+## Formal independent Judge
+
+Core-local smoke 不依赖商业模型。正式 source-grounding gate 可显式启用独立 LLM Judge：
+
+```powershell
+$env:DEEPSEEK_API_KEY = "<your-key>"
+eskill --state-dir .eskill build python-advisory `
+  --require-judge `
+  --judge-base-url https://api.deepseek.com `
+  --judge-model deepseek-chat
+```
+
+Judge 只看到盲化 node/support/Skill IR，不看到方法标签或 held-out gold。密钥不进入 artifact；HTTP、schema 或 Judge failure 均不会被改写为通过。
+
 ## 失败语义
 
 - 不支持的 requirements 语法：`completed + parse_error`

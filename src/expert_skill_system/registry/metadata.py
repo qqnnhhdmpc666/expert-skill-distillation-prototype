@@ -206,6 +206,16 @@ class MetadataStore:
             raise KeyError(build_id)
         return {**dict(row), "payload": json.loads(row["payload_json"])}
 
+    def get_build_by_candidate_digest(self, candidate_bundle_digest: str) -> dict[str, Any]:
+        with self.connect() as connection:
+            row = connection.execute(
+                "SELECT * FROM build_record WHERE candidate_bundle_digest = ? ORDER BY created_at DESC, build_id DESC LIMIT 1",
+                (candidate_bundle_digest,),
+            ).fetchone()
+        if row is None:
+            raise KeyError(candidate_bundle_digest)
+        return {**dict(row), "payload": json.loads(row["payload_json"])}
+
     def start_session(self, *, session_id: str, binding_key: str, bundle_digest: str, payload: dict[str, Any]) -> None:
         with self.connect() as connection:
             connection.execute(

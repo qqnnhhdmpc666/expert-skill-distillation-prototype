@@ -58,8 +58,7 @@ class DeploymentService:
         manifest = bundle.manifest
         skill_ref = ArtifactRef.from_dict(manifest["skill_ir_refs"][0])
         skill = self.workspace.artifacts.get_json(skill_ref)
-        provenance = self.workspace.artifacts.get_json(ArtifactRef.from_dict(manifest["provenance_manifest_ref"]))
-        build = self.workspace.metadata.get_build_record(provenance["compiler_build_id"])
+        build = self.workspace.metadata.get_build_by_candidate_digest(bundle_digest)
         build_payload = build["payload"]
         build_attestation = self.workspace.artifacts.get_json(ArtifactRef.from_dict(build_payload["attestation_ref"]))
         expected_subjects = {

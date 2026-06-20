@@ -78,7 +78,6 @@ class BundleBuilder:
         provenance_ref = self.workspace.put_json(
             {
                 "schema_version": "bundle_provenance.v1",
-                "compiler_build_id": compiler_build.build_id,
                 "knowledge_ir_ref": compiler_build.knowledge_ir_ref,
                 "skill_ir_ref": compiler_build.skill_ir_ref,
                 "knowledge_projection_ref": compiler_build.knowledge_projection_ref,
@@ -127,6 +126,13 @@ class BundleBuilder:
         }
         manifest_ref = self.workspace.put_json(manifest, schema_version="release_bundle.v1")
         self._verify_closure(manifest)
+        build_record = self.workspace.metadata.get_build_record(compiler_build.build_id)
+        self.workspace.metadata.add_build_record(
+            build_id=compiler_build.build_id,
+            status=build_record["status"],
+            payload=build_record["payload"],
+            candidate_bundle_digest=manifest_ref.digest,
+        )
         return ReleaseBundle(bundle_digest=manifest_ref.digest, manifest_ref=manifest_ref, manifest=manifest)
 
     def load(self, bundle_digest: str) -> ReleaseBundle:

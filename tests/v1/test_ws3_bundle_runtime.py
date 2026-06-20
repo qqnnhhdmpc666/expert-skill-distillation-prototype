@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 from expert_skill_system.compiler import KnowledgeCompiler
-from expert_skill_system.core.models import ArtifactRef, SourceRef
+from expert_skill_system.core.models import ArtifactRef, SourceRef, SourceSnapshot
 from expert_skill_system.registry.workspace import Workspace
 from expert_skill_system.runtime import BundleBuilder, PythonAdvisoryRuntime
 from expert_skill_system.sources import SourceIngestionService
@@ -95,6 +95,21 @@ def test_snapshot_change_changes_bundle_but_not_skill_identity(tmp_path: Path) -
     assert build_a.skill_ir_ref["digest"] == build_b.skill_ir_ref["digest"]
     assert build_a.knowledge_projection_ref["digest"] != build_b.knowledge_projection_ref["digest"]
     assert bundle_a.bundle_digest != bundle_b.bundle_digest
+
+
+def test_identical_semantic_builds_have_stable_bundle_identity(tmp_path: Path) -> None:
+    workspace, expert, build_a, bundle_a = _bundle(tmp_path)
+    snapshot_row = [item for item in workspace.metadata.source_snapshots() if item["adapter_type"] == "osv-snapshot"][0]
+    snapshot_ref = workspace.metadata.artifact_ref(snapshot_row["snapshot_digest"])
+    osv_snapshot = SourceSnapshot.from_dict(workspace.artifacts.get_json(snapshot_ref))
+    build_repeat = KnowledgeCompiler(workspace).build(
+        expert_snapshot=expert, structured_snapshots=(osv_snapshot,), build_id="repeat-with-different-build-id"
+    )
+    bundle_repeat = BundleBuilder(workspace).build(build_repeat)
+
+    assert build_a.build_id != build_repeat.build_id
+    assert build_a.skill_ir_ref["digest"] == build_repeat.skill_ir_ref["digest"]
+    assert bundle_a.bundle_digest == bundle_repeat.bundle_digest
 
 
 def test_runtime_records_applicable_out_of_range_missing_and_parse_error(tmp_path: Path) -> None:

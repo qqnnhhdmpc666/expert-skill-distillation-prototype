@@ -5,10 +5,15 @@ from typing import Any
 
 from ..core.canonical import sha256_json
 from ..core.models import EvidenceUnit
+from .judge import IndependentJudge
 from .models import BuildAttestation, KnowledgeIR, KnowledgeNode, KnowledgeProjection, SkillIR
 
 
 class SourceGroundedValidator:
+    def __init__(self, *, judge: IndependentJudge | None = None, require_judge: bool = False) -> None:
+        self.judge = judge
+        self.require_judge = require_judge
+
     def validate(
         self,
         *,
@@ -25,20 +30,29 @@ class SourceGroundedValidator:
             visibility_manifest.get("heldout_in_build_closure") is False
             and not any("heldout" in digest for digest in visibility_manifest.get("visible_snapshot_digests", []))
         )
-        return BuildAttestation(
-            subject_digests=subject_digests,
-            deterministic_status="pass" if not findings else "fail",
-            deterministic_findings=tuple(findings),
-            independent_judge_status="not_configured",
-            independent_judge_findings=(
+        if self.judge is None:
+            judge_status = "not_configured"
+            judge_findings = (
                 {
                     "code": "independent_llm_judge_not_configured",
                     "note": "This is automated deterministic evidence, not a human expert evaluation.",
                 },
-            ),
+            )
+        else:
+            judge_result = self.judge.evaluate(knowledge_ir, skill_ir)
+            judge_status = judge_result.status
+            judge_findings = (*judge_result.findings, {"provenance": judge_result.provenance})
+        return BuildAttestation(
+            subject_digests=subject_digests,
+            deterministic_status="pass" if not findings else "fail",
+            deterministic_findings=tuple(findings),
+            independent_judge_status=judge_status,  # type: ignore[arg-type]
+            independent_judge_findings=judge_findings,
             perturbation_status="pass" if all(item["detected"] for item in perturbations) else "fail",
             perturbation_results=tuple(perturbations),
             heldout_visibility_status="pass" if heldout_ok else "fail",
+            validation_profile="formal-research" if self.require_judge else "core-local",
+            judge_required=self.require_judge,
         )
 
     def _deterministic_findings(

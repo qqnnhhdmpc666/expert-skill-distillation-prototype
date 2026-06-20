@@ -109,6 +109,8 @@ class BuildAttestation:
     perturbation_status: Literal["pass", "fail"] = "fail"
     perturbation_results: tuple[dict[str, Any], ...] = ()
     heldout_visibility_status: Literal["pass", "fail"] = "fail"
+    validation_profile: Literal["core-local", "formal-research"] = "core-local"
+    judge_required: bool = False
 
     @property
     def eligible_for_candidate(self) -> bool:
@@ -116,7 +118,7 @@ class BuildAttestation:
             self.deterministic_status == "pass"
             and self.perturbation_status == "pass"
             and self.heldout_visibility_status == "pass"
-            and self.independent_judge_status != "fail"
+            and (self.independent_judge_status == "pass" if self.judge_required else self.independent_judge_status != "fail")
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -130,6 +132,8 @@ class BuildAttestation:
             "perturbation_status": self.perturbation_status,
             "perturbation_results": list(self.perturbation_results),
             "heldout_visibility_status": self.heldout_visibility_status,
+            "validation_profile": self.validation_profile,
+            "judge_required": self.judge_required,
             "eligible_for_candidate": self.eligible_for_candidate,
         }
 
