@@ -1,202 +1,168 @@
-# Expert Skill Distillation Prototype
+# Expert Skill Distillation System
 
-一个面向 Agent 的研究级原型：把专家知识、用户规则或公开材料组织成 **知识库 / RAG + 可安装 Skill + 执行轨迹** 的混合系统。固定、可迁移的流程被蒸馏成 Skill；动态、长尾、案例型内容保留在知识库中检索；真实执行轨迹再反过来验证、修订和补充这两层。
+一个把专家材料编译成 **可追溯知识、可执行 Skill 与可查询知识投影** 的研究级系统。
 
-它真正想解决的不是“再写一个 prompt 仓库”，也不是让 Skill 替代 RAG，而是三件更底层的事：
+它不是把文档直接改写成一段 prompt。系统会保存来源与精确证据位置，构建 Knowledge IR，再分别生成稳定的 Skill IR 和动态 Knowledge Projection，最后把二者连同验证器、权限和依赖闭包发布为不可变 ReleaseBundle。每次运行、晋升、拒绝和回滚都由真实 artifact 与 SQLite 状态驱动。
 
-1. 能不能区分哪些知识适合固化为 Skill，哪些知识仍应动态检索？
-2. 能不能把可固化材料自动蒸馏成真正可运行的 Skill package？
-3. 能不能让 Skill 的升级、拒绝、回滚都由同一条 evidence / trajectory 证据链驱动？
+## 它解决什么问题
 
-## 我们真正做的是什么
+专家知识并不都适合固化成 Skill：
 
-这个仓库的核心已经从单一路线升级为一个三层闭环：
+- 稳定流程、约束、例外和拒绝条件适合进入 Skill；
+- 公告、版本范围、环境事实和长尾案例应在运行时查询；
+- 执行证据用于判断候选更新是否值得晋升，而不是让单条 bad case 直接改写 Skill。
 
-- **Knowledge Base / RAG**：保存动态事实、长尾案例、背景材料和具体异常处理经验
-- **Skill**：固化稳定、可迁移、可复用的 how-to 流程
-- **Trajectory**：记录 Agent 的真实执行、工具调用、失败和修复结果，用来验证 Skill，也反哺知识库
+本项目把这三个生命周期连接起来：
 
 ```mermaid
 flowchart LR
-    A["专家知识 / 用户材料 / 公开材料"] --> B["Knowledge Base / RAG"]
-    A --> C["Skill Distillation"]
-    B --> C
-    C --> D["Installable Skill"]
-    D --> E["Agent Execution"]
-    B --> E
-    E --> F["Trajectory + Evidence Bundle"]
-    F --> G["Verifier / Environment Result"]
-    G --> H["Candidate Skill / Knowledge Update"]
-    H --> B
-    H --> I["Promote / Reject / Rollback Gate"]
-    I --> D
+    A["专家规范"] --> B["Knowledge Compiler"]
+    B --> C["Knowledge IR"]
+    C --> D["Skill IR"]
+    C --> E["Knowledge Projection"]
+    D --> F["ReleaseBundle"]
+    E --> F
+    G["冻结 OSV 数据"] --> E
+    F --> H["Runtime + Evidence"]
+    H --> I["Validate / Promote / Reject / Rollback"]
 ```
 
-换句话说，这里研究的是：
+## 当前可运行的 V1
 
-> 哪些知识应该被固化为 Skill，哪些知识应该留在 RAG 中动态检索，以及轨迹能不能把两者持续连成一个可验证的学习闭环。
+V1 聚焦一个边界清楚、可确定验证的任务：
 
-更完整的方向说明见：[docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md](docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md)。
+> 根据 pinned `requirements.txt`、environment profile 与冻结 OSV snapshot，判断一个 Python dependency–advisory pair 是否适用。
 
-## 当前最强的证据
+系统当前支持：
 
-### 1. Runtime 主闭环已经成型
+- Markdown 专家规范、pinned requirements、冻结 OSV JSON 三类 source adapter；
+- section-aware EvidenceUnit，保留行号、字节范围和来源 digest；
+- Capture 到 Source-Grounded Validation 的 Stage 0–9 编译链；
+- `Skill / Knowledge / Both / None` 透明投影；
+- 内容寻址 artifact store 与 SQLite 元数据真相源；
+- 不可变 ReleaseBundle、ActiveBinding 与 session pin；
+- `advisory_applicable / advisory_not_applicable / unresolved` 领域结果；
+- `completed / blocked / runtime_failure` 运行状态；
+- 候选验证、CAS 晋升、危险更新拒绝与完整 Bundle 回滚；
+- `no_skill / full_material / direct_to_skill_ir / compiler_distilled_skill` 诊断入口。
 
-仓库现在已经具备真实可运行的主链：
+## 5 分钟运行
 
-```text
-材料 -> 蒸馏为 Skill package -> install 到 runtime
--> 在任务中执行 -> evidence bundle + verifier feedback
--> candidate Skill -> promote / reject / rollback gate
-```
-
-这意味着 Skill 在这里已经不只是静态 prompt，而是一个可安装、可调用、可比较、可回滚的运行对象。
-
-### 2. bounded open-world 自动蒸馏已经有支持性证据
-
-我们新增了 `hybrid_semantic` 蒸馏路径：
-
-- 先用 LLM 在公开材料上做 capability 语义选择
-- 如果某条材料上模型保守 abstain，再显式记录 provenance 后退回 keyword projection
-- 整个过程都保留 fallback 证据，不伪装成纯语义成功
-
-当前这条线最值得看的两条结果是：
-
-- 一次 fresh run：`8 / 10` effective pass，对比 baseline `7 / 10`
-- 最新 fresh rerun：`8 / 10` effective pass，与 baseline `8 / 10` 持平
-
-这说明在当前有界公开材料场景里，系统已经能**自动蒸馏出接近现有安装版基线、并且一度超过基线**的 Skill。
-
-对应报告：
-
-- [reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md](reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md)
-
-### 3. bounded evolution 已经拿到更真实的改进证据
-
-我们不再只做“模板追加段落”，而是让 `live_semantic` candidate 直接改写 capability section 本体，再和 base skill 做严格比较。
-
-当前最强的两层证据是：
-
-- 一次 fresh generated-candidate run：`3 / 3` strict promotion proposals
-- 一次 frozen-candidate repeatability run：`4 / 5` strict promotion proposals，平均分差 `+0.0333`
-
-这个 frozen candidate 是把一次成功的 live semantic candidate 冻结下来，再做多轮 live 重复验证。它没有做到“每一轮都严格更优”，但已经给出更强的 bounded repeatability 证据：
-
-- `promotion_count = 4 / 5`
-- `base_mean_score = 0.9167`
-- `candidate_mean_score = 0.95`
-- `mean_score_delta = +0.0333`
-- `false_positive_delta = 0`
-
-对应报告：
-
-- [reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md](reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md)
-
-### 4. teaching-utility v0.2 保留了负结果
-
-这条线问的不是“哪条轨迹能让当前任务分数更高”，而是：
-
-> 哪条轨迹更适合教出下一个更好的 Skill？
-
-当前更严格的 matched-budget live pilot 里，sealed hidden test 已经被拆到独立脚本中，在方法和 Skill hash 冻结后首次访问：
-
-- `active_discriminative_evidence` 仍未严格赢过 contrast / diversity
-- 当前独立 sealed hidden 结论是 `active_selection_hypothesis = inconclusive`
-- hidden teaching utility 暂时是 flat signal
-
-这条负/不确定结果没有被硬拗成成功，反而说明这个仓库会保留真实失败，而不是只堆好看的数字。
-
-对应报告：
-
-- [reports/TEACHING_UTILITY_V02_STATUS.md](reports/TEACHING_UTILITY_V02_STATUS.md)
-
-## 你可以直接用它做什么
-
-### 路径 A：直接跑仓库内置 Skill
+需要 Python 3.11 或更高版本。
 
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -e .[dev]
-skill-deploy build-codex-skill
-skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2
-skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic
+
+eskill --state-dir .eskill demo --data-dir data/v1_walking_skeleton
 ```
 
-### 路径 B：从你自己的材料蒸馏一个 Skill
+成功后会返回真实的：
+
+- `bundle_digest`
+- `session_id`
+- dependency/advisory decision
+- `VERSION_IN_RANGE` 等 reason code
+- OSV snapshot、query contract 与 result digest
+
+示例数据中的 OSV 记录来自官方 API：`PYSEC-2018-28`。原始文件及来源 hash 固定在 `data/v1_walking_skeleton/SOURCE_MANIFEST.json`。
+
+## 逐步使用
 
 ```powershell
-skill-deploy distill-open-materials --materials demo/open_materials_example.json --skill-id my_distilled_skill --version v1 --projection-mode hybrid_semantic --base-url https://api.deepseek.com --model deepseek-v4-flash
-skill-deploy install --skill outputs/distilled_open_materials/my_distilled_skill --version v1
-skill-deploy run-skill --installed my_distilled_skill --case upload_security_001 --backend offline_deterministic
+eskill --state-dir .eskill init
+
+eskill --state-dir .eskill source add `
+  data/v1_walking_skeleton/expert_spec/python_advisory_review.md `
+  --adapter expert-document --source-id expert-spec
+
+eskill --state-dir .eskill source add `
+  data/v1_walking_skeleton/osv/PYSEC-2018-28.json `
+  --adapter osv-snapshot --source-id osv-snapshot
+
+eskill --state-dir .eskill build python-advisory
+eskill --state-dir .eskill validate bundle <bundle-digest>
+eskill --state-dir .eskill promote python-advisory <bundle-digest> --expected-generation 0
+
+eskill --state-dir .eskill run python-advisory `
+  --requirements data/v1_walking_skeleton/runtime_inputs/requirements.txt `
+  --environment data/v1_walking_skeleton/runtime_inputs/environment.json `
+  --advisory PYSEC-2018-28
 ```
 
-### 路径 C：比较 Skill 版本是否真的带来净收益
+证据检查与版本控制：
 
 ```powershell
-skill-deploy compare-variants --cases upload,config --backend offline_deterministic --source installed --installed-skill secure_code_review
+eskill --state-dir .eskill inspect session <session-id>
+eskill --state-dir .eskill inspect bundle <bundle-digest>
+eskill --state-dir .eskill history
+eskill --state-dir .eskill rollback python-advisory <old-bundle-digest> --expected-generation <n>
+eskill --state-dir .eskill baselines
 ```
 
-### 路径 D：跑 bounded open-world 蒸馏 + 演化
+## 为什么 Skill 与知识投影分开
 
-```powershell
-$env:OPENAI_API_KEY = "<your key>"
-skill-deploy open-world-distill-validation --skill-id secure_code_review_open_world_hybrid_distilled --version v1 --backend live_llm_text --base-url https://api.deepseek.com --model deepseek-v4-flash --projection-mode hybrid_semantic
-skill-deploy open-world-closed-loop --installed secure_code_review_open_world_hybrid_distilled --repeats 5 --base-url https://api.deepseek.com --model deepseek-v4-flash --candidate-mode live_semantic --reuse-candidate-dir outputs/open_world_closed_loop/frozen_candidate_config_guard_v1
-```
+Skill 只声明“需要冻结 advisory 和 affected range 证据”，不写入具体 CVE/OSV 事实。KnowledgeAccessBinding 决定当前 Bundle 使用哪个固定 snapshot 与 provider。
 
-## 如果你第一次进仓库
-
-建议只先看这几个文件，不需要一口气翻完整个目录：
-
-1. `README.md`
-2. [docs/USER_MANUAL_ZH.md](docs/USER_MANUAL_ZH.md)
-3. [docs/PROJECT_GUIDE_ZH.md](docs/PROJECT_GUIDE_ZH.md)
-4. [docs/CLAIM_BOUNDARY.md](docs/CLAIM_BOUNDARY.md)
-5. [docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md](docs/HYBRID_KNOWLEDGE_SKILL_TRAJECTORY_ARCHITECTURE.md)
-6. [reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md](reports/OPEN_WORLD_DISTILLATION_VALIDATION_STATUS.md)
-7. [reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md](reports/OPEN_WORLD_CLOSED_LOOP_STATUS.md)
-8. [reports/TEACHING_UTILITY_V02_SEALED_HIDDEN_STATUS.md](reports/TEACHING_UTILITY_V02_SEALED_HIDDEN_STATUS.md)
-9. [reports/TEACHER_PROGRESS_BRIEF_20260616.md](reports/TEACHER_PROGRESS_BRIEF_20260616.md)
-
-## 目录导览
+因此只更新 OSV snapshot 时：
 
 ```text
-src/skill_deployment/   runtime、distillation、install state、verifier、CLI
-agents/                 live / local agent 执行器
-scripts/                入口脚本、实验脚本、导出脚本
-data/                   controlled cases、holdout、公开材料验证样本
-demo/                   最小材料示例
-outputs/                distilled skills、installed skills、runtime evidence、pilot 结果
-reports/                阶段报告、claim 校准、实验结论
-docs/                   用户说明、项目说明、边界说明
-review_package/         对外评审材料
+Skill IR digest              不变
+Knowledge Projection digest  改变
+ReleaseBundle digest         改变
 ```
 
-## 当前不能声称什么
+这让稳定方法与动态事实可以独立更新、验证和回滚。
 
-这个仓库现在**不能**诚实声称：
+## 仓库结构
 
-- 生产级漏洞扫描器
-- exploit 生成或攻击链执行工具
-- 任意 open-world 材料上都能稳定自动蒸馏
-- evolution 已经在广泛任务上稳定产出更优 Skill
-- Skill-only 已经证明优于 RAG-only
-- Skill + RAG + trajectory 混合结构已经拿到官方 benchmark 结论
-- 官方 CyberSecEval / AutoPatchBench / CVE-Bench / SWE-bench 成绩
+```text
+src/expert_skill_system/       V1 Compiler、Registry、Runtime、Deployment 与 eskill CLI
+data/v1_walking_skeleton/      冻结专家规范、官方 OSV snapshot 与任务输入
+tests/v1/                      V1 contract / integration / transaction tests
+docs/design_v03/               Freeze v1.0.3 架构与方法规格
+src/skill_deployment/          旧受控实验系统，保留作 legacy baseline
+outputs/ 与 reports/           历史实验产物和阶段报告，不是 V1 runtime state
+```
 
-当前最准确的说法是：
+V1 runtime state 只写入用户指定的 `.eskill/`：
 
-> 这是一个 Evidence-Grounded Skill Evolution Runtime 的研究级原型。  
-> 它已经拿到 bounded open-world 自动蒸馏和 bounded evolution improvement 的支持性证据，  
-> 但这些证据仍然是有界、本地、可审计的，不等于官方外部 benchmark 或通用真实世界能力。
+```text
+.eskill/artifacts/sha256/      内容寻址不可变工件
+.eskill/metadata.sqlite        source、build、binding、session、event 真相源
+.eskill/indexes/               adapter-owned 查询投影
+.eskill/schemas/               导出的冻结 JSON Schema
+```
 
-## 基础校验
+## 验证
 
 ```powershell
 python -m pytest -q
-python scripts\validate_task_cases.py
-skill-deploy validate-review-package
+python -m ruff check src/expert_skill_system tests/v1
 ```
 
-## License
+本仓库已经在独立 venv 中完成 editable install、`eskill.exe` 一键 demo 和 V1 测试。详见 [V1 Quickstart](docs/V1_WALKING_SKELETON_QUICKSTART.md)。
 
-MIT
+## 当前证据边界
+
+已经证明的是一个可安装、状态驱动、可审计的 Core Walking Skeleton。它证明 Knowledge IR、Skill IR、Knowledge Projection、ReleaseBundle、Runtime 与部署事务能够连成真实闭环。
+
+当前不能据此声称：
+
+- 通用 open-world 自动蒸馏已经成立；
+- Knowledge Compiler 已稳定优于直接生成；
+- evolution 已稳定产生更优 Skill；
+- AgentHost 或 Harbor 外部评测已经通过；
+- 系统是生产级漏洞扫描器；
+- advisory applicability 等价于漏洞可达、可利用或项目已受影响。
+
+当前自动编译使用保守、可审计的 V1 显式规则路径；独立 LLM-as-Judge、AgentHost qualification 和公开外部任务仍是后续研究证据门，不会用确定性 ReferenceDecisionBackend 结果冒充。
+
+## 安全边界
+
+项目只处理防御性的依赖公告适用性、代码审查和修复验证。它不生成 exploit，不执行攻击链，也不访问未授权目标。
+
+## 许可证
+
+项目代码采用 [MIT License](LICENSE)。第三方冻结数据保留各自来源与许可说明。

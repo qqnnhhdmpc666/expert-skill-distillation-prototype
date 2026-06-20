@@ -196,7 +196,9 @@ class OSVSnapshotAdapter:
         path = Path(source_ref.uri).resolve()
         payload = _read_utf8(path)
         parsed = json.loads(payload)
-        records = parsed.get("vulns") if isinstance(parsed, dict) else parsed
+        records = parsed.get("vulns") if isinstance(parsed, dict) and "vulns" in parsed else parsed
+        if isinstance(records, dict) and records.get("id"):
+            records = [records]
         if not isinstance(records, list) or not records:
             raise ValueError("OSV snapshot must be a non-empty list or {'vulns': [...]} object")
         for record in records:
