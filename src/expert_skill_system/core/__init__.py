@@ -5,8 +5,13 @@ from .models import (
     DeploymentEvent,
     DomainDecision,
     DomainOutcome,
+    EvidenceEnvelope,
+    EvidenceUnit,
     ExecutionEnvelope,
     FailureDetail,
+    KnowledgeQuery,
+    SourceRef,
+    SourceSnapshot,
     StageResult,
 )
 
@@ -16,12 +21,16 @@ __all__ = [
     "DeploymentEvent",
     "DomainDecision",
     "DomainOutcome",
+    "EvidenceEnvelope",
+    "EvidenceUnit",
     "ExecutionEnvelope",
     "FailureDetail",
+    "KnowledgeQuery",
+    "SourceRef",
+    "SourceSnapshot",
     "StageResult",
     "canonical_json_bytes",
     "canonical_json_text",
     "sha256_bytes",
     "sha256_json",
 ]
-

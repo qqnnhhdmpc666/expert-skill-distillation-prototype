@@ -5,6 +5,7 @@ description = "Risk-budgeted traceable skill deployment prototype for controlled
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+  "packaging>=24.0",
   "streamlit>=1.35",
 ]
 

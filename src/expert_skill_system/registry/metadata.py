@@ -170,9 +170,27 @@ class MetadataStore:
         self.register_artifact(artifact_ref)
         with self.connect() as connection:
             connection.execute(
-                "INSERT INTO evidence_index(evidence_id, artifact_digest, source_snapshot_digest, locator_json, created_at) VALUES (?, ?, ?, ?, ?)",
+                "INSERT OR IGNORE INTO evidence_index(evidence_id, artifact_digest, source_snapshot_digest, locator_json, created_at) VALUES (?, ?, ?, ?, ?)",
                 (evidence_id, artifact_ref.digest, source_snapshot_digest, json.dumps(locator, sort_keys=True), utc_now()),
             )
+
+    def source_snapshots(self, *, visibility: str | None = None) -> list[dict[str, Any]]:
+        query = "SELECT * FROM source_snapshot"
+        parameters: tuple[Any, ...] = ()
+        if visibility is not None:
+            query += " WHERE json_extract(metadata_json, '$.visibility') = ?"
+            parameters = (visibility,)
+        query += " ORDER BY source_id, snapshot_digest"
+        with self.connect() as connection:
+            rows = connection.execute(query, parameters).fetchall()
+        return [{**dict(row), "metadata": json.loads(row["metadata_json"])} for row in rows]
+
+    def evidence_for_snapshot(self, snapshot_digest: str) -> list[dict[str, Any]]:
+        with self.connect() as connection:
+            rows = connection.execute(
+                "SELECT * FROM evidence_index WHERE source_snapshot_digest = ? ORDER BY evidence_id", (snapshot_digest,)
+            ).fetchall()
+        return [{**dict(row), "locator": json.loads(row["locator_json"])} for row in rows]
 
     def get_active_binding(self, binding_key: str) -> ActiveBinding | None:
         with self.connect() as connection:
@@ -287,4 +305,3 @@ class MetadataStore:
             }
             for row in rows
         ]
-

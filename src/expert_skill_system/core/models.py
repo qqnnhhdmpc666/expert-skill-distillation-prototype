@@ -53,6 +53,104 @@ class ArtifactRef(StrictModel):
 
 
 @dataclass(frozen=True)
+class SourceRef(StrictModel):
+    SCHEMA_VERSION: ClassVar[str] = "source_ref.v1"
+    schema_version: str = SCHEMA_VERSION
+    source_id: str = ""
+    uri: str = ""
+    adapter_type: Literal["expert-document", "requirements", "osv-snapshot", "build-cases"] = "expert-document"
+    visibility: Literal["build", "dev", "runtime", "heldout"] = "build"
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if not self.source_id or not self.uri:
+            raise ValueError("source_id and uri are required")
+
+
+@dataclass(frozen=True)
+class EvidenceUnit(StrictModel):
+    SCHEMA_VERSION: ClassVar[str] = "evidence_unit.v1"
+    schema_version: str = SCHEMA_VERSION
+    evidence_id: str = ""
+    source_id: str = ""
+    source_snapshot_digest: str = ""
+    content: str = ""
+    content_type: str = "text"
+    locator: dict[str, Any] = field(default_factory=dict)
+    attributes: dict[str, Any] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if not self.evidence_id or not self.source_id or not self.source_snapshot_digest.startswith("sha256:"):
+            raise ValueError("invalid EvidenceUnit identity")
+        if not self.content:
+            raise ValueError("EvidenceUnit content cannot be empty")
+
+
+@dataclass(frozen=True)
+class SourceSnapshot(StrictModel):
+    SCHEMA_VERSION: ClassVar[str] = "source_snapshot.v1"
+    schema_version: str = SCHEMA_VERSION
+    source_id: str = ""
+    adapter_type: str = ""
+    source_uri: str = ""
+    visibility: Literal["build", "dev", "runtime", "heldout"] = "build"
+    captured_at: str = ""
+    raw_artifact_ref: dict[str, Any] = field(default_factory=dict)
+    evidence_refs: tuple[dict[str, Any], ...] = ()
+    native_index_refs: tuple[dict[str, Any], ...] = ()
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if not self.source_id or not self.source_uri or not self.captured_at:
+            raise ValueError("invalid SourceSnapshot")
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> SourceSnapshot:
+        data = dict(cls._strict_payload(payload))
+        data["evidence_refs"] = tuple(data.get("evidence_refs", ()))
+        data["native_index_refs"] = tuple(data.get("native_index_refs", ()))
+        return cls(**data)
+
+
+@dataclass(frozen=True)
+class KnowledgeQuery(StrictModel):
+    SCHEMA_VERSION: ClassVar[str] = "knowledge_query.v1"
+    schema_version: str = SCHEMA_VERSION
+    provider_id: str = ""
+    query_type: str = ""
+    parameters: dict[str, Any] = field(default_factory=dict)
+    limit: int = 20
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if not self.provider_id or not self.query_type or self.limit < 1:
+            raise ValueError("invalid KnowledgeQuery")
+
+
+@dataclass(frozen=True)
+class EvidenceEnvelope(StrictModel):
+    SCHEMA_VERSION: ClassVar[str] = "evidence_envelope.v1"
+    schema_version: str = SCHEMA_VERSION
+    provider_id: str = ""
+    provider_version: str = ""
+    snapshot_digest: str = ""
+    query_contract_digest: str = ""
+    normalized_parameters: dict[str, Any] = field(default_factory=dict)
+    evidence_units: tuple[dict[str, Any], ...] = ()
+    result_digest: str = ""
+    elapsed_ms: float = 0.0
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        for digest in (self.snapshot_digest, self.query_contract_digest, self.result_digest):
+            if not digest.startswith("sha256:"):
+                raise ValueError("EvidenceEnvelope requires digest-pinned provenance")
+
+
+@dataclass(frozen=True)
 class StageResult(StrictModel):
     SCHEMA_VERSION: ClassVar[str] = "compiler_stage_result.v1"
     schema_version: str = SCHEMA_VERSION
@@ -205,4 +303,3 @@ class DeploymentEvent(StrictModel):
     generation_after: int = 0
     reason_codes: tuple[str, ...] = ()
     created_at: str = ""
-
