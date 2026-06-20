@@ -229,6 +229,25 @@ class MetadataStore:
             raise KeyError(session_id)
         return {**dict(row), "payload": json.loads(row["payload_json"])}
 
+    def add_evaluation_attestation(
+        self, *, attestation_id: str, subject_digest: str, status: str, payload: dict[str, Any]
+    ) -> None:
+        with self.connect() as connection:
+            connection.execute(
+                "INSERT INTO evaluation_attestation(attestation_id, subject_digest, status, payload_json, created_at) VALUES (?, ?, ?, ?, ?)",
+                (attestation_id, subject_digest, status, json.dumps(payload, sort_keys=True), utc_now()),
+            )
+
+    def latest_evaluation_attestation(self, subject_digest: str) -> dict[str, Any] | None:
+        with self.connect() as connection:
+            row = connection.execute(
+                "SELECT * FROM evaluation_attestation WHERE subject_digest = ? ORDER BY created_at DESC, attestation_id DESC LIMIT 1",
+                (subject_digest,),
+            ).fetchone()
+        if row is None:
+            return None
+        return {**dict(row), "payload": json.loads(row["payload_json"])}
+
     def get_active_binding(self, binding_key: str) -> ActiveBinding | None:
         with self.connect() as connection:
             row = connection.execute("SELECT * FROM active_binding WHERE binding_key = ?", (binding_key,)).fetchone()
