@@ -87,6 +87,10 @@ class EvidenceUnit(StrictModel):
         if not self.content:
             raise ValueError("EvidenceUnit content cannot be empty")
 
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> EvidenceUnit:
+        return cls(**cls._strict_payload(payload))
+
 
 @dataclass(frozen=True)
 class SourceSnapshot(StrictModel):

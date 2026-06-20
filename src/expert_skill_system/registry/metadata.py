@@ -192,6 +192,20 @@ class MetadataStore:
             ).fetchall()
         return [{**dict(row), "locator": json.loads(row["locator_json"])} for row in rows]
 
+    def add_build_record(self, *, build_id: str, status: str, payload: dict[str, Any], candidate_bundle_digest: str | None = None) -> None:
+        with self.connect() as connection:
+            connection.execute(
+                "INSERT OR REPLACE INTO build_record(build_id, candidate_bundle_digest, status, payload_json, created_at) VALUES (?, ?, ?, ?, ?)",
+                (build_id, candidate_bundle_digest, status, json.dumps(payload, sort_keys=True), utc_now()),
+            )
+
+    def get_build_record(self, build_id: str) -> dict[str, Any]:
+        with self.connect() as connection:
+            row = connection.execute("SELECT * FROM build_record WHERE build_id = ?", (build_id,)).fetchone()
+        if row is None:
+            raise KeyError(build_id)
+        return {**dict(row), "payload": json.loads(row["payload_json"])}
+
     def get_active_binding(self, binding_key: str) -> ActiveBinding | None:
         with self.connect() as connection:
             row = connection.execute("SELECT * FROM active_binding WHERE binding_key = ?", (binding_key,)).fetchone()
