@@ -206,6 +206,29 @@ class MetadataStore:
             raise KeyError(build_id)
         return {**dict(row), "payload": json.loads(row["payload_json"])}
 
+    def start_session(self, *, session_id: str, binding_key: str, bundle_digest: str, payload: dict[str, Any]) -> None:
+        with self.connect() as connection:
+            connection.execute(
+                "INSERT INTO session(session_id, binding_key, bundle_digest, status, payload_json, created_at) VALUES (?, ?, ?, 'running', ?, ?)",
+                (session_id, binding_key, bundle_digest, json.dumps(payload, sort_keys=True), utc_now()),
+            )
+
+    def complete_session(self, *, session_id: str, status: str, payload: dict[str, Any]) -> None:
+        with self.connect() as connection:
+            connection.execute(
+                "UPDATE session SET status = ?, payload_json = ?, completed_at = ? WHERE session_id = ?",
+                (status, json.dumps(payload, sort_keys=True), utc_now(), session_id),
+            )
+            if connection.total_changes != 1:
+                raise KeyError(session_id)
+
+    def get_session(self, session_id: str) -> dict[str, Any]:
+        with self.connect() as connection:
+            row = connection.execute("SELECT * FROM session WHERE session_id = ?", (session_id,)).fetchone()
+        if row is None:
+            raise KeyError(session_id)
+        return {**dict(row), "payload": json.loads(row["payload_json"])}
+
     def get_active_binding(self, binding_key: str) -> ActiveBinding | None:
         with self.connect() as connection:
             row = connection.execute("SELECT * FROM active_binding WHERE binding_key = ?", (binding_key,)).fetchone()
