@@ -1,8 +1,8 @@
 # System Architecture Freeze v1
 
-更新日期：2026-06-20
+更新日期：2026-06-21
 
-文档版本：`v1.0.2`
+文档版本：`v1.0.3`
 
 状态：`frozen_for_v1_specification_and_implementation`
 
@@ -10,7 +10,7 @@
 
 实现状态：`target_design_not_yet_implemented`
 
-`v1.0.2` 是实现前的规格校正与契约澄清，不重新打开总体架构。它继承 v1.0.1 对 ReleaseBundle 循环引用、可执行依赖闭包、V1 最小判定单元和自动来源约束评测的修正，并明确 Skill 与 Knowledge Projection 的独立身份及运行时协同。后续架构问题通过 ADR、schema 和实现测试处理。
+`v1.0.3` 是实现边界校正，不重新打开总体架构。它继承 v1.0.2 对 Skill 与 Knowledge Projection 独立身份及运行时协同的修正，并将 V1 source adapter 收窄到专家文档、requirements 和冻结 OSV，同时用 runtime envelope 区分领域 `unresolved` 与基础设施失败。具体实现技术、初始编译方法和端到端验收分别由本目录中的 Implementation Freeze、Construction Method Spec 和 Walking Skeleton 约束。
 
 ## 0. 文档目的与主张边界
 
@@ -351,7 +351,7 @@ knowledge_projection:
   materialization_mode: immutable_snapshot | append_only | live_query
 ```
 
-`native_index_refs` 是指向 Adapter-owned index 的安全、版本化句柄；中央系统不要求复制完整 AST、向量索引或远端数据库。V1 的文档检索可以使用 exact/BM25，结构化 OSV 使用冻结 JSON 或 SQLite 查询，Repository 使用 `rg` 与依赖 parser；不引入 GraphRAG、分布式向量库或通用知识平台。
+`native_index_refs` 是指向 Adapter-owned index 的安全、版本化句柄；中央系统不要求复制完整 AST、向量索引或远端数据库。V1 的文档访问使用 section/full read，材料超过预注册上下文阈值后才资格测试 BM25；结构化 OSV 使用冻结 JSON 或 SQLite 查询。Repository adapter 在 V1 只保留接口，不实现 `rg`、AST、调用图或通用 repository index；不引入 GraphRAG、分布式向量库或通用知识平台。
 
 Runtime 通过 `KnowledgeAccessBinding` 将 Skill 的语义证据需求绑定到具体投影：
 
@@ -787,6 +787,22 @@ outcome:
     evidence_refs: []
   parse_diagnostics: []             # task_status=parse_error 时非空
 ```
+
+Domain outcome 外必须有 runtime envelope，避免把基础设施故障伪装成 `unresolved`：
+
+```yaml
+execution_envelope:
+  execution_status: completed | blocked | runtime_failure
+  domain_outcome: object|null
+  failure:
+    category: string|null
+    reason_codes: []
+    retryable: boolean|null
+  session_id: string
+  bundle_digest: sha256:...
+```
+
+合法输入但证据不足、未知或冲突属于 `completed + verdict=unresolved`；不支持的输入语法属于 `completed + task_status=parse_error`；hard knowledge requirement 无法按策略满足时属于 `blocked`；Bundle 损坏、Provider crash、Agent timeout 或 schema decode failure 属于 `runtime_failure`。后三者不得混入 pair-level accuracy，也不得改写成 negative decision。
 
 `advisory_applicable` 只表示当前 pair 的 package、version 和 environment 条件匹配冻结 OSV snapshot 中的 affected range，不表示代码调用漏洞 API、路径可达、漏洞可利用或项目存在真实安全风险。
 
