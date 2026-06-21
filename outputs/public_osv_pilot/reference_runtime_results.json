@@ -1,0 +1,737 @@
+{
+  "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+  "claim_boundary": "Fresh public-data reference-runtime evidence only; not AgentHost effectiveness or compiler superiority.",
+  "evaluation": {
+    "accuracy": 1.0,
+    "case_count": 21,
+    "false_safe_count": 0,
+    "gold_manifest_digest": "sha256:c778fa27db1775c36a7249e539c6e69dd1ffe288788a919f885db0179d687bf7",
+    "input_manifest_digest": "sha256:f0659c89cbabe287fa5111f07fdede2900813031aa774096ceecb3f1d3a6b47c",
+    "missing_prediction_count": 0,
+    "passed_count": 21,
+    "prediction_digest": "sha256:83db6a1c63c4d3685cd42e5a9f18a5db79d23e5c5fb127224e9a8d059a2afd2c",
+    "rows": [
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-34jh-p97f-mpxf__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-1e256a7c-2891-4f27-9388-d42719e2c303",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "GHSA-34jh-p97f-mpxf__affected",
+        "expected": {
+          "case_id": "GHSA-34jh-p97f-mpxf__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "heldout",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-34jh-p97f-mpxf__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-99fe60dc-7f01-4419-a8f2-9236bb7232c1",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "GHSA-34jh-p97f-mpxf__fixed_boundary",
+        "expected": {
+          "case_id": "GHSA-34jh-p97f-mpxf__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "dev",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-34jh-p97f-mpxf__package_absent",
+          "execution_status": "completed",
+          "reason_codes": [
+            "PACKAGE_NOT_PRESENT"
+          ],
+          "session_id": "session-cf79bfd0-c342-4902-ae2b-53d2fecdf19a",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "GHSA-34jh-p97f-mpxf__package_absent",
+        "expected": {
+          "case_id": "GHSA-34jh-p97f-mpxf__package_absent",
+          "expected_reason": "PACKAGE_NOT_PRESENT",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-462w-v97r-4m45__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-5a6192d4-f9c5-4299-a1e8-7998b844846e",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "GHSA-462w-v97r-4m45__affected",
+        "expected": {
+          "case_id": "GHSA-462w-v97r-4m45__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "heldout",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-462w-v97r-4m45__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-dda8995a-6a72-44d2-99b8-b6f076b0fa0b",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "GHSA-462w-v97r-4m45__fixed_boundary",
+        "expected": {
+          "case_id": "GHSA-462w-v97r-4m45__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-9hjg-9r4m-mvj7__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-5b6e61d1-1f15-4c2a-ab13-dee6e88da69b",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "GHSA-9hjg-9r4m-mvj7__affected",
+        "expected": {
+          "case_id": "GHSA-9hjg-9r4m-mvj7__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-9hjg-9r4m-mvj7__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-d59593c2-b6f0-4741-ad86-3ebbb01cc08d",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "GHSA-9hjg-9r4m-mvj7__fixed_boundary",
+        "expected": {
+          "case_id": "GHSA-9hjg-9r4m-mvj7__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-v845-jxx5-vc9f__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-e4d42428-9bba-4ee3-b8cd-9909e2b66f2c",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "GHSA-v845-jxx5-vc9f__affected",
+        "expected": {
+          "case_id": "GHSA-v845-jxx5-vc9f__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "dev",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-v845-jxx5-vc9f__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-6279a09b-77e5-4850-8dbd-becfe79a5779",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "GHSA-v845-jxx5-vc9f__fixed_boundary",
+        "expected": {
+          "case_id": "GHSA-v845-jxx5-vc9f__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-x84v-xcm2-53pg__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-52117998-aa15-4501-bad4-c8f0dae5e7ac",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "GHSA-x84v-xcm2-53pg__affected",
+        "expected": {
+          "case_id": "GHSA-x84v-xcm2-53pg__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "GHSA-x84v-xcm2-53pg__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-f3879dd8-a129-4708-90da-0df8ef408c4d",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "GHSA-x84v-xcm2-53pg__fixed_boundary",
+        "expected": {
+          "case_id": "GHSA-x84v-xcm2-53pg__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "dev",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2017-98__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-6328c110-1f55-4825-997a-5d9515b0e8c9",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "PYSEC-2017-98__affected",
+        "expected": {
+          "case_id": "PYSEC-2017-98__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2017-98__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-49d10d15-d410-450c-96d3-747fb04b2a61",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "PYSEC-2017-98__fixed_boundary",
+        "expected": {
+          "case_id": "PYSEC-2017-98__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "heldout",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2018-28__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-c2fc92f2-c74c-47f1-8e9d-ead94a73cfee",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "PYSEC-2018-28__affected",
+        "expected": {
+          "case_id": "PYSEC-2018-28__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "heldout",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2018-28__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-31f83bb1-8603-4664-8118-8cb8067821e1",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "PYSEC-2018-28__fixed_boundary",
+        "expected": {
+          "case_id": "PYSEC-2018-28__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "dev",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2019-217__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-94d7a373-a735-4d10-9bcc-3c1f7e4e8ae0",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "PYSEC-2019-217__affected",
+        "expected": {
+          "case_id": "PYSEC-2019-217__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2019-217__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-3aff2072-e1a6-4c16-aa28-26af7468f2a7",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "PYSEC-2019-217__fixed_boundary",
+        "expected": {
+          "case_id": "PYSEC-2019-217__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "dev",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2021-66__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-1487395f-6fad-4c68-a04c-016bc32adb22",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "PYSEC-2021-66__affected",
+        "expected": {
+          "case_id": "PYSEC-2021-66__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2021-66__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-ea65d0be-eb8b-4660-a08a-bf0ec90b213b",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "PYSEC-2021-66__fixed_boundary",
+        "expected": {
+          "case_id": "PYSEC-2021-66__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2023-74__affected",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_IN_RANGE"
+          ],
+          "session_id": "session-06bf437d-b5ad-417b-a621-761b68d3f9a1",
+          "verdict": "advisory_applicable"
+        },
+        "case_id": "PYSEC-2023-74__affected",
+        "expected": {
+          "case_id": "PYSEC-2023-74__affected",
+          "expected_reason": "VERSION_IN_RANGE",
+          "expected_verdict": "advisory_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "dev",
+        "verdict_match": true
+      },
+      {
+        "actual": {
+          "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+          "case_id": "PYSEC-2023-74__fixed_boundary",
+          "execution_status": "completed",
+          "reason_codes": [
+            "VERSION_OUT_OF_RANGE"
+          ],
+          "session_id": "session-33285034-8c49-4c59-8b0e-83e05c0151ed",
+          "verdict": "advisory_not_applicable"
+        },
+        "case_id": "PYSEC-2023-74__fixed_boundary",
+        "expected": {
+          "case_id": "PYSEC-2023-74__fixed_boundary",
+          "expected_reason": "VERSION_OUT_OF_RANGE",
+          "expected_verdict": "advisory_not_applicable",
+          "schema_version": "public_osv_pair_gold.v1"
+        },
+        "missing_prediction": false,
+        "passed": true,
+        "reason_match": true,
+        "split": "build",
+        "verdict_match": true
+      }
+    ],
+    "schema_version": "public_osv_pair_evaluator.v1"
+  },
+  "knowledge_projection_digest": "sha256:8397efa62b1cb185c7f4ebf12f389aac259e41837c5c75c1c59ec315f133fdc5",
+  "method": "compiler_distilled_bundle_with_reference_decision_backend",
+  "predictions": [
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-34jh-p97f-mpxf__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-1e256a7c-2891-4f27-9388-d42719e2c303",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-34jh-p97f-mpxf__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-99fe60dc-7f01-4419-a8f2-9236bb7232c1",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-34jh-p97f-mpxf__package_absent",
+      "execution_status": "completed",
+      "reason_codes": [
+        "PACKAGE_NOT_PRESENT"
+      ],
+      "session_id": "session-cf79bfd0-c342-4902-ae2b-53d2fecdf19a",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-462w-v97r-4m45__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-5a6192d4-f9c5-4299-a1e8-7998b844846e",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-462w-v97r-4m45__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-dda8995a-6a72-44d2-99b8-b6f076b0fa0b",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-9hjg-9r4m-mvj7__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-5b6e61d1-1f15-4c2a-ab13-dee6e88da69b",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-9hjg-9r4m-mvj7__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-d59593c2-b6f0-4741-ad86-3ebbb01cc08d",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-v845-jxx5-vc9f__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-e4d42428-9bba-4ee3-b8cd-9909e2b66f2c",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-v845-jxx5-vc9f__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-6279a09b-77e5-4850-8dbd-becfe79a5779",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-x84v-xcm2-53pg__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-52117998-aa15-4501-bad4-c8f0dae5e7ac",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "GHSA-x84v-xcm2-53pg__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-f3879dd8-a129-4708-90da-0df8ef408c4d",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2017-98__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-6328c110-1f55-4825-997a-5d9515b0e8c9",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2017-98__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-49d10d15-d410-450c-96d3-747fb04b2a61",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2018-28__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-c2fc92f2-c74c-47f1-8e9d-ead94a73cfee",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2018-28__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-31f83bb1-8603-4664-8118-8cb8067821e1",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2019-217__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-94d7a373-a735-4d10-9bcc-3c1f7e4e8ae0",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2019-217__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-3aff2072-e1a6-4c16-aa28-26af7468f2a7",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2021-66__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-1487395f-6fad-4c68-a04c-016bc32adb22",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2021-66__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-ea65d0be-eb8b-4660-a08a-bf0ec90b213b",
+      "verdict": "advisory_not_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2023-74__affected",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_IN_RANGE"
+      ],
+      "session_id": "session-06bf437d-b5ad-417b-a621-761b68d3f9a1",
+      "verdict": "advisory_applicable"
+    },
+    {
+      "bundle_digest": "sha256:aa152778192b534391d1dc1a094c8e5b75b8aebccbff50c0eb83eed5b17a9e8f",
+      "case_id": "PYSEC-2023-74__fixed_boundary",
+      "execution_status": "completed",
+      "reason_codes": [
+        "VERSION_OUT_OF_RANGE"
+      ],
+      "session_id": "session-33285034-8c49-4c59-8b0e-83e05c0151ed",
+      "verdict": "advisory_not_applicable"
+    }
+  ],
+  "schema_version": "public_osv_reference_runtime_pilot.v1",
+  "skill_ir_digest": "sha256:6ae13aa6658df5f567150a39cdc8e059e0710dffafb652492e9d70a28971d44b"
+}

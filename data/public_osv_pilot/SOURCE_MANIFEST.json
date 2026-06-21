@@ -1,0 +1,84 @@
+{
+  "captured_at": "2026-06-21T17:08:47.511303+00:00",
+  "dataset_source": "OSV public API",
+  "exclusions": [],
+  "generator_version": "public_osv_pair_generator.v1",
+  "license_note": "Each OSV record retains upstream source metadata; verify upstream licenses before redistribution.",
+  "record_ids": [
+    "GHSA-34jh-p97f-mpxf",
+    "GHSA-462w-v97r-4m45",
+    "GHSA-9hjg-9r4m-mvj7",
+    "GHSA-v845-jxx5-vc9f",
+    "GHSA-x84v-xcm2-53pg",
+    "PYSEC-2017-98",
+    "PYSEC-2018-28",
+    "PYSEC-2019-217",
+    "PYSEC-2021-66",
+    "PYSEC-2023-74"
+  ],
+  "records": [
+    {
+      "frozen_path": "data/public_osv_pilot/records/GHSA-34jh-p97f-mpxf.json",
+      "record_id": "GHSA-34jh-p97f-mpxf",
+      "sha256": "sha256:aa2a59995148608bdbaa5f4faf851b8fe943bd35ab22f3f8b3f2218745f2c643",
+      "url": "https://api.osv.dev/v1/vulns/GHSA-34jh-p97f-mpxf"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/GHSA-462w-v97r-4m45.json",
+      "record_id": "GHSA-462w-v97r-4m45",
+      "sha256": "sha256:ddcf3f1e1f485d969364e43aabfadb8fcdbd0577489ac7841fa66dcf9358c21b",
+      "url": "https://api.osv.dev/v1/vulns/GHSA-462w-v97r-4m45"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/GHSA-9hjg-9r4m-mvj7.json",
+      "record_id": "GHSA-9hjg-9r4m-mvj7",
+      "sha256": "sha256:f085a23c70e39cc3187b0786ff65b0ab234f32153b247b9b0f74e144924f0333",
+      "url": "https://api.osv.dev/v1/vulns/GHSA-9hjg-9r4m-mvj7"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/GHSA-v845-jxx5-vc9f.json",
+      "record_id": "GHSA-v845-jxx5-vc9f",
+      "sha256": "sha256:add42e9c4565a751c6a4ebf75a04cf6f1b1755b3002564cfcd893e7ea214ee7a",
+      "url": "https://api.osv.dev/v1/vulns/GHSA-v845-jxx5-vc9f"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/GHSA-x84v-xcm2-53pg.json",
+      "record_id": "GHSA-x84v-xcm2-53pg",
+      "sha256": "sha256:6b0561b44d3ad38ab49f3c3434e8ea481b36c3cae49f172454827d782ac66f88",
+      "url": "https://api.osv.dev/v1/vulns/GHSA-x84v-xcm2-53pg"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/PYSEC-2017-98.json",
+      "record_id": "PYSEC-2017-98",
+      "sha256": "sha256:b5fbcbad5557793b2eea8a3baad891be1d724c79bde526d051fb20f137482994",
+      "url": "https://api.osv.dev/v1/vulns/PYSEC-2017-98"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/PYSEC-2018-28.json",
+      "record_id": "PYSEC-2018-28",
+      "sha256": "sha256:e0cb062f86d9424ac76eff541097fa5aca18264031dbd35c9a34114dd4b43403",
+      "url": "https://api.osv.dev/v1/vulns/PYSEC-2018-28"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/PYSEC-2019-217.json",
+      "record_id": "PYSEC-2019-217",
+      "sha256": "sha256:c94f5d2a91f0597bd5aedf26e6e078dd28ef0336a7ed3f8051c9b2511de31454",
+      "url": "https://api.osv.dev/v1/vulns/PYSEC-2019-217"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/PYSEC-2021-66.json",
+      "record_id": "PYSEC-2021-66",
+      "sha256": "sha256:10f36f823ca7a251ccad5311cfbc30a22dcdb2e17c8c63f29963b97cfb7ecdb6",
+      "url": "https://api.osv.dev/v1/vulns/PYSEC-2021-66"
+    },
+    {
+      "frozen_path": "data/public_osv_pilot/records/PYSEC-2023-74.json",
+      "record_id": "PYSEC-2023-74",
+      "sha256": "sha256:a8cf62be7bef83ee3f45b601756932152c5f8f050c3ad74a07a8b275a97a5913",
+      "url": "https://api.osv.dev/v1/vulns/PYSEC-2023-74"
+    }
+  ],
+  "schema_sha256": "sha256:7a511902b57297197b37298f6adaa2acb15f22b3f641bb9f547f19dcbe533ba8",
+  "schema_url": "https://raw.githubusercontent.com/ossf/osv-schema/main/validation/schema.json",
+  "schema_version": "public_osv_source_manifest.v1"
+}

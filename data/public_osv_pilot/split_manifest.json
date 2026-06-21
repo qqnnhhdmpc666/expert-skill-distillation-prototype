@@ -1,0 +1,36 @@
+{
+  "generator_version": "public_osv_pair_generator.v1",
+  "gold_digest": "sha256:c778fa27db1775c36a7249e539c6e69dd1ffe288788a919f885db0179d687bf7",
+  "input_digest": "sha256:f0659c89cbabe287fa5111f07fdede2900813031aa774096ceecb3f1d3a6b47c",
+  "schema_version": "public_osv_split_manifest.v1",
+  "selection_rule": "fixed_record_ids; affected and first fixed boundary; sha256(case_id) mod 10",
+  "splits": {
+    "build": [
+      "GHSA-34jh-p97f-mpxf__package_absent",
+      "GHSA-462w-v97r-4m45__fixed_boundary",
+      "GHSA-9hjg-9r4m-mvj7__affected",
+      "GHSA-9hjg-9r4m-mvj7__fixed_boundary",
+      "GHSA-v845-jxx5-vc9f__fixed_boundary",
+      "GHSA-x84v-xcm2-53pg__affected",
+      "PYSEC-2017-98__affected",
+      "PYSEC-2019-217__affected",
+      "PYSEC-2021-66__affected",
+      "PYSEC-2021-66__fixed_boundary",
+      "PYSEC-2023-74__fixed_boundary"
+    ],
+    "dev": [
+      "GHSA-34jh-p97f-mpxf__fixed_boundary",
+      "GHSA-v845-jxx5-vc9f__affected",
+      "GHSA-x84v-xcm2-53pg__fixed_boundary",
+      "PYSEC-2018-28__fixed_boundary",
+      "PYSEC-2019-217__fixed_boundary",
+      "PYSEC-2023-74__affected"
+    ],
+    "heldout": [
+      "GHSA-34jh-p97f-mpxf__affected",
+      "GHSA-462w-v97r-4m45__affected",
+      "PYSEC-2017-98__fixed_boundary",
+      "PYSEC-2018-28__affected"
+    ]
+  }
+}

@@ -14,6 +14,14 @@
    - 定义第一条必须跑通的端到端纵向闭环、命令和验收。
 5. `EXTERNAL_REFERENCE_ADOPTION_MATRIX.md`
    - 记录外部方法中借什么、如何适配、明确不借什么，以及采用前如何验收。
+6. `EXECUTABLE_ARCHITECTURE_REVIEW.md`
+   - 裁决本地单体、AgentHost、Harbor、公开 benchmark 和模型使用边界。
+7. `BENCHMARK_AND_VERIFIER_PROTOCOL_V1.md`
+   - 冻结公开数据、五条件比较、自动 source-grounded evaluation 与 Harbor parity。
+8. `MODEL_AND_ALGORITHM_MATRIX_V1.yaml`
+   - 在 held-out 前记录角色资格测试、精确模型/profile、预算和 evaluator digest。
+9. `PUBLIC_RELEASE_SPEC_V1.md`
+   - 定义 clean release 的交付物、发布门和不可声明内容。
 
 ## 规范优先级
 
@@ -35,10 +43,12 @@
 
 ```text
 architecture: freeze_ready
-implementation_technology: specified_not_implemented
-knowledge_compiler: specified_not_implemented
-walking_skeleton: specified_not_implemented
+implementation_technology: core_local_implemented_external_qualification_pending
+knowledge_compiler: staged_core_implemented_public_heldout_pending
+walking_skeleton: core_local_pass_agent_and_external_gates_pending
 legacy_runtime: controlled_prototype_available
 ```
 
-当前 `src/skill_deployment/` 中可复用的是安装状态、BackendRunner、Evidence Bundle、provenance、verifier 和门控经验。当前 keyword/capability-registry 蒸馏、脚本式 CLI、JSON active pointer 和 replay adapter 都是迁移输入，不是 V1 目标实现。
+当前 `src/expert_skill_system/` 已实现 WS-0 到 WS-4 的核心本地路径，包括内容寻址工件、SQLite 元数据、来源适配、分阶段 Compiler、ReleaseBundle、运行时、晋升/拒绝/原 digest 回滚和 `eskill` CLI。它支持本地 walking-skeleton 证据，但不等于 AgentHost、公开 held-out 或 Harbor parity 已完成。
+
+`src/skill_deployment/` 仍是旧原型与兼容层。其安装状态、BackendRunner、Evidence Bundle、provenance、verifier 和门控经验可作为迁移输入；keyword/capability-registry 蒸馏、脚本式 CLI、JSON active pointer 和 replay adapter 不是 V1 目标真相源。
