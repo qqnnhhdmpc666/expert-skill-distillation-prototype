@@ -1,11 +1,18 @@
 from __future__ import annotations
 
 import json
+import urllib.error
+from pathlib import Path
 
-from expert_skill_system.compiler.judge import JudgeResult, OpenAICompatibleJudge
+import pytest
+
+from expert_skill_system.compiler import KnowledgeCompiler
+from expert_skill_system.compiler.judge import JudgeGateError, JudgeResult, OpenAICompatibleJudge
 from expert_skill_system.compiler.models import KnowledgeIR, KnowledgeNode, KnowledgeProjection, SkillIR
 from expert_skill_system.compiler.validation import SourceGroundedValidator
-from expert_skill_system.core.models import EvidenceUnit
+from expert_skill_system.core.models import ArtifactRef, EvidenceUnit, SourceRef
+from expert_skill_system.registry.workspace import Workspace
+from expert_skill_system.sources import SourceIngestionService
 
 
 def _objects():
@@ -107,3 +114,77 @@ def test_formal_profile_rejects_critical_judge_finding() -> None:
 
     assert attestation.independent_judge_status == "fail"
     assert attestation.eligible_for_candidate is False
+
+
+def test_malformed_judge_response_is_a_hard_contract_failure(monkeypatch) -> None:
+    _, knowledge, skill, _ = _objects()
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        def read(self):
+            return b'{"choices":[{"message":{"content":"not-json"}}]}'
+
+    monkeypatch.setattr("urllib.request.urlopen", lambda request, timeout: Response())
+    judge = OpenAICompatibleJudge(base_url="https://api.deepseek.com", model="deepseek-chat", api_key="test")
+    with pytest.raises(JudgeGateError, match="contract JSON") as raised:
+        judge.evaluate(knowledge, skill)
+    assert raised.value.category == "malformed_response"
+
+
+def test_authentication_failure_cannot_become_a_judge_pass(monkeypatch) -> None:
+    _, knowledge, skill, _ = _objects()
+
+    def fail_auth(request, timeout):
+        raise urllib.error.HTTPError(request.full_url, 401, "Unauthorized", {}, None)
+
+    monkeypatch.setattr("urllib.request.urlopen", fail_auth)
+    judge = OpenAICompatibleJudge(base_url="https://api.deepseek.com", model="deepseek-chat", api_key="invalid")
+    with pytest.raises(JudgeGateError) as raised:
+        judge.evaluate(knowledge, skill)
+    assert raised.value.category == "authentication"
+    assert raised.value.http_status == 401
+
+
+def test_judge_pass_is_persisted_in_build_attestation(tmp_path: Path) -> None:
+    expert_path = tmp_path / "expert.md"
+    expert_path.write_text(
+        "- MUST PROCEDURE: Query frozen OSV advisory evidence.\n"
+        "- MUST NOT CONSTRAINT: Claim exploitability from advisory applicability.\n",
+        encoding="utf-8",
+    )
+    osv_path = tmp_path / "osv.json"
+    osv_path.write_text(
+        json.dumps(
+            {
+                "id": "PYSEC-JUDGE-1",
+                "affected": [
+                    {
+                        "package": {"ecosystem": "PyPI", "name": "requests"},
+                        "ranges": [{"type": "ECOSYSTEM", "events": [{"introduced": "0"}, {"fixed": "2.20.0"}]}],
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    workspace = Workspace.open(tmp_path / ".eskill")
+    ingestion = SourceIngestionService(workspace)
+    expert = ingestion.add(SourceRef(source_id="expert", uri=str(expert_path), adapter_type="expert-document"))
+    osv = ingestion.add(SourceRef(source_id="osv", uri=str(osv_path), adapter_type="osv-snapshot"))
+
+    class PassingJudge:
+        def evaluate(self, knowledge_ir, skill_ir):
+            return JudgeResult(status="pass", findings=(), provenance={"model": "independent-test-double"})
+
+    build = KnowledgeCompiler(workspace, judge=PassingJudge(), require_judge=True).build(
+        expert_snapshot=expert, structured_snapshots=(osv,)
+    )
+    attestation = workspace.artifacts.get_json(ArtifactRef.from_dict(build.attestation_ref))
+    assert attestation["independent_judge_status"] == "pass"
+    assert attestation["eligible_for_candidate"] is True
+    assert attestation["validation_profile"] == "formal-research"

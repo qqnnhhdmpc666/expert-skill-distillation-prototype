@@ -2,51 +2,42 @@
 
 Date: 2026-06-21
 
-## Requirement ledger
-
 | Slice | Status | Fresh executable evidence |
 |---|---|---|
-| WS-0 schema/state | pass | CAS artifact store, SQLite WAL metadata, CAS ActiveBinding, strict runtime envelope tests |
-| WS-1 sources/providers | pass | Markdown line/byte locators, pinned requirements diagnostics, frozen OSV SQLite provider, held-out exclusion |
-| WS-2 compiler | pass_core_local | Stage 0–9 artifacts, exact binding, conflict preservation, quarantine, independent Skill/Knowledge digests, 8 perturbation checks |
-| Independent Judge | configured_but_auth_blocked | Formal gate and blind API client implemented; fresh DeepSeek official endpoint attempt returned HTTP 401 |
-| WS-3 bundle/runtime | pass | immutable Bundle closure, snapshot A/B identity separation, exact query provenance, decision/error matrix |
-| WS-4 deployment | pass | promote A, promote B, reject unsafe C, explicit rollback B→original A digest, session pin retained |
-| Unified CLI | pass | installed `eskill.exe`; init/source/build/validate/promote/run/inspect/history/rollback/baselines/demo |
-| Clean install | pass | isolated venv `pip install -e .[dev]`, installed demo and V1 tests passed |
-| AgentHost qualification | blocked_not_run | ReferenceDecisionBackend is intentionally not counted as Agent effectiveness |
-| External/Harbor qualification | blocked_not_run | deferred until Core Walking Skeleton; no parity or benchmark claim |
+| WS-0/1 state and sources | pass | CAS, SQLite, source snapshots, frozen OSV provider |
+| WS-2 compiler | pass_core_local | Stage 0-9, quarantine, perturbation checks, same-schema direct baseline |
+| Independent Judge | hard_blocked_by_auth_with_contract_tests | DeepSeek official endpoint returned HTTP 401; malformed/auth/critical tests pass |
+| WS-3 bundle/runtime | pass | immutable closure, exact query provenance, domain/error separation |
+| WS-4 deployment | pass | accepted B, rejected unsafe C, original-digest rollback, session pin |
+| AgentHost | hard_blocked_by_auth_or_network_with_contract_tests | Codex CLI 0.137.0 invoked with Bundle artifact; provider unreachable; no fake pass |
+| Harbor/external backend | contract_ready_but_harbor_missing | Harbor, Docker and WSL distribution absent; non-replay contract tested |
+| Compiler comparison | evaluated_on_dev_only_inconclusive | four conditions × six dev cases; reference backend is condition-insensitive |
+| Evolution improvement | evaluated_partial | score 2/3→3/3 on changed source; regressions retained; scope-limited claim |
 
 ## Fresh commands
 
 ```powershell
-python -m pytest -q
-python -m ruff check src/expert_skill_system tests/v1
-python scripts\validate_task_cases.py
-python -m skill_deployment.cli validate-review-package
-
-python -m venv .tmp\clean-core-venv
-.\.tmp\clean-core-venv\Scripts\python.exe -m pip install -e .[dev]
-.\.tmp\clean-core-venv\Scripts\eskill.exe --state-dir .tmp\clean-core-demo-state demo --data-dir data\v1_walking_skeleton
+eskill --state-dir .tmp/goal-evidence-state demo --data-dir data/v1_walking_skeleton
+eskill --state-dir .tmp/goal-evidence-state evaluate-compiler --data-dir data/v1_walking_skeleton
+eskill --state-dir .tmp/goal-evolution-state-20260621 evaluate-evolution
+eskill --state-dir .tmp/goal-evidence-state qualify-agent-host
+eskill --state-dir .tmp/goal-evidence-state qualify-harbor
+eskill --state-dir .tmp/goal-evidence-state build python-advisory --require-judge --judge-base-url https://api.deepseek.com --judge-model deepseek-chat
 ```
 
-## Invariants exercised
+## Remaining external requirements
 
-- Runtime state is under `.eskill`, not legacy `outputs/`.
-- Held-out digest is absent from build visibility manifests.
-- Dynamic OSV advisory data is absent from Skill IR.
-- Attestation subjects must match exact Bundle component digests.
-- Advisory absence is unresolved, not “not applicable”.
-- Missing knowledge binding blocks; corrupt closure is runtime failure.
-- Rejected candidate never enters ActiveBinding.
-- Rollback rebinds the original Bundle digest rather than recompiling an approximation.
-- A running session remains pinned to its original Bundle after rollback.
-- Repeating the same semantic build under a different build id produces the same ReleaseBundle digest.
+1. A valid DeepSeek credential is required for formal Judge pass.
+2. A reachable authenticated Codex/OpenHands runtime is required for AgentHost qualification.
+3. Harbor plus Docker/WSL is required for external backend execution.
+4. A condition-sensitive mature Agent and held-out/public tasks are required to test compiler superiority.
+5. Repeated autonomous Skill-text improvements are required before claiming stable evolution.
 
-## Remaining research gaps
+## Final verification
 
-1. A valid independent Judge credential/run is still required for `formal-research` attestation pass.
-2. Codex/OpenHands AgentHost qualification is not run.
-3. Harbor and public external task parity are not run.
-4. The current deterministic V1 compiler proves the staged architecture and source constraints, not broad open-world extraction.
-5. Compiler superiority and stable evolution improvement remain not demonstrated.
+- Full repository: `88 passed`.
+- V1 in a newly created external clean venv: `34 passed`.
+- Ruff: pass.
+- Legacy task cases: 8/8 valid.
+- Review package validation: 0 errors.
+- Installed clean-venv `eskill.exe` demo: pass with Bundle `sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4`.

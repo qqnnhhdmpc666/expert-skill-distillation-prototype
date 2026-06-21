@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import time
+import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from typing import Any, Protocol
@@ -19,6 +20,15 @@ class JudgeResult:
 
 class IndependentJudge(Protocol):
     def evaluate(self, knowledge_ir: KnowledgeIR, skill_ir: SkillIR) -> JudgeResult: ...
+
+
+class JudgeGateError(RuntimeError):
+    """A non-passable external Judge failure with a stable machine category."""
+
+    def __init__(self, category: str, message: str, *, http_status: int | None = None) -> None:
+        super().__init__(message)
+        self.category = category
+        self.http_status = http_status
 
 
 class OpenAICompatibleJudge:
@@ -79,16 +89,25 @@ class OpenAICompatibleJudge:
             headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
             method="POST",
         )
-        with urllib.request.urlopen(request, timeout=self.timeout_seconds) as response:  # noqa: S310 - explicit configured API
-            raw = response.read()
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout_seconds) as response:  # noqa: S310
+                raw = response.read()
+        except urllib.error.HTTPError as exc:
+            category = "authentication" if exc.code in {401, 403} else "provider_http"
+            raise JudgeGateError(category, f"judge provider returned HTTP {exc.code}", http_status=exc.code) from exc
+        except urllib.error.URLError as exc:
+            raise JudgeGateError("network", "judge provider could not be reached") from exc
         elapsed_ms = round((time.perf_counter() - started) * 1000, 3)
-        response_payload = json.loads(raw.decode("utf-8"))
-        content = response_payload["choices"][0]["message"]["content"]
-        parsed = json.loads(content)
+        try:
+            response_payload = json.loads(raw.decode("utf-8"))
+            content = response_payload["choices"][0]["message"]["content"]
+            parsed = json.loads(content)
+        except (KeyError, IndexError, TypeError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise JudgeGateError("malformed_response", "judge response is not valid contract JSON") from exc
         status = parsed.get("status")
         findings = parsed.get("findings")
         if status not in {"pass", "fail"} or not isinstance(findings, list):
-            raise ValueError("judge response violates independent_source_grounding_judge.v1")
+            raise JudgeGateError("malformed_response", "judge response violates independent_source_grounding_judge.v1")
         usage = response_payload.get("usage", {})
         return JudgeResult(
             status=status,

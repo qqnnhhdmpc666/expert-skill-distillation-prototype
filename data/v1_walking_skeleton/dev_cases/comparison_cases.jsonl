@@ -1,0 +1,6 @@
+{"case_id":"dev-applicable","advisory_id":"PYSEC-2018-28","requirement":"requests==2.19.0","expected_verdict":"advisory_applicable","expected_reason":"VERSION_IN_RANGE","split":"dev"}
+{"case_id":"dev-fixed","advisory_id":"PYSEC-2018-28","requirement":"requests==2.20.0","expected_verdict":"advisory_not_applicable","expected_reason":"VERSION_OUT_OF_RANGE","split":"dev"}
+{"case_id":"dev-package-absent","advisory_id":"PYSEC-2018-28","requirement":"flask==3.0.0","expected_verdict":"advisory_not_applicable","expected_reason":"PACKAGE_NOT_PRESENT","split":"dev"}
+{"case_id":"dev-advisory-missing","advisory_id":"PYSEC-NOT-IN-SNAPSHOT","requirement":"requests==2.19.0","expected_verdict":"unresolved","expected_reason":"ADVISORY_NOT_FOUND","split":"dev"}
+{"case_id":"dev-marker-false","advisory_id":"PYSEC-2018-28","requirement":"requests==2.19.0; python_version < '3.0'","expected_verdict":"advisory_not_applicable","expected_reason":"MARKER_FALSE","split":"dev"}
+{"case_id":"dev-marker-true","advisory_id":"PYSEC-2018-28","requirement":"requests==2.19.0; python_version >= '3.0'","expected_verdict":"advisory_applicable","expected_reason":"VERSION_IN_RANGE","split":"dev"}

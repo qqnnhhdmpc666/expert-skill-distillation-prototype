@@ -1,44 +1,29 @@
 # V1 Walking Skeleton Quickstart
 
-## 环境
-
-- Windows PowerShell 或等价 shell
-- Python 3.11+
-- V1 core 不需要 Docker、Harbor、向量数据库或商业模型
-
-## 干净安装
+## 安装与单命令演示
 
 ```powershell
-git clone <repository-url>
-cd expert-skill-distillation-prototype
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -e .[dev]
-```
-
-`streamlit` 只属于 legacy UI，可按需执行 `python -m pip install -e .[ui]`，不是 V1 core 依赖。
-
-## 单命令 smoke
-
-```powershell
 eskill --state-dir .eskill demo --data-dir data/v1_walking_skeleton
 ```
 
-该命令真实执行：source capture、EvidenceUnit materialization、Stage 0–9 Compiler、ReleaseBundle build、validation、首次 promotion 和 pair decision。
+V1 core 不需要 Docker、Harbor、向量数据库或商业模型。
 
-## 审计
+## 审计与运行
 
 ```powershell
 eskill --state-dir .eskill history
 eskill --state-dir .eskill inspect bundle <bundle-digest>
 eskill --state-dir .eskill inspect session <session-id>
+eskill --state-dir .eskill baselines
+eskill --state-dir .eskill evaluate-compiler --data-dir data/v1_walking_skeleton
 ```
 
-`.eskill/metadata.sqlite` 是状态真相源；`outputs/` 中的历史文件不参与 V1 active runtime。
+`.eskill/metadata.sqlite` 是运行状态真相源；历史 `outputs/` 不参与 V1 active runtime。
 
-## Formal independent Judge
-
-Core-local smoke 不依赖商业模型。正式 source-grounding gate 可显式启用独立 LLM Judge：
+## Independent Judge
 
 ```powershell
 $env:DEEPSEEK_API_KEY = "<your-key>"
@@ -48,13 +33,35 @@ eskill --state-dir .eskill build python-advisory `
   --judge-model deepseek-chat
 ```
 
-Judge 只看到盲化 node/support/Skill IR，不看到方法标签或 held-out gold。密钥不进入 artifact；HTTP、schema 或 Judge failure 均不会被改写为通过。
+HTTP、认证、schema 或 Judge fail 都不会被改写为 pass，密钥不会进入 artifact。
 
-## 失败语义
+## 外部适配资格检查
 
-- 不支持的 requirements 语法：`completed + parse_error`
-- advisory 不在冻结 snapshot：`completed + unresolved / ADVISORY_NOT_FOUND`
-- hard knowledge binding 不可用：`blocked`
-- Bundle 闭包损坏：`runtime_failure`
+```powershell
+eskill --state-dir .eskill qualify-agent-host
+eskill --state-dir .eskill qualify-harbor
+```
 
-这些状态不得相互替代。
+这些命令会留下成功或硬阻塞证据。contract test 不能替代真实 AgentHost/Harbor pass。
+
+## 演化评估
+
+必须使用全新状态目录：
+
+```powershell
+eskill --state-dir .tmp/evolution-eval evaluate-evolution `
+  --expert-spec data/v1_walking_skeleton/expert_spec/python_advisory_review.md
+```
+
+该实验验证 accepted update、unsafe rejection 与 original-digest rollback；结果只支持有界 source-update improvement。
+
+## 完整验证
+
+```powershell
+python -m pytest -q
+python -m ruff check src/expert_skill_system tests/v1
+python scripts/validate_task_cases.py
+python -m skill_deployment.cli validate-review-package
+```
+
+失败语义严格区分：领域未知是 `completed + unresolved`；缺 hard knowledge binding 是 `blocked`；Bundle 损坏是 `runtime_failure`；AgentHost failure 不能写成领域 unresolved。

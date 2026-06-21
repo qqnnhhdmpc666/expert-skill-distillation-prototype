@@ -8,11 +8,15 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
+from .agent_host import AgentHostRequest, CodexAgentHost
 from .compiler import DirectToSkillIRBuilder, KnowledgeCompiler, OpenAICompatibleJudge
 from .compiler.models import CompilerBuild
 from .core.models import SourceRef, SourceSnapshot
 from .core.schema_catalog import export_schemas
 from .deployment import DeploymentService, PromotionRejected
+from .evaluation.comparison import run_compiler_comparison
+from .evaluation.evolution import run_evolution_evaluation
+from .evaluation.harbor import qualify_harbor, write_harbor_task_contract
 from .registry.workspace import Workspace
 from .runtime import BundleBuilder, PythonAdvisoryRuntime
 from .sources import SourceIngestionService
@@ -225,6 +229,53 @@ def cmd_baselines(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_qualify_agent_host(args: argparse.Namespace) -> int:
+    workspace = _workspace(args.state_dir)
+    digest = args.bundle_digest
+    if digest is None:
+        active = workspace.metadata.get_active_binding("python-advisory")
+        if active is None:
+            raise RuntimeError("no active python-advisory bundle")
+        digest = active.bundle_digest
+    request = AgentHostRequest(
+        bundle_digest=digest,
+        task_id=args.task_id,
+        task={
+            "instruction": "Apply the supplied Skill only to the supplied evidence. Abstain when evidence is absent.",
+            "evidence": [],
+        },
+        timeout_seconds=args.timeout,
+    )
+    result = CodexAgentHost(workspace, executable=args.executable).run(request)
+    ref = workspace.put_json(result.to_dict(), schema_version=result.schema_version)
+    _print({**result.to_dict(), "artifact_ref": ref.to_dict()})
+    return 0 if result.qualification_status in {"pass", "partial"} else 2
+
+
+def cmd_qualify_harbor(args: argparse.Namespace) -> int:
+    workspace = _workspace(args.state_dir)
+    contract_path = workspace.root / "harbor" / "task_contract.yaml"
+    write_harbor_task_contract(contract_path)
+    result = qualify_harbor()
+    ref = workspace.put_json(result.to_dict(), schema_version=result.schema_version)
+    _print({**result.to_dict(), "contract_path": str(contract_path), "artifact_ref": ref.to_dict()})
+    return 0 if result.status in {"pass", "partial"} else 2
+
+
+def cmd_evaluate_compiler(args: argparse.Namespace) -> int:
+    result = run_compiler_comparison(_workspace(args.state_dir), data_dir=Path(args.data_dir).resolve())
+    _print(result)
+    return 0
+
+
+def cmd_evaluate_evolution(args: argparse.Namespace) -> int:
+    result = run_evolution_evaluation(
+        _workspace(args.state_dir), expert_path=Path(args.expert_spec).resolve()
+    )
+    _print(result)
+    return 0
+
+
 def cmd_demo(args: argparse.Namespace) -> int:
     workspace = _workspace(args.state_dir)
     root = Path(args.data_dir).resolve()
@@ -346,6 +397,20 @@ def build_parser() -> argparse.ArgumentParser:
     rollback.set_defaults(func=cmd_rollback)
     baselines = sub.add_parser("baselines")
     baselines.set_defaults(func=cmd_baselines)
+    agent_host = sub.add_parser("qualify-agent-host")
+    agent_host.add_argument("--bundle-digest")
+    agent_host.add_argument("--task-id", default="codex-agent-host-qualification")
+    agent_host.add_argument("--timeout", type=float, default=120.0)
+    agent_host.add_argument("--executable")
+    agent_host.set_defaults(func=cmd_qualify_agent_host)
+    harbor = sub.add_parser("qualify-harbor")
+    harbor.set_defaults(func=cmd_qualify_harbor)
+    comparison = sub.add_parser("evaluate-compiler")
+    comparison.add_argument("--data-dir", default="data/v1_walking_skeleton")
+    comparison.set_defaults(func=cmd_evaluate_compiler)
+    evolution = sub.add_parser("evaluate-evolution")
+    evolution.add_argument("--expert-spec", default="data/v1_walking_skeleton/expert_spec/python_advisory_review.md")
+    evolution.set_defaults(func=cmd_evaluate_evolution)
     demo = sub.add_parser("demo")
     demo.add_argument("--data-dir", default="data/v1_walking_skeleton")
     demo.set_defaults(func=cmd_demo)
