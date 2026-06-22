@@ -152,10 +152,24 @@ def test_runtime_records_applicable_out_of_range_missing_and_parse_error(tmp_pat
     marker_false = runtime.run(requirements_path=requirements, environment_path=environment, advisory_id="PYSEC-TEST-1")
     assert marker_false.domain_outcome.decision.reason_codes == ("MARKER_FALSE",)
 
+    environment.write_text('{"python_version": null}', encoding="utf-8")
+    marker_unknown = runtime.run(
+        requirements_path=requirements, environment_path=environment, advisory_id="PYSEC-TEST-1"
+    )
+    assert marker_unknown.domain_outcome.decision.verdict == "unresolved"
+    assert marker_unknown.domain_outcome.decision.reason_codes == ("MARKER_UNKNOWN",)
+
     requirements, environment = _inputs(tmp_path, "requests===legacy-build")
     unknown = runtime.run(requirements_path=requirements, environment_path=environment, advisory_id="PYSEC-TEST-1")
     assert unknown.domain_outcome.decision.verdict == "unresolved"
     assert unknown.domain_outcome.decision.reason_codes == ("VERSION_UNKNOWN",)
+
+    requirements, environment = _inputs(tmp_path, "requests==2.31.0\nrequests==2.32.0")
+    conflicting = runtime.run(
+        requirements_path=requirements, environment_path=environment, advisory_id="PYSEC-TEST-1"
+    )
+    assert conflicting.domain_outcome.task_status == "parse_error"
+    assert conflicting.domain_outcome.parse_diagnostics[0]["reason"] == "CONFLICTING_DUPLICATE_PIN"
 
 
 def test_session_trace_pins_bundle_and_contains_query_provenance(tmp_path: Path) -> None:

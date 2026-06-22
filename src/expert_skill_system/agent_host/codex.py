@@ -91,7 +91,18 @@ class CodexAgentHost:
         }
         if completed.returncode != 0:
             reason = "CODEX_AUTH_OR_NETWORK_BLOCKED" if any(
-                marker in stderr_tail.casefold() for marker in ("not logged in", "401", "authentication", "network")
+                marker in stderr_tail.casefold()
+                for marker in (
+                    "not logged in",
+                    "401",
+                    "authentication",
+                    "network",
+                    "failed to connect",
+                    "could not connect",
+                    "stream disconnected",
+                    "socket",
+                    "访问套接字",
+                )
             ) else "CODEX_EXEC_FAILED"
             return AgentHostResult(
                 host="codex_cli", host_version=version, status="blocked" if reason.endswith("BLOCKED") else "failed",

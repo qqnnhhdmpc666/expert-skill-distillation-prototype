@@ -1,8 +1,8 @@
 {
-  "captured_at": "2026-06-21T17:08:47.511303+00:00",
+  "captured_at": "2026-06-22T17:19:01.323760+00:00",
   "dataset_source": "OSV public API",
   "exclusions": [],
-  "generator_version": "public_osv_pair_generator.v1",
+  "generator_version": "public_osv_pair_generator.v2",
   "license_note": "Each OSV record retains upstream source metadata; verify upstream licenses before redistribution.",
   "record_ids": [
     "GHSA-34jh-p97f-mpxf",

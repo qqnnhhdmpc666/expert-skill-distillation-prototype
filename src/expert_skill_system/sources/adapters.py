@@ -118,6 +118,7 @@ class RequirementsAdapter:
         raw_ref = workspace.put_bytes(payload, media_type="text/plain", schema_version="requirements.raw.v1")
         evidence_refs: list[dict[str, object]] = []
         diagnostics: list[dict[str, object]] = []
+        seen_pins: dict[str, tuple[str, str | None, int]] = {}
         byte_cursor = 0
         for line_number, raw_line in enumerate(payload.splitlines(keepends=True), start=1):
             line = raw_line.decode("utf-8").strip()
@@ -136,6 +137,19 @@ class RequirementsAdapter:
                     "version": exact_versions[0],
                     "marker": str(requirement.marker) if requirement.marker else None,
                 }
+                prior = seen_pins.get(attributes["normalized_name"])
+                current = (attributes["version"], attributes["marker"])
+                if prior is not None and current != prior[:2]:
+                    diagnostics.append(
+                        {
+                            "line": line_number,
+                            "text": line,
+                            "reason": "CONFLICTING_DUPLICATE_PIN",
+                            "conflicts_with_line": prior[2],
+                        }
+                    )
+                    continue
+                seen_pins[attributes["normalized_name"]] = (*current, line_number)
             except InvalidRequirement as exc:
                 diagnostics.append({"line": line_number, "text": line, "reason": str(exc)})
                 continue

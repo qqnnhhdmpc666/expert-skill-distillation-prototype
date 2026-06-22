@@ -1,32 +1,42 @@
 # Compiler vs Direct-to-Skill-IR Evaluation
 
-Date: 2026-06-21
+Date: 2026-06-23
 
 ```text
-compiler_superiority = evaluated_on_dev_only
-comparison_result = inconclusive
+public_protocol = prepared
+condition_sensitive_execution = not_run
+condition_content_identical = true
+agent_host = hard_blocked
+compiler_superiority = not_demonstrated
 ```
 
 Fresh command:
 
 ```powershell
-eskill --state-dir .tmp/goal-evidence-state evaluate-compiler `
-  --data-dir data/v1_walking_skeleton
+eskill --state-dir .tmp/public-comparison-state prepare-public-comparison `
+  --data-dir data/public_osv_pilot
 ```
 
-Four conditions ran over the same six predeclared dev cases and frozen OSV snapshot:
+The protocol freezes seven public held-out cases, the hidden evaluator gold digest, one
+OSV snapshot, one task budget, and five diagnostic conditions. No evaluator-only field is
+present in Agent-visible inputs. Artifact:
 
-| Condition | Correctness | False-safe | Evidence completeness | Build ms |
-|---|---:|---:|---:|---:|
-| no_skill | 1.00 | 0.00 | 1.00 | n/a |
-| full_material | 1.00 | 0.00 | 1.00 | n/a |
-| direct_to_skill_ir | 1.00 | 0.00 | 1.00 | 24.465 |
-| compiler_distilled_skill | 1.00 | 0.00 | 1.00 | 71.548 |
+```text
+sha256:d17b1deec32220963b91de1d51324c1ec1a249394ce54a749e8013c2370dcd39
+```
 
-Both automated Skill IR paths had zero deterministic unsupported-claim, scope-overreach, and missing-exception findings. Token/API cost is null because both builders and the evaluator are deterministic.
+## Integrity finding
 
-Artifact: `sha256:759310cc7519b0305b67bd28dd553ad79de73df2300d3c56ab9e87d2f7b1b379`.
+The current deterministic `direct_to_skill_ir` and `compiler_distilled_skill` paths produce
+the same Skill IR digest and the same Agent artifact digest. Therefore the current direct
+baseline is not treatment-distinct and cannot support a Compiler benefit claim. This is an
+implementation gap, not a positive result.
 
-## Interpretation
+The comparison has two independent blockers:
 
-The shared `ReferenceDecisionBackend` does not consume condition-specific Agent artifacts. Therefore the task-level tie proves evaluator plumbing and source-safe dev instrumentation, not compiler superiority. This V1 result validates staged architecture only; it does not prove open-world extraction or a benefit under a mature AgentHost.
+1. `DIRECT_AND_COMPILER_AGENT_ARTIFACTS_IDENTICAL`
+2. `QUALIFIED_AGENTHOST_UNAVAILABLE`
+
+`human_authored_reference_skill` is explicitly unavailable and is not represented as human
+gold. Prepared artifacts are not evidence of open-world extraction, AgentHost effectiveness,
+or Compiler superiority.

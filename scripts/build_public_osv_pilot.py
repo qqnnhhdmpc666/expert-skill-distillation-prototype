@@ -52,15 +52,24 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default="data/public_osv_pilot")
     parser.add_argument("--timeout", type=float, default=45.0)
+    parser.add_argument("--from-frozen", action="store_true", help="Rebuild cases from already frozen public records")
     args = parser.parse_args()
     output = Path(args.output)
-    schema, schema_bytes = fetch_json(SCHEMA_URL, args.timeout)
-    write_raw(output / "schema" / "osv-schema.json", schema_bytes)
+    if args.from_frozen:
+        schema_bytes = (output / "schema" / "osv-schema.json").read_bytes()
+        schema = json.loads(schema_bytes)
+    else:
+        schema, schema_bytes = fetch_json(SCHEMA_URL, args.timeout)
+        write_raw(output / "schema" / "osv-schema.json", schema_bytes)
     records: list[dict[str, Any]] = []
     sources: list[dict[str, Any]] = []
     for record_id in DEFAULT_IDS:
         url = f"{API_ROOT}/{record_id}"
-        record, raw = fetch_json(url, args.timeout)
+        if args.from_frozen:
+            raw = (output / "records" / f"{record_id}.json").read_bytes()
+            record = json.loads(raw)
+        else:
+            record, raw = fetch_json(url, args.timeout)
         records.append(record)
         frozen_path = output / "records" / f"{record_id}.json"
         write_raw(frozen_path, raw)

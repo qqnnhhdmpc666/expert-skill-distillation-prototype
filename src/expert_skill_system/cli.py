@@ -14,7 +14,7 @@ from .compiler.models import CompilerBuild
 from .core.models import SourceRef, SourceSnapshot
 from .core.schema_catalog import export_schemas
 from .deployment import DeploymentService, PromotionRejected
-from .evaluation.comparison import run_compiler_comparison
+from .evaluation.comparison import prepare_public_condition_comparison, run_compiler_comparison
 from .evaluation.evolution import run_evolution_evaluation
 from .evaluation.harbor import qualify_harbor, write_harbor_task_contract
 from .registry.workspace import Workspace
@@ -105,9 +105,9 @@ def cmd_build(args: argparse.Namespace) -> int:
         return 0
     judge = None
     if args.judge_base_url or args.judge_model or args.require_judge:
-        api_key = os.environ.get("DEEPSEEK_API_KEY") or os.environ.get("OPENAI_API_KEY")
+        api_key = os.environ.get("DEEPSEEK_API_KEY")
         if not api_key:
-            raise RuntimeError("formal judge requested but DEEPSEEK_API_KEY/OPENAI_API_KEY is absent")
+            raise RuntimeError("formal DeepSeek judge requested but DEEPSEEK_API_KEY is absent; fallback is forbidden")
         judge = OpenAICompatibleJudge(
             base_url=args.judge_base_url or "https://api.deepseek.com",
             model=args.judge_model or "deepseek-chat",
@@ -268,6 +268,14 @@ def cmd_evaluate_compiler(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_prepare_public_comparison(args: argparse.Namespace) -> int:
+    result = prepare_public_condition_comparison(
+        _workspace(args.state_dir), data_dir=Path(args.data_dir).resolve()
+    )
+    _print(result)
+    return 0
+
+
 def cmd_evaluate_evolution(args: argparse.Namespace) -> int:
     result = run_evolution_evaluation(
         _workspace(args.state_dir), expert_path=Path(args.expert_spec).resolve()
@@ -408,6 +416,9 @@ def build_parser() -> argparse.ArgumentParser:
     comparison = sub.add_parser("evaluate-compiler")
     comparison.add_argument("--data-dir", default="data/v1_walking_skeleton")
     comparison.set_defaults(func=cmd_evaluate_compiler)
+    public_comparison = sub.add_parser("prepare-public-comparison")
+    public_comparison.add_argument("--data-dir", default="data/public_osv_pilot")
+    public_comparison.set_defaults(func=cmd_prepare_public_comparison)
     evolution = sub.add_parser("evaluate-evolution")
     evolution.add_argument("--expert-spec", default="data/v1_walking_skeleton/expert_spec/python_advisory_review.md")
     evolution.set_defaults(func=cmd_evaluate_evolution)

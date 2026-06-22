@@ -18,11 +18,20 @@ def _record() -> dict:
 
 def test_generator_separates_public_input_from_gold() -> None:
     benchmark = build_public_osv_cases([_record()])
-    assert len(benchmark.inputs) == 3
+    assert len(benchmark.inputs) >= 8
     assert all("expected_verdict" not in item for item in benchmark.inputs)
-    assert {item["expected_verdict"] for item in benchmark.gold} == {
+    assert all("expected_reason" not in item for item in benchmark.inputs)
+    assert {item["expected_verdict"] for item in benchmark.gold} >= {
         "advisory_applicable",
         "advisory_not_applicable",
+        "unresolved",
+    }
+    assert {item["case_kind"] for item in benchmark.inputs} >= {
+        "affected",
+        "fixed_boundary",
+        "marker_unknown_control",
+        "unsupported_syntax_control",
+        "conflicting_duplicate_pin_control",
     }
 
 
@@ -41,5 +50,5 @@ def test_evaluator_preserves_false_safe_and_missing_predictions() -> None:
         ],
     )
     assert result["false_safe_count"] == 1
-    assert result["missing_prediction_count"] == 2
+    assert result["missing_prediction_count"] == len(benchmark.inputs) - 1
     assert result["passed_count"] == 0

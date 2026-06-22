@@ -173,7 +173,7 @@ class PythonAdvisoryRuntime:
             return "true"
         try:
             return "true" if Marker(marker).evaluate(environment=environment) else "false"
-        except (InvalidMarker, KeyError, ValueError):
+        except (AssertionError, InvalidMarker, KeyError, TypeError, ValueError):
             return "unknown"
 
     @staticmethod

@@ -31,12 +31,13 @@ def _metadata(name: str) -> dict[str, Any]:
 def diagnose(*, base_url: str, model: str, timeout: float, perform_request: bool) -> dict[str, Any]:
     deepseek = os.environ.get("DEEPSEEK_API_KEY")
     openai = os.environ.get("OPENAI_API_KEY")
-    selected_name = "DEEPSEEK_API_KEY" if deepseek else ("OPENAI_API_KEY" if openai else None)
-    selected = deepseek or openai
+    selected_name = "DEEPSEEK_API_KEY" if deepseek else None
+    selected = deepseek
     endpoint = f"{base_url.rstrip('/')}/chat/completions"
     payload: dict[str, Any] = {
         "schema_version": "deepseek_auth_diagnosis.v1",
-        "client_selection_order": ["DEEPSEEK_API_KEY", "OPENAI_API_KEY"],
+        "client_selection_order": ["DEEPSEEK_API_KEY"],
+        "fallback_allowed": False,
         "variables": [_metadata("DEEPSEEK_API_KEY"), _metadata("OPENAI_API_KEY")],
         "selected_variable": selected_name,
         "base_url": base_url.rstrip("/"),
@@ -49,7 +50,7 @@ def diagnose(*, base_url: str, model: str, timeout: float, perform_request: bool
         "sanitized_error_body": None,
     }
     if selected is None:
-        payload["classification"] = "env_missing"
+        payload["classification"] = "wrong_var" if openai else "env_missing"
         return payload
     meta = next(item for item in payload["variables"] if item["name"] == selected_name)
     malformed = (
@@ -88,8 +89,6 @@ def diagnose(*, base_url: str, model: str, timeout: float, perform_request: bool
             classification = "malformed_key"
         elif exc.code in {404, 405}:
             classification = "endpoint_mismatch"
-        elif exc.code in {401, 403} and selected_name == "OPENAI_API_KEY" and deepseek is None:
-            classification = "wrong_var"
         elif exc.code in {401, 403}:
             classification = "revoked_or_invalid_key"
         else:

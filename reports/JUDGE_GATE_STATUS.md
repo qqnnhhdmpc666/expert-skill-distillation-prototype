@@ -1,35 +1,43 @@
 # Independent Judge Gate Status
 
-Date: 2026-06-22
+Date: 2026-06-23
 
 ```text
-independent_llm_judge = blocked_by_wrong_environment_variable_with_contract_tests
-formal_pass = false
+independent_llm_judge = pass
+valid_judge_response_received = true
+judge_attestation_generated = true
+formal_pass = true
 ```
 
-## Fresh attempt
+## Fresh formal run
 
 ```powershell
-eskill --state-dir .tmp/goal-evidence-state build python-advisory `
+eskill --state-dir .tmp/judge-pass-state build python-advisory `
   --require-judge `
   --judge-base-url https://api.deepseek.com `
   --judge-model deepseek-chat
 ```
 
 - Provider/model: DeepSeek official OpenAI-compatible API / `deepseek-chat`.
-- Restricted-network attempt: failed as `network` before a response.
-- Approved external-network attempt: reached the provider and returned HTTP 401.
-- Same-process diagnosis: `DEEPSEEK_API_KEY` absent; `OPENAI_API_KEY` fallback selected.
-- Valid Judge response received: no.
-- Independent pass attestation generated: no.
+- Candidate build: `build-5573f3cf-27f9-4916-b214-a2419e36736a`.
+- Immutable Bundle: `sha256:d2efd9f98fef4773a3e86ec3cef50aefe7ff67057f0cb8f7218f76eea836ae4e`.
+- Deterministic checks: pass.
+- Held-out visibility check: pass.
+- Perturbation checks: 8/8 detected.
+- Independent Judge: pass, with a valid blind response and no critical findings.
+- Credential fallback: forbidden; only `DEEPSEEK_API_KEY` was eligible.
 - API key value was not printed or persisted.
 
-The formal gate therefore cannot pass. The precise diagnosis is `wrong_var`, not evidence that a DeepSeek-specific key was revoked. See `reports/DEEPSEEK_AUTH_DIAGNOSIS.md`.
+Attestation artifact:
+
+```text
+.tmp/judge-pass-state/artifacts/sha256/b7/b7dc2d29696c06f4a5a4362516037fd4afd77668f3b684f2ab30e34c4a2519a4
+```
 
 ## Contract evidence
 
 `tests/v1/test_independent_judge_gate.py` verifies that malformed output and HTTP 401 are hard failures, critical findings block eligibility, a blind valid response is accepted, and credentials are absent from provenance. Fresh focused result: `5 passed` as part of the 9-test external-gate slice.
 
-## Next external requirement
+## Claim boundary
 
-A newly rotated DeepSeek credential must be made available through `DEEPSEEK_API_KEY` in the same shell that launches `eskill`. No code change can legitimately convert the current 401 into a formal pass.
+This is a real independent-LLM compiler gate pass. It is not an AgentHost qualification, an external benchmark result, or evidence that every generated Skill is effective.

@@ -59,7 +59,8 @@ def main() -> int:
         case_dir.mkdir(parents=True, exist_ok=True)
         requirements = case_dir / "requirements.txt"
         environment = case_dir / "environment.json"
-        requirements.write_text(str(case["requirement"]) + "\n", encoding="utf-8")
+        requirement_lines = case.get("requirements") or [case["requirement"]]
+        requirements.write_text("\n".join(map(str, requirement_lines)) + "\n", encoding="utf-8")
         environment.write_text(json.dumps(case["environment"], sort_keys=True) + "\n", encoding="utf-8")
         envelope = runtime.run(
             requirements_path=requirements,
@@ -69,12 +70,19 @@ def main() -> int:
         )
         payload = envelope.to_dict()
         decision = (payload.get("domain_outcome") or {}).get("decision") or {}
+        outcome = payload.get("domain_outcome") or {}
+        diagnostic_reasons = [str(item.get("reason", "PARSE_ERROR")) for item in outcome.get("parse_diagnostics", [])]
+        normalized_diagnostics = [
+            "CONFLICTING_DUPLICATE_PIN" if reason == "CONFLICTING_DUPLICATE_PIN" else "PARSE_ERROR"
+            for reason in diagnostic_reasons
+        ]
         predictions.append(
             {
                 "case_id": case["case_id"],
                 "execution_status": payload["execution_status"],
+                "task_status": outcome.get("task_status", "decision"),
                 "verdict": decision.get("verdict"),
-                "reason_codes": decision.get("reason_codes", []),
+                "reason_codes": decision.get("reason_codes", []) or normalized_diagnostics,
                 "session_id": payload["session_id"],
                 "bundle_digest": payload["bundle_digest"],
             }
@@ -101,4 +109,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
