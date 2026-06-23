@@ -66,6 +66,14 @@ def bind_task_aware_evidence(payload: dict[str, Any]) -> dict[str, Any]:
         "skill_requirements": skill_requirements,
         "required_evidence": list(DEPENDENCY_USE_EVIDENCE),
         "binding_plan": binding_plan,
+        "repo_evidence_requirements": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "repo_file_digest",
+        ],
+        "knowledge_evidence_requirements": ["advisory_affected_range"],
+        "decision_evidence_requirements": ["decision_evidence"],
         "missing_evidence_policy": {
             "policy": "abstain_or_fail_safe",
             "runtime_decision": "unresolved",

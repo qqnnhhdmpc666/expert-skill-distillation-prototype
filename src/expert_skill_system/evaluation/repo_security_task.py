@@ -80,13 +80,23 @@ def load_task_package(task_dir: Path) -> dict[str, Any]:
     }
 
 
-def run_dependency_use_triage(task_dir: Path, output_dir: Path, condition_id: str = "C5_active_runtime") -> dict[str, Any]:
+def run_dependency_use_triage(
+    task_dir: Path,
+    output_dir: Path,
+    condition_id: str = "C5_active_runtime",
+    bundle_resolution: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     task = load_repo_security_task(task_dir)
     runtime_view = load_runtime_task_view(task_dir)
     runtime_task = runtime_view["task"]
     repo_manifest = runtime_view["repo_snapshot_manifest"]
     allowed_knowledge = runtime_view["allowed_knowledge"]
-    injection = build_injection_manifests(task_dir=task_dir, condition_id=condition_id, output_dir=output_dir)
+    injection = build_injection_manifests(
+        task_dir=task_dir,
+        condition_id=condition_id,
+        output_dir=output_dir,
+        bundle_manifest=(bundle_resolution or {}).get("bundle_manifest") if bundle_resolution else None,
+    )
     binding = bind_task_aware_evidence(
         {
             "task_type": runtime_task["task_type"],
@@ -97,6 +107,10 @@ def run_dependency_use_triage(task_dir: Path, output_dir: Path, condition_id: st
     )
     repo_evidence = collect_repo_evidence(
         task_dir=task_dir, repo_manifest=repo_manifest, package=runtime_task["knowledge_access_contract"]["package"]
+    )
+    (output_dir / "repo_evidence.json").write_text(
+        json.dumps({"schema_version": "repo_evidence_collection.v1", "evidence": repo_evidence}, ensure_ascii=False, indent=2, sort_keys=True),
+        encoding="utf-8",
     )
     prediction, traces = _make_prediction(runtime_task, allowed_knowledge, binding, repo_evidence)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -124,6 +138,8 @@ def run_dependency_use_triage(task_dir: Path, output_dir: Path, condition_id: st
         "trajectory_evidence": trajectory,
         "verifier_pass": verifier_result["verifier_pass"],
         "failure_category": verifier_result["failure_category"],
+        "decision": prediction["decision"],
+        "bundle_attachment_mode": (bundle_resolution or {}).get("bundle_attachment_mode", "partial_local_manifest_only"),
     }
 
 

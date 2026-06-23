@@ -81,6 +81,9 @@ def build_injection_manifests(
         "knowledge_manifest_digest": sha256_json(knowledge_payload),
         "condition_manifest_digest": sha256_json(condition_payload),
         "release_bundle": bundle_manifest or {"mode": "local_vertical_slice", "immutable": True},
+        "bundle_attachment_mode": (bundle_manifest or {}).get("bundle_attachment_mode", "partial_local_manifest_only")
+        if isinstance(bundle_manifest, dict)
+        else "partial_local_manifest_only",
     }
     outputs = {
         "condition_manifest": condition_payload,

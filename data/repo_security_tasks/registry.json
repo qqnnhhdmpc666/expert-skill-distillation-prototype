@@ -1,0 +1,58 @@
+{
+  "schema_version": "repo_security_task_registry.v1",
+  "registry_id": "repo_security_dependency_use_triage_v1",
+  "tasks": [
+    {
+      "task_id": "dependency_use_triage_requests_demo",
+      "task_dir": "dependency_use_triage_requests_demo",
+      "task_type": "dependency_use_triage",
+      "fixture_type": "local_public_like_demo",
+      "public_source": "local public-like fixture",
+      "source_url": "local://repo_security_tasks/dependency_use_triage_requests_demo",
+      "license": "MIT-compatible synthetic fixture",
+      "commit_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_requests_demo@demo-commit",
+      "repo_snapshot_manifest": "dependency_use_triage_requests_demo/repo_snapshot_manifest.json",
+      "allowed_knowledge": "dependency_use_triage_requests_demo/allowed_knowledge.json",
+      "expected_output_schema": "dependency_use_triage_requests_demo/expected_output_schema.json",
+      "native_verifier": "dependency_use_triage_requests_demo/verifier.py",
+      "status": "active",
+      "notes": "Positive case: requests is declared, used, and version is affected."
+    },
+    {
+      "task_id": "dependency_use_triage_declared_not_used",
+      "task_dir": "dependency_use_triage_declared_not_used",
+      "task_type": "dependency_use_triage",
+      "fixture_type": "local_public_like_demo",
+      "public_source": "local public-like fixture",
+      "source_url": "local://repo_security_tasks/dependency_use_triage_declared_not_used",
+      "license": "MIT-compatible synthetic fixture",
+      "commit_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_declared_not_used@demo-commit",
+      "repo_snapshot_manifest": "dependency_use_triage_declared_not_used/repo_snapshot_manifest.json",
+      "allowed_knowledge": "dependency_use_triage_declared_not_used/allowed_knowledge.json",
+      "expected_output_schema": "dependency_use_triage_declared_not_used/expected_output_schema.json",
+      "native_verifier": "dependency_use_triage_declared_not_used/verifier.py",
+      "status": "active",
+      "notes": "Boundary case: requests is declared and affected by version range, but no import/use site exists."
+    },
+    {
+      "task_id": "dependency_use_triage_version_not_affected",
+      "task_dir": "dependency_use_triage_version_not_affected",
+      "task_type": "dependency_use_triage",
+      "fixture_type": "local_public_like_demo",
+      "public_source": "local public-like fixture",
+      "source_url": "local://repo_security_tasks/dependency_use_triage_version_not_affected",
+      "license": "MIT-compatible synthetic fixture",
+      "commit_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_version_not_affected@demo-commit",
+      "repo_snapshot_manifest": "dependency_use_triage_version_not_affected/repo_snapshot_manifest.json",
+      "allowed_knowledge": "dependency_use_triage_version_not_affected/allowed_knowledge.json",
+      "expected_output_schema": "dependency_use_triage_version_not_affected/expected_output_schema.json",
+      "native_verifier": "dependency_use_triage_version_not_affected/verifier.py",
+      "status": "active",
+      "notes": "Boundary case: requests is declared and used, but pinned to the fixed boundary version."
+    }
+  ],
+  "claim_boundary": "These are local_public_like_demo fixtures, not official public benchmark tasks."
+}
