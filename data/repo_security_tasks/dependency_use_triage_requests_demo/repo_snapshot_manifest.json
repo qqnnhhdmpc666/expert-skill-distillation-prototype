@@ -1,0 +1,23 @@
+{
+  "schema_version": "repo_snapshot_manifest.v1",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_requests_demo@demo-commit",
+  "commit_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "language": "python",
+  "files": [
+    {
+      "path": "requirements.txt",
+      "role": "dependency_declaration",
+      "sha256": "sha256:ddc351fc01ecf76efb6e27486a8a4890446e2100668d383f75ffc10fe1c8e568"
+    },
+    {
+      "path": "src/app/client.py",
+      "role": "runtime_use_site",
+      "sha256": "sha256:789a6b20109ac8c2b7e46e32c723c899a912f2d5bb4fdc49ce22650cedcbe79f"
+    },
+    {
+      "path": "README.md",
+      "role": "repo_context",
+      "sha256": "sha256:a79de12e715f90c5b619404bcec846ddc0570d90282be79ddb7ca9aaed3c3da3"
+    }
+  ]
+}
