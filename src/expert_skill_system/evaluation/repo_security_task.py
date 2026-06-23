@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 from typing import Any
 
@@ -10,6 +9,7 @@ from packaging.version import InvalidVersion, Version
 from ..compiler.evidence_binding import bind_task_aware_evidence
 from ..runtime.skill_knowledge_injection import build_injection_manifests
 from ..runtime.trajectory_evidence import write_trajectory_evidence_package
+from .repo_evidence_collector import collect_repo_evidence
 from .repo_security_verifier import verify_dependency_use_prediction
 
 TASK_REQUIRED_FIELDS = {
@@ -30,6 +30,8 @@ TASK_REQUIRED_FIELDS = {
     "resource_budget",
 }
 
+EVALUATOR_ONLY_TASK_FIELDS = {"hidden_gold", "expected_decision", "expected_reason", "native_verifier"}
+
 
 def load_repo_security_task(task_dir: Path) -> dict[str, Any]:
     payload = json.loads((task_dir / "task.json").read_text(encoding="utf-8"))
@@ -42,7 +44,29 @@ def load_repo_security_task(task_dir: Path) -> dict[str, Any]:
 
 
 def runtime_visible_task(task: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in task.items() if key != "hidden_gold"}
+    return _sanitize_runtime_value({key: value for key, value in task.items() if key not in EVALUATOR_ONLY_TASK_FIELDS})
+
+
+def load_runtime_task_view(task_dir: Path) -> dict[str, Any]:
+    package = load_task_package(task_dir)
+    return {
+        "schema_version": "repo_security_runtime_task_view.v1",
+        "task": package["runtime_visible_task"],
+        "repo_snapshot_manifest": package["repo_snapshot_manifest"],
+        "allowed_knowledge": package["allowed_knowledge"],
+        "expected_output_schema": package["expected_output_schema"],
+        "runtime_visible_paths": [
+            str(task_dir / "task.json"),
+            str(task_dir / "repo_snapshot_manifest.json"),
+            str(task_dir / "allowed_knowledge.json"),
+            str(task_dir / "expected_output_schema.json"),
+            str(task_dir / "repo_snapshot"),
+        ],
+        "evaluator_only_paths": [
+            str(task_dir / "task.json") + "#evaluator_only_gold",
+            str(task_dir / "verifier.py"),
+        ],
+    }
 
 
 def load_task_package(task_dir: Path) -> dict[str, Any]:
@@ -57,30 +81,34 @@ def load_task_package(task_dir: Path) -> dict[str, Any]:
 
 
 def run_dependency_use_triage(task_dir: Path, output_dir: Path, condition_id: str = "C5_active_runtime") -> dict[str, Any]:
-    package = load_task_package(task_dir)
-    task = package["task"]
-    repo_manifest = package["repo_snapshot_manifest"]
-    allowed_knowledge = package["allowed_knowledge"]
+    task = load_repo_security_task(task_dir)
+    runtime_view = load_runtime_task_view(task_dir)
+    runtime_task = runtime_view["task"]
+    repo_manifest = runtime_view["repo_snapshot_manifest"]
+    allowed_knowledge = runtime_view["allowed_knowledge"]
     injection = build_injection_manifests(task_dir=task_dir, condition_id=condition_id, output_dir=output_dir)
     binding = bind_task_aware_evidence(
         {
-            "task_type": task["task_type"],
-            "skill_requirements": task["skill_condition"].get("requirements", []),
+            "task_type": runtime_task["task_type"],
+            "skill_requirements": runtime_task["skill_condition"].get("requirements", []),
             "available_knowledge_sources": [item["source_id"] for item in allowed_knowledge["knowledge_sources"]],
             "repo_manifest": repo_manifest,
         }
     )
-    prediction, traces = _make_prediction(task_dir, task, allowed_knowledge, repo_manifest, binding)
+    repo_evidence = collect_repo_evidence(
+        task_dir=task_dir, repo_manifest=repo_manifest, package=runtime_task["knowledge_access_contract"]["package"]
+    )
+    prediction, traces = _make_prediction(runtime_task, allowed_knowledge, binding, repo_evidence)
     output_dir.mkdir(parents=True, exist_ok=True)
     prediction_path = output_dir / "prediction.json"
     prediction_path.write_text(json.dumps(prediction, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
-    verifier_result = verify_dependency_use_prediction(task, prediction)
+    verifier_result = verify_dependency_use_prediction(task, prediction, task_dir=task_dir)
     (output_dir / "verifier_result.json").write_text(
         json.dumps(verifier_result, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8"
     )
     trajectory = write_trajectory_evidence_package(
         output_dir=output_dir,
-        task_manifest=runtime_visible_task(task),
+        task_manifest=runtime_task,
         injection_manifests=injection,
         prediction=prediction,
         verifier_result=verifier_result,
@@ -100,39 +128,28 @@ def run_dependency_use_triage(task_dir: Path, output_dir: Path, condition_id: st
 
 
 def _make_prediction(
-    task_dir: Path,
     task: dict[str, Any],
     allowed_knowledge: dict[str, Any],
-    repo_manifest: dict[str, Any],
     binding: dict[str, Any],
+    repo_evidence: list[dict[str, Any]],
 ) -> tuple[dict[str, Any], dict[str, list[dict[str, Any]]]]:
     package = task["knowledge_access_contract"]["package"]
     advisory_id = task["knowledge_access_contract"]["advisory_id"]
-    repo_root = task_dir / "repo_snapshot"
     evidence: list[dict[str, Any]] = []
     action_trace = [{"action": "load_task", "task_id": task["task_id"]}]
-    observation_trace: list[dict[str, Any]] = []
+    observation_trace: list[dict[str, Any]] = [
+        {
+            "path": item["path"],
+            "evidence_id": item["evidence_id"],
+            "evidence_type": item["evidence_type"],
+        }
+        for item in repo_evidence
+    ]
     knowledge_query_trace = [{"query_type": "advisory_by_package", "package": package, "advisory_id": advisory_id}]
 
-    declared_version = None
-    for file_item in repo_manifest["files"]:
-        path = file_item["path"]
-        full_path = repo_root / path
-        if not full_path.exists() or full_path.is_dir():
-            continue
-        text = full_path.read_text(encoding="utf-8")
-        if path.endswith("requirements.txt"):
-            for line_no, line in enumerate(text.splitlines(), start=1):
-                match = re.fullmatch(rf"\s*{re.escape(package)}==([^\s;]+)\s*", line)
-                if match:
-                    declared_version = match.group(1)
-                    evidence.append(_evidence("dependency_declaration", path, line_no, line))
-                    evidence.append(_evidence("resolved_version", path, line_no, line))
-        if path.endswith(".py"):
-            for line_no, line in enumerate(text.splitlines(), start=1):
-                if re.search(rf"\bimport\s+{re.escape(package)}\b|\b{re.escape(package)}\.", line):
-                    evidence.append(_evidence("import_or_use_site", path, line_no, line.strip()))
-        observation_trace.append({"path": path, "bytes_read": len(text.encode("utf-8"))})
+    evidence.extend(item for item in repo_evidence if item["evidence_type"] != "repo_file_digest")
+    version_evidence = next((item for item in repo_evidence if item["evidence_type"] == "resolved_version"), None)
+    declared_version = version_evidence["attributes"]["version"] if version_evidence else None
 
     advisory = next(
         item for item in allowed_knowledge["knowledge_sources"] if item["source_id"] == advisory_id and item["package"] == package
@@ -141,23 +158,39 @@ def _make_prediction(
     affected = declared_version is not None and _version_in_range(declared_version, range_event)
     evidence.append(
         {
+            "evidence_id": _stable_evidence_id("advisory_affected_range", "allowed_knowledge.json", json.dumps(range_event, sort_keys=True)),
             "evidence_type": "advisory_affected_range",
             "path": "allowed_knowledge.json",
-            "line": None,
+            "line_start": None,
+            "line_end": None,
             "excerpt": json.dumps(range_event, sort_keys=True),
+            "file_digest": None,
             "source_id": advisory_id,
         }
     )
-    decision = "dependency_used_and_affected" if affected and _has_type(evidence, "import_or_use_site") else "unresolved"
-    reason_codes = ["VERSION_IN_AFFECTED_RANGE", "IMPORT_OR_USE_SITE_FOUND"] if decision == "dependency_used_and_affected" else [
-        "REQUIRED_EVIDENCE_MISSING"
-    ]
+    has_use = _has_type(evidence, "import_use_site")
+    if declared_version is None:
+        decision = "unresolved"
+        reason_codes = ["REQUIRED_EVIDENCE_MISSING"]
+    elif not has_use:
+        decision = "dependency_present_not_used"
+        reason_codes = ["NO_IMPORT_USE_SITE"]
+    elif affected:
+        decision = "dependency_used_and_affected"
+        reason_codes = ["VERSION_IN_AFFECTED_RANGE", "IMPORT_USE_SITE_FOUND"]
+    else:
+        decision = "dependency_used_not_affected"
+        reason_codes = ["VERSION_NOT_AFFECTED", "IMPORT_USE_SITE_FOUND"]
+    decision_excerpt = f"decision={decision}; required={','.join(binding['required_evidence'])}"
     evidence.append(
         {
+            "evidence_id": _stable_evidence_id("decision_evidence", "derived", decision_excerpt),
             "evidence_type": "decision_evidence",
             "path": "derived",
-            "line": None,
-            "excerpt": f"decision={decision}; required={','.join(binding['required_evidence'])}",
+            "line_start": None,
+            "line_end": None,
+            "excerpt": decision_excerpt,
+            "file_digest": None,
         }
     )
     prediction = {
@@ -179,12 +212,14 @@ def _make_prediction(
     }
 
 
-def _evidence(evidence_type: str, path: str, line: int, excerpt: str) -> dict[str, Any]:
-    return {"evidence_type": evidence_type, "path": path, "line": line, "excerpt": excerpt}
-
-
 def _has_type(evidence: list[dict[str, Any]], evidence_type: str) -> bool:
     return any(item.get("evidence_type") == evidence_type for item in evidence)
+
+
+def _stable_evidence_id(evidence_type: str, path: str, excerpt: str) -> str:
+    from ..core.canonical import sha256_json
+
+    return sha256_json({"evidence_type": evidence_type, "path": path, "excerpt": excerpt})
 
 
 def _version_in_range(version_text: str, range_event: dict[str, Any]) -> bool:
@@ -199,3 +234,15 @@ def _version_in_range(version_text: str, range_event: dict[str, Any]) -> bool:
 
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _sanitize_runtime_value(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: _sanitize_runtime_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_sanitize_runtime_value(item) for item in value]
+    if value == "hidden_gold":
+        return "evaluator_only_gold"
+    if value == "verifier_expected_answer":
+        return "evaluator_only_answer"
+    return value

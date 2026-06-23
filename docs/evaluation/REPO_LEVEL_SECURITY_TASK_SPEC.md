@@ -64,7 +64,7 @@ The runtime, Skill, and evidence binding planner must not read evaluator-only fi
 - `evidence`;
 - `reason_codes`.
 
-Every evidence item must name an evidence type, path, line when available, and excerpt. The verifier requires grounded evidence for dependency declaration, resolved version, import/use site, advisory range, and decision evidence.
+Every evidence item must name an evidence id, evidence type, path, line range when available, excerpt, and file digest for repo-backed evidence. The verifier requires grounded evidence for dependency declaration, resolved version, import/use site, advisory range, and decision evidence.
 
 ## Current Fixture
 
@@ -75,3 +75,10 @@ data/repo_security_tasks/dependency_use_triage_requests_demo/
 ```
 
 It checks `requests==2.19.1` against allowed advisory `PYSEC-2018-28` and a local source use site in `src/app/client.py`.
+
+Boundary fixtures:
+
+- `dependency_use_triage_declared_not_used`
+- `dependency_use_triage_version_not_affected`
+
+All current fixtures are `local_public_like_demo` with `non_toy_status=partial`, not official public benchmark instances.

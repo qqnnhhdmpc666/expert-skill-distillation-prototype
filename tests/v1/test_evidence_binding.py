@@ -23,12 +23,12 @@ def test_dependency_use_evidence_binding_declares_required_evidence() -> None:
     assert set(result["required_evidence"]) == {
         "dependency_declaration",
         "resolved_version",
-        "import_or_use_site",
+        "import_use_site",
         "advisory_affected_range",
         "decision_evidence",
     }
     assert result["missing_evidence_policy"]["policy"] == "abstain_or_fail_safe"
-    assert any(item["evidence_type"] == "import_or_use_site" for item in result["binding_plan"])
+    assert any(item["evidence_type"] == "import_use_site" for item in result["binding_plan"])
 
 
 def test_evidence_binding_rejects_unsupported_task_type() -> None:

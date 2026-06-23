@@ -34,6 +34,8 @@ The condition manifest records:
 - hidden evaluator paths;
 - active bundle digest.
 
+The runtime-visible task path points to a sanitized `runtime_task_view.json`; it does not point at raw `task.json`, because raw `task.json` contains evaluator-only gold.
+
 ## Knowledge Access
 
 Knowledge access is constrained to `allowed_knowledge.json`. The runtime may query this snapshot by package and advisory id. It must not query the internet, hidden gold, or verifier-only answers.
@@ -52,4 +54,4 @@ The Skill is a workflow guide. The advisory range itself remains runtime knowled
 
 ## Nonclaims
 
-This protocol is not a vector database, GraphRAG, Harbor bridge, live AgentHost integration, or production scanner. It is the minimal runtime injection contract needed to test Skill plus knowledge separation on a repo-level task.
+This protocol is not a vector database, GraphRAG, Harbor bridge, live AgentHost integration, production scanner, or proof of full compiled `ReleaseBundle` attachment. Current attachment is `partial_local_manifest_only`.

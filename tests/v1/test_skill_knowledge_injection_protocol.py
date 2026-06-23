@@ -12,9 +12,12 @@ def test_skill_knowledge_injection_keeps_runtime_and_hidden_paths_separate(tmp_p
     condition = manifests["condition_manifest"]
     assert condition["skill_enabled"] is True
     assert condition["knowledge_enabled"] is True
+    assert any("runtime_task_view.json" in path for path in condition["runtime_visible_paths"])
     assert any("allowed_knowledge.json" in path for path in condition["runtime_visible_paths"])
+    assert all("task.json" not in path for path in condition["runtime_visible_paths"])
     assert all("hidden_gold" not in path for path in condition["runtime_visible_paths"])
-    assert any("hidden_gold" in path for path in condition["hidden_evaluator_paths"])
+    assert any("evaluator_only_gold" in path for path in condition["hidden_evaluator_paths"])
+    assert (tmp_path / "runtime_task_view.json").exists()
     assert (tmp_path / "condition_manifest.json").exists()
     assert manifests["knowledge_manifest"]["knowledge_access_policy"] == "read_allowed_snapshot_only"
 

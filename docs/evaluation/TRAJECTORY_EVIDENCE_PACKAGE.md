@@ -52,3 +52,5 @@ The package is designed to support later comparison among:
 - human-authored reference Skill when available.
 
 This vertical slice only proves local deterministic package generation and verification. It does not by itself prove compiler superiority.
+
+Current repo-level evidence refs include deterministic `evidence_id`, `path`, `line_start`, `line_end`, `excerpt`, and `file_digest` fields so the verifier can resolve them against runtime-visible files.

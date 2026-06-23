@@ -23,6 +23,24 @@ def build_injection_manifests(
     allowed_knowledge_path = task_dir / "allowed_knowledge.json"
     task_path = task_dir / "task.json"
     repo_manifest_path = task_dir / "repo_snapshot_manifest.json"
+    task = json.loads(task_path.read_text(encoding="utf-8"))
+    runtime_task = _sanitize_runtime_value(
+        {
+            key: value
+            for key, value in task.items()
+            if key not in {"hidden_gold", "expected_decision", "expected_reason", "native_verifier"}
+        }
+    )
+    runtime_task_view_path = output_dir / "runtime_task_view.json"
+    runtime_task_view_path.write_text(
+        json.dumps(
+            {"schema_version": "repo_security_runtime_task_view.v1", "task": runtime_task},
+            ensure_ascii=False,
+            indent=2,
+            sort_keys=True,
+        ),
+        encoding="utf-8",
+    )
     knowledge_enabled = condition_id in {"C3_skill_plus_knowledge", "C4_release_bundle", "C5_active_runtime"}
     skill_enabled = condition_id in {"C2_skill_only", "C3_skill_plus_knowledge", "C4_release_bundle", "C5_active_runtime"}
     skill_payload = {
@@ -30,7 +48,7 @@ def build_injection_manifests(
         "condition_id": condition_id,
         "skill_enabled": skill_enabled,
         "skill_id": "dependency_use_triage_skill" if skill_enabled else None,
-        "skill_digest": file_digest(task_path) if skill_enabled else "none",
+        "skill_digest": sha256_json(runtime_task) if skill_enabled else "none",
     }
     knowledge_payload = {
         "schema_version": "knowledge_access_manifest.v1",
@@ -46,12 +64,13 @@ def build_injection_manifests(
         "skill_enabled": skill_enabled,
         "knowledge_enabled": knowledge_enabled,
         "runtime_visible_paths": [
-            str(task_path),
+            str(runtime_task_view_path),
             str(repo_manifest_path),
+            str(task_dir / "expected_output_schema.json"),
             str(task_dir / "repo_snapshot"),
             *(knowledge_payload["allowed_knowledge_sources"] if knowledge_enabled else []),
         ],
-        "hidden_evaluator_paths": [str(task_path) + "#hidden_gold", str(task_dir / "verifier.py")],
+        "hidden_evaluator_paths": [str(task_path) + "#evaluator_only_gold", str(task_dir / "verifier.py")],
         "active_bundle_digest": sha256_json(bundle_manifest or {"condition_id": condition_id}),
     }
     bundle_payload = {
@@ -74,3 +93,15 @@ def build_injection_manifests(
             json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8"
         )
     return outputs
+
+
+def _sanitize_runtime_value(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: _sanitize_runtime_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_sanitize_runtime_value(item) for item in value]
+    if value == "hidden_gold":
+        return "evaluator_only_gold"
+    if value == "verifier_expected_answer":
+        return "evaluator_only_answer"
+    return value

@@ -7,7 +7,7 @@ SUPPORTED_TASK_TYPES = {"dependency_use_triage"}
 DEPENDENCY_USE_EVIDENCE = (
     "dependency_declaration",
     "resolved_version",
-    "import_or_use_site",
+    "import_use_site",
     "advisory_affected_range",
     "decision_evidence",
 )
@@ -42,7 +42,7 @@ def bind_task_aware_evidence(payload: dict[str, Any]) -> dict[str, Any]:
             "required_for_decision": True,
         },
         {
-            "evidence_type": "import_or_use_site",
+            "evidence_type": "import_use_site",
             "source_kind": "repo_source",
             "candidate_paths": [path for path in repo_files if path.endswith(".py")],
             "required_for_decision": True,

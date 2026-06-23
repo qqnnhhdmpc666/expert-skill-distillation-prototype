@@ -1,17 +1,17 @@
 {
   "schema_version": "repo_security_task.v1",
-  "task_id": "dependency_use_triage_requests_demo",
+  "task_id": "dependency_use_triage_version_not_affected",
   "task_type": "dependency_use_triage",
   "public_source": {
     "type": "local_repo_snapshot",
     "fixture_type": "local_public_like_demo",
     "non_toy_status": "partial",
-    "source_url": "local://repo_security_tasks/dependency_use_triage_requests_demo",
-    "description": "Small repo-level dependency-use triage fixture with package declaration and use site."
+    "source_url": "local://repo_security_tasks/dependency_use_triage_version_not_affected",
+    "description": "Boundary fixture where requests is declared and used but pinned to a fixed version."
   },
   "license": "MIT-compatible synthetic fixture",
-  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_requests_demo@demo-commit",
-  "commit_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_version_not_affected@demo-commit",
+  "commit_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
   "task_instruction": "Determine whether the declared Python dependency is both present in the repository and used in code, and whether the allowed advisory knowledge marks the declared version as affected. Return only the required prediction schema.",
   "allowed_tools": [
     "read_repo_snapshot",
@@ -41,9 +41,9 @@
   "expected_output_schema": "expected_output_schema.json",
   "native_verifier": "verifier.py",
   "hidden_gold": {
-    "decision": "dependency_used_and_affected",
+    "decision": "dependency_used_not_affected",
     "expected_package": "requests",
-    "expected_version": "2.19.1",
+    "expected_version": "2.20.0",
     "expected_advisory_id": "PYSEC-2018-28",
     "required_evidence_types": [
       "dependency_declaration",
@@ -53,7 +53,7 @@
       "decision_evidence"
     ],
     "required_reason_codes": [
-      "VERSION_IN_AFFECTED_RANGE",
+      "VERSION_NOT_AFFECTED",
       "IMPORT_USE_SITE_FOUND"
     ]
   },
