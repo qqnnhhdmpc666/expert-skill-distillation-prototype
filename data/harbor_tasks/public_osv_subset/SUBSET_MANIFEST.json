@@ -1,0 +1,22 @@
+{
+  "schema_version": "harbor_public_osv_subset_manifest.v1",
+  "source_data_dir": "data\\public_osv_pilot",
+  "task_count": 6,
+  "case_ids": [
+    "GHSA-34jh-p97f-mpxf__affected",
+    "GHSA-34jh-p97f-mpxf__fixed_boundary",
+    "GHSA-34jh-p97f-mpxf__package_absent_1",
+    "GHSA-34jh-p97f-mpxf__advisory_missing_1",
+    "GHSA-34jh-p97f-mpxf__marker_false_1",
+    "GHSA-34jh-p97f-mpxf__version_unknown_1"
+  ],
+  "case_kinds": [
+    "affected",
+    "fixed_boundary",
+    "package_absent_1_control",
+    "advisory_missing_1_control",
+    "marker_false_1_control",
+    "version_unknown_1_control"
+  ],
+  "claim_boundary": "Oracle/verifier parity subset only; not AgentHost or model effectiveness."
+}

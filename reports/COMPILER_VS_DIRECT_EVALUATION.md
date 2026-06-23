@@ -5,7 +5,7 @@ Date: 2026-06-23
 ```text
 direct_generation = pass_real_deepseek_one_stage
 treatment_distinct_ready = true
-agent_host = hard_blocked_provider_protocol
+agent_host = hard_blocked_no_compatible_mature_host
 comparison_status = prepared_condition_sensitive_eval_no_agenthost
 compiler_superiority = not_evaluated
 ```
@@ -47,6 +47,11 @@ The available Codex AgentHost has not qualified, so none of the four conditions
 (`no_skill`, `full_material`, `direct_to_skill_ir`, `compiler_distilled_skill`) has been
 executed through a mature treatment-sensitive AgentHost. ReferenceDecisionBackend results
 would be condition-insensitive and are deliberately excluded.
+
+Current AgentHost blocker: DeepSeek is available only as a Chat Completions-compatible
+endpoint for this project, while Codex 0.137 requires Responses-compatible providers. A
+default OpenAI Responses smoke reached Codex but failed with endpoint/credential errors.
+OpenHands is not installed locally. See `reports/AGENT_HOST_ROUTE_DECISION.md`.
 
 Therefore the valid conclusion is only:
 

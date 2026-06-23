@@ -4,10 +4,10 @@ Date: 2026-06-23
 
 ```text
 harbor_plumbing = pass
-public_task_adapter = pass_pair_smoke
-native_vs_harbor_parity = pass_2_of_2
-external_evaluation_backend = public_task_parity_partial
-external_evaluation_pass = true_for_declared_pair_only
+public_task_adapter = pass_subset
+native_vs_harbor_parity = pass_6_of_6
+external_evaluation_backend = public_task_parity_subset_pass
+external_evaluation_pass = true_for_declared_subset_only
 agent_effectiveness = not_evaluated
 ```
 
@@ -63,10 +63,54 @@ both rows and the complete 33-case pilot with false-safe count 0.
 Both verifier result files are real Harbor artifacts and bind to frozen source record digest
 `sha256:9e797ddf6daa453869b8d270676615145579f3bf5115e67dc5e69052974e034b`.
 
+## Subset result
+
+A wider public OSV subset was generated from `data/public_osv_pilot`:
+
+```powershell
+python scripts\build_harbor_public_osv_subset.py `
+  --data-dir data\public_osv_pilot `
+  --output data\harbor_tasks\public_osv_subset
+
+wsl.exe -d Ubuntu-24.04-Codex -- `
+  /opt/spark/harbor-src-locked/.venv/bin/harbor run `
+  --path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/data/harbor_tasks/public_osv_subset' `
+  --agent oracle --env docker --n-concurrent 1 `
+  --jobs-dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/harbor_public_osv_subset' `
+  --job-name public-osv-subset-20260623-lf --force-build `
+  --export-traces --export-verifier-metadata
+```
+
+Covered case kinds:
+
+```text
+affected
+fixed_boundary
+package_absent_1_control
+advisory_missing_1_control
+marker_false_1_control
+version_unknown_1_control
+```
+
+Recorded result:
+
+```text
+n_total_trials = 6
+n_errors = 0
+mean_reward = 1.0
+result = outputs/harbor_public_osv_subset/public-osv-subset-20260623-lf/result.json
+result_sha256 = e3e25dd70f5e6526f11ce33698107b606435e8cd50323a3b415d2fb36f88f3ea
+subset_manifest_sha256 = 6698fbf8613d0030d66d914197ebe1be866e0545c024103fb71f27cf86dd4a15
+```
+
+The first subset attempt failed with `RewardFileNotFoundError` because Windows-generated
+shell scripts had CRLF shebangs. The generator was fixed to write LF line endings and the
+rerun passed. This is recorded as task packaging evidence, not model behavior.
+
 ## Boundary
 
-This proves native/Harbor verifier parity for two public dependency-advisory boundary
-tasks. The oracle adapter does not emit Harbor ATIF trajectories, so trace export reported
+This proves native/Harbor verifier parity for a six-case public dependency-advisory subset.
+The oracle adapter does not emit Harbor ATIF trajectories, so trace export reported
 an explicit unsupported-format warning. This does not invalidate verifier parity, but it
 means the run does not prove trajectory capture or non-oracle Agent usefulness. Broader
 dataset parity and AgentHost execution remain separate gates.

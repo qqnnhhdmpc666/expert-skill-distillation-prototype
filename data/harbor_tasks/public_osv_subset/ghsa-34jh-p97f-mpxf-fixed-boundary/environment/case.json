@@ -1,0 +1,16 @@
+{
+  "case_id": "GHSA-34jh-p97f-mpxf__fixed_boundary",
+  "case_kind": "fixed_boundary",
+  "advisory_id": "GHSA-34jh-p97f-mpxf",
+  "requirement": "urllib3==1.26.19",
+  "requirements": null,
+  "environment": {
+    "implementation_name": "cpython",
+    "platform_system": "Linux",
+    "python_full_version": "3.11.9",
+    "python_version": "3.11",
+    "sys_platform": "linux"
+  },
+  "source_record_digest": "sha256:d6b539e34df7634dafff91de0990e178df1d0592f2b568eac0a5e602443856e8",
+  "split": "dev"
+}

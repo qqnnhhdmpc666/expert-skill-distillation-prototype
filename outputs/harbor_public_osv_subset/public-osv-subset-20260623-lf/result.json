@@ -1,0 +1,34 @@
+{
+    "id": "8120a56d-9bb2-4449-aba2-355397710aa9",
+    "started_at": "2026-06-23T23:11:30.873460",
+    "finished_at": "2026-06-23T23:13:20.651014",
+    "n_total_trials": 6,
+    "stats": {
+        "n_trials": 6,
+        "n_errors": 0,
+        "evals": {
+            "oracle__public_osv_subset": {
+                "n_trials": 6,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "ghsa-34jh-p97f-mpxf-advisory-mis__cBkkcyh",
+                            "ghsa-34jh-p97f-mpxf-affected__XYDPxoN",
+                            "ghsa-34jh-p97f-mpxf-fixed-bounda__EwXGdfS",
+                            "ghsa-34jh-p97f-mpxf-marker-false__BaWXrZV",
+                            "ghsa-34jh-p97f-mpxf-package-abse__TJZkQNE",
+                            "ghsa-34jh-p97f-mpxf-version-unkn__ZbfVfDT"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}
