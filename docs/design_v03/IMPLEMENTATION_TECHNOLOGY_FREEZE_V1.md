@@ -1,6 +1,12 @@
 # Implementation Technology Freeze V1
 
-状态：`normative_target_not_yet_implemented`
+状态：`core_local_implemented_external_qualification_pending`
+
+本文件仍是规范性目标，但不再把已经落地的本地核心写成“尚未实现”。当前
+`src/expert_skill_system/` 已具备内容寻址 Artifact Store、SQLite metadata、分阶段
+Compiler、ReleaseBundle、本地 Runtime、晋升/拒绝/按原 digest 回滚和 `eskill` CLI。
+尚未转正的是成熟 AgentHost、公开任务原生 evaluator 与 Harbor parity；这些外部门
+未通过前，不得把本地 reference/deterministic 路径写成 Agent 或外部任务有效性。
 
 上位规范：`SYSTEM_ARCHITECTURE_FREEZE_V1.md`
 

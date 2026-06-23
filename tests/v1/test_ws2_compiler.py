@@ -3,7 +3,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from expert_skill_system.compiler import DirectToSkillIRBuilder, KnowledgeCompiler
+from expert_skill_system.compiler import (
+    DirectToSkillIRBuilder,
+    KnowledgeCompiler,
+    OpenAICompatibleDirectToSkillIRBuilder,
+)
 from expert_skill_system.core.models import ArtifactRef, SourceRef
 from expert_skill_system.registry.workspace import Workspace
 from expert_skill_system.sources import SourceIngestionService
@@ -122,3 +126,72 @@ def test_direct_baseline_outputs_same_skill_schema_without_compiler_intermediate
     assert len(direct_build.stage_result_refs) == 1
     assert direct_stage["stage_id"] == "direct-to-skill-ir-one-stage"
     assert direct_attestation["deterministic_status"] == "pass"
+
+
+def test_live_direct_baseline_is_one_call_and_does_not_consume_knowledge_ir(tmp_path: Path, monkeypatch) -> None:
+    workspace, expert, osv = _sources(tmp_path)
+    generated = {
+        "schema_version": "skill_ir.v1",
+        "skill_id": "direct-python-advisory",
+        "version": "1.0.0",
+        "invocation": {"task_family": "python-advisory", "contraindications": ["exploitability"]},
+        "workflow": [
+            {"node_id": "direct-1", "instruction": "Parse one pinned dependency.", "modality": "must"}
+        ],
+        "constraints": [
+            {"node_id": "direct-2", "instruction": "Do not claim exploitability.", "modality": "must_not"}
+        ],
+        "knowledge_requirements": [
+            {
+                "node_id": "direct-3",
+                "semantic_requirement": "frozen advisory range",
+                "unavailable_behavior": "return unresolved",
+            }
+        ],
+        "exceptions": [
+            {"node_id": "direct-2", "instruction": "Do not claim exploitability.", "modality": "must_not"}
+        ],
+        "source_node_ids": ["direct-1", "direct-2"],
+    }
+    response_payload = {
+        "choices": [{"message": {"content": json.dumps(generated)}}],
+        "usage": {"prompt_tokens": 100, "completion_tokens": 50},
+    }
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def read(self):
+            return json.dumps(response_payload).encode("utf-8")
+
+    requests = []
+
+    def respond(request, timeout):
+        requests.append((request, timeout))
+        return Response()
+
+    monkeypatch.setattr("urllib.request.urlopen", respond)
+    build = OpenAICompatibleDirectToSkillIRBuilder(
+        workspace,
+        base_url="https://api.deepseek.example",
+        model="deepseek-chat",
+        api_key="synthetic-test-key",
+    ).build(expert_snapshot=expert, material_snapshots=(osv,), build_id="direct-live")
+
+    stage = _artifact_json(workspace, build.stage_result_refs[0])
+    attestation = _artifact_json(workspace, build.attestation_ref)
+    assert len(requests) == 1
+    assert build.knowledge_ir_ref is None
+    assert build.knowledge_projection_ref is None
+    assert stage["stage_id"] == "direct-to-skill-ir-one-call-llm"
+    assert stage["metrics"]["knowledge_ir_visible"] is False
+    assert stage["metrics"]["heldout_gold_visible"] is False
+    assert stage["metrics"]["normalization_events"] == [
+        "source_node_ids_recomputed_from_used_node_ids"
+    ]
+    assert attestation["source_grounding_status"] == "not_evaluated_without_knowledge_ir"
+    assert "synthetic-test-key" not in json.dumps(stage)

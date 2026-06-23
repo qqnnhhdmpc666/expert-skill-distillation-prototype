@@ -1,6 +1,10 @@
 # Initial Skill Construction Method Spec
 
-状态：`normative_target_not_yet_implemented`
+状态：`staged_core_implemented_public_heldout_pending`
+
+当前分阶段构建、结构化工件、来源绑定与自动 source-grounded validation 已有本地
+实现；仍待完成的是在冻结公开 held-out 上证明其相对 `direct_to_skill_ir` 的下游
+增益。因此本文件描述的方法契约已进入代码，不等于其研究效果已经成立。
 
 方法对象：从隔离专家材料构建可验证 Knowledge IR，并投影为 Skill IR 与 Knowledge Projection。
 

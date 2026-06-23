@@ -9,7 +9,12 @@ from pathlib import Path
 from typing import Any
 
 from .agent_host import AgentHostRequest, CodexAgentHost
-from .compiler import DirectToSkillIRBuilder, KnowledgeCompiler, OpenAICompatibleJudge
+from .compiler import (
+    DirectToSkillIRBuilder,
+    KnowledgeCompiler,
+    OpenAICompatibleDirectToSkillIRBuilder,
+    OpenAICompatibleJudge,
+)
 from .compiler.models import CompilerBuild
 from .core.models import SourceRef, SourceSnapshot
 from .core.schema_catalog import export_schemas
@@ -269,8 +274,22 @@ def cmd_evaluate_compiler(args: argparse.Namespace) -> int:
 
 
 def cmd_prepare_public_comparison(args: argparse.Namespace) -> int:
+    workspace = _workspace(args.state_dir)
+    direct_builder = None
+    if args.direct_base_url or args.direct_model:
+        api_key = os.environ.get("DEEPSEEK_API_KEY")
+        if not api_key:
+            raise RuntimeError("live direct baseline requested but DEEPSEEK_API_KEY is absent")
+        direct_builder = OpenAICompatibleDirectToSkillIRBuilder(
+            workspace,
+            base_url=args.direct_base_url or "https://api.deepseek.com",
+            model=args.direct_model or "deepseek-chat",
+            api_key=api_key,
+        )
     result = prepare_public_condition_comparison(
-        _workspace(args.state_dir), data_dir=Path(args.data_dir).resolve()
+        workspace,
+        data_dir=Path(args.data_dir).resolve(),
+        direct_builder=direct_builder,
     )
     _print(result)
     return 0
@@ -418,6 +437,8 @@ def build_parser() -> argparse.ArgumentParser:
     comparison.set_defaults(func=cmd_evaluate_compiler)
     public_comparison = sub.add_parser("prepare-public-comparison")
     public_comparison.add_argument("--data-dir", default="data/public_osv_pilot")
+    public_comparison.add_argument("--direct-base-url")
+    public_comparison.add_argument("--direct-model")
     public_comparison.set_defaults(func=cmd_prepare_public_comparison)
     evolution = sub.add_parser("evaluate-evolution")
     evolution.add_argument("--expert-spec", default="data/v1_walking_skeleton/expert_spec/python_advisory_review.md")

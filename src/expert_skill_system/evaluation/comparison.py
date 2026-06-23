@@ -16,11 +16,21 @@ CONDITIONS = ("no_skill", "full_material", "direct_to_skill_ir", "compiler_disti
 PUBLIC_CONDITIONS = (*CONDITIONS, "human_authored_reference_skill")
 
 
-def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path) -> dict[str, Any]:
+def prepare_public_condition_comparison(
+    workspace: Workspace,
+    *,
+    data_dir: Path,
+    direct_builder: Any | None = None,
+) -> dict[str, Any]:
     """Freeze a condition-sensitive public held-out protocol without pretending to execute an AgentHost."""
     expert = _latest_snapshot(workspace, "expert-document")
     osv = _latest_snapshot(workspace, "osv-snapshot")
-    direct = DirectToSkillIRBuilder(workspace).build(expert_snapshot=expert, build_id="public-comparison-direct")
+    direct_builder = direct_builder or DirectToSkillIRBuilder(workspace)
+    direct = direct_builder.build(
+        expert_snapshot=expert,
+        material_snapshots=(osv,),
+        build_id="public-comparison-direct",
+    )
     compiler = KnowledgeCompiler(workspace).build(
         expert_snapshot=expert, structured_snapshots=(osv,), build_id="public-comparison-compiler"
     )
@@ -34,6 +44,7 @@ def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path)
     compiler_agent_ref = bundle.manifest["agent_artifact_refs"][0]
     skill_ir_distinct = direct.skill_ir_ref["digest"] != compiler.skill_ir_ref["digest"]
     agent_artifact_distinct = direct_agent_ref.digest != compiler_agent_ref["digest"]
+    treatment_distinct = skill_ir_distinct and agent_artifact_distinct
     inputs_path = data_dir / "inputs.jsonl"
     gold_path = data_dir / "gold.jsonl"
     all_inputs = [json.loads(line) for line in inputs_path.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -49,6 +60,9 @@ def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path)
             "status": "ready",
             "skill_ir_ref": direct.skill_ir_ref,
             "agent_input_refs": [direct_agent_ref.to_dict()],
+            "generation_stage_refs": list(direct.stage_result_refs),
+            "attestation_ref": direct.attestation_ref,
+            "visibility_manifest_ref": direct.visibility_manifest_ref,
         },
         "compiler_distilled_skill": {
             "status": "ready",
@@ -56,6 +70,9 @@ def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path)
             "knowledge_ir_ref": compiler.knowledge_ir_ref,
             "bundle_digest": bundle.bundle_digest,
             "agent_input_refs": [compiler_agent_ref],
+            "generation_stage_refs": list(compiler.stage_result_refs),
+            "attestation_ref": compiler.attestation_ref,
+            "visibility_manifest_ref": compiler.visibility_manifest_ref,
         },
         "human_authored_reference_skill": {
             "status": "unavailable",
@@ -66,7 +83,11 @@ def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path)
     }
     payload = {
         "schema_version": "public_condition_sensitive_comparison.v1",
-        "status": "prepared_but_blocked_identical_artifacts_and_no_agenthost",
+        "status": (
+            "prepared_condition_sensitive_eval_no_agenthost"
+            if treatment_distinct
+            else "prepared_but_blocked_identical_artifacts_and_no_agenthost"
+        ),
         "execution_performed": False,
         "comparison_ready": False,
         "agent_host_status": "hard_blocked",
@@ -82,6 +103,7 @@ def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path)
             "skill_ir_distinct": skill_ir_distinct,
             "agent_artifact_distinct": agent_artifact_distinct,
             "condition_content_identical": not skill_ir_distinct and not agent_artifact_distinct,
+            "treatment_distinct_ready": treatment_distinct,
             "claim_allowed": False,
         },
         "shared_contract": {
@@ -91,12 +113,21 @@ def prepare_public_condition_comparison(workspace: Workspace, *, data_dir: Path)
             "same_evaluator": "public_osv_pair_evaluator.v2",
             "gold_hidden_from_agent": True,
         },
-        "comparison_result": "not_run_identical_artifacts_and_agenthost_blocked",
-        "blockers": [
-            "DIRECT_AND_COMPILER_AGENT_ARTIFACTS_IDENTICAL",
-            "QUALIFIED_AGENTHOST_UNAVAILABLE",
-        ],
-        "claim_boundary": "Identical condition artifacts and prepared inputs are not evidence of Compiler superiority or AgentHost effectiveness.",
+        "comparison_result": (
+            "not_run_agenthost_blocked"
+            if treatment_distinct
+            else "not_run_identical_artifacts_and_agenthost_blocked"
+        ),
+        "blockers": (
+            ["QUALIFIED_AGENTHOST_UNAVAILABLE"]
+            if treatment_distinct
+            else ["DIRECT_AND_COMPILER_AGENT_ARTIFACTS_IDENTICAL", "QUALIFIED_AGENTHOST_UNAVAILABLE"]
+        ),
+        "claim_boundary": (
+            "Treatment-distinct prepared artifacts are not evidence of Compiler superiority or AgentHost effectiveness."
+            if treatment_distinct
+            else "Identical condition artifacts are not evidence of Compiler superiority or AgentHost effectiveness."
+        ),
     }
     ref = workspace.put_json(payload, schema_version=payload["schema_version"])
     return {**payload, "artifact_ref": ref.to_dict()}

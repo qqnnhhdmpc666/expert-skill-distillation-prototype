@@ -3,40 +3,56 @@
 Date: 2026-06-23
 
 ```text
-public_protocol = prepared
-condition_sensitive_execution = not_run
-condition_content_identical = true
-agent_host = hard_blocked
-compiler_superiority = not_demonstrated
+direct_generation = pass_real_deepseek_one_stage
+treatment_distinct_ready = true
+agent_host = hard_blocked_provider_protocol
+comparison_status = prepared_condition_sensitive_eval_no_agenthost
+compiler_superiority = not_evaluated
 ```
 
-Fresh command:
+## Treatment integrity
 
-```powershell
-eskill --state-dir .tmp/public-comparison-state prepare-public-comparison `
-  --data-dir data/public_osv_pilot
-```
+`direct_to_skill_ir` now performs one real OpenAI-compatible model call from the same raw
+expert and OSV materials directly to the target `skill_ir.v1` schema. It does not invoke
+the Knowledge Compiler's extraction, evidence-binding, synthesis, or validation stages,
+and it records `knowledge_ir_visible=false` and `heldout_gold_visible=false`.
 
-The protocol freezes seven public held-out cases, the hidden evaluator gold digest, one
-OSV snapshot, one task budget, and five diagnostic conditions. No evaluator-only field is
-present in Agent-visible inputs. Artifact:
+The model response required one representation-only normalization: `source_node_ids` was
+recomputed as the exact union of the direct node IDs actually referenced by the generated
+Skill IR. This did not add instructions, evidence, modality, or domain content and is
+recorded in the stage event.
+
+The prepared treatments are now genuinely distinct:
+
+| Artifact | Direct-to-Skill-IR | Compiler-distilled |
+|---|---|---|
+| Skill IR | `sha256:c513227062cc160d5b81806d6de578b12a5c7e13b3198fc750f7705a2e681dce` | `sha256:46fb52700610957ae3a77246009370676d8e3184e9627d35eab6aa3d3007dd91` |
+| Agent artifact | `sha256:4a8c5580978f68ed14487933da9035e814c49d941af6b3ed1640370ba31d3b8d` | `sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb` |
+| Build/Generation attestation | `sha256:51cfa5dff4f954e48e01c83452cf24cb221c17a95c94187ee2013ba8d15295e0` | `sha256:1c690cf1408010910b02302fd677dd783838fd83db34e4df86c517599e624aff` |
+
+Prepared comparison artifact:
 
 ```text
-sha256:d17b1deec32220963b91de1d51324c1ec1a249394ce54a749e8013c2370dcd39
+sha256:9975ed5286570649941c444b2b72e7b5d3699dd7148cceffaba84aa16d7e1daa
 ```
 
-## Integrity finding
+It freezes seven hidden held-out cases, the same OSV snapshot, evaluator, task budget,
+source visibility manifest, and `gold_hidden_from_agent=true`. The optional
+`human_authored_reference_skill` remains `unavailable`; no held-out-informed reference was
+invented.
 
-The current deterministic `direct_to_skill_ir` and `compiler_distilled_skill` paths produce
-the same Skill IR digest and the same Agent artifact digest. Therefore the current direct
-baseline is not treatment-distinct and cannot support a Compiler benefit claim. This is an
-implementation gap, not a positive result.
+## Why no effectiveness result is reported
 
-The comparison has two independent blockers:
+The available Codex AgentHost has not qualified, so none of the four conditions
+(`no_skill`, `full_material`, `direct_to_skill_ir`, `compiler_distilled_skill`) has been
+executed through a mature treatment-sensitive AgentHost. ReferenceDecisionBackend results
+would be condition-insensitive and are deliberately excluded.
 
-1. `DIRECT_AND_COMPILER_AGENT_ARTIFACTS_IDENTICAL`
-2. `QUALIFIED_AGENTHOST_UNAVAILABLE`
+Therefore the valid conclusion is only:
 
-`human_authored_reference_skill` is explicitly unavailable and is not represented as human
-gold. Prepared artifacts are not evidence of open-world extraction, AgentHost effectiveness,
-or Compiler superiority.
+```text
+compiler_superiority = prepared_condition_sensitive_eval_no_agenthost
+```
+
+Treatment distinction fixes the previous experiment-design defect; it does not itself
+prove a Compiler benefit.

@@ -1,6 +1,10 @@
 # Walking Skeleton V1
 
-状态：`acceptance_spec_not_yet_implemented`
+状态：`core_local_pass_external_gates_pending`
+
+WS-0 至 WS-4 的本地纵向闭环已经进入代码和自动测试；WS-5 仍是独立资格门。
+因此这里的 `pass` 只表示本地构建、发布、执行、解释和事务闭环可运行，不表示
+AgentHost、公开 held-out 或 Harbor parity 已通过。
 
 目标：用最短真实链路证明 Knowledge Compiler、Knowledge Provider、Skill Runtime、ReleaseBundle 和 rollback 可以协同运行。
 

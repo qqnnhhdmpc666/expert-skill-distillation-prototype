@@ -1,4 +1,4 @@
-from .direct import DirectToSkillIRBuilder
+from .direct import DirectToSkillIRBuilder, OpenAICompatibleDirectToSkillIRBuilder
 from .judge import JudgeGateError, JudgeResult, OpenAICompatibleJudge
 from .models import BuildAttestation, CompilerBuild, KnowledgeIR, KnowledgeNode, KnowledgeProjection, SkillIR
 from .pipeline import KnowledgeCompiler
@@ -8,6 +8,7 @@ __all__ = [
     "BuildAttestation",
     "CompilerBuild",
     "DirectToSkillIRBuilder",
+    "OpenAICompatibleDirectToSkillIRBuilder",
     "KnowledgeCompiler",
     "KnowledgeIR",
     "KnowledgeNode",
