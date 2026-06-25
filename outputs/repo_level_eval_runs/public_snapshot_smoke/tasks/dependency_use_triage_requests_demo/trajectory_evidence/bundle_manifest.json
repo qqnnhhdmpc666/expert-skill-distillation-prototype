@@ -1,0 +1,157 @@
+{
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:a38606f2d57160fe556467261c790e1d2b8e4dbac19ca1001d6f7ddc55817457",
+  "condition_id": "C5_active_runtime",
+  "condition_manifest_digest": "sha256:cd10df43d63e34e4d60af657a5ed8e95bbd8688c716410c5fa2e79eeae3adfbf",
+  "knowledge_access_binding_digest": "sha256:605312802a2ed4523dd493114fa53f690963ee1dc58a74aea4d6d8dd290022e9",
+  "knowledge_manifest_digest": "sha256:b55325033ce56128d6ccf827c392dfbeb61e81b6ab55eb697877a171874d5ac7",
+  "knowledge_projection_digest": "sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a",
+  "release_bundle": {
+    "agent_artifact_refs": [
+      {
+        "artifact_id": "agent_skill_artifact.v1:e5efea83853cbbdb",
+        "artifact_schema_version": "agent_skill_artifact.v1",
+        "digest": "sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb",
+        "media_type": "text/markdown",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 1385
+      }
+    ],
+    "compatible_agent_profiles": [
+      "reference-decision-v1"
+    ],
+    "dependency_manifest_ref": {
+      "artifact_id": "dependency_manifest.v1:aa502868bd08f692",
+      "artifact_schema_version": "dependency_manifest.v1",
+      "digest": "sha256:86eeab9249febd434018c8fc704bbd22e0d5dca8045daaa4aa502868bd08f692",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 4197
+    },
+    "domain_adapter_ref": {
+      "artifact_id": "domain_adapter.v1:476f7e4fb793c5f5",
+      "artifact_schema_version": "domain_adapter.v1",
+      "digest": "sha256:6172ae88d303fa5c27a8ada3d239923bea67ded1b059cb99476f7e4fb793c5f5",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 66
+    },
+    "domain_primitive_refs": [],
+    "knowledge_access_binding_refs": [
+      {
+        "artifact_id": "knowledge_access_binding.v1:a4d6d8dd290022e9",
+        "artifact_schema_version": "knowledge_access_binding.v1",
+        "digest": "sha256:605312802a2ed4523dd493114fa53f690963ee1dc58a74aea4d6d8dd290022e9",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 1139
+      }
+    ],
+    "knowledge_ir_ref": {
+      "artifact_id": "knowledge_ir.v1:4df2c9be853f0739",
+      "artifact_schema_version": "knowledge_ir.v1",
+      "digest": "sha256:52ac966a479fcd454ce53eb118283ccbdacfc85883522f764df2c9be853f0739",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 8950
+    },
+    "knowledge_projection_refs": [
+      {
+        "artifact_id": "knowledge_projection.v1:1e6bf47722428e1a",
+        "artifact_schema_version": "knowledge_projection.v1",
+        "digest": "sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 2127
+      }
+    ],
+    "permission_request_ref": {
+      "artifact_id": "permission_request.v1:f6ba2d456a8b47c0",
+      "artifact_schema_version": "permission_request.v1",
+      "digest": "sha256:0af0793366e8b24f0d4e9648377333c79810d7b3a693cf1af6ba2d456a8b47c0",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 95
+    },
+    "promotion_verifier_binding_refs": [
+      {
+        "artifact_id": "verifier_binding.v1:4800c9e781874e07",
+        "artifact_schema_version": "verifier_binding.v1",
+        "digest": "sha256:2926ef0f2bfa253d9f9cb8f98bd4be1deb3dbcd7a2fb19534800c9e781874e07",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 73
+      }
+    ],
+    "provenance_manifest_ref": {
+      "artifact_id": "bundle_provenance.v1:09fa6f6bf4485cdd",
+      "artifact_schema_version": "bundle_provenance.v1",
+      "digest": "sha256:b1ef843dbee6152f4bc3a72d9008bb28b7d793f734dff4a609fa6f6bf4485cdd",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 899
+    },
+    "provider_adapter_refs": [
+      {
+        "artifact_id": "osv_projection.sqlite.v1:ff7b5ce4e720d67c",
+        "artifact_schema_version": "osv_projection.sqlite.v1",
+        "digest": "sha256:82faa335a96e59260ed3246bc53bd7fef6a94d61326a6cfaff7b5ce4e720d67c",
+        "media_type": "application/vnd.sqlite3",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 28672
+      }
+    ],
+    "provider_policy_ref": {
+      "artifact_id": "provider_policy.v1:4c7f659d7097a865",
+      "artifact_schema_version": "provider_policy.v1",
+      "digest": "sha256:2df77abeb05c84d1fa104778fb8ce638e41f818bd0a2a6c84c7f659d7097a865",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 82
+    },
+    "runtime_compiler_ref": {
+      "artifact_id": "runtime_compiler.v1:24071522acdf7c78",
+      "artifact_schema_version": "runtime_compiler.v1",
+      "digest": "sha256:57e8cd0bd1e0ea1bbd32593e3008770e44e6a239b0fff5b024071522acdf7c78",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 83
+    },
+    "runtime_verifier_binding_refs": [
+      {
+        "artifact_id": "verifier_binding.v1:f2b7571b9bdc937c",
+        "artifact_schema_version": "verifier_binding.v1",
+        "digest": "sha256:f08b65cdfb893bafab5329bd31ba574e972d352e96bbbd4af2b7571b9bdc937c",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 86
+      }
+    ],
+    "schema_bundle_ref": {
+      "artifact_id": "schema_bundle.v1:66bd4f9aed2fd87c",
+      "artifact_schema_version": "schema_bundle.v1",
+      "digest": "sha256:e2c0aa4f5a95f4d18d54ffe1cbfed8ca821cd80fae81eea066bd4f9aed2fd87c",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 98
+    },
+    "schema_version": "release_bundle.v1",
+    "skill_family": "python_advisory_applicability",
+    "skill_ir_refs": [
+      {
+        "artifact_id": "skill_ir.v1:696812989b01f045",
+        "artifact_schema_version": "skill_ir.v1",
+        "digest": "sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 3411
+      }
+    ]
+  },
+  "resolution_source": "active_binding",
+  "schema_version": "repo_security_runtime_bundle_manifest.v1",
+  "skill_artifact_digest": "sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb",
+  "skill_digest": "sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045",
+  "skill_manifest_digest": "sha256:1eb1da8b2429149eda83cf1c2edceb600fb60d4aca18ce3bfcd7d65c0d07ef05",
+  "task_id": "dependency_use_triage_requests_demo"
+}
