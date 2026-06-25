@@ -39,6 +39,7 @@ def run_repo_level_eval(
         fail_on_partial_bundle=fail_on_partial_bundle,
     )
     bundle_fields = _bundle_fields(bundle_resolution)
+    task_sources = [_task_source_fields(task) for task in tasks]
     _write_json(output_dir / "bundle_resolution.json", _without_bundle_manifest(bundle_resolution))
     run_manifest = {
         "schema_version": "repo_level_eval_run_manifest.v1",
@@ -48,6 +49,7 @@ def run_repo_level_eval(
         "state_dir": str(state_dir),
         "condition": condition,
         "task_ids": [task["task_id"] for task in tasks],
+        "task_sources": task_sources,
         **bundle_fields,
         "runner_version": RUNNER_VERSION,
     }
@@ -65,6 +67,7 @@ def run_repo_level_eval(
             **bundle_fields,
             "task_registry_digest": registry["registry_digest"],
             "task_ids": [task["task_id"] for task in tasks],
+            "task_sources": task_sources,
             "runner_version": RUNNER_VERSION,
         },
     )
@@ -85,6 +88,7 @@ def run_repo_level_eval(
             "task_id": task["task_id"],
             "task_type": task["task_type"],
             "fixture_type": task["fixture_type"],
+            **_task_source_fields(task),
             "verifier_pass": result["verifier_pass"],
             "failure_category": result["failure_category"],
             "decision": result["decision"],
@@ -129,6 +133,19 @@ def _bundle_fields(bundle_resolution: dict[str, Any]) -> dict[str, Any]:
         "skill_artifact_digest": bundle_resolution.get("skill_artifact_digest"),
         "knowledge_projection_digest": bundle_resolution.get("knowledge_projection_digest"),
         "knowledge_access_binding_digest": bundle_resolution.get("knowledge_access_binding_digest"),
+    }
+
+
+def _task_source_fields(task: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "task_id": task["task_id"],
+        "fixture_type": task["fixture_type"],
+        "public_source": task["public_source"],
+        "source_url": task["source_url"],
+        "license": task["license"],
+        "commit_digest": task["commit_digest"],
+        "repo_snapshot_ref": task["repo_snapshot_ref"],
+        "repo_snapshot_manifest": task["repo_snapshot_manifest"],
     }
 
 

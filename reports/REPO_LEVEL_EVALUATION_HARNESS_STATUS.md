@@ -1,6 +1,6 @@
 # Repo-Level Evaluation Harness Status
 
-Date: 2026-06-24
+Date: 2026-06-26
 
 ## Summary
 
@@ -26,8 +26,8 @@ This is an evaluation harness, not a new architecture layer or AgentHost integra
 core_local_system = pass / unchanged
 repo_level_eval_harness = implemented
 task_registry = implemented
-repo_level_security_tasks = local_fixture_only_with_clear_boundary
-repo_level_tasks = local_public_like_demo
+repo_level_security_tasks = mixed_public_traceable
+repo_level_tasks = local_public_like_demo + public_repo_excerpt
 dependency_use_triage_runner = pass
 release_bundle_pinning = real_release_bundle_pinned
 real_release_bundle_pinning = pass
@@ -35,7 +35,7 @@ per_task_evidence_packaging = pass
 trajectory_provenance_bundle_fields = pass
 current_head_run_reproduction = pass
 repo_level_specific_bundle = not_yet
-public_repo_snapshot = not_yet
+public_repo_snapshot = pass_as_traceable_public_excerpt
 skill_knowledge_injection_protocol = pass
 trajectory_evidence_package = pass
 repo_evidence_collector = pass
@@ -60,6 +60,7 @@ new_or_touched_files_ruff = pass
 - `tests/v1/test_repo_task_registry.py`
 - `tests/v1/test_release_bundle_resolver.py`
 - `tests/v1/test_repo_run_report.py`
+- `tests/v1/test_public_repo_snapshot_task.py`
 
 ## Bundle Pinning
 
@@ -146,30 +147,107 @@ Runnable tasks:
 dependency_use_triage_requests_demo
 dependency_use_triage_declared_not_used
 dependency_use_triage_version_not_affected
+dependency_use_triage_the_gan_zoo_public
 ```
 
 Current task source boundary:
 
 ```text
-repo_level_security_tasks = local_fixture_only_with_clear_boundary
-public_repo_snapshot_small = deferred
+repo_level_security_tasks = mixed_public_traceable
+local_public_like_demo = 3
+public_repo_excerpt = 1
+official_public_benchmark = not_claimed
 ```
 
 Each task entry records `fixture_type`, `source_url`, `license`, `commit_digest`, `repo_snapshot_ref`, manifest paths, verifier path, and status.
+
+## Public Repo Snapshot Smoke
+
+The first public task is an exact, minimal excerpt from:
+
+```text
+repository = hindupuravinash/the-gan-zoo
+source_url = https://github.com/hindupuravinash/the-gan-zoo
+license = MIT
+commit_digest = git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713
+source_tree_digest = git-sha1:1d14483f75314b681832854d7d766db179d6b788
+fixture_type = public_repo_excerpt
+task_id = dependency_use_triage_the_gan_zoo_public
+```
+
+The excerpt contains exact upstream copies of:
+
+```text
+requirements.txt
+update.py
+LICENSE
+```
+
+The local Git blob digest of each file matches the blob digest recorded by the immutable upstream commit. The snapshot manifest also records each local SHA-256 digest, upstream path, source URL, and line count.
+
+The task requires and resolves:
+
+```text
+dependency declaration = requirements.txt:21, requests==2.19.1
+resolved version = requirements.txt:21
+import/use evidence = update.py:9 and update.py:58
+allowed advisory = OSV PYSEC-2018-28
+decision evidence = dependency_used_and_affected
+```
+
+The verifier checks the prediction schema, task identity, decision, reason codes, required evidence types, evidence IDs, repository file paths, line ranges, file digests, advisory source ID, and hidden-gold absence. An advisory-only prediction is covered by a negative test and is rejected.
+
+Fresh command:
+
+```powershell
+python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\public_snapshot_smoke --state-dir .tmp\repo-level-eval-state --use-active-binding
+```
+
+Fresh result:
+
+```text
+public_repo_snapshot_task = pass
+fixture_type_distribution = {"local_public_like_demo": 3, "public_repo_excerpt": 1}
+task_count = 4
+pass_count = 4
+fail_count = 0
+real_bundle_count = 1
+evidence_resolution_failures = 0
+hidden_gold_leakage_failures = 0
+bundle_attachment_mode = real_release_bundle_pinned
+```
+
+Fresh artifacts:
+
+```text
+outputs/repo_level_eval_runs/public_snapshot_smoke/bundle_resolution.json
+outputs/repo_level_eval_runs/public_snapshot_smoke/run_manifest.json
+outputs/repo_level_eval_runs/public_snapshot_smoke/run_provenance.json
+outputs/repo_level_eval_runs/public_snapshot_smoke/aggregate_report.json
+outputs/repo_level_eval_runs/public_snapshot_smoke/aggregate_report.md
+outputs/repo_level_eval_runs/public_snapshot_smoke/task_results.jsonl
+outputs/repo_level_eval_runs/public_snapshot_smoke/tasks/dependency_use_triage_the_gan_zoo_public/
+```
+
+This supports the bounded statement:
+
+> The repo-level harness now runs both local fixtures and one traceable public repository excerpt through the same pinned-ReleaseBundle, evidence collection, deterministic verification, trajectory packaging, and aggregate reporting path.
+
+It is not an official benchmark result.
 
 ## Run Command
 
 Fresh command:
 
 ```powershell
-python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\current_head --state-dir .tmp\repo-level-eval-state --use-active-binding
+python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\public_snapshot_smoke --state-dir .tmp\repo-level-eval-state --use-active-binding
 ```
 
 Observed result:
 
 ```text
-task_count = 3
-pass_count = 3
+task_count = 4
+pass_count = 4
 fail_count = 0
 bundle_attachment_mode = real_release_bundle_pinned
 bundle_digest = sha256:a38606f2d57160fe556467261c790e1d2b8e4dbac19ca1001d6f7ddc55817457
@@ -182,7 +260,7 @@ knowledge_access_binding_digest = sha256:605312802a2ed4523dd493114fa53f690963ee1
 Output directory:
 
 ```text
-outputs\repo_level_eval_runs\current_head
+outputs\repo_level_eval_runs\public_snapshot_smoke
 ```
 
 Run-level outputs:
@@ -235,7 +313,7 @@ The report separates:
 Commands run:
 
 ```powershell
-python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\current_head --state-dir .tmp\repo-level-eval-state --use-active-binding
+python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\public_snapshot_smoke --state-dir .tmp\repo-level-eval-state --use-active-binding
 python -m pytest tests\v1 -q
 python -m pytest -q
 python -m ruff check src\expert_skill_system tests\v1 scripts
@@ -245,9 +323,9 @@ python -m ruff check <new-or-touched files>
 Observed:
 
 ```text
-repo-level eval = pass, 3/3 tasks
-python -m pytest tests\v1 -q = pass, 66 passed
-python -m pytest -q = pass, 120 passed
+repo-level public snapshot smoke = pass, 4/4 tasks
+python -m pytest tests\v1 -q = pass, 70 passed
+python -m pytest -q = pass, 124 passed
 ```
 
 Ruff:
@@ -265,7 +343,7 @@ Allowed claim:
 
 Stronger evidence claim now allowed:
 
-> The `current_head` repo-level run records a real pinned ReleaseBundle consistently from run-level resolution through per-task manifests and trajectory provenance.
+> The `public_snapshot_smoke` run records a real pinned ReleaseBundle consistently from run-level resolution through local and traceable-public per-task manifests and trajectory provenance.
 
 Not claimed:
 
@@ -278,7 +356,7 @@ Not claimed:
 
 ## Remaining Blockers
 
-- Replace or supplement local fixtures with a small true public repo snapshot.
+- Expand beyond the single public excerpt only when a broader evaluation protocol is frozen; this step does not establish benchmark performance.
 - Attach a repo-level-specific ReleaseBundle rather than reusing the current `python-advisory` bundle.
 - Add AgentHost/Harbor/OpenHands/SWE-agent execution only after the deterministic harness remains stable.
 - Clean legacy `scripts/` ruff failures before marking full repository lint as pass.

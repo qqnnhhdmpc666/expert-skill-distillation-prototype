@@ -7,6 +7,7 @@ from typing import Any
 from packaging.version import InvalidVersion, Version
 
 from ..compiler.evidence_binding import bind_task_aware_evidence
+from ..core.canonical import sha256_json
 from ..runtime.skill_knowledge_injection import build_injection_manifests
 from ..runtime.trajectory_evidence import write_trajectory_evidence_package
 from .repo_evidence_collector import collect_repo_evidence
@@ -120,9 +121,14 @@ def run_dependency_use_triage(
     (output_dir / "verifier_result.json").write_text(
         json.dumps(verifier_result, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8"
     )
+    trajectory_task_manifest = {
+        **runtime_task,
+        "repo_snapshot_manifest_digest": sha256_json(repo_manifest),
+        "repo_snapshot_content_digest": repo_manifest.get("snapshot_content_digest"),
+    }
     trajectory = write_trajectory_evidence_package(
         output_dir=output_dir,
-        task_manifest=runtime_task,
+        task_manifest=trajectory_task_manifest,
         injection_manifests=injection,
         prediction=prediction,
         verifier_result=verifier_result,

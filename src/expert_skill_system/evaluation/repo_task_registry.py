@@ -95,3 +95,22 @@ def _validate_paths(root: Path, entry: dict[str, Any]) -> None:
     ]
     if sha256_json(file_payload) == sha256_json([]):
         raise ValueError(f"repo snapshot manifest has no files for {entry['task_id']}")
+    repo_root = task_dir / "repo_snapshot"
+    for item in manifest["files"]:
+        relative_path = str(item["path"])
+        snapshot_file = repo_root / relative_path
+        if not snapshot_file.is_file():
+            raise FileNotFoundError(snapshot_file)
+        actual_digest = sha256_bytes(snapshot_file.read_bytes())
+        if actual_digest != item.get("sha256"):
+            raise ValueError(f"repo snapshot digest mismatch for {entry['task_id']}:{relative_path}")
+        actual_line_count = len(snapshot_file.read_text(encoding="utf-8").splitlines())
+        if actual_line_count != item.get("line_count"):
+            raise ValueError(f"repo snapshot line count mismatch for {entry['task_id']}:{relative_path}")
+    if entry["fixture_type"] in {"public_repo_snapshot_small", "public_repo_excerpt"}:
+        if not str(entry["source_url"]).startswith("https://"):
+            raise ValueError(f"public task must use an https source_url: {entry['task_id']}")
+        if not str(entry["commit_digest"]).startswith(("git-sha1:", "sha256:")):
+            raise ValueError(f"public task must record an immutable commit or snapshot digest: {entry['task_id']}")
+        if manifest.get("fixture_type") != entry["fixture_type"]:
+            raise ValueError(f"public fixture_type mismatch for {entry['task_id']}")

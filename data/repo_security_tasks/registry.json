@@ -52,7 +52,24 @@
       "native_verifier": "dependency_use_triage_version_not_affected/verifier.py",
       "status": "active",
       "notes": "Boundary case: requests is declared and used, but pinned to the fixed boundary version."
+    },
+    {
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "task_dir": "dependency_use_triage_the_gan_zoo_public",
+      "task_type": "dependency_use_triage",
+      "fixture_type": "public_repo_excerpt",
+      "public_source": "hindupuravinash/the-gan-zoo",
+      "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+      "license": "MIT",
+      "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+      "repo_snapshot_ref": "github:hindupuravinash/the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713",
+      "repo_snapshot_manifest": "dependency_use_triage_the_gan_zoo_public/repo_snapshot_manifest.json",
+      "allowed_knowledge": "dependency_use_triage_the_gan_zoo_public/allowed_knowledge.json",
+      "expected_output_schema": "dependency_use_triage_the_gan_zoo_public/expected_output_schema.json",
+      "native_verifier": "dependency_use_triage_the_gan_zoo_public/verifier.py",
+      "status": "active",
+      "notes": "Traceable public excerpt: exact requirements.txt, update.py, and LICENSE from immutable commit; not an official benchmark."
     }
   ],
-  "claim_boundary": "These are local_public_like_demo fixtures, not official public benchmark tasks."
+  "claim_boundary": "Mixed local fixtures and one traceable public repository excerpt; none are official benchmark tasks."
 }

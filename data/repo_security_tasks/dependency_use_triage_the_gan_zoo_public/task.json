@@ -1,0 +1,68 @@
+{
+  "schema_version": "repo_security_task.v1",
+  "task_id": "dependency_use_triage_the_gan_zoo_public",
+  "task_type": "dependency_use_triage",
+  "public_source": {
+    "type": "public_repo_excerpt",
+    "fixture_type": "public_repo_excerpt",
+    "non_toy_status": "traceable_public_excerpt",
+    "repository": "hindupuravinash/the-gan-zoo",
+    "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+    "commit_url": "https://github.com/hindupuravinash/the-gan-zoo/commit/375f2be4a852ead8980c06b2a996893f0cb95713",
+    "description": "Minimal immutable public excerpt containing the dependency declaration, real import/use site, and upstream license."
+  },
+  "license": "MIT",
+  "repo_snapshot_ref": "github:hindupuravinash/the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713",
+  "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+  "task_instruction": "Determine whether requests is declared in this public repository excerpt, used in code, and affected according to the allowed frozen advisory snapshot. Return only the required prediction schema.",
+  "allowed_tools": [
+    "read_repo_snapshot",
+    "read_allowed_knowledge",
+    "local_text_search"
+  ],
+  "skill_condition": {
+    "condition_family": "dependency_use_triage",
+    "requirements": [
+      "identify dependency declaration",
+      "extract resolved version",
+      "find import or call-site evidence",
+      "consult allowed advisory snapshot",
+      "abstain when required evidence is missing"
+    ]
+  },
+  "knowledge_access_contract": {
+    "mode": "allowed_snapshot_only",
+    "package": "requests",
+    "advisory_id": "PYSEC-2018-28",
+    "forbidden_sources": [
+      "internet",
+      "hidden_gold",
+      "verifier_expected_answer"
+    ]
+  },
+  "expected_output_schema": "expected_output_schema.json",
+  "native_verifier": "verifier.py",
+  "hidden_gold": {
+    "decision": "dependency_used_and_affected",
+    "expected_package": "requests",
+    "expected_version": "2.19.1",
+    "expected_advisory_id": "PYSEC-2018-28",
+    "required_evidence_types": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "required_reason_codes": [
+      "VERSION_IN_AFFECTED_RANGE",
+      "IMPORT_USE_SITE_FOUND"
+    ]
+  },
+  "resource_budget": {
+    "max_repo_files_read": 3,
+    "max_allowed_knowledge_queries": 1,
+    "network": "disabled",
+    "llm_calls": 0
+  }
+}

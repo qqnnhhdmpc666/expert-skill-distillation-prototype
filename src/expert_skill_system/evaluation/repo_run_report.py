@@ -7,8 +7,8 @@ from typing import Any
 
 def build_repo_run_report(*, task_results: list[dict[str, Any]], bundle_resolution: dict[str, Any], registry: dict[str, Any]) -> dict[str, Any]:
     fixture_distribution: dict[str, int] = {}
-    for task in registry["tasks"]:
-        fixture_distribution[task["fixture_type"]] = fixture_distribution.get(task["fixture_type"], 0) + 1
+    for row in task_results:
+        fixture_distribution[row["fixture_type"]] = fixture_distribution.get(row["fixture_type"], 0) + 1
     pass_count = sum(bool(row.get("verifier_pass")) for row in task_results)
     failure_categories = [row.get("failure_category") for row in task_results if row.get("failure_category")]
     partial_bundle_count = 1 if bundle_resolution["bundle_attachment_mode"] == "partial_local_manifest_only" else 0
@@ -38,6 +38,12 @@ def build_repo_run_report(*, task_results: list[dict[str, Any]], bundle_resoluti
             "bundle_attachment_status": bundle_resolution["bundle_attachment_mode"],
             "compiler_superiority": "not_evaluated",
             "vulnerability_discovery_claim": "not_claimed",
+            "public_task_status": (
+                "traceable_public_excerpt_present"
+                if fixture_distribution.get("public_repo_excerpt", 0)
+                or fixture_distribution.get("public_repo_snapshot_small", 0)
+                else "local_fixture_only"
+            ),
         },
         "task_results": task_results,
     }
@@ -77,12 +83,12 @@ def render_repo_run_report_markdown(report: dict[str, Any]) -> str:
         "",
         "## Tasks",
         "",
-        "| task_id | verifier_pass | decision | failure_category | bundle_attachment_mode |",
-        "|---|---:|---|---|---|",
+        "| task_id | fixture_type | verifier_pass | decision | failure_category | source |",
+        "|---|---|---:|---|---|---|",
     ]
     for row in report["task_results"]:
         lines.append(
-            f"| `{row['task_id']}` | `{row['verifier_pass']}` | `{row.get('decision')}` | `{row.get('failure_category')}` | `{report['bundle_attachment_mode']}` |"
+            f"| `{row['task_id']}` | `{row['fixture_type']}` | `{row['verifier_pass']}` | `{row.get('decision')}` | `{row.get('failure_category')}` | {row.get('source_url')} |"
         )
     return "\n".join(lines).rstrip() + "\n"
 

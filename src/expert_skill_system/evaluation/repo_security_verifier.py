@@ -9,6 +9,7 @@ from ..core.canonical import sha256_bytes
 REQUIRED_PREDICTION_FIELDS = {
     "schema_version",
     "task_id",
+    "task_type",
     "decision",
     "package",
     "declared_version",
@@ -25,15 +26,19 @@ def verify_dependency_use_prediction(
     task_dir = task_dir or Path(".")
     repo_manifest = _read_optional_json(task_dir / "repo_snapshot_manifest.json")
     allowed_knowledge = _read_optional_json(task_dir / "allowed_knowledge.json")
+    expected_schema = _read_optional_json(task_dir / "expected_output_schema.json")
     checks = []
 
     def add(name: str, passed: bool, detail: str = "") -> None:
         checks.append({"name": name, "passed": passed, "detail": detail})
 
-    missing_fields = sorted(REQUIRED_PREDICTION_FIELDS - set(prediction))
+    schema_required_fields = set(expected_schema.get("required_fields", [])) or REQUIRED_PREDICTION_FIELDS
+    missing_fields = sorted(schema_required_fields - set(prediction))
     add("schema_fields_present", not missing_fields, ",".join(missing_fields))
     add("hidden_gold_absent_from_prediction", not _contains_forbidden_gold_key(prediction))
     add("task_id_match", prediction.get("task_id") == task.get("task_id"))
+    add("task_type_match", prediction.get("task_type") == task.get("task_type"))
+    add("decision_enum_valid", prediction.get("decision") in set(expected_schema.get("decision_enum", [])))
     add("decision_match", prediction.get("decision") == hidden_gold.get("decision"))
     add("package_match", prediction.get("package") == hidden_gold.get("expected_package"))
     add("version_match", prediction.get("declared_version") == hidden_gold.get("expected_version"))
@@ -47,6 +52,13 @@ def verify_dependency_use_prediction(
     )
 
     evidence = prediction.get("evidence", [])
+    evidence_fields = set(expected_schema.get("evidence_fields", []))
+    malformed_evidence = [
+        index
+        for index, item in enumerate(evidence)
+        if not isinstance(item, dict) or not evidence_fields <= set(item)
+    ]
+    add("evidence_schema_valid", not malformed_evidence, f"malformed_indexes={malformed_evidence}")
     evidence_types = {item.get("evidence_type") for item in evidence if isinstance(item, dict)}
     required_evidence = set(hidden_gold.get("required_evidence_types", []))
     add("required_evidence_types_present", required_evidence <= evidence_types, f"missing={sorted(required_evidence - evidence_types)}")
@@ -59,6 +71,20 @@ def verify_dependency_use_prediction(
         bool(evidence) and all(item["resolved"] for item in resolution),
         json.dumps([item for item in resolution if not item["resolved"]], sort_keys=True),
     )
+    repo_evidence = [
+        item
+        for item in evidence
+        if isinstance(item, dict)
+        and item.get("evidence_type") in {"dependency_declaration", "resolved_version", "import_use_site"}
+    ]
+    repo_locations_complete = all(
+        item.get("path")
+        and item.get("line_start") is not None
+        and item.get("line_end") is not None
+        and item.get("file_digest")
+        for item in repo_evidence
+    )
+    add("repo_evidence_locations_complete", bool(repo_evidence) and repo_locations_complete)
     if prediction.get("decision") in {"dependency_used_and_affected", "dependency_used_not_affected"}:
         add("import_use_required_for_used_decision", "import_use_site" in evidence_types)
     if prediction.get("decision") != "unresolved":
@@ -67,7 +93,7 @@ def verify_dependency_use_prediction(
     verifier_pass = all(bool(check["passed"]) for check in checks)
     failure_category = None
     if not verifier_pass:
-        if missing_fields:
+        if missing_fields or malformed_evidence:
             failure_category = "schema_error"
         elif _contains_forbidden_gold_key(prediction):
             failure_category = "oracle_leakage"

@@ -33,8 +33,8 @@ def test_repo_eval_harness_runs_registry_with_explicit_partial_bundle(tmp_path: 
         use_active_binding=True,
         allow_local_manifest_only=True,
     )
-    assert summary["task_count"] == 3
-    assert summary["pass_count"] == 3
+    assert summary["task_count"] == 4
+    assert summary["pass_count"] == 4
     assert summary["bundle_attachment_mode"] == "partial_local_manifest_only"
     assert (output / "run_manifest.json").exists()
     assert (output / "bundle_resolution.json").exists()
@@ -45,6 +45,7 @@ def test_repo_eval_harness_runs_registry_with_explicit_partial_bundle(tmp_path: 
         "dependency_use_triage_requests_demo",
         "dependency_use_triage_declared_not_used",
         "dependency_use_triage_version_not_affected",
+        "dependency_use_triage_the_gan_zoo_public",
     ]:
         task_dir = output / "tasks" / task_id
         assert (task_dir / "prediction.json").exists()
@@ -53,9 +54,34 @@ def test_repo_eval_harness_runs_registry_with_explicit_partial_bundle(tmp_path: 
         assert (task_dir / "repo_evidence.json").exists()
     aggregate = json.loads((output / "aggregate_report.json").read_text(encoding="utf-8"))
     assert aggregate["fixture_type_distribution"]["local_public_like_demo"] == 3
+    assert aggregate["fixture_type_distribution"]["public_repo_excerpt"] == 1
     assert aggregate["bundle_attachment_mode"] == "partial_local_manifest_only"
+    run_manifest = json.loads((output / "run_manifest.json").read_text(encoding="utf-8"))
+    public_source = next(
+        item for item in run_manifest["task_sources"] if item["task_id"] == "dependency_use_triage_the_gan_zoo_public"
+    )
+    assert public_source["commit_digest"] == "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713"
+    assert public_source["fixture_type"] == "public_repo_excerpt"
     task_result = json.loads((output / "task_results.jsonl").read_text(encoding="utf-8").splitlines()[0])
     assert task_result["bundle_attachment_mode"] == "partial_local_manifest_only"
+    task_results = [
+        json.loads(line) for line in (output / "task_results.jsonl").read_text(encoding="utf-8").splitlines()
+    ]
+    public_result = next(row for row in task_results if row["task_id"] == "dependency_use_triage_the_gan_zoo_public")
+    assert public_result["source_url"] == "https://github.com/hindupuravinash/the-gan-zoo"
+    public_provenance = json.loads(
+        (
+            output
+            / "tasks"
+            / "dependency_use_triage_the_gan_zoo_public"
+            / "trajectory_evidence"
+            / "provenance.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert public_provenance["fixture_type"] == "public_repo_excerpt"
+    assert public_provenance["repo_snapshot_content_digest"] == (
+        "sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb"
+    )
     task_dir = output / "tasks" / "dependency_use_triage_requests_demo"
     assert json.loads((task_dir / "bundle_manifest.json").read_text(encoding="utf-8"))[
         "bundle_attachment_mode"
@@ -77,8 +103,8 @@ def test_repo_eval_harness_propagates_real_bundle_provenance(tmp_path: Path) -> 
         state_dir=state,
         use_active_binding=True,
     )
-    assert summary["task_count"] == 3
-    assert summary["pass_count"] == 3
+    assert summary["task_count"] == 4
+    assert summary["pass_count"] == 4
     assert summary["bundle_attachment_mode"] == "real_release_bundle_pinned"
 
     bundle_resolution = json.loads((output / "bundle_resolution.json").read_text(encoding="utf-8"))
@@ -103,6 +129,7 @@ def test_repo_eval_harness_propagates_real_bundle_provenance(tmp_path: Path) -> 
         "dependency_use_triage_requests_demo",
         "dependency_use_triage_declared_not_used",
         "dependency_use_triage_version_not_affected",
+        "dependency_use_triage_the_gan_zoo_public",
     ]:
         task_dir = output / "tasks" / task_id
         for relative in [

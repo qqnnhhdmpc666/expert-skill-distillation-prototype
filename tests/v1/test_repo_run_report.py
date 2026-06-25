@@ -17,6 +17,8 @@ def test_repo_run_report_separates_bundle_and_task_status(tmp_path: Path) -> Non
         task_results=[
             {
                 "task_id": "dependency_use_triage_requests_demo",
+                "fixture_type": "local_public_like_demo",
+                "source_url": "local://repo_security_tasks/dependency_use_triage_requests_demo",
                 "verifier_pass": True,
                 "failure_category": None,
                 "decision": "dependency_used_and_affected",

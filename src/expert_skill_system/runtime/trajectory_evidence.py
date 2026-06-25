@@ -62,6 +62,7 @@ def write_trajectory_evidence_package(
         "prediction_digest": sha256_json(prediction),
         "verifier_result_digest": sha256_json(verifier_result),
         "condition_manifest_digest": sha256_json(injection_manifests["condition_manifest"]),
+        **_repo_provenance_fields(task_manifest),
         **_bundle_provenance_fields(injection_manifests["bundle_manifest"]),
     }
     files = {
@@ -92,4 +93,18 @@ def _bundle_provenance_fields(bundle_manifest: dict[str, Any]) -> dict[str, Any]
         "skill_artifact_digest": bundle_manifest.get("skill_artifact_digest"),
         "knowledge_projection_digest": bundle_manifest.get("knowledge_projection_digest"),
         "knowledge_access_binding_digest": bundle_manifest.get("knowledge_access_binding_digest"),
+    }
+
+
+def _repo_provenance_fields(task_manifest: dict[str, Any]) -> dict[str, Any]:
+    public_source = task_manifest.get("public_source")
+    source_url = public_source.get("source_url") if isinstance(public_source, dict) else None
+    fixture_type = public_source.get("fixture_type") if isinstance(public_source, dict) else None
+    return {
+        "fixture_type": fixture_type,
+        "source_url": source_url,
+        "repo_snapshot_ref": task_manifest.get("repo_snapshot_ref"),
+        "commit_digest": task_manifest.get("commit_digest"),
+        "repo_snapshot_manifest_digest": task_manifest.get("repo_snapshot_manifest_digest"),
+        "repo_snapshot_content_digest": task_manifest.get("repo_snapshot_content_digest"),
     }
