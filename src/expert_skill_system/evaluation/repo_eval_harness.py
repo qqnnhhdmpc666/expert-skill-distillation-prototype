@@ -38,6 +38,7 @@ def run_repo_level_eval(
         allow_local_manifest_only=allow_local_manifest_only,
         fail_on_partial_bundle=fail_on_partial_bundle,
     )
+    bundle_fields = _bundle_fields(bundle_resolution)
     _write_json(output_dir / "bundle_resolution.json", _without_bundle_manifest(bundle_resolution))
     run_manifest = {
         "schema_version": "repo_level_eval_run_manifest.v1",
@@ -47,7 +48,7 @@ def run_repo_level_eval(
         "state_dir": str(state_dir),
         "condition": condition,
         "task_ids": [task["task_id"] for task in tasks],
-        "bundle_attachment_mode": bundle_resolution["bundle_attachment_mode"],
+        **bundle_fields,
         "runner_version": RUNNER_VERSION,
     }
     _write_json(output_dir / "run_manifest.json", run_manifest)
@@ -61,7 +62,7 @@ def run_repo_level_eval(
             "python_version": platform.python_version(),
             "platform": platform.platform(),
             "state_dir": str(state_dir),
-            "bundle_digest": bundle_resolution.get("bundle_digest"),
+            **bundle_fields,
             "task_registry_digest": registry["registry_digest"],
             "task_ids": [task["task_id"] for task in tasks],
             "runner_version": RUNNER_VERSION,
@@ -91,7 +92,7 @@ def run_repo_level_eval(
             "prediction_path": result["prediction_path"],
             "verifier_result_path": result["verifier_result_path"],
             "trajectory_evidence_dir": result["trajectory_evidence"]["package_dir"],
-            "bundle_attachment_mode": bundle_resolution["bundle_attachment_mode"],
+            **bundle_fields,
         }
         task_results.append(row)
         jsonl_lines.append(json.dumps(row, ensure_ascii=False, sort_keys=True))
@@ -104,7 +105,7 @@ def run_repo_level_eval(
         "task_count": len(task_results),
         "pass_count": report["pass_count"],
         "fail_count": report["fail_count"],
-        "bundle_attachment_mode": bundle_resolution["bundle_attachment_mode"],
+        **bundle_fields,
         "output_dir": str(output_dir),
     }
     _write_json(output_dir / "run_summary.json", summary)
@@ -118,6 +119,17 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def _without_bundle_manifest(bundle_resolution: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in bundle_resolution.items() if key != "bundle_manifest"}
+
+
+def _bundle_fields(bundle_resolution: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "bundle_attachment_mode": bundle_resolution["bundle_attachment_mode"],
+        "bundle_digest": bundle_resolution.get("bundle_digest"),
+        "skill_digest": bundle_resolution.get("skill_digest"),
+        "skill_artifact_digest": bundle_resolution.get("skill_artifact_digest"),
+        "knowledge_projection_digest": bundle_resolution.get("knowledge_projection_digest"),
+        "knowledge_access_binding_digest": bundle_resolution.get("knowledge_access_binding_digest"),
+    }
 
 
 def _git_commit() -> str | None:

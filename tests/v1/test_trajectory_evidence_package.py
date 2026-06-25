@@ -7,10 +7,25 @@ from expert_skill_system.runtime.skill_knowledge_injection import build_injectio
 from expert_skill_system.runtime.trajectory_evidence import write_trajectory_evidence_package
 
 TASK_DIR = Path("data/repo_security_tasks/dependency_use_triage_requests_demo")
+REAL_BUNDLE_RESOLUTION = {
+    "bundle_attachment_mode": "real_release_bundle_pinned",
+    "resolution_source": "active_binding",
+    "bundle_digest": "sha256:" + "a" * 64,
+    "skill_digest": "sha256:" + "b" * 64,
+    "skill_artifact_digest": "sha256:" + "c" * 64,
+    "knowledge_projection_digest": "sha256:" + "d" * 64,
+    "knowledge_access_binding_digest": "sha256:" + "e" * 64,
+    "bundle_manifest": {"schema_version": "release_bundle.v1", "skill_family": "test"},
+}
 
 
 def test_trajectory_evidence_package_writes_required_files(tmp_path: Path) -> None:
-    injection = build_injection_manifests(task_dir=TASK_DIR, condition_id="C5_active_runtime", output_dir=tmp_path / "injection")
+    injection = build_injection_manifests(
+        task_dir=TASK_DIR,
+        condition_id="C5_active_runtime",
+        output_dir=tmp_path / "injection",
+        bundle_resolution=REAL_BUNDLE_RESOLUTION,
+    )
     prediction = {
         "schema_version": "repo_security_prediction.v1",
         "task_id": "dependency_use_triage_requests_demo",
@@ -48,3 +63,13 @@ def test_trajectory_evidence_package_writes_required_files(tmp_path: Path) -> No
     assert outcome["skill_used"] is True
     assert outcome["knowledge_used"] is True
     assert outcome["verifier_pass"] is True
+    provenance = json.loads((package_dir / "provenance.json").read_text(encoding="utf-8"))
+    for key in [
+        "bundle_attachment_mode",
+        "bundle_digest",
+        "skill_digest",
+        "skill_artifact_digest",
+        "knowledge_projection_digest",
+        "knowledge_access_binding_digest",
+    ]:
+        assert provenance[key] == REAL_BUNDLE_RESOLUTION[key]

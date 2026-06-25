@@ -23,7 +23,7 @@ def resolve_release_bundle(
     workspace = Workspace.open(state_dir)
     active_generation = None
     resolved_digest = bundle_digest
-    resolution_source = "explicit_bundle_digest" if bundle_digest else None
+    resolution_source = "bundle_digest" if bundle_digest else None
     if resolved_digest is None and use_active_binding:
         active = workspace.metadata.get_active_binding(binding_key)
         if active is None:
@@ -78,7 +78,7 @@ def _partial_or_failed(
     return {
         "schema_version": "release_bundle_resolution.v1",
         "bundle_attachment_mode": "partial_local_manifest_only",
-        "resolution_source": "allow_local_manifest_only",
+        "resolution_source": "local_manifest_only",
         "bundle_digest": None,
         "skill_digest": None,
         "skill_artifact_digest": None,

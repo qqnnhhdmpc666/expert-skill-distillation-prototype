@@ -95,7 +95,7 @@ def run_dependency_use_triage(
         task_dir=task_dir,
         condition_id=condition_id,
         output_dir=output_dir,
-        bundle_manifest=(bundle_resolution or {}).get("bundle_manifest") if bundle_resolution else None,
+        bundle_resolution=bundle_resolution,
     )
     binding = bind_task_aware_evidence(
         {

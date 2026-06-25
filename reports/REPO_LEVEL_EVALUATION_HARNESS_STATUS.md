@@ -27,8 +27,15 @@ core_local_system = pass / unchanged
 repo_level_eval_harness = implemented
 task_registry = implemented
 repo_level_security_tasks = local_fixture_only_with_clear_boundary
+repo_level_tasks = local_public_like_demo
 dependency_use_triage_runner = pass
 release_bundle_pinning = real_release_bundle_pinned
+real_release_bundle_pinning = pass
+per_task_evidence_packaging = pass
+trajectory_provenance_bundle_fields = pass
+current_head_run_reproduction = pass
+repo_level_specific_bundle = not_yet
+public_repo_snapshot = not_yet
 skill_knowledge_injection_protocol = pass
 trajectory_evidence_package = pass
 repo_evidence_collector = pass
@@ -83,8 +90,47 @@ Observed active bundle:
 ```text
 bundle_digest = sha256:a38606f2d57160fe556467261c790e1d2b8e4dbac19ca1001d6f7ddc55817457
 bundle_attachment_mode = real_release_bundle_pinned
+skill_digest = sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045
+skill_artifact_digest = sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb
+knowledge_projection_digest = sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a
+knowledge_access_binding_digest = sha256:605312802a2ed4523dd493114fa53f690963ee1dc58a74aea4d6d8dd290022e9
 limitation = python-advisory bundle reused as initial system bundle for repo-level harness
 ```
+
+## Bundle Evidence Consistency Fix
+
+The first audit found real ReleaseBundle pinning at run level, but per-task evidence still looked partial because injection received only the inner ReleaseBundle manifest. The fix now passes the full bundle resolution envelope into task injection and trajectory evidence generation.
+
+Before:
+
+```text
+run_level_bundle_attachment = real_release_bundle_pinned
+per_task_bundle_manifest = partial_local_manifest_only
+trajectory_provenance_bundle_fields = incomplete
+```
+
+After:
+
+```text
+run_level_bundle_attachment = real_release_bundle_pinned
+per_task_bundle_manifest = real_release_bundle_pinned
+trajectory_provenance_bundle_fields = complete
+task_results_bundle_fields = complete
+aggregate_report_bundle_fields = complete
+```
+
+Verified files in `outputs\repo_level_eval_runs\current_head`:
+
+- `bundle_resolution.json`
+- `run_manifest.json`
+- `run_summary.json`
+- `run_provenance.json`
+- `aggregate_report.json`
+- `task_results.jsonl`
+- each per-task `condition_manifest.json`
+- each per-task `bundle_manifest.json`
+- each per-task `trajectory_evidence\bundle_manifest.json`
+- each per-task `trajectory_evidence\provenance.json`
 
 ## Task Registry
 
@@ -116,7 +162,7 @@ Each task entry records `fixture_type`, `source_url`, `license`, `commit_digest`
 Fresh command:
 
 ```powershell
-python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\latest --state-dir .tmp\repo-level-eval-state --use-active-binding
+python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\current_head --state-dir .tmp\repo-level-eval-state --use-active-binding
 ```
 
 Observed result:
@@ -126,12 +172,17 @@ task_count = 3
 pass_count = 3
 fail_count = 0
 bundle_attachment_mode = real_release_bundle_pinned
+bundle_digest = sha256:a38606f2d57160fe556467261c790e1d2b8e4dbac19ca1001d6f7ddc55817457
+skill_digest = sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045
+skill_artifact_digest = sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb
+knowledge_projection_digest = sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a
+knowledge_access_binding_digest = sha256:605312802a2ed4523dd493114fa53f690963ee1dc58a74aea4d6d8dd290022e9
 ```
 
 Output directory:
 
 ```text
-outputs\repo_level_eval_runs\latest
+outputs\repo_level_eval_runs\current_head
 ```
 
 Run-level outputs:
@@ -184,17 +235,19 @@ The report separates:
 Commands run:
 
 ```powershell
-python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\latest --state-dir .tmp\repo-level-eval-state --use-active-binding
+python scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\current_head --state-dir .tmp\repo-level-eval-state --use-active-binding
 python -m pytest tests\v1 -q
 python -m pytest -q
+python -m ruff check src\expert_skill_system tests\v1 scripts
+python -m ruff check <new-or-touched files>
 ```
 
 Observed:
 
 ```text
 repo-level eval = pass, 3/3 tasks
-python -m pytest tests\v1 -q = pass, 64 passed
-python -m pytest -q = pass, 118 passed
+python -m pytest tests\v1 -q = pass, 66 passed
+python -m pytest -q = pass, 120 passed
 ```
 
 Ruff:
@@ -209,6 +262,10 @@ new_or_touched_files_ruff = pass
 Allowed claim:
 
 > The project now has a reproducible repo-level evaluation harness that can run dependency-use triage tasks, collect repo evidence, inject Skill/Knowledge metadata, verify predictions deterministically, and emit run-level trajectory evidence and reports.
+
+Stronger evidence claim now allowed:
+
+> The `current_head` repo-level run records a real pinned ReleaseBundle consistently from run-level resolution through per-task manifests and trajectory provenance.
 
 Not claimed:
 

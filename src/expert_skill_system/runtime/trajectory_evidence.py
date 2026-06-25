@@ -62,6 +62,7 @@ def write_trajectory_evidence_package(
         "prediction_digest": sha256_json(prediction),
         "verifier_result_digest": sha256_json(verifier_result),
         "condition_manifest_digest": sha256_json(injection_manifests["condition_manifest"]),
+        **_bundle_provenance_fields(injection_manifests["bundle_manifest"]),
     }
     files = {
         "task_manifest.json": task_manifest,
@@ -81,3 +82,14 @@ def write_trajectory_evidence_package(
     write_jsonl(package_dir / "observation_trace.jsonl", observation_trace)
     write_jsonl(package_dir / "knowledge_query_trace.jsonl", knowledge_query_trace)
     return {"package_dir": str(package_dir), "outcome": outcome, "provenance": provenance}
+
+
+def _bundle_provenance_fields(bundle_manifest: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "bundle_attachment_mode": bundle_manifest.get("bundle_attachment_mode", "partial_local_manifest_only"),
+        "bundle_digest": bundle_manifest.get("bundle_digest"),
+        "skill_digest": bundle_manifest.get("skill_digest"),
+        "skill_artifact_digest": bundle_manifest.get("skill_artifact_digest"),
+        "knowledge_projection_digest": bundle_manifest.get("knowledge_projection_digest"),
+        "knowledge_access_binding_digest": bundle_manifest.get("knowledge_access_binding_digest"),
+    }
