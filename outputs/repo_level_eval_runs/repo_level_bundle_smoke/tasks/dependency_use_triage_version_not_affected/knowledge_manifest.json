@@ -1,0 +1,12 @@
+{
+  "allowed_knowledge_digest": "sha256:a67659eae146e94f1085232ac2ed01aefee8848543d7ecdb62e736fe9ff3c850",
+  "allowed_knowledge_sources": [
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_version_not_affected\\allowed_knowledge.json"
+  ],
+  "condition_id": "C5_active_runtime",
+  "knowledge_access_binding_digest": "sha256:a6837564627784861348c314666da818ebe6a6d97281b3a07f30cf1c9d654845",
+  "knowledge_access_policy": "read_allowed_snapshot_only",
+  "knowledge_enabled": true,
+  "knowledge_projection_digest": "sha256:89f2cad11b8abfa7fa3b6ca05e729608e2c0a93f196903896eec078a3e0a022d",
+  "schema_version": "knowledge_access_manifest.v1"
+}

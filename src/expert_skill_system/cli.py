@@ -16,6 +16,7 @@ from .compiler import (
     OpenAICompatibleJudge,
 )
 from .compiler.models import CompilerBuild
+from .compiler.repo_level_bundle_builder import REPO_LEVEL_SKILL_ID, RepoLevelBundleBuilder
 from .core.models import SourceRef, SourceSnapshot
 from .core.schema_catalog import export_schemas
 from .deployment import DeploymentService, PromotionRejected
@@ -303,6 +304,16 @@ def cmd_evaluate_evolution(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_build_repo_level_bundle(args: argparse.Namespace) -> int:
+    result = RepoLevelBundleBuilder(_workspace(args.state_dir)).build(
+        data_dir=Path(args.data_dir).resolve(),
+        skill_family=args.skill_family,
+        promote=args.promote,
+    )
+    _print(result.to_dict())
+    return 0 if result.status == "pass" else 1
+
+
 def cmd_demo(args: argparse.Namespace) -> int:
     workspace = _workspace(args.state_dir)
     root = Path(args.data_dir).resolve()
@@ -443,6 +454,11 @@ def build_parser() -> argparse.ArgumentParser:
     evolution = sub.add_parser("evaluate-evolution")
     evolution.add_argument("--expert-spec", default="data/v1_walking_skeleton/expert_spec/python_advisory_review.md")
     evolution.set_defaults(func=cmd_evaluate_evolution)
+    repo_bundle = sub.add_parser("build-repo-level-bundle")
+    repo_bundle.add_argument("--data-dir", default="data/repo_level_bundle")
+    repo_bundle.add_argument("--skill-family", default=REPO_LEVEL_SKILL_ID)
+    repo_bundle.add_argument("--promote", action="store_true")
+    repo_bundle.set_defaults(func=cmd_build_repo_level_bundle)
     demo = sub.add_parser("demo")
     demo.add_argument("--data-dir", default="data/v1_walking_skeleton")
     demo.set_defaults(func=cmd_demo)

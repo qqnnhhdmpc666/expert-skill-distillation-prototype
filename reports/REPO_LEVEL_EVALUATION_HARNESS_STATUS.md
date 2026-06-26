@@ -34,7 +34,7 @@ real_release_bundle_pinning = pass
 per_task_evidence_packaging = pass
 trajectory_provenance_bundle_fields = pass
 current_head_run_reproduction = pass
-repo_level_specific_bundle = not_yet
+repo_level_specific_bundle = pass
 public_repo_snapshot = pass_as_traceable_public_excerpt
 skill_knowledge_injection_protocol = pass
 trajectory_evidence_package = pass
@@ -354,9 +354,51 @@ Not claimed:
 - OSV applicability as exploitability or reachability proof;
 - production scanner readiness.
 
+## Repo-Level-Specific Bundle Update
+
+Fresh command:
+
+```powershell
+.\.tmp\clean-core-venv\Scripts\python.exe scripts\build_repo_level_bundle.py --state-dir .tmp\repo-level-specific-bundle-state --data-dir data\repo_level_bundle --skill-family repo-dependency-use-triage --promote
+.\.tmp\clean-core-venv\Scripts\python.exe scripts\run_repo_level_eval.py --task-registry data\repo_security_tasks\registry.json --output outputs\repo_level_eval_runs\repo_level_bundle_smoke --state-dir .tmp\repo-level-specific-bundle-state --use-active-binding
+```
+
+Observed result:
+
+```text
+repo_level_specific_bundle = pass
+bundle_build = pass
+active_binding = pass
+harness_run = pass
+task_count = 4
+pass_count = 4
+fail_count = 0
+skill_family = repo-dependency-use-triage
+repo_level_bundle_digest = sha256:e51359a9edb0cf3d64d6d2954a0d70785bf35a2a00c2e5c1100bf5ef3db9bbda
+previous_python_advisory_bundle_digest = sha256:a38606f2d57160fe556467261c790e1d2b8e4dbac19ca1001d6f7ddc55817457
+bundle_digest_changed = true
+fixture_type_distribution = {"local_public_like_demo": 3, "public_repo_excerpt": 1}
+```
+
+Fresh artifacts:
+
+```text
+data/repo_level_bundle/
+src/expert_skill_system/compiler/repo_level_bundle_builder.py
+scripts/build_repo_level_bundle.py
+outputs/repo_level_eval_runs/repo_level_bundle_smoke/
+reports/REPO_LEVEL_SPECIFIC_BUNDLE_STATUS.md
+tests/v1/test_repo_level_specific_bundle.py
+```
+
+The repo-level run no longer depends on the old `python-advisory` active binding
+for bundle identity. It resolves `repo-dependency-use-triage` through
+`--use-active-binding` and records that skill family in run and per-task
+trajectory provenance.
+
 ## Remaining Blockers
 
 - Expand beyond the single public excerpt only when a broader evaluation protocol is frozen; this step does not establish benchmark performance.
-- Attach a repo-level-specific ReleaseBundle rather than reusing the current `python-advisory` bundle.
+- Expand the static repo-level evidence binding into richer repository reasoning only after a frozen protocol is defined.
 - Add AgentHost/Harbor/OpenHands/SWE-agent execution only after the deterministic harness remains stable.
 - Clean legacy `scripts/` ruff failures before marking full repository lint as pass.

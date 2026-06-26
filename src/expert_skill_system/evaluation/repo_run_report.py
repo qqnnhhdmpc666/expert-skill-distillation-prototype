@@ -32,6 +32,8 @@ def build_repo_run_report(*, task_results: list[dict[str, Any]], bundle_resoluti
         "skill_artifact_digest": bundle_resolution.get("skill_artifact_digest"),
         "knowledge_projection_digest": bundle_resolution.get("knowledge_projection_digest"),
         "knowledge_access_binding_digest": bundle_resolution.get("knowledge_access_binding_digest"),
+        "provider_policy_digest": bundle_resolution.get("provider_policy_digest"),
+        "skill_family": bundle_resolution.get("skill_family"),
         "claim_boundary": {
             "system_harness_result": "implemented" if task_results else "failed",
             "task_verifier_result": "local deterministic verifier only",
@@ -64,6 +66,8 @@ def render_repo_run_report_markdown(report: dict[str, Any]) -> str:
         f"- skill_artifact_digest: `{report['skill_artifact_digest']}`",
         f"- knowledge_projection_digest: `{report['knowledge_projection_digest']}`",
         f"- knowledge_access_binding_digest: `{report['knowledge_access_binding_digest']}`",
+        f"- provider_policy_digest: `{report.get('provider_policy_digest')}`",
+        f"- skill_family: `{report.get('skill_family')}`",
         f"- fixture_type_distribution: `{json.dumps(report['fixture_type_distribution'], sort_keys=True)}`",
         "",
         "## Failure Counters",

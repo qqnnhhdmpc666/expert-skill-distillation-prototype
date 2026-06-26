@@ -23,6 +23,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--use-active-binding", action="store_true")
     parser.add_argument("--task-id")
     parser.add_argument("--condition", default="C5_active_runtime")
+    parser.add_argument("--binding-key", default="repo-dependency-use-triage")
     parser.add_argument("--allow-local-manifest-only", action="store_true")
     parser.add_argument("--fail-on-partial-bundle", action="store_true")
     args = parser.parse_args(argv)
@@ -35,6 +36,7 @@ def main(argv: list[str] | None = None) -> int:
             use_active_binding=args.use_active_binding,
             task_id=args.task_id,
             condition=args.condition,
+            binding_key=args.binding_key,
             allow_local_manifest_only=args.allow_local_manifest_only,
             fail_on_partial_bundle=args.fail_on_partial_bundle,
         )

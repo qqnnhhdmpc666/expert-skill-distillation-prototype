@@ -129,6 +129,8 @@ def _bundle_fields(bundle_resolution: dict[str, Any] | None) -> dict[str, Any]:
         "skill_artifact_digest": resolution.get("skill_artifact_digest"),
         "knowledge_projection_digest": resolution.get("knowledge_projection_digest"),
         "knowledge_access_binding_digest": resolution.get("knowledge_access_binding_digest"),
+        "provider_policy_digest": resolution.get("provider_policy_digest"),
+        "skill_family": resolution.get("skill_family"),
     }
 
 

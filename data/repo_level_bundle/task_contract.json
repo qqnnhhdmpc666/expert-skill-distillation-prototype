@@ -1,0 +1,22 @@
+{
+  "schema_version": "repo_level_task_contract.v1",
+  "skill_family": "repo-dependency-use-triage",
+  "task_type": "dependency_use_triage",
+  "decision_labels": [
+    "dependency_used_and_affected",
+    "dependency_used_not_affected",
+    "dependency_present_not_used",
+    "dependency_not_declared",
+    "unresolved"
+  ],
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "missing_evidence_policy": "abstain_or_fail_safe",
+  "advisory_only_decision_policy": "invalid",
+  "claim_boundary": "Repo-level dependency-use triage only; not exploitability, reachability, broad vulnerability discovery, or a production vulnerability scanner."
+}

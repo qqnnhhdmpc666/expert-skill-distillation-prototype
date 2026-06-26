@@ -93,6 +93,8 @@ def _bundle_provenance_fields(bundle_manifest: dict[str, Any]) -> dict[str, Any]
         "skill_artifact_digest": bundle_manifest.get("skill_artifact_digest"),
         "knowledge_projection_digest": bundle_manifest.get("knowledge_projection_digest"),
         "knowledge_access_binding_digest": bundle_manifest.get("knowledge_access_binding_digest"),
+        "provider_policy_digest": bundle_manifest.get("provider_policy_digest"),
+        "skill_family": bundle_manifest.get("skill_family"),
     }
 
 

@@ -27,6 +27,7 @@ def run_repo_level_eval(
     condition: str = "C5_active_runtime",
     allow_local_manifest_only: bool = False,
     fail_on_partial_bundle: bool = False,
+    binding_key: str = "python-advisory",
 ) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     registry = load_repo_task_registry(task_registry)
@@ -35,6 +36,7 @@ def run_repo_level_eval(
         state_dir=state_dir,
         bundle_digest=bundle_digest,
         use_active_binding=use_active_binding,
+        binding_key=binding_key,
         allow_local_manifest_only=allow_local_manifest_only,
         fail_on_partial_bundle=fail_on_partial_bundle,
     )
@@ -47,6 +49,7 @@ def run_repo_level_eval(
         "task_registry": str(task_registry),
         "task_registry_digest": registry["registry_digest"],
         "state_dir": str(state_dir),
+        "binding_key": binding_key,
         "condition": condition,
         "task_ids": [task["task_id"] for task in tasks],
         "task_sources": task_sources,
@@ -64,6 +67,7 @@ def run_repo_level_eval(
             "python_version": platform.python_version(),
             "platform": platform.platform(),
             "state_dir": str(state_dir),
+            "binding_key": binding_key,
             **bundle_fields,
             "task_registry_digest": registry["registry_digest"],
             "task_ids": [task["task_id"] for task in tasks],
@@ -133,6 +137,8 @@ def _bundle_fields(bundle_resolution: dict[str, Any]) -> dict[str, Any]:
         "skill_artifact_digest": bundle_resolution.get("skill_artifact_digest"),
         "knowledge_projection_digest": bundle_resolution.get("knowledge_projection_digest"),
         "knowledge_access_binding_digest": bundle_resolution.get("knowledge_access_binding_digest"),
+        "provider_policy_digest": bundle_resolution.get("provider_policy_digest"),
+        "skill_family": bundle_resolution.get("skill_family"),
     }
 
 

@@ -63,9 +63,10 @@ def resolve_release_bundle(
         "knowledge_projection_digest": _first_digest(manifest.get("knowledge_projection_refs", [])),
         "knowledge_access_binding_digest": _first_digest(manifest.get("knowledge_access_binding_refs", [])),
         "provider_policy_digest": _digest_of_ref(manifest.get("provider_policy_ref")),
+        "skill_family": manifest.get("skill_family"),
         "state_dir": str(state_dir),
         "active_binding_generation": active_generation,
-        "limitation": "python-advisory bundle reused as initial system bundle for repo-level harness",
+        "limitation": _limitation_for_manifest(manifest),
         "bundle_manifest": manifest,
     }
 
@@ -85,6 +86,7 @@ def _partial_or_failed(
         "knowledge_projection_digest": None,
         "knowledge_access_binding_digest": None,
         "provider_policy_digest": None,
+        "skill_family": None,
         "state_dir": str(state_dir),
         "active_binding_generation": None,
         "limitation": reason,
@@ -102,3 +104,9 @@ def _digest_of_ref(ref: dict[str, Any] | None) -> str | None:
     if not ref:
         return None
     return str(ref.get("digest")) if ref.get("digest") else None
+
+
+def _limitation_for_manifest(manifest: dict[str, Any]) -> str | None:
+    if manifest.get("skill_family") == "repo-dependency-use-triage":
+        return None
+    return "python-advisory bundle reused as initial system bundle for repo-level harness"
