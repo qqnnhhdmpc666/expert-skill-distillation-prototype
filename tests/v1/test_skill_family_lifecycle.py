@@ -39,6 +39,8 @@ def test_multi_skill_family_lifecycle_builds_separate_bundles_and_boundaries(tmp
     by_family = {row["skill_family"]: row for row in family_builds}
     assert by_family["python-advisory"]["build_status"] == "pass"
     assert by_family["repo-dependency-use-triage"]["build_status"] == "pass"
+    assert by_family["python-advisory"]["evaluation_status"] == "partial_no_family_eval_harness"
+    assert by_family["repo-dependency-use-triage"]["evaluation_status"] == "pass"
     assert by_family["python-advisory"]["bundle_digest"] != by_family["repo-dependency-use-triage"]["bundle_digest"]
     assert by_family["python-advisory"]["binding_key"] == "python-advisory"
     assert by_family["repo-dependency-use-triage"]["binding_key"] == "repo-dependency-use-triage"

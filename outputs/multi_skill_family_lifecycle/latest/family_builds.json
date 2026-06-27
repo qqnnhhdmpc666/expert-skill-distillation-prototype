@@ -22,7 +22,7 @@
           "exploitability_or_reachability"
         ]
       },
-      "evaluation_status": "pending",
+      "evaluation_status": "partial_no_family_eval_harness",
       "evidence_paths": [
         "outputs\\multi_skill_family_lifecycle\\latest\\families\\python-advisory\\python_advisory_runtime_smoke.json"
       ],
@@ -66,7 +66,7 @@
           "exploitability_or_reachability"
         ]
       },
-      "evaluation_status": "pending",
+      "evaluation_status": "pass",
       "evidence_paths": [
         "outputs\\multi_skill_family_lifecycle\\latest\\families\\repo-dependency-use-triage\\build_result.json",
         "outputs\\multi_skill_family_lifecycle\\latest\\families\\repo-dependency-use-triage\\eval\\run_summary.json"

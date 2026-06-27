@@ -44,6 +44,7 @@ def run_skill_family_lifecycle(
             build_row, binding_row, eval_row = _run_repo_level_family(spec, family_dir)
         else:
             raise ValueError(f"unsupported family_type: {spec.family_type}")
+        build_row["evaluation_status"] = eval_row["evaluation_status"]
         family_builds.append(build_row)
         active_bindings.append(binding_row)
         eval_runs.append(eval_row)
