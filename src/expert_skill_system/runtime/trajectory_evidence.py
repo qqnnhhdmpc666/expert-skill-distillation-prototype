@@ -10,13 +10,25 @@ from ..core.canonical import sha256_json
 
 
 def write_json(path: Path, payload: dict[str, Any] | list[dict[str, Any]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    io_path = _windows_long_path(path)
+    io_path.parent.mkdir(parents=True, exist_ok=True)
+    io_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
+    io_path = _windows_long_path(path)
+    io_path.parent.mkdir(parents=True, exist_ok=True)
+    io_path.write_text("".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
+
+
+def _windows_long_path(path: Path) -> Path:
+    resolved = path.resolve()
+    if platform.system() != "Windows":
+        return resolved
+    text = str(resolved)
+    if text.startswith("\\\\?\\") or len(text) < 240:
+        return resolved
+    return Path("\\\\?\\" + text)
 
 
 def write_trajectory_evidence_package(
@@ -31,7 +43,7 @@ def write_trajectory_evidence_package(
     knowledge_query_trace: list[dict[str, Any]],
 ) -> dict[str, Any]:
     package_dir = output_dir / "trajectory_evidence"
-    package_dir.mkdir(parents=True, exist_ok=True)
+    _windows_long_path(package_dir).mkdir(parents=True, exist_ok=True)
     outcome = {
         "schema_version": "trajectory_outcome.v1",
         "task_id": task_manifest.get("task_id"),

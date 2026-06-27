@@ -1,0 +1,18 @@
+{
+  "failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_declared_not_used",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "failure_count": 4,
+  "failure_types": {
+    "evidence_binding_gap": 1,
+    "skill_missing_rule": 3
+  },
+  "repair_targets": {
+    "evidence_binding_plan": 1,
+    "skill_rule": 3
+  },
+  "schema_version": "distillation_failure_summary.v1"
+}

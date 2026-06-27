@@ -1,0 +1,5 @@
+{"evidence_id": "sha256:589a115d85a1a836799a198a2593bf861c90a1cd2ef93f4f641630d086bb1ee1", "evidence_type": "repo_file_digest", "path": "requirements.txt"}
+{"evidence_id": "sha256:027d8da9797581d8f4c4777af54f66c070724724e8388a90256733d075ce89e4", "evidence_type": "dependency_declaration", "path": "requirements.txt"}
+{"evidence_id": "sha256:3efb8d87ed88a85b8b792cf71788b7c5efce8ee6c87dbd13bc55fd05d6ce2d05", "evidence_type": "resolved_version", "path": "requirements.txt"}
+{"evidence_id": "sha256:0c169f434bbc4341d542f788ce53f258dee1b4862a6f593572f2f64cb98a4703", "evidence_type": "repo_file_digest", "path": "src/app/client.py"}
+{"evidence_id": "sha256:0610887dcab4e318afa68472b2cb15f0d6fed4cb788fccc5fd4f4b3860137fce", "evidence_type": "repo_file_digest", "path": "README.md"}

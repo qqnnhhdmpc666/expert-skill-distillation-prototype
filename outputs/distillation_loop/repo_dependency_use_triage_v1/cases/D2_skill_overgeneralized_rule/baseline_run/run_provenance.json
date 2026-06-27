@@ -1,0 +1,68 @@
+{
+  "binding_key": "repo-dependency-use-triage",
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:76c52d01c3128cbbd33b58b9fab6e2dd38931a663c5b28ff6f26670a0c0d1fd0",
+  "git_commit": "1d210b6fe64829b659431248ebfedb89fccbf865",
+  "knowledge_access_binding_digest": "sha256:497ecd7de9a0143ce4caeda3adbf2fc0132cce069242b25ebe02c002841ee1ba",
+  "knowledge_projection_digest": "sha256:08b541c1abe585c215273ebc9bb6a89b2b52ea38a588dc48d20f1d67b10d1af7",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "python_version": "3.13.13",
+  "run_id": "baseline_run",
+  "runner_version": "repo_level_eval_harness.v1",
+  "schema_version": "repo_level_eval_run_provenance.v1",
+  "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "skill_digest": "sha256:b124b81e4c97a5ea87caf38b56c420499c90f0864cf23caf5d9c816e48f2fc83",
+  "skill_family": "repo-dependency-use-triage",
+  "state_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\.tmp\\distillation-loop-v1-state\\D2_skill_overgeneralized_rule",
+  "task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_declared_not_used",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "task_registry_digest": "sha256:056a6c8650b779c4480ae4ec47ea5fd182d57be0f5985e67bce3a19cccc83ccb",
+  "task_sources": [
+    {
+      "commit_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "fixture_type": "local_public_like_demo",
+      "license": "MIT-compatible synthetic fixture",
+      "public_source": "local public-like fixture",
+      "repo_snapshot_manifest": "dependency_use_triage_requests_demo/repo_snapshot_manifest.json",
+      "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_requests_demo@demo-commit",
+      "source_url": "local://repo_security_tasks/dependency_use_triage_requests_demo",
+      "task_id": "dependency_use_triage_requests_demo"
+    },
+    {
+      "commit_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "fixture_type": "local_public_like_demo",
+      "license": "MIT-compatible synthetic fixture",
+      "public_source": "local public-like fixture",
+      "repo_snapshot_manifest": "dependency_use_triage_declared_not_used/repo_snapshot_manifest.json",
+      "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_declared_not_used@demo-commit",
+      "source_url": "local://repo_security_tasks/dependency_use_triage_declared_not_used",
+      "task_id": "dependency_use_triage_declared_not_used"
+    },
+    {
+      "commit_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "fixture_type": "local_public_like_demo",
+      "license": "MIT-compatible synthetic fixture",
+      "public_source": "local public-like fixture",
+      "repo_snapshot_manifest": "dependency_use_triage_version_not_affected/repo_snapshot_manifest.json",
+      "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_version_not_affected@demo-commit",
+      "source_url": "local://repo_security_tasks/dependency_use_triage_version_not_affected",
+      "task_id": "dependency_use_triage_version_not_affected"
+    },
+    {
+      "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+      "fixture_type": "public_repo_excerpt",
+      "license": "MIT",
+      "public_source": "hindupuravinash/the-gan-zoo",
+      "repo_snapshot_manifest": "dependency_use_triage_the_gan_zoo_public/repo_snapshot_manifest.json",
+      "repo_snapshot_ref": "github:hindupuravinash/the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713",
+      "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+      "task_id": "dependency_use_triage_the_gan_zoo_public"
+    }
+  ],
+  "timestamp": "2026-06-27T13:48:30.128138+00:00"
+}

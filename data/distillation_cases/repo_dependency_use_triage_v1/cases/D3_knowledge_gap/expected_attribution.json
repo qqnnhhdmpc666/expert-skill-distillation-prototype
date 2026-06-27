@@ -1,0 +1,6 @@
+{
+  "schema_version": "expected_attribution.v1",
+  "failure_type": "knowledge_gap",
+  "repair_target": "knowledge_projection",
+  "violated_policy": "advisory_affected_range_required_for_affectedness"
+}

@@ -1,0 +1,1 @@
+{"seed_id":"D4_use_site_present_but_binding_misses_path","facts":{"dependency_declared":true,"resolved_version":"2.19.1","version_in_affected_range":true,"import_use_site_present":true},"unsafe_decision":"dependency_present_not_used","expected_revised_decisions":["dependency_used_and_affected"],"violated_policy":"import_use_site_binding_requires_source_candidates"}

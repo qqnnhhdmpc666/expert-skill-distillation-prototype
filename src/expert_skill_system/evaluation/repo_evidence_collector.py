@@ -1,14 +1,22 @@
 from __future__ import annotations
 
 import re
+from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any
 
 from ..core.canonical import sha256_bytes, sha256_json
 
 
-def collect_repo_evidence(*, task_dir: Path, repo_manifest: dict[str, Any], package: str) -> list[dict[str, Any]]:
+def collect_repo_evidence(
+    *,
+    task_dir: Path,
+    repo_manifest: dict[str, Any],
+    package: str,
+    evidence_binding_plan: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
     repo_root = task_dir / "repo_snapshot"
+    candidate_paths = _candidate_paths_by_type(evidence_binding_plan)
     evidence: list[dict[str, Any]] = []
     for file_item in repo_manifest.get("files", []):
         relative_path = str(file_item["path"])
@@ -27,9 +35,9 @@ def collect_repo_evidence(*, task_dir: Path, repo_manifest: dict[str, Any], pack
                 file_digest=file_digest,
             )
         )
-        if relative_path.endswith("requirements.txt"):
+        if relative_path.endswith("requirements.txt") and _path_allowed(candidate_paths, "dependency_declaration", relative_path):
             evidence.extend(_dependency_evidence(text, relative_path, package, file_digest))
-        if relative_path.endswith(".py"):
+        if relative_path.endswith(".py") and _path_allowed(candidate_paths, "import_use_site", relative_path):
             evidence.extend(_import_use_evidence(text, relative_path, package, file_digest))
     return evidence
 
@@ -88,6 +96,29 @@ def _dependency_evidence(text: str, path: str, package: str, file_digest: str) -
             )
         )
     return rows
+
+
+def _candidate_paths_by_type(evidence_binding_plan: dict[str, Any] | None) -> dict[str, set[str]] | None:
+    if not evidence_binding_plan:
+        return None
+    result: dict[str, set[str]] = {}
+    for item in evidence_binding_plan.get("binding_plan", []):
+        evidence_type = item.get("evidence_type")
+        if not evidence_type:
+            continue
+        if "candidate_paths" in item:
+            result[str(evidence_type)] = {str(path) for path in item.get("candidate_paths", [])}
+    return result
+
+
+def _path_allowed(candidate_paths: dict[str, set[str]] | None, evidence_type: str, path: str) -> bool:
+    if candidate_paths is None:
+        return True
+    if evidence_type == "resolved_version":
+        allowed = candidate_paths.get("resolved_version") or candidate_paths.get("dependency_declaration")
+    else:
+        allowed = candidate_paths.get(evidence_type)
+    return any(path == candidate or fnmatch(path, candidate) for candidate in (allowed or set()))
 
 
 def _import_use_evidence(text: str, path: str, package: str, file_digest: str) -> list[dict[str, Any]]:

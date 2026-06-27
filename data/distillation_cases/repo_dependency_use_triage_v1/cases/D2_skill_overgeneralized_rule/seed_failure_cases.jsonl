@@ -1,0 +1,1 @@
+{"seed_id":"D2_used_fixed_version_should_not_be_affected","facts":{"dependency_declared":true,"resolved_version":"2.20.0","version_in_affected_range":false,"import_use_site_present":true},"unsafe_decision":"dependency_used_and_affected","expected_revised_decisions":["dependency_used_not_affected"],"violated_policy":"version_range_comparison_required"}

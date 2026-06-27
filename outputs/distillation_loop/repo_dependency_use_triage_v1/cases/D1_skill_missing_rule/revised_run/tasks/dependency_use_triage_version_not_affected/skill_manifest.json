@@ -1,0 +1,7 @@
+{
+  "condition_id": "D1_skill_missing_rule_revised",
+  "schema_version": "skill_injection_manifest.v1",
+  "skill_digest": "none",
+  "skill_enabled": false,
+  "skill_id": null
+}

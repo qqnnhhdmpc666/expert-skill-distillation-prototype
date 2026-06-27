@@ -1,0 +1,7 @@
+{
+  "claim_boundary": "Controlled D2 distillation defect; not compiler superiority or public benchmark performance.",
+  "defect_id": "D2_skill_overgeneralized_rule",
+  "output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D2_skill_overgeneralized_rule",
+  "schema_version": "distillation_v1_case_manifest.v1",
+  "state_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\.tmp\\distillation-loop-v1-state\\D2_skill_overgeneralized_rule"
+}

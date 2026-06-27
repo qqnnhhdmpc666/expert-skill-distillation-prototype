@@ -1,0 +1,18 @@
+{
+  "candidate_path_overrides": {
+    "import_use_site": [
+      "*.py"
+    ]
+  },
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "revision_targets": [
+    "evidence_binding_plan"
+  ],
+  "schema_version": "expected_repair_policy.v1"
+}
