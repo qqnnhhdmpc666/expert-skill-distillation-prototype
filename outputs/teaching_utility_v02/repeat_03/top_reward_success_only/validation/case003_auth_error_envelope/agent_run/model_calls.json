@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case has violations for R001, R003, R005\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R001\",\n      \"issue\": \"Missing authorization boundary: no roles, scopes, or authorization failure behavior documented\",\n      \"severity\": \"high\",\n      \"evidence\": \"The endpoint says \\\"login required\\\". It does not define roles, scopes, or authorization failure behavior.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Error code coverage insufficient: only 0 and 500; missing validation, unauthorized, forbidden, not found, duplicate\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error Codes: - `0`: success - `500`: server error\"\n    },\n    {\n      \"rule_id\": \"R005\",\n      \"issue\": \"Response envelope missing request_id field\",\n      \"severity\": \"medium\",\n      \"evidence\": \"Response example shows code, message, data but no request_id\"\n    }\n  ],\n  \"summary\": \"Three issues: auth boundary unclear, error codes too narrow, envelope incomplete\"\n}",
+    "usage": {
+      "prompt_tokens": 1876,
+      "completion_tokens": 307,
+      "total_tokens": 2183,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 60
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 212
+    },
+    "latency_ms": 3115
+  }
+]

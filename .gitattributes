@@ -9,3 +9,4 @@
 .gitattributes text eol=lf
 .gitignore text eol=lf
 Dockerfile text eol=lf
+data/repo_security_tasks/**/repo_snapshot/** text eol=lf

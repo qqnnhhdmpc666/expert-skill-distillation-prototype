@@ -1,0 +1,15 @@
+{
+  "action": "finish",
+  "note": "Checked config.md for all C rules; found one issue.",
+  "path": null,
+  "findings": [
+    {
+      "rule_id": "C005",
+      "issue": "Runtime resource limits not defined",
+      "severity": "medium",
+      "evidence": "resources:\n  limits:",
+      "config_path": "resources.limits"
+    }
+  ],
+  "summary": "One finding: missing CPU/memory limits in resources.limits."
+}

@@ -6,6 +6,7 @@ swebench-venv/
 SWE-bench/
 .uv-cache/
 .uv-python/
+.eskill/
 __pycache__/
 *.py[cod]
 *.egg-info/

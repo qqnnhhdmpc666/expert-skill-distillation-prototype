@@ -1,0 +1,63 @@
+{
+  "baseline_bundle_digest": "sha256:c7206312e35fbae03be5e4c3ea90c6323e4421ba757b611b744af99b631adf8b",
+  "baseline_failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "baseline_pass_count": 1,
+  "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D4_evidence_binding_gap",
+  "defect_id": "D4_evidence_binding_gap",
+  "digest_changed": true,
+  "expected_attribution_matched": true,
+  "failure_attribution_types": [
+    "evidence_binding_gap"
+  ],
+  "policy_diff": {
+    "baseline": {
+      "candidate_path_overrides": {
+        "import_use_site": []
+      },
+      "decision_policy": {},
+      "knowledge_projection_policy": {},
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "candidate_path_overrides_changed": true,
+    "decision_policy_changed": false,
+    "knowledge_projection_policy_changed": false,
+    "required_evidence_added": [],
+    "required_evidence_removed": [],
+    "revised": {
+      "candidate_path_overrides": {
+        "import_use_site": [
+          "*.py"
+        ]
+      },
+      "decision_policy": {},
+      "knowledge_projection_policy": {},
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "schema_version": "bundle_policy_diff.v1"
+  },
+  "promotion_decision": "promote",
+  "repair_type": "evidence_binding_repair",
+  "revised_bundle_digest": "sha256:9fe97d3e39b8b17067908d3ae564b4cd6c223d4eb6b47af339c0e212b9a5d66a",
+  "revised_pass_count": 4,
+  "revision_targets": [
+    "evidence_binding_plan"
+  ],
+  "schema_version": "distillation_v1_case_result.v1",
+  "seeded_counterexample_pass": true
+}

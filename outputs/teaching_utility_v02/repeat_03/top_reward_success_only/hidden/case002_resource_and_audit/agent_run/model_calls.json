@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Checked config.md for all C rules; found one issue.\",\n  \"path\": null,\n  \"findings\": [\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Runtime resource limits not defined\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  limits:\",\n      \"config_path\": \"resources.limits\"\n    }\n  ],\n  \"summary\": \"One finding: missing CPU/memory limits in resources.limits.\"\n}",
+    "usage": {
+      "prompt_tokens": 1676,
+      "completion_tokens": 551,
+      "total_tokens": 2227,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 435
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 12
+    },
+    "latency_ms": 5644
+  }
+]

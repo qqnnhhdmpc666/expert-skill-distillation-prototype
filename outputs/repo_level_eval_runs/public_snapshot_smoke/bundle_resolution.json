@@ -1,0 +1,14 @@
+{
+  "active_binding_generation": 1,
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:a38606f2d57160fe556467261c790e1d2b8e4dbac19ca1001d6f7ddc55817457",
+  "knowledge_access_binding_digest": "sha256:605312802a2ed4523dd493114fa53f690963ee1dc58a74aea4d6d8dd290022e9",
+  "knowledge_projection_digest": "sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a",
+  "limitation": "python-advisory bundle reused as initial system bundle for repo-level harness",
+  "provider_policy_digest": "sha256:2df77abeb05c84d1fa104778fb8ce638e41f818bd0a2a6c84c7f659d7097a865",
+  "resolution_source": "active_binding",
+  "schema_version": "release_bundle_resolution.v1",
+  "skill_artifact_digest": "sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb",
+  "skill_digest": "sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045",
+  "state_dir": ".tmp\\repo-level-eval-state"
+}

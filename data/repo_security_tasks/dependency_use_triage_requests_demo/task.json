@@ -1,0 +1,66 @@
+{
+  "schema_version": "repo_security_task.v1",
+  "task_id": "dependency_use_triage_requests_demo",
+  "task_type": "dependency_use_triage",
+  "public_source": {
+    "type": "local_repo_snapshot",
+    "fixture_type": "local_public_like_demo",
+    "non_toy_status": "partial",
+    "source_url": "local://repo_security_tasks/dependency_use_triage_requests_demo",
+    "description": "Small repo-level dependency-use triage fixture with package declaration and use site."
+  },
+  "license": "MIT-compatible synthetic fixture",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_requests_demo@demo-commit",
+  "commit_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "task_instruction": "Determine whether the declared Python dependency is both present in the repository and used in code, and whether the allowed advisory knowledge marks the declared version as affected. Return only the required prediction schema.",
+  "allowed_tools": [
+    "read_repo_snapshot",
+    "read_allowed_knowledge",
+    "local_text_search"
+  ],
+  "skill_condition": {
+    "condition_family": "dependency_use_triage",
+    "requirements": [
+      "identify dependency declaration",
+      "extract resolved version",
+      "find import or call-site evidence",
+      "consult allowed advisory snapshot",
+      "abstain when required evidence is missing"
+    ]
+  },
+  "knowledge_access_contract": {
+    "mode": "allowed_snapshot_only",
+    "package": "requests",
+    "advisory_id": "PYSEC-2018-28",
+    "forbidden_sources": [
+      "internet",
+      "hidden_gold",
+      "verifier_expected_answer"
+    ]
+  },
+  "expected_output_schema": "expected_output_schema.json",
+  "native_verifier": "verifier.py",
+  "hidden_gold": {
+    "decision": "dependency_used_and_affected",
+    "expected_package": "requests",
+    "expected_version": "2.19.1",
+    "expected_advisory_id": "PYSEC-2018-28",
+    "required_evidence_types": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "required_reason_codes": [
+      "VERSION_IN_AFFECTED_RANGE",
+      "IMPORT_USE_SITE_FOUND"
+    ]
+  },
+  "resource_budget": {
+    "max_repo_files_read": 12,
+    "max_allowed_knowledge_queries": 3,
+    "network": "disabled",
+    "llm_calls": 0
+  }
+}

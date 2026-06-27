@@ -1,0 +1,51 @@
+{
+  "allowed_sources": [
+    "open-world failure feedback",
+    "public-material distilled skill text",
+    "verifier feedback",
+    "evidence summary"
+  ],
+  "forbidden_sources": [
+    "verifier-only expected finding",
+    "verifier-only expected evidence span",
+    "verifier-only clean/negative answer label"
+  ],
+  "verifier_only_oracle_fields_read": false,
+  "source_summary": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\open_world_distillation_validation_summary.json",
+  "source_failure_rows": [
+    {
+      "case_id": "independent_config_prod_audit_001",
+      "task_family": "config_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\independent_config_prod_audit_001\\open_world_distilled"
+    },
+    {
+      "case_id": "public_nodegoat_dev_config_001",
+      "task_family": "config_security",
+      "variant": "open_world_distilled",
+      "status": "completed",
+      "verifier_result": "fail",
+      "feedback_type": "missing_capability",
+      "effective_pass": false,
+      "activated_capability_group": "config_security",
+      "expected_capability_group": "config_security",
+      "capability_group_correct": true,
+      "false_positive_count": 0,
+      "out_of_scope_correct": true,
+      "clean_or_negative": false,
+      "unsupported_limitation": false,
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\cases\\distilled\\public_nodegoat_dev_config_001\\open_world_distilled"
+    }
+  ]
+}

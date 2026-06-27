@@ -1,0 +1,1 @@
+{"seed_id":"D3_advisory_range_unavailable","facts":{"dependency_declared":true,"resolved_version":"2.19.1","version_in_affected_range":true,"import_use_site_present":true},"unsafe_decision":"unresolved","expected_revised_decisions":["dependency_used_and_affected"],"violated_policy":"advisory_affected_range_required_for_affectedness"}

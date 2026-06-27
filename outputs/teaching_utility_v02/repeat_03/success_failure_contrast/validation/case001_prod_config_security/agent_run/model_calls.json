@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed config security review.\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded payment token in production config\",\n      \"severity\": \"high\",\n      \"evidence\": \"payment_token: \\\"sk_live_demo_value\\\"\",\n      \"config_path\": \"config.md: payment_token\"\n    },\n    {\n      \"rule_id\": \"C002\",\n      \"issue\": \"Production external endpoint uses plain HTTP\",\n      \"severity\": \"high\",\n      \"evidence\": \"external_api_url: http://partner.example.com/v1\",\n      \"config_path\": \"config.md: external_api_url\"\n    },\n    {\n      \"rule_id\": \"C003\",\n      \"issue\": \"Service account granted admin role without justification\",\n      \"severity\": \"high\",\n      \"evidence\": \"service_account: name: billing-admin, roles: [admin]\",\n      \"config_path\": \"config.md: service_account.roles\"\n    },\n    {\n      \"rule_id\": \"C004\",\n      \"issue\": \"Production debug mode enabled\",\n      \"severity\": \"high\",\n      \"evidence\": \"debug: true\",\n      \"config_path\": \"con",
+    "usage": {
+      "prompt_tokens": 1657,
+      "completion_tokens": 662,
+      "total_tokens": 2319,
+      "prompt_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 359
+      },
+      "prompt_cache_hit_tokens": 1280,
+      "prompt_cache_miss_tokens": 377
+    },
+    "latency_ms": 5837
+  }
+]

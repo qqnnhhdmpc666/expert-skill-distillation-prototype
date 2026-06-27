@@ -1,0 +1,13 @@
+{
+  "active_binding": {
+    "binding_key": "python-advisory",
+    "bundle_digest": "sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4",
+    "generation": 1,
+    "schema_version": "active_binding.v1",
+    "updated_at": "2026-06-27T08:56:10.208041+00:00"
+  },
+  "attestation_status": "pass",
+  "bundle_digest": "sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4",
+  "execution_status": "completed",
+  "schema_version": "python_advisory_family_runtime_smoke.v1"
+}

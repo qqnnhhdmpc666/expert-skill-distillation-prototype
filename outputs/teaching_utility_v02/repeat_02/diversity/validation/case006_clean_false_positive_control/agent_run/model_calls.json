@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"No rule violations found in visible case file\",\n  \"findings\": [],\n  \"summary\": \"Case006 is clean; all domain rules are satisfied.\"\n}",
+    "usage": {
+      "prompt_tokens": 1971,
+      "completion_tokens": 144,
+      "total_tokens": 2115,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 97
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 51
+    },
+    "latency_ms": 2214
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "schema_version": "distillation_case_config.v1",
+  "case_id": "D3_knowledge_gap",
+  "defect_id": "D3_knowledge_gap",
+  "skill_family": "repo-dependency-use-triage",
+  "task_type": "dependency_use_triage",
+  "baseline_variant": "D3_baseline_no_advisory_range",
+  "revised_variant": "D3_revised_advisory_range",
+  "base_bundle_data_dir": "data/repo_level_bundle",
+  "task_registry": "data/repo_security_tasks/registry.json",
+  "expected_task_count": 4,
+  "baseline_evidence_policy": {
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "knowledge_projection_policy": {
+      "allowed_advisory_fields": []
+    }
+  },
+  "claim_boundary": "Controlled D3 distillation defect; not compiler superiority or public benchmark performance."
+}

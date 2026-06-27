@@ -1,0 +1,21 @@
+{
+  "active_binding_count": 2,
+  "agenthost": "not_in_scope",
+  "bundle_matrix_path": "outputs\\multi_skill_family_lifecycle\\latest\\bundle_matrix.json",
+  "claim_boundary_matrix": "pass",
+  "claim_boundary_matrix_path": "outputs\\multi_skill_family_lifecycle\\latest\\claim_boundary_matrix.json",
+  "compiler_superiority": "not_evaluated",
+  "cross_family_bundle_matrix": "pass",
+  "family_count": 2,
+  "family_registry": "pass",
+  "multi_skill_family_lifecycle": "pass",
+  "openhands_agenthost": "not_in_scope_this_step",
+  "output_dir": "outputs\\multi_skill_family_lifecycle\\latest",
+  "python_advisory_bundle": "pass",
+  "repo_dependency_use_triage_bundle": "pass",
+  "repo_level_eval": "pass",
+  "schema_version": "multi_skill_family_lifecycle_report.v1",
+  "swe_agent_host": "not_in_scope_this_step",
+  "vulnerability_discovery": "not_claimed",
+  "vulnerability_discovery_claim": "not_claimed"
+}

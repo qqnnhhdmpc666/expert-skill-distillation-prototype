@@ -1,0 +1,69 @@
+{
+  "case_id": "case001_prod_config_security",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "C001",
+        "issue": "hardcoded payment token",
+        "severity": "high",
+        "evidence": "payment_token: \"sk_live_demo_value\"",
+        "config_path": "config.md -> payment_token"
+      },
+      {
+        "rule_id": "C002",
+        "issue": "production endpoint uses plain HTTP",
+        "severity": "medium",
+        "evidence": "external_api_url: http://partner.example.com/v1",
+        "config_path": "config.md -> external_api_url"
+      },
+      {
+        "rule_id": "C003",
+        "issue": "service account has admin role without justification",
+        "severity": "medium",
+        "evidence": "service_account:\n  name: billing-admin\n  roles:\n    - admin",
+        "config_path": "config.md -> service_account.roles"
+      },
+      {
+        "rule_id": "C004",
+        "issue": "production debug mode enabled",
+        "severity": "high",
+        "evidence": "debug: true",
+        "config_path": "config.md -> debug"
+      },
+      {
+        "rule_id": "C005",
+        "issue": "missing CPU and memory resource limits",
+        "severity": "medium",
+        "evidence": "No CPU or memory requests/limits defined in configuration",
+        "config_path": "config.md -> (root)"
+      }
+    ],
+    "summary": "5 findings: C001 hardcoded secret, C002 missing TLS, C003 overprivileged role, C004 debug enabled, C005 missing resource limits",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.8,
+    "score": 0.6,
+    "missing_rule_ids": [
+      "C006"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [
+      "C005"
+    ],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "C001",
+      "C002",
+      "C003",
+      "C004",
+      "C005"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\validation\\case001_prod_config_security"
+}

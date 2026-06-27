@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Read visible case file for evidence\",\n  \"path\": \"case.md\",\n  \"findings\": []\n}",
+    "usage": {
+      "prompt_tokens": 1890,
+      "completion_tokens": 150,
+      "total_tokens": 2040,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 113
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 98
+    },
+    "latency_ms": 2559
+  },
+  {
+    "step_index": 3,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Findings for case004: missing validation contract, no not-found error code, sensitive data exposure\",\n  \"path\": null,\n  \"findings\": [\n    {\n      \"rule_id\": \"R002\",\n      \"issue\": \"Request fields missing documentation of required/optional status, types, ranges, length limits, or enum values\",\n      \"severity\": \"high\",\n      \"evidence\": \"The request does not document required fields, types, ranges, length limits, or enum values.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Error code coverage missing 404 Not Found for resource not found scenarios\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error Codes: 0: success, 400: validation error, 401: unauthorized, 403: forbidden, 409: duplicate request, 500: server error.\"\n    },\n    {\n      \"rule_id\": \"R004\",\n      \"issue\": \"Response exposes sensitive data: access_token and internal_trace (stack trace)\",\n      \"severity\": \"high\",\n      \"evidence\": \"\\\"access_token\\\": \\\"debug-token\\\", \\\"internal_tra",
+    "usage": {
+      "prompt_tokens": 2275,
+      "completion_tokens": 796,
+      "total_tokens": 3071,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 465
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 483
+    },
+    "latency_ms": 7976
+  }
+]

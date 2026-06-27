@@ -1,0 +1,24 @@
+{
+  "action": "finish",
+  "note": "Completed review of config.md for security violations",
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded payment token secret in production configuration",
+      "severity": "high",
+      "evidence": "payment_token: \"sk_live_demo_value\"",
+      "config_path": "payment_token"
+    },
+    {
+      "rule_id": "C002",
+      "issue": "Production external endpoint uses plain HTTP instead of HTTPS",
+      "severity": "high",
+      "evidence": "external_api_url: http://partner.example.com/v1",
+      "config_path": "external_api_url"
+    },
+    {
+      "rule_id": "C003",
+      "issue": "Service account 'billing-admin' has overly broad 'admin' role without justification",
+      "severity": "high",
+      "evidence": "roles:\n    - admin",
+      "

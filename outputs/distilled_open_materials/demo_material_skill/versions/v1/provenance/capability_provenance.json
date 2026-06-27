@@ -1,0 +1,93 @@
+[
+  {
+    "capability_id": "UPLOAD_TYPE_MAGIC",
+    "title": "Upload type and content validation",
+    "task_family": "upload_security",
+    "source_id": "upload_guidance_demo",
+    "source_span": "Validate file type with signature or magic-byte checks, do not trust extension alone, store uploads outside the web root, and keep attributable audit logs for upload actions.",
+    "matched_keywords": [
+      "magic",
+      "extension",
+      "file type"
+    ],
+    "projection_score": 3,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "UPLOAD_PATH_ISOLATION",
+    "title": "Upload path isolation",
+    "task_family": "upload_security",
+    "source_id": "upload_guidance_demo",
+    "source_span": "Validate file type with signature or magic-byte checks, do not trust extension alone, store uploads outside the web root, and keep attributable audit logs for upload actions.",
+    "matched_keywords": [
+      "web root"
+    ],
+    "projection_score": 1,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "UPLOAD_AUDIT_RETENTION",
+    "title": "Upload audit retention",
+    "task_family": "upload_security",
+    "source_id": "upload_guidance_demo",
+    "source_span": "Validate file type with signature or magic-byte checks, do not trust extension alone, store uploads outside the web root, and keep attributable audit logs for upload actions.",
+    "matched_keywords": [
+      "audit"
+    ],
+    "projection_score": 1,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "AUTH_SCOPE_MATRIX",
+    "title": "Role and scope authorization",
+    "task_family": "auth_access_control",
+    "source_id": "auth_guidance_demo",
+    "source_span": "Enforce authorization on every protected request, bind objects to owner or tenant scope, and avoid denial responses that leak object identifiers or sensitive debug detail.",
+    "matched_keywords": [
+      "scope",
+      "authorization"
+    ],
+    "projection_score": 2,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "AUTH_OBJECT_OWNERSHIP",
+    "title": "Object ownership boundary",
+    "task_family": "auth_access_control",
+    "source_id": "auth_guidance_demo",
+    "source_span": "Enforce authorization on every protected request, bind objects to owner or tenant scope, and avoid denial responses that leak object identifiers or sensitive debug detail.",
+    "matched_keywords": [
+      "tenant"
+    ],
+    "projection_score": 1,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "CONFIG_AUDIT_EXPORT",
+    "title": "Production audit retention/export",
+    "task_family": "config_security",
+    "source_id": "config_guidance_demo",
+    "source_span": "Production-facing configuration should not include hardcoded secrets or dev/test assumptions, and audit exports should preserve enough detail for incident review.",
+    "matched_keywords": [
+      "audit"
+    ],
+    "projection_score": 1,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  },
+  {
+    "capability_id": "CONFIG_ENV_GUARD",
+    "title": "Environment-aware config guard",
+    "task_family": "config_security",
+    "source_id": "config_guidance_demo",
+    "source_span": "Production-facing configuration should not include hardcoded secrets or dev/test assumptions, and audit exports should preserve enough detail for incident review.",
+    "matched_keywords": [
+      "prod",
+      "dev/test",
+      "production",
+      "hardcoded",
+      "secrets"
+    ],
+    "projection_score": 5,
+    "selection_rule": "selected_when_keyword_projection_score_gt_zero"
+  }
+]

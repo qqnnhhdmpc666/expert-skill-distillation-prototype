@@ -1,0 +1,1 @@
+{"action":"read_file","note":"Read the visible config file for review","path":"config.md"}

@@ -1,0 +1,39 @@
+[
+  {
+    "candidate_id": "h0_base_conservative",
+    "predicted_rule_ids": [
+      "R005"
+    ],
+    "actual_rule_ids": [],
+    "agreement": 0.0,
+    "status": "downweighted"
+  },
+  {
+    "candidate_id": "h1_low_score_repair",
+    "predicted_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "actual_rule_ids": [],
+    "agreement": 0.0,
+    "status": "downweighted"
+  },
+  {
+    "candidate_id": "h2_broad_union",
+    "predicted_rule_ids": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005",
+      "R006"
+    ],
+    "actual_rule_ids": [],
+    "agreement": 0.0,
+    "status": "downweighted"
+  }
+]

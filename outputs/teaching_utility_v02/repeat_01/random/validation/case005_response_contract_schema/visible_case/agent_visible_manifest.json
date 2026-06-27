@@ -1,0 +1,8 @@
+{
+  "case_id": "case005_response_contract_schema",
+  "domain": "api_review",
+  "visible_files": [
+    "case.md"
+  ],
+  "boundary": "No verifier-only oracle fields are present in this workspace."
+}

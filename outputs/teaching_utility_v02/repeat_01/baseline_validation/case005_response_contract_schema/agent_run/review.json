@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "Response does not use standard envelope with code, message, request_id, and data; instead uses status and payload",
+      "severity": "high",
+      "evidence": "Response JSON in case.md uses {\"status\":\"ok\",\"payload\":{...}} instead of {\"code\":...,\"message\":...,\"request_id\":...,\"data\":...}"
+    }
+  ],
+  "summary": "Holdout case found one R005 violation. All other rules satisfied.",
+  "status": "completed"
+}

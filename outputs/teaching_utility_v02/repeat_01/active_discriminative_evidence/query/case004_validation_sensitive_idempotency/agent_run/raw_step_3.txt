@@ -1,0 +1,26 @@
+{
+  "action": "finish",
+  "note": "Findings for case004: missing validation contract, no not-found error code, sensitive data exposure",
+  "path": null,
+  "findings": [
+    {
+      "rule_id": "R002",
+      "issue": "Request fields missing documentation of required/optional status, types, ranges, length limits, or enum values",
+      "severity": "high",
+      "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code coverage missing 404 Not Found for resource not found scenarios",
+      "severity": "high",
+      "evidence": "Error Codes: 0: success, 400: validation error, 401: unauthorized, 403: forbidden, 409: duplicate request, 500: server error."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive data: access_token and internal_trace (stack trace)",
+      "severity": "high",
+      "evidence": "\"access_token\": \"debug-token\", \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+    }
+  ],
+  "summary": "Three issues found: missing request validation contract (R002), incomplete error code coverage missing 404 (R003), and sensitive data exposure in response (R004). Envelope (R005) is correct. Authentication (R001) is documented."
+}

@@ -1,0 +1,7 @@
+{"evidence_id": "sha256:2f507b588b95aceecf6144458f6cac01981a4e8af1f8f5aba9381a2a7c05a0de", "evidence_type": "repo_file_digest", "path": "requirements.txt"}
+{"evidence_id": "sha256:cb2417de2e4546eb2b72f07ce59fbbe80ef4793dd27da40447ce3cb0671d6681", "evidence_type": "dependency_declaration", "path": "requirements.txt"}
+{"evidence_id": "sha256:901d0e7e8c3e4b4321d37ed332830d98a6096dc2249e6530c34b056302a33b7b", "evidence_type": "resolved_version", "path": "requirements.txt"}
+{"evidence_id": "sha256:150b6b4c003bffc3751078d55ea8645517e3a733ab27f6a281d1091f697c3e8b", "evidence_type": "repo_file_digest", "path": "src/app/client.py"}
+{"evidence_id": "sha256:54a284a3032d7748e1389c820ae60757fb340c32e96d938e74107251cc8890a4", "evidence_type": "import_use_site", "path": "src/app/client.py"}
+{"evidence_id": "sha256:f08bd5fee4f0528a7e29b8f99c24b72e79a655494b214a1009d787a89c5d8036", "evidence_type": "import_use_site", "path": "src/app/client.py"}
+{"evidence_id": "sha256:babc28e54b9540e00dc621eca00e88f1efa1cce8670ccc2e236bb3a007df0eac", "evidence_type": "repo_file_digest", "path": "README.md"}

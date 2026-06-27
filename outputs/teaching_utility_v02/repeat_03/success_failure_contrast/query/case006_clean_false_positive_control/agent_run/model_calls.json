@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case appears clean; no issues found.\",\n  \"findings\": [],\n  \"summary\": \"All visible evidence satisfies R001-R005; no findings.\"\n}",
+    "usage": {
+      "prompt_tokens": 1873,
+      "completion_tokens": 265,
+      "total_tokens": 2138,
+      "prompt_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 218
+      },
+      "prompt_cache_hit_tokens": 1280,
+      "prompt_cache_miss_tokens": 593
+    },
+    "latency_ms": 3096
+  }
+]

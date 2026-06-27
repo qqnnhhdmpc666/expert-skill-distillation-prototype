@@ -1,0 +1,2 @@
+{"case_id":"build-applicable","advisory_id":"PYSEC-2018-28","requirement":"requests==2.19.0","expected_reason":"VERSION_IN_RANGE","split":"build"}
+{"case_id":"build-fixed","advisory_id":"PYSEC-2018-28","requirement":"requests==2.20.0","expected_reason":"VERSION_OUT_OF_RANGE","split":"build"}

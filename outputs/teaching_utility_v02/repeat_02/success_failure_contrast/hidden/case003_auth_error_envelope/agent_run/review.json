@@ -1,0 +1,18 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary",
+      "severity": "high",
+      "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Incomplete error code coverage",
+      "severity": "high",
+      "evidence": "Error Codes: `0`: success, `500`: server error"
+    }
+  ],
+  "summary": "Case003: Missing auth boundary and incomplete error codes.",
+  "status": "completed"
+}

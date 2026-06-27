@@ -1,0 +1,21 @@
+{
+  "action": "finish",
+  "note": "Review complete; found R002, R003, R004 violations",
+  "findings": [
+    {
+      "rule_id": "R002",
+      "issue": "Request fields lack documentation for required/optional status, types, ranges, length limits, or enum values",
+      "severity": "high",
+      "evidence": "\"The request does not document required fields, types, ranges, length limits, or enum values.\""
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Error code list missing `404 Not Found` despite documented requirement to cover not found",
+      "severity": "medium",
+      "evidence": "\"Error Codes:\\n- `0`: success\\n- `400`: validation error\\n- `401`: unauthorized\\n- `403`: forbidden\\n- `409`: duplicate request\\n- `500`: server error\""
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes sensitive data: access_token and internal_trace (stack trace)",
+      "severity": "high",
+      "evidence": "\"\\\"access_token\\\": \\\"debug-token\\\",\\\"internal_trace\\\": \\\"svc.customer.ProfileUpdater:line87\\

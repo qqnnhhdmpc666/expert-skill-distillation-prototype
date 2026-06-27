@@ -1,0 +1,25 @@
+{
+  "action": "finish",
+  "note": "Three findings: missing request validation, no 404 error code, sensitive data exposure",
+  "findings": [
+    {
+      "rule_id": "R002",
+      "issue": "Request fields lack documentation for required status, type, range, length, or enum constraints.",
+      "severity": "high",
+      "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Stable error code coverage missing a code for resource not found (e.g., 404).",
+      "severity": "medium",
+      "evidence": "Error Codes: - `0`: success - `400`: validation error - `401`: unauthorized - `403`: forbidden - `409`: duplicate request - `500`: server error"
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Response exposes `access_token` and `internal_trace` (stack trace), which are sensitive.",
+      "severity": "high",
+      "evidence": "Response: ... \"access_token\": \"debug-token\", \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+    }
+  ],
+  "summary": "Case 004: validation, sensitive, idempotency issues"
+}

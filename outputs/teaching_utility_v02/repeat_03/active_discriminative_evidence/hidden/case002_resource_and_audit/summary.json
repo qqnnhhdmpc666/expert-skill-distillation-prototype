@@ -1,0 +1,28 @@
+{
+  "case_id": "case002_resource_and_audit",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [],
+    "summary": "Clean configuration: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.0,
+    "score": 0.0,
+    "missing_rule_ids": [
+      "C005",
+      "C006"
+    ],
+    "critical_missed_rule_ids": [
+      "C005"
+    ],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\hidden\\case002_resource_and_audit"
+}

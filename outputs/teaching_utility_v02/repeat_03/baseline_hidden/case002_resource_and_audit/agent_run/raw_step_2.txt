@@ -1,0 +1,1 @@
+{"action": "finish", "note": "No violations found; config meets all C001-C004 rules", "findings": [], "summary": "config.md is clean: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled."}

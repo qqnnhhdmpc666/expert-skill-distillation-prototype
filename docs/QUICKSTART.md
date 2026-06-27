@@ -1,66 +1,80 @@
 # Quickstart
 
-This quickstart exercises the controlled Codex Skill + CLI path.
+This quickstart exercises the current V1 `eskill` path. The older `skill-deploy` commands belong to the legacy controlled Skill deployment lane and are not the main V1 entry point.
 
-## Install The Package Locally
+## Install
 
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -e .[dev]
 ```
 
-## Build And Install The Secure Review Skill
+## Run The End-To-End Demo
 
 ```powershell
-skill-deploy build-codex-skill
-skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2
+eskill --state-dir .eskill demo --data-dir data/v1_walking_skeleton
 ```
 
-## Run One Installed Skill Case
+Expected result: a JSON object with `status=pass`, a `bundle_digest`, a `session_id`, a decision verdict, and OSV evidence digests.
+
+## Build And Run Manually
 
 ```powershell
-skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic
+eskill --state-dir .eskill init
+eskill --state-dir .eskill source add data/v1_walking_skeleton/expert_spec/python_advisory_review.md --adapter expert-document
+eskill --state-dir .eskill source add data/v1_walking_skeleton/osv/PYSEC-2018-28.json --adapter osv-snapshot
+eskill --state-dir .eskill build python-advisory
+eskill --state-dir .eskill run python-advisory --requirements data/v1_walking_skeleton/runtime_inputs/requirements.txt --environment data/v1_walking_skeleton/runtime_inputs/environment.json --advisory PYSEC-2018-28
 ```
 
-## Compare Installed Variants
+## Public OSV Reference Runtime
 
 ```powershell
-skill-deploy compare-variants --cases upload,config --backend offline_deterministic --source installed
+python scripts\run_public_osv_pilot.py --data-dir data\public_osv_pilot --output outputs\public_osv_pilot\reference_runtime_results_v2.json
 ```
 
-## Validate Review Package
+Current recorded result: 33/33 cases passed with false-safe count 0.
+
+## Compiler-vs-Direct Preparation
 
 ```powershell
-skill-deploy validate-review-package
+eskill --state-dir .tmp\public-comparison-state prepare-public-comparison --data-dir data\public_osv_pilot --direct-base-url https://api.deepseek.com --direct-model deepseek-chat
 ```
 
-## Representative Sprint Commands
+This prepares distinct `direct_to_skill_ir` and `compiler_distilled_skill` artifacts. It does not evaluate compiler superiority unless a mature AgentHost is available.
+
+## AgentHost Qualification
 
 ```powershell
-skill-deploy defensive-security-mini-suite --installed secure_code_review --backend offline_deterministic
-skill-deploy holdout-security-mini-suite --installed secure_code_review --backend offline_deterministic
-skill-deploy non-oracle-validation --installed secure_code_review
-skill-deploy live-llm-validation --installed secure_code_review --base-url https://api.deepseek.com --model deepseek-v4-flash
-skill-deploy activation-ablation --installed secure_code_review
-skill-deploy advanced-evolve --installed secure_code_review --budget 5
-skill-deploy improvement-demo --installed secure_code_review --source live_llm_feedback --budget 2 --base-url https://api.deepseek.com --model deepseek-v4-flash
-skill-deploy defensive-security-mini-suite-extended --installed secure_code_review --backend offline_deterministic
-skill-deploy evolve --suite secure_code_review --budget 3 --gate qgse_pareto
-skill-deploy swebench-infra-unblock --run-id swebench_gold_patch_smoke_requests_20260612 --instance-id psf__requests-1963 --max-retries 2
-skill-deploy representative-matrix
+eskill --state-dir .tmp\judge-pass-state qualify-agent-host --executable "$env:APPDATA\npm\codex.cmd" --task-id codex-agent-host-qualification --timeout 90
 ```
 
-SWE-bench is an auxiliary official-harness readiness lane. It is allowed to remain `infra_blocked`; do not treat that as model or Skill failure.
+Current status: `hard_blocked_no_compatible_mature_host`. DeepSeek Chat Completions is not compatible with Codex 0.137's Responses provider protocol, and the local OpenAI Responses attempt is not usable with the current endpoint/credential state.
 
-## Read Evidence Bundles
+## Harbor Public OSV Subset
 
-Each controlled run writes an `evidence_bundle/` directory with:
+```powershell
+python scripts\build_harbor_public_osv_subset.py --data-dir data\public_osv_pilot --output data\harbor_tasks\public_osv_subset
+wsl.exe -d Ubuntu-24.04-Codex -- /opt/spark/harbor-src-locked/.venv/bin/harbor run --path '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/data/harbor_tasks/public_osv_subset' --agent oracle --env docker --n-concurrent 1 --jobs-dir '/mnt/c/Users/31552/Documents/New project/expert-skill-distillation-prototype-main/outputs/harbor_public_osv_subset' --job-name public-osv-subset-20260623-lf --force-build --export-traces --export-verifier-metadata
+```
 
-- `summary.json`
-- `trajectory.jsonl`
-- `target_reads.json`
-- `skill_reads.json`
-- `verifier_feedback.json`
-- `repair_patch.json`
-- `qualification_decision.json`
+Current recorded result: 6/6 oracle/verifier parity, 0 errors, mean reward 1.0. This is not Agent effectiveness evidence.
 
-The `summary.json` provenance records `skill_package_path`, `skill_hash`, `manifest_hash`, task family, activated capability group, and runtime source.
+## Validation
+
+```powershell
+python -m pytest -q
+python -m ruff check src/expert_skill_system tests/v1
+python scripts\validate_task_cases.py
+python -m skill_deployment.cli validate-review-package
+```
+
+For a clean environment smoke:
+
+```powershell
+python -m venv .tmp\clean-doc-agent-venv
+.\.tmp\clean-doc-agent-venv\Scripts\python.exe -m pip install -e .[dev]
+.\.tmp\clean-doc-agent-venv\Scripts\eskill.exe --state-dir .tmp\clean-doc-agent-state demo --data-dir data\v1_walking_skeleton
+.\.tmp\clean-doc-agent-venv\Scripts\python.exe -m pytest tests\v1 -q
+```

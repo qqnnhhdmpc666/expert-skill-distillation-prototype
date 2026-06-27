@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Found R005 violation in response envelope\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R005\",\n      \"issue\": \"Response envelope does not follow standard contract (code, message, request_id, data)\",\n      \"severity\": \"high\",\n      \"evidence\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"payload\\\": {\\n    \\\"date\\\": \\\"2026-06-05\\\",\\n    \\\"gross_amount\\\": 12000\\n  }\\n}\"\n    }\n  ],\n  \"summary\": \"The response example uses 'status' and 'payload' instead of the required envelope fields code, message, request_id, data.\"\n}",
+    "usage": {
+      "prompt_tokens": 1945,
+      "completion_tokens": 262,
+      "total_tokens": 2207,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 106
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 153
+    },
+    "latency_ms": 2769
+  }
+]

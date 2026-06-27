@@ -1,0 +1,48 @@
+{
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded payment token in config file",
+      "severity": "high",
+      "evidence": "payment_token: \"sk_live_demo_value\"",
+      "config_path": "payment_token"
+    },
+    {
+      "rule_id": "C002",
+      "issue": "Production external endpoint uses plain HTTP",
+      "severity": "high",
+      "evidence": "external_api_url: http://partner.example.com/v1",
+      "config_path": "external_api_url"
+    },
+    {
+      "rule_id": "C003",
+      "issue": "Service account uses admin role without justification",
+      "severity": "high",
+      "evidence": "roles:\n    - admin",
+      "config_path": "service_account.roles"
+    },
+    {
+      "rule_id": "C004",
+      "issue": "Debug mode enabled in production",
+      "severity": "high",
+      "evidence": "debug: true",
+      "config_path": "debug"
+    },
+    {
+      "rule_id": "C005",
+      "issue": "No CPU or memory resource limits defined",
+      "severity": "medium",
+      "evidence": "No resource limits present in config",
+      "config_path": "(missing)"
+    },
+    {
+      "rule_id": "C006",
+      "issue": "Audit logging disabled with no retention defined",
+      "severity": "high",
+      "evidence": "audit:\n  enabled: false\n  retention_days:",
+      "config_path": "audit"
+    }
+  ],
+  "summary": "6 findings: hardcoded secret, HTTP endpoint, admin role, debug enabled, missing resource limits, audit disabled.",
+  "status": "completed"
+}

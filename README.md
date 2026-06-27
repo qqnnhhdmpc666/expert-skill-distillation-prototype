@@ -1,201 +1,90 @@
-# Expert Skill Distillation Prototype
+# Expert Skill Distillation System
 
-一个面向 Agent 的 **Skill 蒸馏与 Skill 进化闭环原型**。
+这是一个面向 Agent 的专家知识蒸馏与 Skill 生命周期研究原型。系统目标不是把专家文档简单塞进提示词，而是把专家材料、动态知识和执行证据编译成可验证、可发布、可回滚的运行时工件。
 
-这个项目想解决的，不是“某个 prompt 能不能多过几个 case”，而是更底层的问题：
-
-> 能不能把专家知识变成一个可安装、可执行、可验证、可升级、可回滚的 Skill 对象？
-
-## 我们真正要做什么
-
-这个仓库的核心不是单个安全 Skill，也不是一份任务报告，而是一条闭环：
+当前 V1 主线可以概括为：
 
 ```text
-专家知识 / 用户材料
--> 蒸馏成可安装 Skill
--> 在任务中执行
--> 收集轨迹、证据、verifier 反馈
--> 生成候选修订
--> 通过门控决定晋升 / 拒绝 / 回滚
--> 进入下一轮 Skill 进化
+Expert Skill Distillation System
+= Knowledge Compiler
++ Skill Runtime
++ Pluggable Knowledge Provider
++ External Verification
++ Safe Evolution
 ```
 
-所以它本质上是在做两件事：
+## 系统能做什么
 
-### 1. 专家知识蒸馏
+V1 已实现一个公开可复现的 Python 依赖安全公告适用性切片。给定专家规范、冻结 OSV 公告和 pinned requirements，系统可以构建 `Knowledge IR`、`Skill IR`、`Knowledge Projection` 和不可变 `ReleaseBundle`，再通过运行时判断某条公告是否适用于当前依赖版本，并输出 verdict、reason code、证据摘要和 artifact digest。
 
-把专家经验、规则、任务边界、正反例材料，蒸馏成一个真正可运行的 Skill package，而不是一段散乱的提示词。
+这条切片用于验证一种更通用的机制：稳定的 how-to 流程进入 Skill，动态事实和证据进入 Knowledge Projection，真实运行结果进入 Evidence，再由 promotion/rejection/rollback 保护 active Bundle。
 
-### 2. 反馈驱动进化
+## 当前真实状态
 
-让 Skill 在执行之后，基于 verifier 反馈、失败模式、证据摘要和轨迹，生成候选升级，并用统一证据链决定是否晋升。
+- Core local implementation: `pass`
+- Skill 与 Knowledge Projection 分离: `pass_local`
+- Independent DeepSeek Judge: `pass`
+- Public OSV pilot v2 reference runtime: `33/33`, false-safe `0`
+- Harbor public OSV parity: `public_task_parity_subset_pass`, 当前 6 个 subset case 通过
+- `direct_to_skill_ir`: 真实一阶段 DeepSeek 生成，已与 compiler-distilled artifacts 区分
+- Compiler-vs-Direct: `prepared_condition_sensitive_eval_no_agenthost`
+- AgentHost: `hard_blocked_no_compatible_mature_host`
+- Safe evolution: promotion/rejection/full-bundle rollback 已通过本地门控
 
-## 这个系统已经能做什么
+关键边界：当前还不能声明成熟 Agent 已稳定消费 Bundle，也不能声明 Compiler 优于 Direct baseline。
 
-当前仓库已经具备下面这些工程能力：
+## 快速开始
 
-- 把专家材料蒸馏成可安装 Skill 包
-- 用 `SKILL.md + manifest.json` 表达 Skill
-- 安装、切换、回滚不同 Skill 版本
-- 在不同任务族上做 task-conditioned capability activation
-- 运行后自动落盘 evidence bundle
-- 比较 `no_skill / v1 / v2 / active_installed` 的边际收益
-- 根据 verifier/evidence 生成 candidate Skill
-- 用 promotion gate / rejected buffer / rollback 防止“越进化越坏”
-
-换句话说，这里不是只在“写 Skill”，而是在把 **Skill 当成一类可管理、可验证、可演化的运行对象**。
-
-## 当前内置的两个示例方向
-
-### `secure_code_review`
-
-当前最成熟的主线，用来验证：
-
-- upload security
-- config security
-- API / code review
-- auth / access control
-- out-of-scope guard
-
-### `software_patch_review`
-
-用于补丁审查与外部软件工程任务衔接的辅助 Skill。
-
-它不是 `secure_code_review` 的替代品，而是给更广的“Skill 可迁移到软件修复任务”这条线打基础。
-
-## 最短路径上手
-
-### 1. 安装项目
+需要 Python 3.11+。
 
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -e .[dev]
+
+eskill --state-dir .eskill demo --data-dir data/v1_walking_skeleton
 ```
 
-### 2. 从专家材料蒸馏一个 Skill
+成功后会得到真实的 `bundle_digest`、`session_id`、verdict、reason code，以及 OSV snapshot/query/result digest。
 
-下面这个命令会把内置的四类安全专家材料，蒸馏成一个新的可安装 Skill 包：
+更多命令见 [docs/QUICKSTART.md](docs/QUICKSTART.md)。
 
-```powershell
-skill-deploy distill-skill --cases upload,config,api_review,auth --skill-id secure_code_review_distilled --version v1
-```
+## 推荐阅读路径
 
-### 3. 安装刚蒸馏出来的 Skill
+外部 reviewer 或老师可以按这个顺序阅读：
 
-```powershell
-skill-deploy install --skill outputs/distilled_skills/secure_code_review_distilled --version v1
-```
+1. [reports/PUBLIC_VALIDATION_AND_AGENT_USABILITY_STATUS.md](reports/PUBLIC_VALIDATION_AND_AGENT_USABILITY_STATUS.md)
+2. [docs/design_v03/SYSTEM_ARCHITECTURE_FREEZE_V1.md](docs/design_v03/SYSTEM_ARCHITECTURE_FREEZE_V1.md)
+3. [docs/design_v03/EXECUTABLE_ARCHITECTURE_REVIEW.md](docs/design_v03/EXECUTABLE_ARCHITECTURE_REVIEW.md)
+4. [reports/COMPILER_VS_DIRECT_EVALUATION.md](reports/COMPILER_VS_DIRECT_EVALUATION.md)
+5. [reports/AGENT_HOST_ROUTE_DECISION.md](reports/AGENT_HOST_ROUTE_DECISION.md)
+6. [reports/HARBOR_EXTERNAL_EVAL_STATUS.md](reports/HARBOR_EXTERNAL_EVAL_STATUS.md)
+7. [docs/CLAIM_BOUNDARY.md](docs/CLAIM_BOUNDARY.md)
 
-### 4. 跑一个真实 runtime case
+## 为什么 Skill 和 Knowledge 分开
 
-```powershell
-skill-deploy run-skill --installed secure_code_review_distilled --case upload_security_001 --backend offline_deterministic
-```
-
-### 5. 对比版本与收益
-
-```powershell
-skill-deploy compare-variants --cases upload,config --backend offline_deterministic --source installed --installed-skill secure_code_review
-```
-
-## 如果你想直接用仓库自带的标准包
-
-```powershell
-skill-deploy build-codex-skill
-skill-deploy install --skill outputs/deployable_codex_skill/secure_code_review --version v2
-skill-deploy run-skill --installed secure_code_review --case upload_security_001 --backend offline_deterministic
-```
-
-这条路径更像“标准示例包”；`distill-skill` 则是“从材料生成 Skill”的主入口。
-
-## 为什么这不只是 prompt engineering
-
-普通 prompt 调整最大的问题，是它通常缺少下面这些东西：
-
-- 明确版本
-- 运行态安装与切换
-- 统一 evidence
-- verifier 反馈闭环
-- 候选晋升门控
-- 拒绝与回滚机制
-
-这个仓库尝试把这些全都放进同一条链里。我们更关心的是：
-
-> Skill 的新增、修改、拒绝、晋升和回滚，能不能都由同一套证据驱动？
-
-## 适合拿它来做什么
-
-如果你在做下面这些方向，这个仓库会比较对路：
-
-- Agent Skill engineering
-- Expert knowledge distillation
-- Evidence-grounded runtime
-- Skill evolution / repair gating
-- Defensive security review
-- Software patch review
-
-## 项目边界
-
-当前定位是 **研究级原型**，不是现成的生产安全产品。
-
-它现在强调的是：
-
-- Skill 如何被蒸馏
-- Skill 如何被安装和执行
-- Skill 如何被验证
-- Skill 如何基于反馈演化
-
-它不宣称：
-
-- 通用漏洞扫描器
-- exploit 自动生成器
-- 真实未授权目标利用工具
-- 已经完成官方外部 benchmark 证明的生产系统
-
-## 安全边界
-
-当前安全方向只做防御性工作：
-
-- 检测
-- 解释
-- 修复建议
-- patch / contract validation
-
-不会做：
-
-- exploit 生成
-- 攻击链执行
-- 未授权目标测试
+Skill 保存稳定流程、约束、异常处理和工具使用方法。Knowledge Projection 保存会变化的公告、版本范围、环境事实和证据。这样同一套 how-to 可以在不同知识快照下重新发布，来源变化也可以通过显式 provenance 触发保守重建，而不是把所有事实固化进 Skill。
 
 ## 仓库结构
 
 ```text
-src/skill_deployment/   runtime、runner、verifier、install state、distillation
-agents/                 本地 / live agent 包装
-scripts/                构建、蒸馏、验证、对比、演化脚本
-data/                   controlled task cases 与本地样本
-outputs/                Skill 包、运行产物、evidence bundles
-reports/                状态报告与验证结果
-docs/                   设计、边界、复现、使用说明
-review_package/         对外审阅材料
+src/expert_skill_system/   V1 compiler, registry, runtime, deployment, evaluation
+data/v1_walking_skeleton/  V1 expert spec, OSV snapshot, dev/runtime cases
+data/public_osv_pilot/     public OSV pilot v2 inputs, gold and snapshots
+data/harbor_tasks/         Harbor oracle/verifier parity tasks
+tests/v1/                  V1 contract, integration and transaction tests
+docs/design_v03/           Architecture Freeze v1 docs
+reports/                  Evidence reports and claim boundary status
+src/skill_deployment/      legacy controlled Skill deployment prototype
 ```
 
-## 推荐阅读顺序
+## 不能据此声明什么
 
-如果你第一次看这个仓库，建议从这里开始：
+- 不能声明通用 open-world 自动蒸馏已经成立。
+- 不能声明 Compiler 已经优于 direct baseline。
+- 不能声明 evolution 会稳定自主产生更优 Skill。
+- 不能声明成熟 AgentHost 已经通过。
+- 不能把 OSV applicability 说成 exploitability、reachability 或真实项目已受影响。
+- 不能把 Harbor oracle/verifier parity 说成非 oracle Agent usefulness。
 
-1. `docs/QUICKSTART.md`
-2. `docs/ARCHITECTURE_AND_DESIGN.md`
-3. `docs/CLAIM_BOUNDARY.md`
-4. `reports/REPRESENTATIVE_VALIDATION_MATRIX.md`
-
-## 基础检查
-
-```powershell
-python -m pytest -q
-python scripts\validate_task_cases.py
-skill-deploy validate-review-package
-```
-
-## License
-
-MIT
+项目采用 [MIT License](LICENSE)。本仓库只处理防御性分析和验证，不生成 exploit，不执行攻击链，不访问未授权目标。

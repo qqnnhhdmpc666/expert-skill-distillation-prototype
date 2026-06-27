@@ -1,0 +1,23 @@
+{
+  "case_id": "case006_clean_false_positive_control",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [],
+    "summary": "No issues found; all domain rules satisfied.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": true,
+    "coverage": 1.0,
+    "score": 1.0,
+    "missing_rule_ids": [],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [],
+    "clean_control_pass": true
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\random\\hidden\\case006_clean_false_positive_control"
+}

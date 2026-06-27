@@ -1,0 +1,92 @@
+schema_version: model_and_algorithm_matrix.v1
+status: qualification_required_before_heldout
+
+global_rules:
+  selection_split: build_and_dev_only
+  heldout_tuning_forbidden: true
+  credentials_in_artifacts_forbidden: true
+  fallback_requires_explicit_profile: true
+  record_actual_cost_and_latency: true
+
+roles:
+  compiler_model:
+    purpose: structured source-grounded extraction, synthesis, and bounded induction
+    selected_profile: null
+    candidates: []
+    qualification_metrics:
+      - structured_output_validity
+      - evidence_fidelity
+      - unsupported_claim_rate
+      - scope_overreach_rate
+      - cost
+      - latency
+    required_freeze_fields:
+      - provider
+      - exact_model_id
+      - endpoint_alias
+      - prompt_contract_digest
+      - parameters
+      - max_input_tokens
+      - max_output_tokens
+      - retry_policy
+      - timeout_seconds
+
+  runtime_agent:
+    purpose: execute Agent-compatible artifact with bounded tools and evidence
+    selected_host_profile: null
+    selected_model_profile: null
+    candidates:
+      - host: codex_cli
+        status: qualification_required
+      - host: openhands
+        status: secondary_smoke_candidate
+    qualification_metrics:
+      - unattended_execution
+      - skill_injection_fidelity
+      - structured_output_reliability
+      - trajectory_completeness
+      - permission_enforcement
+      - timeout_and_cancellation
+      - install_reproducibility
+
+  independent_judge:
+    purpose: blind source-grounded semantic review
+    selected_profile: null
+    candidates: []
+    qualification_metrics:
+      - perturbation_detection_rate
+      - schema_reliability
+      - repeatability
+      - generator_independence
+      - cost
+    forbidden_claim: human_expert_evaluation
+
+  open_reproduction_model:
+    purpose: optional public reproducibility smoke
+    selected_profile: null
+    required: false
+    candidates: []
+
+deterministic_components:
+  - source_capture_and_hashing
+  - structural_segmentation
+  - evidence_span_validation
+  - artifact_registry
+  - knowledge_snapshot_query
+  - version_and_marker_semantics
+  - runtime_envelope
+  - promotion_and_rollback_transactions
+  - public_task_evaluator
+
+formal_experiment_freeze:
+  model_manifest_digest: null
+  benchmark_manifest_digest: null
+  split_manifest_digest: null
+  evaluator_digest: null
+  resource_envelope:
+    max_input_tokens: null
+    max_output_tokens: null
+    max_api_cost: null
+    max_external_accesses: null
+    max_wall_clock_seconds: null
+

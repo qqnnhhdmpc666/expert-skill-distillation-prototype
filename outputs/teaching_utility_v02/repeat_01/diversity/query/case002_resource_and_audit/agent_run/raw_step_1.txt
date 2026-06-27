@@ -1,0 +1,14 @@
+{
+  "action": "finish",
+  "note": "Audit logging disabled; violates C006",
+  "findings": [
+    {
+      "rule_id": "C006",
+      "issue": "Audit logging is disabled and no export sink defined",
+      "severity": "high",
+      "evidence": "audit:\n  enabled: false\n  export_sink:",
+      "config_path": "audit.enabled, audit.export_sink"
+    }
+  ],
+  "summary": "Found C006 violation: production audit logging disabled."
+}

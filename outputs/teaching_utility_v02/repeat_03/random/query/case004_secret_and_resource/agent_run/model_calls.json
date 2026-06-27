@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"C001 violation found: hardcoded API key.\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in configuration file\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    }\n  ],\n  \"summary\": \"Single high-severity finding: hardcoded API key. TLS, service account roles, and debug mode are acceptable.\"\n}",
+    "usage": {
+      "prompt_tokens": 1624,
+      "completion_tokens": 566,
+      "total_tokens": 2190,
+      "prompt_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 441
+      },
+      "prompt_cache_hit_tokens": 1280,
+      "prompt_cache_miss_tokens": 344
+    },
+    "latency_ms": 5936
+  }
+]

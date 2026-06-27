@@ -2,7 +2,7 @@
 
 from .artifacts import ManifestCheckResult, check_artifact_manifest
 from .capability_registry import CAPABILITY_SPECS, CapabilitySpec
-from .distillation import DISTILLATION_HINTS, CapabilityProjection, distill_skill_bundle, project_case_capabilities
+from .distillation import DISTILLATION_HINTS, TASK_FAMILY_CAPABILITIES, CapabilityProjection, MaterialSource, distill_material_skill_bundle, distill_skill_bundle, project_case_capabilities, project_material_capabilities
 from .evidence import MarginalUtilityResult, build_marginal_utility_result, score_from_verifier, write_evidence_bundle
 from .gate import ValidationGateResult, evaluate_validation_gate
 from .harbor_adapter import HarborReplaySnapshot, execution_report_from_harbor_snapshot, load_harbor_replay_snapshot
@@ -25,6 +25,7 @@ __all__ = [
     "CapabilityProjection",
     "ControlledTaskCase",
     "DISTILLATION_HINTS",
+    "distill_material_skill_bundle",
     "ExecutionReport",
     "execution_report_from_harbor_snapshot",
     "FAILURE_TAXONOMY",
@@ -49,7 +50,9 @@ __all__ = [
     "RunnerContext",
     "RunnerResult",
     "SkillPackage",
+    "MaterialSource",
     "TaskCase",
+    "TASK_FAMILY_CAPABILITIES",
     "TokenBudgetResult",
     "TraceRecord",
     "TraceCheckResult",
@@ -70,6 +73,7 @@ __all__ = [
     "load_harbor_replay_snapshot",
     "normalize_live_execution_report",
     "project_case_capabilities",
+    "project_material_capabilities",
     "load_legacy_holdout_task_cases",
     "render_single_validity_card_markdown",
     "render_skill_revision_validity_markdown",

@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "Clean control, no issues found.",
+  "findings": [],
+  "summary": "All visible config fields satisfy C001-C006 rules."
+}

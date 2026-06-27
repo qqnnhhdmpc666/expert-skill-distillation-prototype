@@ -1,0 +1,20 @@
+{
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key in plain text",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "config.yml>api_key"
+    },
+    {
+      "rule_id": "C005",
+      "issue": "Missing resource requests/limits",
+      "severity": "medium",
+      "evidence": "resources:\n  requests: (empty)",
+      "config_path": "config.yml>resources.requests"
+    }
+  ],
+  "summary": "Found hardcoded secret and missing resource limits",
+  "status": "completed"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed review of config.md\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in plain text\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"config.yml>api_key\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Missing resource requests/limits\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  requests: (empty)\",\n      \"config_path\": \"config.yml>resources.requests\"\n    }\n  ],\n  \"summary\": \"Found hardcoded secret and missing resource limits\"\n}",
+    "usage": {
+      "prompt_tokens": 1728,
+      "completion_tokens": 550,
+      "total_tokens": 2278,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 383
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 64
+    },
+    "latency_ms": 5718
+  }
+]

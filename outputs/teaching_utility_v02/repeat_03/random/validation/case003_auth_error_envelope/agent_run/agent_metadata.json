@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-06-13T11:54:08.118555+00:00",
+  "domain": "api_review",
+  "case_root": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\validation\\case003_auth_error_envelope\\visible_case",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\random\\distilled_skill.md",
+  "allowed_rule_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005"
+  ],
+  "reviewed_files": [],
+  "model": "deepseek-v4-flash",
+  "base_url_present": true,
+  "api_key_present": true,
+  "status": "completed"
+}

@@ -1,0 +1,7 @@
+{"evidence_id": "sha256:31b0eea34de4b4a35088832ba5f9647235b3656ebcf04feb65b8053647cb861c", "evidence_type": "repo_file_digest", "path": "LICENSE"}
+{"evidence_id": "sha256:076a34e2d17d80628e054cc9694d7bbde326ed7461e6a04871b56cb05a17ac8b", "evidence_type": "repo_file_digest", "path": "requirements.txt"}
+{"evidence_id": "sha256:47b183014d9a38bf09da2f0be9df6997489cbd37228df988fceffebeb4d13faf", "evidence_type": "dependency_declaration", "path": "requirements.txt"}
+{"evidence_id": "sha256:da468ba57f39c4f444d471c2aad1469166a55d96d8f04192c800d1de2ac09e2b", "evidence_type": "resolved_version", "path": "requirements.txt"}
+{"evidence_id": "sha256:55b187238c5133ba0c397a59313d5a58963fc499bae01b889987cf6c8cf40f56", "evidence_type": "repo_file_digest", "path": "update.py"}
+{"evidence_id": "sha256:aca4ff48056fa8b4232d68c9c7fc9de3c7565ed65e9c93fe9ea9dfa895f93659", "evidence_type": "import_use_site", "path": "update.py"}
+{"evidence_id": "sha256:63012f27a25aadafd6735a34bebed11e3fae94ed3dbecc2f467945126ba0538b", "evidence_type": "import_use_site", "path": "update.py"}

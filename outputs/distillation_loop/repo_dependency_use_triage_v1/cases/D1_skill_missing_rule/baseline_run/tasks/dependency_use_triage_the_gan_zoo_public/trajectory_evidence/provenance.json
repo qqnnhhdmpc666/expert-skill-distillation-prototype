@@ -1,0 +1,21 @@
+{
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:7d7b6cb8fa8eb7913140f80fd631f8dbb51ad2ae97fa6fd3c28db438bd2f11cc",
+  "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+  "condition_manifest_digest": "sha256:a8968d5fb15c19042a140b7dd5428dd44bc2ff8562cb22b5fd118c4053789524",
+  "fixture_type": "public_repo_excerpt",
+  "knowledge_access_binding_digest": "sha256:b5890d14ac0c5a4083f20084bf50fd8dc64fc20d0c9622b6b15adac3a7880126",
+  "knowledge_projection_digest": "sha256:f11bf2588d408abd8bd892a8cd7671c82c7abc64fa81318047c54167ac8348cd",
+  "prediction_digest": "sha256:d191bf3c8fe4b7d368f36673b92987f6f85d52cd43e0a893264785ad0477612b",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "repo_snapshot_content_digest": "sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb",
+  "repo_snapshot_manifest_digest": "sha256:1554d69183c07166bbd33d1142d8243aecf6c02d54804660979faf0784cf8752",
+  "repo_snapshot_ref": "github:hindupuravinash/the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713",
+  "schema_version": "trajectory_provenance.v1",
+  "skill_artifact_digest": "sha256:2e6d5a1a9edff162dd31f8eec4aec4fd6daaefc3cbf405848cb462ae24d1af11",
+  "skill_digest": "sha256:643a1bac05f2cfd8ecd85338c0fb27aafa4560bf50fc9d469a2e9d80daed111c",
+  "skill_family": "repo-dependency-use-triage",
+  "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+  "task_digest": "sha256:c1ac43db690c54ff34e68d56775b13d05a68adf3cc5f3fb546b686b17279f089",
+  "verifier_result_digest": "sha256:2ba5dbda269ba6c0c7d16f509fac48afa53b6f0b17050988e1fe21de151929ff"
+}

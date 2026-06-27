@@ -1,0 +1,29 @@
+{
+  "schema_version": "repo_snapshot_manifest.v1",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_declared_not_used@demo-commit",
+  "source_url": "local://repo_security_tasks/dependency_use_triage_declared_not_used",
+  "license": "MIT-compatible synthetic fixture",
+  "snapshot_id": "dependency_use_triage_declared_not_used@demo-commit",
+  "commit_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "language": "python",
+  "files": [
+    {
+      "path": "requirements.txt",
+      "role": "dependency_declaration",
+      "sha256": "sha256:ddc351fc01ecf76efb6e27486a8a4890446e2100668d383f75ffc10fe1c8e568",
+      "line_count": 2
+    },
+    {
+      "path": "src/app/client.py",
+      "role": "runtime_code_no_use_site",
+      "sha256": "sha256:82d4655a9e4a85df84ff86c3ee1aea561afbe4eafd881658940d9dd107a18516",
+      "line_count": 6
+    },
+    {
+      "path": "README.md",
+      "role": "repo_context",
+      "sha256": "sha256:856bfe4d0f92c0fa79d537876e054ea59ae4a2289e1c1a43ac25949cf9fc8af3",
+      "line_count": 3
+    }
+  ]
+}

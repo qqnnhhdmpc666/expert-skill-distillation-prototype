@@ -1,0 +1,13 @@
+{
+  "findings": [
+    {
+      "rule_id": "C006",
+      "issue": "Audit logging is disabled; production environment must enable audit logging and define retention or export behavior.",
+      "severity": "high",
+      "evidence": "audit:\n  enabled: false\n  export_sink:",
+      "config_path": "config.md :: audit.enabled"
+    }
+  ],
+  "summary": "Found 1 config security issue: audit logging disabled (C006). All other rules satisfied.",
+  "status": "completed"
+}

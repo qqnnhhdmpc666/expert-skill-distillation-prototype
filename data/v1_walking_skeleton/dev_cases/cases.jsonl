@@ -1,0 +1,2 @@
+{"case_id":"dev-package-absent","advisory_id":"PYSEC-2018-28","requirement":"flask==3.0.0","expected_reason":"PACKAGE_NOT_PRESENT","split":"dev"}
+{"case_id":"dev-advisory-missing","advisory_id":"PYSEC-NOT-IN-SNAPSHOT","requirement":"requests==2.19.0","expected_reason":"ADVISORY_NOT_FOUND","split":"dev"}

@@ -1,0 +1,18 @@
+{
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary: authentication method specified only as 'login required', no roles/scopes or failure behavior documented",
+      "severity": "high",
+      "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Insufficient error code coverage: only success and server error codes defined; missing validation, unauthorized, forbidden, not found, duplicate",
+      "severity": "high",
+      "evidence": "Error Codes: '0': success, '500': server error"
+    }
+  ],
+  "summary": "Two high-severity issues found: missing authorization boundary (R001) and incomplete stable error code coverage (R003).",
+  "status": "completed"
+}

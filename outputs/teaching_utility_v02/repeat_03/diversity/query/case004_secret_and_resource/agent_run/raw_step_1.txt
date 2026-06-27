@@ -1,0 +1,14 @@
+{
+  "action": "finish",
+  "note": "Found hardcoded secret in config.md",
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "api_key"
+    }
+  ],
+  "summary": "One high severity finding: hardcoded plain-text API key in config."
+}

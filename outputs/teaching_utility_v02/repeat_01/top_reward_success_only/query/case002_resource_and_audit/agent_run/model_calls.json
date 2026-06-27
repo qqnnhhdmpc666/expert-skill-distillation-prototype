@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"C006 violated: audit logging disabled in production config\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C006\",\n      \"issue\": \"Audit logging is disabled; production environment must enable audit logging and define retention or export behavior.\",\n      \"severity\": \"high\",\n      \"evidence\": \"audit:\\n  enabled: false\\n  export_sink:\",\n      \"config_path\": \"config.md :: audit.enabled\"\n    }\n  ],\n  \"summary\": \"Found 1 config security issue: audit logging disabled (C006). All other rules satisfied.\"\n}",
+    "usage": {
+      "prompt_tokens": 1643,
+      "completion_tokens": 382,
+      "total_tokens": 2025,
+      "prompt_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 245
+      },
+      "prompt_cache_hit_tokens": 1536,
+      "prompt_cache_miss_tokens": 107
+    },
+    "latency_ms": 4582
+  }
+]

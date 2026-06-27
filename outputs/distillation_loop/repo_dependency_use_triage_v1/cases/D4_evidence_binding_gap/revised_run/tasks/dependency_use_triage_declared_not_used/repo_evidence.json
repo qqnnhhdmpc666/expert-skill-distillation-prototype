@@ -1,0 +1,61 @@
+{
+  "evidence": [
+    {
+      "attributes": {},
+      "evidence_id": "sha256:589a115d85a1a836799a198a2593bf861c90a1cd2ef93f4f641630d086bb1ee1",
+      "evidence_type": "repo_file_digest",
+      "excerpt": "sha256:ddc351fc01ecf76efb6e27486a8a4890446e2100668d383f75ffc10fe1c8e568",
+      "file_digest": "sha256:ddc351fc01ecf76efb6e27486a8a4890446e2100668d383f75ffc10fe1c8e568",
+      "line_end": null,
+      "line_start": null,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:027d8da9797581d8f4c4777af54f66c070724724e8388a90256733d075ce89e4",
+      "evidence_type": "dependency_declaration",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:ddc351fc01ecf76efb6e27486a8a4890446e2100668d383f75ffc10fe1c8e568",
+      "line_end": 1,
+      "line_start": 1,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:3efb8d87ed88a85b8b792cf71788b7c5efce8ee6c87dbd13bc55fd05d6ce2d05",
+      "evidence_type": "resolved_version",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:ddc351fc01ecf76efb6e27486a8a4890446e2100668d383f75ffc10fe1c8e568",
+      "line_end": 1,
+      "line_start": 1,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {},
+      "evidence_id": "sha256:0c169f434bbc4341d542f788ce53f258dee1b4862a6f593572f2f64cb98a4703",
+      "evidence_type": "repo_file_digest",
+      "excerpt": "sha256:82d4655a9e4a85df84ff86c3ee1aea561afbe4eafd881658940d9dd107a18516",
+      "file_digest": "sha256:82d4655a9e4a85df84ff86c3ee1aea561afbe4eafd881658940d9dd107a18516",
+      "line_end": null,
+      "line_start": null,
+      "path": "src/app/client.py"
+    },
+    {
+      "attributes": {},
+      "evidence_id": "sha256:0610887dcab4e318afa68472b2cb15f0d6fed4cb788fccc5fd4f4b3860137fce",
+      "evidence_type": "repo_file_digest",
+      "excerpt": "sha256:856bfe4d0f92c0fa79d537876e054ea59ae4a2289e1c1a43ac25949cf9fc8af3",
+      "file_digest": "sha256:856bfe4d0f92c0fa79d537876e054ea59ae4a2289e1c1a43ac25949cf9fc8af3",
+      "line_end": null,
+      "line_start": null,
+      "path": "README.md"
+    }
+  ],
+  "schema_version": "repo_evidence_collection.v1"
+}

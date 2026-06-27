@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "All config security checks pass; no issues found.",
+  "findings": [],
+  "summary": "No config_security violations detected."
+}

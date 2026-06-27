@@ -1,0 +1,9 @@
+{
+  "action": "finish",
+  "note": "Case review complete with findings",
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Missing authorization boundary: authentication method specified only as 'login required', no roles/scopes or failure behavior documented",
+      "severity": "high",
+      "evidence": "The endpoint says 'login required'. It does

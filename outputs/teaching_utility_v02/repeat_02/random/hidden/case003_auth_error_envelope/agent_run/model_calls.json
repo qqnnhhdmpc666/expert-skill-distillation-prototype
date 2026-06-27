@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\"action\":\"read_file\",\"note\":\"Read case.md for review\",\"path\":\"case.md\"}",
+    "usage": {
+      "prompt_tokens": 1836,
+      "completion_tokens": 118,
+      "total_tokens": 1954,
+      "prompt_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 98
+      },
+      "prompt_cache_hit_tokens": 1024,
+      "prompt_cache_miss_tokens": 812
+    },
+    "latency_ms": 2996
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Completed review of case003\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R001\",\n      \"issue\": \"Missing authorization boundary: roles/scopes not defined, authorization failure behavior not documented\",\n      \"severity\": \"high\",\n      \"evidence\": \"- The endpoint says \\\"login required\\\".\\n- It does not define roles, scopes, or authorization failure behavior.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Stable error code coverage insufficient: only success (0) and server error (500) defined, missing validation, unauthorized, forbidden, not found, duplicate\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error Codes:\\n- `0`: success\\n- `500`: server error\"\n    },\n    {\n      \"rule_id\": \"R005\",\n      \"issue\": \"Response envelope missing 'request_id' field\",\n      \"severity\": \"medium\",\n      \"evidence\": \"{\\n  \\\"code\\\": 0,\\n  \\\"message\\\": \\\"ok\\\",\\n  \\\"data\\\": {\\n    \\\"order_id\\\": \\\"ORD-20260605\\\",\\n    \\\"status\\\": \\\"paid\\\"\\n  }\\n}\"\n    }\n  ],\n  \"summary",
+    "usage": {
+      "prompt_tokens": 2080,
+      "completion_tokens": 665,
+      "total_tokens": 2745,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 355
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 288
+    },
+    "latency_ms": 6524
+  }
+]

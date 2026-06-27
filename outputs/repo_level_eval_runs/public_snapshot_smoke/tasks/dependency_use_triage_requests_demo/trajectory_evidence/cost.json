@@ -1,0 +1,7 @@
+{
+  "cost_reason": "local deterministic vertical slice",
+  "llm_calls": 0,
+  "llm_tokens": null,
+  "runtime_seconds": null,
+  "schema_version": "trajectory_cost.v1"
+}

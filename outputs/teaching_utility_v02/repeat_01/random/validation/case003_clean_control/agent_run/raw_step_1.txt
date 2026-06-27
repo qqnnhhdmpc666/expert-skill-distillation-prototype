@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "No config security issues found.",
+  "findings": [],
+  "summary": "All visible config fields comply with C001-C006."
+}

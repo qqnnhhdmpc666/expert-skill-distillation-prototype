@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "candidate_path_overrides": {},
+    "decision_policy": {},
+    "knowledge_projection_policy": {
+      "allowed_advisory_fields": []
+    },
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ]
+  },
+  "candidate_path_overrides_changed": false,
+  "decision_policy_changed": false,
+  "knowledge_projection_policy_changed": true,
+  "required_evidence_added": [],
+  "required_evidence_removed": [],
+  "revised": {
+    "candidate_path_overrides": {},
+    "decision_policy": {},
+    "knowledge_projection_policy": {
+      "allowed_advisory_fields": [
+        "affected_ranges"
+      ]
+    },
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ]
+  },
+  "schema_version": "bundle_policy_diff.v1"
+}

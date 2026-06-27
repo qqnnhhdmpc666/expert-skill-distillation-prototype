@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "expert-skill-deployment-prototype"
 version = "0.1.0"
@@ -5,17 +9,24 @@ description = "Risk-budgeted traceable skill deployment prototype for controlled
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-  "streamlit>=1.35",
+  "packaging>=24.0",
 ]
 
 [project.optional-dependencies]
+ui = [
+  "streamlit>=1.35",
+]
 dev = [
   "pytest>=8.0",
   "ruff>=0.8",
 ]
 
 [project.scripts]
+eskill = "expert_skill_system.cli:main"
 skill-deploy = "skill_deployment.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,0 +1,61 @@
+{
+  "baseline_bundle_digest": "sha256:7d7b6cb8fa8eb7913140f80fd631f8dbb51ad2ae97fa6fd3c28db438bd2f11cc",
+  "baseline_failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_declared_not_used",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "baseline_pass_count": 0,
+  "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D1_skill_missing_rule",
+  "defect_id": "D1_skill_missing_rule",
+  "digest_changed": true,
+  "expected_attribution_matched": true,
+  "failure_attribution_types": [
+    "evidence_binding_gap",
+    "skill_missing_rule"
+  ],
+  "policy_diff": {
+    "baseline": {
+      "candidate_path_overrides": {},
+      "decision_policy": {},
+      "knowledge_projection_policy": {},
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "candidate_path_overrides_changed": false,
+    "decision_policy_changed": false,
+    "knowledge_projection_policy_changed": false,
+    "required_evidence_added": [
+      "import_use_site"
+    ],
+    "required_evidence_removed": [],
+    "revised": {
+      "candidate_path_overrides": {},
+      "decision_policy": {},
+      "knowledge_projection_policy": {},
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "schema_version": "bundle_policy_diff.v1"
+  },
+  "promotion_decision": "promote",
+  "repair_type": "rule_generalization",
+  "revised_bundle_digest": "sha256:84e886640c688afe35ccdd2cf215e684ee726998bc93a5bb6fb110556c19b816",
+  "revised_pass_count": 4,
+  "revision_targets": [
+    "skill_rule",
+    "evidence_binding_plan"
+  ],
+  "schema_version": "distillation_v1_case_result.v1",
+  "seeded_counterexample_pass": true
+}

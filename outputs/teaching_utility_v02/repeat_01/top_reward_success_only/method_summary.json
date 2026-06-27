@@ -1,0 +1,209 @@
+{
+  "method": "top_reward_success_only",
+  "selection": {
+    "method": "top_reward_success_only",
+    "selected_case_id": "case002_resource_and_audit",
+    "selection_reason": "follow_highest_seed_reward_domain:config_security"
+  },
+  "query_case": "case002_resource_and_audit",
+  "query_run": {
+    "case_id": "case002_resource_and_audit",
+    "domain": "config_security",
+    "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\seed_skill.md",
+    "returncode": 0,
+    "review": {
+      "findings": [
+        {
+          "rule_id": "C006",
+          "issue": "Audit logging is disabled; production environment must enable audit logging and define retention or export behavior.",
+          "severity": "high",
+          "evidence": "audit:\n  enabled: false\n  export_sink:",
+          "config_path": "config.md :: audit.enabled"
+        }
+      ],
+      "summary": "Found 1 config security issue: audit logging disabled (C006). All other rules satisfied.",
+      "status": "completed"
+    },
+    "evaluation": {
+      "pass_at_1": false,
+      "coverage": 0.5,
+      "score": 0.45,
+      "missing_rule_ids": [
+        "C005"
+      ],
+      "critical_missed_rule_ids": [
+        "C005"
+      ],
+      "false_positive_rule_ids": [],
+      "format_errors": [],
+      "seen_rule_ids": [
+        "C006"
+      ],
+      "clean_control_pass": false
+    },
+    "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\query\\case002_resource_and_audit"
+  },
+  "query_lesson": {
+    "case_id": "case002_resource_and_audit",
+    "domain": "config_security",
+    "pass_at_1": false,
+    "score": 0.45,
+    "focus_rules": [
+      "C005"
+    ],
+    "lesson": "case002_resource_and_audit: do not miss C005 when the visible case text exposes those triggers; repair the review checklist before adding broader findings.",
+    "review_summary": {
+      "seen_rule_ids": [
+        "C006"
+      ],
+      "missing_rule_ids": [
+        "C005"
+      ],
+      "false_positive_rule_ids": [],
+      "format_errors": []
+    },
+    "review": {
+      "findings": [
+        {
+          "rule_id": "C006",
+          "issue": "Audit logging is disabled; production environment must enable audit logging and define retention or export behavior.",
+          "severity": "high",
+          "evidence": "audit:\n  enabled: false\n  export_sink:",
+          "config_path": "config.md :: audit.enabled"
+        }
+      ],
+      "summary": "Found 1 config security issue: audit logging disabled (C006). All other rules satisfied.",
+      "status": "completed"
+    }
+  },
+  "final_skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
+  "validation_runs": [
+    {
+      "case_id": "case005_response_contract_schema",
+      "domain": "api_review",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [
+          {
+            "rule_id": "R005",
+            "issue": "Response envelope missing code, message, request_id, data; uses status and payload instead",
+            "severity": "high",
+            "evidence": "Response:\n\n{\n  \"status\": \"ok\",\n  \"payload\": {\n    \"date\": \"2026-06-05\",\n    \"gross_amount\": 12000\n  }\n}"
+          }
+        ],
+        "summary": "Found 1 finding: response envelope contract violation",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [
+          "R005"
+        ],
+        "clean_control_pass": false
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\validation\\case005_response_contract_schema"
+    },
+    {
+      "case_id": "case003_clean_control",
+      "domain": "config_security",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [],
+        "summary": "All config_security checks passed: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled, resource limits set, audit logging enabled with retention.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [],
+        "clean_control_pass": true
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\validation\\case003_clean_control"
+    }
+  ],
+  "hidden_runs": [
+    {
+      "case_id": "case006_clean_false_positive_control",
+      "domain": "api_review",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [],
+        "summary": "Case is clean; all api_review rules (R001-R005) are met.",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [],
+        "clean_control_pass": true
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\hidden\\case006_clean_false_positive_control"
+    },
+    {
+      "case_id": "case004_secret_and_resource",
+      "domain": "config_security",
+      "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
+      "returncode": 0,
+      "review": {
+        "findings": [
+          {
+            "rule_id": "C001",
+            "issue": "Hardcoded API key in plain text",
+            "severity": "high",
+            "evidence": "api_key: \"plain-text-demo-key\"",
+            "config_path": "config.md/api_key"
+          },
+          {
+            "rule_id": "C005",
+            "issue": "Missing resource requests/limits for deployed service",
+            "severity": "medium",
+            "evidence": "resources:\n  requests:",
+            "config_path": "config.md/resources/requests"
+          }
+        ],
+        "summary": "Found hardcoded secret (C001) and missing resource limits (C005).",
+        "status": "completed"
+      },
+      "evaluation": {
+        "pass_at_1": true,
+        "coverage": 1.0,
+        "score": 1.0,
+        "missing_rule_ids": [],
+        "critical_missed_rule_ids": [],
+        "false_positive_rule_ids": [],
+        "format_errors": [],
+        "seen_rule_ids": [
+          "C001",
+          "C005"
+        ],
+        "clean_control_pass": false
+      },
+      "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\hidden\\case004_secret_and_resource"
+    }
+  ],
+  "validation_score": 1.0,
+  "hidden_score": 1.0,
+  "validation_delta": 0.0,
+  "hidden_delta": 0.25,
+  "hidden_pass_count": 2,
+  "candidate_updates": []
+}

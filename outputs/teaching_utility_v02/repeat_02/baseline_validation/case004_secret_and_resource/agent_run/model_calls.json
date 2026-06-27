@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"C001 hardcoded api_key, C005 missing resource requests\",\n  \"path\": null,\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in configuration\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"api_key\"\n    },\n    {\n      \"rule_id\": \"C005\",\n      \"issue\": \"Missing CPU/memory requests for service resources\",\n      \"severity\": \"medium\",\n      \"evidence\": \"resources:\\n  requests:\",\n      \"config_path\": \"resources.requests\"\n    }\n  ],\n  \"summary\": \"Found 2 config security issues: hardcoded secret (C001) and missing resource limits (C005).\"\n}",
+    "usage": {
+      "prompt_tokens": 1694,
+      "completion_tokens": 676,
+      "total_tokens": 2370,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 487
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1694
+    },
+    "latency_ms": 7354
+  }
+]

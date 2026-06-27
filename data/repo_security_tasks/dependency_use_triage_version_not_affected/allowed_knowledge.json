@@ -1,0 +1,23 @@
+{
+  "schema_version": "allowed_knowledge_snapshot.v1",
+  "knowledge_sources": [
+    {
+      "source_id": "PYSEC-2018-28",
+      "source_kind": "security_advisory_snapshot",
+      "package": "requests",
+      "ecosystem": "PyPI",
+      "affected_ranges": [
+        {
+          "introduced": "0",
+          "fixed": "2.20.0"
+        }
+      ],
+      "allowed_claim": "requests versions before 2.20.0 are affected for this triage fixture.",
+      "not_allowed_claims": [
+        "exploitability in the current deployment",
+        "remote exploit steps",
+        "runtime reachability beyond the local import/use evidence"
+      ]
+    }
+  ]
+}

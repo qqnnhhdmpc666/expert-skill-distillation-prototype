@@ -1,0 +1,23 @@
+{
+  "case_id": "case003_clean_control",
+  "domain": "config_security",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [],
+    "summary": "Configuration is secure: no hardcoded secrets, TLS enabled, least-privilege service account, debug disabled, audit logging with retention.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": true,
+    "coverage": 1.0,
+    "score": 1.0,
+    "missing_rule_ids": [],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [],
+    "clean_control_pass": true
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\active_discriminative_evidence\\validation\\case003_clean_control"
+}

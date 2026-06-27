@@ -1,0 +1,5 @@
+{
+  "action": "read_file",
+  "path": "config.md",
+  "note": "Read config file for security review"
+}

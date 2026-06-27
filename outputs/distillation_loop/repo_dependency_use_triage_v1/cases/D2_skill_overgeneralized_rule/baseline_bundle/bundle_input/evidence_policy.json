@@ -1,0 +1,12 @@
+{
+  "decision_policy": {
+    "version_range_comparison_required": false
+  },
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ]
+}

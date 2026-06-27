@@ -1,0 +1,20 @@
+{
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key in plain text",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "config.md/api_key"
+    },
+    {
+      "rule_id": "C005",
+      "issue": "Missing resource requests/limits for deployed service",
+      "severity": "medium",
+      "evidence": "resources:\n  requests:",
+      "config_path": "config.md/resources/requests"
+    }
+  ],
+  "summary": "Found hardcoded secret (C001) and missing resource limits (C005).",
+  "status": "completed"
+}

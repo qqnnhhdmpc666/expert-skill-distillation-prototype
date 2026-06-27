@@ -1,0 +1,81 @@
+{
+  "sources": [
+    {
+      "source_id": "public_upload_material_001",
+      "title": "OWASP File Upload Cheat Sheet",
+      "task_family": "upload_security",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/File_Upload_Cheat_Sheet.md",
+      "source_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\upload_file_upload_cheatsheet_0f527b1636ad.md",
+      "selected_capabilities": [
+        "UPLOAD_TYPE_MAGIC",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_AUDIT_RETENTION"
+      ],
+      "material_preview": "# File Upload Cheat Sheet\n\n## Introduction\n\nFile upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The applicat",
+      "metadata": {
+        "sha256": "0f527b1636adb44e305c97657b5cf84c0b5b60895ee5091f4b26baee0e271b6d",
+        "material_scope": "public_cheatsheet"
+      }
+    },
+    {
+      "source_id": "public_upload_logging_material_001",
+      "title": "OWASP Logging Cheat Sheet (upload audit excerpt)",
+      "task_family": "upload_security",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Logging_Cheat_Sheet.md",
+      "source_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\config_logging_cheatsheet_342a2e9161f0.md",
+      "selected_capabilities": [
+        "UPLOAD_TYPE_MAGIC",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_AUDIT_RETENTION"
+      ],
+      "material_preview": "# Logging Cheat Sheet\n\n## Introduction\n\nThis cheat sheet is focused on providing developers with concentrated guidance on building application logging mechanisms, especially related to security logging.\n\nMany systems enable network device, ",
+      "metadata": {
+        "sha256": "342a2e9161f004a4aebe217da8476344e1b117f579f6252969e3b9054253eca7",
+        "material_scope": "public_cheatsheet"
+      }
+    },
+    {
+      "source_id": "public_auth_material_001",
+      "title": "OWASP Authorization Cheat Sheet",
+      "task_family": "auth_access_control",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Authorization_Cheat_Sheet.md",
+      "source_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\auth_authorization_cheatsheet_3292a02e4c3c.md",
+      "selected_capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP",
+        "AUTH_ERROR_ENVELOPE"
+      ],
+      "material_preview": "# Authorization Cheat Sheet\n\n## Introduction\n\nAuthorization may be defined as \"the process of verifying that a requested action or service is approved for a specific entity\" ([NIST](https://csrc.nist.gov/glossary/term/authorization)). Autho",
+      "metadata": {
+        "sha256": "3292a02e4c3c8424e2f33b79585eb79320d4c1c48725e5564860c07d503ff88a",
+        "material_scope": "public_cheatsheet"
+      }
+    },
+    {
+      "source_id": "public_config_material_001",
+      "title": "OWASP Logging + Secrets Management Cheat Sheets",
+      "task_family": "config_security",
+      "source_url": "https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Logging_Cheat_Sheet.md, https://raw.githubusercontent.com/OWASP/CheatSheetSeries/master/cheatsheets/Secrets_Management_Cheat_Sheet.md",
+      "source_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\config_logging_cheatsheet_342a2e9161f0.md, C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_distillation_validation\\source_material_downloads\\config_secrets_cheatsheet_098b2e35ca5b.md",
+      "selected_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "material_preview": "# Logging Cheat Sheet\n\n# Logging Cheat Sheet\n\n## Introduction\n\nThis cheat sheet is focused on providing developers with concentrated guidance on building application logging mechanisms, especially related to security logging.\n\nMany systems ",
+      "metadata": {
+        "sha256": [
+          "342a2e9161f004a4aebe217da8476344e1b117f579f6252969e3b9054253eca7",
+          "098b2e35ca5b9846bb35cb80fa9eef59aa97d76e10a12a5ff25b121f2c5770bd"
+        ],
+        "material_scope": "public_cheatsheet_combo"
+      }
+    }
+  ],
+  "source_count": 4,
+  "supported_task_families": [
+    "upload_security",
+    "auth_access_control",
+    "config_security"
+  ],
+  "distillation_scope": "bounded_open_materials"
+}

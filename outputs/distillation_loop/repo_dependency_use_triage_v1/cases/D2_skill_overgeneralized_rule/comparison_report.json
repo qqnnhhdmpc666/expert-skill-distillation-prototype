@@ -1,0 +1,54 @@
+{
+  "baseline": {
+    "bundle_digest": "sha256:76c52d01c3128cbbd33b58b9fab6e2dd38931a663c5b28ff6f26670a0c0d1fd0",
+    "fail_count": 3,
+    "failure_types": {
+      "skill_overgeneralized_rule": 3
+    },
+    "pass_count": 1,
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "unsupported_affected_decision_count": 0
+  },
+  "delta": {
+    "pass_count_delta": 3,
+    "regression_count": 0,
+    "unsupported_affected_decision_delta": 0
+  },
+  "promotion_recommendation": "promote",
+  "revised": {
+    "bundle_digest": "sha256:25ae1aae6af93ca15786948d65d81270ffa3eb693c19a8b0903e61ab45491a2c",
+    "fail_count": 0,
+    "pass_count": 4,
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "unsupported_affected_decision_count": 0
+  },
+  "schema_version": "distillation_comparison_report.v1",
+  "seeded_counterexamples": {
+    "baseline_seeded_counterexample_exposed": true,
+    "revised_seeded_counterexample_pass": true,
+    "rows": [
+      {
+        "baseline_decision": "dependency_used_and_affected",
+        "baseline_seed_exposed": true,
+        "revised_decision": "dependency_used_not_affected",
+        "revised_seed_pass": true,
+        "seed_id": "D2_used_fixed_version_should_not_be_affected",
+        "violated_policy": "version_range_comparison_required"
+      }
+    ],
+    "schema_version": "distillation_seeded_counterexample_summary.v1",
+    "seed_count": 1
+  }
+}

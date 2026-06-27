@@ -1,0 +1,15 @@
+{
+  "failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "failure_count": 3,
+  "failure_types": {
+    "evidence_binding_gap": 3
+  },
+  "repair_targets": {
+    "evidence_binding_plan": 3
+  },
+  "schema_version": "distillation_failure_summary.v1"
+}

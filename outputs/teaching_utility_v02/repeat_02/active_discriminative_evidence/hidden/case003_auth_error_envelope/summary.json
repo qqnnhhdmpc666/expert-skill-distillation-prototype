@@ -1,0 +1,41 @@
+{
+  "case_id": "case003_auth_error_envelope",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R001",
+        "issue": "Missing authorization boundary: authentication method specified only as 'login required', no roles/scopes or failure behavior documented",
+        "severity": "high",
+        "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+      },
+      {
+        "rule_id": "R003",
+        "issue": "Insufficient error code coverage: only success and server error codes defined; missing validation, unauthorized, forbidden, not found, duplicate",
+        "severity": "high",
+        "evidence": "Error Codes: '0': success, '500': server error"
+      }
+    ],
+    "summary": "Two high-severity issues found: missing authorization boundary (R001) and incomplete stable error code coverage (R003).",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.6667,
+    "score": 0.6667,
+    "missing_rule_ids": [
+      "R005"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R001",
+      "R003"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_02\\active_discriminative_evidence\\hidden\\case003_auth_error_envelope"
+}

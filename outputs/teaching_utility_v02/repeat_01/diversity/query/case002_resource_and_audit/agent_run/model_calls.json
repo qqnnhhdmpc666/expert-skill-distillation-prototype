@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Audit logging disabled; violates C006\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C006\",\n      \"issue\": \"Audit logging is disabled and no export sink defined\",\n      \"severity\": \"high\",\n      \"evidence\": \"audit:\\n  enabled: false\\n  export_sink:\",\n      \"config_path\": \"audit.enabled, audit.export_sink\"\n    }\n  ],\n  \"summary\": \"Found C006 violation: production audit logging disabled.\"\n}",
+    "usage": {
+      "prompt_tokens": 1643,
+      "completion_tokens": 569,
+      "total_tokens": 2212,
+      "prompt_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 447
+      },
+      "prompt_cache_hit_tokens": 1536,
+      "prompt_cache_miss_tokens": 107
+    },
+    "latency_ms": 5838
+  }
+]

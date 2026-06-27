@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\"action\":\"finish\",\"note\":\"Response envelope violates R005\",\"findings\":[{\"rule_id\":\"R005\",\"issue\":\"Response does not use standard envelope with code, message, request_id, data\",\"severity\":\"high\",\"evidence\":\"Response JSON uses \\\"status\\\" and \\\"payload\\\" instead of standard envelope.\"}],\"summary\":\"Response contract fails to follow standard envelope; envelope fields missing.\"}",
+    "usage": {
+      "prompt_tokens": 1883,
+      "completion_tokens": 781,
+      "total_tokens": 2664,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 699
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 91
+    },
+    "latency_ms": 8204
+  }
+]

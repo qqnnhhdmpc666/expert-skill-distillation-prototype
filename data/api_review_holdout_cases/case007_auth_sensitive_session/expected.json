@@ -1,0 +1,12 @@
+{
+  "case_id": "case007_auth_sensitive_session",
+  "expected_rule_ids": ["R001", "R004"],
+  "critical_rule_ids": ["R001", "R004"],
+  "negative_rule_ids": ["R002", "R003", "R005", "R006"],
+  "notes": "Focused case for unclear cross-user authorization boundary plus direct token and trace exposure in the response.",
+  "metadata": {
+    "scenario": "auth_boundary_sensitive_session_exposure",
+    "difficulty": "small",
+    "control_type": "focused_rule"
+  }
+}

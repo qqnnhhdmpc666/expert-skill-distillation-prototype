@@ -1,47 +1,62 @@
 # Claim Boundary
 
-## Safe Claim
+## Safe Core Claim
 
-This project is a controlled deployable prototype for an Evidence-Grounded Skill Evolution Runtime.
+This project is a research prototype for an Expert Skill Distillation System:
 
-It demonstrates:
+```text
+Knowledge Compiler
++ Skill Runtime
++ Pluggable Knowledge Provider
++ External Verification
++ Safe Evolution
+```
 
-- prototype-level evidence-grounded Skill Evolution Runtime
-- controlled installed multi-capability secure_code_review validation
-- representative local defensive security mini-suite if leakage audit passes
-- small candidate generation/rejection evidence under strict promotion gates
-- SWE-bench official harness readiness tracking, currently infra-blocked unless official harness resolves
+V1 demonstrates the system on a bounded Python dependency-advisory applicability slice. It compiles expert rules and frozen public OSV data into structured artifacts, releases them as immutable Bundles, executes the Bundle in a local runtime, and records evidence for validation, promotion, rejection, and rollback.
 
-## Unsafe Claims
+## Current Supported Claims
 
-Do not claim:
+- The local V1 core implementation is present and tested.
+- Skill IR and Knowledge Projection are separate artifacts inside a ReleaseBundle.
+- Independent DeepSeek Judge has passed on the compiler gate.
+- Public OSV pilot v2 reference runtime passed 33/33 cases with false-safe count 0.
+- Harbor public OSV oracle/verifier parity passed a 6-case representative subset.
+- `direct_to_skill_ir` and `compiler_distilled_skill` now produce distinct Skill IR and Agent artifacts.
+- Safe update, unsafe-update rejection, and full-bundle rollback are implemented in the local runtime.
 
-- production vulnerability scanner
-- full SPARK reproduction
-- SWE-bench success or agent performance while official harness remains infra_blocked
-- real-world security validity based only on offline deterministic mini-suite
-- official CyberSecEval/CVE-Bench/AutoPatchBench result
-- exploit generation, attack-chain execution, or unauthorized target testing
+## Current Non-Claims
 
-## Evidence Lanes
+- Mature AgentHost execution is not qualified.
+- Compiler superiority over direct generation is not evaluated.
+- General open-world automatic distillation is not proven.
+- Stable autonomous evolution that reliably produces better Skills is not proven.
+- Harbor subset parity is not broad public benchmark success.
+- OSV advisory applicability is not exploitability, reachability, or proof that a real project is vulnerable.
+- The system is not a production vulnerability scanner.
 
-- Runtime-general evidence supports the runtime mechanism.
-- Secure-code-review evidence supports bounded defensive review behavior under controlled installed runtime.
-- Software-patch-review evidence supports only internal smoke and official harness readiness until non-oracle SWE-bench evaluation succeeds.
-- External-security evidence is local representative evidence unless an official benchmark is actually run.
+## Current Blockers
 
-## SWE-bench Boundary
+AgentHost is the main blocker. Codex CLI 0.137 is installed, but the current DeepSeek endpoint is Chat Completions compatible while Codex requires a Responses-compatible provider. A default OpenAI Responses attempt reached Codex but failed with endpoint/credential errors. OpenHands is not installed locally. Therefore the current status is:
 
-SWE-bench official harness results must not be used to support `secure_code_review`.
+```text
+agent_host = hard_blocked_no_compatible_mature_host
+compiler_vs_direct = prepared_condition_sensitive_eval_no_agenthost
+```
 
-If SWE-bench is `infra_blocked`, report it as infrastructure blocked. Do not call it benchmark success, model failure, or Skill failure.
+## Legacy Lane Boundary
 
-## Red-Team Boundary Rules
+The older `skill_deployment` / `skill-deploy` / `secure_code_review` lane is retained as earlier prototype evidence. It must be described as legacy baseline or earlier controlled runtime work, not as the current V1 main architecture.
 
+## Reviewer-Facing Boundary Rules
+
+- `can_claim_core_local_v1_implemented`: `True`
+- `can_claim_independent_deepseek_judge_pass`: `True`
+- `can_claim_public_osv_reference_runtime_pass`: `True`
+- `can_claim_harbor_public_osv_subset_parity_pass`: `True`
+- `can_claim_distinct_direct_and_compiler_artifacts`: `True`
+- `cannot_claim_mature_agenthost_execution`: `True`
+- `cannot_claim_compiler_superiority`: `True`
+- `cannot_claim_general_open_world_distillation`: `True`
+- `cannot_claim_broad_stable_autonomous_evolution`: `True`
 - `cannot_claim_production_vulnerability_scanner`: `True`
-- `cannot_claim_full_spark_reproduction`: `True`
-- `cannot_claim_swebench_success_unless_official_harness_resolves`: `True`
-- `cannot_claim_real_world_security_validity_from_offline_deterministic_only`: `True`
-- `can_claim_prototype_level_evidence_grounded_runtime`: `True`
-- `can_claim_controlled_installed_multi_capability_secure_code_review_validation`: `True`
-- `can_claim_representative_local_defensive_security_mini_suite_if_leakage_audit_passes`: `True`
+- `cannot_claim_exploitability_or_reachability`: `True`

@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"read_file\",\n  \"note\": \"Read visible configuration file for review\",\n  \"path\": \"config.md\",\n  \"findings\": [],\n  \"summary\": \"\"\n}",
+    "usage": {
+      "prompt_tokens": 1679,
+      "completion_tokens": 813,
+      "total_tokens": 2492,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 771
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 15
+    },
+    "latency_ms": 8153
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Found 5 config security violations in production config\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded payment token in configuration file\",\n      \"severity\": \"high\",\n      \"evidence\": \"payment_token: \\\"sk_live_demo_value\\\"\",\n      \"config_path\": \"payment_token\"\n    },\n    {\n      \"rule_id\": \"C002\",\n      \"issue\": \"Production external endpoint uses plain HTTP instead of TLS\",\n      \"severity\": \"high\",\n      \"evidence\": \"external_api_url: http://partner.example.com/v1\",\n      \"config_path\": \"external_api_url\"\n    },\n    {\n      \"rule_id\": \"C003\",\n      \"issue\": \"Service account has admin role without justification\",\n      \"severity\": \"high\",\n      \"evidence\": \"service_account:\\n  name: billing-admin\\n  roles:\\n    - admin\",\n      \"config_path\": \"service_account.roles\"\n    },\n    {\n      \"rule_id\": \"C004\",\n      \"issue\": \"Production debug mode enabled\",\n      \"severity\": \"high\",\n      \"evidence\": \"debug: true\",\n      \"config_",
+    "usage": {
+      "prompt_tokens": 1802,
+      "completion_tokens": 762,
+      "total_tokens": 2564,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 404
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 138
+    },
+    "latency_ms": 6642
+  }
+]

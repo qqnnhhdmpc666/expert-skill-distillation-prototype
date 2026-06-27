@@ -1,0 +1,14 @@
+{
+  "action": "finish",
+  "note": "Return findings from config.md",
+  "findings": [
+    {
+      "rule_id": "C001",
+      "issue": "Hardcoded API key in plain text",
+      "severity": "high",
+      "evidence": "api_key: \"plain-text-demo-key\"",
+      "config_path": "api_key"
+    }
+  ],
+  "summary": "One finding: hardcoded secret (C001). No other rule violations detected."
+}

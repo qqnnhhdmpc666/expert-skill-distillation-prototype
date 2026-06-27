@@ -1,0 +1,8 @@
+{
+  "case_id": "case006_clean_false_positive_control",
+  "domain": "api_review",
+  "visible_files": [
+    "case.md"
+  ],
+  "boundary": "No verifier-only oracle fields are present in this workspace."
+}

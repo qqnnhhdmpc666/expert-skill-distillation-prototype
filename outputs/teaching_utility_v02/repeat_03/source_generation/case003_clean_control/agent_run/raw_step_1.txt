@@ -1,0 +1,6 @@
+{
+  "action": "finish",
+  "note": "Clean configuration: no hardcoded secrets, TLS, least privilege, debug disabled.",
+  "findings": [],
+  "summary": "All config_security rules pass. No issues found."
+}

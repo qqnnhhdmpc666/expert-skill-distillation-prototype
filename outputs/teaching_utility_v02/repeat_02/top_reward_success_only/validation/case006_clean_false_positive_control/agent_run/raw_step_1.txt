@@ -1,0 +1,6 @@
+{
+  "action": "read_file",
+  "note": "Read the case file to inspect content",
+  "path": "case.md",
+  "findings": []
+}

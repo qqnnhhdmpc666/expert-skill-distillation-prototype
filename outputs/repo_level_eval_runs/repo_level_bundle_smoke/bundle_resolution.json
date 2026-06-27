@@ -1,0 +1,15 @@
+{
+  "active_binding_generation": 1,
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:e51359a9edb0cf3d64d6d2954a0d70785bf35a2a00c2e5c1100bf5ef3db9bbda",
+  "knowledge_access_binding_digest": "sha256:a6837564627784861348c314666da818ebe6a6d97281b3a07f30cf1c9d654845",
+  "knowledge_projection_digest": "sha256:89f2cad11b8abfa7fa3b6ca05e729608e2c0a93f196903896eec078a3e0a022d",
+  "limitation": null,
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "resolution_source": "active_binding",
+  "schema_version": "release_bundle_resolution.v1",
+  "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "skill_digest": "sha256:cd7654b5f6fa179fe15584134fbdc566823820894616c0e52e9c4246dd5ee54e",
+  "skill_family": "repo-dependency-use-triage",
+  "state_dir": ".tmp\\repo-level-specific-bundle-state"
+}

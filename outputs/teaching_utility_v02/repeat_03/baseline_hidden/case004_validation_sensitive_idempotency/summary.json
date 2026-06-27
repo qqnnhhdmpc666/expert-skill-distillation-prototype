@@ -1,0 +1,50 @@
+{
+  "case_id": "case004_validation_sensitive_idempotency",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\seed_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R002",
+        "issue": "Request fields lack documentation for required/optional status, types, ranges, length limits, or enum values",
+        "severity": "high",
+        "evidence": "\"The request does not document required fields, types, ranges, length limits, or enum values.\""
+      },
+      {
+        "rule_id": "R003",
+        "issue": "Error code list missing `404 Not Found` despite documented requirement to cover not found",
+        "severity": "medium",
+        "evidence": "\"Error Codes:\\n- `0`: success\\n- `400`: validation error\\n- `401`: unauthorized\\n- `403`: forbidden\\n- `409`: duplicate request\\n- `500`: server error\""
+      },
+      {
+        "rule_id": "R004",
+        "issue": "Response exposes sensitive data: access_token and internal_trace (stack trace)",
+        "severity": "high",
+        "evidence": "\"\\\"access_token\\\": \\\"debug-token\\\",\\\"internal_trace\\\": \\\"svc.customer.ProfileUpdater:line87\\\""
+      }
+    ],
+    "summary": "Three violations found: missing input validation docs, incomplete error code coverage (no 404), and sensitive data exposure in response.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.6667,
+    "score": 0.4667,
+    "missing_rule_ids": [
+      "R006"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [
+      "R003"
+    ],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\baseline_hidden\\case004_validation_sensitive_idempotency"
+}

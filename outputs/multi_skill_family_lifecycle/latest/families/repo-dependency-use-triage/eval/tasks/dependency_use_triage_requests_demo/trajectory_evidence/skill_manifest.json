@@ -1,0 +1,7 @@
+{
+  "condition_id": "C5_active_runtime",
+  "schema_version": "skill_injection_manifest.v1",
+  "skill_digest": "sha256:cd7654b5f6fa179fe15584134fbdc566823820894616c0e52e9c4246dd5ee54e",
+  "skill_enabled": true,
+  "skill_id": "dependency_use_triage_skill"
+}

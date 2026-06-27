@@ -1,0 +1,62 @@
+{
+  "baseline_bundle_digest": "sha256:76c52d01c3128cbbd33b58b9fab6e2dd38931a663c5b28ff6f26670a0c0d1fd0",
+  "baseline_failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "baseline_pass_count": 1,
+  "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D2_skill_overgeneralized_rule",
+  "defect_id": "D2_skill_overgeneralized_rule",
+  "digest_changed": true,
+  "expected_attribution_matched": true,
+  "failure_attribution_types": [
+    "skill_overgeneralized_rule"
+  ],
+  "policy_diff": {
+    "baseline": {
+      "candidate_path_overrides": {},
+      "decision_policy": {
+        "version_range_comparison_required": false
+      },
+      "knowledge_projection_policy": {},
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "candidate_path_overrides_changed": false,
+    "decision_policy_changed": true,
+    "knowledge_projection_policy_changed": false,
+    "required_evidence_added": [],
+    "required_evidence_removed": [],
+    "revised": {
+      "candidate_path_overrides": {},
+      "decision_policy": {
+        "version_range_comparison_required": true
+      },
+      "knowledge_projection_policy": {},
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "schema_version": "bundle_policy_diff.v1"
+  },
+  "promotion_decision": "promote",
+  "repair_type": "rule_generalization",
+  "revised_bundle_digest": "sha256:25ae1aae6af93ca15786948d65d81270ffa3eb693c19a8b0903e61ab45491a2c",
+  "revised_pass_count": 4,
+  "revision_targets": [
+    "skill_rule",
+    "runtime_policy"
+  ],
+  "schema_version": "distillation_v1_case_result.v1",
+  "seeded_counterexample_pass": true
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Findings for case003_auth_error_envelope\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R001\",\n      \"issue\": \"Authorization boundary not defined: endpoint says 'login required' but does not specify roles, scopes, or authorization failure behavior.\",\n      \"severity\": \"high\",\n      \"evidence\": \"The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior.\"\n    },\n    {\n      \"rule_id\": \"R003\",\n      \"issue\": \"Insufficient error code coverage: only success (0) and server error (500) provided; missing validation, unauthorized, forbidden, not found, duplicate errors.\",\n      \"severity\": \"high\",\n      \"evidence\": \"Error Codes: - `0`: success - `500`: server error\"\n    },\n    {\n      \"rule_id\": \"R005\",\n      \"issue\": \"Response envelope missing request_id: required by response envelope contract.\",\n      \"severity\": \"high\",\n      \"evidence\": \"\\\"code\\\": 0, \\\"message\\\": \\\"ok\\\", \\\"data\\\": {...}\"\n    }\n  ],\n  \"summary\": \"Thr",
+    "usage": {
+      "prompt_tokens": 1800,
+      "completion_tokens": 727,
+      "total_tokens": 2527,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 442
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 136
+    },
+    "latency_ms": 6763
+  }
+]

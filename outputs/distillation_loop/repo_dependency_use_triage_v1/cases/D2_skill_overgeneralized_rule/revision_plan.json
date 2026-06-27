@@ -1,0 +1,34 @@
+{
+  "applies_to_task_family": "dependency_use_triage",
+  "candidate_path_overrides_after_revision": {},
+  "decision_policy_after_revision": {
+    "version_range_comparison_required": true
+  },
+  "knowledge_projection_policy_after_revision": {},
+  "modifies": {
+    "evidence_binding_plan": false,
+    "knowledge_access_binding": false,
+    "runtime_policy": true,
+    "skill_rule": true
+  },
+  "patched_task_answers": [],
+  "repair_type": "rule_generalization",
+  "required_evidence_after_revision": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "revision_targets": [
+    "skill_rule",
+    "runtime_policy"
+  ],
+  "rule_added": "Before deciding dependency_used_and_affected, the runtime must require:\n1. dependency declaration evidence\n2. resolved version evidence\n3. import/use-site evidence\n4. advisory affected range evidence\n5. decision evidence\n\nIf import/use evidence is missing, the decision must be dependency_present_not_used or unresolved, never dependency_used_and_affected.",
+  "schema_version": "distillation_revision_plan.v1",
+  "scope_guard": "The rule applies to every dependency_use_triage task and does not mention a concrete task id.",
+  "source_failure_types": [
+    "skill_overgeneralized_rule"
+  ],
+  "task_specific_patch": false
+}

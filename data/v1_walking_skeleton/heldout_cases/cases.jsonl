@@ -1,0 +1,1 @@
+{"case_id":"heldout-marker","advisory_id":"PYSEC-2018-28","requirement":"requests==2.19.0; python_version < '3.0'","split":"heldout","verifier_only":true}

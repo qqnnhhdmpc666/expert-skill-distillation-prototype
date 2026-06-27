@@ -1,33 +1,73 @@
 # Academic Claim Readiness Assessment
 
-Generated at: `2026-06-12T18:23:48.294011+00:00`
+Generated at: `2026-06-13T16:10:00+00:00`
 
-Overall academic claim readiness: `strong_candidate_with_external_gap`
+Overall academic claim readiness: `moderate_high_with_caveat`
 
-## Caveat
+## Why this is stronger than before
 
-The readiness rating is capped by explicit gaps. `strong_candidate_with_external_gap` is allowed only if live LLM validation passes and a live-feedback candidate earns a staged promotion proposal; it still is not an official external benchmark claim. `moderate_high_with_caveat` is used when local bounded evidence is strong but live/evolution/external gaps remain.
+The project is no longer just a controlled runtime prototype. It now has two bounded lines that point directly at the core thesis:
 
-## Supported Claims
+- bounded public-material automatic distillation into an installable Skill
+- bounded evidence-grounded Skill evolution with live-semantic candidate generation and repeated validation
+
+## What is now supportable
 
 - Prototype-level Evidence-Grounded Skill Evolution Runtime.
-- Controlled installed multi-capability secure_code_review validation.
-- Local defensive representative mini-suite evidence with holdout and rerun checks.
-- Non-oracle local semantic execution and effectiveness evidence are reported separately.
-- Live LLM execution and effectiveness evidence are reported separately when configured.
-- QGSE-Pareto/marginal utility/task-conditioned activation/rejected-buffer mechanism as a coherent promotion-control story.
-- Candidate generation and safety-gate rejection evidence are supported; candidate improvement is supported only if a candidate is promoted with evidence.
+- Installed Skill runtime with real install / execute / compare / evidence / reject / rollback paths.
+- Bounded public-material automatic distillation through a hybrid-semantic path with explicit fallback provenance.
+- Bounded evolution improvement on top of that distilled Skill.
+- A stronger repeatability line for one frozen evolved candidate:
+  - `4 / 5` strict promotion proposals
+  - positive mean paired delta `+0.0333`
+  - no false-positive increase across that frozen-candidate validation run
+- Honest preservation of a negative teaching-utility result.
 
-## Still Unsupported
+## What is supported but still bounded
 
-- Production vulnerability scanning.
-- Official external security benchmark performance.
-- SWE-bench software patch effectiveness while official harness remains infra-blocked.
-- Broad real-world security validity.
-- Strong external benchmark readiness while SWE-bench remains infra-blocked.
+### `open_world_distillation`
 
-## Highest-Value Next Evidence
+Supported only on the current bounded public-material slice.
 
-- Resolve SWE-bench official harness infrastructure for gold-patch smoke.
-- Add independent third-party case authoring or external defensive benchmark subset.
-- Run live LLM validation when model/API environment is available.
+Most honest reading:
+
+- a fresh run exceeded the baseline (`8 / 10` vs `7 / 10`)
+- a later fresh rerun matched the baseline (`8 / 10` vs `8 / 10`)
+
+So the claim is:
+
+> bounded automatic distillation from public materials is supported,
+> but stable strict superiority over the installed baseline is not yet universal.
+
+### `stable_evolution_improvement`
+
+Supported only on the current bounded hybrid-semantic closed-loop slice.
+
+Most honest reading:
+
+- one fresh generated-candidate run achieved `3 / 3`
+- one frozen-candidate repeatability run achieved `4 / 5`
+- mean gain stayed positive
+- one repeat still regressed slightly
+
+So the claim is:
+
+> bounded evolution improvement is demonstrated,
+> and repeatability is meaningfully stronger than before,
+> but universal strict repeat-by-repeat stability is not yet established.
+
+## Why the rating is not higher
+
+The current evidence is still bounded and local:
+
+- no official external security benchmark result
+- no official SWE-bench success
+- no broad real-world security validity claim
+- no broad stable candidate-improvement story across multiple independent failure families
+
+## Highest-value next evidence
+
+1. Add a second independent open-world failure family with a frozen candidate that also shows positive repeated gain.
+2. Keep public-material distillation bounded but expand the number of independently authored materials and failure families.
+3. Resolve official external harness infrastructure or add one official benchmark result.
+4. Strengthen clean-clone public release reproducibility.

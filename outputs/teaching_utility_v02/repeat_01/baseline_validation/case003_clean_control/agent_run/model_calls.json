@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"No config security violations found\",\n  \"path\": null,\n  \"findings\": [],\n  \"summary\": \"Clean control: all domain rules passed.\"\n}",
+    "usage": {
+      "prompt_tokens": 1667,
+      "completion_tokens": 219,
+      "total_tokens": 1886,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 172
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 3
+    },
+    "latency_ms": 2758
+  }
+]

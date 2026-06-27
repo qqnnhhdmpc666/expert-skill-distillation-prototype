@@ -1,0 +1,7 @@
+{
+  "action": "finish",
+  "note": "No config security violations found",
+  "path": null,
+  "findings": [],
+  "summary": "Clean control: all domain rules passed."
+}

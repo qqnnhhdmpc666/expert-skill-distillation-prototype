@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Found hardcoded API key in config\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in configuration file\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"config.md / api_key\"\n    }\n  ],\n  \"summary\": \"One security finding: hardcoded API key (C001). No other violations detected.\"\n}",
+    "usage": {
+      "prompt_tokens": 1733,
+      "completion_tokens": 833,
+      "total_tokens": 2566,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 714
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 69
+    },
+    "latency_ms": 8137
+  }
+]

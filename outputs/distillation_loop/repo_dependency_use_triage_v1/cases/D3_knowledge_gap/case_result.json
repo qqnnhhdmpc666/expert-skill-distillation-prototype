@@ -1,0 +1,65 @@
+{
+  "baseline_bundle_digest": "sha256:f1995e2b77b431ad1e388c4a815c1f4fe2aa7b1e8e25bf145315feec54344c84",
+  "baseline_failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_declared_not_used",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "baseline_pass_count": 0,
+  "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D3_knowledge_gap",
+  "defect_id": "D3_knowledge_gap",
+  "digest_changed": true,
+  "expected_attribution_matched": true,
+  "failure_attribution_types": [
+    "knowledge_gap"
+  ],
+  "policy_diff": {
+    "baseline": {
+      "candidate_path_overrides": {},
+      "decision_policy": {},
+      "knowledge_projection_policy": {
+        "allowed_advisory_fields": []
+      },
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "candidate_path_overrides_changed": false,
+    "decision_policy_changed": false,
+    "knowledge_projection_policy_changed": true,
+    "required_evidence_added": [],
+    "required_evidence_removed": [],
+    "revised": {
+      "candidate_path_overrides": {},
+      "decision_policy": {},
+      "knowledge_projection_policy": {
+        "allowed_advisory_fields": [
+          "affected_ranges"
+        ]
+      },
+      "required_evidence": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ]
+    },
+    "schema_version": "bundle_policy_diff.v1"
+  },
+  "promotion_decision": "promote",
+  "repair_type": "knowledge_projection_repair",
+  "revised_bundle_digest": "sha256:72d3a84fe7f834225ddebcb67ea1a1059f50ba1f15adc9196d87b110b2c64abc",
+  "revised_pass_count": 4,
+  "revision_targets": [
+    "knowledge_projection",
+    "knowledge_access_binding"
+  ],
+  "schema_version": "distillation_v1_case_result.v1",
+  "seeded_counterexample_pass": true
+}

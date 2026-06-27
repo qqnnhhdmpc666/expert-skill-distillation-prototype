@@ -1,0 +1,8 @@
+{
+  "case_id": "PYSEC-2018-28__fixed_boundary",
+  "advisory_id": "PYSEC-2018-28",
+  "package": "requests",
+  "version": "2.20.0",
+  "ecosystem_range": {"introduced": "0", "fixed": "2.20.0"},
+  "source_record_digest": "sha256:9e797ddf6daa453869b8d270676615145579f3bf5115e67dc5e69052974e034b"
+}

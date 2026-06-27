@@ -1,0 +1,7 @@
+{
+  "action": "finish",
+  "note": "Completed review of case005",
+  "findings": [
+    {
+      "rule_id": "R005",
+      "issue": "

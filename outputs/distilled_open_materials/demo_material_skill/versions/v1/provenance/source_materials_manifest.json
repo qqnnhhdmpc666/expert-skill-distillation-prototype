@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "source_id": "upload_guidance_demo",
+      "title": "Upload review guidance",
+      "task_family": "upload_security",
+      "source_url": null,
+      "source_path": null,
+      "selected_capabilities": [
+        "UPLOAD_TYPE_MAGIC",
+        "UPLOAD_PATH_ISOLATION",
+        "UPLOAD_AUDIT_RETENTION"
+      ],
+      "material_preview": "Validate file type with signature or magic-byte checks, do not trust extension alone, store uploads outside the web root, and keep attributable audit logs for upload actions.",
+      "metadata": {
+        "resolved_source": "inline_text"
+      }
+    },
+    {
+      "source_id": "auth_guidance_demo",
+      "title": "Authorization review guidance",
+      "task_family": "auth_access_control",
+      "source_url": null,
+      "source_path": null,
+      "selected_capabilities": [
+        "AUTH_SCOPE_MATRIX",
+        "AUTH_OBJECT_OWNERSHIP"
+      ],
+      "material_preview": "Enforce authorization on every protected request, bind objects to owner or tenant scope, and avoid denial responses that leak object identifiers or sensitive debug detail.",
+      "metadata": {
+        "resolved_source": "inline_text"
+      }
+    },
+    {
+      "source_id": "config_guidance_demo",
+      "title": "Configuration review guidance",
+      "task_family": "config_security",
+      "source_url": null,
+      "source_path": null,
+      "selected_capabilities": [
+        "CONFIG_AUDIT_EXPORT",
+        "CONFIG_ENV_GUARD"
+      ],
+      "material_preview": "Production-facing configuration should not include hardcoded secrets or dev/test assumptions, and audit exports should preserve enough detail for incident review.",
+      "metadata": {
+        "resolved_source": "inline_text"
+      }
+    }
+  ],
+  "source_count": 3,
+  "supported_task_families": [
+    "upload_security",
+    "auth_access_control",
+    "config_security"
+  ],
+  "distillation_scope": "bounded_open_materials"
+}

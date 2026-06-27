@@ -1,0 +1,62 @@
+{
+  "families": [
+    {
+      "allowed_claims": [
+        "deterministic_python_advisory_runtime",
+        "osv_snapshot_applicability",
+        "release_bundle_closure"
+      ],
+      "blocked_claims": [
+        "compiler_superiority",
+        "exploitability_or_reachability",
+        "general_vulnerability_discovery",
+        "mature_agenthost_effectiveness",
+        "official_public_benchmark_performance",
+        "production_scanner",
+        "production_scanner_readiness",
+        "vulnerability_discovery"
+      ],
+      "claim_strength": "partial",
+      "evidence_paths": [
+        "outputs\\multi_skill_family_lifecycle\\latest\\families\\python-advisory\\python_advisory_runtime_smoke.json",
+        "outputs\\multi_skill_family_lifecycle\\latest\\families\\python-advisory\\python_advisory_runtime_smoke.json"
+      ],
+      "skill_family": "python-advisory"
+    },
+    {
+      "allowed_claims": [
+        "deterministic_repo_level_harness",
+        "dependency_use_triage",
+        "traceable_public_excerpt",
+        "release_bundle_closure"
+      ],
+      "blocked_claims": [
+        "compiler_superiority",
+        "exploitability_or_reachability",
+        "general_vulnerability_discovery",
+        "mature_agenthost_effectiveness",
+        "official_public_benchmark_performance",
+        "production_scanner",
+        "production_scanner_readiness",
+        "vulnerability_discovery"
+      ],
+      "claim_strength": "deterministic_harness",
+      "evidence_paths": [
+        "outputs\\multi_skill_family_lifecycle\\latest\\families\\repo-dependency-use-triage\\build_result.json",
+        "outputs\\multi_skill_family_lifecycle\\latest\\families\\repo-dependency-use-triage\\eval\\run_summary.json",
+        "outputs\\multi_skill_family_lifecycle\\latest\\families\\repo-dependency-use-triage\\eval\\run_summary.json",
+        "outputs\\multi_skill_family_lifecycle\\latest\\families\\repo-dependency-use-triage\\eval\\aggregate_report.json"
+      ],
+      "skill_family": "repo-dependency-use-triage"
+    }
+  ],
+  "global_blocked_claims": [
+    "compiler_superiority",
+    "mature_agenthost_effectiveness",
+    "general_vulnerability_discovery",
+    "production_scanner_readiness",
+    "official_public_benchmark_performance",
+    "exploitability_or_reachability"
+  ],
+  "schema_version": "claim_boundary_matrix.v1"
+}

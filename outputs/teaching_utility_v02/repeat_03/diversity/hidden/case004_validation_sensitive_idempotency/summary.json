@@ -1,0 +1,41 @@
+{
+  "case_id": "case004_validation_sensitive_idempotency",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R002",
+        "issue": "Missing request field validation documentation",
+        "severity": "high",
+        "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+      },
+      {
+        "rule_id": "R004",
+        "issue": "Sensitive data exposed in response: access token and internal trace",
+        "severity": "high",
+        "evidence": "Response includes \"access_token\": \"debug-token\" and \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+      }
+    ],
+    "summary": "Two violations: missing request validation constraints (R002) and exposure of sensitive data (R004). Authentication, error codes, and response envelope conform.",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": false,
+    "coverage": 0.6667,
+    "score": 0.6667,
+    "missing_rule_ids": [
+      "R006"
+    ],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R002",
+      "R004"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\diversity\\hidden\\case004_validation_sensitive_idempotency"
+}

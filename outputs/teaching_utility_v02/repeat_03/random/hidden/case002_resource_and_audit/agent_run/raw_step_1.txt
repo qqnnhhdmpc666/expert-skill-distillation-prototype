@@ -1,0 +1,14 @@
+{
+  "action": "finish",
+  "note": "Config review complete, one finding for C005",
+  "findings": [
+    {
+      "rule_id": "C005",
+      "issue": "Runtime resource limits are not defined for deployed service",
+      "severity": "medium",
+      "evidence": "resources:\n  limits:",
+      "config_path": "resources.limits"
+    }
+  ],
+  "summary": "Found missing resource limits in production config."
+}

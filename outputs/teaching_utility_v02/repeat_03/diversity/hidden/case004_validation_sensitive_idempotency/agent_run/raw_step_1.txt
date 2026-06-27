@@ -1,0 +1,19 @@
+{
+  "action": "finish",
+  "note": "Case review complete; found two rule violations",
+  "findings": [
+    {
+      "rule_id": "R002",
+      "issue": "Missing request field validation documentation",
+      "severity": "high",
+      "evidence": "The request does not document required fields, types, ranges, length limits, or enum values."
+    },
+    {
+      "rule_id": "R004",
+      "issue": "Sensitive data exposed in response: access token and internal trace",
+      "severity": "high",
+      "evidence": "Response includes \"access_token\": \"debug-token\" and \"internal_trace\": \"svc.customer.ProfileUpdater:line87\""
+    }
+  ],
+  "summary": "Two violations: missing request validation constraints (R002) and exposure of sensitive data (R004). Authentication, error codes, and response envelope conform."
+}

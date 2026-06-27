@@ -1,0 +1,15 @@
+{
+  "action": "finish",
+  "note": "Return findings based on visible config.md",
+  "path": null,
+  "findings": [
+    {
+      "rule_id": "C005",
+      "issue": "Resource limits not defined for production service",
+      "severity": "medium",
+      "evidence": "resources:\n  limits:\n",
+      "config_path": "resources.limits"
+    }
+  ],
+  "summary": "Found missing runtime resource limits."
+}

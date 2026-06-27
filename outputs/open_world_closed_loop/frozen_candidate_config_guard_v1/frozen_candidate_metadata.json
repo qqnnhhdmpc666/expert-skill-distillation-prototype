@@ -1,0 +1,28 @@
+{
+  "source": "reconstructed_from_successful_live_semantic_run_20260613T154203Z",
+  "base_skill_id": "secure_code_review_open_world_hybrid_distilled",
+  "base_version": "v1",
+  "edits": [
+    {
+      "capability_id": "CONFIG_AUDIT_EXPORT",
+      "replacement_review_rule": "Report this when a production-relevant configuration has audit logging enabled but missing required retention_days or export_sink. Do not flag development-only configurations.",
+      "replacement_evidence_pattern": "audit.enabled=true but retention_days or export_sink missing in production config",
+      "replacement_fix_shape": "Ensure production audit config includes both retention_days and export_sink.",
+      "additional_lessons": [
+        "Production audit trails must define retention and export destinations to be effective for incident response."
+      ]
+    },
+    {
+      "capability_id": "CONFIG_ENV_GUARD",
+      "replacement_review_rule": "Report this when a configuration file contains hardcoded secrets (e.g., API keys, tokens, passwords) that are not explicitly isolated to a dev-only, test-only, or non-production profile. Do not flag secrets that appear only under a clearly marked dev-only profile. Comments, file names, or debugging notes alone do not count as explicit isolation. Only an explicit dev-only profile or environment gate can suppress this finding.",
+      "replacement_evidence_pattern": "hardcoded secret (api_key, token, password) in config not under dev-only profile; comments or file naming without explicit gating still count as in-scope evidence",
+      "replacement_fix_shape": "Move hardcoded secrets to a secure vault or environment variables, or isolate them under a dev-only profile that is excluded from production builds Prefer local dev-only overrides or environment variables for non-production secrets.",
+      "additional_lessons": [
+        "Hardcoded secrets in configuration files are a security risk even in development configs unless explicitly isolated.",
+        "The same target span can justify both CONFIG_AUDIT_EXPORT and CONFIG_ENV_GUARD when audit gaps and unisolated secrets appear together."
+      ]
+    }
+  ],
+  "verifier_only_oracle_fields_read": false,
+  "purpose": "frozen repeatability validation of a previously successful open-world evolved candidate"
+}

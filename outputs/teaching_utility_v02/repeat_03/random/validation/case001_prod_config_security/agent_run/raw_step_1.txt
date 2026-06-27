@@ -1,0 +1,5 @@
+{
+  "action": "read_file",
+  "note": "reading config.md for evidence",
+  "path": "config.md"
+}

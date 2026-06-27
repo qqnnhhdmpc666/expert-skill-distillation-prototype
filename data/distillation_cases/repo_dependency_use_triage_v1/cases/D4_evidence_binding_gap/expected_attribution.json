@@ -1,0 +1,6 @@
+{
+  "schema_version": "expected_attribution.v1",
+  "failure_type": "evidence_binding_gap",
+  "repair_target": "evidence_binding_plan",
+  "violated_policy": "import_use_site_binding_requires_source_candidates"
+}

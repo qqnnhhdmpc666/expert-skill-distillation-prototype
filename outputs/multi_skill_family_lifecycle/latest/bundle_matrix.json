@@ -1,0 +1,77 @@
+{
+  "boundary_notes": [
+    {
+      "check": "repo_bundle_digest_differs_from_python_advisory",
+      "status": "pass"
+    },
+    {
+      "check": "repo_family_contains_repo_evidence_requirements",
+      "status": "pass"
+    },
+    {
+      "check": "python_advisory_not_masquerading_as_repo_bundle",
+      "status": "pass"
+    },
+    {
+      "check": "active_binding_keys_are_family_specific",
+      "status": "pass"
+    }
+  ],
+  "digest_collisions": [],
+  "families": [
+    {
+      "binding_key": "python-advisory",
+      "bundle_digest": "sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4",
+      "bundle_manifest_skill_family": "python_advisory_applicability",
+      "evidence_requirements": [
+        "frozen_osv_advisory_and_affected_ranges",
+        "frozen_osv_advisory_and_affected_ranges",
+        "frozen_osv_advisory_and_affected_ranges",
+        "frozen_osv_advisory_and_affected_ranges",
+        "frozen_osv_advisory_and_affected_ranges"
+      ],
+      "knowledge_projection_digest": "sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a",
+      "skill_family": "python-advisory"
+    },
+    {
+      "binding_key": "repo-dependency-use-triage",
+      "bundle_digest": "sha256:e51359a9edb0cf3d64d6d2954a0d70785bf35a2a00c2e5c1100bf5ef3db9bbda",
+      "bundle_manifest_skill_family": "repo-dependency-use-triage",
+      "evidence_requirements": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range",
+        "decision_evidence"
+      ],
+      "knowledge_projection_digest": "sha256:89f2cad11b8abfa7fa3b6ca05e729608e2c0a93f196903896eec078a3e0a022d",
+      "skill_family": "repo-dependency-use-triage"
+    }
+  ],
+  "family_specific_artifacts": [
+    {
+      "artifact_digests": [
+        "sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a",
+        "sha256:2df77abeb05c84d1fa104778fb8ce638e41f818bd0a2a6c84c7f659d7097a865",
+        "sha256:530646d8dd8486dc1896dde5192b3f267f0a2b500342c34b86f8124e716047ca",
+        "sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045",
+        "sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4",
+        "sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb"
+      ],
+      "skill_family": "python-advisory"
+    },
+    {
+      "artifact_digests": [
+        "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+        "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+        "sha256:89f2cad11b8abfa7fa3b6ca05e729608e2c0a93f196903896eec078a3e0a022d",
+        "sha256:a6837564627784861348c314666da818ebe6a6d97281b3a07f30cf1c9d654845",
+        "sha256:cd7654b5f6fa179fe15584134fbdc566823820894616c0e52e9c4246dd5ee54e",
+        "sha256:e51359a9edb0cf3d64d6d2954a0d70785bf35a2a00c2e5c1100bf5ef3db9bbda"
+      ],
+      "skill_family": "repo-dependency-use-triage"
+    }
+  ],
+  "schema_version": "cross_family_bundle_matrix.v1",
+  "shared_artifacts": []
+}

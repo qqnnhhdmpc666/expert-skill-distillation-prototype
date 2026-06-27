@@ -1,0 +1,1 @@
+{"action":"read_file","note":"Read config.md to check security rules","path":"config.md"}

@@ -1,0 +1,20 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Case review complete; found two rule violations\",\n  \"findings\": [\n    {\n      \"rule_id\": \"R002\",\n      \"issue\": \"Missing request field validation documentation\",\n      \"severity\": \"high\",\n      \"evidence\": \"The request does not document required fields, types, ranges, length limits, or enum values.\"\n    },\n    {\n      \"rule_id\": \"R004\",\n      \"issue\": \"Sensitive data exposed in response: access token and internal trace\",\n      \"severity\": \"high\",\n      \"evidence\": \"Response includes \\\"access_token\\\": \\\"debug-token\\\" and \\\"internal_trace\\\": \\\"svc.customer.ProfileUpdater:line87\\\"\"\n    }\n  ],\n  \"summary\": \"Two violations: missing request validation constraints (R002) and exposure of sensitive data (R004). Authentication, error codes, and response envelope conform.\"\n}",
+    "usage": {
+      "prompt_tokens": 1887,
+      "completion_tokens": 734,
+      "total_tokens": 2621,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 535
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 95
+    },
+    "latency_ms": 6762
+  }
+]

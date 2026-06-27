@@ -1,0 +1,46 @@
+{
+  "case_id": "case003_auth_error_envelope",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R001",
+        "issue": "Missing authorization boundary: endpoint says 'login required' but does not define roles, scopes, or authorization failure behavior",
+        "severity": "high",
+        "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+      },
+      {
+        "rule_id": "R003",
+        "issue": "Incomplete error code coverage: only success (0) and server error (500) are defined; missing validation, unauthorized, forbidden, not found, and duplicate codes",
+        "severity": "medium",
+        "evidence": "Error Codes: - `0`: success - `500`: server error"
+      },
+      {
+        "rule_id": "R005",
+        "issue": "Response envelope missing request_id field; envelope should include code, message, request_id, and data",
+        "severity": "medium",
+        "evidence": "Response example: { \"code\": 0, \"message\": \"ok\", \"data\": { ... } } — missing request_id"
+      }
+    ],
+    "summary": "Three R-level issues found: missing authorization boundary, incomplete error codes, and missing request_id in envelope",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": true,
+    "coverage": 1.0,
+    "score": 1.0,
+    "missing_rule_ids": [],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R001",
+      "R003",
+      "R005"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_03\\active_discriminative_evidence\\validation\\case003_auth_error_envelope"
+}

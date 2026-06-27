@@ -1,0 +1,116 @@
+{
+  "evidence_refs": [
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:47b183014d9a38bf09da2f0be9df6997489cbd37228df988fceffebeb4d13faf",
+      "evidence_type": "dependency_declaration",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": 21,
+      "line_start": 21,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:da468ba57f39c4f444d471c2aad1469166a55d96d8f04192c800d1de2ac09e2b",
+      "evidence_type": "resolved_version",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": 21,
+      "line_start": 21,
+      "path": "requirements.txt"
+    },
+    {
+      "evidence_id": "sha256:d245cc775c6c775ee4ce276b5f0856bbe73faadbdd8dc4db911481cbbbfc962b",
+      "evidence_type": "advisory_affected_range",
+      "excerpt": "{\"fixed\": \"2.20.0\", \"introduced\": \"0\"}",
+      "file_digest": null,
+      "line_end": null,
+      "line_start": null,
+      "path": "allowed_knowledge.json",
+      "source_id": "PYSEC-2018-28"
+    },
+    {
+      "evidence_id": "sha256:173bf70eb310b3d02a2d46074b72ac895f020f36b93dc1e607dddd71bb7c658f",
+      "evidence_type": "decision_evidence",
+      "excerpt": "decision=dependency_used_and_affected; required=dependency_declaration,resolved_version,advisory_affected_range,decision_evidence",
+      "file_digest": null,
+      "line_end": null,
+      "line_start": null,
+      "path": "derived"
+    }
+  ],
+  "failure_category": "evidence_error",
+  "knowledge_queries": 1,
+  "knowledge_used": false,
+  "prediction": {
+    "advisory_id": "PYSEC-2018-28",
+    "decision": "dependency_used_and_affected",
+    "declared_version": "2.19.1",
+    "evidence": [
+      {
+        "attributes": {
+          "package": "requests",
+          "version": "2.19.1"
+        },
+        "evidence_id": "sha256:47b183014d9a38bf09da2f0be9df6997489cbd37228df988fceffebeb4d13faf",
+        "evidence_type": "dependency_declaration",
+        "excerpt": "requests==2.19.1",
+        "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+        "line_end": 21,
+        "line_start": 21,
+        "path": "requirements.txt"
+      },
+      {
+        "attributes": {
+          "package": "requests",
+          "version": "2.19.1"
+        },
+        "evidence_id": "sha256:da468ba57f39c4f444d471c2aad1469166a55d96d8f04192c800d1de2ac09e2b",
+        "evidence_type": "resolved_version",
+        "excerpt": "requests==2.19.1",
+        "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+        "line_end": 21,
+        "line_start": 21,
+        "path": "requirements.txt"
+      },
+      {
+        "evidence_id": "sha256:d245cc775c6c775ee4ce276b5f0856bbe73faadbdd8dc4db911481cbbbfc962b",
+        "evidence_type": "advisory_affected_range",
+        "excerpt": "{\"fixed\": \"2.20.0\", \"introduced\": \"0\"}",
+        "file_digest": null,
+        "line_end": null,
+        "line_start": null,
+        "path": "allowed_knowledge.json",
+        "source_id": "PYSEC-2018-28"
+      },
+      {
+        "evidence_id": "sha256:173bf70eb310b3d02a2d46074b72ac895f020f36b93dc1e607dddd71bb7c658f",
+        "evidence_type": "decision_evidence",
+        "excerpt": "decision=dependency_used_and_affected; required=dependency_declaration,resolved_version,advisory_affected_range,decision_evidence",
+        "file_digest": null,
+        "line_end": null,
+        "line_start": null,
+        "path": "derived"
+      }
+    ],
+    "package": "requests",
+    "reason_codes": [
+      "VERSION_IN_AFFECTED_RANGE",
+      "IMPORT_USE_NOT_REQUIRED_BY_POLICY"
+    ],
+    "schema_version": "repo_security_prediction.v1",
+    "task_id": "dependency_use_triage_the_gan_zoo_public",
+    "task_type": "dependency_use_triage"
+  },
+  "schema_version": "trajectory_outcome.v1",
+  "skill_used": false,
+  "task_id": "dependency_use_triage_the_gan_zoo_public",
+  "verifier_pass": false
+}

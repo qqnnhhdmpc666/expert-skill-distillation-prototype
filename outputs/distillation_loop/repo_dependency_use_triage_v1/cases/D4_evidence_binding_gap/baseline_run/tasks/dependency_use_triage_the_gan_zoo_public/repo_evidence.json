@@ -1,0 +1,61 @@
+{
+  "evidence": [
+    {
+      "attributes": {},
+      "evidence_id": "sha256:31b0eea34de4b4a35088832ba5f9647235b3656ebcf04feb65b8053647cb861c",
+      "evidence_type": "repo_file_digest",
+      "excerpt": "sha256:5a2f49a84e901f7bd8b4263932eb36eadb887a1b9f5e80c656b8030fe595e257",
+      "file_digest": "sha256:5a2f49a84e901f7bd8b4263932eb36eadb887a1b9f5e80c656b8030fe595e257",
+      "line_end": null,
+      "line_start": null,
+      "path": "LICENSE"
+    },
+    {
+      "attributes": {},
+      "evidence_id": "sha256:076a34e2d17d80628e054cc9694d7bbde326ed7461e6a04871b56cb05a17ac8b",
+      "evidence_type": "repo_file_digest",
+      "excerpt": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": null,
+      "line_start": null,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:47b183014d9a38bf09da2f0be9df6997489cbd37228df988fceffebeb4d13faf",
+      "evidence_type": "dependency_declaration",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": 21,
+      "line_start": 21,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:da468ba57f39c4f444d471c2aad1469166a55d96d8f04192c800d1de2ac09e2b",
+      "evidence_type": "resolved_version",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": 21,
+      "line_start": 21,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {},
+      "evidence_id": "sha256:55b187238c5133ba0c397a59313d5a58963fc499bae01b889987cf6c8cf40f56",
+      "evidence_type": "repo_file_digest",
+      "excerpt": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+      "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+      "line_end": null,
+      "line_start": null,
+      "path": "update.py"
+    }
+  ],
+  "schema_version": "repo_evidence_collection.v1"
+}

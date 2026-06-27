@@ -1,0 +1,190 @@
+{
+  "bundle_digest": "sha256:c7206312e35fbae03be5e4c3ea90c6323e4421ba757b611b744af99b631adf8b",
+  "decision_policy": {
+    "version_range_comparison_required": true
+  },
+  "evidence_binding_plan": {
+    "binding_plan": [
+      {
+        "candidate_paths": [
+          "requirements.txt",
+          "pyproject.toml"
+        ],
+        "evidence_type": "dependency_declaration",
+        "required_for_decision": true,
+        "source_kind": "repo_file"
+      },
+      {
+        "candidate_paths": [
+          "requirements.txt",
+          "pyproject.toml"
+        ],
+        "evidence_type": "resolved_version",
+        "required_for_decision": true,
+        "source_kind": "repo_file"
+      },
+      {
+        "candidate_paths": [],
+        "evidence_type": "import_use_site",
+        "required_for_decision": true,
+        "source_kind": "repo_source"
+      },
+      {
+        "candidate_sources": [
+          "task_allowed_advisory_snapshot"
+        ],
+        "evidence_type": "advisory_affected_range",
+        "required_for_decision": true,
+        "source_kind": "allowed_knowledge"
+      },
+      {
+        "depends_on": [
+          "dependency_declaration",
+          "resolved_version",
+          "import_use_site",
+          "advisory_affected_range"
+        ],
+        "evidence_type": "decision_evidence",
+        "required_for_decision": true,
+        "source_kind": "derived"
+      }
+    ],
+    "decision_evidence_requirements": [
+      "decision_evidence"
+    ],
+    "decision_policy": {
+      "version_range_comparison_required": true
+    },
+    "knowledge_evidence_requirements": [
+      "advisory_affected_range"
+    ],
+    "missing_evidence_policy": {
+      "policy": "abstain_or_fail_safe",
+      "reason_code": "REQUIRED_EVIDENCE_MISSING",
+      "runtime_decision": "unresolved"
+    },
+    "repo_evidence_requirements": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "repo_file_digest"
+    ],
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "schema_version": "evidence_binding_plan.v1",
+    "skill_requirements": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "task_type": "dependency_use_triage"
+  },
+  "knowledge_projection": {
+    "expert_evidence_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-task-contract",
+        "artifact_schema_version": "repo_level_task_contract.v1",
+        "digest": "sha256:f650571da8b053979e7ce656e7a5860a94e0fff7537b3e0dfa2014b8c1744a4e",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 662
+      },
+      {
+        "artifact_id": "repo-level-dependency-use-triage-knowledge-contract",
+        "artifact_schema_version": "repo_level_knowledge_contract.v1",
+        "digest": "sha256:001a9c295a50e073f8b84f5f4789b85dab4fa5132b93faa1e4b496d9449240c7",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 797
+      }
+    ],
+    "knowledge_ir_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-knowledge-ir",
+      "artifact_schema_version": "knowledge_ir.v1",
+      "digest": "sha256:71b2cc8945ff973612a6c2bfca887d7801ff503034117317ab2091067f0285fb",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 5692
+    },
+    "knowledge_projection_policy": {
+      "allowed_advisory_fields": [
+        "affected_ranges"
+      ]
+    },
+    "projection_id": "repo-level-dependency-use-triage-knowledge",
+    "query_contracts": [
+      {
+        "freshness_mode": "immutable_task_snapshot",
+        "on_unavailable": "block_or_abstain",
+        "query_type": "advisory_by_package",
+        "required_parameters": [
+          "package",
+          "advisory_id"
+        ]
+      },
+      {
+        "freshness_mode": "immutable_repo_snapshot",
+        "on_unavailable": "abstain_or_fail_safe",
+        "query_type": "repo_evidence_by_type",
+        "required_parameters": [
+          "evidence_type",
+          "repo_snapshot_ref"
+        ]
+      }
+    ],
+    "schema_version": "knowledge_projection.v1",
+    "source_node_ids": [
+      "repo-triage-skill-knowledge-boundary",
+      "repo-triage-required-evidence",
+      "repo-triage-knowledge-access"
+    ],
+    "structured_snapshot_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-task-contract",
+        "artifact_schema_version": "repo_level_task_contract.v1",
+        "digest": "sha256:f650571da8b053979e7ce656e7a5860a94e0fff7537b3e0dfa2014b8c1744a4e",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 662
+      },
+      {
+        "artifact_id": "repo-level-dependency-use-triage-knowledge-contract",
+        "artifact_schema_version": "repo_level_knowledge_contract.v1",
+        "digest": "sha256:001a9c295a50e073f8b84f5f4789b85dab4fa5132b93faa1e4b496d9449240c7",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 797
+      },
+      {
+        "artifact_id": "repo-level-dependency-use-triage-evidence-binding-plan",
+        "artifact_schema_version": "evidence_binding_plan.v1",
+        "digest": "sha256:189ffe272268114caa3ba85f48933677a2b5a82d1f3cbeac326f301a113252ab",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 1555
+      }
+    ]
+  },
+  "knowledge_projection_policy": {
+    "allowed_advisory_fields": [
+      "affected_ranges"
+    ]
+  },
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "schema_version": "bundle_runtime_policy.v1",
+  "skill_family": "repo-dependency-use-triage",
+  "variant": "D4_baseline_no_use_candidates"
+}

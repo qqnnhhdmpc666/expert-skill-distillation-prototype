@@ -1,0 +1,32 @@
+{
+  "case_id": "case005_response_contract_schema",
+  "domain": "api_review",
+  "skill_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\distilled_skill.md",
+  "returncode": 0,
+  "review": {
+    "findings": [
+      {
+        "rule_id": "R005",
+        "issue": "Response envelope missing code, message, request_id, data; uses status and payload instead",
+        "severity": "high",
+        "evidence": "Response:\n\n{\n  \"status\": \"ok\",\n  \"payload\": {\n    \"date\": \"2026-06-05\",\n    \"gross_amount\": 12000\n  }\n}"
+      }
+    ],
+    "summary": "Found 1 finding: response envelope contract violation",
+    "status": "completed"
+  },
+  "evaluation": {
+    "pass_at_1": true,
+    "coverage": 1.0,
+    "score": 1.0,
+    "missing_rule_ids": [],
+    "critical_missed_rule_ids": [],
+    "false_positive_rule_ids": [],
+    "format_errors": [],
+    "seen_rule_ids": [
+      "R005"
+    ],
+    "clean_control_pass": false
+  },
+  "artifact_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\teaching_utility_v02\\repeat_01\\top_reward_success_only\\validation\\case005_response_contract_schema"
+}

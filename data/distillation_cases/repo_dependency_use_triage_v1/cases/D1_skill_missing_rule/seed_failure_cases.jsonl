@@ -1,0 +1,1 @@
+{"seed_id":"D1_advisory_declaration_version_without_use_site","facts":{"dependency_declared":true,"resolved_version":"2.19.1","version_in_affected_range":true,"import_use_site_present":false},"unsafe_decision":"dependency_used_and_affected","expected_revised_decisions":["dependency_present_not_used","unresolved"],"violated_policy":"used_decision_requires_import_use_site"}

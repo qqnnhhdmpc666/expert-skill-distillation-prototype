@@ -1,0 +1,22 @@
+{
+  "schema_version": "v1_source_manifest.v1",
+  "captured_at": "2026-06-21T02:19:59.9206240+08:00",
+  "sources": [
+    {
+      "source_id": "osv-pysec-2018-28",
+      "path": "osv/PYSEC-2018-28.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-28",
+      "sha256": "e0cb062f86d9424ac76eff541097fa5aca18264031dbd35c9a34114dd4b43403",
+      "license": "source-specific; see OSV record database_specific.source",
+      "split": "build_and_runtime"
+    },
+    {
+      "source_id": "expert-python-advisory-review",
+      "path": "expert_spec/python_advisory_review.md",
+      "source_url": "locally-authored-v1-specification",
+      "license": "project-license",
+      "split": "build"
+    }
+  ],
+  "heldout_in_build_closure": false
+}

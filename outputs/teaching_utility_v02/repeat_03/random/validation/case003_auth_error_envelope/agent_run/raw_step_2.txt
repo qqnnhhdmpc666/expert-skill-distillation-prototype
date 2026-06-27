@@ -1,0 +1,25 @@
+{
+  "action": "finish",
+  "note": "Findings for case003_auth_error_envelope",
+  "findings": [
+    {
+      "rule_id": "R001",
+      "issue": "Authorization boundary not defined: endpoint says 'login required' but does not specify roles, scopes, or authorization failure behavior.",
+      "severity": "high",
+      "evidence": "The endpoint says 'login required'. It does not define roles, scopes, or authorization failure behavior."
+    },
+    {
+      "rule_id": "R003",
+      "issue": "Insufficient error code coverage: only success (0) and server error (500) provided; missing validation, unauthorized, forbidden, not found, duplicate errors.",
+      "severity": "high",
+      "evidence": "Error Codes: - `0`: success - `500`: server error"
+    },
+    {
+      "rule_id": "R005",
+      "issue": "Response envelope missing request_id: required by response envelope contract.",
+      "severity": "high",
+      "evidence": "\"code\": 0, \"message\": \"ok\", \"data\": {...}"
+    }
+  ],
+  "summary": "Three violations found: missing authorization boundary (R001), insufficient error codes (R003), and missing request_id in envelope (R005)."
+}

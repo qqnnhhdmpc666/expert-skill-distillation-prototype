@@ -1,0 +1,100 @@
+{
+  "skill_id": "secure_code_review_open_world_distilled",
+  "version": "v3_candidate_auth_scope",
+  "task_family": "multi_task_open_material_distilled",
+  "capabilities": [
+    "UPLOAD_TYPE_MAGIC",
+    "UPLOAD_PATH_ISOLATION",
+    "UPLOAD_AUDIT_RETENTION",
+    "AUTH_SCOPE_MATRIX",
+    "AUTH_OBJECT_OWNERSHIP",
+    "AUTH_ERROR_ENVELOPE",
+    "CONFIG_AUDIT_EXPORT",
+    "CONFIG_ENV_GUARD"
+  ],
+  "output_contract": [
+    "capability_id",
+    "evidence_span",
+    "recommended_fix"
+  ],
+  "trace_contract": [
+    "trajectory.jsonl",
+    "target_reads.json",
+    "skill_reads.json"
+  ],
+  "metadata": {
+    "package_role": "open_material_distilled_runtime",
+    "distillation_method": "keyword_projection_from_open_materials",
+    "supported_task_families": [
+      "upload_security",
+      "auth_access_control",
+      "config_security"
+    ],
+    "capability_groups": [
+      {
+        "name": "upload_security",
+        "task_families": [
+          "upload_security"
+        ],
+        "capabilities": [
+          "UPLOAD_TYPE_MAGIC",
+          "UPLOAD_PATH_ISOLATION",
+          "UPLOAD_AUDIT_RETENTION"
+        ],
+        "source_cases": [
+          "public_upload_material_001",
+          "public_upload_logging_material_001"
+        ]
+      },
+      {
+        "name": "auth_access_control",
+        "task_families": [
+          "auth_access_control"
+        ],
+        "capabilities": [
+          "AUTH_SCOPE_MATRIX",
+          "AUTH_OBJECT_OWNERSHIP",
+          "AUTH_ERROR_ENVELOPE"
+        ],
+        "source_cases": [
+          "public_auth_material_001"
+        ]
+      },
+      {
+        "name": "config_security",
+        "task_families": [
+          "config_security"
+        ],
+        "capabilities": [
+          "CONFIG_AUDIT_EXPORT",
+          "CONFIG_ENV_GUARD"
+        ],
+        "source_cases": [
+          "public_config_material_001"
+        ]
+      },
+      {
+        "name": "out_of_scope_guard",
+        "task_families": [],
+        "capabilities": [],
+        "source_cases": []
+      }
+    ],
+    "source_cases": [
+      "public_upload_material_001",
+      "public_upload_logging_material_001",
+      "public_auth_material_001",
+      "public_config_material_001"
+    ],
+    "out_of_scope_group": "out_of_scope_guard",
+    "distillation_provenance_dir": "provenance",
+    "open_world_closed_loop": true,
+    "candidate_generation_sources": [
+      "open-world failure feedback",
+      "public-material distilled skill text",
+      "verifier feedback",
+      "evidence summary"
+    ],
+    "verifier_only_oracle_fields_read": false
+  }
+}

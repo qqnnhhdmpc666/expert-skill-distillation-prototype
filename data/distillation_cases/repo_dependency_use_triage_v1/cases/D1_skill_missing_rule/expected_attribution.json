@@ -1,0 +1,6 @@
+{
+  "schema_version": "expected_attribution.v1",
+  "failure_type": "skill_missing_rule",
+  "repair_target": "skill_rule",
+  "violated_policy": "used_decision_requires_import_use_site"
+}

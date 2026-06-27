@@ -1,0 +1,7 @@
+{
+  "action": "finish",
+  "note": "Found three violations: request validation missing, error code missing 404, sensitive data exposed",
+  "findings": [
+    {
+      "rule_id": "R002",
+      "issue": "Request fields lack documentation of required status, types, ranges, length limits,

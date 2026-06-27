@@ -1,0 +1,38 @@
+[
+  {
+    "step_index": 1,
+    "raw_preview": "{\"action\":\"read_file\",\"note\":\"Read config.md to inspect for violations\",\"path\":\"config.md\"}",
+    "usage": {
+      "prompt_tokens": 1733,
+      "completion_tokens": 458,
+      "total_tokens": 2191,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 436
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 69
+    },
+    "latency_ms": 4503
+  },
+  {
+    "step_index": 2,
+    "raw_preview": "{\n  \"action\": \"finish\",\n  \"note\": \"Found C001 hardcoded secret in config.md\",\n  \"findings\": [\n    {\n      \"rule_id\": \"C001\",\n      \"issue\": \"Hardcoded API key in configuration file\",\n      \"severity\": \"high\",\n      \"evidence\": \"api_key: \\\"plain-text-demo-key\\\"\",\n      \"config_path\": \"config.api_key\"\n    }\n  ],\n  \"summary\": \"Single high-severity finding: plain-text API key violates C001. Other rules (C002, C003, C004, C006) are satisfied by the visible config.\"\n}",
+    "usage": {
+      "prompt_tokens": 1867,
+      "completion_tokens": 343,
+      "total_tokens": 2210,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 205
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 203
+    },
+    "latency_ms": 3985
+  }
+]
