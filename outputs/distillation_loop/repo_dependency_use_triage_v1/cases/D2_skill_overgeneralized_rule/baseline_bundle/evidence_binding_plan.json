@@ -1,0 +1,85 @@
+{
+  "binding_plan": [
+    {
+      "candidate_paths": [
+        "requirements.txt",
+        "pyproject.toml"
+      ],
+      "evidence_type": "dependency_declaration",
+      "required_for_decision": true,
+      "source_kind": "repo_file"
+    },
+    {
+      "candidate_paths": [
+        "requirements.txt",
+        "pyproject.toml"
+      ],
+      "evidence_type": "resolved_version",
+      "required_for_decision": true,
+      "source_kind": "repo_file"
+    },
+    {
+      "candidate_paths": [
+        "*.py"
+      ],
+      "evidence_type": "import_use_site",
+      "required_for_decision": true,
+      "source_kind": "repo_source"
+    },
+    {
+      "candidate_sources": [
+        "task_allowed_advisory_snapshot"
+      ],
+      "evidence_type": "advisory_affected_range",
+      "required_for_decision": true,
+      "source_kind": "allowed_knowledge"
+    },
+    {
+      "depends_on": [
+        "dependency_declaration",
+        "resolved_version",
+        "import_use_site",
+        "advisory_affected_range"
+      ],
+      "evidence_type": "decision_evidence",
+      "required_for_decision": true,
+      "source_kind": "derived"
+    }
+  ],
+  "decision_evidence_requirements": [
+    "decision_evidence"
+  ],
+  "decision_policy": {
+    "version_range_comparison_required": false
+  },
+  "knowledge_evidence_requirements": [
+    "advisory_affected_range"
+  ],
+  "missing_evidence_policy": {
+    "policy": "abstain_or_fail_safe",
+    "reason_code": "REQUIRED_EVIDENCE_MISSING",
+    "runtime_decision": "unresolved"
+  },
+  "repo_evidence_requirements": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "repo_file_digest"
+  ],
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "schema_version": "evidence_binding_plan.v1",
+  "skill_requirements": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "task_type": "dependency_use_triage"
+}

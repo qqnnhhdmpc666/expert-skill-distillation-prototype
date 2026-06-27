@@ -1,0 +1,83 @@
+{
+  "checks": [
+    {
+      "detail": "",
+      "name": "schema_fields_present",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "hidden_gold_absent_from_prediction",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "task_id_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "task_type_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "decision_enum_valid",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "decision_match",
+      "passed": false
+    },
+    {
+      "detail": "",
+      "name": "package_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "version_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "advisory_match",
+      "passed": true
+    },
+    {
+      "detail": "missing=['IMPORT_USE_SITE_FOUND', 'VERSION_IN_AFFECTED_RANGE']",
+      "name": "required_reason_codes_present",
+      "passed": false
+    },
+    {
+      "detail": "malformed_indexes=[]",
+      "name": "evidence_schema_valid",
+      "passed": true
+    },
+    {
+      "detail": "missing=['advisory_affected_range']",
+      "name": "required_evidence_types_present",
+      "passed": false
+    },
+    {
+      "detail": "",
+      "name": "evidence_grounded",
+      "passed": true
+    },
+    {
+      "detail": "[]",
+      "name": "evidence_refs_resolve",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "repo_evidence_locations_complete",
+      "passed": true
+    }
+  ],
+  "failure_category": "evidence_error",
+  "schema_version": "repo_security_verifier_result.v1",
+  "task_id": "dependency_use_triage_the_gan_zoo_public",
+  "verifier_pass": false
+}

@@ -1,0 +1,143 @@
+{
+  "evidence_refs": [
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:47b183014d9a38bf09da2f0be9df6997489cbd37228df988fceffebeb4d13faf",
+      "evidence_type": "dependency_declaration",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": 21,
+      "line_start": 21,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests",
+        "version": "2.19.1"
+      },
+      "evidence_id": "sha256:da468ba57f39c4f444d471c2aad1469166a55d96d8f04192c800d1de2ac09e2b",
+      "evidence_type": "resolved_version",
+      "excerpt": "requests==2.19.1",
+      "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "line_end": 21,
+      "line_start": 21,
+      "path": "requirements.txt"
+    },
+    {
+      "attributes": {
+        "package": "requests"
+      },
+      "evidence_id": "sha256:aca4ff48056fa8b4232d68c9c7fc9de3c7565ed65e9c93fe9ea9dfa895f93659",
+      "evidence_type": "import_use_site",
+      "excerpt": "import requests",
+      "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+      "line_end": 9,
+      "line_start": 9,
+      "path": "update.py"
+    },
+    {
+      "attributes": {
+        "package": "requests"
+      },
+      "evidence_id": "sha256:63012f27a25aadafd6735a34bebed11e3fae94ed3dbecc2f467945126ba0538b",
+      "evidence_type": "import_use_site",
+      "excerpt": "result = requests.get(url)",
+      "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+      "line_end": 58,
+      "line_start": 58,
+      "path": "update.py"
+    },
+    {
+      "evidence_id": "sha256:78a0f78cdb2706cda008da084fff30267277348d1473492b40787dc15e592c69",
+      "evidence_type": "decision_evidence",
+      "excerpt": "decision=unresolved; required=dependency_declaration,resolved_version,import_use_site,advisory_affected_range,decision_evidence",
+      "file_digest": null,
+      "line_end": null,
+      "line_start": null,
+      "path": "derived"
+    }
+  ],
+  "failure_category": "evidence_error",
+  "knowledge_queries": 1,
+  "knowledge_used": false,
+  "prediction": {
+    "advisory_id": "PYSEC-2018-28",
+    "decision": "unresolved",
+    "declared_version": "2.19.1",
+    "evidence": [
+      {
+        "attributes": {
+          "package": "requests",
+          "version": "2.19.1"
+        },
+        "evidence_id": "sha256:47b183014d9a38bf09da2f0be9df6997489cbd37228df988fceffebeb4d13faf",
+        "evidence_type": "dependency_declaration",
+        "excerpt": "requests==2.19.1",
+        "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+        "line_end": 21,
+        "line_start": 21,
+        "path": "requirements.txt"
+      },
+      {
+        "attributes": {
+          "package": "requests",
+          "version": "2.19.1"
+        },
+        "evidence_id": "sha256:da468ba57f39c4f444d471c2aad1469166a55d96d8f04192c800d1de2ac09e2b",
+        "evidence_type": "resolved_version",
+        "excerpt": "requests==2.19.1",
+        "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+        "line_end": 21,
+        "line_start": 21,
+        "path": "requirements.txt"
+      },
+      {
+        "attributes": {
+          "package": "requests"
+        },
+        "evidence_id": "sha256:aca4ff48056fa8b4232d68c9c7fc9de3c7565ed65e9c93fe9ea9dfa895f93659",
+        "evidence_type": "import_use_site",
+        "excerpt": "import requests",
+        "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+        "line_end": 9,
+        "line_start": 9,
+        "path": "update.py"
+      },
+      {
+        "attributes": {
+          "package": "requests"
+        },
+        "evidence_id": "sha256:63012f27a25aadafd6735a34bebed11e3fae94ed3dbecc2f467945126ba0538b",
+        "evidence_type": "import_use_site",
+        "excerpt": "result = requests.get(url)",
+        "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+        "line_end": 58,
+        "line_start": 58,
+        "path": "update.py"
+      },
+      {
+        "evidence_id": "sha256:78a0f78cdb2706cda008da084fff30267277348d1473492b40787dc15e592c69",
+        "evidence_type": "decision_evidence",
+        "excerpt": "decision=unresolved; required=dependency_declaration,resolved_version,import_use_site,advisory_affected_range,decision_evidence",
+        "file_digest": null,
+        "line_end": null,
+        "line_start": null,
+        "path": "derived"
+      }
+    ],
+    "package": "requests",
+    "reason_codes": [
+      "ADVISORY_RANGE_UNAVAILABLE"
+    ],
+    "schema_version": "repo_security_prediction.v1",
+    "task_id": "dependency_use_triage_the_gan_zoo_public",
+    "task_type": "dependency_use_triage"
+  },
+  "schema_version": "trajectory_outcome.v1",
+  "skill_used": false,
+  "task_id": "dependency_use_triage_the_gan_zoo_public",
+  "verifier_pass": false
+}

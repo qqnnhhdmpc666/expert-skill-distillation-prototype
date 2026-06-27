@@ -1,0 +1,19 @@
+{
+  "knowledge_projection_policy": {
+    "allowed_advisory_fields": [
+      "affected_ranges"
+    ]
+  },
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "revision_targets": [
+    "knowledge_projection",
+    "knowledge_access_binding"
+  ],
+  "schema_version": "expected_repair_policy.v1"
+}

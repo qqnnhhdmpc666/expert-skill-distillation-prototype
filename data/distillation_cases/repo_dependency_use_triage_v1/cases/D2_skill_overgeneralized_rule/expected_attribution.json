@@ -1,0 +1,6 @@
+{
+  "schema_version": "expected_attribution.v1",
+  "failure_type": "skill_overgeneralized_rule",
+  "repair_target": "skill_rule",
+  "violated_policy": "version_range_comparison_required"
+}

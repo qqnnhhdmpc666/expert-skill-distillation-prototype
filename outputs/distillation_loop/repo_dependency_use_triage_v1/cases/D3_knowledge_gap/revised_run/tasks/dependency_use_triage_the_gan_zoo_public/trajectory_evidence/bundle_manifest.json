@@ -1,0 +1,160 @@
+{
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:72d3a84fe7f834225ddebcb67ea1a1059f50ba1f15adc9196d87b110b2c64abc",
+  "condition_id": "D3_knowledge_gap_revised",
+  "condition_manifest_digest": "sha256:e7e15091e12231e97d483940396b367283044e55f99edd11c84b114efaf4e9d5",
+  "knowledge_access_binding_digest": "sha256:1f865616d9c1718ee2cab1f15815d3e9b739f2a2a36570783de9b51823885614",
+  "knowledge_manifest_digest": "sha256:134cf7595a8144183d5fb7a645bcd3799162065af2346f2093d7377ea36f7d7b",
+  "knowledge_projection_digest": "sha256:0409b8356e1dad85963a96ea3a0d32b06711c24a05d8411325bd538b6e18782e",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "release_bundle": {
+    "agent_artifact_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-agent-skill",
+        "artifact_schema_version": "agent_skill_artifact.v1",
+        "digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+        "media_type": "text/markdown",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 758
+      }
+    ],
+    "compatible_agent_profiles": [
+      "repo-level-dependency-use-triage-v1"
+    ],
+    "dependency_manifest_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-dependency-manifest",
+      "artifact_schema_version": "dependency_manifest.v1",
+      "digest": "sha256:ad42515f6ff9769884fda29fc4615af7fbc54a1c0c998fed1a18882fc03a9050",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 4955
+    },
+    "domain_adapter_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-domain-adapter",
+      "artifact_schema_version": "domain_adapter.v1",
+      "digest": "sha256:d0c3d40d98169d41b36e2e4c7e0255cca3cfe351c90c71b73ee7faac47197d51",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 83
+    },
+    "domain_primitive_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-evidence-binding-plan",
+        "artifact_schema_version": "evidence_binding_plan.v1",
+        "digest": "sha256:06d9929fe37787e95068062570d201ae55a8c68fd545b309813fd2b220af912e",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 1561
+      }
+    ],
+    "knowledge_access_binding_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-access-binding",
+        "artifact_schema_version": "knowledge_access_binding.v1",
+        "digest": "sha256:1f865616d9c1718ee2cab1f15815d3e9b739f2a2a36570783de9b51823885614",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 1029
+      }
+    ],
+    "knowledge_ir_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-knowledge-ir",
+      "artifact_schema_version": "knowledge_ir.v1",
+      "digest": "sha256:ad3d278c75b4c697adeef8f6089a966a764415d64675d615ffd011f777b8b128",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 5688
+    },
+    "knowledge_projection_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-knowledge-projection",
+        "artifact_schema_version": "knowledge_projection.v1",
+        "digest": "sha256:0409b8356e1dad85963a96ea3a0d32b06711c24a05d8411325bd538b6e18782e",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 2486
+      }
+    ],
+    "permission_request_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-permission-request",
+      "artifact_schema_version": "permission_request.v1",
+      "digest": "sha256:0479e6db0ecb2db688ab454689cc90099c7d0b9515a7110f1e1c7f409014d644",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 100
+    },
+    "promotion_verifier_binding_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-promotion-verifier",
+        "artifact_schema_version": "verifier_binding.v1",
+        "digest": "sha256:cf08506229937f07f23607fbd5f7738e69ec7fa8f64eb17212b39373ab9c4578",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 84
+      }
+    ],
+    "provenance_manifest_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-provenance",
+      "artifact_schema_version": "bundle_provenance.v1",
+      "digest": "sha256:4c106559d8047be2c6b9282f17f85324dd430beb06c48afeb7de24dc3c3f68a6",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 2453
+    },
+    "provider_adapter_refs": [],
+    "provider_policy_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-provider-policy",
+      "artifact_schema_version": "provider_policy.v1",
+      "digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 156
+    },
+    "runtime_compiler_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-runtime-compiler",
+      "artifact_schema_version": "runtime_compiler.v1",
+      "digest": "sha256:0cbc3f8a12697af42e602f0aae885f3435ba21249764a1340c75d108aa3431b3",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 100
+    },
+    "runtime_verifier_binding_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-runtime-verifier",
+        "artifact_schema_version": "verifier_binding.v1",
+        "digest": "sha256:bcb3893b732379d5c33ec1a4accbbe4e4dbc2f42d69687ac0c9979931ffb86e3",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 97
+      }
+    ],
+    "schema_bundle_ref": {
+      "artifact_id": "repo-level-dependency-use-triage-schema-bundle",
+      "artifact_schema_version": "schema_bundle.v1",
+      "digest": "sha256:afb4d96e462da69bf7c119d47c8ceb85553504d3bd8b7cde4241d32e21bdf6eb",
+      "media_type": "application/json",
+      "schema_version": "artifact_ref.v1",
+      "size_bytes": 126
+    },
+    "schema_version": "release_bundle.v1",
+    "skill_family": "repo-dependency-use-triage",
+    "skill_ir_refs": [
+      {
+        "artifact_id": "repo-level-dependency-use-triage-skill-ir",
+        "artifact_schema_version": "skill_ir.v1",
+        "digest": "sha256:62306b3308641d2687a8f7e86fad790ebbd5e4bbd6201b6ada3bfda184fcb3b9",
+        "media_type": "application/json",
+        "schema_version": "artifact_ref.v1",
+        "size_bytes": 2022
+      }
+    ],
+    "variant": "D3_revised_advisory_range"
+  },
+  "resolution_source": "bundle_digest",
+  "schema_version": "repo_security_runtime_bundle_manifest.v1",
+  "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "skill_digest": "sha256:62306b3308641d2687a8f7e86fad790ebbd5e4bbd6201b6ada3bfda184fcb3b9",
+  "skill_family": "repo-dependency-use-triage",
+  "skill_manifest_digest": "sha256:a8ac747ba932843ff8696c05cbba8960c619a36061f1177c76e2f38584f3b019",
+  "task_id": "dependency_use_triage_the_gan_zoo_public"
+}

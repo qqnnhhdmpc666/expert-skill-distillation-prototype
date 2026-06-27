@@ -1,0 +1,50 @@
+{
+  "allowed_tools": [
+    "read_repo_snapshot",
+    "read_allowed_knowledge",
+    "local_text_search"
+  ],
+  "commit_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+  "expected_output_schema": "expected_output_schema.json",
+  "knowledge_access_contract": {
+    "advisory_id": "PYSEC-2018-28",
+    "forbidden_sources": [
+      "internet",
+      "evaluator_only_gold",
+      "evaluator_only_answer"
+    ],
+    "mode": "allowed_snapshot_only",
+    "package": "requests"
+  },
+  "license": "MIT-compatible synthetic fixture",
+  "public_source": {
+    "description": "Boundary fixture where requests is declared and used but pinned to a fixed version.",
+    "fixture_type": "local_public_like_demo",
+    "non_toy_status": "partial",
+    "source_url": "local://repo_security_tasks/dependency_use_triage_version_not_affected",
+    "type": "local_repo_snapshot"
+  },
+  "repo_snapshot_content_digest": null,
+  "repo_snapshot_manifest_digest": "sha256:4a5eec12995c2748ee4d0f10038dd0797e4e889d203bbdace9493e807691d030",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_version_not_affected@demo-commit",
+  "resource_budget": {
+    "llm_calls": 0,
+    "max_allowed_knowledge_queries": 3,
+    "max_repo_files_read": 12,
+    "network": "disabled"
+  },
+  "schema_version": "repo_security_task.v1",
+  "skill_condition": {
+    "condition_family": "dependency_use_triage",
+    "requirements": [
+      "identify dependency declaration",
+      "extract resolved version",
+      "find import or call-site evidence",
+      "consult allowed advisory snapshot",
+      "abstain when required evidence is missing"
+    ]
+  },
+  "task_id": "dependency_use_triage_version_not_affected",
+  "task_instruction": "Determine whether the declared Python dependency is both present in the repository and used in code, and whether the allowed advisory knowledge marks the declared version as affected. Return only the required prediction schema.",
+  "task_type": "dependency_use_triage"
+}

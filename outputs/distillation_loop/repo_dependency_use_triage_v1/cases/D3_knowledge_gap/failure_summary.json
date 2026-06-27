@@ -1,0 +1,16 @@
+{
+  "failed_task_ids": [
+    "dependency_use_triage_requests_demo",
+    "dependency_use_triage_declared_not_used",
+    "dependency_use_triage_version_not_affected",
+    "dependency_use_triage_the_gan_zoo_public"
+  ],
+  "failure_count": 4,
+  "failure_types": {
+    "knowledge_gap": 4
+  },
+  "repair_targets": {
+    "knowledge_projection": 4
+  },
+  "schema_version": "distillation_failure_summary.v1"
+}

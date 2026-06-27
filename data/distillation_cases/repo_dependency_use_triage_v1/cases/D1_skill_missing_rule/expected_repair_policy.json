@@ -1,0 +1,14 @@
+{
+  "schema_version": "expected_repair_policy.v1",
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "revision_targets": [
+    "skill_rule",
+    "evidence_binding_plan"
+  ]
+}

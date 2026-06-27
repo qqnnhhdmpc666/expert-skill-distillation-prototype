@@ -1,0 +1,50 @@
+{
+  "allowed_tools": [
+    "read_repo_snapshot",
+    "read_allowed_knowledge",
+    "local_text_search"
+  ],
+  "commit_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "expected_output_schema": "expected_output_schema.json",
+  "knowledge_access_contract": {
+    "advisory_id": "PYSEC-2018-28",
+    "forbidden_sources": [
+      "internet",
+      "evaluator_only_gold",
+      "evaluator_only_answer"
+    ],
+    "mode": "allowed_snapshot_only",
+    "package": "requests"
+  },
+  "license": "MIT-compatible synthetic fixture",
+  "public_source": {
+    "description": "Boundary fixture where requests is declared but no import or use site exists.",
+    "fixture_type": "local_public_like_demo",
+    "non_toy_status": "partial",
+    "source_url": "local://repo_security_tasks/dependency_use_triage_declared_not_used",
+    "type": "local_repo_snapshot"
+  },
+  "repo_snapshot_content_digest": null,
+  "repo_snapshot_manifest_digest": "sha256:0022e834535e3948e2d0bcb796eaa8b6350efa7a0ab726788cff6f2ab40560b2",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_declared_not_used@demo-commit",
+  "resource_budget": {
+    "llm_calls": 0,
+    "max_allowed_knowledge_queries": 3,
+    "max_repo_files_read": 12,
+    "network": "disabled"
+  },
+  "schema_version": "repo_security_task.v1",
+  "skill_condition": {
+    "condition_family": "dependency_use_triage",
+    "requirements": [
+      "identify dependency declaration",
+      "extract resolved version",
+      "find import or call-site evidence",
+      "consult allowed advisory snapshot",
+      "abstain when required evidence is missing"
+    ]
+  },
+  "task_id": "dependency_use_triage_declared_not_used",
+  "task_instruction": "Determine whether the declared Python dependency is both present in the repository and used in code, and whether the allowed advisory knowledge marks the declared version as affected. Return only the required prediction schema.",
+  "task_type": "dependency_use_triage"
+}

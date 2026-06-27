@@ -8,7 +8,9 @@ from packaging.version import InvalidVersion, Version
 
 from ..compiler.evidence_binding import bind_task_aware_evidence
 from ..core.canonical import sha256_json
+from ..runtime.release_bundle_policy import load_bundle_runtime_policy_from_resolution, required_evidence_from_plan
 from ..runtime.skill_knowledge_injection import build_injection_manifests
+from ..runtime.trajectory_evidence import write_json as write_runtime_json
 from ..runtime.trajectory_evidence import write_trajectory_evidence_package
 from .repo_evidence_collector import collect_repo_evidence
 from .repo_security_verifier import verify_dependency_use_prediction
@@ -87,6 +89,7 @@ def run_dependency_use_triage(
     condition_id: str = "C5_active_runtime",
     bundle_resolution: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    output_dir.mkdir(parents=True, exist_ok=True)
     task = load_repo_security_task(task_dir)
     runtime_view = load_runtime_task_view(task_dir)
     runtime_task = runtime_view["task"]
@@ -98,7 +101,7 @@ def run_dependency_use_triage(
         output_dir=output_dir,
         bundle_resolution=bundle_resolution,
     )
-    binding = bind_task_aware_evidence(
+    default_binding = bind_task_aware_evidence(
         {
             "task_type": runtime_task["task_type"],
             "skill_requirements": runtime_task["skill_condition"].get("requirements", []),
@@ -106,21 +109,36 @@ def run_dependency_use_triage(
             "repo_manifest": repo_manifest,
         }
     )
+    bundle_policy = load_bundle_runtime_policy_from_resolution(bundle_resolution)
+    pinned_binding = (bundle_policy or {}).get("evidence_binding_plan")
+    binding = pinned_binding or default_binding
+    write_runtime_json(
+        output_dir / "runtime_bundle_policy.json",
+        bundle_policy
+        or {
+            "schema_version": "bundle_runtime_policy.v1",
+            "bundle_digest": None,
+            "variant": "default_runtime",
+            "skill_family": None,
+            "evidence_binding_plan": binding,
+            "required_evidence": required_evidence_from_plan(binding),
+            "decision_policy": binding.get("decision_policy", {}),
+            "knowledge_projection_policy": {"allowed_advisory_fields": ["affected_ranges"]},
+        },
+    )
+    write_runtime_json(output_dir / "runtime_evidence_binding_plan.json", binding)
     repo_evidence = collect_repo_evidence(
-        task_dir=task_dir, repo_manifest=repo_manifest, package=runtime_task["knowledge_access_contract"]["package"]
+        task_dir=task_dir,
+        repo_manifest=repo_manifest,
+        package=runtime_task["knowledge_access_contract"]["package"],
+        evidence_binding_plan=binding,
     )
-    (output_dir / "repo_evidence.json").write_text(
-        json.dumps({"schema_version": "repo_evidence_collection.v1", "evidence": repo_evidence}, ensure_ascii=False, indent=2, sort_keys=True),
-        encoding="utf-8",
-    )
-    prediction, traces = _make_prediction(runtime_task, allowed_knowledge, binding, repo_evidence)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    write_runtime_json(output_dir / "repo_evidence.json", {"schema_version": "repo_evidence_collection.v1", "evidence": repo_evidence})
+    prediction, traces = _make_prediction(runtime_task, allowed_knowledge, binding, repo_evidence, bundle_policy)
     prediction_path = output_dir / "prediction.json"
-    prediction_path.write_text(json.dumps(prediction, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    write_runtime_json(prediction_path, prediction)
     verifier_result = verify_dependency_use_prediction(task, prediction, task_dir=task_dir)
-    (output_dir / "verifier_result.json").write_text(
-        json.dumps(verifier_result, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8"
-    )
+    write_runtime_json(output_dir / "verifier_result.json", verifier_result)
     trajectory_task_manifest = {
         **runtime_task,
         "repo_snapshot_manifest_digest": sha256_json(repo_manifest),
@@ -154,6 +172,7 @@ def _make_prediction(
     allowed_knowledge: dict[str, Any],
     binding: dict[str, Any],
     repo_evidence: list[dict[str, Any]],
+    bundle_policy: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Any], dict[str, list[dict[str, Any]]]]:
     package = task["knowledge_access_contract"]["package"]
     advisory_id = task["knowledge_access_contract"]["advisory_id"]
@@ -173,33 +192,48 @@ def _make_prediction(
     version_evidence = next((item for item in repo_evidence if item["evidence_type"] == "resolved_version"), None)
     declared_version = version_evidence["attributes"]["version"] if version_evidence else None
 
+    decision_policy = dict((bundle_policy or {}).get("decision_policy", {}))
+    knowledge_policy = dict((bundle_policy or {}).get("knowledge_projection_policy", {}))
+    allowed_advisory_fields = set(knowledge_policy.get("allowed_advisory_fields", ["affected_ranges"]))
+    version_range_comparison_required = decision_policy.get("version_range_comparison_required", True) is not False
     advisory = next(
         item for item in allowed_knowledge["knowledge_sources"] if item["source_id"] == advisory_id and item["package"] == package
     )
-    range_event = advisory["affected_ranges"][0]
-    affected = declared_version is not None and _version_in_range(declared_version, range_event)
-    evidence.append(
-        {
-            "evidence_id": _stable_evidence_id("advisory_affected_range", "allowed_knowledge.json", json.dumps(range_event, sort_keys=True)),
-            "evidence_type": "advisory_affected_range",
-            "path": "allowed_knowledge.json",
-            "line_start": None,
-            "line_end": None,
-            "excerpt": json.dumps(range_event, sort_keys=True),
-            "file_digest": None,
-            "source_id": advisory_id,
-        }
-    )
+    advisory_range_available = "affected_ranges" in allowed_advisory_fields and bool(advisory.get("affected_ranges"))
+    range_event = advisory["affected_ranges"][0] if advisory_range_available else None
+    affected = False
+    if declared_version is not None and advisory_range_available:
+        affected = _version_in_range(declared_version, range_event) if version_range_comparison_required else True
+        evidence.append(
+            {
+                "evidence_id": _stable_evidence_id("advisory_affected_range", "allowed_knowledge.json", json.dumps(range_event, sort_keys=True)),
+                "evidence_type": "advisory_affected_range",
+                "path": "allowed_knowledge.json",
+                "line_start": None,
+                "line_end": None,
+                "excerpt": json.dumps(range_event, sort_keys=True),
+                "file_digest": None,
+                "source_id": advisory_id,
+            }
+        )
     has_use = _has_type(evidence, "import_use_site")
+    required_evidence = set(required_evidence_from_plan(binding))
+    import_use_required_for_used_decision = "import_use_site" in required_evidence
     if declared_version is None:
         decision = "unresolved"
         reason_codes = ["REQUIRED_EVIDENCE_MISSING"]
-    elif not has_use:
+    elif not advisory_range_available:
+        decision = "unresolved"
+        reason_codes = ["ADVISORY_RANGE_UNAVAILABLE"]
+    elif import_use_required_for_used_decision and not has_use:
         decision = "dependency_present_not_used"
         reason_codes = ["NO_IMPORT_USE_SITE"]
     elif affected:
         decision = "dependency_used_and_affected"
-        reason_codes = ["VERSION_IN_AFFECTED_RANGE", "IMPORT_USE_SITE_FOUND"]
+        reason_codes = [
+            "VERSION_IN_AFFECTED_RANGE" if version_range_comparison_required else "VERSION_RANGE_COMPARISON_SKIPPED",
+            "IMPORT_USE_SITE_FOUND" if has_use else "IMPORT_USE_NOT_REQUIRED_BY_POLICY",
+        ]
     else:
         decision = "dependency_used_not_affected"
         reason_codes = ["VERSION_NOT_AFFECTED", "IMPORT_USE_SITE_FOUND"]

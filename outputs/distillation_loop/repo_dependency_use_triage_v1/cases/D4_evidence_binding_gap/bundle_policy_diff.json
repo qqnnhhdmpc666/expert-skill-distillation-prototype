@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "candidate_path_overrides": {
+      "import_use_site": []
+    },
+    "decision_policy": {},
+    "knowledge_projection_policy": {},
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ]
+  },
+  "candidate_path_overrides_changed": true,
+  "decision_policy_changed": false,
+  "knowledge_projection_policy_changed": false,
+  "required_evidence_added": [],
+  "required_evidence_removed": [],
+  "revised": {
+    "candidate_path_overrides": {
+      "import_use_site": [
+        "*.py"
+      ]
+    },
+    "decision_policy": {},
+    "knowledge_projection_policy": {},
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ]
+  },
+  "schema_version": "bundle_policy_diff.v1"
+}

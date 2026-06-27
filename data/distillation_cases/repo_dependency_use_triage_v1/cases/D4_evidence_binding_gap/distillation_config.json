@@ -1,0 +1,25 @@
+{
+  "schema_version": "distillation_case_config.v1",
+  "case_id": "D4_evidence_binding_gap",
+  "defect_id": "D4_evidence_binding_gap",
+  "skill_family": "repo-dependency-use-triage",
+  "task_type": "dependency_use_triage",
+  "baseline_variant": "D4_baseline_no_use_candidates",
+  "revised_variant": "D4_revised_use_candidates",
+  "base_bundle_data_dir": "data/repo_level_bundle",
+  "task_registry": "data/repo_security_tasks/registry.json",
+  "expected_task_count": 4,
+  "baseline_evidence_policy": {
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "import_use_site",
+      "advisory_affected_range",
+      "decision_evidence"
+    ],
+    "candidate_path_overrides": {
+      "import_use_site": []
+    }
+  },
+  "claim_boundary": "Controlled D4 distillation defect; not compiler superiority or public benchmark performance."
+}

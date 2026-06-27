@@ -1,0 +1,52 @@
+{
+  "allowed_tools": [
+    "read_repo_snapshot",
+    "read_allowed_knowledge",
+    "local_text_search"
+  ],
+  "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+  "expected_output_schema": "expected_output_schema.json",
+  "knowledge_access_contract": {
+    "advisory_id": "PYSEC-2018-28",
+    "forbidden_sources": [
+      "internet",
+      "evaluator_only_gold",
+      "evaluator_only_answer"
+    ],
+    "mode": "allowed_snapshot_only",
+    "package": "requests"
+  },
+  "license": "MIT",
+  "public_source": {
+    "commit_url": "https://github.com/hindupuravinash/the-gan-zoo/commit/375f2be4a852ead8980c06b2a996893f0cb95713",
+    "description": "Minimal immutable public excerpt containing the dependency declaration, real import/use site, and upstream license.",
+    "fixture_type": "public_repo_excerpt",
+    "non_toy_status": "traceable_public_excerpt",
+    "repository": "hindupuravinash/the-gan-zoo",
+    "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+    "type": "public_repo_excerpt"
+  },
+  "repo_snapshot_content_digest": "sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb",
+  "repo_snapshot_manifest_digest": "sha256:1554d69183c07166bbd33d1142d8243aecf6c02d54804660979faf0784cf8752",
+  "repo_snapshot_ref": "github:hindupuravinash/the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713",
+  "resource_budget": {
+    "llm_calls": 0,
+    "max_allowed_knowledge_queries": 1,
+    "max_repo_files_read": 3,
+    "network": "disabled"
+  },
+  "schema_version": "repo_security_task.v1",
+  "skill_condition": {
+    "condition_family": "dependency_use_triage",
+    "requirements": [
+      "identify dependency declaration",
+      "extract resolved version",
+      "find import or call-site evidence",
+      "consult allowed advisory snapshot",
+      "abstain when required evidence is missing"
+    ]
+  },
+  "task_id": "dependency_use_triage_the_gan_zoo_public",
+  "task_instruction": "Determine whether requests is declared in this public repository excerpt, used in code, and affected according to the allowed frozen advisory snapshot. Return only the required prediction schema.",
+  "task_type": "dependency_use_triage"
+}

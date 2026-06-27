@@ -1,0 +1,2 @@
+{"action": "load_task", "task_id": "dependency_use_triage_version_not_affected"}
+{"action": "emit_prediction", "decision": "dependency_used_and_affected"}

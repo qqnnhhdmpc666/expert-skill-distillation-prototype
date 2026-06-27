@@ -1,0 +1,17 @@
+{
+  "decision_policy": {
+    "version_range_comparison_required": true
+  },
+  "required_evidence": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ],
+  "revision_targets": [
+    "skill_rule",
+    "runtime_policy"
+  ],
+  "schema_version": "expected_repair_policy.v1"
+}

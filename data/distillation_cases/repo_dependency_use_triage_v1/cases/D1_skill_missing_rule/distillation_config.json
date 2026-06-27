@@ -1,0 +1,21 @@
+{
+  "schema_version": "distillation_case_config.v1",
+  "case_id": "D1_skill_missing_rule",
+  "defect_id": "D1_skill_missing_rule",
+  "skill_family": "repo-dependency-use-triage",
+  "task_type": "dependency_use_triage",
+  "baseline_variant": "D1_baseline_missing_use_gate",
+  "revised_variant": "D1_revised_use_gate",
+  "base_bundle_data_dir": "data/repo_level_bundle",
+  "task_registry": "data/repo_security_tasks/registry.json",
+  "expected_task_count": 4,
+  "baseline_evidence_policy": {
+    "required_evidence": [
+      "dependency_declaration",
+      "resolved_version",
+      "advisory_affected_range",
+      "decision_evidence"
+    ]
+  },
+  "claim_boundary": "Controlled D1 distillation defect; not compiler superiority or public benchmark performance."
+}

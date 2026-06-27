@@ -1,0 +1,16 @@
+{
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:7d7b6cb8fa8eb7913140f80fd631f8dbb51ad2ae97fa6fd3c28db438bd2f11cc",
+  "fail_count": 4,
+  "knowledge_access_binding_digest": "sha256:b5890d14ac0c5a4083f20084bf50fd8dc64fc20d0c9622b6b15adac3a7880126",
+  "knowledge_projection_digest": "sha256:f11bf2588d408abd8bd892a8cd7671c82c7abc64fa81318047c54167ac8348cd",
+  "output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D1_skill_missing_rule\\baseline_run",
+  "pass_count": 0,
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "run_manifest_digest": "sha256:c6828474c661a06749bd5ffed058baa738e0b7d3aaf5ba656e095aa0e14b495d",
+  "schema_version": "repo_level_eval_run_summary.v1",
+  "skill_artifact_digest": "sha256:2e6d5a1a9edff162dd31f8eec4aec4fd6daaefc3cbf405848cb462ae24d1af11",
+  "skill_digest": "sha256:643a1bac05f2cfd8ecd85338c0fb27aafa4560bf50fc9d469a2e9d80daed111c",
+  "skill_family": "repo-dependency-use-triage",
+  "task_count": 4
+}

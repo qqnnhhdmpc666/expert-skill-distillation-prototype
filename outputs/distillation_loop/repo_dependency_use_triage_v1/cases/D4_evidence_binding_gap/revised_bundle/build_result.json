@@ -1,0 +1,17 @@
+{
+  "active_binding_generation": null,
+  "agent_skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "bundle_digest": "sha256:9fe97d3e39b8b17067908d3ae564b4cd6c223d4eb6b47af339c0e212b9a5d66a",
+  "bundle_digest_changed": null,
+  "dependency_manifest_digest": "sha256:df0443dfdfaf4da8dba39dbdd9ffed94991ab7f4a7bba4906279479a8f2cba8b",
+  "evidence_binding_plan_digest": "sha256:06d9929fe37787e95068062570d201ae55a8c68fd545b309813fd2b220af912e",
+  "knowledge_access_binding_digest": "sha256:d76f1468585f6c6e4b29b46a0c2a379534482d159322358148ce30c897467690",
+  "knowledge_projection_digest": "sha256:159e113d19c6071070e39dfe81a25f241ac2c1a909118780d5ed6f9bb2e8cd57",
+  "previous_python_advisory_bundle_digest": null,
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "schema_version": "repo_level_bundle_build_result.v1",
+  "skill_family": "repo-dependency-use-triage",
+  "skill_ir_digest": "sha256:f0a632718e37431d86feb6bec5c680104200279084ef7fb131997c688c40f26b",
+  "status": "pass",
+  "variant": "D4_revised_use_candidates"
+}

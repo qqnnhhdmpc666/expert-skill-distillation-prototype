@@ -1,0 +1,21 @@
+{
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:7d7b6cb8fa8eb7913140f80fd631f8dbb51ad2ae97fa6fd3c28db438bd2f11cc",
+  "commit_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "condition_manifest_digest": "sha256:253e33482e91014ed56aaffc046079bc70c673837161e365eb8b1d1fa3ac02a0",
+  "fixture_type": "local_public_like_demo",
+  "knowledge_access_binding_digest": "sha256:b5890d14ac0c5a4083f20084bf50fd8dc64fc20d0c9622b6b15adac3a7880126",
+  "knowledge_projection_digest": "sha256:f11bf2588d408abd8bd892a8cd7671c82c7abc64fa81318047c54167ac8348cd",
+  "prediction_digest": "sha256:678c65c5d934ba2d1610c058ae88c3ca4aa6094d011d4821d6ec534c873396f3",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "repo_snapshot_content_digest": null,
+  "repo_snapshot_manifest_digest": "sha256:ae4ca4ae467a04cacc3e827f2416238eedbfe49291b0392dd1f0c23fd447c320",
+  "repo_snapshot_ref": "local_repo_snapshot:dependency_use_triage_requests_demo@demo-commit",
+  "schema_version": "trajectory_provenance.v1",
+  "skill_artifact_digest": "sha256:2e6d5a1a9edff162dd31f8eec4aec4fd6daaefc3cbf405848cb462ae24d1af11",
+  "skill_digest": "sha256:643a1bac05f2cfd8ecd85338c0fb27aafa4560bf50fc9d469a2e9d80daed111c",
+  "skill_family": "repo-dependency-use-triage",
+  "source_url": "local://repo_security_tasks/dependency_use_triage_requests_demo",
+  "task_digest": "sha256:8008ae602d65e6a69c7485e59e28ee99344b58372659a81076f60fd04a0ed74f",
+  "verifier_result_digest": "sha256:ddd90f252eddf7628d98d40cefd320272a6854d20e546ce8065c887ade95162c"
+}

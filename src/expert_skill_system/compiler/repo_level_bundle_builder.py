@@ -24,8 +24,10 @@ class RepoLevelBundleBuildResult:
     agent_skill_artifact_digest: str
     knowledge_projection_digest: str
     knowledge_access_binding_digest: str
+    evidence_binding_plan_digest: str
     provider_policy_digest: str
     dependency_manifest_digest: str
+    variant: str
     active_binding_generation: int | None
     previous_python_advisory_bundle_digest: str | None
     bundle_digest_changed: bool | None
@@ -40,8 +42,10 @@ class RepoLevelBundleBuildResult:
             "agent_skill_artifact_digest": self.agent_skill_artifact_digest,
             "knowledge_projection_digest": self.knowledge_projection_digest,
             "knowledge_access_binding_digest": self.knowledge_access_binding_digest,
+            "evidence_binding_plan_digest": self.evidence_binding_plan_digest,
             "provider_policy_digest": self.provider_policy_digest,
             "dependency_manifest_digest": self.dependency_manifest_digest,
+            "variant": self.variant,
             "active_binding_generation": self.active_binding_generation,
             "previous_python_advisory_bundle_digest": self.previous_python_advisory_bundle_digest,
             "bundle_digest_changed": self.bundle_digest_changed,
@@ -60,13 +64,30 @@ class RepoLevelBundleBuilder:
         data_dir: Path,
         skill_family: str = REPO_LEVEL_SKILL_ID,
         promote: bool = False,
+        variant: str = "default",
+        evidence_policy: dict[str, Any] | None = None,
     ) -> RepoLevelBundleBuildResult:
         if skill_family != REPO_LEVEL_SKILL_ID:
             raise ValueError(f"unsupported repo-level skill_family: {skill_family!r}")
         expert_material = (data_dir / "expert_material.md").read_text(encoding="utf-8")
         task_contract = _read_json(data_dir / "task_contract.json")
         knowledge_contract = _read_json(data_dir / "knowledge_contract.json")
-        self._validate_contracts(task_contract, knowledge_contract)
+        required_evidence = list((evidence_policy or {}).get("required_evidence", task_contract["required_evidence"]))
+        decision_policy = {
+            "version_range_comparison_required": True,
+            **dict((evidence_policy or {}).get("decision_policy", {})),
+        }
+        candidate_path_overrides = dict((evidence_policy or {}).get("candidate_path_overrides", {}))
+        knowledge_projection_policy = {
+            "allowed_advisory_fields": ["affected_ranges"],
+            **dict((evidence_policy or {}).get("knowledge_projection_policy", {})),
+        }
+        task_contract = {**task_contract, "required_evidence": required_evidence}
+        self._validate_contracts(
+            task_contract,
+            knowledge_contract,
+            allow_incomplete_policy=evidence_policy is not None,
+        )
 
         expert_ref = self.workspace.put_bytes(
             expert_material.encode("utf-8"),
@@ -88,6 +109,9 @@ class RepoLevelBundleBuilder:
             {
                 "task_type": "dependency_use_triage",
                 "skill_requirements": task_contract["required_evidence"],
+                "required_evidence": task_contract["required_evidence"],
+                "decision_policy": decision_policy,
+                "candidate_path_overrides": candidate_path_overrides,
                 "available_knowledge_sources": ["task_allowed_advisory_snapshot"],
                 "repo_manifest": {
                     "files": [
@@ -107,13 +131,16 @@ class RepoLevelBundleBuilder:
             source_refs=(expert_ref, task_contract_ref, knowledge_contract_ref, evidence_binding_ref),
             task_contract=task_contract,
             knowledge_contract=knowledge_contract,
+            variant=variant,
+            decision_policy=decision_policy,
+            knowledge_projection_policy=knowledge_projection_policy,
         )
         knowledge_ir_ref = self.workspace.put_json(
             knowledge_ir,
             schema_version=knowledge_ir["schema_version"],
             artifact_id="repo-level-dependency-use-triage-knowledge-ir",
         )
-        skill_ir = self._skill_ir(task_contract)
+        skill_ir = self._skill_ir(task_contract, variant=variant, decision_policy=decision_policy)
         skill_ir_ref = self.workspace.put_json(
             skill_ir,
             schema_version=skill_ir["schema_version"],
@@ -125,6 +152,7 @@ class RepoLevelBundleBuilder:
             evidence_binding_ref=evidence_binding_ref,
             knowledge_ir_ref=knowledge_ir_ref,
             knowledge_contract=knowledge_contract,
+            knowledge_projection_policy=knowledge_projection_policy,
         )
         projection_ref = self.workspace.put_json(
             projection,
@@ -147,6 +175,7 @@ class RepoLevelBundleBuilder:
             "freshness_mode": "immutable_task_and_repo_snapshots",
             "on_unavailable": "abstain_or_fail_safe",
             "evidence_binding_plan_ref": evidence_binding_ref.to_dict(),
+            "knowledge_projection_policy": knowledge_projection_policy,
         }
         access_ref = self.workspace.put_json(
             access_binding,
@@ -158,6 +187,7 @@ class RepoLevelBundleBuilder:
             {
                 "schema_version": "bundle_provenance.v1",
                 "build_mode": "repo_level_specific_static_compiler",
+                "variant": variant,
                 "expert_material_ref": expert_ref.to_dict(),
                 "task_contract_ref": task_contract_ref.to_dict(),
                 "knowledge_contract_ref": knowledge_contract_ref.to_dict(),
@@ -195,6 +225,7 @@ class RepoLevelBundleBuilder:
         manifest = {
             "schema_version": "release_bundle.v1",
             "skill_family": skill_family,
+            "variant": variant,
             "compatible_agent_profiles": ["repo-level-dependency-use-triage-v1"],
             "knowledge_ir_ref": knowledge_ir_ref.to_dict(),
             "skill_ir_refs": [skill_ir_ref.to_dict()],
@@ -226,6 +257,7 @@ class RepoLevelBundleBuilder:
             payload={
                 "schema_version": "repo_level_bundle_build.v1",
                 "method": "repo_level_specific_static_compiler",
+                "variant": variant,
                 "skill_family": skill_family,
                 "knowledge_ir_ref": knowledge_ir_ref.to_dict(),
                 "skill_ir_ref": skill_ir_ref.to_dict(),
@@ -257,15 +289,22 @@ class RepoLevelBundleBuilder:
             agent_skill_artifact_digest=agent_ref.digest,
             knowledge_projection_digest=projection_ref.digest,
             knowledge_access_binding_digest=access_ref.digest,
+            evidence_binding_plan_digest=evidence_binding_ref.digest,
             provider_policy_digest=static_refs["provider_policy_ref"].digest,
             dependency_manifest_digest=dependency_ref.digest,
+            variant=variant,
             active_binding_generation=active_generation,
             previous_python_advisory_bundle_digest=previous_python.bundle_digest if previous_python else None,
             bundle_digest_changed=(bundle.bundle_digest != previous_python.bundle_digest) if previous_python else None,
         )
 
     @staticmethod
-    def _validate_contracts(task_contract: dict[str, Any], knowledge_contract: dict[str, Any]) -> None:
+    def _validate_contracts(
+        task_contract: dict[str, Any],
+        knowledge_contract: dict[str, Any],
+        *,
+        allow_incomplete_policy: bool = False,
+    ) -> None:
         if task_contract.get("skill_family") != REPO_LEVEL_SKILL_ID:
             raise ValueError("task_contract skill_family must be repo-dependency-use-triage")
         if task_contract.get("task_type") != "dependency_use_triage":
@@ -279,7 +318,14 @@ class RepoLevelBundleBuilder:
             "advisory_affected_range",
             "decision_evidence",
         }
-        if set(task_contract.get("required_evidence", [])) != required:
+        actual_required = set(task_contract.get("required_evidence", []))
+        if allow_incomplete_policy:
+            unknown = sorted(actual_required - required)
+            if unknown:
+                raise ValueError(f"task_contract required_evidence has unsupported values: {unknown}")
+            if "decision_evidence" not in actual_required:
+                raise ValueError("task_contract required_evidence must include decision_evidence")
+        elif actual_required != required:
             raise ValueError("task_contract required_evidence must match dependency-use triage requirements")
 
     @staticmethod
@@ -288,10 +334,17 @@ class RepoLevelBundleBuilder:
         source_refs: tuple[ArtifactRef, ...],
         task_contract: dict[str, Any],
         knowledge_contract: dict[str, Any],
+        variant: str,
+        decision_policy: dict[str, Any],
+        knowledge_projection_policy: dict[str, Any],
     ) -> dict[str, Any]:
+        required_evidence_text = ", ".join(task_contract["required_evidence"])
         return {
             "schema_version": "knowledge_ir.v1",
             "domain_id": REPO_LEVEL_SKILL_ID,
+            "variant": variant,
+            "decision_policy": decision_policy,
+            "knowledge_projection_policy": knowledge_projection_policy,
             "nodes": [
                 {
                     "node_id": "repo-triage-skill-knowledge-boundary",
@@ -309,7 +362,7 @@ class RepoLevelBundleBuilder:
                 {
                     "node_id": "repo-triage-required-evidence",
                     "semantic_type": "procedure",
-                    "statement": "A valid decision requires declaration, resolved version, import/use, advisory range, and decision evidence.",
+                    "statement": f"A valid decision requires: {required_evidence_text}.",
                     "modality": "must",
                     "evidence_refs": [ref.to_dict() for ref in source_refs],
                     "quoted_support_spans": task_contract["required_evidence"],
@@ -338,25 +391,43 @@ class RepoLevelBundleBuilder:
         }
 
     @staticmethod
-    def _skill_ir(task_contract: dict[str, Any]) -> dict[str, Any]:
+    def _skill_ir(task_contract: dict[str, Any], *, variant: str, decision_policy: dict[str, Any]) -> dict[str, Any]:
+        required = set(task_contract["required_evidence"])
+        workflow = [
+            {"step_id": "identify_declaration", "instruction": "Identify dependency declaration evidence."},
+            {"step_id": "identify_version", "instruction": "Identify resolved version or lock/version evidence."},
+        ]
+        if "import_use_site" in required:
+            workflow.append({"step_id": "identify_use", "instruction": "Identify import/use evidence in repo files."})
+        workflow.extend(
+            [
+                {"step_id": "consult_advisory", "instruction": "Consult only the allowed advisory snapshot."},
+                {"step_id": "compare_range", "instruction": "Compare resolved version against affected range."},
+                {"step_id": "decide", "instruction": "Emit one bounded dependency-use triage decision with evidence."},
+            ]
+        )
+        constraints = [
+            {"constraint_id": "no_advisory_only_decision", "instruction": "Never decide affectedness from advisory evidence alone."},
+            {"constraint_id": "fail_safe_missing_evidence", "instruction": "Abstain or fail safe when required repo evidence is insufficient."},
+            {"constraint_id": "no_exploitability_claim", "instruction": "Do not claim exploitability, reachability, or general vulnerability discovery."},
+        ]
+        exceptions = []
+        if "import_use_site" in required:
+            exceptions.append(
+                {
+                    "exception_id": "missing_import_use_site",
+                    "instruction": "Missing import/use evidence must not produce dependency_used_and_affected.",
+                }
+            )
         return {
             "schema_version": "skill_ir.v1",
             "skill_id": REPO_LEVEL_SKILL_ID,
             "version": "1.0.0",
+            "variant": variant,
+            "decision_policy": decision_policy,
             "invocation": {"task_family": REPO_LEVEL_SKILL_ID, "task_type": task_contract["task_type"]},
-            "workflow": [
-                {"step_id": "identify_declaration", "instruction": "Identify dependency declaration evidence."},
-                {"step_id": "identify_version", "instruction": "Identify resolved version or lock/version evidence."},
-                {"step_id": "identify_use", "instruction": "Identify import/use evidence in repo files."},
-                {"step_id": "consult_advisory", "instruction": "Consult only the allowed advisory snapshot."},
-                {"step_id": "compare_range", "instruction": "Compare resolved version against affected range."},
-                {"step_id": "decide", "instruction": "Emit one bounded dependency-use triage decision with evidence."},
-            ],
-            "constraints": [
-                {"constraint_id": "no_advisory_only_decision", "instruction": "Never decide affectedness from advisory evidence alone."},
-                {"constraint_id": "fail_safe_missing_evidence", "instruction": "Abstain or fail safe when required repo evidence is insufficient."},
-                {"constraint_id": "no_exploitability_claim", "instruction": "Do not claim exploitability, reachability, or general vulnerability discovery."},
-            ],
+            "workflow": workflow,
+            "constraints": constraints,
             "knowledge_requirements": [
                 {
                     "semantic_requirement": evidence_type,
@@ -364,12 +435,7 @@ class RepoLevelBundleBuilder:
                 }
                 for evidence_type in task_contract["required_evidence"]
             ],
-            "exceptions": [
-                {
-                    "exception_id": "missing_import_use_site",
-                    "instruction": "Missing import/use evidence must not produce dependency_used_and_affected.",
-                }
-            ],
+            "exceptions": exceptions,
             "source_node_ids": [
                 "repo-triage-skill-knowledge-boundary",
                 "repo-triage-required-evidence",
@@ -385,10 +451,12 @@ class RepoLevelBundleBuilder:
         evidence_binding_ref: ArtifactRef,
         knowledge_ir_ref: ArtifactRef,
         knowledge_contract: dict[str, Any],
+        knowledge_projection_policy: dict[str, Any],
     ) -> dict[str, Any]:
         return {
             "schema_version": "knowledge_projection.v1",
             "projection_id": "repo-level-dependency-use-triage-knowledge",
+            "knowledge_projection_policy": knowledge_projection_policy,
             "expert_evidence_refs": [task_contract_ref.to_dict(), knowledge_contract_ref.to_dict()],
             "structured_snapshot_refs": [task_contract_ref.to_dict(), knowledge_contract_ref.to_dict(), evidence_binding_ref.to_dict()],
             "query_contracts": knowledge_contract["query_contracts"],

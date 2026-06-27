@@ -1,0 +1,285 @@
+{
+  "case_results": [
+    {
+      "baseline_bundle_digest": "sha256:7d7b6cb8fa8eb7913140f80fd631f8dbb51ad2ae97fa6fd3c28db438bd2f11cc",
+      "baseline_failed_task_ids": [
+        "dependency_use_triage_requests_demo",
+        "dependency_use_triage_declared_not_used",
+        "dependency_use_triage_version_not_affected",
+        "dependency_use_triage_the_gan_zoo_public"
+      ],
+      "baseline_pass_count": 0,
+      "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D1_skill_missing_rule",
+      "defect_id": "D1_skill_missing_rule",
+      "digest_changed": true,
+      "expected_attribution_matched": true,
+      "failure_attribution_types": [
+        "evidence_binding_gap",
+        "skill_missing_rule"
+      ],
+      "policy_diff": {
+        "baseline": {
+          "candidate_path_overrides": {},
+          "decision_policy": {},
+          "knowledge_projection_policy": {},
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "candidate_path_overrides_changed": false,
+        "decision_policy_changed": false,
+        "knowledge_projection_policy_changed": false,
+        "required_evidence_added": [
+          "import_use_site"
+        ],
+        "required_evidence_removed": [],
+        "revised": {
+          "candidate_path_overrides": {},
+          "decision_policy": {},
+          "knowledge_projection_policy": {},
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "schema_version": "bundle_policy_diff.v1"
+      },
+      "promotion_decision": "promote",
+      "repair_type": "rule_generalization",
+      "revised_bundle_digest": "sha256:84e886640c688afe35ccdd2cf215e684ee726998bc93a5bb6fb110556c19b816",
+      "revised_pass_count": 4,
+      "revision_targets": [
+        "skill_rule",
+        "evidence_binding_plan"
+      ],
+      "schema_version": "distillation_v1_case_result.v1",
+      "seeded_counterexample_pass": true
+    },
+    {
+      "baseline_bundle_digest": "sha256:76c52d01c3128cbbd33b58b9fab6e2dd38931a663c5b28ff6f26670a0c0d1fd0",
+      "baseline_failed_task_ids": [
+        "dependency_use_triage_requests_demo",
+        "dependency_use_triage_version_not_affected",
+        "dependency_use_triage_the_gan_zoo_public"
+      ],
+      "baseline_pass_count": 1,
+      "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D2_skill_overgeneralized_rule",
+      "defect_id": "D2_skill_overgeneralized_rule",
+      "digest_changed": true,
+      "expected_attribution_matched": true,
+      "failure_attribution_types": [
+        "skill_overgeneralized_rule"
+      ],
+      "policy_diff": {
+        "baseline": {
+          "candidate_path_overrides": {},
+          "decision_policy": {
+            "version_range_comparison_required": false
+          },
+          "knowledge_projection_policy": {},
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "candidate_path_overrides_changed": false,
+        "decision_policy_changed": true,
+        "knowledge_projection_policy_changed": false,
+        "required_evidence_added": [],
+        "required_evidence_removed": [],
+        "revised": {
+          "candidate_path_overrides": {},
+          "decision_policy": {
+            "version_range_comparison_required": true
+          },
+          "knowledge_projection_policy": {},
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "schema_version": "bundle_policy_diff.v1"
+      },
+      "promotion_decision": "promote",
+      "repair_type": "rule_generalization",
+      "revised_bundle_digest": "sha256:25ae1aae6af93ca15786948d65d81270ffa3eb693c19a8b0903e61ab45491a2c",
+      "revised_pass_count": 4,
+      "revision_targets": [
+        "skill_rule",
+        "runtime_policy"
+      ],
+      "schema_version": "distillation_v1_case_result.v1",
+      "seeded_counterexample_pass": true
+    },
+    {
+      "baseline_bundle_digest": "sha256:f1995e2b77b431ad1e388c4a815c1f4fe2aa7b1e8e25bf145315feec54344c84",
+      "baseline_failed_task_ids": [
+        "dependency_use_triage_requests_demo",
+        "dependency_use_triage_declared_not_used",
+        "dependency_use_triage_version_not_affected",
+        "dependency_use_triage_the_gan_zoo_public"
+      ],
+      "baseline_pass_count": 0,
+      "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D3_knowledge_gap",
+      "defect_id": "D3_knowledge_gap",
+      "digest_changed": true,
+      "expected_attribution_matched": true,
+      "failure_attribution_types": [
+        "knowledge_gap"
+      ],
+      "policy_diff": {
+        "baseline": {
+          "candidate_path_overrides": {},
+          "decision_policy": {},
+          "knowledge_projection_policy": {
+            "allowed_advisory_fields": []
+          },
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "candidate_path_overrides_changed": false,
+        "decision_policy_changed": false,
+        "knowledge_projection_policy_changed": true,
+        "required_evidence_added": [],
+        "required_evidence_removed": [],
+        "revised": {
+          "candidate_path_overrides": {},
+          "decision_policy": {},
+          "knowledge_projection_policy": {
+            "allowed_advisory_fields": [
+              "affected_ranges"
+            ]
+          },
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "schema_version": "bundle_policy_diff.v1"
+      },
+      "promotion_decision": "promote",
+      "repair_type": "knowledge_projection_repair",
+      "revised_bundle_digest": "sha256:72d3a84fe7f834225ddebcb67ea1a1059f50ba1f15adc9196d87b110b2c64abc",
+      "revised_pass_count": 4,
+      "revision_targets": [
+        "knowledge_projection",
+        "knowledge_access_binding"
+      ],
+      "schema_version": "distillation_v1_case_result.v1",
+      "seeded_counterexample_pass": true
+    },
+    {
+      "baseline_bundle_digest": "sha256:c7206312e35fbae03be5e4c3ea90c6323e4421ba757b611b744af99b631adf8b",
+      "baseline_failed_task_ids": [
+        "dependency_use_triage_requests_demo",
+        "dependency_use_triage_version_not_affected",
+        "dependency_use_triage_the_gan_zoo_public"
+      ],
+      "baseline_pass_count": 1,
+      "case_output_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\distillation_loop\\repo_dependency_use_triage_v1\\cases\\D4_evidence_binding_gap",
+      "defect_id": "D4_evidence_binding_gap",
+      "digest_changed": true,
+      "expected_attribution_matched": true,
+      "failure_attribution_types": [
+        "evidence_binding_gap"
+      ],
+      "policy_diff": {
+        "baseline": {
+          "candidate_path_overrides": {
+            "import_use_site": []
+          },
+          "decision_policy": {},
+          "knowledge_projection_policy": {},
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "candidate_path_overrides_changed": true,
+        "decision_policy_changed": false,
+        "knowledge_projection_policy_changed": false,
+        "required_evidence_added": [],
+        "required_evidence_removed": [],
+        "revised": {
+          "candidate_path_overrides": {
+            "import_use_site": [
+              "*.py"
+            ]
+          },
+          "decision_policy": {},
+          "knowledge_projection_policy": {},
+          "required_evidence": [
+            "dependency_declaration",
+            "resolved_version",
+            "import_use_site",
+            "advisory_affected_range",
+            "decision_evidence"
+          ]
+        },
+        "schema_version": "bundle_policy_diff.v1"
+      },
+      "promotion_decision": "promote",
+      "repair_type": "evidence_binding_repair",
+      "revised_bundle_digest": "sha256:9fe97d3e39b8b17067908d3ae564b4cd6c223d4eb6b47af339c0e212b9a5d66a",
+      "revised_pass_count": 4,
+      "revision_targets": [
+        "evidence_binding_plan"
+      ],
+      "schema_version": "distillation_v1_case_result.v1",
+      "seeded_counterexample_pass": true
+    }
+  ],
+  "claim_boundary": {
+    "compiler_superiority": "not_evaluated",
+    "general_vulnerability_discovery": "not_claimed",
+    "mature_agenthost_effectiveness": "not_evaluated",
+    "official_public_benchmark_performance": "not_claimed",
+    "production_readiness": "not_claimed"
+  },
+  "defect_count": 4,
+  "defect_ids": [
+    "D1_skill_missing_rule",
+    "D2_skill_overgeneralized_rule",
+    "D3_knowledge_gap",
+    "D4_evidence_binding_gap"
+  ],
+  "distillation_feedback_loop_v1": "pass",
+  "failure_attribution_types": [
+    "evidence_binding_gap",
+    "knowledge_gap",
+    "skill_missing_rule",
+    "skill_overgeneralized_rule"
+  ],
+  "promoted_count": 4,
+  "revision_targets": [
+    "evidence_binding_plan",
+    "knowledge_access_binding",
+    "knowledge_projection",
+    "runtime_policy",
+    "skill_rule"
+  ],
+  "schema_version": "distillation_feedback_loop_v1_status.v1"
+}

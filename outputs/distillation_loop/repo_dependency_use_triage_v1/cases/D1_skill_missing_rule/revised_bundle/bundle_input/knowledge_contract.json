@@ -1,0 +1,34 @@
+{
+  "knowledge_boundary": "Concrete advisory facts and repository evidence remain outside the stable Skill procedure.",
+  "knowledge_owned_facts": [
+    "allowed advisory snapshot",
+    "advisory id",
+    "package/version affected range",
+    "repo evidence source contract",
+    "dependency declaration source",
+    "resolved version source",
+    "import/use evidence source"
+  ],
+  "query_contracts": [
+    {
+      "freshness_mode": "immutable_task_snapshot",
+      "on_unavailable": "block_or_abstain",
+      "query_type": "advisory_by_package",
+      "required_parameters": [
+        "package",
+        "advisory_id"
+      ]
+    },
+    {
+      "freshness_mode": "immutable_repo_snapshot",
+      "on_unavailable": "abstain_or_fail_safe",
+      "query_type": "repo_evidence_by_type",
+      "required_parameters": [
+        "evidence_type",
+        "repo_snapshot_ref"
+      ]
+    }
+  ],
+  "schema_version": "repo_level_knowledge_contract.v1",
+  "skill_family": "repo-dependency-use-triage"
+}

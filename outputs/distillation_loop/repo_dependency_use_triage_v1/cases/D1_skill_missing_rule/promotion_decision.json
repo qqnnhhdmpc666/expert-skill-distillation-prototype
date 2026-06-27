@@ -1,0 +1,13 @@
+{
+  "accepted": true,
+  "active_binding_generation": 7,
+  "active_binding_state_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\.tmp\\distillation-loop-v1-state\\D1_skill_missing_rule",
+  "baseline_bundle_digest": "sha256:7d7b6cb8fa8eb7913140f80fd631f8dbb51ad2ae97fa6fd3c28db438bd2f11cc",
+  "decision": "promote",
+  "digest_changed": true,
+  "reason_codes": [
+    "NO_REGRESSION_AND_SEEDED_COUNTEREXAMPLE_PASS"
+  ],
+  "revised_bundle_digest": "sha256:84e886640c688afe35ccdd2cf215e684ee726998bc93a5bb6fb110556c19b816",
+  "schema_version": "distillation_promotion_decision.v1"
+}
