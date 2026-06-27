@@ -1,0 +1,78 @@
+{
+  "schema_version": "real_expert_material_source_visibility.v1",
+  "pilot_id": "repo_dependency_use_triage_v1",
+  "source_visible": [
+    {
+      "path": "data/repo_level_bundle/expert_material.md",
+      "role": "expert_material",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/repo_level_bundle/task_contract.json",
+      "role": "task_contract",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/repo_level_bundle/knowledge_contract.json",
+      "role": "knowledge_contract",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/public_osv_pilot/SOURCE_MANIFEST.json",
+      "role": "public_osv_source_manifest",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/public_osv_pilot/split_manifest.json",
+      "role": "public_osv_split_without_gold_payload",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/public_osv_pilot/osv_snapshot.json",
+      "role": "shared_allowed_knowledge_snapshot",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/public_osv_pilot/records",
+      "role": "shared_allowed_knowledge_records",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    },
+    {
+      "path": "data/public_osv_pilot/schema/osv-schema.json",
+      "role": "public_osv_schema",
+      "visibility": "source_visible",
+      "complete_read_allowed": true
+    }
+  ],
+  "evaluator_only": [
+    {
+      "path": "data/public_osv_pilot/gold.jsonl",
+      "role": "heldout_gold",
+      "visibility": "evaluator_only"
+    },
+    {
+      "path": "data/repo_security_tasks/*/task.json#hidden_gold",
+      "role": "repo_level_hidden_gold",
+      "visibility": "evaluator_only"
+    },
+    {
+      "path": "data/repo_security_tasks/*/verifier.py",
+      "role": "repo_level_native_verifier",
+      "visibility": "evaluator_only"
+    }
+  ],
+  "forbidden_distillation_artifacts": [
+    "outputs/distillation_loop/repo_dependency_use_triage_v1",
+    "data/distillation_cases/repo_dependency_use_triage_v1",
+    "reports/DISTILLATION_FEEDBACK_LOOP_V1_STATUS.md",
+    "reports/DISTILLATION_FEEDBACK_LOOP_V1_ANTI_FAKE_AUDIT.md"
+  ],
+  "claim_boundary": "Pilot source visibility manifest only; not a public benchmark or compiler superiority claim."
+}

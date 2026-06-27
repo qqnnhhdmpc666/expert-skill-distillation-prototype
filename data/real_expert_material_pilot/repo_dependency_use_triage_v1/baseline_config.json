@@ -1,0 +1,23 @@
+{
+  "schema_version": "real_expert_material_baseline_config.v1",
+  "pilot_id": "repo_dependency_use_triage_v1",
+  "runtime_backend": "deterministic_reference",
+  "budget": {
+    "max_repo_files_read": 12,
+    "max_allowed_knowledge_queries": 3,
+    "network": "disabled",
+    "llm_calls": 0
+  },
+  "baselines": [
+    "no_skill",
+    "full_material",
+    "direct_to_skill_ir",
+    "distillation_loop_v1"
+  ],
+  "claim_boundary": {
+    "compiler_superiority": "not_evaluated",
+    "official_public_benchmark_performance": "not_claimed",
+    "general_vulnerability_discovery": "not_claimed",
+    "production_readiness": "not_claimed"
+  }
+}

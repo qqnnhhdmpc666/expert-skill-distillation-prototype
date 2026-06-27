@@ -1,0 +1,44 @@
+{
+  "baseline_comparison_status": "pass",
+  "baseline_validity": {
+    "direct_to_skill_ir": {
+      "invalid_reason": null,
+      "status": "valid"
+    },
+    "distillation_loop_v1": {
+      "invalid_reason": null,
+      "status": "valid"
+    },
+    "full_material": {
+      "invalid_reason": null,
+      "status": "valid"
+    },
+    "no_skill": {
+      "invalid_reason": null,
+      "status": "valid"
+    }
+  },
+  "four_baseline_comparison": "pass",
+  "heldout_feedback_used_for_revision": false,
+  "interpretation_caveats": [
+    "no_skill uses deterministic reference backend default triage logic",
+    "repo-level public excerpt lane is partial unless two clean public excerpts are present"
+  ],
+  "osv_lane_accuracy": {
+    "direct_to_skill_ir": 1.0,
+    "distillation_loop_v1": 1.0,
+    "full_material": 1.0,
+    "no_skill": 1.0
+  },
+  "repo_lane_pass_counts": {
+    "direct_to_skill_ir": 1,
+    "distillation_loop_v1": 1,
+    "full_material": 1,
+    "no_skill": 1
+  },
+  "same_allowed_knowledge_snapshot": true,
+  "same_budget": true,
+  "same_runtime_backend": true,
+  "same_task_split": true,
+  "schema_version": "real_expert_material_baseline_comparison.v1"
+}

@@ -1,0 +1,508 @@
+{
+  "osv_advisory_version": {
+    "baselines": {
+      "direct_to_skill_ir": {
+        "accuracy": 1.0,
+        "baseline": "direct_to_skill_ir",
+        "bundle_digest": null,
+        "case_count": 7,
+        "direct_skill_ir_digest": "sha256:ddd488ea7f6ef75447cbd939228dc6bc5275cdcf40731fd17bfcbf11838e379d",
+        "execution_status": "completed",
+        "false_safe_count": 0,
+        "missing_prediction_count": 0,
+        "passed_count": 7,
+        "verifier_artifact": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\direct_to_skill_ir\\osv_advisory_version\\evaluation.json"
+      },
+      "distillation_loop_v1": {
+        "accuracy": 1.0,
+        "baseline": "distillation_loop_v1",
+        "bundle_digest": "sha256:b5e0e0aa0e350a8ec38ca404ac4c730dd1bbfcfe3eb54778f5cd747a6dd66914",
+        "case_count": 7,
+        "direct_skill_ir_digest": null,
+        "execution_status": "completed",
+        "false_safe_count": 0,
+        "missing_prediction_count": 0,
+        "passed_count": 7,
+        "verifier_artifact": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\distillation_loop_v1\\osv_advisory_version\\evaluation.json"
+      },
+      "full_material": {
+        "accuracy": 1.0,
+        "baseline": "full_material",
+        "bundle_digest": null,
+        "case_count": 7,
+        "direct_skill_ir_digest": null,
+        "execution_status": "completed",
+        "false_safe_count": 0,
+        "missing_prediction_count": 0,
+        "passed_count": 7,
+        "verifier_artifact": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\full_material\\osv_advisory_version\\evaluation.json"
+      },
+      "no_skill": {
+        "accuracy": 1.0,
+        "baseline": "no_skill",
+        "bundle_digest": null,
+        "case_count": 7,
+        "direct_skill_ir_digest": null,
+        "execution_status": "completed",
+        "false_safe_count": 0,
+        "missing_prediction_count": 0,
+        "passed_count": 7,
+        "verifier_artifact": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\no_skill\\osv_advisory_version\\evaluation.json"
+      }
+    },
+    "case_count": 7,
+    "lane_status": "pass"
+  },
+  "repo_level_dependency_use": {
+    "baselines": {
+      "direct_to_skill_ir": {
+        "baseline": "direct_to_skill_ir",
+        "bundle_digest": null,
+        "execution_status": "completed",
+        "failed_count": 0,
+        "passed_count": 1,
+        "rows": [
+          {
+            "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+            "decision": "dependency_used_and_affected",
+            "failure_category": null,
+            "fixture_type": "public_repo_excerpt",
+            "license": "MIT",
+            "prediction_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\direct_to_skill_ir\\repo_lane\\task_01\\prediction.json",
+            "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+            "task_id": "dependency_use_triage_the_gan_zoo_public",
+            "task_output_dir": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\direct_to_skill_ir\\repo_lane\\task_01",
+            "verifier_checks": [
+              {
+                "detail": "",
+                "name": "schema_fields_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "hidden_gold_absent_from_prediction",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_id_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_type_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_enum_valid",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "package_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "version_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "advisory_match",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_reason_codes_present",
+                "passed": true
+              },
+              {
+                "detail": "malformed_indexes=[]",
+                "name": "evidence_schema_valid",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_evidence_types_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "evidence_grounded",
+                "passed": true
+              },
+              {
+                "detail": "[]",
+                "name": "evidence_refs_resolve",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_locations_complete",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "import_use_required_for_used_decision",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_required_for_non_unresolved",
+                "passed": true
+              }
+            ],
+            "verifier_pass": true,
+            "verifier_result_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\direct_to_skill_ir\\repo_lane\\task_01\\verifier_result.json"
+          }
+        ],
+        "task_count": 1
+      },
+      "distillation_loop_v1": {
+        "baseline": "distillation_loop_v1",
+        "bundle_digest": "sha256:b5e0e0aa0e350a8ec38ca404ac4c730dd1bbfcfe3eb54778f5cd747a6dd66914",
+        "execution_status": "completed",
+        "failed_count": 0,
+        "passed_count": 1,
+        "rows": [
+          {
+            "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+            "decision": "dependency_used_and_affected",
+            "failure_category": null,
+            "fixture_type": "public_repo_excerpt",
+            "license": "MIT",
+            "prediction_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\distillation_loop_v1\\repo_lane\\task_01\\prediction.json",
+            "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+            "task_id": "dependency_use_triage_the_gan_zoo_public",
+            "task_output_dir": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\distillation_loop_v1\\repo_lane\\task_01",
+            "verifier_checks": [
+              {
+                "detail": "",
+                "name": "schema_fields_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "hidden_gold_absent_from_prediction",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_id_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_type_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_enum_valid",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "package_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "version_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "advisory_match",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_reason_codes_present",
+                "passed": true
+              },
+              {
+                "detail": "malformed_indexes=[]",
+                "name": "evidence_schema_valid",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_evidence_types_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "evidence_grounded",
+                "passed": true
+              },
+              {
+                "detail": "[]",
+                "name": "evidence_refs_resolve",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_locations_complete",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "import_use_required_for_used_decision",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_required_for_non_unresolved",
+                "passed": true
+              }
+            ],
+            "verifier_pass": true,
+            "verifier_result_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\distillation_loop_v1\\repo_lane\\task_01\\verifier_result.json"
+          }
+        ],
+        "task_count": 1
+      },
+      "full_material": {
+        "baseline": "full_material",
+        "bundle_digest": null,
+        "execution_status": "completed",
+        "failed_count": 0,
+        "passed_count": 1,
+        "rows": [
+          {
+            "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+            "decision": "dependency_used_and_affected",
+            "failure_category": null,
+            "fixture_type": "public_repo_excerpt",
+            "license": "MIT",
+            "prediction_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\full_material\\repo_lane\\task_01\\prediction.json",
+            "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+            "task_id": "dependency_use_triage_the_gan_zoo_public",
+            "task_output_dir": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\full_material\\repo_lane\\task_01",
+            "verifier_checks": [
+              {
+                "detail": "",
+                "name": "schema_fields_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "hidden_gold_absent_from_prediction",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_id_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_type_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_enum_valid",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "package_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "version_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "advisory_match",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_reason_codes_present",
+                "passed": true
+              },
+              {
+                "detail": "malformed_indexes=[]",
+                "name": "evidence_schema_valid",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_evidence_types_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "evidence_grounded",
+                "passed": true
+              },
+              {
+                "detail": "[]",
+                "name": "evidence_refs_resolve",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_locations_complete",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "import_use_required_for_used_decision",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_required_for_non_unresolved",
+                "passed": true
+              }
+            ],
+            "verifier_pass": true,
+            "verifier_result_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\full_material\\repo_lane\\task_01\\verifier_result.json"
+          }
+        ],
+        "task_count": 1
+      },
+      "no_skill": {
+        "baseline": "no_skill",
+        "bundle_digest": null,
+        "execution_status": "completed",
+        "failed_count": 0,
+        "passed_count": 1,
+        "rows": [
+          {
+            "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+            "decision": "dependency_used_and_affected",
+            "failure_category": null,
+            "fixture_type": "public_repo_excerpt",
+            "license": "MIT",
+            "prediction_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\no_skill\\repo_lane\\task_01\\prediction.json",
+            "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+            "task_id": "dependency_use_triage_the_gan_zoo_public",
+            "task_output_dir": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\no_skill\\repo_lane\\task_01",
+            "verifier_checks": [
+              {
+                "detail": "",
+                "name": "schema_fields_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "hidden_gold_absent_from_prediction",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_id_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "task_type_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_enum_valid",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "decision_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "package_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "version_match",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "advisory_match",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_reason_codes_present",
+                "passed": true
+              },
+              {
+                "detail": "malformed_indexes=[]",
+                "name": "evidence_schema_valid",
+                "passed": true
+              },
+              {
+                "detail": "missing=[]",
+                "name": "required_evidence_types_present",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "evidence_grounded",
+                "passed": true
+              },
+              {
+                "detail": "[]",
+                "name": "evidence_refs_resolve",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_locations_complete",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "import_use_required_for_used_decision",
+                "passed": true
+              },
+              {
+                "detail": "",
+                "name": "repo_evidence_required_for_non_unresolved",
+                "passed": true
+              }
+            ],
+            "verifier_pass": true,
+            "verifier_result_path": "outputs\\real_expert_material_pilot\\repo_dependency_use_triage_v1\\baselines\\no_skill\\repo_lane\\task_01\\verifier_result.json"
+          }
+        ],
+        "task_count": 1
+      }
+    },
+    "best_effort_second_public_excerpt": {
+      "reason": "No second clean public repo excerpt with immutable commit, license, verifier, and snapshot manifest is frozen yet.",
+      "status": "not_completed"
+    },
+    "full_public_repo_level_evaluation": "not_claimed",
+    "lane_status": "partial",
+    "repo_level_public_excerpt_count": 1
+  },
+  "schema_version": "real_expert_material_per_lane_summary.v1"
+}

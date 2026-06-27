@@ -1,0 +1,41 @@
+{
+  "allowed_claim": "The system supports a first real expert-material distillation pilot with explicit source/held-out separation, baseline comparison, deterministic evidence-grounded evaluation, and anti-leakage reporting.",
+  "anti_leakage_status": "pass",
+  "baseline_comparison_status": "pass",
+  "baselines": [
+    "no_skill",
+    "full_material",
+    "direct_to_skill_ir",
+    "distillation_loop_v1"
+  ],
+  "budget": {
+    "llm_calls": 0,
+    "max_allowed_knowledge_queries": 3,
+    "max_repo_files_read": 12,
+    "network": "disabled"
+  },
+  "claim_boundary": {
+    "compiler_superiority": "not_evaluated",
+    "general_vulnerability_discovery": "not_claimed",
+    "mature_agenthost_effectiveness": "not_evaluated",
+    "official_public_benchmark_performance": "not_claimed",
+    "production_readiness": "not_claimed"
+  },
+  "claim_boundary_status": "pass",
+  "distillation_loop_v1_bundle_digest": "sha256:b5e0e0aa0e350a8ec38ca404ac4c730dd1bbfcfe3eb54778f5cd747a6dd66914",
+  "four_baseline_comparison": "pass",
+  "full_public_repo_level_evaluation": "not_claimed",
+  "heldout_feedback_used_for_revision": false,
+  "no_skill_reference_backend_contains_default_triage_logic": true,
+  "osv_heldout_case_count": 7,
+  "osv_lane_status": "pass",
+  "pilot_protocol_status": "pass",
+  "repo_level_lane_status": "partial",
+  "repo_level_public_excerpt_count": 1,
+  "runtime_backend": "deterministic_reference",
+  "same_allowed_knowledge_snapshot": true,
+  "same_budget": true,
+  "same_runtime_backend": true,
+  "same_task_split": true,
+  "schema_version": "real_expert_material_pilot_summary.v1"
+}

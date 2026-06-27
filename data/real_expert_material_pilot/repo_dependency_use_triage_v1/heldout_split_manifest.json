@@ -1,0 +1,38 @@
+{
+  "schema_version": "real_expert_material_heldout_split.v1",
+  "pilot_id": "repo_dependency_use_triage_v1",
+  "source_split_refs": {
+    "public_osv_split_manifest": "data/public_osv_pilot/split_manifest.json",
+    "repo_task_registry": "data/repo_security_tasks/registry.json"
+  },
+  "lanes": {
+    "osv_advisory_version": {
+      "heldout_case_ids": [
+        "GHSA-34jh-p97f-mpxf__advisory_missing_1",
+        "GHSA-34jh-p97f-mpxf__affected",
+        "GHSA-462w-v97r-4m45__affected",
+        "GHSA-462w-v97r-4m45__version_unknown_2",
+        "GHSA-9hjg-9r4m-mvj7__package_absent_3",
+        "PYSEC-2017-98__fixed_boundary",
+        "PYSEC-2018-28__affected"
+      ],
+      "evaluator_only_gold_ref": "data/public_osv_pilot/gold.jsonl"
+    },
+    "repo_level_dependency_use": {
+      "heldout_task_ids": [
+        "dependency_use_triage_the_gan_zoo_public"
+      ],
+      "best_effort_second_public_excerpt": {
+        "status": "not_completed",
+        "reason": "No second clean public repo excerpt with immutable commit, license, verifier, and snapshot manifest is frozen yet."
+      }
+    }
+  },
+  "baseline_invariants": {
+    "same_task_split": true,
+    "same_allowed_knowledge_snapshot": true,
+    "same_runtime_backend": true,
+    "same_budget": true,
+    "heldout_feedback_used_for_revision": false
+  }
+}
