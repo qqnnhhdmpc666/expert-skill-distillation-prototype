@@ -1,0 +1,60 @@
+{
+  "schema_version": "skill_family_registry.v1",
+  "registry_id": "multi_skill_family_lifecycle_v1",
+  "families": [
+    {
+      "skill_family": "python-advisory",
+      "family_type": "python_advisory",
+      "builder_entrypoint": "python -m expert_skill_system.cli demo",
+      "default_state_dir": ".tmp/python-advisory-family-state",
+      "default_eval": "partial_runtime_smoke",
+      "data_dir": "data/v1_walking_skeleton",
+      "binding_key": "python-advisory",
+      "claim_scope": [
+        "deterministic_python_advisory_runtime",
+        "osv_snapshot_applicability",
+        "release_bundle_closure"
+      ],
+      "blocked_claims": [
+        "compiler_superiority",
+        "mature_agenthost_effectiveness",
+        "vulnerability_discovery",
+        "production_scanner",
+        "official_public_benchmark_performance",
+        "exploitability_or_reachability"
+      ]
+    },
+    {
+      "skill_family": "repo-dependency-use-triage",
+      "family_type": "repo_level_dependency_use_triage",
+      "builder_entrypoint": "scripts/build_repo_level_bundle.py",
+      "default_state_dir": ".tmp/repo-level-specific-bundle-state",
+      "default_eval": "repo_level_eval",
+      "data_dir": "data/repo_level_bundle",
+      "task_registry": "data/repo_security_tasks/registry.json",
+      "binding_key": "repo-dependency-use-triage",
+      "claim_scope": [
+        "deterministic_repo_level_harness",
+        "dependency_use_triage",
+        "traceable_public_excerpt",
+        "release_bundle_closure"
+      ],
+      "blocked_claims": [
+        "compiler_superiority",
+        "mature_agenthost_effectiveness",
+        "vulnerability_discovery",
+        "production_scanner",
+        "official_public_benchmark_performance",
+        "exploitability_or_reachability"
+      ]
+    }
+  ],
+  "global_blocked_claims": [
+    "compiler_superiority",
+    "mature_agenthost_effectiveness",
+    "general_vulnerability_discovery",
+    "production_scanner_readiness",
+    "official_public_benchmark_performance",
+    "exploitability_or_reachability"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "active_binding_generation": 1,
+  "binding_key": "python-advisory",
+  "build_status": "pass",
+  "builder": "python -m expert_skill_system.cli demo",
+  "bundle_digest": "sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4",
+  "bundle_manifest_skill_family": "python_advisory_applicability",
+  "claim_boundary": {
+    "allowed_claims": [
+      "deterministic_python_advisory_runtime",
+      "osv_snapshot_applicability",
+      "release_bundle_closure"
+    ],
+    "blocked_claims": [
+      "compiler_superiority",
+      "mature_agenthost_effectiveness",
+      "vulnerability_discovery",
+      "production_scanner",
+      "official_public_benchmark_performance",
+      "exploitability_or_reachability"
+    ]
+  },
+  "evaluation_status": "pending",
+  "evidence_paths": [
+    "outputs\\multi_skill_family_lifecycle\\latest\\families\\python-advisory\\python_advisory_runtime_smoke.json"
+  ],
+  "evidence_requirements": [
+    "frozen_osv_advisory_and_affected_ranges",
+    "frozen_osv_advisory_and_affected_ranges",
+    "frozen_osv_advisory_and_affected_ranges",
+    "frozen_osv_advisory_and_affected_ranges",
+    "frozen_osv_advisory_and_affected_ranges"
+  ],
+  "family_type": "python_advisory",
+  "knowledge_access_binding_digest": "sha256:530646d8dd8486dc1896dde5192b3f267f0a2b500342c34b86f8124e716047ca",
+  "knowledge_projection_digest": "sha256:0c1919fc0b30afe07c89310ef0e9c220d7f70b9cd3d0c70f1e6bf47722428e1a",
+  "provider_policy_digest": "sha256:2df77abeb05c84d1fa104778fb8ce638e41f818bd0a2a6c84c7f659d7097a865",
+  "schema_version": "family_build.v1",
+  "skill_artifact_digest": "sha256:b1e0d32349fe46049d4655d89c87e425d593bdf4a54bf4aee5efea83853cbbdb",
+  "skill_digest": "sha256:8a1738b57cee10f88b0827c515fe3cb02e7d2894a91a0258696812989b01f045",
+  "skill_family": "python-advisory",
+  "state_dir": ".tmp/python-advisory-family-state"
+}

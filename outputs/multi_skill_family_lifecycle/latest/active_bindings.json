@@ -1,0 +1,19 @@
+{
+  "bindings": [
+    {
+      "active_binding_generation": 1,
+      "binding_key": "python-advisory",
+      "bundle_digest": "sha256:a458b8005fd99e26820231a21c411fdcb1b9d195d571fd60dbe4e168afbb89f4",
+      "schema_version": "family_active_binding.v1",
+      "skill_family": "python-advisory"
+    },
+    {
+      "active_binding_generation": 1,
+      "binding_key": "repo-dependency-use-triage",
+      "bundle_digest": "sha256:e51359a9edb0cf3d64d6d2954a0d70785bf35a2a00c2e5c1100bf5ef3db9bbda",
+      "schema_version": "family_active_binding.v1",
+      "skill_family": "repo-dependency-use-triage"
+    }
+  ],
+  "schema_version": "family_active_bindings.v1"
+}

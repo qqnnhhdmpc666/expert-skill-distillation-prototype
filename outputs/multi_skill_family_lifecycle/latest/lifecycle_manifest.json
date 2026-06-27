@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-06-27T08:41:31.648909+00:00",
+  "family_registry": "data\\skill_families\\registry.json",
+  "output_dir": "outputs\\multi_skill_family_lifecycle\\latest",
+  "requested_families": [
+    "python-advisory",
+    "repo-dependency-use-triage"
+  ],
+  "schema_version": "multi_skill_family_lifecycle_manifest.v1",
+  "selected_families": [
+    {
+      "binding_key": "python-advisory",
+      "blocked_claims": [
+        "compiler_superiority",
+        "mature_agenthost_effectiveness",
+        "vulnerability_discovery",
+        "production_scanner",
+        "official_public_benchmark_performance",
+        "exploitability_or_reachability"
+      ],
+      "builder_entrypoint": "python -m expert_skill_system.cli demo",
+      "claim_scope": [
+        "deterministic_python_advisory_runtime",
+        "osv_snapshot_applicability",
+        "release_bundle_closure"
+      ],
+      "data_dir": "data/v1_walking_skeleton",
+      "default_eval": "partial_runtime_smoke",
+      "default_state_dir": ".tmp/python-advisory-family-state",
+      "family_type": "python_advisory",
+      "skill_family": "python-advisory",
+      "task_registry": null
+    },
+    {
+      "binding_key": "repo-dependency-use-triage",
+      "blocked_claims": [
+        "compiler_superiority",
+        "mature_agenthost_effectiveness",
+        "vulnerability_discovery",
+        "production_scanner",
+        "official_public_benchmark_performance",
+        "exploitability_or_reachability"
+      ],
+      "builder_entrypoint": "scripts/build_repo_level_bundle.py",
+      "claim_scope": [
+        "deterministic_repo_level_harness",
+        "dependency_use_triage",
+        "traceable_public_excerpt",
+        "release_bundle_closure"
+      ],
+      "data_dir": "data/repo_level_bundle",
+      "default_eval": "repo_level_eval",
+      "default_state_dir": ".tmp/repo-level-specific-bundle-state",
+      "family_type": "repo_level_dependency_use_triage",
+      "skill_family": "repo-dependency-use-triage",
+      "task_registry": "data/repo_security_tasks/registry.json"
+    }
+  ]
+}
