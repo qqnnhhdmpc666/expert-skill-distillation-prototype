@@ -1,4 +1,5 @@
 {
+  "agent_execution_surface": "mini_swe_agent_real_llm",
   "api_error_summary": null,
   "api_error_type": null,
   "api_provider_label": "deepseek_official",
@@ -6,18 +7,20 @@
   "backend": "mini_swe_agent_real_llm",
   "base_url_host_only": "api.deepseek.com",
   "condition": "no_skill",
+  "mini_swe_agent_result": {
+    "exit_status": "Submitted",
+    "submission": "{\n  \"schema_version\": \"repo_security_prediction_schema.v1\",\n  \"task_id\": \"dependency_use_triage_the_gan_zoo_public\",\n  \"task_type\": \"dependency_use_triage\",\n  \"decision\": \"dependency_used_and_affected\",\n  \"package\": \"requests\",\n  \"declared_version\": \"2.19.1\",\n  \"advisory_id\": \"PYSEC-2018-28\",\n  \"evidence\": [\n    {\n      \"evidence_id\": \"dep_declaration\",\n      \"evidence_type\": \"dependency_declaration\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"requests==2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"import_site\",\n      \"evidence_type\": \"import_statement\",\n      \"path\": \"update.py\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"excerpt\": \"import requests\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"call_site\",\n      \"evidence_type\": \"call_site\",\n      \"path\": \"update.py\",\n      \"line_start\": 58,\n      \"line_end\": 58,\n      \"excerpt\": \"result = requests.get(url)\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"advisory_snapshot\",\n      \"evidence_type\": \"advisory_snapshot\",\n      \"path\": \"allowed_knowledge.json\",\n      \"line_start\": 1,\n      \"line_end\": 1,\n      \"excerpt\": \"PYSEC-2018-28: requests < 2.20.0 affected\",\n      \"file_digest\": \"sha256:provided_in_snapshot\"\n    }\n  ],\n  \"reason_codes\": [\n    \"dependency_declared_in_requirements_txt\",\n    \"import_statement_found_in_update_py\",\n    \"call_site_requests_get_in_update_py\",\n    \"declared_version_2_19_1_is_below_fixed_2_20_0\",\n    \"advisory_PYSEC_2018_28_marks_versions_before_2_20_0_as_affected\"\n  ]\n}"
+  },
+  "mini_swe_agent_trajectory_ref": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\real_api_benchmark_micro_v0\\runs\\document_to_agent_real_api\\no_skill\\mini_swe_agent_real_llm_trajectory.json",
   "model_name": "deepseek-chat",
   "parsed_prediction_available": true,
-  "raw_content": "{\n  \"schema_version\": \"repo_security_prediction_schema.v1\",\n  \"task_id\": \"dependency_use_triage_the_gan_zoo_public\",\n  \"task_type\": \"dependency_use_triage\",\n  \"decision\": \"dependency_used_and_affected\",\n  \"package\": \"requests\",\n  \"declared_version\": \"2.19.1\",\n  \"advisory_id\": \"PYSEC-2018-28\",\n  \"evidence\": [\n    {\n      \"evidence_id\": \"dep-declaration\",\n      \"evidence_type\": \"dependency_declaration\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"requests==2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"import-site\",\n      \"evidence_type\": \"import_statement\",\n      \"path\": \"update.py\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"excerpt\": \"import requests\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"call-site\",\n      \"evidence_type\": \"call_site\",\n      \"path\": \"update.py\",\n      \"line_start\": 58,\n      \"line_end\": 58,\n      \"excerpt\": \"result = requests.get(url)\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"advisory-snapshot\",\n      \"evidence_type\": \"advisory_snapshot\",\n      \"path\": \"allowed_knowledge.json\",\n      \"line_start\": 1,\n      \"line_end\": 1,\n      \"excerpt\": \"PYSEC-2018-28: requests < 2.20.0 affected\",\n      \"file_digest\": \"sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb\"\n    }\n  ],\n  \"reason_codes\": [\n    \"dependency_declared_in_requirements_txt\",\n    \"imported_in_update_py\",\n    \"used_in_update_github_stats_function\",\n    \"declared_version_2_19_1_is_below_fixed_2_20_0\"\n  ]\n}",
+  "raw_content": "{\n  \"schema_version\": \"repo_security_prediction_schema.v1\",\n  \"task_id\": \"dependency_use_triage_the_gan_zoo_public\",\n  \"task_type\": \"dependency_use_triage\",\n  \"decision\": \"dependency_used_and_affected\",\n  \"package\": \"requests\",\n  \"declared_version\": \"2.19.1\",\n  \"advisory_id\": \"PYSEC-2018-28\",\n  \"evidence\": [\n    {\n      \"evidence_id\": \"dep_declaration\",\n      \"evidence_type\": \"dependency_declaration\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"requests==2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"import_site\",\n      \"evidence_type\": \"import_statement\",\n      \"path\": \"update.py\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"excerpt\": \"import requests\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"call_site\",\n      \"evidence_type\": \"call_site\",\n      \"path\": \"update.py\",\n      \"line_start\": 58,\n      \"line_end\": 58,\n      \"excerpt\": \"result = requests.get(url)\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"advisory_snapshot\",\n      \"evidence_type\": \"advisory_snapshot\",\n      \"path\": \"allowed_knowledge.json\",\n      \"line_start\": 1,\n      \"line_end\": 1,\n      \"excerpt\": \"PYSEC-2018-28: requests < 2.20.0 affected\",\n      \"file_digest\": \"sha256:provided_in_snapshot\"\n    }\n  ],\n  \"reason_codes\": [\n    \"dependency_declared_in_requirements_txt\",\n    \"import_statement_found_in_update_py\",\n    \"call_site_requests_get_in_update_py\",\n    \"declared_version_2_19_1_is_below_fixed_2_20_0\",\n    \"advisory_PYSEC_2018_28_marks_versions_before_2_20_0_as_affected\"\n  ]\n}",
   "schema_version": "real_api_agent_output.v0",
   "token_usage": {
-    "completion_tokens": 620,
-    "prompt_cache_hit_tokens": 0,
-    "prompt_cache_miss_tokens": 3215,
-    "prompt_tokens": 3215,
-    "prompt_tokens_details": {
-      "cached_tokens": 0
-    },
-    "total_tokens": 3835
+    "completion_tokens": 633,
+    "prompt_cache_hit_tokens": 3200,
+    "prompt_cache_miss_tokens": 81,
+    "prompt_tokens": 3281,
+    "total_tokens": 3914
   }
 }

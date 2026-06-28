@@ -1,6 +1,7 @@
 {
   "rows": [
     {
+      "agent_execution_surface": "mini_swe_agent_real_llm",
       "api_call_count": 1,
       "backend": "mini_swe_agent_real_llm",
       "bundle_injected": false,
@@ -14,29 +15,27 @@
       "failure_types": [
         "evidence_error"
       ],
-      "interpretation_note": "real DeepSeek-backed agent row with local domain verifier",
+      "interpretation_note": "real DeepSeek-backed mini-SWE-agent row with local domain verifier",
       "lane": "document_to_agent_real_api",
       "not_counted_count": 0,
       "pass_count": 0,
       "real_llm_agent_executed": true,
-      "runtime_seconds_total": 8.774,
+      "runtime_seconds_total": 25.306,
       "schema_valid_rate": 1.0,
       "task_count": 1,
       "token_usage": {
-        "completion_tokens": 620,
-        "prompt_cache_hit_tokens": 0,
-        "prompt_cache_miss_tokens": 3215,
-        "prompt_tokens": 3215,
-        "prompt_tokens_details": {
-          "cached_tokens": 0
-        },
-        "total_tokens": 3835
+        "completion_tokens": 633,
+        "prompt_cache_hit_tokens": 3200,
+        "prompt_cache_miss_tokens": 81,
+        "prompt_tokens": 3281,
+        "total_tokens": 3914
       },
       "trajectory_available": true,
       "verifier_available": true,
       "verifier_pass_rate": 0.0
     },
     {
+      "agent_execution_surface": "mini_swe_agent_real_llm",
       "api_call_count": 1,
       "backend": "mini_swe_agent_real_llm",
       "bundle_injected": true,
@@ -48,23 +47,20 @@
       "execution_status": "executed",
       "fail_count": 0,
       "failure_types": [],
-      "interpretation_note": "real DeepSeek-backed agent row with local domain verifier",
+      "interpretation_note": "real DeepSeek-backed mini-SWE-agent row with local domain verifier",
       "lane": "document_to_agent_real_api",
       "not_counted_count": 0,
       "pass_count": 1,
       "real_llm_agent_executed": true,
-      "runtime_seconds_total": 10.658,
+      "runtime_seconds_total": 9.302,
       "schema_valid_rate": 1.0,
       "task_count": 1,
       "token_usage": {
-        "completion_tokens": 771,
-        "prompt_cache_hit_tokens": 2304,
-        "prompt_cache_miss_tokens": 3691,
-        "prompt_tokens": 5995,
-        "prompt_tokens_details": {
-          "cached_tokens": 2304
-        },
-        "total_tokens": 6766
+        "completion_tokens": 606,
+        "prompt_cache_hit_tokens": 6016,
+        "prompt_cache_miss_tokens": 45,
+        "prompt_tokens": 6061,
+        "total_tokens": 6667
       },
       "trajectory_available": true,
       "verifier_available": true,

@@ -3,6 +3,7 @@
 - real_api_benchmark_micro_v0_status: `pass`
 - real_api_status: `pass`
 - backend: `mini_swe_agent_real_llm`
+- agent_execution_surface: `mini_swe_agent_real_llm`
 - provider: `deepseek_official`
 - model: `deepseek-chat`
 - anti_leakage_status: `pass`

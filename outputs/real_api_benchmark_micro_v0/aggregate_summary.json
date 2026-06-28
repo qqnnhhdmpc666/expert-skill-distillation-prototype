@@ -1,4 +1,5 @@
 {
+  "agent_execution_surface": "mini_swe_agent_real_llm",
   "anti_leakage_status": "pass",
   "api_provider_label": "deepseek_official",
   "backend": "mini_swe_agent_real_llm",

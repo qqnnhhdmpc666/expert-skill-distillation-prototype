@@ -70,7 +70,7 @@
         "passed": true
       },
       {
-        "detail": "[{\"evidence_id\": \"advisory-snapshot\", \"reason\": \"PATH_NOT_IN_MANIFEST\", \"resolved\": false}]",
+        "detail": "[{\"evidence_id\": \"advisory_snapshot\", \"reason\": \"PATH_NOT_IN_MANIFEST\", \"resolved\": false}]",
         "name": "evidence_refs_resolve",
         "passed": false
       },

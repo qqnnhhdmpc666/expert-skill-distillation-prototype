@@ -4,7 +4,7 @@
   "declared_version": "2.19.1",
   "evidence": [
     {
-      "evidence_id": "dep-declaration",
+      "evidence_id": "dep_declaration",
       "evidence_type": "dependency_declaration",
       "excerpt": "requests==2.19.1",
       "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
@@ -13,7 +13,7 @@
       "path": "requirements.txt"
     },
     {
-      "evidence_id": "import-site",
+      "evidence_id": "import_site",
       "evidence_type": "import_statement",
       "excerpt": "import requests",
       "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
@@ -22,7 +22,7 @@
       "path": "update.py"
     },
     {
-      "evidence_id": "call-site",
+      "evidence_id": "call_site",
       "evidence_type": "call_site",
       "excerpt": "result = requests.get(url)",
       "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
@@ -31,10 +31,10 @@
       "path": "update.py"
     },
     {
-      "evidence_id": "advisory-snapshot",
+      "evidence_id": "advisory_snapshot",
       "evidence_type": "advisory_snapshot",
       "excerpt": "PYSEC-2018-28: requests < 2.20.0 affected",
-      "file_digest": "sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb",
+      "file_digest": "sha256:provided_in_snapshot",
       "line_end": 1,
       "line_start": 1,
       "path": "allowed_knowledge.json"
@@ -43,9 +43,10 @@
   "package": "requests",
   "reason_codes": [
     "dependency_declared_in_requirements_txt",
-    "imported_in_update_py",
-    "used_in_update_github_stats_function",
-    "declared_version_2_19_1_is_below_fixed_2_20_0"
+    "import_statement_found_in_update_py",
+    "call_site_requests_get_in_update_py",
+    "declared_version_2_19_1_is_below_fixed_2_20_0",
+    "advisory_PYSEC_2018_28_marks_versions_before_2_20_0_as_affected"
   ],
   "schema_version": "repo_security_prediction_schema.v1",
   "task_id": "dependency_use_triage_the_gan_zoo_public",

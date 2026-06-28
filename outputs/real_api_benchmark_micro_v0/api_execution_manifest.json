@@ -1,5 +1,6 @@
 {
   "OPENAI_API_KEY_present": true,
+  "agent_execution_surface": "mini_swe_agent_real_llm",
   "api_provider_label": "deepseek_official",
   "backend": "mini_swe_agent_real_llm",
   "base_url_host_only": "api.deepseek.com",
@@ -7,5 +8,5 @@
   "model_name": "deepseek-chat",
   "raw_api_key_written": false,
   "schema_version": "real_api_execution_manifest.v0",
-  "timestamp": "2026-06-28T12:08:19.520847+00:00"
+  "timestamp": "2026-06-28T12:25:01.824339+00:00"
 }

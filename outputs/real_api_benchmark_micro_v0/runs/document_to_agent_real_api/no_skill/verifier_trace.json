@@ -12,7 +12,7 @@
   "evidence_check": {
     "status": "fail"
   },
-  "prediction_digest": "sha256:598507880e9d5b830b17e9385c3b2014e45fd1843f72a472f57f813fb1f89787",
+  "prediction_digest": "sha256:900cb8b250eea26df48f1830df70695e3fd48eddfa40c3971e6178d4a76eb7c3",
   "schema_check": {
     "status": "pass"
   },

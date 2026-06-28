@@ -1,4 +1,5 @@
 {
+  "agent_execution_surface": "mini_swe_agent_real_llm",
   "api_call_count": 1,
   "backend": "mini_swe_agent_real_llm",
   "bundle_injected": true,
@@ -6,19 +7,17 @@
   "condition": "document_to_agent_bundle",
   "execution_status": "executed",
   "lane": "document_to_agent_real_api",
+  "mini_swe_agent_trajectory_ref": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\real_api_benchmark_micro_v0\\runs\\document_to_agent_real_api\\document_to_agent_bundle\\mini_swe_agent_real_llm_trajectory.json",
   "real_llm_agent_executed": true,
-  "runtime_seconds": 10.658,
+  "runtime_seconds": 9.302,
   "schema_valid": true,
   "schema_version": "real_api_micro_run_summary.v0",
   "token_usage": {
-    "completion_tokens": 771,
-    "prompt_cache_hit_tokens": 2304,
-    "prompt_cache_miss_tokens": 3691,
-    "prompt_tokens": 5995,
-    "prompt_tokens_details": {
-      "cached_tokens": 2304
-    },
-    "total_tokens": 6766
+    "completion_tokens": 606,
+    "prompt_cache_hit_tokens": 6016,
+    "prompt_cache_miss_tokens": 45,
+    "prompt_tokens": 6061,
+    "total_tokens": 6667
   },
   "verifier_pass": true
 }

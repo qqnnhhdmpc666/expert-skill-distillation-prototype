@@ -56,6 +56,9 @@ class ApiResult:
     token_usage: dict[str, Any] | None
     raw_response_redacted: dict[str, Any] | None
     runtime_seconds: float
+    agent_surface: str = "direct_chat_completion"
+    mini_swe_agent_trajectory_ref: str | None = None
+    mini_swe_agent_result: dict[str, Any] | None = None
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -139,7 +142,7 @@ def _run_document_to_agent_row(output: Path, state_dir: Path, condition: str, co
     prompt_path = run_dir / "agent_prompt_runtime_visible.md"
     prompt_path.write_text(prompt, encoding="utf-8")
     start = time.perf_counter()
-    api_result = _mock_api_response(condition) if config.mock_api else _call_chat_completion(config, prompt)
+    api_result = _mock_api_response(condition) if config.mock_api else _run_mini_swe_agent_real_llm(config, prompt, run_dir)
     elapsed = round(time.perf_counter() - start, 3)
 
     prediction = _extract_prediction(api_result.content)
@@ -155,7 +158,7 @@ def _run_document_to_agent_row(output: Path, state_dir: Path, condition: str, co
     injection = _bundle_injection_trace(condition)
     trajectory = [
         _event(0, "runtime", "message", str(prompt_path), bundle_related=condition != "no_skill"),
-        _event(1, "agent", "tool_call", "deepseek_chat_completion", bundle_related=condition != "no_skill"),
+        _event(1, "agent", "tool_call", api_result.agent_surface, bundle_related=condition != "no_skill"),
         _event(2, "agent", "message", str(run_dir / "agent_output.json"), bundle_related=condition != "no_skill"),
         _event(3, "verifier", "verifier_result", str(run_dir / "verifier_result.json"), bundle_related=condition != "no_skill"),
     ]
@@ -175,6 +178,9 @@ def _run_document_to_agent_row(output: Path, state_dir: Path, condition: str, co
         "api_error_type": api_result.error_type,
         "api_error_summary": api_result.error_summary,
         "token_usage": api_result.token_usage,
+        "agent_execution_surface": api_result.agent_surface,
+        "mini_swe_agent_trajectory_ref": api_result.mini_swe_agent_trajectory_ref,
+        "mini_swe_agent_result": api_result.mini_swe_agent_result,
     }
     verifier_result = {
         "schema_version": "real_api_micro_verifier_result.v0",
@@ -198,6 +204,8 @@ def _run_document_to_agent_row(output: Path, state_dir: Path, condition: str, co
         "runtime_seconds": round(elapsed + api_result.runtime_seconds, 3),
         "api_call_count": 1 if api_result.ok else 0,
         "token_usage": api_result.token_usage,
+        "agent_execution_surface": api_result.agent_surface,
+        "mini_swe_agent_trajectory_ref": api_result.mini_swe_agent_trajectory_ref,
     }
     _write_json(run_dir / "agent_run_manifest.json", _agent_run_manifest(config, condition, api_result, run_summary))
     _write_json(run_dir / "bundle_injection_trace.json", injection)
@@ -242,6 +250,7 @@ def _call_chat_completion(config: ApiConfig, prompt: str) -> ApiResult:
                 token_usage=payload.get("usage"),
                 raw_response_redacted=_redact_response(payload),
                 runtime_seconds=round(time.perf_counter() - started, 3),
+                agent_surface="direct_chat_completion",
             )
     except urllib.error.HTTPError as exc:
         text = exc.read().decode("utf-8", errors="replace")[-2000:]
@@ -254,6 +263,7 @@ def _call_chat_completion(config: ApiConfig, prompt: str) -> ApiResult:
             token_usage=None,
             raw_response_redacted=None,
             runtime_seconds=round(time.perf_counter() - started, 3),
+            agent_surface="direct_chat_completion",
         )
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
         return ApiResult(
@@ -265,7 +275,140 @@ def _call_chat_completion(config: ApiConfig, prompt: str) -> ApiResult:
             token_usage=None,
             raw_response_redacted=None,
             runtime_seconds=round(time.perf_counter() - started, 3),
+            agent_surface="direct_chat_completion",
         )
+
+
+def _run_mini_swe_agent_real_llm(config: ApiConfig, prompt: str, run_dir: Path) -> ApiResult:
+    """Run the real API path through mini-SWE-agent, not through a direct chat shortcut.
+
+    The model must emit exactly one mini-SWE-agent text action. A minimal JSON
+    submission environment accepts raw JSON as the action payload and raises
+    mini-SWE-agent's Submitted signal. This preserves the agent loop, model
+    parser, action execution, trajectory, and local verifier boundary without
+    asking the model to fight Windows shell quoting.
+    """
+    started = time.perf_counter()
+    trajectory_path = (run_dir / "mini_swe_agent_real_llm_trajectory.json").resolve()
+    try:
+        from minisweagent.agents.default import DefaultAgent
+        from minisweagent.exceptions import Submitted
+        from minisweagent.models.litellm_textbased_model import LitellmTextbasedModel
+    except Exception as exc:  # pragma: no cover - environment dependent
+        return ApiResult(
+            ok=False,
+            content="",
+            status_code=None,
+            error_type="mini_swe_agent_import_error",
+            error_summary=_redact_secret(str(exc), config.api_key),
+            token_usage=None,
+            raw_response_redacted=None,
+            runtime_seconds=round(time.perf_counter() - started, 3),
+            agent_surface="mini_swe_agent_real_llm",
+            mini_swe_agent_trajectory_ref=str(trajectory_path),
+        )
+
+    class JsonSubmissionEnvironment:
+        def execute(self, action: dict[str, Any], cwd: str = "", *, timeout: int | None = None) -> dict[str, Any]:
+            command = str(action.get("command", "")).strip()
+            try:
+                json.loads(command)
+            except Exception as exc:
+                return {
+                    "output": f"JSON parse failed: {exc}. Put only raw JSON in the action block.",
+                    "returncode": 2,
+                    "exception_info": "",
+                }
+            raise Submitted(
+                {
+                    "role": "exit",
+                    "content": command,
+                    "extra": {"exit_status": "Submitted", "submission": command},
+                }
+            )
+
+        def get_template_vars(self, **kwargs: Any) -> dict[str, Any]:
+            return {"cwd": str(run_dir), **kwargs}
+
+        def serialize(self) -> dict[str, Any]:
+            return {
+                "info": {
+                    "config": {
+                        "environment_type": "real_api_micro.JsonSubmissionEnvironment",
+                        "cwd": str(run_dir),
+                    }
+                }
+            }
+
+    previous_openai_key = os.environ.get("OPENAI_API_KEY")
+    previous_base_url = os.environ.get("OPENAI_BASE_URL")
+    previous_litellm_tracking = os.environ.get("MSWEA_COST_TRACKING")
+    if config.api_key:
+        os.environ["OPENAI_API_KEY"] = config.api_key
+    os.environ["OPENAI_BASE_URL"] = config.base_url
+    os.environ["MSWEA_COST_TRACKING"] = "ignore_errors"
+    model_name = config.model if "/" in config.model else f"openai/{config.model}"
+    try:
+        model = LitellmTextbasedModel(
+            model_name=model_name,
+            model_kwargs={
+                "base_url": config.base_url,
+                "temperature": 0,
+                "max_tokens": 2200,
+            },
+            cost_tracking="ignore_errors",
+        )
+        agent = DefaultAgent(
+            model,
+            JsonSubmissionEnvironment(),
+            system_template="\n".join(
+                [
+                    "You are mini_swe_agent_real_llm for a bounded repo dependency-use triage task.",
+                    "You must reply with exactly one ```mswea_bash_command block.",
+                    "Inside the block, put only the final raw JSON prediction object.",
+                    "Do not put shell commands, markdown, comments, or prose inside the block.",
+                    "The JSON must satisfy the task schema and evidence rules in the user message.",
+                ]
+            ),
+            instance_template="{{task}}",
+            step_limit=3,
+            cost_limit=10,
+            output_path=trajectory_path,
+        )
+        result = agent.run(prompt)
+        submission = str(result.get("submission", "")).strip()
+        trajectory = _read_json(trajectory_path) if trajectory_path.exists() else {}
+        return ApiResult(
+            ok=result.get("exit_status") == "Submitted" and bool(submission),
+            content=submission,
+            status_code=200 if submission else None,
+            error_type=None if submission else str(result.get("exit_status", "agent_no_submission")),
+            error_summary=None if submission else _redact_secret(json.dumps(result, ensure_ascii=False)[-2000:], config.api_key),
+            token_usage=_mini_swe_agent_token_usage(trajectory),
+            raw_response_redacted=_mini_swe_agent_response_summary(trajectory),
+            runtime_seconds=round(time.perf_counter() - started, 3),
+            agent_surface="mini_swe_agent_real_llm",
+            mini_swe_agent_trajectory_ref=str(trajectory_path),
+            mini_swe_agent_result=result,
+        )
+    except Exception as exc:  # pragma: no cover - real API/environment dependent
+        return ApiResult(
+            ok=False,
+            content="",
+            status_code=None,
+            error_type=type(exc).__name__,
+            error_summary=_redact_secret(str(exc)[-2000:], config.api_key),
+            token_usage=_mini_swe_agent_token_usage(_read_json(trajectory_path)) if trajectory_path.exists() else None,
+            raw_response_redacted=None,
+            runtime_seconds=round(time.perf_counter() - started, 3),
+            agent_surface="mini_swe_agent_real_llm",
+            mini_swe_agent_trajectory_ref=str(trajectory_path),
+            mini_swe_agent_result={"exit_status": type(exc).__name__},
+        )
+    finally:
+        _restore_env("OPENAI_API_KEY", previous_openai_key)
+        _restore_env("OPENAI_BASE_URL", previous_base_url)
+        _restore_env("MSWEA_COST_TRACKING", previous_litellm_tracking)
 
 
 def _build_prompt(condition: str) -> str:
@@ -344,6 +487,7 @@ def _mock_api_response(condition: str) -> ApiResult:
         token_usage={"prompt_tokens": 10, "completion_tokens": 10, "total_tokens": 20},
         raw_response_redacted={"mock": True, "condition": condition},
         runtime_seconds=0.001,
+        agent_surface="mock_api",
     )
 
 
@@ -392,11 +536,12 @@ def _row_from_run_summary(run_summary: dict[str, Any], verifier_result: dict[str
         "api_call_count": run_summary["api_call_count"],
         "estimated_cost": None,
         "token_usage": run_summary["token_usage"],
+        "agent_execution_surface": run_summary["agent_execution_surface"],
         "trajectory_available": True,
         "verifier_available": True,
         "failure_types": [verifier_result.get("failure_type")] if verifier_result.get("failure_type") else [],
         "claim_counted": bool(run_summary["claim_counted"] and leakage["status"] == "pass"),
-        "interpretation_note": "real DeepSeek-backed agent row with local domain verifier",
+        "interpretation_note": "real DeepSeek-backed mini-SWE-agent row with local domain verifier",
     }
 
 
@@ -557,6 +702,7 @@ def _aggregate_summary(
         "real_api_benchmark_micro_v0_status": status,
         "real_api_status": "pass" if doc_executed else ("blocked_missing_api_key" if not api_manifest["OPENAI_API_KEY_present"] and not api_manifest["mock_api"] else "blocked_api_error"),
         "backend": BACKEND_ID,
+        "agent_execution_surface": BACKEND_ID,
         "api_provider_label": api_manifest["api_provider_label"],
         "model_name": api_manifest["model_name"],
         "document_to_agent_lane_executed": doc_executed,
@@ -674,6 +820,7 @@ def _api_execution_manifest(config: ApiConfig) -> dict[str, Any]:
     return {
         "schema_version": "real_api_execution_manifest.v0",
         "backend": BACKEND_ID,
+        "agent_execution_surface": BACKEND_ID,
         "api_provider_label": config.provider_label,
         "OPENAI_API_KEY_present": bool(config.api_key),
         "raw_api_key_written": False,
@@ -694,6 +841,8 @@ def _agent_run_manifest(config: ApiConfig, condition: str, api_result: ApiResult
         "base_url_host_only": config.base_url_host_only,
         "api_key_present": bool(config.api_key),
         "raw_api_key_written": False,
+        "agent_execution_surface": api_result.agent_surface,
+        "mini_swe_agent_trajectory_ref": api_result.mini_swe_agent_trajectory_ref,
         "execution_status": run_summary["execution_status"],
         "real_llm_agent_executed": run_summary["real_llm_agent_executed"],
         "api_status_code": api_result.status_code,
@@ -796,6 +945,7 @@ def _render_status(aggregate: dict[str, Any], per_lane: dict[str, Any]) -> str:
         f"- real_api_benchmark_micro_v0_status: `{aggregate['real_api_benchmark_micro_v0_status']}`",
         f"- real_api_status: `{aggregate['real_api_status']}`",
         f"- backend: `{aggregate['backend']}`",
+        f"- agent_execution_surface: `{aggregate['agent_execution_surface']}`",
         f"- provider: `{aggregate['api_provider_label']}`",
         f"- model: `{aggregate['model_name']}`",
         f"- anti_leakage_status: `{aggregate['anti_leakage_status']}`",
@@ -848,6 +998,63 @@ def _redact_response(payload: dict[str, Any]) -> dict[str, Any]:
         "usage": payload.get("usage"),
         "choice_count": len(payload.get("choices", [])),
     }
+
+
+def _mini_swe_agent_token_usage(trajectory: dict[str, Any]) -> dict[str, Any] | None:
+    usage: dict[str, int] = {}
+    for message in trajectory.get("messages", []):
+        response = message.get("extra", {}).get("response")
+        if not isinstance(response, dict):
+            continue
+        item = response.get("usage")
+        if not isinstance(item, dict):
+            continue
+        for key in [
+            "prompt_tokens",
+            "completion_tokens",
+            "total_tokens",
+            "prompt_cache_hit_tokens",
+            "prompt_cache_miss_tokens",
+        ]:
+            value = item.get(key)
+            if isinstance(value, int):
+                usage[key] = usage.get(key, 0) + value
+    return usage or None
+
+
+def _mini_swe_agent_response_summary(trajectory: dict[str, Any]) -> dict[str, Any]:
+    responses = []
+    for message in trajectory.get("messages", []):
+        response = message.get("extra", {}).get("response")
+        if isinstance(response, dict):
+            responses.append(
+                {
+                    "id": response.get("id"),
+                    "model": response.get("model"),
+                    "usage": response.get("usage"),
+                    "choice_count": len(response.get("choices", [])),
+                }
+            )
+    return {
+        "agent_surface": "mini_swe_agent_real_llm",
+        "mini_version": trajectory.get("info", {}).get("mini_version"),
+        "exit_status": trajectory.get("info", {}).get("exit_status"),
+        "api_calls": trajectory.get("info", {}).get("model_stats", {}).get("api_calls"),
+        "responses": responses,
+    }
+
+
+def _redact_secret(text: str, secret: str | None) -> str:
+    if secret:
+        text = text.replace(secret, "[REDACTED_API_KEY]")
+    return text
+
+
+def _restore_env(name: str, previous: str | None) -> None:
+    if previous is None:
+        os.environ.pop(name, None)
+    else:
+        os.environ[name] = previous
 
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
