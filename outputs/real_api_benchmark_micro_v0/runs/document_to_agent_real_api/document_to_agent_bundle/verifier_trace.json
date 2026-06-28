@@ -1,0 +1,14 @@
+{
+  "domain_check": {
+    "failed_rules": [],
+    "status": "pass"
+  },
+  "evidence_check": {
+    "status": "pass"
+  },
+  "prediction_digest": "sha256:50bb4caa235c9dbc476bc61477b1897228eb07b38e7bfd2c56e20f1e5c68076f",
+  "schema_check": {
+    "status": "pass"
+  },
+  "schema_version": "real_api_verifier_trace.v0"
+}

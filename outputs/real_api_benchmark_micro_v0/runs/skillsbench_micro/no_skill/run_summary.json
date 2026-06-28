@@ -1,0 +1,27 @@
+{
+  "api_call_count": 0,
+  "backend": "mini_swe_agent_real_llm",
+  "bundle_injected": false,
+  "claim_counted": false,
+  "condition": "no_skill",
+  "estimated_cost": null,
+  "evidence_completeness_rate": null,
+  "executed_count": 0,
+  "execution_status": "blocked",
+  "fail_count": 0,
+  "failure_types": [
+    "blocked_by_environment_or_data"
+  ],
+  "interpretation_note": "SkillsBench repository/package/data not available locally; no fabricated task used",
+  "lane": "skillsbench_micro",
+  "not_counted_count": 1,
+  "pass_count": 0,
+  "real_llm_agent_executed": false,
+  "runtime_seconds_total": 0.0,
+  "schema_valid_rate": null,
+  "task_count": 0,
+  "token_usage": null,
+  "trajectory_available": false,
+  "verifier_available": false,
+  "verifier_pass_rate": null
+}

@@ -1,0 +1,27 @@
+{
+  "api_call_count": 0,
+  "backend": "mini_swe_agent_real_llm",
+  "bundle_injected": true,
+  "claim_counted": false,
+  "condition": "document_to_agent_bundle",
+  "estimated_cost": null,
+  "evidence_completeness_rate": null,
+  "executed_count": 0,
+  "execution_status": "skipped",
+  "fail_count": 0,
+  "failure_types": [
+    "skipped"
+  ],
+  "interpretation_note": "mapped_not_executed; official SkillGenBench/Anything2Skill harness not run",
+  "lane": "skillgen_mapping",
+  "not_counted_count": 1,
+  "pass_count": 0,
+  "real_llm_agent_executed": false,
+  "runtime_seconds_total": 0.0,
+  "schema_valid_rate": null,
+  "task_count": 0,
+  "token_usage": null,
+  "trajectory_available": false,
+  "verifier_available": false,
+  "verifier_pass_rate": null
+}

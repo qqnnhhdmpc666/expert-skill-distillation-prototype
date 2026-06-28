@@ -1,0 +1,23 @@
+{
+  "api_error_summary": null,
+  "api_error_type": null,
+  "api_provider_label": "deepseek_official",
+  "api_status_code": 200,
+  "backend": "mini_swe_agent_real_llm",
+  "base_url_host_only": "api.deepseek.com",
+  "condition": "document_to_agent_bundle",
+  "model_name": "deepseek-chat",
+  "parsed_prediction_available": true,
+  "raw_content": "{\n  \"schema_version\": \"repo_security_prediction_schema.v1\",\n  \"task_id\": \"dependency_use_triage_the_gan_zoo_public\",\n  \"task_type\": \"dependency_use_triage\",\n  \"decision\": \"dependency_used_and_affected\",\n  \"package\": \"requests\",\n  \"declared_version\": \"2.19.1\",\n  \"advisory_id\": \"PYSEC-2018-28\",\n  \"evidence\": [\n    {\n      \"evidence_id\": \"ev-1\",\n      \"evidence_type\": \"dependency_declaration\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"requests==2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"ev-2\",\n      \"evidence_type\": \"resolved_version\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"ev-3\",\n      \"evidence_type\": \"import_use_site\",\n      \"path\": \"update.py\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"excerpt\": \"import requests\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"ev-4\",\n      \"evidence_type\": \"import_use_site\",\n      \"path\": \"update.py\",\n      \"line_start\": 58,\n      \"line_end\": 58,\n      \"excerpt\": \"result = requests.get(url)\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"ev-5\",\n      \"evidence_type\": \"advisory_affected_range\",\n      \"path\": \"allowed_knowledge.json\",\n      \"line_start\": null,\n      \"line_end\": null,\n      \"excerpt\": \"{\\\"introduced\\\": \\\"0\\\", \\\"fixed\\\": \\\"2.20.0\\\"}\",\n      \"file_digest\": null,\n      \"source_id\": \"PYSEC-2018-28\"\n    },\n    {\n      \"evidence_id\": \"ev-6\",\n      \"evidence_type\": \"decision_evidence\",\n      \"path\": \"derived\",\n      \"line_start\": null,\n      \"line_end\": null,\n      \"excerpt\": \"decision=dependency_used_and_affected; required=dependency_declaration,resolved_version,import_use_site,advisory_affected_range,decision_evidence\",\n      \"file_digest\": null\n    }\n  ],\n  \"reason_codes\": [\n    \"VERSION_IN_AFFECTED_RANGE\",\n    \"IMPORT_USE_SITE_FOUND\"\n  ]\n}",
+  "schema_version": "real_api_agent_output.v0",
+  "token_usage": {
+    "completion_tokens": 771,
+    "prompt_cache_hit_tokens": 2304,
+    "prompt_cache_miss_tokens": 3691,
+    "prompt_tokens": 5995,
+    "prompt_tokens_details": {
+      "cached_tokens": 2304
+    },
+    "total_tokens": 6766
+  }
+}

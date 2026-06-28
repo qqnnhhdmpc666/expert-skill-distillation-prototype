@@ -1,0 +1,12 @@
+{
+  "anti_leakage_status": "pass",
+  "checks": {
+    "no_benchmark_gold_patch_exposed_to_agent": true,
+    "no_evaluator_only_gold_in_agent_prompt": true,
+    "no_heldout_feedback_used_for_revision": true,
+    "no_hidden_expected_decision_in_agent_visible_material": true,
+    "no_raw_api_key_in_artifacts": true,
+    "no_task_id_specific_answer_branch": true
+  },
+  "schema_version": "real_api_anti_leakage_audit.v0"
+}

@@ -1,0 +1,24 @@
+{
+  "api_call_count": 1,
+  "backend": "mini_swe_agent_real_llm",
+  "bundle_injected": false,
+  "claim_counted": true,
+  "condition": "no_skill",
+  "execution_status": "executed",
+  "lane": "document_to_agent_real_api",
+  "real_llm_agent_executed": true,
+  "runtime_seconds": 8.774,
+  "schema_valid": true,
+  "schema_version": "real_api_micro_run_summary.v0",
+  "token_usage": {
+    "completion_tokens": 620,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 3215,
+    "prompt_tokens": 3215,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 3835
+  },
+  "verifier_pass": false
+}

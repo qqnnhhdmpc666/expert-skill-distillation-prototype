@@ -1,0 +1,26 @@
+{
+  "api_call_count": 1,
+  "api_error_type": null,
+  "api_key_present": true,
+  "api_provider_label": "deepseek_official",
+  "api_status_code": 200,
+  "backend": "mini_swe_agent_real_llm",
+  "base_url_host_only": "api.deepseek.com",
+  "condition": "document_to_agent_bundle",
+  "execution_status": "executed",
+  "model_name": "deepseek-chat",
+  "raw_api_key_written": false,
+  "real_llm_agent_executed": true,
+  "runtime_seconds": 10.658,
+  "schema_version": "real_api_agent_run_manifest.v0",
+  "token_usage": {
+    "completion_tokens": 771,
+    "prompt_cache_hit_tokens": 2304,
+    "prompt_cache_miss_tokens": 3691,
+    "prompt_tokens": 5995,
+    "prompt_tokens_details": {
+      "cached_tokens": 2304
+    },
+    "total_tokens": 6766
+  }
+}

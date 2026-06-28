@@ -1,0 +1,20 @@
+{
+  "domain_check": {
+    "failed_rules": [
+      "required_reason_codes_present",
+      "required_evidence_types_present",
+      "evidence_refs_resolve",
+      "import_use_required_for_used_decision",
+      "repo_evidence_required_for_non_unresolved"
+    ],
+    "status": "fail"
+  },
+  "evidence_check": {
+    "status": "fail"
+  },
+  "prediction_digest": "sha256:598507880e9d5b830b17e9385c3b2014e45fd1843f72a472f57f813fb1f89787",
+  "schema_check": {
+    "status": "pass"
+  },
+  "schema_version": "real_api_verifier_trace.v0"
+}

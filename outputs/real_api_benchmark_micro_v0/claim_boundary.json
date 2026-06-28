@@ -1,0 +1,14 @@
+{
+  "blocked_claims": {
+    "compiler_superiority": "not_evaluated",
+    "full_open_world_validation_complete": false,
+    "general_vulnerability_discovery": "not_claimed",
+    "mature_agenthost_effectiveness": "not_evaluated",
+    "official_skillgenbench_performance": "not_claimed",
+    "official_skillsbench_performance": "not_claimed",
+    "official_swe_bench_performance": "not_claimed",
+    "production_ready": false
+  },
+  "claim_boundary_status": "pass",
+  "schema_version": "real_api_claim_boundary.v0"
+}

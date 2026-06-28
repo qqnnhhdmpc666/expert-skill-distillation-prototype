@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "prediction_excludes_expected_decision_key": true,
+    "prediction_excludes_gold_patch": true,
+    "prediction_excludes_hidden_gold": true,
+    "prompt_excludes_hidden_gold": true,
+    "prompt_excludes_verifier": true
+  },
+  "schema_version": "real_api_row_leakage_check.v0",
+  "status": "pass"
+}

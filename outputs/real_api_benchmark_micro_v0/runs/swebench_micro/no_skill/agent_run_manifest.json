@@ -1,0 +1,7 @@
+{
+  "backend": "mini_swe_agent_real_llm",
+  "condition": "no_skill",
+  "lane": "swebench_micro",
+  "note": "docker_cli_not_visible",
+  "status": "blocked"
+}

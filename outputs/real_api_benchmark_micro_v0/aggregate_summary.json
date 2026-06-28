@@ -1,0 +1,21 @@
+{
+  "anti_leakage_status": "pass",
+  "api_provider_label": "deepseek_official",
+  "backend": "mini_swe_agent_real_llm",
+  "benchmark_style_lane_attempted": true,
+  "claim_boundary_status": "pass",
+  "claim_counted_rows": 2,
+  "document_to_agent_lane_executed": true,
+  "effect_observed": "pass_rate_gain",
+  "matrix_row_count": 8,
+  "model_name": "deepseek-chat",
+  "per_lane_status": {
+    "document_to_agent_real_api": "executed",
+    "skillgen_mapping": "blocked_or_mapping_only",
+    "skillsbench_micro": "blocked_or_mapping_only",
+    "swebench_micro": "blocked_or_mapping_only"
+  },
+  "real_api_benchmark_micro_v0_status": "pass",
+  "real_api_status": "pass",
+  "schema_version": "real_api_benchmark_micro_summary.v0"
+}

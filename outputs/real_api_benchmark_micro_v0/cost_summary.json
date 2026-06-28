@@ -1,0 +1,29 @@
+{
+  "api_call_count": 2,
+  "estimated_cost": null,
+  "estimated_cost_reason": "provider pricing is not embedded; record token usage and provider/model instead",
+  "schema_version": "real_api_cost_summary.v0",
+  "token_usage_rows": [
+    {
+      "completion_tokens": 620,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 3215,
+      "prompt_tokens": 3215,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3835
+    },
+    {
+      "completion_tokens": 771,
+      "prompt_cache_hit_tokens": 2304,
+      "prompt_cache_miss_tokens": 3691,
+      "prompt_tokens": 5995,
+      "prompt_tokens_details": {
+        "cached_tokens": 2304
+      },
+      "total_tokens": 6766
+    }
+  ],
+  "total_tokens_observed": 10601
+}

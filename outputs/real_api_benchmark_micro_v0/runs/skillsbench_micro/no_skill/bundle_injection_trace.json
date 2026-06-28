@@ -1,0 +1,10 @@
+{
+  "agent_prompt_or_workspace_contains_bundle_ref": false,
+  "bundle_digest": null,
+  "bundle_visible_to_agent": false,
+  "condition": "no_skill",
+  "knowledge_manifest_visible_to_agent": false,
+  "release_bundle_schema": null,
+  "schema_version": "real_api_bundle_injection_trace.v0",
+  "skill_artifact_visible_to_agent": false
+}

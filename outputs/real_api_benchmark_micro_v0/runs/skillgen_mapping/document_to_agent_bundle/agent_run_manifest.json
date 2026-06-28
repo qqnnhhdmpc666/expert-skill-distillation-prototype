@@ -1,0 +1,7 @@
+{
+  "backend": "mini_swe_agent_real_llm",
+  "condition": "document_to_agent_bundle",
+  "lane": "skillgen_mapping",
+  "note": "mapped_not_executed; official SkillGenBench/Anything2Skill harness not run",
+  "status": "skipped"
+}

@@ -1,0 +1,10 @@
+{
+  "agent_prompt_or_workspace_contains_bundle_ref": true,
+  "bundle_digest": "sha256:022a58c15c2b002a72276742949336357166768a964c7b52ab7961b3f5b34021",
+  "bundle_visible_to_agent": true,
+  "condition": "document_to_agent_bundle",
+  "knowledge_manifest_visible_to_agent": true,
+  "release_bundle_schema": "release_bundle.v1",
+  "schema_version": "real_api_bundle_injection_trace.v0",
+  "skill_artifact_visible_to_agent": true
+}
