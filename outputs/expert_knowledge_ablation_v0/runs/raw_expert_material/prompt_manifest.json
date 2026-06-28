@@ -1,0 +1,18 @@
+{
+  "condition": "raw_expert_material",
+  "direct_chat_fallback_counted": false,
+  "prompt_sha256": "sha256:2b4833c8463840071e8a1a476a5f8b47c239f4aba3af0884edc53e294c824f71",
+  "same_model_provider_policy": true,
+  "same_output_schema": true,
+  "same_task": true,
+  "same_verifier": true,
+  "schema_version": "expert_knowledge_ablation_prompt_manifest.v0",
+  "visible_sections": [
+    "task",
+    "output_schema",
+    "repo_snapshot_manifest",
+    "requirements.txt",
+    "update.py",
+    "input_material.md"
+  ]
+}

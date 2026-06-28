@@ -1,0 +1,20 @@
+{
+  "condition": "distilled_skill_plus_knowledge",
+  "direct_chat_fallback_counted": false,
+  "prompt_sha256": "sha256:9ef47feb894e64821e21b75b0420886f7b1c0327bb5d3857760647af7d4ff701",
+  "same_model_provider_policy": true,
+  "same_output_schema": true,
+  "same_task": true,
+  "same_verifier": true,
+  "schema_version": "expert_knowledge_ablation_prompt_manifest.v0",
+  "visible_sections": [
+    "task",
+    "output_schema",
+    "repo_snapshot_manifest",
+    "requirements.txt",
+    "update.py",
+    "extracted_skill.md",
+    "knowledge_projection.json",
+    "release_bundle_manifest.json"
+  ]
+}

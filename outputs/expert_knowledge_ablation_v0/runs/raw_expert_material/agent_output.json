@@ -1,0 +1,78 @@
+{
+  "agent_execution_surface": "mini_swe_agent_real_llm",
+  "api_error_summary": "",
+  "api_error_type": null,
+  "api_provider_label": "deepseek_official",
+  "api_status_code": 200,
+  "backend": "mini_swe_agent_real_llm",
+  "base_url_host_only": "api.deepseek.com",
+  "condition": "raw_expert_material",
+  "mini_swe_agent_result": {
+    "exit_status": "Submitted",
+    "submission": "{\n  \"schema_version\": \"repo_security_prediction_schema.v1\",\n  \"task_id\": \"dependency_use_triage_the_gan_zoo_public\",\n  \"task_type\": \"dependency_use_triage\",\n  \"decision\": \"dependency_used_and_affected\",\n  \"package\": \"requests\",\n  \"declared_version\": \"2.19.1\",\n  \"advisory_id\": \"PYSEC-2018-28\",\n  \"evidence\": [\n    {\n      \"evidence_id\": \"declaration-1\",\n      \"evidence_type\": \"dependency_declaration\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"requests==2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"import-1\",\n      \"evidence_type\": \"import_statement\",\n      \"path\": \"update.py\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"excerpt\": \"import requests\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"use-1\",\n      \"evidence_type\": \"runtime_use\",\n      \"path\": \"update.py\",\n      \"line_start\": 58,\n      \"line_end\": 58,\n      \"excerpt\": \"result = requests.get(url)\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"advisory-1\",\n      \"evidence_type\": \"advisory_affected_range\",\n      \"path\": \"allowed_knowledge.json\",\n      \"line_start\": null,\n      \"line_end\": null,\n      \"excerpt\": \"PYSEC-2018-28: requests affected range introduced 0, fixed 2.20.0\",\n      \"file_digest\": null\n    }\n  ],\n  \"reason_codes\": [\n    \"declared_version_2.19.1_in_affected_range\",\n    \"import_found\",\n    \"runtime_use_found\"\n  ]\n}"
+  },
+  "mini_swe_agent_trajectory_ref": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\expert_knowledge_ablation_v0\\runs\\raw_expert_material\\mini_swe_agent_real_llm_trajectory.json",
+  "model_name": "deepseek-chat",
+  "parsed_prediction_available": true,
+  "prediction": {
+    "advisory_id": "PYSEC-2018-28",
+    "decision": "dependency_used_and_affected",
+    "declared_version": "2.19.1",
+    "evidence": [
+      {
+        "evidence_id": "declaration-1",
+        "evidence_type": "dependency_declaration",
+        "excerpt": "requests==2.19.1",
+        "file_digest": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+        "line_end": 21,
+        "line_start": 21,
+        "path": "requirements.txt"
+      },
+      {
+        "evidence_id": "import-1",
+        "evidence_type": "import_statement",
+        "excerpt": "import requests",
+        "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+        "line_end": 9,
+        "line_start": 9,
+        "path": "update.py"
+      },
+      {
+        "evidence_id": "use-1",
+        "evidence_type": "runtime_use",
+        "excerpt": "result = requests.get(url)",
+        "file_digest": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+        "line_end": 58,
+        "line_start": 58,
+        "path": "update.py"
+      },
+      {
+        "evidence_id": "advisory-1",
+        "evidence_type": "advisory_affected_range",
+        "excerpt": "PYSEC-2018-28: requests affected range introduced 0, fixed 2.20.0",
+        "file_digest": null,
+        "line_end": null,
+        "line_start": null,
+        "path": "allowed_knowledge.json"
+      }
+    ],
+    "package": "requests",
+    "reason_codes": [
+      "declared_version_2.19.1_in_affected_range",
+      "import_found",
+      "runtime_use_found"
+    ],
+    "schema_version": "repo_security_prediction_schema.v1",
+    "task_id": "dependency_use_triage_the_gan_zoo_public",
+    "task_type": "dependency_use_triage"
+  },
+  "raw_content": "{\n  \"schema_version\": \"repo_security_prediction_schema.v1\",\n  \"task_id\": \"dependency_use_triage_the_gan_zoo_public\",\n  \"task_type\": \"dependency_use_triage\",\n  \"decision\": \"dependency_used_and_affected\",\n  \"package\": \"requests\",\n  \"declared_version\": \"2.19.1\",\n  \"advisory_id\": \"PYSEC-2018-28\",\n  \"evidence\": [\n    {\n      \"evidence_id\": \"declaration-1\",\n      \"evidence_type\": \"dependency_declaration\",\n      \"path\": \"requirements.txt\",\n      \"line_start\": 21,\n      \"line_end\": 21,\n      \"excerpt\": \"requests==2.19.1\",\n      \"file_digest\": \"sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011\"\n    },\n    {\n      \"evidence_id\": \"import-1\",\n      \"evidence_type\": \"import_statement\",\n      \"path\": \"update.py\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"excerpt\": \"import requests\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"use-1\",\n      \"evidence_type\": \"runtime_use\",\n      \"path\": \"update.py\",\n      \"line_start\": 58,\n      \"line_end\": 58,\n      \"excerpt\": \"result = requests.get(url)\",\n      \"file_digest\": \"sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66\"\n    },\n    {\n      \"evidence_id\": \"advisory-1\",\n      \"evidence_type\": \"advisory_affected_range\",\n      \"path\": \"allowed_knowledge.json\",\n      \"line_start\": null,\n      \"line_end\": null,\n      \"excerpt\": \"PYSEC-2018-28: requests affected range introduced 0, fixed 2.20.0\",\n      \"file_digest\": null\n    }\n  ],\n  \"reason_codes\": [\n    \"declared_version_2.19.1_in_affected_range\",\n    \"import_found\",\n    \"runtime_use_found\"\n  ]\n}",
+  "schema_version": "expert_knowledge_ablation_agent_output.v0",
+  "token_usage": {
+    "completion_tokens": 569,
+    "prompt_cache_hit_tokens": 2816,
+    "prompt_cache_miss_tokens": 467,
+    "prompt_tokens": 3283,
+    "total_tokens": 3852
+  }
+}

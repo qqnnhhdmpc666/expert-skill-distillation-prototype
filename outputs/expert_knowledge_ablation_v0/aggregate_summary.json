@@ -1,0 +1,18 @@
+{
+  "allowed_claim": "bounded real-API mini-SWE-agent ablation micro-study over six expert-knowledge visibility conditions",
+  "anti_leakage_status": "pass",
+  "api_provider_label": "deepseek_official",
+  "backend": "mini_swe_agent_real_llm",
+  "claim_boundary_status": "pass",
+  "condition_count": 6,
+  "conditions_represented": true,
+  "direct_chat_fallback_counted": false,
+  "effect_observed": "skill_knowledge_complementarity",
+  "expert_knowledge_ablation_v0_status": "pass",
+  "knowledge_access_status": "pass",
+  "mock_api": false,
+  "model_name": "deepseek-chat",
+  "real_mini_swe_agent_executed_count": 6,
+  "schema_version": "expert_knowledge_ablation_summary.v0",
+  "verifier_pass_count": 2
+}

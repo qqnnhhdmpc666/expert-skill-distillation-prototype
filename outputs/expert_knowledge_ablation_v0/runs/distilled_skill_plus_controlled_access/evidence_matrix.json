@@ -1,0 +1,41 @@
+{
+  "advisory_range_evidence_present": true,
+  "agent_cited_evidence_refs": [
+    {
+      "evidence_type": "dependency_declaration",
+      "path": "requirements.txt"
+    },
+    {
+      "evidence_type": "resolved_version",
+      "path": "requirements.txt"
+    },
+    {
+      "evidence_type": "import_use_site",
+      "path": "update.py"
+    },
+    {
+      "evidence_type": "advisory_affected_range",
+      "path": "allowed_knowledge.json"
+    },
+    {
+      "evidence_type": "decision_evidence",
+      "path": "derived"
+    }
+  ],
+  "decision_evidence_present": true,
+  "declaration_evidence_present": true,
+  "evidence_completeness": 1.0,
+  "evidence_types_present": [
+    "advisory_affected_range",
+    "decision_evidence",
+    "dependency_declaration",
+    "import_use_site",
+    "resolved_version"
+  ],
+  "import_use_evidence_present": true,
+  "missing_evidence": [],
+  "missing_evidence_count": 0,
+  "resolved_version_evidence_present": true,
+  "schema_version": "expert_knowledge_ablation_evidence_matrix.v0",
+  "unsupported_claim_count": 0
+}

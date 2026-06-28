@@ -1,0 +1,24 @@
+{
+  "domain_check": {
+    "failed_rules": [
+      "required_reason_codes_present",
+      "required_evidence_types_present",
+      "evidence_refs_resolve",
+      "repo_evidence_required_for_non_unresolved"
+    ],
+    "status": "fail"
+  },
+  "evidence_check": {
+    "failed_rules": [
+      "required_evidence_types_present",
+      "evidence_refs_resolve",
+      "repo_evidence_required_for_non_unresolved"
+    ],
+    "status": "fail"
+  },
+  "prediction_digest": "sha256:7316f4a6249416b199c1d0961d0299acf37b8fa2703a4427ff09e398a30d3229",
+  "schema_check": {
+    "status": "pass"
+  },
+  "schema_version": "expert_knowledge_ablation_verifier_trace.v0"
+}

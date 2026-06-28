@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "all_returned_refs_recorded": true,
+    "evaluator_only_rows_not_returned": true,
+    "returned_refs_exist_in_index": true,
+    "verifier_only_rows_not_returned": true
+  },
+  "forbidden_returned": [],
+  "knowledge_access_status": "pass",
+  "missing_ids": [],
+  "schema_version": "knowledge_access_audit.v0"
+}

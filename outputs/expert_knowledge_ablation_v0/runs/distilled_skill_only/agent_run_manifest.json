@@ -1,0 +1,23 @@
+{
+  "agent_execution_surface": "mini_swe_agent_real_llm",
+  "api_error_type": null,
+  "api_key_present": true,
+  "api_provider_label": "deepseek_official",
+  "api_status_code": 200,
+  "backend": "mini_swe_agent_real_llm",
+  "base_url_host_only": "api.deepseek.com",
+  "condition": "distilled_skill_only",
+  "direct_chat_fallback_counted": false,
+  "execution_status": "executed",
+  "mini_swe_agent_real_llm_executed": true,
+  "mini_swe_agent_trajectory_ref": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\expert_knowledge_ablation_v0\\runs\\distilled_skill_only\\mini_swe_agent_real_llm_trajectory.json",
+  "model_name": "deepseek-chat",
+  "raw_api_key_written": false,
+  "runtime_seconds": 7.972,
+  "same_budget_policy": true,
+  "same_max_iterations": true,
+  "same_output_schema": true,
+  "same_temperature": true,
+  "same_timeout": true,
+  "schema_version": "expert_knowledge_ablation_agent_run_manifest.v0"
+}

@@ -1,0 +1,19 @@
+{
+  "condition": "distilled_skill_plus_controlled_access",
+  "direct_chat_fallback_counted": false,
+  "prompt_sha256": "sha256:9e88d15331fa6704c1856901966f8417cbd53925fb8302d1d1b90b484b449f50",
+  "same_model_provider_policy": true,
+  "same_output_schema": true,
+  "same_task": true,
+  "same_verifier": true,
+  "schema_version": "expert_knowledge_ablation_prompt_manifest.v0",
+  "visible_sections": [
+    "task",
+    "output_schema",
+    "repo_snapshot_manifest",
+    "requirements.txt",
+    "update.py",
+    "extracted_skill.md",
+    "controlled_retrieved_knowledge_refs.json"
+  ]
+}

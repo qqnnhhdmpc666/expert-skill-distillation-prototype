@@ -1,0 +1,293 @@
+{
+  "rows": [
+    {
+      "advisory_range_evidence_present": false,
+      "agent_cited_evidence_refs": [
+        {
+          "evidence_type": "dependency_declaration",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "import_statement",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "call_site",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "advisory_snapshot",
+          "path": "allowed_knowledge.json"
+        }
+      ],
+      "api_call_count": 1,
+      "backend": "mini_swe_agent_real_llm",
+      "can_drive_revision": true,
+      "claim_counted": true,
+      "completion_tokens": 599,
+      "condition": "no_expert_knowledge",
+      "decision": "dependency_used_and_affected",
+      "decision_evidence_present": false,
+      "declaration_evidence_present": true,
+      "estimated_cost": null,
+      "evidence_completeness": 0.5,
+      "execution_status": "executed",
+      "failure_type": "missing_knowledge",
+      "import_use_evidence_present": false,
+      "mini_swe_agent_real_llm_executed": true,
+      "missing_evidence_count": 4,
+      "prompt_tokens": 2932,
+      "resolved_version_evidence_present": false,
+      "runtime_seconds": 18.008,
+      "schema_valid": true,
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "total_tokens": 3531,
+      "trajectory_available": true,
+      "unsupported_claim_count": 1,
+      "verifier_pass": false
+    },
+    {
+      "advisory_range_evidence_present": true,
+      "agent_cited_evidence_refs": [
+        {
+          "evidence_type": "dependency_declaration",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "import_statement",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "runtime_use",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "advisory_affected_range",
+          "path": "allowed_knowledge.json"
+        }
+      ],
+      "api_call_count": 1,
+      "backend": "mini_swe_agent_real_llm",
+      "can_drive_revision": true,
+      "claim_counted": true,
+      "completion_tokens": 569,
+      "condition": "raw_expert_material",
+      "decision": "dependency_used_and_affected",
+      "decision_evidence_present": false,
+      "declaration_evidence_present": true,
+      "estimated_cost": null,
+      "evidence_completeness": 0.5,
+      "execution_status": "executed",
+      "failure_type": "missing_knowledge",
+      "import_use_evidence_present": false,
+      "mini_swe_agent_real_llm_executed": true,
+      "missing_evidence_count": 3,
+      "prompt_tokens": 3283,
+      "resolved_version_evidence_present": false,
+      "runtime_seconds": 7.158,
+      "schema_valid": true,
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "total_tokens": 3852,
+      "trajectory_available": true,
+      "unsupported_claim_count": 1,
+      "verifier_pass": false
+    },
+    {
+      "advisory_range_evidence_present": true,
+      "agent_cited_evidence_refs": [
+        {
+          "evidence_type": "dependency_declaration",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "import_statement",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "runtime_use",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "advisory_affected_range",
+          "path": "allowed_knowledge.json"
+        }
+      ],
+      "api_call_count": 1,
+      "backend": "mini_swe_agent_real_llm",
+      "can_drive_revision": true,
+      "claim_counted": true,
+      "completion_tokens": 571,
+      "condition": "distilled_skill_only",
+      "decision": "dependency_used_and_affected",
+      "decision_evidence_present": false,
+      "declaration_evidence_present": true,
+      "estimated_cost": null,
+      "evidence_completeness": 0.5,
+      "execution_status": "executed",
+      "failure_type": "missing_knowledge",
+      "import_use_evidence_present": false,
+      "mini_swe_agent_real_llm_executed": true,
+      "missing_evidence_count": 3,
+      "prompt_tokens": 3129,
+      "resolved_version_evidence_present": false,
+      "runtime_seconds": 7.972,
+      "schema_valid": true,
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "total_tokens": 3700,
+      "trajectory_available": true,
+      "unsupported_claim_count": 1,
+      "verifier_pass": false
+    },
+    {
+      "advisory_range_evidence_present": false,
+      "agent_cited_evidence_refs": [
+        {
+          "evidence_type": "dependency_declaration",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "import_use_site",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "import_use_site",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "advisory_snapshot",
+          "path": "allowed_knowledge.json"
+        }
+      ],
+      "api_call_count": 1,
+      "backend": "mini_swe_agent_real_llm",
+      "can_drive_revision": true,
+      "claim_counted": true,
+      "completion_tokens": 647,
+      "condition": "distilled_knowledge_only",
+      "decision": "dependency_used_and_affected",
+      "decision_evidence_present": false,
+      "declaration_evidence_present": true,
+      "estimated_cost": null,
+      "evidence_completeness": 0.5,
+      "execution_status": "executed",
+      "failure_type": "missing_skill_rule",
+      "import_use_evidence_present": true,
+      "mini_swe_agent_real_llm_executed": true,
+      "missing_evidence_count": 3,
+      "prompt_tokens": 4508,
+      "resolved_version_evidence_present": false,
+      "runtime_seconds": 9.058,
+      "schema_valid": true,
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "total_tokens": 5155,
+      "trajectory_available": true,
+      "unsupported_claim_count": 1,
+      "verifier_pass": false
+    },
+    {
+      "advisory_range_evidence_present": true,
+      "agent_cited_evidence_refs": [
+        {
+          "evidence_type": "dependency_declaration",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "resolved_version",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "import_use_site",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "import_use_site",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "advisory_affected_range",
+          "path": "allowed_knowledge.json"
+        },
+        {
+          "evidence_type": "decision_evidence",
+          "path": "derived"
+        }
+      ],
+      "api_call_count": 1,
+      "backend": "mini_swe_agent_real_llm",
+      "can_drive_revision": false,
+      "claim_counted": true,
+      "completion_tokens": 628,
+      "condition": "distilled_skill_plus_knowledge",
+      "decision": "dependency_used_and_affected",
+      "decision_evidence_present": true,
+      "declaration_evidence_present": true,
+      "estimated_cost": null,
+      "evidence_completeness": 1.0,
+      "execution_status": "executed",
+      "failure_type": "none",
+      "import_use_evidence_present": true,
+      "mini_swe_agent_real_llm_executed": true,
+      "missing_evidence_count": 0,
+      "prompt_tokens": 5419,
+      "resolved_version_evidence_present": true,
+      "runtime_seconds": 8.386,
+      "schema_valid": true,
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "total_tokens": 6047,
+      "trajectory_available": true,
+      "unsupported_claim_count": 0,
+      "verifier_pass": true
+    },
+    {
+      "advisory_range_evidence_present": true,
+      "agent_cited_evidence_refs": [
+        {
+          "evidence_type": "dependency_declaration",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "resolved_version",
+          "path": "requirements.txt"
+        },
+        {
+          "evidence_type": "import_use_site",
+          "path": "update.py"
+        },
+        {
+          "evidence_type": "advisory_affected_range",
+          "path": "allowed_knowledge.json"
+        },
+        {
+          "evidence_type": "decision_evidence",
+          "path": "derived"
+        }
+      ],
+      "api_call_count": 1,
+      "backend": "mini_swe_agent_real_llm",
+      "can_drive_revision": false,
+      "claim_counted": true,
+      "completion_tokens": 535,
+      "condition": "distilled_skill_plus_controlled_access",
+      "decision": "dependency_used_and_affected",
+      "decision_evidence_present": true,
+      "declaration_evidence_present": true,
+      "estimated_cost": null,
+      "evidence_completeness": 1.0,
+      "execution_status": "executed",
+      "failure_type": "none",
+      "import_use_evidence_present": true,
+      "mini_swe_agent_real_llm_executed": true,
+      "missing_evidence_count": 0,
+      "prompt_tokens": 4098,
+      "resolved_version_evidence_present": true,
+      "runtime_seconds": 7.914,
+      "schema_valid": true,
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "total_tokens": 4633,
+      "trajectory_available": true,
+      "unsupported_claim_count": 0,
+      "verifier_pass": true
+    }
+  ],
+  "schema_version": "expert_knowledge_ablation_matrix.v0"
+}

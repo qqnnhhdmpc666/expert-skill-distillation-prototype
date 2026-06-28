@@ -1,0 +1,10 @@
+{
+  "api_call_count": 1,
+  "completion_tokens": 599,
+  "estimated_cost": null,
+  "estimated_cost_reason": "provider pricing is not embedded; token usage is recorded when returned",
+  "prompt_tokens": 2932,
+  "runtime_seconds": 9.004,
+  "schema_version": "expert_knowledge_ablation_cost_summary.v0",
+  "total_tokens": 3531
+}

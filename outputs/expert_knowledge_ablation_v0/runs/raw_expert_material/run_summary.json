@@ -1,0 +1,16 @@
+{
+  "agent_execution_surface": "mini_swe_agent_real_llm",
+  "backend": "mini_swe_agent_real_llm",
+  "claim_counted": true,
+  "condition": "raw_expert_material",
+  "evidence_completeness": 0.5,
+  "execution_status": "executed",
+  "failure_type": "missing_knowledge",
+  "mini_swe_agent_real_llm_executed": true,
+  "mock_api": false,
+  "runtime_seconds": 7.158,
+  "schema_valid": true,
+  "schema_version": "expert_knowledge_ablation_run_summary.v0",
+  "trajectory_available": true,
+  "verifier_pass": false
+}

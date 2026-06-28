@@ -1,0 +1,98 @@
+{
+  "attributed_component": "knowledge",
+  "can_drive_revision": true,
+  "condition": "distilled_skill_only",
+  "evidence": [
+    "decision_evidence",
+    "import_use_site",
+    "resolved_version",
+    {
+      "detail": "",
+      "name": "schema_fields_present",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "hidden_gold_absent_from_prediction",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "task_id_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "task_type_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "decision_enum_valid",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "decision_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "package_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "version_match",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "advisory_match",
+      "passed": true
+    },
+    {
+      "detail": "missing=['IMPORT_USE_SITE_FOUND', 'VERSION_IN_AFFECTED_RANGE']",
+      "name": "required_reason_codes_present",
+      "passed": false
+    },
+    {
+      "detail": "malformed_indexes=[]",
+      "name": "evidence_schema_valid",
+      "passed": true
+    },
+    {
+      "detail": "missing=['decision_evidence', 'import_use_site', 'resolved_version']",
+      "name": "required_evidence_types_present",
+      "passed": false
+    },
+    {
+      "detail": "",
+      "name": "evidence_grounded",
+      "passed": true
+    },
+    {
+      "detail": "[{\"evidence_id\": \"advisory-1\", \"resolved\": false}]",
+      "name": "evidence_refs_resolve",
+      "passed": false
+    },
+    {
+      "detail": "",
+      "name": "repo_evidence_locations_complete",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "import_use_required_for_used_decision",
+      "passed": false
+    },
+    {
+      "detail": "",
+      "name": "repo_evidence_required_for_non_unresolved",
+      "passed": false
+    }
+  ],
+  "failure_type": "missing_knowledge",
+  "schema_version": "expert_knowledge_ablation_failure_attribution.v0",
+  "suggested_revision_target": "knowledge"
+}

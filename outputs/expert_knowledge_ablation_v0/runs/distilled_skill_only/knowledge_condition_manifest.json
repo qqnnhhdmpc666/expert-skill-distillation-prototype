@@ -1,0 +1,11 @@
+{
+  "condition": "distilled_skill_only",
+  "controlled_access_enabled": false,
+  "distilled_knowledge_visible": false,
+  "distilled_skill_visible": true,
+  "evaluator_only_visible": false,
+  "expert_material_visible": false,
+  "schema_version": "expert_knowledge_condition_manifest.v0",
+  "static_knowledge_injected": false,
+  "verifier_only_visible": false
+}

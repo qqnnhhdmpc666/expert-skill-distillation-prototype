@@ -1,0 +1,20 @@
+{
+  "condition": "distilled_knowledge_only",
+  "direct_chat_fallback_counted": false,
+  "prompt_sha256": "sha256:54ad332819f85077b99dce8553075ddc470b45d6e4178eb70fdf3b2f4c3413a9",
+  "same_model_provider_policy": true,
+  "same_output_schema": true,
+  "same_task": true,
+  "same_verifier": true,
+  "schema_version": "expert_knowledge_ablation_prompt_manifest.v0",
+  "visible_sections": [
+    "task",
+    "output_schema",
+    "repo_snapshot_manifest",
+    "requirements.txt",
+    "update.py",
+    "knowledge_manifest.json",
+    "knowledge_projection.json",
+    "allowed_knowledge.json"
+  ]
+}

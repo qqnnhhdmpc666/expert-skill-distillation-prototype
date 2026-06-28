@@ -1,0 +1,38 @@
+{
+  "query_plan_ref": "knowledge_query_plan.v0",
+  "schema_version": "knowledge_access_trace.v0",
+  "trace_rows": [
+    {
+      "allowed_to_agent": true,
+      "exists_in_index": true,
+      "knowledge_id": "requirements_requests_declaration",
+      "query_id": "dependency_declaration",
+      "returned_to_agent": true,
+      "visibility": "agent_visible"
+    },
+    {
+      "allowed_to_agent": true,
+      "exists_in_index": true,
+      "knowledge_id": "update_requests_import_use",
+      "query_id": "import_use",
+      "returned_to_agent": true,
+      "visibility": "agent_visible"
+    },
+    {
+      "allowed_to_agent": true,
+      "exists_in_index": true,
+      "knowledge_id": "pysec_2018_28_affected_range",
+      "query_id": "advisory_range",
+      "returned_to_agent": true,
+      "visibility": "agent_visible"
+    },
+    {
+      "allowed_to_agent": true,
+      "exists_in_index": true,
+      "knowledge_id": "output_contract_required_schema",
+      "query_id": "output_constraint",
+      "returned_to_agent": true,
+      "visibility": "agent_visible"
+    }
+  ]
+}

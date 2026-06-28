@@ -1,0 +1,18 @@
+{
+  "condition": "distilled_skill_only",
+  "direct_chat_fallback_counted": false,
+  "prompt_sha256": "sha256:d36f19ffddcc8a32276dfd9beffedd40e7fdd13bcd6bc776391a377704b06d29",
+  "same_model_provider_policy": true,
+  "same_output_schema": true,
+  "same_task": true,
+  "same_verifier": true,
+  "schema_version": "expert_knowledge_ablation_prompt_manifest.v0",
+  "visible_sections": [
+    "task",
+    "output_schema",
+    "repo_snapshot_manifest",
+    "requirements.txt",
+    "update.py",
+    "extracted_skill.md"
+  ]
+}

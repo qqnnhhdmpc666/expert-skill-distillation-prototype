@@ -1,0 +1,15 @@
+{
+  "domain_check": {
+    "failed_rules": [],
+    "status": "pass"
+  },
+  "evidence_check": {
+    "failed_rules": [],
+    "status": "pass"
+  },
+  "prediction_digest": "sha256:0dbbb88a5aa0e150dc5ffb510519f7caf6bff006995568b248dd417a03036af9",
+  "schema_check": {
+    "status": "pass"
+  },
+  "schema_version": "expert_knowledge_ablation_verifier_trace.v0"
+}

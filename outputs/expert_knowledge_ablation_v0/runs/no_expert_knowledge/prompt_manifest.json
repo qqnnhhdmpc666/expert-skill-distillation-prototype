@@ -1,0 +1,17 @@
+{
+  "condition": "no_expert_knowledge",
+  "direct_chat_fallback_counted": false,
+  "prompt_sha256": "sha256:aede50c5979c743ca5f0cfcb34abf2a8e631fccc3861aac8832fbd82e92c2360",
+  "same_model_provider_policy": true,
+  "same_output_schema": true,
+  "same_task": true,
+  "same_verifier": true,
+  "schema_version": "expert_knowledge_ablation_prompt_manifest.v0",
+  "visible_sections": [
+    "task",
+    "output_schema",
+    "repo_snapshot_manifest",
+    "requirements.txt",
+    "update.py"
+  ]
+}

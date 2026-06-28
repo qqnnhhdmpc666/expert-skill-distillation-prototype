@@ -1,0 +1,32 @@
+{
+  "advisory_id": "PYSEC-2018-28",
+  "package": "requests",
+  "queries": [
+    {
+      "query_id": "dependency_declaration",
+      "query_text": "requests dependency declaration resolved version requirements.txt",
+      "required_evidence_type": "dependency_declaration",
+      "top_k": 3
+    },
+    {
+      "query_id": "import_use",
+      "query_text": "requests import use site Python code requests.get requests.post",
+      "required_evidence_type": "import_use",
+      "top_k": 3
+    },
+    {
+      "query_id": "advisory_range",
+      "query_text": "PYSEC-2018-28 requests affected range introduced fixed version",
+      "required_evidence_type": "advisory_range",
+      "top_k": 3
+    },
+    {
+      "query_id": "output_constraint",
+      "query_text": "decision evidence required evidence schema reason codes",
+      "required_evidence_type": "output_constraint",
+      "top_k": 3
+    }
+  ],
+  "retrieval_method": "lexical_field_match",
+  "schema_version": "knowledge_query_plan.v0"
+}

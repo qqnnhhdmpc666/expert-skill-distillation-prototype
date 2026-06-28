@@ -1,0 +1,15 @@
+{
+  "allowed_claim": "bounded real-API mini-SWE-agent ablation micro-study over six expert-knowledge visibility conditions",
+  "blocked_claims": {
+    "broad_agenthost_effectiveness": "not_evaluated",
+    "compiler_superiority": "not_evaluated",
+    "full_rag_system_complete": "not_claimed",
+    "general_expert_knowledge_transfer_solved": "not_claimed",
+    "general_vulnerability_discovery_ability": "not_claimed",
+    "mature_production_system": "not_claimed",
+    "official_benchmark_performance": "not_claimed",
+    "retrieval_algorithm_superiority": "not_claimed"
+  },
+  "claim_boundary_status": "pass",
+  "schema_version": "expert_knowledge_ablation_claim_boundary.v0"
+}

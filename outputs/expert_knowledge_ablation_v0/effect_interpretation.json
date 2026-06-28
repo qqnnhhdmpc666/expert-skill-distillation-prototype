@@ -1,0 +1,17 @@
+{
+  "controlled_access_added_overhead_without_benefit": false,
+  "controlled_access_improved_evidence_completeness": false,
+  "controlled_access_reduced_unsupported_claims": false,
+  "distilled_knowledge_alone_helped": false,
+  "distilled_skill_alone_helped": false,
+  "effect_labels": [
+    "skill_knowledge_complementarity"
+  ],
+  "effect_observed": "skill_knowledge_complementarity",
+  "most_likely_component_for_bundle_gain": "skill_knowledge_combination",
+  "null_or_negative_results_preserved": true,
+  "raw_expert_material_alone_helped": false,
+  "schema_version": "expert_knowledge_ablation_effect_interpretation.v0",
+  "skill_plus_knowledge_outperformed_raw_material": true,
+  "verifier_attribution_can_identify_revision_target": true
+}
