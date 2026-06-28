@@ -1,0 +1,5 @@
+👋 This is mini-swe-agent version 2.4.2.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from
+'C:\Users\31552\AppData\Local\mini-swe-agent\mini-swe-agent\.env'
+{"mini_swe_agent_smoke": "executed", "result": {"exit_status": "Submitted", "submission": ""}}

@@ -1,0 +1,17 @@
+{
+  "backend_id": "mini_swe_agent",
+  "command": [
+    "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\distillation_loop_v1_bundle\\workspace\\mini_swe_agent_smoke.py",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\distillation_loop_v1_bundle\\workspace\\mini_swe_agent_trajectory.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\distillation_loop_v1_bundle\\workspace\\mini_swe_agent_result.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\distillation_loop_v1_bundle\\workspace\\task.md"
+  ],
+  "condition_id": "C5_active_runtime",
+  "execution_status": "executed",
+  "exit_code": 0,
+  "real_agent_smoke": true,
+  "runtime_seconds": 0.445,
+  "schema_version": "agent_run_manifest.v1",
+  "task_id": "dependency_use_triage_the_gan_zoo_public"
+}

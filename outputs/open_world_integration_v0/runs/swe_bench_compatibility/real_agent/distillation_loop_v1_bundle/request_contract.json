@@ -1,0 +1,27 @@
+{
+  "request": {
+    "backend_id": "real_agent",
+    "budget": {
+      "max_agent_smoke_tasks": 1,
+      "timeout_seconds": 30
+    },
+    "bundle_digest": "sha256:d6f18e199f7ab6d2347a2c9f92278f4cd73584b6f0569ee1417346cc913bfd29",
+    "bundle_path": ".tmp\\open-world-integration-v0-state\\bundle",
+    "condition_id": "C5_active_runtime",
+    "knowledge_manifest_digest": "sha256:f7f36bfc49e093f65dfbd321b476c6deb8ca2b9a537eaa8e98cffb33e4cf6b04",
+    "knowledge_manifest_path": "sha256:f7f36bfc49e093f65dfbd321b476c6deb8ca2b9a537eaa8e98cffb33e4cf6b04",
+    "lane": "swe_bench_compatibility",
+    "output_dir": "outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\real_agent\\distillation_loop_v1_bundle",
+    "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+    "skill_artifact_path": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+    "task_id": "swebench_lite_psf_requests_1963",
+    "task_payload": {
+      "bundle_resolution": null,
+      "swe_bench_dataset_source": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+      "swe_bench_instance_id": "psf__requests-1963",
+      "task_dir": null
+    },
+    "workspace_path": "outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\real_agent\\distillation_loop_v1_bundle\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}

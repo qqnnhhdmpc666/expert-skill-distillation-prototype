@@ -1,0 +1,40 @@
+{
+  "backend_id": "mini_swe_agent",
+  "backend_status": "available",
+  "executable": "C:\\Users\\31552\\AppData\\Roaming\\Python\\Python313\\Scripts\\mini.exe",
+  "execution_mode": "cli",
+  "import_probe_result": {
+    "mini_swe_agent": false,
+    "minisweagent": true
+  },
+  "install_hint": "python -m pip install mini-swe-agent",
+  "probe_commands": [
+    [
+      "mini",
+      "--help"
+    ],
+    [
+      "mini-swe-agent",
+      "--help"
+    ]
+  ],
+  "probe_results": [
+    {
+      "command": [
+        "mini",
+        "--help"
+      ],
+      "found": true,
+      "path": "C:\\Users\\31552\\AppData\\Roaming\\Python\\Python313\\Scripts\\mini.exe"
+    },
+    {
+      "command": [
+        "mini-swe-agent",
+        "--help"
+      ],
+      "found": true,
+      "path": "C:\\Users\\31552\\AppData\\Roaming\\Python\\Python313\\Scripts\\mini-swe-agent.exe"
+    }
+  ],
+  "schema_version": "mini_swe_agent_probe.v1"
+}

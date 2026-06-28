@@ -1,0 +1,58 @@
+{
+  "agent_backends": [
+    {
+      "complexity": "low",
+      "name": "mini-SWE-agent",
+      "task_type": "repo/task command agent",
+      "v0_choice": "primary"
+    },
+    {
+      "complexity": "medium",
+      "name": "SWE-agent",
+      "task_type": "GitHub issue repair",
+      "v0_choice": "defer"
+    },
+    {
+      "complexity": "high",
+      "name": "OpenHands",
+      "task_type": "full software agent platform",
+      "v0_choice": "defer"
+    }
+  ],
+  "lanes": [
+    {
+      "name": "current public repo-level dependency-use held-out set",
+      "suitable_for_v0": true
+    },
+    {
+      "name": "SWE-bench Lite / Verified",
+      "suitable_for_v0": "compatibility_only"
+    },
+    {
+      "name": "Terminal-Bench",
+      "suitable_for_v0": false
+    },
+    {
+      "name": "OpenHands Index",
+      "suitable_for_v0": false
+    },
+    {
+      "name": "CyberSecEval AutoPatchBench",
+      "suitable_for_v0": false
+    },
+    {
+      "name": "SEC-bench",
+      "suitable_for_v0": false
+    },
+    {
+      "name": "JitVul",
+      "suitable_for_v0": false
+    },
+    {
+      "name": "SecCodePLT",
+      "suitable_for_v0": false
+    }
+  ],
+  "schema_version": "open_world_integration_survey.v1",
+  "selected_backend": "mini-SWE-agent"
+}

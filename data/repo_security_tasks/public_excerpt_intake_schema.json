@@ -1,0 +1,30 @@
+{
+  "schema_version": "public_repo_excerpt_intake_schema.v1",
+  "required_fields": [
+    "repo_url",
+    "commit_hash",
+    "license",
+    "snapshot_digest",
+    "runtime_visible_files",
+    "evaluator_only_gold",
+    "dependency_declaration_evidence",
+    "import_use_evidence",
+    "advisory_record",
+    "verifier",
+    "source_manifest"
+  ],
+  "field_contract": {
+    "repo_url": "HTTPS URL of the public source repository.",
+    "commit_hash": "Immutable git commit hash or immutable snapshot digest.",
+    "license": "License text or SPDX-compatible identifier for the frozen excerpt.",
+    "snapshot_digest": "Digest over the exact runtime-visible snapshot files.",
+    "runtime_visible_files": "Files the agent/runtime may read.",
+    "evaluator_only_gold": "Hidden expected answer and evaluator-only evidence, never injected into runtime.",
+    "dependency_declaration_evidence": "Expected declaration evidence class, path, and span contract.",
+    "import_use_evidence": "Expected import/use evidence class, path, and span contract.",
+    "advisory_record": "Frozen advisory record or allowed knowledge snapshot reference.",
+    "verifier": "Deterministic verifier entrypoint and schema.",
+    "source_manifest": "Complete source/provenance manifest for audit."
+  },
+  "claim_boundary": "An excerpt satisfying this schema is eligible for local public repo-level held-out evaluation, not official benchmark performance."
+}

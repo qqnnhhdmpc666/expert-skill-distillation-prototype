@@ -1,0 +1,21 @@
+{
+  "bundle_attachment_mode": "partial_local_manifest_only",
+  "bundle_digest": null,
+  "condition_id": "C0_no_skill",
+  "condition_manifest_digest": "sha256:63a0a872f8d1c5331fc32ef9e4039fb1ac6bcfe8b3c1b173b396fcfe2c98ad66",
+  "knowledge_access_binding_digest": null,
+  "knowledge_manifest_digest": "sha256:d02dec03395ec388e1d18b3e69e5a68d2895db408d4760e56e859c8ebd383dba",
+  "knowledge_projection_digest": null,
+  "provider_policy_digest": null,
+  "release_bundle": {
+    "immutable": true,
+    "mode": "local_vertical_slice"
+  },
+  "resolution_source": "local_manifest_only",
+  "schema_version": "repo_security_runtime_bundle_manifest.v1",
+  "skill_artifact_digest": null,
+  "skill_digest": null,
+  "skill_family": null,
+  "skill_manifest_digest": "sha256:07a8b44f7b169d1d444a37e4e3a2a35f7e2a51ce81b6bb7976d221046263bee8",
+  "task_id": "dependency_use_triage_the_gan_zoo_public"
+}

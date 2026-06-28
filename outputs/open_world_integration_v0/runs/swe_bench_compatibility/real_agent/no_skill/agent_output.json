@@ -1,0 +1,10 @@
+{
+  "backend_id": "mini_swe_agent",
+  "mini_swe_agent_result_ref": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\real_agent\\no_skill\\workspace\\mini_swe_agent_result.json",
+  "mini_swe_agent_trajectory_ref": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\real_agent\\no_skill\\workspace\\mini_swe_agent_trajectory.json",
+  "schema_version": "agent_output.v1",
+  "status": "executed",
+  "stderr_ref": "outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\real_agent\\no_skill\\stderr.txt",
+  "stdout_digest": "sha256:571805488f7779cb8a6190c3ff7767af15e14e2324dde71c38a921f95779e7ab",
+  "stdout_ref": "outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\real_agent\\no_skill\\stdout.txt"
+}

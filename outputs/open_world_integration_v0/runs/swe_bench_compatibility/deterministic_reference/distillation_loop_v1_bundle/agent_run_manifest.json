@@ -1,0 +1,8 @@
+{
+  "backend_id": "deterministic_reference",
+  "condition_id": "C5_active_runtime",
+  "execution_status": "dry_run",
+  "reason": "swe_bench_compatibility_has_no_deterministic_official_execution",
+  "schema_version": "agent_run_manifest.v1",
+  "task_id": "swebench_lite_psf_requests_1963"
+}

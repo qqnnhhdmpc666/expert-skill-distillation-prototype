@@ -1,0 +1,7 @@
+{
+  "lane_a": "repo_level_dependency_use",
+  "lane_a_status": "partial_one_public_excerpt",
+  "lane_b": "swe_bench_compatibility",
+  "lane_b_status": "harness_contract_ready_not_official_performance",
+  "schema_version": "public_eval_lane_selection.v1"
+}

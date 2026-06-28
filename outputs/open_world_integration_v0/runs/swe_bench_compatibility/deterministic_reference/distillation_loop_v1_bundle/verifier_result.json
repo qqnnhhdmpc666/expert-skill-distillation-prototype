@@ -1,0 +1,5 @@
+{
+  "schema_version": "open_world_verifier_result.v1",
+  "status": "dry_run_contract_only",
+  "verifier_pass": false
+}

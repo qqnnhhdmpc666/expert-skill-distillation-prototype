@@ -1,0 +1,26 @@
+{
+  "active_bundle_digest": "sha256:4e57395ed2be563d4836fd6230ded82257fb246ff64a1359ff49ed312a354ffc",
+  "bundle_attachment_mode": "partial_local_manifest_only",
+  "bundle_digest": null,
+  "condition_id": "C0_no_skill",
+  "hidden_evaluator_paths": [
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\task.json#evaluator_only_gold",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\verifier.py"
+  ],
+  "knowledge_access_binding_digest": null,
+  "knowledge_enabled": false,
+  "knowledge_projection_digest": null,
+  "provider_policy_digest": null,
+  "resolution_source": "local_manifest_only",
+  "runtime_visible_paths": [
+    "outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\deterministic_reference\\no_skill\\repo_task_run\\runtime_task_view.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot_manifest.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\expected_output_schema.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot"
+  ],
+  "schema_version": "runtime_condition_manifest.v1",
+  "skill_artifact_digest": null,
+  "skill_digest": null,
+  "skill_enabled": false,
+  "skill_family": null
+}

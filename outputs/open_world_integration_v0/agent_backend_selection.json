@@ -1,0 +1,9 @@
+{
+  "deferred": [
+    "SWE-agent",
+    "OpenHands"
+  ],
+  "primary_backend": "mini-SWE-agent",
+  "schema_version": "agent_backend_selection.v1",
+  "selection_reason": "Lighter than SWE-agent/OpenHands and can run a bounded deterministic smoke through the mini-SWE-agent core loop."
+}

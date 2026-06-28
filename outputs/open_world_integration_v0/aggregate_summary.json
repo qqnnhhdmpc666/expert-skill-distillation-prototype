@@ -1,0 +1,28 @@
+{
+  "agent_adapter_contract_status": "pass",
+  "anti_leakage_status": "pass",
+  "at_least_one_public_task_lane_has_executed_rows": true,
+  "bundle_injection_status": "pass",
+  "claim_boundary_status": "pass",
+  "open_world_integration_v0_status": "pass",
+  "public_eval_lane_status": "partial",
+  "real_agent_dry_run_count": 0,
+  "real_agent_executed_count": 4,
+  "real_agent_execution_status": "pass",
+  "real_agent_exit_code": 0,
+  "real_agent_runtime_seconds": 0.315,
+  "real_agent_smoke_command": [
+    "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\no_skill\\workspace\\mini_swe_agent_smoke.py",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\no_skill\\workspace\\mini_swe_agent_trajectory.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\no_skill\\workspace\\mini_swe_agent_result.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\no_skill\\workspace\\task.md"
+  ],
+  "real_agent_smoke_task_id": "dependency_use_triage_the_gan_zoo_public",
+  "real_agent_unavailable_count": 0,
+  "repo_level_lane_status": "partial",
+  "schema_version": "open_world_integration_v0_summary.v1",
+  "survey_status": "pass",
+  "swe_bench_lane_status": "harness_contract_ready",
+  "trace_normalization_status": "pass"
+}

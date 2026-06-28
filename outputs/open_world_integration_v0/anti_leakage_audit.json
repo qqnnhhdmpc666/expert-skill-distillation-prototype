@@ -1,0 +1,15 @@
+{
+  "anti_leakage_status": "pass",
+  "dry_run_rows_counted_as_pass": false,
+  "heldout_evaluator_gold_injected": false,
+  "prediction_logic_scan": {
+    "allowed_occurrences": "fixture selection, manifests, reports, and tests only",
+    "disallowed_prediction_branches": [],
+    "status": "pass"
+  },
+  "real_agent_no_skill_forbidden_bundle_visible": false,
+  "schema_version": "open_world_anti_leakage_audit.v1",
+  "swe_bench_gold_patch_visible_to_agent": false,
+  "swe_bench_test_patch_visible_to_agent": false,
+  "unavailable_rows_counted_as_pass": false
+}

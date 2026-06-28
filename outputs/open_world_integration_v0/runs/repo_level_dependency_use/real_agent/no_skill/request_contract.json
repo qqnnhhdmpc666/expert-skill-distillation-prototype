@@ -1,0 +1,27 @@
+{
+  "request": {
+    "backend_id": "real_agent",
+    "budget": {
+      "max_agent_smoke_tasks": 1,
+      "timeout_seconds": 30
+    },
+    "bundle_digest": null,
+    "bundle_path": null,
+    "condition_id": "C0_no_skill",
+    "knowledge_manifest_digest": null,
+    "knowledge_manifest_path": null,
+    "lane": "repo_level_dependency_use",
+    "output_dir": "outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\no_skill",
+    "skill_artifact_digest": null,
+    "skill_artifact_path": null,
+    "task_id": "dependency_use_triage_the_gan_zoo_public",
+    "task_payload": {
+      "bundle_resolution": null,
+      "swe_bench_dataset_source": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+      "swe_bench_instance_id": "psf__requests-1963",
+      "task_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public"
+    },
+    "workspace_path": "outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\no_skill\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}

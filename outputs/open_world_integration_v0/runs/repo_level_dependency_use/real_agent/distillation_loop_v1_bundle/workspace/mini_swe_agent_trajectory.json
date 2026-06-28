@@ -1,0 +1,83 @@
+{
+  "info": {
+    "model_stats": {
+      "instance_cost": 0.0,
+      "api_calls": 1
+    },
+    "config": {
+      "agent": {
+        "system_template": "You are a mini-SWE-agent smoke-test agent.",
+        "instance_template": "Task: {{task}}",
+        "step_limit": 2,
+        "cost_limit": 1.0,
+        "wall_time_limit_seconds": 0,
+        "max_consecutive_format_errors": 3,
+        "output_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\distillation_loop_v1_bundle\\workspace\\mini_swe_agent_trajectory.json"
+      },
+      "agent_type": "minisweagent.agents.default.DefaultAgent",
+      "model": {
+        "outputs": [
+          {
+            "role": "assistant",
+            "content": "I will complete the open-world integration smoke task.",
+            "extra": {
+              "actions": [
+                {
+                  "command": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+                }
+              ],
+              "cost": 0.0,
+              "timestamp": 1782627064.8734043
+            }
+          }
+        ],
+        "model_name": "deterministic",
+        "cost_per_call": 1.0,
+        "observation_template": "{% if output.exception_info %}<exception>{{output.exception_info}}</exception>\n{% endif %}<returncode>{{output.returncode}}</returncode>\n<output>\n{{output.output}}</output>",
+        "multimodal_regex": ""
+      },
+      "model_type": "minisweagent.models.test_models.DeterministicModel",
+      "environment": {
+        "cwd": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\real_agent\\distillation_loop_v1_bundle\\workspace",
+        "env": {},
+        "timeout": 10
+      },
+      "environment_type": "minisweagent.environments.local.LocalEnvironment"
+    },
+    "mini_version": "2.4.2",
+    "exit_status": "Submitted",
+    "submission": ""
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a mini-SWE-agent smoke-test agent."
+    },
+    {
+      "role": "user",
+      "content": "Task: # Open-World Integration v0 Smoke Task\n\n- task_id: dependency_use_triage_the_gan_zoo_public\n- condition_id: C5_active_runtime\n- This is a backend execution smoke, not an effectiveness benchmark.\n- Bundle artifacts are exposed through workspace bundle_ref.json.\n- bundle_digest: sha256:d6f18e199f7ab6d2347a2c9f92278f4cd73584b6f0569ee1417346cc913bfd29\n"
+    },
+    {
+      "role": "assistant",
+      "content": "I will complete the open-world integration smoke task.",
+      "extra": {
+        "actions": [
+          {
+            "command": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+          }
+        ],
+        "cost": 0.0,
+        "timestamp": 1782627064.8734043
+      }
+    },
+    {
+      "role": "exit",
+      "content": "",
+      "extra": {
+        "exit_status": "Submitted",
+        "submission": ""
+      }
+    }
+  ],
+  "trajectory_format": "mini-swe-agent-1.1"
+}

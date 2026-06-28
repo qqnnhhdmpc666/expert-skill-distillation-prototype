@@ -1,0 +1,27 @@
+{
+  "active_bundle_digest": "sha256:d6f18e199f7ab6d2347a2c9f92278f4cd73584b6f0569ee1417346cc913bfd29",
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:d6f18e199f7ab6d2347a2c9f92278f4cd73584b6f0569ee1417346cc913bfd29",
+  "condition_id": "C5_active_runtime",
+  "hidden_evaluator_paths": [
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\task.json#evaluator_only_gold",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\verifier.py"
+  ],
+  "knowledge_access_binding_digest": "sha256:4858f7f574fbfa26fec3b2d6484c677c694cdc95ca18be5b34a05a6e4f59e628",
+  "knowledge_enabled": true,
+  "knowledge_projection_digest": "sha256:f7f36bfc49e093f65dfbd321b476c6deb8ca2b9a537eaa8e98cffb33e4cf6b04",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "resolution_source": "bundle_digest",
+  "runtime_visible_paths": [
+    "outputs\\open_world_integration_v0\\runs\\repo_level_dependency_use\\deterministic_reference\\distillation_loop_v1_bundle\\repo_task_run\\runtime_task_view.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot_manifest.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\expected_output_schema.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\dependency_use_triage_the_gan_zoo_public\\allowed_knowledge.json"
+  ],
+  "schema_version": "runtime_condition_manifest.v1",
+  "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "skill_digest": "sha256:598bcdea2e4197e253e1a2a9b78c12a521bfc80c4ddcbde558c28c1d083d3566",
+  "skill_enabled": true,
+  "skill_family": "repo-dependency-use-triage"
+}

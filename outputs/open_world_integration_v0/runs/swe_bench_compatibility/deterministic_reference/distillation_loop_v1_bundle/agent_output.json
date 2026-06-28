@@ -1,0 +1,5 @@
+{
+  "reason": "swe_bench_compatibility_has_no_deterministic_official_execution",
+  "schema_version": "agent_output.v1",
+  "status": "dry_run_contract_only"
+}

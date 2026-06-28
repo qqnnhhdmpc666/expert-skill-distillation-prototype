@@ -1,0 +1,13 @@
+{
+  "agent_backend": "mini_swe_agent",
+  "agent_prompt_or_workspace_contains_bundle_ref": false,
+  "bundle_digest": null,
+  "bundle_visible_to_agent": false,
+  "forbidden_sources_excluded": true,
+  "injection_mode": "none",
+  "knowledge_manifest_digest": null,
+  "knowledge_manifest_visible_to_agent": false,
+  "schema_version": "bundle_injection_trace.v1",
+  "skill_artifact_digest": null,
+  "skill_artifact_visible_to_agent": false
+}

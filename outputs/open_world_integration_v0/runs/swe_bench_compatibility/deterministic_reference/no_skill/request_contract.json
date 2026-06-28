@@ -1,0 +1,27 @@
+{
+  "request": {
+    "backend_id": "deterministic_reference",
+    "budget": {
+      "max_agent_smoke_tasks": 1,
+      "timeout_seconds": 30
+    },
+    "bundle_digest": null,
+    "bundle_path": null,
+    "condition_id": "C0_no_skill",
+    "knowledge_manifest_digest": null,
+    "knowledge_manifest_path": null,
+    "lane": "swe_bench_compatibility",
+    "output_dir": "outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\deterministic_reference\\no_skill",
+    "skill_artifact_digest": null,
+    "skill_artifact_path": null,
+    "task_id": "swebench_lite_psf_requests_1963",
+    "task_payload": {
+      "bundle_resolution": null,
+      "swe_bench_dataset_source": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+      "swe_bench_instance_id": "psf__requests-1963",
+      "task_dir": null
+    },
+    "workspace_path": "outputs\\open_world_integration_v0\\runs\\swe_bench_compatibility\\deterministic_reference\\no_skill\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}
