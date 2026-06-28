@@ -1,0 +1,35 @@
+{
+  "base_commit": "not_loaded_contract_only",
+  "dataset_source": "SWE-bench/SWE-bench_Lite",
+  "execution_status": "blocked_by_environment",
+  "gold_patch_visible_to_agent": false,
+  "not_counted_reason": "bounded_smoke_does_not_execute_official_harness",
+  "official_harness_available": false,
+  "official_harness_executed": false,
+  "official_swe_bench_performance": "not_claimed",
+  "patch_or_test_gold_visible_to_agent": false,
+  "probes": {
+    "docker_version": {
+      "command": [
+        "docker",
+        "--version"
+      ],
+      "ok": false,
+      "stderr": "[WinError 2] 系统找不到指定的文件。",
+      "stdout": ""
+    },
+    "official_harness_import": {
+      "ok": false,
+      "stderr": "swebench-venv python missing",
+      "stdout": ""
+    },
+    "swe_bench_repo_exists": true,
+    "swebench_venv_python_exists": false
+  },
+  "public_benchmark_execution": "not_pass",
+  "repo": "psf/requests",
+  "schema_version": "swe_bench_micro_lane_manifest.v1",
+  "swe_bench_instance_id": "psf__requests-1963",
+  "swe_bench_micro_lane_status": "blocked_by_environment",
+  "test_patch_visible_to_agent": false
+}

@@ -1,0 +1,19 @@
+{
+  "clean_public_excerpt_count": 1,
+  "distinct_public_repo_count": 1,
+  "excerpts": [
+    {
+      "commit_hash": "375f2be4a852ead8980c06b2a996893f0cb95713",
+      "excerpt_id": "dependency_use_triage_the_gan_zoo_public",
+      "quality_tier": "A",
+      "repo_url": "https://github.com/hindupuravinash/the-gan-zoo",
+      "task_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public"
+    }
+  ],
+  "registry_claim_boundary": "This registry is a bounded local public held-out layer, not an official benchmark.",
+  "registry_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\registry.json",
+  "repo_level_heldout_set_status": "partial",
+  "repo_level_public_excerpt_count": 1,
+  "schema_version": "repo_level_heldout_manifest.v0",
+  "target_clean_distinct_repos": 3
+}

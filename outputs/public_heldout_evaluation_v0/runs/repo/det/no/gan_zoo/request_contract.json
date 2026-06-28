@@ -1,0 +1,24 @@
+{
+  "request": {
+    "backend_id": "deterministic_reference",
+    "budget": {
+      "timeout_seconds": 30
+    },
+    "bundle_digest": null,
+    "bundle_path": null,
+    "condition_id": "C0_no_skill",
+    "knowledge_manifest_digest": null,
+    "knowledge_manifest_path": null,
+    "lane": "repo_level_dependency_use",
+    "output_dir": "outputs\\public_heldout_evaluation_v0\\runs\\repo\\det\\no\\gan_zoo",
+    "skill_artifact_digest": null,
+    "skill_artifact_path": null,
+    "task_id": "dependency_use_triage_the_gan_zoo_public",
+    "task_payload": {
+      "bundle_resolution": null,
+      "task_dir": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public"
+    },
+    "workspace_path": "outputs\\public_heldout_evaluation_v0\\runs\\repo\\det\\no\\gan_zoo\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}

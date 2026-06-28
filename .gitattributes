@@ -10,3 +10,4 @@
 .gitignore text eol=lf
 Dockerfile text eol=lf
 data/repo_security_tasks/**/repo_snapshot/** text eol=lf
+data/repo_security_tasks/public_heldout_v0/excerpts/**/repo_snapshot/** whitespace=-blank-at-eol

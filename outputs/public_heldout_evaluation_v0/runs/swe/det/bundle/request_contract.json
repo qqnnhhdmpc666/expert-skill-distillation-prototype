@@ -1,0 +1,23 @@
+{
+  "request": {
+    "backend_id": "deterministic_reference",
+    "budget": {
+      "timeout_seconds": 30
+    },
+    "bundle_digest": "sha256:67d227d6653db1aed92d002304dda2ae82602baac80ce8d74cae161da045c889",
+    "bundle_path": ".tmp\\public-heldout-evaluation-v0-state\\bundle",
+    "condition_id": "C5_active_runtime",
+    "knowledge_manifest_digest": "sha256:db6f011eddd66bf93f64d6e8cdf98974f65f7ef8ad009ca26f8d333fcc8bc4ac",
+    "knowledge_manifest_path": "sha256:db6f011eddd66bf93f64d6e8cdf98974f65f7ef8ad009ca26f8d333fcc8bc4ac",
+    "lane": "swe_bench_micro",
+    "output_dir": "outputs\\public_heldout_evaluation_v0\\runs\\swe\\det\\bundle",
+    "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+    "skill_artifact_path": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+    "task_id": "swebench_lite_psf_requests_1963",
+    "task_payload": {
+      "swe_bench_instance_id": "psf__requests-1963"
+    },
+    "workspace_path": "outputs\\public_heldout_evaluation_v0\\runs\\swe\\det\\bundle\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "repo_snapshot_manifest.v1",
+  "fixture_type": "public_repo_excerpt",
+  "repository": "hindupuravinash/the-gan-zoo",
+  "repo_snapshot_ref": "github:hindupuravinash/the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713",
+  "source_url": "https://github.com/hindupuravinash/the-gan-zoo",
+  "commit_url": "https://github.com/hindupuravinash/the-gan-zoo/commit/375f2be4a852ead8980c06b2a996893f0cb95713",
+  "license": "MIT",
+  "snapshot_id": "the-gan-zoo@375f2be4a852ead8980c06b2a996893f0cb95713:dependency-use-excerpt",
+  "commit_digest": "git-sha1:375f2be4a852ead8980c06b2a996893f0cb95713",
+  "source_tree_digest": "git-sha1:1d14483f75314b681832854d7d766db179d6b788",
+  "snapshot_content_digest": "sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb",
+  "language": "python",
+  "excerpt_policy": "Exact upstream file contents for only the dependency declaration, runtime use site, and license.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "original_path": "LICENSE",
+      "source_url": "https://github.com/hindupuravinash/the-gan-zoo/blob/375f2be4a852ead8980c06b2a996893f0cb95713/LICENSE",
+      "role": "license",
+      "sha256": "sha256:5a2f49a84e901f7bd8b4263932eb36eadb887a1b9f5e80c656b8030fe595e257",
+      "upstream_git_blob": "ab73f9b4fffc6c63c2f79191ec57fb341b1b1ae0",
+      "line_count": 21
+    },
+    {
+      "path": "requirements.txt",
+      "original_path": "requirements.txt",
+      "source_url": "https://github.com/hindupuravinash/the-gan-zoo/blob/375f2be4a852ead8980c06b2a996893f0cb95713/requirements.txt",
+      "role": "dependency_declaration",
+      "sha256": "sha256:d1d8962369ac9d2368d5810fb179dde2c3783dfc97e30350d51e3a608dda1011",
+      "upstream_git_blob": "8cf85d08165848ec70733319b14069eb53f1313b",
+      "line_count": 25
+    },
+    {
+      "path": "update.py",
+      "original_path": "update.py",
+      "source_url": "https://github.com/hindupuravinash/the-gan-zoo/blob/375f2be4a852ead8980c06b2a996893f0cb95713/update.py",
+      "role": "runtime_use_site",
+      "sha256": "sha256:3c8f7bc806af47360aa8dab1891b4947921eec666b3e828764e571aab3429b66",
+      "upstream_git_blob": "cfcbfcd48f5c419bb4bf0649dfa9b308f4354d97",
+      "line_count": 78
+    }
+  ]
+}

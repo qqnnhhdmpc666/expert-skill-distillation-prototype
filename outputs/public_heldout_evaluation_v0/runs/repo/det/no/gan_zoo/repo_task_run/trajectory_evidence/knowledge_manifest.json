@@ -1,0 +1,10 @@
+{
+  "allowed_knowledge_digest": "none",
+  "allowed_knowledge_sources": [],
+  "condition_id": "C0_no_skill",
+  "knowledge_access_binding_digest": "none",
+  "knowledge_access_policy": "disabled",
+  "knowledge_enabled": false,
+  "knowledge_projection_digest": "none",
+  "schema_version": "knowledge_access_manifest.v1"
+}

@@ -1,0 +1,27 @@
+{
+  "active_bundle_digest": "sha256:67d227d6653db1aed92d002304dda2ae82602baac80ce8d74cae161da045c889",
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:67d227d6653db1aed92d002304dda2ae82602baac80ce8d74cae161da045c889",
+  "condition_id": "C5_active_runtime",
+  "hidden_evaluator_paths": [
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\task.json#evaluator_only_gold",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\verifier.py"
+  ],
+  "knowledge_access_binding_digest": "sha256:82e767c45af71c9b3580cd47e2f9855419579afa02a67f278b386ad292626fb4",
+  "knowledge_enabled": true,
+  "knowledge_projection_digest": "sha256:db6f011eddd66bf93f64d6e8cdf98974f65f7ef8ad009ca26f8d333fcc8bc4ac",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "resolution_source": "bundle_digest",
+  "runtime_visible_paths": [
+    "outputs\\public_heldout_evaluation_v0\\runs\\repo\\det\\bundle\\gan_zoo\\repo_task_run\\runtime_task_view.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot_manifest.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\expected_output_schema.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\allowed_knowledge.json"
+  ],
+  "schema_version": "runtime_condition_manifest.v1",
+  "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "skill_digest": "sha256:db273bacdc9c85be3b0db61ff04c468827c2263d6216940f5ad112a304fd0df0",
+  "skill_enabled": true,
+  "skill_family": "repo-dependency-use-triage"
+}

@@ -1,0 +1,10 @@
+{
+  "claim_boundary_status": "pass",
+  "compiler_superiority": "not_evaluated",
+  "general_vulnerability_discovery": "not_claimed",
+  "mature_agenthost_effectiveness": "not_evaluated",
+  "official_public_benchmark_performance": "not_claimed",
+  "official_swe_bench_performance": "not_claimed",
+  "production_readiness": "not_claimed",
+  "schema_version": "public_heldout_claim_boundary.v0"
+}

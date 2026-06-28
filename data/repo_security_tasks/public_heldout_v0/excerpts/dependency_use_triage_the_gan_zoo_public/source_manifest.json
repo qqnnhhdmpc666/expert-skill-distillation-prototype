@@ -1,0 +1,43 @@
+{
+  "schema_version": "public_excerpt_source_manifest.v1",
+  "excerpt_id": "dependency_use_triage_the_gan_zoo_public",
+  "quality_tier": "A",
+  "repo_url": "https://github.com/hindupuravinash/the-gan-zoo",
+  "commit_hash": "375f2be4a852ead8980c06b2a996893f0cb95713",
+  "commit_url": "https://github.com/hindupuravinash/the-gan-zoo/commit/375f2be4a852ead8980c06b2a996893f0cb95713",
+  "license": "MIT",
+  "snapshot_digest": "sha256:4fa32e652b51130309c78b9d4f52a3020bd5930b289a015e5dc6626c90286ccb",
+  "runtime_visible_files": [
+    "repo_snapshot/LICENSE",
+    "repo_snapshot/requirements.txt",
+    "repo_snapshot/update.py",
+    "repo_snapshot_manifest.json",
+    "allowed_knowledge.json",
+    "expected_output_schema.json"
+  ],
+  "evaluator_only_gold": [
+    "task.json#hidden_gold",
+    "verifier.py"
+  ],
+  "dependency_declaration_evidence": {
+    "path": "repo_snapshot/requirements.txt",
+    "evidence_type": "dependency_declaration",
+    "package": "requests",
+    "expected_version": "2.19.1"
+  },
+  "import_use_evidence": {
+    "path": "repo_snapshot/update.py",
+    "evidence_type": "import_use_site",
+    "package": "requests"
+  },
+  "advisory_record": {
+    "path": "allowed_knowledge.json",
+    "source_id": "PYSEC-2018-28",
+    "package": "requests"
+  },
+  "verifier": {
+    "entrypoint": "verifier.py",
+    "type": "deterministic"
+  },
+  "source_note": "Minimal frozen excerpt copied from the existing traceable public repo-level task for public held-out v0."
+}

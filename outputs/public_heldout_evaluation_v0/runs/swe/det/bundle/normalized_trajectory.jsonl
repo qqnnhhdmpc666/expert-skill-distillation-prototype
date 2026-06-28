@@ -1,0 +1,1 @@
+{"actor": "runtime", "allowed_by_policy": true, "bundle_related": true, "content_ref": "official_swe_bench_harness_not_executed_bounded_smoke", "event_type": "message", "knowledge_source_ref": null, "step_index": 0, "timestamp": "2026-06-28T06:51:50.901494+00:00"}

@@ -1,0 +1,6 @@
+{
+  "official_harness_executed": false,
+  "schema_version": "open_world_verifier_result.v1",
+  "status": "contract_only",
+  "verifier_pass": false
+}

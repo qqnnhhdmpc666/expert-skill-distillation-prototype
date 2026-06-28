@@ -1,0 +1,8 @@
+{
+  "backend_id": "deterministic_reference",
+  "bundle_digest": "sha256:67d227d6653db1aed92d002304dda2ae82602baac80ce8d74cae161da045c889",
+  "condition_id": "C5_active_runtime",
+  "execution_status": "executed",
+  "schema_version": "agent_run_manifest.v1",
+  "task_id": "dependency_use_triage_the_gan_zoo_public"
+}

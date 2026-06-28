@@ -1,0 +1,23 @@
+{
+  "request": {
+    "backend_id": "deterministic_reference",
+    "budget": {
+      "timeout_seconds": 30
+    },
+    "bundle_digest": null,
+    "bundle_path": null,
+    "condition_id": "C0_no_skill",
+    "knowledge_manifest_digest": null,
+    "knowledge_manifest_path": null,
+    "lane": "swe_bench_micro",
+    "output_dir": "outputs\\public_heldout_evaluation_v0\\runs\\swe\\det\\no",
+    "skill_artifact_digest": null,
+    "skill_artifact_path": null,
+    "task_id": "swebench_lite_psf_requests_1963",
+    "task_payload": {
+      "swe_bench_instance_id": "psf__requests-1963"
+    },
+    "workspace_path": "outputs\\public_heldout_evaluation_v0\\runs\\swe\\det\\no\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}

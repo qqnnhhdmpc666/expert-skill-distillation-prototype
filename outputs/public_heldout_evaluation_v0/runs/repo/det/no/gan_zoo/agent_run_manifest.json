@@ -1,0 +1,8 @@
+{
+  "backend_id": "deterministic_reference",
+  "bundle_digest": null,
+  "condition_id": "C0_no_skill",
+  "execution_status": "executed",
+  "schema_version": "agent_run_manifest.v1",
+  "task_id": "dependency_use_triage_the_gan_zoo_public"
+}

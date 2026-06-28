@@ -1,0 +1,5 @@
+{
+  "reason": "official_swe_bench_harness_not_executed_bounded_smoke",
+  "schema_version": "agent_output.v1",
+  "status": "contract_only"
+}

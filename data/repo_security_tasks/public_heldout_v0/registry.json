@@ -1,0 +1,28 @@
+{
+  "schema_version": "public_heldout_registry.v0",
+  "registry_id": "public_heldout_dependency_use_triage_v0",
+  "search_policy": {
+    "max_candidate_repos_to_screen": 12,
+    "preferred_clean_distinct_repos": 5,
+    "target_clean_distinct_repos": 3
+  },
+  "counting_policy": {
+    "clean_public_excerpt_count_counts_only": "A-tier distinct public repositories",
+    "same_repo_multiple_tasks_count_once": true,
+    "synthetic_or_local_public_like_fixtures_count": false
+  },
+  "excerpts": [
+    {
+      "accepted": true,
+      "excerpt_id": "dependency_use_triage_the_gan_zoo_public",
+      "quality_tier": "A",
+      "repo_url": "https://github.com/hindupuravinash/the-gan-zoo",
+      "commit_hash": "375f2be4a852ead8980c06b2a996893f0cb95713",
+      "license": "MIT",
+      "task_dir": "excerpts/dependency_use_triage_the_gan_zoo_public",
+      "task_id": "dependency_use_triage_the_gan_zoo_public",
+      "verifier": "verifier.py"
+    }
+  ],
+  "claim_boundary": "This registry is a bounded local public held-out layer, not an official benchmark."
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "allowed_knowledge_snapshot.v1",
+  "snapshot_policy": "frozen_public_advisory_excerpt",
+  "retrieved_at": "2026-06-26T00:00:00+08:00",
+  "knowledge_sources": [
+    {
+      "source_id": "PYSEC-2018-28",
+      "source_kind": "security_advisory_snapshot",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-28",
+      "database_specific_source": "https://github.com/pypa/advisory-database/blob/main/vulns/requests/PYSEC-2018-28.yaml",
+      "aliases": [
+        "CVE-2018-18074",
+        "GHSA-x84v-xcm2-53pg"
+      ],
+      "source_modified": "2023-11-08T04:00:04.815794Z",
+      "package": "requests",
+      "ecosystem": "PyPI",
+      "affected_ranges": [
+        {
+          "introduced": "0",
+          "fixed": "2.20.0"
+        }
+      ],
+      "allowed_claim": "The frozen OSV advisory marks requests versions before 2.20.0 as affected.",
+      "not_allowed_claims": [
+        "exploitability in the repository deployment",
+        "runtime reachability beyond the recorded import/use site",
+        "credential exposure in any real deployment",
+        "general vulnerability discovery"
+      ]
+    }
+  ]
+}

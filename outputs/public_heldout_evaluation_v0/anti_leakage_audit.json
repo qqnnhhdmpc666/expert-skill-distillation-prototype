@@ -1,0 +1,16 @@
+{
+  "agent_prompts_include_expected_decisions": false,
+  "anti_leakage_status": "pass",
+  "audit_output_root": "outputs\\public_heldout_evaluation_v0",
+  "heldout_feedback_used_for_revision": false,
+  "no_skill_bundle_visible_to_agent": false,
+  "prediction_logic_scan": {
+    "allowed_occurrences": "manifest/report/test bookkeeping only",
+    "disallowed_prediction_branches": [],
+    "status": "pass"
+  },
+  "runtime_visible_evaluator_gold_violations": [],
+  "schema_version": "public_heldout_anti_leakage_audit.v0",
+  "swe_bench_gold_patch_visible_to_agent": false,
+  "swe_bench_test_patch_visible_to_agent": false
+}
