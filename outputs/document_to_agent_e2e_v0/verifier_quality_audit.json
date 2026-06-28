@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "claim_level_declared": true,
+    "domain_check_present": true,
+    "evaluator_only_gold_used_only_by_verifier": true,
+    "evidence_check_present": true,
+    "failure_taxonomy_present": true,
+    "known_limitations_declared": true,
+    "public_benchmark_replacement_claim_blocked": true,
+    "runtime_visible_gold_blocked": true,
+    "schema_check_present": true,
+    "verifier_spec_exists": true,
+    "verifier_type_declared": true
+  },
+  "schema_version": "verifier_quality_audit.v0",
+  "verifier_quality_status": "pass"
+}

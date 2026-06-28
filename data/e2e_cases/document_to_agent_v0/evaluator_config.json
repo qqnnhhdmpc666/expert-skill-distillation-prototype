@@ -1,0 +1,8 @@
+{
+  "schema_version": "document_to_agent_evaluator_config.v0",
+  "task_dir": "data/repo_security_tasks/public_heldout_v0/excerpts/dependency_use_triage_the_gan_zoo_public",
+  "required_backend": "deterministic_reference",
+  "optional_backend": "mini_swe_agent_framework",
+  "hidden_gold_policy": "evaluator_only",
+  "claim_level": "local_e2e_system_validation"
+}

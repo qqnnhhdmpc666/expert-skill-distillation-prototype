@@ -1,0 +1,21 @@
+{
+  "request": {
+    "backend_id": "mini_swe_agent",
+    "budget": {
+      "timeout_seconds": 30
+    },
+    "bundle_digest": "sha256:022a58c15c2b002a72276742949336357166768a964c7b52ab7961b3f5b34021",
+    "bundle_path": "C:\\Users\\31552\\AppData\\Local\\Temp\\pytest-of-31552\\pytest-227\\test_system_readiness_audit_wr0\\e2e_state\\bundle_state",
+    "condition_id": "document_to_agent_e2e_bundle",
+    "knowledge_manifest_digest": "sha256:0792d9afd5a78642fc8ce44fa5ae5baa5c21271d83c4f445b7ad39cf05bd0b35",
+    "knowledge_manifest_path": "sha256:0792d9afd5a78642fc8ce44fa5ae5baa5c21271d83c4f445b7ad39cf05bd0b35",
+    "lane": "document_to_agent_e2e",
+    "output_dir": "outputs\\document_to_agent_e2e_v0\\backend_runs\\mini_swe_agent_framework",
+    "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+    "skill_artifact_path": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+    "task_id": "document_to_agent_dependency_use_triage",
+    "task_payload": {},
+    "workspace_path": "outputs\\document_to_agent_e2e_v0\\backend_runs\\deterministic_reference\\workspace"
+  },
+  "schema_version": "agent_backend_request_contract.v1"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "benchmark_lanes_config.v0",
+  "benchmark_lanes": {
+    "document_to_agent_e2e": {
+      "enabled": true,
+      "claim_level": "local_e2e_system_validation",
+      "official_benchmark": false
+    },
+    "public_heldout_repo_level": {
+      "enabled": true,
+      "claim_level": "public_heldout_infrastructure",
+      "required_clean_distinct_repos": 3,
+      "official_benchmark": false
+    },
+    "swe_bench": {
+      "enabled": false,
+      "claim_level": "harness_readiness_only",
+      "official_benchmark": true,
+      "official_performance_claim_allowed": false
+    }
+  }
+}

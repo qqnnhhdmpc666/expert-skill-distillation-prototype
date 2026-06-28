@@ -1,0 +1,86 @@
+{
+  "constraints": [
+    {
+      "constraint_id": "no_advisory_only_decision",
+      "instruction": "Never decide affectedness from advisory evidence alone."
+    },
+    {
+      "constraint_id": "fail_safe_missing_evidence",
+      "instruction": "Abstain or fail safe when required repo evidence is insufficient."
+    },
+    {
+      "constraint_id": "no_exploitability_claim",
+      "instruction": "Do not claim exploitability, reachability, or general vulnerability discovery."
+    }
+  ],
+  "decision_policy": {
+    "version_range_comparison_required": true
+  },
+  "exceptions": [
+    {
+      "exception_id": "missing_import_use_site",
+      "instruction": "Missing import/use evidence must not produce dependency_used_and_affected."
+    }
+  ],
+  "invocation": {
+    "task_family": "repo-dependency-use-triage",
+    "task_type": "dependency_use_triage"
+  },
+  "knowledge_requirements": [
+    {
+      "semantic_requirement": "dependency_declaration",
+      "unavailable_behavior": "abstain_or_fail_safe"
+    },
+    {
+      "semantic_requirement": "resolved_version",
+      "unavailable_behavior": "abstain_or_fail_safe"
+    },
+    {
+      "semantic_requirement": "import_use_site",
+      "unavailable_behavior": "abstain_or_fail_safe"
+    },
+    {
+      "semantic_requirement": "advisory_affected_range",
+      "unavailable_behavior": "abstain_or_fail_safe"
+    },
+    {
+      "semantic_requirement": "decision_evidence",
+      "unavailable_behavior": "abstain_or_fail_safe"
+    }
+  ],
+  "schema_version": "skill_ir.v1",
+  "skill_id": "repo-dependency-use-triage",
+  "source_node_ids": [
+    "repo-triage-skill-knowledge-boundary",
+    "repo-triage-required-evidence",
+    "repo-triage-knowledge-access"
+  ],
+  "variant": "document_to_agent_e2e_v0",
+  "version": "1.0.0",
+  "workflow": [
+    {
+      "instruction": "Identify dependency declaration evidence.",
+      "step_id": "identify_declaration"
+    },
+    {
+      "instruction": "Identify resolved version or lock/version evidence.",
+      "step_id": "identify_version"
+    },
+    {
+      "instruction": "Identify import/use evidence in repo files.",
+      "step_id": "identify_use"
+    },
+    {
+      "instruction": "Consult only the allowed advisory snapshot.",
+      "step_id": "consult_advisory"
+    },
+    {
+      "instruction": "Compare resolved version against affected range.",
+      "step_id": "compare_range"
+    },
+    {
+      "instruction": "Emit one bounded dependency-use triage decision with evidence.",
+      "step_id": "decide"
+    }
+  ]
+}

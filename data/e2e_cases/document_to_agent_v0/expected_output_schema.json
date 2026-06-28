@@ -1,0 +1,28 @@
+{
+  "schema_version": "repo_security_prediction_schema.v1",
+  "required_fields": [
+    "schema_version",
+    "task_id",
+    "task_type",
+    "decision",
+    "package",
+    "declared_version",
+    "advisory_id",
+    "evidence",
+    "reason_codes"
+  ],
+  "decision_enum": [
+    "dependency_used_and_affected",
+    "dependency_used_not_affected",
+    "dependency_present_not_used",
+    "dependency_not_declared",
+    "unresolved"
+  ],
+  "required_evidence_types": [
+    "dependency_declaration",
+    "resolved_version",
+    "import_use_site",
+    "advisory_affected_range",
+    "decision_evidence"
+  ]
+}

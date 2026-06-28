@@ -1,0 +1,26 @@
+{
+  "active_bundle_digest": "sha256:022a58c15c2b002a72276742949336357166768a964c7b52ab7961b3f5b34021",
+  "bundle_attachment_mode": "real_release_bundle_pinned",
+  "bundle_digest": "sha256:022a58c15c2b002a72276742949336357166768a964c7b52ab7961b3f5b34021",
+  "condition_id": "document_to_agent_e2e_bundle",
+  "hidden_evaluator_paths": [
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\task.json#evaluator_only_gold",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\verifier.py"
+  ],
+  "knowledge_access_binding_digest": "sha256:271d003ce27197c25bde1040d6ef19f6ae70a57fa12d67de1cb98ecaf8787894",
+  "knowledge_enabled": false,
+  "knowledge_projection_digest": "sha256:0792d9afd5a78642fc8ce44fa5ae5baa5c21271d83c4f445b7ad39cf05bd0b35",
+  "provider_policy_digest": "sha256:77b91a75a18e435d752c51fc8633264b3cd9dd0224007a4b4c6862bbc6288243",
+  "resolution_source": "active_binding",
+  "runtime_visible_paths": [
+    "outputs\\document_to_agent_e2e_v0\\backend_runs\\deterministic_reference\\repo_task_run\\runtime_task_view.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot_manifest.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\expected_output_schema.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\data\\repo_security_tasks\\public_heldout_v0\\excerpts\\dependency_use_triage_the_gan_zoo_public\\repo_snapshot"
+  ],
+  "schema_version": "runtime_condition_manifest.v1",
+  "skill_artifact_digest": "sha256:78d6d907ecb8a4cfcd333d23cec8312b82eda815026b45966940d8417707729d",
+  "skill_digest": "sha256:9a816589d50e3358aa1c3c1405e00e8b9f6acf9e36de78d9ba2534b130a98107",
+  "skill_enabled": false,
+  "skill_family": "repo-dependency-use-triage"
+}

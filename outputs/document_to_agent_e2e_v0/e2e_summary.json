@@ -1,0 +1,32 @@
+{
+  "active_binding_generation": 1,
+  "active_binding_status": "pass",
+  "agent_backend_request_status": "pass",
+  "agent_execution_status": "pass",
+  "bundle_build_status": "pass",
+  "bundle_digest": "sha256:022a58c15c2b002a72276742949336357166768a964c7b52ab7961b3f5b34021",
+  "bundle_injection_status": "pass",
+  "can_drive_failure_attribution": true,
+  "can_drive_revision": true,
+  "claim_level": "local_e2e_system_validation",
+  "document_ingestion_status": "pass",
+  "end_to_end_status": "pass",
+  "knowledge_separation_status": "pass",
+  "known_verifier_limitations": [
+    "does not prove general benchmark performance",
+    "does not replace public benchmark harness",
+    "only validates this bounded domain task"
+  ],
+  "material_windowing_status": "pass",
+  "official_harness_verifier": false,
+  "public_benchmark_verifier": false,
+  "real_agent_framework_executed": true,
+  "real_agent_framework_status": "executed",
+  "real_llm_agent_executed": false,
+  "schema_version": "document_to_agent_e2e_summary.v0",
+  "skill_extraction_status": "pass",
+  "trajectory_status": "pass",
+  "verifier_claim_level": "development_domain_verifier",
+  "verifier_quality_status": "pass",
+  "verifier_status": "pass"
+}

@@ -1,0 +1,26 @@
+{
+  "evidence_refs": [
+    {
+      "evidence_type": "expert_material_fact",
+      "source_ref": "input_material.md#Factual and Evidence Knowledge"
+    },
+    {
+      "evidence_type": "advisory_snapshot",
+      "source_ref": "public_heldout_v0/the-gan-zoo/allowed_knowledge.json"
+    },
+    {
+      "evidence_type": "import_use_site",
+      "source_ref": "public_heldout_v0/the-gan-zoo/repo_snapshot/update.py"
+    }
+  ],
+  "facts": [
+    "Advisory source id: `PYSEC-2018-28`.",
+    "Package: `requests`.",
+    "Affected version range for this bounded case: introduced `0`, fixed `2.20.0`.",
+    "Runtime-visible repository evidence includes dependency declaration files, Python source files, and allowed advisory snapshots.",
+    "Evaluator-only gold answers and verifier implementation details are not runtime-visible knowledge."
+  ],
+  "knowledge_boundary": "Concrete advisory facts and repository evidence remain outside the stable Skill procedure.",
+  "schema_version": "document_to_agent_knowledge_manifest.v0",
+  "source": "input_material.md"
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "material_windows.v0",
+  "window_count": 4,
+  "windows": [
+    {
+      "sha256": "sha256:f70dd1a5fe37683e160fb48faf9487167a5d6c304a371bb94978da43bda49a35",
+      "text": "# Dependency-Use Triage Expert Material v0\n\nThis material describes a bounded repo-level dependency-use triage process. It is not a general vulnerability discovery method.\n",
+      "title": "preamble"
+    },
+    {
+      "sha256": "sha256:ff3761ce301486adac16808f3a25cac6bda996cf35a7997fec98873c865ae4ea",
+      "text": "## Procedural Skill Rules\n\n1. Inspect dependency declarations first. Accept direct pinned declarations from `requirements.txt`, lock files, or equivalent project metadata.\n2. Resolve the declared package version before deciding whether an advisory applies.\n3. Inspect import or runtime use sites. A declared dependency with no import/use evidence must not be reported as used and affected.\n4. Compare the resolved version against the advisory affected range. A fixed or outside-range version must be reported as used but not affected.\n5. A valid `dependency_used_and_affected` decision requires declaration evidence, resolved version evidence, import/use evidence, advisory affected-range evidence, and decision evidence.\n6. If required evidence is missing, choose `dependency_present_not_used` or `unresolved`; do not force an affected decision.\n7. Produce a schema-valid decision with evidence references containing file path, evidence type, and line/span when available.\n",
+      "title": "Procedural Skill Rules"
+    },
+    {
+      "sha256": "sha256:2249428823f4fb8af81e870883765c31e4c4d5a0219a1ceea621ade28690b30e",
+      "text": "## Factual and Evidence Knowledge\n\n- Advisory source id: `PYSEC-2018-28`.\n- Package: `requests`.\n- Affected version range for this bounded case: introduced `0`, fixed `2.20.0`.\n- Runtime-visible repository evidence includes dependency declaration files, Python source files, and allowed advisory snapshots.\n- Evaluator-only gold answers and verifier implementation details are not runtime-visible knowledge.\n",
+      "title": "Factual and Evidence Knowledge"
+    },
+    {
+      "sha256": "sha256:161672f98f3b3cb3fdc041a4f56dd2f05e5e348ad4fc5095c5d9396763261c8d",
+      "text": "## Skill and Knowledge Boundary\n\n- Skill stores stable workflow, evidence requirements, abstention policy, and output formatting rules.\n- Knowledge stores concrete advisory identifiers, affected ranges, source paths, dependency declarations, import/use locations, and immutable snapshot references.\n",
+      "title": "Skill and Knowledge Boundary"
+    }
+  ]
+}

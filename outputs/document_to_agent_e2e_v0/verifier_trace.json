@@ -1,0 +1,42 @@
+{
+  "domain_check": {
+    "checked_rules": [
+      "schema_validity",
+      "decision_enum_validity",
+      "required_evidence_presence",
+      "evidence_ref_allowed_scope",
+      "dependency_declaration_check",
+      "import_use_site_check",
+      "advisory_range_check"
+    ],
+    "failed_rules": [],
+    "status": "pass"
+  },
+  "evidence_check": {
+    "checked_refs": [
+      "requirements.txt",
+      "requirements.txt",
+      "update.py",
+      "update.py",
+      "allowed_knowledge.json",
+      "derived"
+    ],
+    "forbidden_refs_seen": [],
+    "status": "pass"
+  },
+  "gold_access_check": {
+    "runtime_visible_gold": false,
+    "verifier_used_hidden_gold": true
+  },
+  "schema_check": {
+    "details": "schema fields checked by domain verifier",
+    "status": "pass"
+  },
+  "schema_version": "verifier_trace.v0",
+  "verifier_confidence": "high",
+  "verifier_limitations": [
+    "does not prove general benchmark performance",
+    "does not replace public benchmark harness",
+    "only validates this bounded domain task"
+  ]
+}

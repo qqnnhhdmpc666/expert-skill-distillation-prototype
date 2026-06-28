@@ -1,0 +1,15 @@
+{
+  "schema_version": "verifier_failure_taxonomy.v0",
+  "types": {
+    "agent_execution_failure": "Agent/backend failed before valid output.",
+    "domain_rule_violation": "Agent decision violates domain rules.",
+    "environment_blocked": "Environment prevented execution.",
+    "forbidden_evidence_access": "Agent used evaluator-only or forbidden evidence.",
+    "knowledge_missing": "Required factual record was unavailable.",
+    "missing_required_evidence": "Agent output lacks required evidence references.",
+    "schema_invalid": "Agent output does not match expected schema.",
+    "skill_rule_missing": "Required procedural rule was not encoded in Skill.",
+    "verifier_inconclusive": "Verifier cannot confidently judge this output."
+  },
+  "version": "0.1"
+}

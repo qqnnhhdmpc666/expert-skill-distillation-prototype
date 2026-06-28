@@ -1,0 +1,27 @@
+{
+  "allowed_wording": "The system implements a runnable expert knowledge distillation prototype that can ingest expert material, separate Skill and Knowledge artifacts, build a versioned Bundle, bind and inject it into a Runtime/Agent backend, execute a task, and emit trajectory/verifier/report artifacts.",
+  "claim_gate_status": "pass",
+  "claim_states": {
+    "controlled_feedback_loop_complete": true,
+    "document_to_agent_e2e_complete": true,
+    "internal_closed_loop_complete": true,
+    "mature_system_complete": false,
+    "open_world_integration_smoke_complete": true,
+    "production_ready": false,
+    "public_heldout_evaluation_infrastructure_complete": true,
+    "public_heldout_validation_complete": false,
+    "real_llm_agent_effectiveness_evaluated": false,
+    "real_material_pilot_complete": true,
+    "swe_bench_official_harness_executed": false
+  },
+  "forbidden_wording": [
+    "full open-world validation complete",
+    "official SWE-bench performance",
+    "mature production-ready system",
+    "general vulnerability discovery system",
+    "real LLM Agent effectiveness proven",
+    "compiler superiority proven",
+    "local verifier replaces public benchmark"
+  ],
+  "schema_version": "claim_gate.v0"
+}

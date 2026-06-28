@@ -1,0 +1,35 @@
+{
+  "schema_version": "agent_backends_config.v0",
+  "agent_backends": {
+    "deterministic_reference": {
+      "enabled": true,
+      "type": "internal_reference",
+      "requires_docker": false,
+      "requires_api_key": false,
+      "claim_level": "deterministic_runtime"
+    },
+    "mini_swe_agent_framework": {
+      "enabled": true,
+      "type": "external_agent_framework",
+      "requires_docker": false,
+      "requires_api_key": false,
+      "claim_level": "framework_smoke"
+    },
+    "mini_swe_agent_real_llm": {
+      "enabled": false,
+      "type": "external_agent_with_real_llm",
+      "requires_api_key": true,
+      "claim_level": "real_llm_agent_execution"
+    },
+    "swe_agent": {
+      "enabled": false,
+      "type": "external_agent_framework",
+      "status": "not_integrated"
+    },
+    "openhands": {
+      "enabled": false,
+      "type": "external_agent_platform",
+      "status": "not_integrated"
+    }
+  }
+}

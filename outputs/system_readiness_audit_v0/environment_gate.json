@@ -1,0 +1,133 @@
+{
+  "api_key_visibility_summary": {
+    "MODEL_present": false,
+    "OPENAI_API_KEY_present": true,
+    "OPENAI_BASE_URL_present": false
+  },
+  "codex_shell_can_see_host_docker": false,
+  "current_shell": "C:\\Windows\\system32\\cmd.exe",
+  "current_user": "31552",
+  "docker_cli_found_in_path": false,
+  "docker_cli_found_outside_path": false,
+  "docker_cli_path": null,
+  "docker_daemon_available": false,
+  "docker_daemon_error": "[WinError 2] 系统找不到指定的文件。",
+  "docker_desktop_installed": false,
+  "docker_desktop_running": false,
+  "docker_service_status": {
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-Service *docker* -ErrorAction SilentlyContinue | ConvertTo-Json -Compress"
+    ],
+    "ok": true,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "docker_version_output": {
+    "command": [
+      "docker",
+      "--version"
+    ],
+    "ok": false,
+    "stderr": "[WinError 2] 系统找不到指定的文件。",
+    "stdout": ""
+  },
+  "environment_gate_status": "pass",
+  "git_available": true,
+  "mini_swe_agent_cli_available": false,
+  "mini_swe_agent_importable": true,
+  "network_basic_available": true,
+  "project_root": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main",
+  "python_available": true,
+  "python_version": "3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64)]",
+  "raw_probes": {
+    "Get-Command docker": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-Command docker -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source"
+      ],
+      "ok": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": ""
+    },
+    "Get-Service docker": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-Service *docker* -ErrorAction SilentlyContinue | ConvertTo-Json -Compress"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "docker --version": {
+      "command": [
+        "docker",
+        "--version"
+      ],
+      "ok": false,
+      "stderr": "[WinError 2] 系统找不到指定的文件。",
+      "stdout": ""
+    },
+    "docker info": {
+      "command": [
+        "docker",
+        "info"
+      ],
+      "ok": false,
+      "stderr": "[WinError 2] 系统找不到指定的文件。",
+      "stdout": ""
+    },
+    "docker version": {
+      "command": [
+        "docker",
+        "version"
+      ],
+      "ok": false,
+      "stderr": "[WinError 2] 系统找不到指定的文件。",
+      "stdout": ""
+    },
+    "swebench import": {
+      "ok": false,
+      "stderr": "swebench venv python missing",
+      "stdout": ""
+    },
+    "where.exe docker": {
+      "command": [
+        "where.exe",
+        "docker"
+      ],
+      "ok": false,
+      "returncode": 1,
+      "stderr": "INFO: Could not find files for the given pattern(s).",
+      "stdout": ""
+    },
+    "wsl -l -v": {
+      "command": [
+        "wsl",
+        "-l",
+        "-v"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "NAME                  STATE           VERSION\n\n* Ubuntu-24.04-Codex    Stopped         2"
+    }
+  },
+  "schema_version": "environment_gate.v0",
+  "swebench_importable": false,
+  "swebench_python_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\swebench-venv\\Scripts\\python.exe",
+  "swebench_venv_available": false,
+  "venv_detected": false,
+  "wsl2_available": true,
+  "wsl_available": true,
+  "wsl_distros": "NAME                  STATE           VERSION\n\n* Ubuntu-24.04-Codex    Stopped         2"
+}

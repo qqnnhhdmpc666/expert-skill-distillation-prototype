@@ -1,0 +1,23 @@
+{
+  "verifier_id": "dependency_use_triage_domain_verifier_v0",
+  "verifier_version": "0.1",
+  "verifier_type": "schema_plus_evidence_plus_domain",
+  "claim_level": "development_domain_verifier",
+  "input_schema": "expected_output_schema.json",
+  "requires_hidden_gold": true,
+  "runtime_visible_gold": false,
+  "checks": [
+    "schema_validity",
+    "decision_enum_validity",
+    "required_evidence_presence",
+    "evidence_ref_allowed_scope",
+    "dependency_declaration_check",
+    "import_use_site_check",
+    "advisory_range_check"
+  ],
+  "known_limitations": [
+    "does not prove general benchmark performance",
+    "does not replace public benchmark harness",
+    "only validates this bounded domain task"
+  ]
+}

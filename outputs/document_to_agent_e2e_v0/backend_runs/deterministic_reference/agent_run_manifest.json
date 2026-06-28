@@ -1,0 +1,8 @@
+{
+  "backend_id": "deterministic_reference",
+  "bundle_digest": "sha256:022a58c15c2b002a72276742949336357166768a964c7b52ab7961b3f5b34021",
+  "condition_id": "document_to_agent_e2e_bundle",
+  "execution_status": "executed",
+  "schema_version": "agent_run_manifest.v1",
+  "task_id": "document_to_agent_dependency_use_triage"
+}

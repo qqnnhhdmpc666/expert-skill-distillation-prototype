@@ -1,0 +1,266 @@
+{
+  "agent_backend_gate_status": "pass",
+  "benchmark_harness_gate_status": "blocked_by_environment",
+  "claim_gate_status": "pass",
+  "end_to_end_demo_gate_status": "pass",
+  "environment_gate_status": "pass",
+  "gates": {
+    "agent_gate": {
+      "agent_backend_gate_status": "pass",
+      "backends": {
+        "deterministic_reference": {
+          "claim_level": "deterministic_runtime",
+          "enabled": true,
+          "readiness_status": "configured",
+          "requires_api_key": false,
+          "requires_docker": false,
+          "type": "internal_reference"
+        },
+        "mini_swe_agent_framework": {
+          "claim_level": "framework_smoke",
+          "enabled": true,
+          "readiness_status": "available",
+          "requires_api_key": false,
+          "requires_docker": false,
+          "type": "external_agent_framework"
+        },
+        "mini_swe_agent_real_llm": {
+          "claim_level": "real_llm_agent_execution",
+          "enabled": false,
+          "readiness_status": "disabled_real_llm_not_evaluated",
+          "requires_api_key": true,
+          "type": "external_agent_with_real_llm"
+        },
+        "openhands": {
+          "enabled": false,
+          "readiness_status": "disabled",
+          "status": "not_integrated",
+          "type": "external_agent_platform"
+        },
+        "swe_agent": {
+          "enabled": false,
+          "readiness_status": "disabled",
+          "status": "not_integrated",
+          "type": "external_agent_framework"
+        }
+      },
+      "framework_smoke_available": true,
+      "real_llm_agent_execution_status": "not_evaluated",
+      "schema_version": "agent_backend_gate.v0"
+    },
+    "benchmark_gate": {
+      "benchmark_harness_gate_status": "blocked_by_environment",
+      "blocked_reason": "swebench_venv_missing",
+      "schema_version": "benchmark_harness_gate.v0",
+      "swe_bench_contract_ready": true,
+      "swe_bench_docker_ready": false,
+      "swe_bench_harness_command_available": false,
+      "swe_bench_instance_executed": false,
+      "swe_bench_metadata_ingested": true,
+      "swe_bench_official_protocol_executed": false,
+      "swe_bench_official_score_available": false,
+      "swe_bench_package_importable": false
+    },
+    "claim_gate": {
+      "allowed_wording": "The system implements a runnable expert knowledge distillation prototype that can ingest expert material, separate Skill and Knowledge artifacts, build a versioned Bundle, bind and inject it into a Runtime/Agent backend, execute a task, and emit trajectory/verifier/report artifacts.",
+      "claim_gate_status": "pass",
+      "claim_states": {
+        "controlled_feedback_loop_complete": true,
+        "document_to_agent_e2e_complete": true,
+        "internal_closed_loop_complete": true,
+        "mature_system_complete": false,
+        "open_world_integration_smoke_complete": true,
+        "production_ready": false,
+        "public_heldout_evaluation_infrastructure_complete": true,
+        "public_heldout_validation_complete": false,
+        "real_llm_agent_effectiveness_evaluated": false,
+        "real_material_pilot_complete": true,
+        "swe_bench_official_harness_executed": false
+      },
+      "forbidden_wording": [
+        "full open-world validation complete",
+        "official SWE-bench performance",
+        "mature production-ready system",
+        "general vulnerability discovery system",
+        "real LLM Agent effectiveness proven",
+        "compiler superiority proven",
+        "local verifier replaces public benchmark"
+      ],
+      "schema_version": "claim_gate.v0"
+    },
+    "e2e_gate": {
+      "document_to_agent_e2e_complete": true,
+      "end_to_end_demo_gate_status": "pass",
+      "schema_version": "end_to_end_demo_gate.v0",
+      "verifier_quality_status": "pass"
+    },
+    "environment_gate": {
+      "api_key_visibility_summary": {
+        "MODEL_present": false,
+        "OPENAI_API_KEY_present": true,
+        "OPENAI_BASE_URL_present": false
+      },
+      "codex_shell_can_see_host_docker": false,
+      "current_shell": "C:\\Windows\\system32\\cmd.exe",
+      "current_user": "31552",
+      "docker_cli_found_in_path": false,
+      "docker_cli_found_outside_path": false,
+      "docker_cli_path": null,
+      "docker_daemon_available": false,
+      "docker_daemon_error": "[WinError 2] 系统找不到指定的文件。",
+      "docker_desktop_installed": false,
+      "docker_desktop_running": false,
+      "docker_service_status": {
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-Service *docker* -ErrorAction SilentlyContinue | ConvertTo-Json -Compress"
+        ],
+        "ok": true,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "docker_version_output": {
+        "command": [
+          "docker",
+          "--version"
+        ],
+        "ok": false,
+        "stderr": "[WinError 2] 系统找不到指定的文件。",
+        "stdout": ""
+      },
+      "environment_gate_status": "pass",
+      "git_available": true,
+      "mini_swe_agent_cli_available": false,
+      "mini_swe_agent_importable": true,
+      "network_basic_available": true,
+      "project_root": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main",
+      "python_available": true,
+      "python_version": "3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64)]",
+      "raw_probes": {
+        "Get-Command docker": {
+          "command": [
+            "powershell",
+            "-NoProfile",
+            "-Command",
+            "Get-Command docker -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source"
+          ],
+          "ok": false,
+          "returncode": 1,
+          "stderr": "",
+          "stdout": ""
+        },
+        "Get-Service docker": {
+          "command": [
+            "powershell",
+            "-NoProfile",
+            "-Command",
+            "Get-Service *docker* -ErrorAction SilentlyContinue | ConvertTo-Json -Compress"
+          ],
+          "ok": true,
+          "returncode": 0,
+          "stderr": "",
+          "stdout": ""
+        },
+        "docker --version": {
+          "command": [
+            "docker",
+            "--version"
+          ],
+          "ok": false,
+          "stderr": "[WinError 2] 系统找不到指定的文件。",
+          "stdout": ""
+        },
+        "docker info": {
+          "command": [
+            "docker",
+            "info"
+          ],
+          "ok": false,
+          "stderr": "[WinError 2] 系统找不到指定的文件。",
+          "stdout": ""
+        },
+        "docker version": {
+          "command": [
+            "docker",
+            "version"
+          ],
+          "ok": false,
+          "stderr": "[WinError 2] 系统找不到指定的文件。",
+          "stdout": ""
+        },
+        "swebench import": {
+          "ok": false,
+          "stderr": "swebench venv python missing",
+          "stdout": ""
+        },
+        "where.exe docker": {
+          "command": [
+            "where.exe",
+            "docker"
+          ],
+          "ok": false,
+          "returncode": 1,
+          "stderr": "INFO: Could not find files for the given pattern(s).",
+          "stdout": ""
+        },
+        "wsl -l -v": {
+          "command": [
+            "wsl",
+            "-l",
+            "-v"
+          ],
+          "ok": true,
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "NAME                  STATE           VERSION\n\n* Ubuntu-24.04-Codex    Stopped         2"
+        }
+      },
+      "schema_version": "environment_gate.v0",
+      "swebench_importable": false,
+      "swebench_python_path": "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\swebench-venv\\Scripts\\python.exe",
+      "swebench_venv_available": false,
+      "venv_detected": false,
+      "wsl2_available": true,
+      "wsl_available": true,
+      "wsl_distros": "NAME                  STATE           VERSION\n\n* Ubuntu-24.04-Codex    Stopped         2"
+    },
+    "public_data_gate": {
+      "a_tier_count": 1,
+      "accepted_candidate_count": 1,
+      "b_tier_count": 0,
+      "c_tier_count": 10,
+      "candidate_repos_screened": 12,
+      "clean_public_excerpt_count": 1,
+      "deterministic_verifier_status": "present_for_accepted_a_tier",
+      "distinct_public_repo_count": 1,
+      "excluded_candidate_count": 11,
+      "excluded_candidate_reasons": {
+        "Advisory binding and deterministic expected decision not cleanly established.": 1,
+        "Could not bind a frozen vulnerable dependency decision within bounded search.": 1,
+        "Library source is not a downstream pinned dependency-use triage task.": 1,
+        "Needs manual narrowing before it can become a clean held-out excerpt.": 1,
+        "No A-tier immutable dependency/advisory tuple established.": 1,
+        "No bounded immutable vulnerable dependency/advisory binding was established in this slice.": 1,
+        "No clean pinned vulnerable package/use/advisory tuple was confirmed.": 1,
+        "Not suitable as small deterministic v0 excerpt without additional curation.": 1,
+        "Repository is too large for v0 minimal frozen excerpt.": 1,
+        "Too broad for minimal frozen excerpt without more manual curation.": 1,
+        "Too large for bounded v0 intake; useful only for future curated benchmark work.": 1
+      },
+      "hidden_gold_separation_status": "pass",
+      "license_status_summary": {
+        "ok": 12
+      },
+      "public_data_gate_status": "partial",
+      "repo_level_heldout_set_status": "partial",
+      "schema_version": "public_data_gate.v0",
+      "snapshot_digest_status": "present_for_accepted_a_tier"
+    }
+  },
+  "public_data_gate_status": "partial",
+  "schema_version": "system_readiness_summary.v0",
+  "system_readiness_status": "partial"
+}

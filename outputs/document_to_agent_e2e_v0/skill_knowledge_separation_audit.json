@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "agent_request_uses_bundle_reference": true,
+    "knowledge_manifest_contains_evidence_refs": true,
+    "release_bundle_references_knowledge": true,
+    "release_bundle_references_skill": true,
+    "runtime_visible_gold_blocked": true,
+    "skill_artifact_does_not_expose_evaluator_only_gold": true
+  },
+  "schema_version": "skill_knowledge_separation_audit.v0",
+  "status": "pass"
+}

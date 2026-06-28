@@ -1,0 +1,13 @@
+{
+  "benchmark_harness_gate_status": "blocked_by_environment",
+  "blocked_reason": "swebench_venv_missing",
+  "schema_version": "benchmark_harness_gate.v0",
+  "swe_bench_contract_ready": true,
+  "swe_bench_docker_ready": false,
+  "swe_bench_harness_command_available": false,
+  "swe_bench_instance_executed": false,
+  "swe_bench_metadata_ingested": true,
+  "swe_bench_official_protocol_executed": false,
+  "swe_bench_official_score_available": false,
+  "swe_bench_package_importable": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "system_readiness_config.v0",
+  "audit_id": "system_readiness_audit_v0",
+  "required_gates": [
+    "environment",
+    "agent_backend",
+    "benchmark_harness",
+    "public_data",
+    "end_to_end_demo",
+    "claim"
+  ],
+  "network_probe_url": "https://github.com",
+  "docker_absolute_paths": [
+    "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+    "C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe"
+  ],
+  "swebench": {
+    "repo_dir": "SWE-bench",
+    "venv_dir": "swebench-venv"
+  }
+}

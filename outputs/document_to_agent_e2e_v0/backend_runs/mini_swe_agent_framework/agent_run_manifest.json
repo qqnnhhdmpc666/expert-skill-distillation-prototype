@@ -1,0 +1,17 @@
+{
+  "backend_id": "mini_swe_agent",
+  "command": [
+    "C:\\Users\\31552\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\document_to_agent_e2e_v0\\backend_runs\\mini_swe_agent_framework\\workspace\\mini_swe_agent_smoke.py",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\document_to_agent_e2e_v0\\backend_runs\\mini_swe_agent_framework\\workspace\\mini_swe_agent_trajectory.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\document_to_agent_e2e_v0\\backend_runs\\mini_swe_agent_framework\\workspace\\mini_swe_agent_result.json",
+    "C:\\Users\\31552\\Documents\\New project\\expert-skill-distillation-prototype-main\\outputs\\document_to_agent_e2e_v0\\backend_runs\\mini_swe_agent_framework\\workspace\\task.md"
+  ],
+  "condition_id": "document_to_agent_e2e_bundle",
+  "execution_status": "executed",
+  "exit_code": 0,
+  "real_agent_smoke": true,
+  "runtime_seconds": 0.558,
+  "schema_version": "agent_run_manifest.v1",
+  "task_id": "document_to_agent_dependency_use_triage"
+}

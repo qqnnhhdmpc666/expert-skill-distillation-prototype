@@ -1,0 +1,6 @@
+{
+  "document_to_agent_e2e_complete": true,
+  "end_to_end_demo_gate_status": "pass",
+  "schema_version": "end_to_end_demo_gate.v0",
+  "verifier_quality_status": "pass"
+}
